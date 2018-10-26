@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+import "gogoproto/gogo.proto";
+
+message Blockchain {
+  string name	= 1;
+  int32 height = 2;
+  string hash	= 3;
+  string time	= 4;
+  string latest_url	= 5;
+  string previous_hash = 6;
+  string previous_url	= 7;
+  int32 peer_count = 8;
+  int32 high_fee_per_kb = 9;
+  int32 medium_fee_per_kb = 10;
+  int32 low_fee_per_kb = 11;
+  int32 unconfirmed_count =12;
+  int32 last_fork_height = 13;
+  string last_fork_hash = 14;
+}
+
+message Block {
+  string hash	= 1;
+  int32 height = 2;
+  int32 depth = 3;
+  string chain = 4;
+  int32 total = 5;
+  int32 fees = 6;
+  int32 size = 7;
+  int32 ver = 8;
+  string time = 9;
+  string received_time = 10;
+  string relayed_by	= 11;
+  int32 bits = 12;
+  int32 nonce = 13;
+  int32 n_tx = 14;
+  string prev_block = 15;
+  string prev_block_url = 16;
+  string tx_url = 17;
+  string mrkl_root = 18;
+  repeated string txids = 19;
+  string next_txids = 20;
+}
+
+message Feature {
+  string name = 1;
+  string state = 2;
+  int64 last_transition_height = 3;
+  string last_transition_hash = 4;
+}
+
+message ChainEndpointRequest {}
+
+message BlockHashEndpointRequest {
+  string block_hash = 1;
+}
+
+message BlockHeightEndpointRequest {
+  int32 block_height = 1;
+}
+
+message FeatureEndpointRequest {
+  string name = 1;
+}
