@@ -1,0 +1,259 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "blockchainService.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/*": {
+      "get": {
+        "operationId": "ChainEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufBlockchain"
+            }
+          }
+        },
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    },
+    "/blocks/{block_hash}": {
+      "get": {
+        "operationId": "BlockHashEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufBlock"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    },
+    "/blocks/{block_height}": {
+      "get": {
+        "operationId": "BlockHeightEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufBlock"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_height",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    },
+    "/feature/{name}": {
+      "get": {
+        "operationId": "FeatureEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufFeature"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "blockchainprotobufBlock": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "height": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "depth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "chain": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fees": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ver": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "time": {
+          "type": "string"
+        },
+        "received_time": {
+          "type": "string"
+        },
+        "relayed_by": {
+          "type": "string"
+        },
+        "bits": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nonce": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "n_tx": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "prev_block": {
+          "type": "string"
+        },
+        "prev_block_url": {
+          "type": "string"
+        },
+        "tx_url": {
+          "type": "string"
+        },
+        "mrkl_root": {
+          "type": "string"
+        },
+        "txids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "next_txids": {
+          "type": "string"
+        }
+      }
+    },
+    "blockchainprotobufBlockchain": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "height": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "latest_url": {
+          "type": "string"
+        },
+        "previous_hash": {
+          "type": "string"
+        },
+        "previous_url": {
+          "type": "string"
+        },
+        "peer_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "high_fee_per_kb": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "medium_fee_per_kb": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "low_fee_per_kb": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "unconfirmed_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "last_fork_height": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "last_fork_hash": {
+          "type": "string"
+        }
+      }
+    },
+    "blockchainprotobufFeature": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "last_transition_height": {
+          "type": "string",
+          "format": "int64"
+        },
+        "last_transition_hash": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
