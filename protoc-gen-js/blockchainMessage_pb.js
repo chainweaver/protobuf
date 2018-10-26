@@ -11,7 +11,6 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var gogoproto_gogo_pb = require('./gogoproto/gogo_pb.js');
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.Block', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.BlockHashEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.BlockHeightEndpointRequest', null, global);
