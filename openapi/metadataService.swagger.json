@@ -1,0 +1,293 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "metadataService.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/addrs/{address}/meta": {
+      "get": {
+        "operationId": "GetMetadata_addressEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufKeyValues"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "private",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteMetadata_addressEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      },
+      "put": {
+        "operationId": "PutMetadata_addressEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      }
+    },
+    "/blocks/{block_hash}/meta": {
+      "put": {
+        "operationId": "PutMetadata_blockhashEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      }
+    },
+    "/blocks/{block_height}/meta": {
+      "delete": {
+        "operationId": "DeleteMetadata_blockheightEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_height",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      }
+    },
+    "/blocks/{blockhash}/meta": {
+      "get": {
+        "operationId": "GetMetadata_blockhashEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufKeyValues"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "blockhash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "private",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      }
+    },
+    "/txs/{txhash}/meta": {
+      "get": {
+        "operationId": "GetMetadata_txhashEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufKeyValues"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "txhash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "private",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteMetadata_txhashEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "txhash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      },
+      "put": {
+        "operationId": "PutMetadata_txhashEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "txhash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "blockchainprotobufKeyPair": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "blockchainprotobufKeyValues": {
+      "type": "object",
+      "properties": {
+        "keypair": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/blockchainprotobufKeyPair"
+          }
+        }
+      }
+    },
+    "blockchainprotobufNullValue": {
+      "type": "object"
+    }
+  }
+}

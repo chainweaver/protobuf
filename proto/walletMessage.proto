@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+message Wallet {
+  string token	= 1;
+  string name = 2;
+  repeated string addresses	= 3;
+}
+
+message HDWallet {
+  string token	= 1;
+  string name = 2;
+  repeated HDChain chains = 3;
+  bool hd = 4;
+  string extended_public_key = 5;
+  repeated int32 subchain_indexes = 6;
+}
+
+message HDChain {
+  repeated HDAddress chain_addresses = 1;
+  int64 index = 2;
+}
+
+message HDAddress {
+  string address = 1;
+  string path = 2;
+  string public = 3;
+}
+
+message ListWallets {
+  repeated string wallet_name = 1;
+}
+
+message AddressKeychain {
+  string address = 1;
+  string public = 2;
+  string private = 3;
+  string wif = 4;
+  repeated string pubkeys  = 5;
+  string script_type = 6;
+  string original_address = 7;
+  string oap_address = 8;
+}
+
+message WalletAddressKeychain {
+  Wallet wallet = 1;
+  AddressKeychain addresskeychain = 2;
+}
+
+message NullValue {}
+
+message CreateWalletEndpointRequest {
+  string token	= 1;
+  string name = 2;
+  repeated string addresses	= 3;
+}
+
+message CreateWalletHDEndpointRequest {
+  string token 	= 1;
+  string name = 2;
+  repeated HDChain chains = 3;
+  bool hd = 4;
+  string extended_public_key = 5;
+  repeated int32 subchain_indexes = 6;
+}
+
+message ListWalletsEndpointRequest {
+}
+
+message GetWalletEndpointRequest {
+  string name = 1;
+}
+
+message AddAddressesToWalletEndpointRequest {
+  string name = 1;
+  bool omitWalletAddresses = 2;
+}
+
+message GetWalletAddressesEndpointRequest {
+  string name = 1;
+  bool used = 2;
+  bool zerobalance = 3;
+}
+
+message RemoveAddressesFromWalletEndpointRequest {
+  string name = 1;
+//  string address = 2;
+}
+
+message GenerateAdressInWalletEndpointRequest {
+  string name = 1;
+}
+
+message DeriveAddressInWalletEndpointRequest {
+  string name = 1;
+  int32 count = 2;
+  int64 subchain_index = 3;
+}
+
+message DeleteWalletEndpointRequest {
+  string name = 1;
+}

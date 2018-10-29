@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+import "google/api/annotations.proto";
+import "walletMessage.proto";
+
+service WalletService {
+  rpc CreateWalletEndpoint (CreateWalletEndpointRequest) returns (Wallet) {
+    option (google.api.http) = {
+      post: "/wallets"
+    };
+  }
+  rpc CreateWalletHDEndpoint (CreateWalletHDEndpointRequest) returns (HDWallet) {
+    option (google.api.http) = {
+      post: "/wallets/hd"
+    };
+  }
+  rpc ListWalletsEndpoint (ListWalletsEndpointRequest) returns (ListWallets) {
+    option (google.api.http) = {
+      get: "/wallets"
+    };
+  }
+  rpc GetWalletEndpoint (GetWalletEndpointRequest) returns (Wallet) {
+    option (google.api.http) = {
+      get: "/wallets/{name}"
+    };
+  }
+  rpc GetWalletHDEndpoint (GetWalletEndpointRequest) returns (HDWallet) {
+    option (google.api.http) = {
+      get: "/wallets/hd/{name}"
+    };
+  }
+  rpc AddAddressesToWalletEndpoint (AddAddressesToWalletEndpointRequest) returns (Wallet) {
+    option (google.api.http) = {
+      post: "/wallets/{name}/addresses"
+    };
+  }
+  rpc GetWalletAddressesEndpoint (GetWalletAddressesEndpointRequest) returns (Wallet) {
+    option (google.api.http) = {
+      get: "/wallets/{name}/addresses"
+    };
+  }
+  rpc GetWalletAddressesHDEndpoint (GetWalletAddressesEndpointRequest) returns (HDChain) {
+    option (google.api.http) = {
+      get: "/wallets/hd/{name}/addresses"
+    };
+  }
+  rpc RemoveAddressesFromWalletEndpoint (RemoveAddressesFromWalletEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+//      delete: "/wallets/{name}/addresses?address={address}"
+      delete: "/wallets/{name}/addresses"
+    };
+  }
+  rpc GenerateAddressInWalletEndpoint (GenerateAdressInWalletEndpointRequest) returns (WalletAddressKeychain) {
+    option (google.api.http) = {
+      post: "/wallets/{name}/addresses/generate"
+    };
+  }
+  rpc DeriveAddressInWalletEndpoint (DeriveAddressInWalletEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      get: "/wallets/hd/{name}/addresses/derive"
+    };
+  }
+  rpc DeleteWalletEndpoint (DeleteWalletEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      delete: "/wallet/{name}"
+    };
+  }
+  rpc DeleteWalletHDEndpoint (DeleteWalletEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      delete: "/wallet/hd/{name}"
+    };           
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "walletService.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/wallet/hd/{name}": {
+      "delete": {
+        "operationId": "DeleteWalletHDEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      }
+    },
+    "/wallet/{name}": {
+      "delete": {
+        "operationId": "DeleteWalletEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      }
+    },
+    "/wallets": {
+      "get": {
+        "operationId": "ListWalletsEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufListWallets"
+            }
+          }
+        },
+        "tags": [
+          "WalletService"
+        ]
+      },
+      "post": {
+        "operationId": "CreateWalletEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufWallet"
+            }
+          }
+        },
+        "tags": [
+          "WalletService"
+        ]
+      }
+    },
+    "/wallets/hd": {
+      "post": {
+        "operationId": "CreateWalletHDEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufHDWallet"
+            }
+          }
+        },
+        "tags": [
+          "WalletService"
+        ]
+      }
+    },
+    "/wallets/hd/{name}": {
+      "get": {
+        "operationId": "GetWalletHDEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufHDWallet"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      }
+    },
+    "/wallets/hd/{name}/addresses": {
+      "get": {
+        "operationId": "GetWalletAddressesHDEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufHDChain"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "used",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "zerobalance",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      }
+    },
+    "/wallets/hd/{name}/addresses/derive": {
+      "get": {
+        "operationId": "DeriveAddressInWalletEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "subchain_index",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      }
+    },
+    "/wallets/{name}": {
+      "get": {
+        "operationId": "GetWalletEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufWallet"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      }
+    },
+    "/wallets/{name}/addresses": {
+      "get": {
+        "operationId": "GetWalletAddressesEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufWallet"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "used",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "zerobalance",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      },
+      "delete": {
+        "operationId": "RemoveAddressesFromWalletEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      },
+      "post": {
+        "operationId": "AddAddressesToWalletEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufWallet"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      }
+    },
+    "/wallets/{name}/addresses/generate": {
+      "post": {
+        "operationId": "GenerateAddressInWalletEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufWalletAddressKeychain"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "blockchainprotobufAddressKeychain": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "public": {
+          "type": "string"
+        },
+        "private": {
+          "type": "string"
+        },
+        "wif": {
+          "type": "string"
+        },
+        "pubkeys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "script_type": {
+          "type": "string"
+        },
+        "original_address": {
+          "type": "string"
+        },
+        "oap_address": {
+          "type": "string"
+        }
+      }
+    },
+    "blockchainprotobufHDAddress": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "public": {
+          "type": "string"
+        }
+      }
+    },
+    "blockchainprotobufHDChain": {
+      "type": "object",
+      "properties": {
+        "chain_addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/blockchainprotobufHDAddress"
+          }
+        },
+        "index": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "blockchainprotobufHDWallet": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "chains": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/blockchainprotobufHDChain"
+          }
+        },
+        "hd": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "extended_public_key": {
+          "type": "string"
+        },
+        "subchain_indexes": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "blockchainprotobufListWallets": {
+      "type": "object",
+      "properties": {
+        "wallet_name": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "blockchainprotobufNullValue": {
+      "type": "object"
+    },
+    "blockchainprotobufWallet": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "blockchainprotobufWalletAddressKeychain": {
+      "type": "object",
+      "properties": {
+        "wallet": {
+          "$ref": "#/definitions/blockchainprotobufWallet"
+        },
+        "addresskeychain": {
+          "$ref": "#/definitions/blockchainprotobufAddressKeychain"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+
+message MicroTX {
+  string from_pubkey		= 1;
+  string from_private		= 2;
+  string from_wif		= 3;
+  string to_address		= 4;
+  int64 value_satoshis		= 5;
+  string token		= 6;
+  string change_address		= 7;
+  bool wait_guarantee		= 8;
+  repeated string tosign	 	= 9;
+  repeated string signatures	 	= 10;
+  repeated TXInput inputs	 	= 11;
+  repeated TXOutput outputs	 	= 12;
+  int32 fees	 	= 13;
+  string hash		= 14;
+}
+
+message TXInput {
+  string prev_hash			= 1;
+  int32 output_index	 		= 2;
+  int32 output_value	 		= 3;
+  string script_type		= 4;
+  string script		= 5;
+  repeated string addresses	 		= 6;
+  int32 sequence	 		= 7;
+  int32 age			= 8;
+  string wallet_name		= 9;
+  string wallet_token		= 10;
+}
+
+message TXOutput {
+  int32 value			= 1;
+  string script		= 2;
+  repeated string addresses	 	= 3;
+  string script_type		= 4;
+  string spent_by		= 5;
+  string data_hex		= 6;
+  string data_string		= 7;
+}

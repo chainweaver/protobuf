@@ -1,0 +1,171 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "microtransactionService.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/txs/micro": {
+      "post": {
+        "operationId": "MicrotransactionEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufMicroTX"
+            }
+          }
+        },
+        "tags": [
+          "MicrotransactionService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "blockchainprotobufMicroTX": {
+      "type": "object",
+      "properties": {
+        "from_pubkey": {
+          "type": "string"
+        },
+        "from_private": {
+          "type": "string"
+        },
+        "from_wif": {
+          "type": "string"
+        },
+        "to_address": {
+          "type": "string"
+        },
+        "value_satoshis": {
+          "type": "string",
+          "format": "int64"
+        },
+        "token": {
+          "type": "string"
+        },
+        "change_address": {
+          "type": "string"
+        },
+        "wait_guarantee": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "tosign": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/blockchainprotobufTXInput"
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/blockchainprotobufTXOutput"
+          }
+        },
+        "fees": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hash": {
+          "type": "string"
+        }
+      }
+    },
+    "blockchainprotobufTXInput": {
+      "type": "object",
+      "properties": {
+        "prev_hash": {
+          "type": "string"
+        },
+        "output_index": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "output_value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "script_type": {
+          "type": "string"
+        },
+        "script": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sequence": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "wallet_name": {
+          "type": "string"
+        },
+        "wallet_token": {
+          "type": "string"
+        }
+      }
+    },
+    "blockchainprotobufTXOutput": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "script": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "script_type": {
+          "type": "string"
+        },
+        "spent_by": {
+          "type": "string"
+        },
+        "data_hex": {
+          "type": "string"
+        },
+        "data_string": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

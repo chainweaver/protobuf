@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+import "google/api/annotations.proto";
+import "metadataMessage.proto";
+
+service MetadataService {
+  rpc GetMetadata_addressEndpoint (GetMetadata_addressEndpointRequest) returns (KeyValues) {
+    option (google.api.http) = {
+      get: "/addrs/{address}/meta"
+    };
+  }
+  rpc GetMetadata_txhashEndpoint (GetMetadata_txhashEndpointRequest) returns (KeyValues) {
+    option (google.api.http) = {
+      get: "/txs/{txhash}/meta"
+    };
+  }
+  rpc GetMetadata_blockhashEndpoint (GetMetadata_blockhashEndpointRequest) returns (KeyValues) {
+    option (google.api.http) = {
+      get: "/blocks/{blockhash}/meta"
+    };
+  }
+  rpc PutMetadata_addressEndpoint (PutMetadata_addressEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      put: "/addrs/{address}/meta"
+    };
+  }
+  rpc PutMetadata_txhashEndpoint (PutMetadata_txhashEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      put: "/txs/{txhash}/meta"
+    };
+  }
+  rpc PutMetadata_blockhashEndpoint (PutMetadata_block_hashEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      put: "/blocks/{block_hash}/meta"
+    };
+  }
+  rpc DeleteMetadata_addressEndpoint (DeleteMetadata_addressEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      delete: "/addrs/{address}/meta",
+    };
+  }
+  rpc DeleteMetadata_txhashEndpoint (DeleteMetadata_txhashEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      delete: "/txs/{txhash}/meta"
+    };
+  }
+  rpc DeleteMetadata_blockheightEndpoint (DeleteMetadata_block_heightEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      delete: "/blocks/{block_height}/meta"
+    };
+  }
+}
