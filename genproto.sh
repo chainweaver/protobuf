@@ -9,7 +9,6 @@ protoc \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/ \
-  --js_out=import_style=commonjs,binary:./protoc-gen-js/ \
   --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:./protoc-gen-js/ \
   blockchainMessage.proto \
   blockchainService.proto
