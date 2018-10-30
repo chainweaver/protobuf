@@ -76,6 +76,6 @@ service WalletService {
   rpc DeleteWalletHDEndpoint (DeleteWalletEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
       delete: "/wallets/hd/{name}"
-    };           
+    };
   }
 }

@@ -116,8 +116,8 @@ export class HDWallet {
 
 export class ListWallets {
   constructor ();
-  getWalletName(): string;
-  setWalletName(a: string): void;
+  getWalletNames(): string;
+  setWalletNames(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ListWallets;
 }
@@ -158,10 +158,28 @@ export class Wallet {
 
 export class WalletAddressKeychain {
   constructor ();
-  getWallet(): {};
-  setWallet(a: {}): void;
-  getAddresskeychain(): {};
-  setAddresskeychain(a: {}): void;
+  getToken(): string;
+  setToken(a: string): void;
+  getName(): string;
+  setName(a: string): void;
+  getAddresses(): string;
+  setAddresses(a: string): void;
+  getAddress(): string;
+  setAddress(a: string): void;
+  getPublic(): string;
+  setPublic(a: string): void;
+  getPrivate(): string;
+  setPrivate(a: string): void;
+  getWif(): string;
+  setWif(a: string): void;
+  getPubkeys(): string;
+  setPubkeys(a: string): void;
+  getScriptType(): string;
+  setScriptType(a: string): void;
+  getOriginalAddress(): string;
+  setOriginalAddress(a: string): void;
+  getOapAddress(): string;
+  setOapAddress(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => WalletAddressKeychain;
 }

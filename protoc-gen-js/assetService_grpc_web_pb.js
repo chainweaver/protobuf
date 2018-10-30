@@ -82,12 +82,12 @@ proto.fairwaycorp.blockchainprotobuf.AssetServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.GenerateAssetAddressEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.NullValue,
  *   !proto.fairwaycorp.blockchainprotobuf.AddressKeychain>}
  */
 const methodInfo_GenerateAssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.AddressKeychain,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.GenerateAssetAddressEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.NullValue} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -96,7 +96,7 @@ const methodInfo_GenerateAssetAddressEndpoint = new grpc.web.AbstractClientBase.
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GenerateAssetAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.NullValue} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -117,7 +117,7 @@ proto.fairwaycorp.blockchainprotobuf.AssetServiceClient.prototype.generateAssetA
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GenerateAssetAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.NullValue} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata

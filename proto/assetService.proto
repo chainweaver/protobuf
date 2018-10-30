@@ -8,7 +8,7 @@ import "assetMessage.proto";
 import "commonMessage.proto";
 
 service AssetService {
-  rpc GenerateAssetAddressEndpoint (GenerateAssetAddressEndpointRequest) returns (AddressKeychain) {
+  rpc GenerateAssetAddressEndpoint (NullValue) returns (AddressKeychain) {
     option (google.api.http) = {
       post: "/oap/addrs"
       body: "*"

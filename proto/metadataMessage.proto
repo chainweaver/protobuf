@@ -14,34 +14,40 @@ message KeyPair {
 
 message GetMetadataAddressEndpointRequest {
   string address = 1;
+  // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
   bool private = 2;
 }
 
 message GetMetadataTxhashEndpointRequest {
   string txhash = 1;
+  // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
   bool private = 2;
 }
 
 message GetMetadataBlockhashEndpointRequest {
   string blockhash = 1;
+  // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
   bool private = 2;
 }
 
 message PutMetadataAddressEndpointRequest {
   repeated KeyPair keypair	= 1;
   string address = 2;
+  // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
   bool private = 3;
 }
 
 message PutMetadataTxhashEndpointRequest {
   repeated KeyPair keypair	= 1;
   string txhash = 2;
+  // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
   bool private = 3;
 }
 
 message PutMetadataBlockhashEndpointRequest {
   repeated KeyPair keypair	= 1;
   string block_hash = 2;
+  // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
   bool private = 3;
 }
 

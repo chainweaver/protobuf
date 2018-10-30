@@ -107,7 +107,8 @@ func (m *KeyPair) GetValue() string {
 }
 
 type GetMetadataAddressEndpointRequest struct {
-	Address              string   `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	// If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
 	Private              bool     `protobuf:"varint,2,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -154,7 +155,8 @@ func (m *GetMetadataAddressEndpointRequest) GetPrivate() bool {
 }
 
 type GetMetadataTxhashEndpointRequest struct {
-	Txhash               string   `protobuf:"bytes,1,opt,name=txhash,proto3" json:"txhash,omitempty"`
+	Txhash string `protobuf:"bytes,1,opt,name=txhash,proto3" json:"txhash,omitempty"`
+	// If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
 	Private              bool     `protobuf:"varint,2,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -201,7 +203,8 @@ func (m *GetMetadataTxhashEndpointRequest) GetPrivate() bool {
 }
 
 type GetMetadataBlockhashEndpointRequest struct {
-	Blockhash            string   `protobuf:"bytes,1,opt,name=blockhash,proto3" json:"blockhash,omitempty"`
+	Blockhash string `protobuf:"bytes,1,opt,name=blockhash,proto3" json:"blockhash,omitempty"`
+	// If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
 	Private              bool     `protobuf:"varint,2,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -248,12 +251,13 @@ func (m *GetMetadataBlockhashEndpointRequest) GetPrivate() bool {
 }
 
 type PutMetadataAddressEndpointRequest struct {
-	Keypair              []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	Address              string     `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
-	Private              bool       `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	Keypair []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
+	Address string     `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	// If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
+	Private              bool     `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *PutMetadataAddressEndpointRequest) Reset()         { *m = PutMetadataAddressEndpointRequest{} }
@@ -303,12 +307,13 @@ func (m *PutMetadataAddressEndpointRequest) GetPrivate() bool {
 }
 
 type PutMetadataTxhashEndpointRequest struct {
-	Keypair              []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	Txhash               string     `protobuf:"bytes,2,opt,name=txhash,proto3" json:"txhash,omitempty"`
-	Private              bool       `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	Keypair []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
+	Txhash  string     `protobuf:"bytes,2,opt,name=txhash,proto3" json:"txhash,omitempty"`
+	// If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
+	Private              bool     `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *PutMetadataTxhashEndpointRequest) Reset()         { *m = PutMetadataTxhashEndpointRequest{} }
@@ -358,12 +363,13 @@ func (m *PutMetadataTxhashEndpointRequest) GetPrivate() bool {
 }
 
 type PutMetadataBlockhashEndpointRequest struct {
-	Keypair              []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	BlockHash            string     `protobuf:"bytes,2,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
-	Private              bool       `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	Keypair   []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
+	BlockHash string     `protobuf:"bytes,2,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
+	// If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
+	Private              bool     `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *PutMetadataBlockhashEndpointRequest) Reset()         { *m = PutMetadataBlockhashEndpointRequest{} }

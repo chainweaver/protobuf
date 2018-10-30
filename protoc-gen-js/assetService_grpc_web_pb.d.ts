@@ -3,10 +3,10 @@ import {
   Address,
   AddressKeychain,
   ArrayString,
-  GenerateAssetAddressEndpointRequest,
   GetAssetAddressEndpointRequest,
   GetAssetTXEndpointRequest,
   ListAssetTXsEndpointRequest,
+  NullValue,
   OAPIssue,
   OAPTX,
   TransferAssetEndpointRequest} from './assetService_pb';
@@ -17,7 +17,7 @@ export class AssetServiceClient {
                options: { [s: string]: {}; });
 
   generateAssetAddressEndpoint(
-    request: GenerateAssetAddressEndpointRequest,
+    request: NullValue,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: AddressKeychain) => void

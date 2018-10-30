@@ -32,7 +32,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufGenerateAssetAddressEndpointRequest"
+              "$ref": "#/definitions/blockchainprotobufNullValue"
             }
           }
         ],
@@ -323,9 +323,6 @@
         }
       }
     },
-    "blockchainprotobufGenerateAssetAddressEndpointRequest": {
-      "type": "object"
-    },
     "blockchainprotobufHDAddress": {
       "type": "object",
       "properties": {
@@ -396,6 +393,9 @@
           "description": "optional returned for HD wallets created with subchains."
         }
       }
+    },
+    "blockchainprotobufNullValue": {
+      "type": "object"
     },
     "blockchainprotobufOAPIssue": {
       "type": "object",
@@ -799,6 +799,23 @@
       "properties": {
         "assetid": {
           "type": "string"
+        },
+        "from_private": {
+          "type": "string",
+          "description": "The private key being used to issue or transfer assets."
+        },
+        "to_address": {
+          "type": "string",
+          "description": "The target OAP address assets for issue or transfer."
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The amount of assets being issued or transfered."
+        },
+        "metadata": {
+          "type": "string",
+          "description": "Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction."
         }
       }
     },

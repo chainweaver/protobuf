@@ -66,12 +66,6 @@ export class ArrayString {
   static deserializeBinary: (bytes: {}) => ArrayString;
 }
 
-export class GenerateAssetAddressEndpointRequest {
-  constructor ();
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GenerateAssetAddressEndpointRequest;
-}
-
 export class GetAssetAddressEndpointRequest {
   constructor ();
   getAssetid(): string;
@@ -98,6 +92,12 @@ export class ListAssetTXsEndpointRequest {
   setAssetid(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ListAssetTXsEndpointRequest;
+}
+
+export class NullValue {
+  constructor ();
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => NullValue;
 }
 
 export class OAPIssue {
@@ -142,6 +142,14 @@ export class TransferAssetEndpointRequest {
   constructor ();
   getAssetid(): string;
   setAssetid(a: string): void;
+  getFromPrivate(): string;
+  setFromPrivate(a: string): void;
+  getToAddress(): string;
+  setToAddress(a: string): void;
+  getAmount(): number;
+  setAmount(a: number): void;
+  getMetadata(): string;
+  setMetadata(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => TransferAssetEndpointRequest;
 }

@@ -147,6 +147,7 @@
           },
           {
             "name": "used",
+            "description": "Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.",
             "in": "query",
             "required": false,
             "type": "boolean",
@@ -154,6 +155,7 @@
           },
           {
             "name": "zerobalance",
+            "description": "Returns only addresses with zero balance if set to true and only addresses with non-zero balance if false. Only valid on HD wallets.",
             "in": "query",
             "required": false,
             "type": "boolean",
@@ -263,6 +265,7 @@
           },
           {
             "name": "used",
+            "description": "Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.",
             "in": "query",
             "required": false,
             "type": "boolean",
@@ -270,6 +273,7 @@
           },
           {
             "name": "zerobalance",
+            "description": "Returns only addresses with zero balance if set to true and only addresses with non-zero balance if false. Only valid on HD wallets.",
             "in": "query",
             "required": false,
             "type": "boolean",
@@ -381,47 +385,8 @@
         },
         "omitWalletAddresses": {
           "type": "boolean",
-          "format": "boolean"
-        }
-      }
-    },
-    "blockchainprotobufAddressKeychain": {
-      "type": "object",
-      "properties": {
-        "address": {
-          "type": "string",
-          "description": "Standard address representation."
-        },
-        "public": {
-          "type": "string",
-          "description": "Hex-encoded Public key."
-        },
-        "private": {
-          "type": "string",
-          "description": "Hex-encoded Private key."
-        },
-        "wif": {
-          "type": "string",
-          "description": "Wallet import format, a common encoding for the private key."
-        },
-        "pubkeys": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Optional Array of public keys to provide to generate a multisig address."
-        },
-        "script_type": {
-          "type": "string",
-          "description": "Optional If generating a multisig address, the type of multisig script; typically “multisig-n-of-m”, where n and m are integers."
-        },
-        "original_address": {
-          "type": "string",
-          "description": "Optional If generating an OAP address, this represents the parent blockchain’s underlying address (the typical address listed above)."
-        },
-        "oap_address": {
-          "type": "string",
-          "description": "Optional The OAP address, if generated using the Generate Asset Address Endpoint."
+          "format": "boolean",
+          "description": "If omitWalletAddresses is true, the response will omit address information (useful to speed up the API call for larger wallets)."
         }
       }
     },
@@ -481,11 +446,13 @@
         },
         "count": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "description": "Number of addresses to derive. If not set, default is one address."
         },
         "subchain_index": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "description": "Derives address(es) on this specific subchain. If not set, address will be generated on the first chain in the HD wallet."
         }
       }
     },
@@ -571,7 +538,7 @@
     "blockchainprotobufListWallets": {
       "type": "object",
       "properties": {
-        "wallet_name": {
+        "wallet_names": {
           "type": "array",
           "items": {
             "type": "string"
@@ -605,11 +572,55 @@
     "blockchainprotobufWalletAddressKeychain": {
       "type": "object",
       "properties": {
-        "wallet": {
-          "$ref": "#/definitions/blockchainprotobufWallet"
+        "token": {
+          "type": "string",
+          "description": "--- Wallet ---\nUser token associated with this wallet."
         },
-        "addresskeychain": {
-          "$ref": "#/definitions/blockchainprotobufAddressKeychain"
+        "name": {
+          "type": "string",
+          "description": "Name of the wallet."
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of addresses associated with this wallet."
+        },
+        "address": {
+          "type": "string",
+          "description": "--- AddressKeychain ---\nStandard address representation."
+        },
+        "public": {
+          "type": "string",
+          "description": "Hex-encoded Public key."
+        },
+        "private": {
+          "type": "string",
+          "description": "Hex-encoded Private key."
+        },
+        "wif": {
+          "type": "string",
+          "description": "Wallet import format, a common encoding for the private key."
+        },
+        "pubkeys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Array of public keys to provide to generate a multisig address."
+        },
+        "script_type": {
+          "type": "string",
+          "description": "Optional If generating a multisig address, the type of multisig script;typically “multisig-n-of-m”, where n and m are integers."
+        },
+        "original_address": {
+          "type": "string",
+          "description": "Optional If generating an OAP address, this represents the parent blockchain’s underlying address (the typical address listed above)."
+        },
+        "oap_address": {
+          "type": "string",
+          "description": "Optional The OAP address, if generated using the Generate Asset Address Endpoint."
         }
       }
     }
