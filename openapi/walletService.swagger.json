@@ -345,31 +345,39 @@
       "type": "object",
       "properties": {
         "address": {
-          "type": "string"
+          "type": "string",
+          "description": "Standard address representation."
         },
         "public": {
-          "type": "string"
+          "type": "string",
+          "description": "Hex-encoded Public key."
         },
         "private": {
-          "type": "string"
+          "type": "string",
+          "description": "Hex-encoded Private key."
         },
         "wif": {
-          "type": "string"
+          "type": "string",
+          "description": "Wallet import format, a common encoding for the private key."
         },
         "pubkeys": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Optional Array of public keys to provide to generate a multisig address."
         },
         "script_type": {
-          "type": "string"
+          "type": "string",
+          "description": "Optional If generating a multisig address, the type of multisig script; typically “multisig-n-of-m”, where n and m are integers."
         },
         "original_address": {
-          "type": "string"
+          "type": "string",
+          "description": "Optional If generating an OAP address, this represents the parent blockchain’s underlying address (the typical address listed above)."
         },
         "oap_address": {
-          "type": "string"
+          "type": "string",
+          "description": "Optional The OAP address, if generated using the Generate Asset Address Endpoint."
         }
       }
     },
@@ -377,13 +385,16 @@
       "type": "object",
       "properties": {
         "address": {
-          "type": "string"
+          "type": "string",
+          "description": "Standard address representation."
         },
         "path": {
-          "type": "string"
+          "type": "string",
+          "description": "The BIP32 path of the HD address."
         },
         "public": {
-          "type": "string"
+          "type": "string",
+          "description": "optional Contains the hex-encoded public key if returned by Derive Address in Wallet endpoint."
         }
       }
     },
@@ -394,11 +405,13 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/blockchainprotobufHDAddress"
-          }
+          },
+          "description": "Array of HDAddresses associated with this subchain."
         },
         "index": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "description": "optional Index of the subchain, returned if the wallet has subchains."
         }
       }
     },
@@ -406,30 +419,36 @@
       "type": "object",
       "properties": {
         "token": {
-          "type": "string"
+          "type": "string",
+          "description": "User token associated with this HD wallet."
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the HD wallet."
         },
         "chains": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/blockchainprotobufHDChain"
-          }
+          },
+          "description": "List of HD chains associated with this wallet, each containing HDAddresses. A single chain is returned if the wallet has no subchains."
         },
         "hd": {
           "type": "boolean",
-          "format": "boolean"
+          "format": "boolean",
+          "description": "true for HD wallets, not present for normal wallets."
         },
         "extended_public_key": {
-          "type": "string"
+          "type": "string",
+          "title": "The extended public key all addresses in the HD wallet are derived from. It’s encoded in BIP32 format"
         },
         "subchain_indexes": {
           "type": "array",
           "items": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "optional returned for HD wallets created with subchains."
         }
       }
     },
@@ -451,16 +470,19 @@
       "type": "object",
       "properties": {
         "token": {
-          "type": "string"
+          "type": "string",
+          "description": "User token associated with this wallet."
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the wallet."
         },
         "addresses": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "List of addresses associated with this wallet."
         }
       }
     },

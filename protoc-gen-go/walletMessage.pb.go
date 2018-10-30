@@ -21,8 +21,11 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type Wallet struct {
-	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// User token associated with this wallet.
+	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	// Name of the wallet.
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// List of addresses associated with this wallet.
 	Addresses            []string `protobuf:"bytes,3,rep,name=addresses,proto3" json:"addresses,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -76,15 +79,21 @@ func (m *Wallet) GetAddresses() []string {
 }
 
 type HDWallet struct {
-	Token                string     `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	Name                 string     `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Chains               []*HDChain `protobuf:"bytes,3,rep,name=chains,proto3" json:"chains,omitempty"`
-	Hd                   bool       `protobuf:"varint,4,opt,name=hd,proto3" json:"hd,omitempty"`
-	ExtendedPublicKey    string     `protobuf:"bytes,5,opt,name=extended_public_key,json=extendedPublicKey,proto3" json:"extended_public_key,omitempty"`
-	SubchainIndexes      []int32    `protobuf:"varint,6,rep,packed,name=subchain_indexes,json=subchainIndexes,proto3" json:"subchain_indexes,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	// User token associated with this HD wallet.
+	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	// Name of the HD wallet.
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// List of HD chains associated with this wallet, each containing HDAddresses. A single chain is returned if the wallet has no subchains.
+	Chains []*HDChain `protobuf:"bytes,3,rep,name=chains,proto3" json:"chains,omitempty"`
+	// true for HD wallets, not present for normal wallets.
+	Hd bool `protobuf:"varint,4,opt,name=hd,proto3" json:"hd,omitempty"`
+	// The extended public key all addresses in the HD wallet are derived from. It’s encoded in BIP32 format
+	ExtendedPublicKey string `protobuf:"bytes,5,opt,name=extended_public_key,json=extendedPublicKey,proto3" json:"extended_public_key,omitempty"`
+	// optional returned for HD wallets created with subchains.
+	SubchainIndexes      []int32  `protobuf:"varint,6,rep,packed,name=subchain_indexes,json=subchainIndexes,proto3" json:"subchain_indexes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *HDWallet) Reset()         { *m = HDWallet{} }
@@ -155,11 +164,13 @@ func (m *HDWallet) GetSubchainIndexes() []int32 {
 }
 
 type HDChain struct {
-	ChainAddresses       []*HDAddress `protobuf:"bytes,1,rep,name=chain_addresses,json=chainAddresses,proto3" json:"chain_addresses,omitempty"`
-	Index                int64        `protobuf:"varint,2,opt,name=index,proto3" json:"index,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
-	XXX_unrecognized     []byte       `json:"-"`
-	XXX_sizecache        int32        `json:"-"`
+	// Array of HDAddresses associated with this subchain.
+	ChainAddresses []*HDAddress `protobuf:"bytes,1,rep,name=chain_addresses,json=chainAddresses,proto3" json:"chain_addresses,omitempty"`
+	// optional Index of the subchain, returned if the wallet has subchains.
+	Index                int64    `protobuf:"varint,2,opt,name=index,proto3" json:"index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *HDChain) Reset()         { *m = HDChain{} }
@@ -202,8 +213,11 @@ func (m *HDChain) GetIndex() int64 {
 }
 
 type HDAddress struct {
-	Address              string   `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	Path                 string   `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
+	// Standard address representation.
+	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	// The BIP32 path of the HD address.
+	Path string `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
+	// optional Contains the hex-encoded public key if returned by Derive Address in Wallet endpoint.
 	Public               string   `protobuf:"bytes,3,opt,name=public,proto3" json:"public,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -296,13 +310,21 @@ func (m *ListWallets) GetWalletName() []string {
 }
 
 type AddressKeychain struct {
-	Address              string   `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	Public               string   `protobuf:"bytes,2,opt,name=public,proto3" json:"public,omitempty"`
-	Private              string   `protobuf:"bytes,3,opt,name=private,proto3" json:"private,omitempty"`
-	Wif                  string   `protobuf:"bytes,4,opt,name=wif,proto3" json:"wif,omitempty"`
-	Pubkeys              []string `protobuf:"bytes,5,rep,name=pubkeys,proto3" json:"pubkeys,omitempty"`
-	ScriptType           string   `protobuf:"bytes,6,opt,name=script_type,json=scriptType,proto3" json:"script_type,omitempty"`
-	OriginalAddress      string   `protobuf:"bytes,7,opt,name=original_address,json=originalAddress,proto3" json:"original_address,omitempty"`
+	// Standard address representation.
+	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	// Hex-encoded Public key.
+	Public string `protobuf:"bytes,2,opt,name=public,proto3" json:"public,omitempty"`
+	// Hex-encoded Private key.
+	Private string `protobuf:"bytes,3,opt,name=private,proto3" json:"private,omitempty"`
+	// Wallet import format, a common encoding for the private key.
+	Wif string `protobuf:"bytes,4,opt,name=wif,proto3" json:"wif,omitempty"`
+	// Optional Array of public keys to provide to generate a multisig address.
+	Pubkeys []string `protobuf:"bytes,5,rep,name=pubkeys,proto3" json:"pubkeys,omitempty"`
+	// Optional If generating a multisig address, the type of multisig script; typically “multisig-n-of-m”, where n and m are integers.
+	ScriptType string `protobuf:"bytes,6,opt,name=script_type,json=scriptType,proto3" json:"script_type,omitempty"`
+	// Optional If generating an OAP address, this represents the parent blockchain’s underlying address (the typical address listed above).
+	OriginalAddress string `protobuf:"bytes,7,opt,name=original_address,json=originalAddress,proto3" json:"original_address,omitempty"`
+	// Optional The OAP address, if generated using the Generate Asset Address Endpoint.
 	OapAddress           string   `protobuf:"bytes,8,opt,name=oap_address,json=oapAddress,proto3" json:"oap_address,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

@@ -4,43 +4,77 @@ package fairwaycorp.blockchainprotobuf;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
 
 message Blockchain {
-  string name	= 1;  // The name of the blockchain represented, in the form of $COIN.$CHAIN.
-  int32 height = 2;  // The current height of the blockchain; i.e., the number of blocks in the blockchain.
-  string hash	= 3;  // The hash of the latest confirmed block in the blockchain; in Bitcoin, the hashing function is SHA256(SHA256(block)).
-  string time	= 4;  // The time of the latest update to the blockchain; typically when the latest block was added.
-  string latest_url	= 5;  // The BlockCypher URL to query for more information on the latest confirmed block; returns a Block.
-  string previous_hash = 6;  // The hash of the second-to-latest confirmed block in the blockchain.
-  string previous_url	= 7;  // The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block.
-  int32 peer_count = 8;  // N/A, will be deprecated soon.
-  int32 high_fee_per_kb = 9;  // A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed within 1 to 2 blocks.
-  int32 medium_fee_per_kb = 10;  // A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed within 3 to 6 blocks.
-  int32 low_fee_per_kb = 11;  // A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed in 7 or more blocks.
-  int32 unconfirmed_count =12;  // Number of unconfirmed transactions in memory pool (likely to be included in next block).
-  int32 last_fork_height = 13;  // Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
-  string last_fork_hash = 14;  // Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.  
+  // The name of the blockchain represented, in the form of $COIN.$CHAIN.
+  string name	= 1;  
+  // The current height of the blockchain; i.e., the number of blocks in the blockchain.
+  int32 height = 2; 
+  // The hash of the latest confirmed block in the blockchain; in Bitcoin, the hashing function is SHA256(SHA256(block)).
+  string hash	= 3; 
+  // The time of the latest update to the blockchain; typically when the latest block was added.
+  string time	= 4; 
+  // The BlockCypher URL to query for more information on the latest confirmed block; returns a Block.
+  string latest_url	= 5; 
+  // The hash of the second-to-latest confirmed block in the blockchain.
+  string previous_hash = 6; 
+  // The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block.
+  string previous_url	= 7;  
+  // N/A, will be deprecated soon.
+  int32 peer_count = 8;
+  // A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed within 1 to 2 blocks.
+  int32 high_fee_per_kb = 9; 
+  // A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed within 3 to 6 blocks.
+  int32 medium_fee_per_kb = 10;
+  // A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed in 7 or more blocks.
+  int32 low_fee_per_kb = 11;  
+  // Number of unconfirmed transactions in memory pool (likely to be included in next block).
+  int32 unconfirmed_count =12;
+  // Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
+  int32 last_fork_height = 13;  
+  // Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.  
+  string last_fork_hash = 14; 
 }
 
 message Block {
-  string hash	= 1;  // The hash of the block; in Bitcoin, the hashing function is SHA256(SHA256(block))
-  int32 height = 2;  // The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain.
-  int32 depth = 3;  // The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain.
-  string chain = 4;  // The name of the blockchain represented, in the form of $COIN.$CHAIN
-  int32 total = 5;  // The total number of satoshis transacted in this block.
-  int32 fees = 6;  // The total number of fees—in satoshis—collected by miners in this block.
-  int32 size = 7;  // Optional Raw size of block (including header and all transactions) in bytes. Not returned for bitcoin blocks earlier than height 389104.
-  int32 ver = 8;  // Block version.
-  string time = 9;  // Recorded time at which block was built. Note: Miners rarely post accurate clock times.
-  string received_time = 10;  // The time BlockCypher’s servers receive the block. Our servers’ clock is continuously adjusted and accurate.
-  string relayed_by	= 11;  // Address of the peer that sent BlockCypher’s servers this block.
-  int32 bits = 12;  // The block-encoded difficulty target.
-  int32 nonce = 13;  // The number used by a miner to generate this block.
-  int32 n_tx = 14;  // Number of transactions in this block.
-  string prev_block = 15;  // The hash of the previous block in the blockchain.
-  string prev_block_url = 16;  // The BlockCypher URL to query for more information on the previous block.
-  string tx_url = 17;  // The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es).
-  string mrkl_root = 18;  // The Merkle root of this block.
-  repeated string txids = 19;  // An array of transaction hashes in this block. By default, only 20 are included.
-  string next_txids = 20;  // Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).  
+  // The hash of the block; in Bitcoin, the hashing function is SHA256(SHA256(block))
+  string hash	= 1; 
+  // The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain.
+  int32 height = 2; 
+  // The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain.
+  int32 depth = 3; 
+  // The name of the blockchain represented, in the form of $COIN.$CHAIN
+  string chain = 4; 
+  // The total number of satoshis transacted in this block.
+  int32 total = 5;  
+  // The total number of fees—in satoshis—collected by miners in this block.
+  int32 fees = 6;
+  // Optional Raw size of block (including header and all transactions) in bytes. Not returned for bitcoin blocks earlier than height 389104.
+  int32 size = 7; 
+  // Block version.
+  int32 ver = 8;
+  // Recorded time at which block was built. Note: Miners rarely post accurate clock times.
+  string time = 9; 
+  // The time BlockCypher’s servers receive the block. Our servers’ clock is continuously adjusted and accurate.
+  string received_time = 10;  
+  // Address of the peer that sent BlockCypher’s servers this block.
+  string relayed_by	= 11;  
+  // The block-encoded difficulty target.
+  int32 bits = 12; 
+  // The number used by a miner to generate this block.
+  int32 nonce = 13; 
+  // Number of transactions in this block.
+  int32 n_tx = 14;  
+  // The hash of the previous block in the blockchain.
+  string prev_block = 15;  
+  // The BlockCypher URL to query for more information on the previous block.
+  string prev_block_url = 16; 
+  // The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es).
+  string tx_url = 17;  
+  // The Merkle root of this block.
+  string mrkl_root = 18;  
+  // An array of transaction hashes in this block. By default, only 20 are included.
+  repeated string txids = 19;  
+  // Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).  
+  string next_txids = 20; 
 }
 
 message Feature {

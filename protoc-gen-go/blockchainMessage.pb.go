@@ -21,19 +21,33 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type Blockchain struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Height               int32    `protobuf:"varint,2,opt,name=height,proto3" json:"height,omitempty"`
-	Hash                 string   `protobuf:"bytes,3,opt,name=hash,proto3" json:"hash,omitempty"`
-	Time                 string   `protobuf:"bytes,4,opt,name=time,proto3" json:"time,omitempty"`
-	LatestUrl            string   `protobuf:"bytes,5,opt,name=latest_url,json=latestUrl,proto3" json:"latest_url,omitempty"`
-	PreviousHash         string   `protobuf:"bytes,6,opt,name=previous_hash,json=previousHash,proto3" json:"previous_hash,omitempty"`
-	PreviousUrl          string   `protobuf:"bytes,7,opt,name=previous_url,json=previousUrl,proto3" json:"previous_url,omitempty"`
-	PeerCount            int32    `protobuf:"varint,8,opt,name=peer_count,json=peerCount,proto3" json:"peer_count,omitempty"`
-	HighFeePerKb         int32    `protobuf:"varint,9,opt,name=high_fee_per_kb,json=highFeePerKb,proto3" json:"high_fee_per_kb,omitempty"`
-	MediumFeePerKb       int32    `protobuf:"varint,10,opt,name=medium_fee_per_kb,json=mediumFeePerKb,proto3" json:"medium_fee_per_kb,omitempty"`
-	LowFeePerKb          int32    `protobuf:"varint,11,opt,name=low_fee_per_kb,json=lowFeePerKb,proto3" json:"low_fee_per_kb,omitempty"`
-	UnconfirmedCount     int32    `protobuf:"varint,12,opt,name=unconfirmed_count,json=unconfirmedCount,proto3" json:"unconfirmed_count,omitempty"`
-	LastForkHeight       int32    `protobuf:"varint,13,opt,name=last_fork_height,json=lastForkHeight,proto3" json:"last_fork_height,omitempty"`
+	// The name of the blockchain represented, in the form of $COIN.$CHAIN.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The current height of the blockchain; i.e., the number of blocks in the blockchain.
+	Height int32 `protobuf:"varint,2,opt,name=height,proto3" json:"height,omitempty"`
+	// The hash of the latest confirmed block in the blockchain; in Bitcoin, the hashing function is SHA256(SHA256(block)).
+	Hash string `protobuf:"bytes,3,opt,name=hash,proto3" json:"hash,omitempty"`
+	// The time of the latest update to the blockchain; typically when the latest block was added.
+	Time string `protobuf:"bytes,4,opt,name=time,proto3" json:"time,omitempty"`
+	// The BlockCypher URL to query for more information on the latest confirmed block; returns a Block.
+	LatestUrl string `protobuf:"bytes,5,opt,name=latest_url,json=latestUrl,proto3" json:"latest_url,omitempty"`
+	// The hash of the second-to-latest confirmed block in the blockchain.
+	PreviousHash string `protobuf:"bytes,6,opt,name=previous_hash,json=previousHash,proto3" json:"previous_hash,omitempty"`
+	// The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block.
+	PreviousUrl string `protobuf:"bytes,7,opt,name=previous_url,json=previousUrl,proto3" json:"previous_url,omitempty"`
+	// N/A, will be deprecated soon.
+	PeerCount int32 `protobuf:"varint,8,opt,name=peer_count,json=peerCount,proto3" json:"peer_count,omitempty"`
+	// A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed within 1 to 2 blocks.
+	HighFeePerKb int32 `protobuf:"varint,9,opt,name=high_fee_per_kb,json=highFeePerKb,proto3" json:"high_fee_per_kb,omitempty"`
+	// A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed within 3 to 6 blocks.
+	MediumFeePerKb int32 `protobuf:"varint,10,opt,name=medium_fee_per_kb,json=mediumFeePerKb,proto3" json:"medium_fee_per_kb,omitempty"`
+	// A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed in 7 or more blocks.
+	LowFeePerKb int32 `protobuf:"varint,11,opt,name=low_fee_per_kb,json=lowFeePerKb,proto3" json:"low_fee_per_kb,omitempty"`
+	// Number of unconfirmed transactions in memory pool (likely to be included in next block).
+	UnconfirmedCount int32 `protobuf:"varint,12,opt,name=unconfirmed_count,json=unconfirmedCount,proto3" json:"unconfirmed_count,omitempty"`
+	// Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
+	LastForkHeight int32 `protobuf:"varint,13,opt,name=last_fork_height,json=lastForkHeight,proto3" json:"last_fork_height,omitempty"`
+	// Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
 	LastForkHash         string   `protobuf:"bytes,14,opt,name=last_fork_hash,json=lastForkHash,proto3" json:"last_fork_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -164,25 +178,45 @@ func (m *Blockchain) GetLastForkHash() string {
 }
 
 type Block struct {
-	Hash                 string   `protobuf:"bytes,1,opt,name=hash,proto3" json:"hash,omitempty"`
-	Height               int32    `protobuf:"varint,2,opt,name=height,proto3" json:"height,omitempty"`
-	Depth                int32    `protobuf:"varint,3,opt,name=depth,proto3" json:"depth,omitempty"`
-	Chain                string   `protobuf:"bytes,4,opt,name=chain,proto3" json:"chain,omitempty"`
-	Total                int32    `protobuf:"varint,5,opt,name=total,proto3" json:"total,omitempty"`
-	Fees                 int32    `protobuf:"varint,6,opt,name=fees,proto3" json:"fees,omitempty"`
-	Size                 int32    `protobuf:"varint,7,opt,name=size,proto3" json:"size,omitempty"`
-	Ver                  int32    `protobuf:"varint,8,opt,name=ver,proto3" json:"ver,omitempty"`
-	Time                 string   `protobuf:"bytes,9,opt,name=time,proto3" json:"time,omitempty"`
-	ReceivedTime         string   `protobuf:"bytes,10,opt,name=received_time,json=receivedTime,proto3" json:"received_time,omitempty"`
-	RelayedBy            string   `protobuf:"bytes,11,opt,name=relayed_by,json=relayedBy,proto3" json:"relayed_by,omitempty"`
-	Bits                 int32    `protobuf:"varint,12,opt,name=bits,proto3" json:"bits,omitempty"`
-	Nonce                int32    `protobuf:"varint,13,opt,name=nonce,proto3" json:"nonce,omitempty"`
-	NTx                  int32    `protobuf:"varint,14,opt,name=n_tx,json=nTx,proto3" json:"n_tx,omitempty"`
-	PrevBlock            string   `protobuf:"bytes,15,opt,name=prev_block,json=prevBlock,proto3" json:"prev_block,omitempty"`
-	PrevBlockUrl         string   `protobuf:"bytes,16,opt,name=prev_block_url,json=prevBlockUrl,proto3" json:"prev_block_url,omitempty"`
-	TxUrl                string   `protobuf:"bytes,17,opt,name=tx_url,json=txUrl,proto3" json:"tx_url,omitempty"`
-	MrklRoot             string   `protobuf:"bytes,18,opt,name=mrkl_root,json=mrklRoot,proto3" json:"mrkl_root,omitempty"`
-	Txids                []string `protobuf:"bytes,19,rep,name=txids,proto3" json:"txids,omitempty"`
+	// The hash of the block; in Bitcoin, the hashing function is SHA256(SHA256(block))
+	Hash string `protobuf:"bytes,1,opt,name=hash,proto3" json:"hash,omitempty"`
+	// The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain.
+	Height int32 `protobuf:"varint,2,opt,name=height,proto3" json:"height,omitempty"`
+	// The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain.
+	Depth int32 `protobuf:"varint,3,opt,name=depth,proto3" json:"depth,omitempty"`
+	// The name of the blockchain represented, in the form of $COIN.$CHAIN
+	Chain string `protobuf:"bytes,4,opt,name=chain,proto3" json:"chain,omitempty"`
+	// The total number of satoshis transacted in this block.
+	Total int32 `protobuf:"varint,5,opt,name=total,proto3" json:"total,omitempty"`
+	// The total number of fees—in satoshis—collected by miners in this block.
+	Fees int32 `protobuf:"varint,6,opt,name=fees,proto3" json:"fees,omitempty"`
+	// Optional Raw size of block (including header and all transactions) in bytes. Not returned for bitcoin blocks earlier than height 389104.
+	Size int32 `protobuf:"varint,7,opt,name=size,proto3" json:"size,omitempty"`
+	// Block version.
+	Ver int32 `protobuf:"varint,8,opt,name=ver,proto3" json:"ver,omitempty"`
+	// Recorded time at which block was built. Note: Miners rarely post accurate clock times.
+	Time string `protobuf:"bytes,9,opt,name=time,proto3" json:"time,omitempty"`
+	// The time BlockCypher’s servers receive the block. Our servers’ clock is continuously adjusted and accurate.
+	ReceivedTime string `protobuf:"bytes,10,opt,name=received_time,json=receivedTime,proto3" json:"received_time,omitempty"`
+	// Address of the peer that sent BlockCypher’s servers this block.
+	RelayedBy string `protobuf:"bytes,11,opt,name=relayed_by,json=relayedBy,proto3" json:"relayed_by,omitempty"`
+	// The block-encoded difficulty target.
+	Bits int32 `protobuf:"varint,12,opt,name=bits,proto3" json:"bits,omitempty"`
+	// The number used by a miner to generate this block.
+	Nonce int32 `protobuf:"varint,13,opt,name=nonce,proto3" json:"nonce,omitempty"`
+	// Number of transactions in this block.
+	NTx int32 `protobuf:"varint,14,opt,name=n_tx,json=nTx,proto3" json:"n_tx,omitempty"`
+	// The hash of the previous block in the blockchain.
+	PrevBlock string `protobuf:"bytes,15,opt,name=prev_block,json=prevBlock,proto3" json:"prev_block,omitempty"`
+	// The BlockCypher URL to query for more information on the previous block.
+	PrevBlockUrl string `protobuf:"bytes,16,opt,name=prev_block_url,json=prevBlockUrl,proto3" json:"prev_block_url,omitempty"`
+	// The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es).
+	TxUrl string `protobuf:"bytes,17,opt,name=tx_url,json=txUrl,proto3" json:"tx_url,omitempty"`
+	// The Merkle root of this block.
+	MrklRoot string `protobuf:"bytes,18,opt,name=mrkl_root,json=mrklRoot,proto3" json:"mrkl_root,omitempty"`
+	// An array of transaction hashes in this block. By default, only 20 are included.
+	Txids []string `protobuf:"bytes,19,rep,name=txids,proto3" json:"txids,omitempty"`
+	// Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).
 	NextTxids            string   `protobuf:"bytes,20,opt,name=next_txids,json=nextTxids,proto3" json:"next_txids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

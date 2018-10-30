@@ -23,27 +23,45 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type TXRef struct {
-	Address              string               `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	BlockHeight          int32                `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
-	TxHash               string               `protobuf:"bytes,3,opt,name=tx_hash,json=txHash,proto3" json:"tx_hash,omitempty"`
-	TxInputN             int32                `protobuf:"varint,4,opt,name=tx_input_n,json=txInputN,proto3" json:"tx_input_n,omitempty"`
-	TxOutputN            int32                `protobuf:"varint,5,opt,name=tx_output_n,json=txOutputN,proto3" json:"tx_output_n,omitempty"`
-	Value                int32                `protobuf:"varint,6,opt,name=value,proto3" json:"value,omitempty"`
-	Preference           string               `protobuf:"bytes,7,opt,name=preference,proto3" json:"preference,omitempty"`
-	Spent                bool                 `protobuf:"varint,8,opt,name=spent,proto3" json:"spent,omitempty"`
-	DoubleSpend          bool                 `protobuf:"varint,9,opt,name=double_spend,json=doubleSpend,proto3" json:"double_spend,omitempty"`
-	Confirmations        int32                `protobuf:"varint,10,opt,name=confirmations,proto3" json:"confirmations,omitempty"`
-	Script               string               `protobuf:"bytes,11,opt,name=script,proto3" json:"script,omitempty"`
-	RefBalance           int32                `protobuf:"varint,12,opt,name=ref_balance,json=refBalance,proto3" json:"ref_balance,omitempty"`
-	Confidence           float32              `protobuf:"fixed32,13,opt,name=confidence,proto3" json:"confidence,omitempty"`
-	Confirmed            *timestamp.Timestamp `protobuf:"bytes,14,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
-	SpentBy              string               `protobuf:"bytes,15,opt,name=spent_by,json=spentBy,proto3" json:"spent_by,omitempty"`
-	Received             *timestamp.Timestamp `protobuf:"bytes,16,opt,name=received,proto3" json:"received,omitempty"`
-	ReceiveCount         int32                `protobuf:"varint,17,opt,name=receive_count,json=receiveCount,proto3" json:"receive_count,omitempty"`
-	DoubleOf             string               `protobuf:"bytes,18,opt,name=double_of,json=doubleOf,proto3" json:"double_of,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	//	Optional The address associated with this transaction input/output. Only returned when querying an address endpoint via a wallet/HD wallet name.
+	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	//Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1.
+	BlockHeight int32 `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
+	//	The hash of the transaction containing this input/output. While reasonably unique, using hashes as identifiers may be unsafe.
+	TxHash string `protobuf:"bytes,3,opt,name=tx_hash,json=txHash,proto3" json:"tx_hash,omitempty"`
+	//Index of this input in the enclosing transaction. It’s a negative number for an output.
+	TxInputN int32 `protobuf:"varint,4,opt,name=tx_input_n,json=txInputN,proto3" json:"tx_input_n,omitempty"`
+	//Index of this output in the enclosing transaction. It’s a negative number for an input.
+	TxOutputN int32 `protobuf:"varint,5,opt,name=tx_output_n,json=txOutputN,proto3" json:"tx_output_n,omitempty"`
+	//The value transfered by this input/output in satoshis exchanged in the enclosing transaction.
+	Value int32 `protobuf:"varint,6,opt,name=value,proto3" json:"value,omitempty"`
+	//	The likelihood that the enclosing transaction will make it to the next block; reflects the preference level miners have to include the enclosing transaction. Can be high, medium or low.
+	Preference string `protobuf:"bytes,7,opt,name=preference,proto3" json:"preference,omitempty"`
+	//	true if this is an output and was spent. If it’s an input, or an unspent output, it will be false.
+	Spent bool `protobuf:"varint,8,opt,name=spent,proto3" json:"spent,omitempty"`
+	//	true if this is an attempted double spend; false otherwise.
+	DoubleSpend bool `protobuf:"varint,9,opt,name=double_spend,json=doubleSpend,proto3" json:"double_spend,omitempty"`
+	//	Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
+	Confirmations int32 `protobuf:"varint,10,opt,name=confirmations,proto3" json:"confirmations,omitempty"`
+	//Optional Raw, hex-encoded script of this input/output.
+	Script string `protobuf:"bytes,11,opt,name=script,proto3" json:"script,omitempty"`
+	//Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions.
+	RefBalance int32 `protobuf:"varint,12,opt,name=ref_balance,json=refBalance,proto3" json:"ref_balance,omitempty"`
+	//	Optional The percentage chance this transaction will not be double-spent against, if unconfirmed. For more information, check the section on Confidence Factor.
+	Confidence float32 `protobuf:"fixed32,13,opt,name=confidence,proto3" json:"confidence,omitempty"`
+	//Optional Time at which transaction was included in a block; only present for confirmed transactions.
+	Confirmed *timestamp.Timestamp `protobuf:"bytes,14,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
+	//Optional The transaction hash that spent this output. Only returned for outputs that have been spent. The spending transaction may be unconfirmed.
+	SpentBy string `protobuf:"bytes,15,opt,name=spent_by,json=spentBy,proto3" json:"spent_by,omitempty"`
+	//Optional Time this transaction was received by BlockCypher’s servers; only present for unconfirmed transactions.
+	Received *timestamp.Timestamp `protobuf:"bytes,16,opt,name=received,proto3" json:"received,omitempty"`
+	//Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
+	ReceiveCount int32 `protobuf:"varint,17,opt,name=receive_count,json=receiveCount,proto3" json:"receive_count,omitempty"`
+	//Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
+	DoubleOf             string   `protobuf:"bytes,18,opt,name=double_of,json=doubleOf,proto3" json:"double_of,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *TXRef) Reset()         { *m = TXRef{} }
@@ -198,15 +216,25 @@ func (m *TXRef) GetDoubleOf() string {
 }
 
 type TXInput struct {
-	PrevHash             string   `protobuf:"bytes,1,opt,name=prev_hash,json=prevHash,proto3" json:"prev_hash,omitempty"`
-	OutputIndex          int32    `protobuf:"varint,2,opt,name=output_index,json=outputIndex,proto3" json:"output_index,omitempty"`
-	OutputValue          int32    `protobuf:"varint,3,opt,name=output_value,json=outputValue,proto3" json:"output_value,omitempty"`
-	ScriptType           string   `protobuf:"bytes,4,opt,name=script_type,json=scriptType,proto3" json:"script_type,omitempty"`
-	Script               string   `protobuf:"bytes,5,opt,name=script,proto3" json:"script,omitempty"`
-	Addresses            []string `protobuf:"bytes,6,rep,name=addresses,proto3" json:"addresses,omitempty"`
-	Sequence             int32    `protobuf:"varint,7,opt,name=sequence,proto3" json:"sequence,omitempty"`
-	Age                  int32    `protobuf:"varint,8,opt,name=age,proto3" json:"age,omitempty"`
-	WalletName           string   `protobuf:"bytes,9,opt,name=wallet_name,json=walletName,proto3" json:"wallet_name,omitempty"`
+	// The previous transaction hash where this input was an output. Not present for coinbase transactions.
+	PrevHash string `protobuf:"bytes,1,opt,name=prev_hash,json=prevHash,proto3" json:"prev_hash,omitempty"`
+	// The index of the output being spent within the previous transaction. Not present for coinbase transactions.
+	OutputIndex int32 `protobuf:"varint,2,opt,name=output_index,json=outputIndex,proto3" json:"output_index,omitempty"`
+	// The value of the output being spent within the previous transaction. Not present for coinbase transactions.
+	OutputValue int32 `protobuf:"varint,3,opt,name=output_value,json=outputValue,proto3" json:"output_value,omitempty"`
+	// The type of script that encumbers the output corresponding to this input.
+	ScriptType string `protobuf:"bytes,4,opt,name=script_type,json=scriptType,proto3" json:"script_type,omitempty"`
+	// Raw hexadecimal encoding of the script.
+	Script string `protobuf:"bytes,5,opt,name=script,proto3" json:"script,omitempty"`
+	// An array of public addresses associated with the output of the previous transaction.
+	Addresses []string `protobuf:"bytes,6,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	// Legacy 4-byte sequence number, not usually relevant unless dealing with locktime encumbrances.
+	Sequence int32 `protobuf:"varint,7,opt,name=sequence,proto3" json:"sequence,omitempty"`
+	// Optional Number of confirmations of the previous transaction for which this input was an output. Currently, only returned in unconfirmed transactions.
+	Age int32 `protobuf:"varint,8,opt,name=age,proto3" json:"age,omitempty"`
+	// Optional Name of Wallet or HDWallet from which to derive inputs. Only used when constructing transactions via the Creating Transactions process.
+	WalletName string `protobuf:"bytes,9,opt,name=wallet_name,json=walletName,proto3" json:"wallet_name,omitempty"`
+	// Optional Token associated with Wallet or HDWallet used to derive inputs. Only used when constructing transactions via the Creating Transactions process.
 	WalletToken          string   `protobuf:"bytes,10,opt,name=wallet_token,json=walletToken,proto3" json:"wallet_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -309,12 +337,19 @@ func (m *TXInput) GetWalletToken() string {
 }
 
 type TXOutput struct {
-	Value                int32    `protobuf:"varint,1,opt,name=value,proto3" json:"value,omitempty"`
-	Script               string   `protobuf:"bytes,2,opt,name=script,proto3" json:"script,omitempty"`
-	Addresses            []string `protobuf:"bytes,3,rep,name=addresses,proto3" json:"addresses,omitempty"`
-	ScriptType           string   `protobuf:"bytes,4,opt,name=script_type,json=scriptType,proto3" json:"script_type,omitempty"`
-	SpentBy              string   `protobuf:"bytes,5,opt,name=spent_by,json=spentBy,proto3" json:"spent_by,omitempty"`
-	DataHex              string   `protobuf:"bytes,6,opt,name=data_hex,json=dataHex,proto3" json:"data_hex,omitempty"`
+	// Value in this transaction output, in satoshis.
+	Value int32 `protobuf:"varint,1,opt,name=value,proto3" json:"value,omitempty"`
+	// Raw hexadecimal encoding of the encumbrance script for this output.
+	Script string `protobuf:"bytes,2,opt,name=script,proto3" json:"script,omitempty"`
+	// Addresses that correspond to this output; typically this will only have a single address, and you can think of this output as having “sent” value to the address contained herein.
+	Addresses []string `protobuf:"bytes,3,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	// The type of encumbrance script used for this output.
+	ScriptType string `protobuf:"bytes,4,opt,name=script_type,json=scriptType,proto3" json:"script_type,omitempty"`
+	// Optional The transaction hash that spent this output. Only returned for outputs that have been spent. The spending transaction may be unconfirmed.
+	SpentBy string `protobuf:"bytes,5,opt,name=spent_by,json=spentBy,proto3" json:"spent_by,omitempty"`
+	// Optional A hex-encoded representation of an OP_RETURN data output, without any other script instructions. Only returned for outputs whose script_type is null-data.
+	DataHex string `protobuf:"bytes,6,opt,name=data_hex,json=dataHex,proto3" json:"data_hex,omitempty"`
+	// Optional An ASCII representation of an OP_RETURN data output, without any other script instructions. Only returned for outputs whose script_type is null-data and if its data falls into the visible ASCII range.
 	DataString           string   `protobuf:"bytes,7,opt,name=data_string,json=dataString,proto3" json:"data_string,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -396,38 +431,67 @@ func (m *TXOutput) GetDataString() string {
 }
 
 type TX struct {
-	BlockHeight          int32                `protobuf:"varint,1,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
-	Hash                 string               `protobuf:"bytes,2,opt,name=hash,proto3" json:"hash,omitempty"`
-	Addresses            []string             `protobuf:"bytes,3,rep,name=addresses,proto3" json:"addresses,omitempty"`
-	Total                int32                `protobuf:"varint,4,opt,name=total,proto3" json:"total,omitempty"`
-	Fees                 int32                `protobuf:"varint,5,opt,name=fees,proto3" json:"fees,omitempty"`
-	Size                 int32                `protobuf:"varint,6,opt,name=size,proto3" json:"size,omitempty"`
-	Preference           string               `protobuf:"bytes,7,opt,name=preference,proto3" json:"preference,omitempty"`
-	RelayedBy            string               `protobuf:"bytes,8,opt,name=relayed_by,json=relayedBy,proto3" json:"relayed_by,omitempty"`
-	Received             *timestamp.Timestamp `protobuf:"bytes,9,opt,name=received,proto3" json:"received,omitempty"`
-	Ver                  int32                `protobuf:"varint,10,opt,name=ver,proto3" json:"ver,omitempty"`
-	LockTime             int32                `protobuf:"varint,11,opt,name=lock_time,json=lockTime,proto3" json:"lock_time,omitempty"`
-	DoubleSpend          bool                 `protobuf:"varint,12,opt,name=double_spend,json=doubleSpend,proto3" json:"double_spend,omitempty"`
-	VinSz                int32                `protobuf:"varint,13,opt,name=vin_sz,json=vinSz,proto3" json:"vin_sz,omitempty"`
-	VoutSz               int32                `protobuf:"varint,14,opt,name=vout_sz,json=voutSz,proto3" json:"vout_sz,omitempty"`
-	Confirmations        int32                `protobuf:"varint,15,opt,name=confirmations,proto3" json:"confirmations,omitempty"`
-	Inputs               []*TXInput           `protobuf:"bytes,16,rep,name=inputs,proto3" json:"inputs,omitempty"`
-	Outputs              []*TXOutput          `protobuf:"bytes,17,rep,name=outputs,proto3" json:"outputs,omitempty"`
-	OptInRbf             bool                 `protobuf:"varint,18,opt,name=opt_in_rbf,json=optInRbf,proto3" json:"opt_in_rbf,omitempty"`
-	Confidence           float32              `protobuf:"fixed32,19,opt,name=confidence,proto3" json:"confidence,omitempty"`
-	Confirmed            *timestamp.Timestamp `protobuf:"bytes,20,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
-	ReceiveCount         int32                `protobuf:"varint,21,opt,name=receive_count,json=receiveCount,proto3" json:"receive_count,omitempty"`
-	ChangeAddress        string               `protobuf:"bytes,22,opt,name=change_address,json=changeAddress,proto3" json:"change_address,omitempty"`
-	BlockHash            string               `protobuf:"bytes,23,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
-	BlockIndex           int32                `protobuf:"varint,24,opt,name=block_index,json=blockIndex,proto3" json:"block_index,omitempty"`
-	DoubleOf             string               `protobuf:"bytes,25,opt,name=double_of,json=doubleOf,proto3" json:"double_of,omitempty"`
-	DataProtocol         string               `protobuf:"bytes,26,opt,name=data_protocol,json=dataProtocol,proto3" json:"data_protocol,omitempty"`
-	Hex                  string               `protobuf:"bytes,27,opt,name=hex,proto3" json:"hex,omitempty"`
-	NextInputs           *any.Any             `protobuf:"bytes,28,opt,name=next_inputs,json=nextInputs,proto3" json:"next_inputs,omitempty"`
-	NextOutputs          *any.Any             `protobuf:"bytes,29,opt,name=next_outputs,json=nextOutputs,proto3" json:"next_outputs,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	//	Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
+	BlockHeight int32 `protobuf:"varint,1,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
+	//The hash of the transaction. While reasonably unique, using hashes as identifiers may be unsafe.
+	Hash string `protobuf:"bytes,2,opt,name=hash,proto3" json:"hash,omitempty"`
+	//Array of bitcoin public addresses involved in the transaction.
+	Addresses []string `protobuf:"bytes,3,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	//The total number of satoshis exchanged in this transaction.
+	Total int32 `protobuf:"varint,4,opt,name=total,proto3" json:"total,omitempty"`
+	//The total number of fees—in satoshis—collected by miners in this transaction.
+	Fees int32 `protobuf:"varint,5,opt,name=fees,proto3" json:"fees,omitempty"`
+	//The size of the transaction in bytes.
+	Size int32 `protobuf:"varint,6,opt,name=size,proto3" json:"size,omitempty"`
+	//The likelihood that this transaction will make it to the next block; reflects the preference level miners have to include this transaction. Can be high, medium or low.
+	Preference string `protobuf:"bytes,7,opt,name=preference,proto3" json:"preference,omitempty"`
+	//Address of the peer that sent BlockCypher’s servers this transaction.
+	RelayedBy string `protobuf:"bytes,8,opt,name=relayed_by,json=relayedBy,proto3" json:"relayed_by,omitempty"`
+	//Time this transaction was received by BlockCypher’s servers.
+	Received *timestamp.Timestamp `protobuf:"bytes,9,opt,name=received,proto3" json:"received,omitempty"`
+	//Version number, typically 1 for Bitcoin transactions.
+	Ver int32 `protobuf:"varint,10,opt,name=ver,proto3" json:"ver,omitempty"`
+	//Time when transaction can be valid. Can be interpreted in two ways: if less than 500 million, refers to block height. If more, refers to Unix epoch time.
+	LockTime int32 `protobuf:"varint,11,opt,name=lock_time,json=lockTime,proto3" json:"lock_time,omitempty"`
+	//true if this is an attempted double spend; false otherwise.
+	DoubleSpend bool `protobuf:"varint,12,opt,name=double_spend,json=doubleSpend,proto3" json:"double_spend,omitempty"`
+	//Total number of inputs in the transaction.
+	VinSz int32 `protobuf:"varint,13,opt,name=vin_sz,json=vinSz,proto3" json:"vin_sz,omitempty"`
+	//Total number of outputs in the transaction.
+	VoutSz int32 `protobuf:"varint,14,opt,name=vout_sz,json=voutSz,proto3" json:"vout_sz,omitempty"`
+	//Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
+	Confirmations int32 `protobuf:"varint,15,opt,name=confirmations,proto3" json:"confirmations,omitempty"`
+	//TXInput Array, limited to 20 by default.
+	Inputs []*TXInput `protobuf:"bytes,16,rep,name=inputs,proto3" json:"inputs,omitempty"`
+	//TXOutput Array, limited to 20 by default.
+	Outputs []*TXOutput `protobuf:"bytes,17,rep,name=outputs,proto3" json:"outputs,omitempty"`
+	//Optional Returns true if this transaction has opted in to Replace-By-Fee (RBF), either true or not present. You can read more about Opt-In RBF here.
+	OptInRbf bool `protobuf:"varint,18,opt,name=opt_in_rbf,json=optInRbf,proto3" json:"opt_in_rbf,omitempty"`
+	//Optional The percentage chance this transaction will not be double-spent against, if unconfirmed. For more information, check the section on Confidence Factor.
+	Confidence float32 `protobuf:"fixed32,19,opt,name=confidence,proto3" json:"confidence,omitempty"`
+	//Optional Time at which transaction was included in a block; only present for confirmed transactions.
+	Confirmed *timestamp.Timestamp `protobuf:"bytes,20,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
+	//Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
+	ReceiveCount int32 `protobuf:"varint,21,opt,name=receive_count,json=receiveCount,proto3" json:"receive_count,omitempty"`
+	//Optional Address BlockCypher will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent.
+	ChangeAddress string `protobuf:"bytes,22,opt,name=change_address,json=changeAddress,proto3" json:"change_address,omitempty"`
+	//Optional Hash of the block that contains this transaction; only present for confirmed transactions.
+	BlockHash string `protobuf:"bytes,23,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
+	//Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions.
+	BlockIndex int32 `protobuf:"varint,24,opt,name=block_index,json=blockIndex,proto3" json:"block_index,omitempty"`
+	//Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
+	DoubleOf string `protobuf:"bytes,25,opt,name=double_of,json=doubleOf,proto3" json:"double_of,omitempty"`
+	//Optional Returned if this transaction contains an OP_RETURN associated with a known data protocol. Data protocols currently detected: blockchainid ; openassets ; factom ; colu ; coinspark ; omni
+	DataProtocol string `protobuf:"bytes,26,opt,name=data_protocol,json=dataProtocol,proto3" json:"data_protocol,omitempty"`
+	//Optional Hex-encoded bytes of the transaction, as sent over the network.
+	Hex string `protobuf:"bytes,27,opt,name=hex,proto3" json:"hex,omitempty"`
+	//Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the BlockCypher URL to query the next set of TXInputs (within a TX object).
+	NextInputs *any.Any `protobuf:"bytes,28,opt,name=next_inputs,json=nextInputs,proto3" json:"next_inputs,omitempty"`
+	//Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the BlockCypher URL to query the next set of TXOutputs(within a TX object).
+	NextOutputs          *any.Any `protobuf:"bytes,29,opt,name=next_outputs,json=nextOutputs,proto3" json:"next_outputs,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *TX) Reset()         { *m = TX{} }
@@ -659,9 +723,13 @@ func (m *TX) GetNextOutputs() *any.Any {
 }
 
 type OAPIssue struct {
-	FromPrivate          string   `protobuf:"bytes,1,opt,name=from_private,json=fromPrivate,proto3" json:"from_private,omitempty"`
-	ToAddress            string   `protobuf:"bytes,2,opt,name=to_address,json=toAddress,proto3" json:"to_address,omitempty"`
-	Amount               int32    `protobuf:"varint,3,opt,name=amount,proto3" json:"amount,omitempty"`
+	// The private key being used to issue or transfer assets.
+	FromPrivate string `protobuf:"bytes,1,opt,name=from_private,json=fromPrivate,proto3" json:"from_private,omitempty"`
+	// The target OAP address assets for issue or transfer.
+	ToAddress string `protobuf:"bytes,2,opt,name=to_address,json=toAddress,proto3" json:"to_address,omitempty"`
+	// The amount of assets being issued or transfered.
+	Amount int32 `protobuf:"varint,3,opt,name=amount,proto3" json:"amount,omitempty"`
+	// Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction.
 	Metadata             string   `protobuf:"bytes,4,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -722,18 +790,27 @@ func (m *OAPIssue) GetMetadata() string {
 }
 
 type OAPTX struct {
-	Ver                  int32                `protobuf:"varint,1,opt,name=ver,proto3" json:"ver,omitempty"`
-	Assetid              string               `protobuf:"bytes,2,opt,name=assetid,proto3" json:"assetid,omitempty"`
-	Hash                 string               `protobuf:"bytes,3,opt,name=hash,proto3" json:"hash,omitempty"`
-	Confirmed            *timestamp.Timestamp `protobuf:"bytes,4,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
-	Received             *timestamp.Timestamp `protobuf:"bytes,5,opt,name=received,proto3" json:"received,omitempty"`
-	OapMeta              string               `protobuf:"bytes,6,opt,name=oap_meta,json=oapMeta,proto3" json:"oap_meta,omitempty"`
-	DoubleSpend          bool                 `protobuf:"varint,7,opt,name=double_spend,json=doubleSpend,proto3" json:"double_spend,omitempty"`
-	Inputs               []*any.Any           `protobuf:"bytes,8,rep,name=inputs,proto3" json:"inputs,omitempty"`
-	Outputs              []*any.Any           `protobuf:"bytes,9,rep,name=outputs,proto3" json:"outputs,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	// Version of Open Assets Protocol transaction. Typically 1.
+	Ver int32 `protobuf:"varint,1,opt,name=ver,proto3" json:"ver,omitempty"`
+	// Unique indentifier associated with this asset; can be used to query other transactions associated with this asset.
+	Assetid string `protobuf:"bytes,2,opt,name=assetid,proto3" json:"assetid,omitempty"`
+	// This transaction’s unique hash; same as the underlying transaction on the asset’s parent blockchain.
+	Hash string `protobuf:"bytes,3,opt,name=hash,proto3" json:"hash,omitempty"`
+	// Optional Time this transaction was confirmed; only returned for confirmed transactions.
+	Confirmed *timestamp.Timestamp `protobuf:"bytes,4,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
+	// Time this transaction was received.
+	Received *timestamp.Timestamp `protobuf:"bytes,5,opt,name=received,proto3" json:"received,omitempty"`
+	// Optional Associated hex-encoded metadata with this transaction, if it exists.
+	OapMeta string `protobuf:"bytes,6,opt,name=oap_meta,json=oapMeta,proto3" json:"oap_meta,omitempty"`
+	// true if this is an attempted double spend; false otherwise.
+	DoubleSpend bool `protobuf:"varint,7,opt,name=double_spend,json=doubleSpend,proto3" json:"double_spend,omitempty"`
+	// Array of input data, which can be seen explicitly in the cURL example. Very similar to array of TXInputs, but with values related to assets instead of satoshis.
+	Inputs []*any.Any `protobuf:"bytes,8,rep,name=inputs,proto3" json:"inputs,omitempty"`
+	// Array of output data, which can be seen explicitly in the cURL example. Very similar to array of TXOutputs, but with values related to assets instead of satoshis.
+	Outputs              []*any.Any `protobuf:"bytes,9,rep,name=outputs,proto3" json:"outputs,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
 func (m *OAPTX) Reset()         { *m = OAPTX{} }
@@ -864,25 +941,41 @@ func (m *ArrayString) GetArraystring() []string {
 }
 
 type Address struct {
-	Address              string    `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	Wallet               *Wallet   `protobuf:"bytes,2,opt,name=wallet,proto3" json:"wallet,omitempty"`
-	HdWallet             *HDWallet `protobuf:"bytes,3,opt,name=hd_wallet,json=hdWallet,proto3" json:"hd_wallet,omitempty"`
-	TotalReceived        int32     `protobuf:"varint,4,opt,name=total_received,json=totalReceived,proto3" json:"total_received,omitempty"`
-	TotalSent            int32     `protobuf:"varint,5,opt,name=total_sent,json=totalSent,proto3" json:"total_sent,omitempty"`
-	Balance              int32     `protobuf:"varint,6,opt,name=balance,proto3" json:"balance,omitempty"`
-	UnconfirmedBalance   int32     `protobuf:"varint,7,opt,name=unconfirmed_balance,json=unconfirmedBalance,proto3" json:"unconfirmed_balance,omitempty"`
-	FinalBalance         int32     `protobuf:"varint,8,opt,name=final_balance,json=finalBalance,proto3" json:"final_balance,omitempty"`
-	NTx                  int32     `protobuf:"varint,9,opt,name=n_tx,json=nTx,proto3" json:"n_tx,omitempty"`
-	UnconfirmedNTx       int32     `protobuf:"varint,10,opt,name=unconfirmed_n_tx,json=unconfirmedNTx,proto3" json:"unconfirmed_n_tx,omitempty"`
-	FinalNTx             int32     `protobuf:"varint,11,opt,name=final_n_tx,json=finalNTx,proto3" json:"final_n_tx,omitempty"`
-	TxUrl                string    `protobuf:"bytes,12,opt,name=tx_url,json=txUrl,proto3" json:"tx_url,omitempty"`
-	Txs                  []*TX     `protobuf:"bytes,13,rep,name=txs,proto3" json:"txs,omitempty"`
-	Txrefs               []*TXRef  `protobuf:"bytes,14,rep,name=txrefs,proto3" json:"txrefs,omitempty"`
-	UnconfirmedTxrefs    []*TXRef  `protobuf:"bytes,15,rep,name=unconfirmed_txrefs,json=unconfirmedTxrefs,proto3" json:"unconfirmed_txrefs,omitempty"`
-	HasMore              bool      `protobuf:"varint,16,opt,name=hasMore,proto3" json:"hasMore,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
-	XXX_unrecognized     []byte    `json:"-"`
-	XXX_sizecache        int32     `json:"-"`
+	// Optional The requested address. Not returned if querying a wallet/HD wallet.
+	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	// Optional The requested wallet object. Only returned if querying by wallet name instead of public address.
+	Wallet *Wallet `protobuf:"bytes,2,opt,name=wallet,proto3" json:"wallet,omitempty"`
+	// Optional The requested HD wallet object. Only returned if querying by HD wallet name instead of public address.
+	HdWallet *HDWallet `protobuf:"bytes,3,opt,name=hd_wallet,json=hdWallet,proto3" json:"hd_wallet,omitempty"`
+	// Total amount of confirmed satoshis received by this address.
+	TotalReceived int32 `protobuf:"varint,4,opt,name=total_received,json=totalReceived,proto3" json:"total_received,omitempty"`
+	// Total amount of confirmed satoshis sent by this address.
+	TotalSent int32 `protobuf:"varint,5,opt,name=total_sent,json=totalSent,proto3" json:"total_sent,omitempty"`
+	// Balance of confirmed satoshis on this address. This is the difference between outputs and inputs on this address, but only for transactions that have been included into a block (i.e., for transactions whose confirmations > 0).
+	Balance int32 `protobuf:"varint,6,opt,name=balance,proto3" json:"balance,omitempty"`
+	// Balance of unconfirmed satoshis on this address. Can be negative (if unconfirmed transactions are just spending outputs). Only unconfirmed transactions (haven’t made it into a block) are included.
+	UnconfirmedBalance int32 `protobuf:"varint,7,opt,name=unconfirmed_balance,json=unconfirmedBalance,proto3" json:"unconfirmed_balance,omitempty"`
+	// Total balance of satoshis, including confirmed and unconfirmed transactions, for this address.
+	FinalBalance int32 `protobuf:"varint,8,opt,name=final_balance,json=finalBalance,proto3" json:"final_balance,omitempty"`
+	// Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted.
+	NTx int32 `protobuf:"varint,9,opt,name=n_tx,json=nTx,proto3" json:"n_tx,omitempty"`
+	// Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted.
+	UnconfirmedNTx int32 `protobuf:"varint,10,opt,name=unconfirmed_n_tx,json=unconfirmedNTx,proto3" json:"unconfirmed_n_tx,omitempty"`
+	// Final number of transactions, including confirmed and unconfirmed transactions, for this address.
+	FinalNTx int32 `protobuf:"varint,11,opt,name=final_n_tx,json=finalNTx,proto3" json:"final_n_tx,omitempty"`
+	// Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.
+	TxUrl string `protobuf:"bytes,12,opt,name=tx_url,json=txUrl,proto3" json:"tx_url,omitempty"`
+	// Array of full transaction details associated with this address. Usually only returned from the Address Full Endpoint.
+	Txs []*TX `protobuf:"bytes,13,rep,name=txs,proto3" json:"txs,omitempty"`
+	// Optional Array of transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint.
+	Txrefs []*TXRef `protobuf:"bytes,14,rep,name=txrefs,proto3" json:"txrefs,omitempty"`
+	// Optional All unconfirmed transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint.
+	UnconfirmedTxrefs []*TXRef `protobuf:"bytes,15,rep,name=unconfirmed_txrefs,json=unconfirmedTxrefs,proto3" json:"unconfirmed_txrefs,omitempty"`
+	// Optional If true, then the Address object contains more transactions than shown. Useful for determining whether to poll the API for more transaction information.
+	HasMore              bool     `protobuf:"varint,16,opt,name=hasMore,proto3" json:"hasMore,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *Address) Reset()         { *m = Address{} }
