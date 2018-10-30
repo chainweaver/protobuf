@@ -25,16 +25,19 @@ service MetadataService {
   rpc PutMetadata_addressEndpoint (PutMetadata_addressEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
       put: "/addrs/{address}/meta"
+      body: "*"
     };
   }
   rpc PutMetadata_txhashEndpoint (PutMetadata_txhashEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
       put: "/txs/{txhash}/meta"
+      body: "*"
     };
   }
   rpc PutMetadata_blockhashEndpoint (PutMetadata_block_hashEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
       put: "/blocks/{block_hash}/meta"
+      body: "*"
     };
   }
   rpc DeleteMetadata_addressEndpoint (DeleteMetadata_addressEndpointRequest) returns (NullValue) {

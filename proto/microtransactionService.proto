@@ -10,6 +10,7 @@ service MicrotransactionService {
   rpc MicrotransactionEndpoint (MicroTX) returns (MicroTX) {
     option (google.api.http) = {
       post: "/txs/micro"
+      body: "*"
     };
   }
 }

@@ -108,7 +108,7 @@ message GetWalletAddressesEndpointRequest {
 
 message RemoveAddressesFromWalletEndpointRequest {
   string name = 1;
-//  string address = 2;
+  string address = 2;
 }
 
 message GenerateAdressInWalletEndpointRequest {

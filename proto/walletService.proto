@@ -10,11 +10,13 @@ service WalletService {
   rpc CreateWalletEndpoint (CreateWalletEndpointRequest) returns (Wallet) {
     option (google.api.http) = {
       post: "/wallets"
+      body: "*"
     };
   }
   rpc CreateWalletHDEndpoint (CreateWalletHDEndpointRequest) returns (HDWallet) {
     option (google.api.http) = {
       post: "/wallets/hd"
+      body: "*"
     };
   }
   rpc ListWalletsEndpoint (ListWalletsEndpointRequest) returns (ListWallets) {
@@ -35,6 +37,7 @@ service WalletService {
   rpc AddAddressesToWalletEndpoint (AddAddressesToWalletEndpointRequest) returns (Wallet) {
     option (google.api.http) = {
       post: "/wallets/{name}/addresses"
+      body: "*"
     };
   }
   rpc GetWalletAddressesEndpoint (GetWalletAddressesEndpointRequest) returns (Wallet) {
@@ -49,13 +52,13 @@ service WalletService {
   }
   rpc RemoveAddressesFromWalletEndpoint (RemoveAddressesFromWalletEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-//      delete: "/wallets/{name}/addresses?address={address}"
       delete: "/wallets/{name}/addresses"
     };
   }
   rpc GenerateAddressInWalletEndpoint (GenerateAdressInWalletEndpointRequest) returns (WalletAddressKeychain) {
     option (google.api.http) = {
       post: "/wallets/{name}/addresses/generate"
+      body: "*"
     };
   }
   rpc DeriveAddressInWalletEndpoint (DeriveAddressInWalletEndpointRequest) returns (NullValue) {

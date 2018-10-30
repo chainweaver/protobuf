@@ -89,6 +89,14 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufPutMetadata_addressEndpointRequest"
+            }
           }
         ],
         "tags": [
@@ -113,6 +121,14 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufPutMetadata_block_hashEndpointRequest"
+            }
           }
         ],
         "tags": [
@@ -255,6 +271,14 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufPutMetadata_txhashEndpointRequest"
+            }
           }
         ],
         "tags": [
@@ -288,6 +312,60 @@
     },
     "blockchainprotobufNullValue": {
       "type": "object"
+    },
+    "blockchainprotobufPutMetadata_addressEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "private": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "keypair": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/blockchainprotobufKeyPair"
+          }
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "blockchainprotobufPutMetadata_block_hashEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "private": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "keypair": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/blockchainprotobufKeyPair"
+          }
+        },
+        "block_hash": {
+          "type": "string"
+        }
+      }
+    },
+    "blockchainprotobufPutMetadata_txhashEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "private": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "keypair": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/blockchainprotobufKeyPair"
+          }
+        },
+        "txhash": {
+          "type": "string"
+        }
+      }
     }
   }
 }

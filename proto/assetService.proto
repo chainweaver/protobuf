@@ -11,16 +11,19 @@ service AssetService {
   rpc GenerateAssetAddressEndpoint (GenerateAssetAddressEndpointRequest) returns (AddressKeychain) {
     option (google.api.http) = {
       post: "/oap/addrs"
+      body: "*"
     };
   }
   rpc IssueAssetEndpoint (OAPIssue) returns (OAPTX) {
     option (google.api.http) = {
       post: "/oap/issue"
+      body: "*"
     };
   }
   rpc TransferAssetEndpoint (TransferAssetEndpointRequest) returns (OAPTX) {
     option (google.api.http) = {
       post: "/oap/{assetid}/transfer"
+      body: "*"
     };
   }
   rpc ListAssetTXsEndpoint (ListAssetTXsEndpointRequest) returns (ArrayString) {

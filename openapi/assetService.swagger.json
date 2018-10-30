@@ -26,6 +26,16 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufGenerateAssetAddressEndpointRequest"
+            }
+          }
+        ],
         "tags": [
           "AssetService"
         ]
@@ -42,6 +52,16 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufOAPIssue"
+            }
+          }
+        ],
         "tags": [
           "AssetService"
         ]
@@ -94,6 +114,14 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufTransferAssetEndpointRequest"
+            }
           }
         ],
         "tags": [
@@ -295,6 +323,9 @@
         }
       }
     },
+    "blockchainprotobufGenerateAssetAddressEndpointRequest": {
+      "type": "object"
+    },
     "blockchainprotobufHDAddress": {
       "type": "object",
       "properties": {
@@ -363,6 +394,28 @@
             "format": "int32"
           },
           "description": "optional returned for HD wallets created with subchains."
+        }
+      }
+    },
+    "blockchainprotobufOAPIssue": {
+      "type": "object",
+      "properties": {
+        "from_private": {
+          "type": "string",
+          "description": "The private key being used to issue or transfer assets."
+        },
+        "to_address": {
+          "type": "string",
+          "description": "The target OAP address assets for issue or transfer."
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The amount of assets being issued or transfered."
+        },
+        "metadata": {
+          "type": "string",
+          "description": "Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction."
         }
       }
     },
@@ -738,6 +791,14 @@
         "double_of": {
           "type": "string",
           "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
+        }
+      }
+    },
+    "blockchainprotobufTransferAssetEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "assetid": {
+          "type": "string"
         }
       }
     },

@@ -138,6 +138,8 @@ export class RemoveAddressesFromWalletEndpointRequest {
   constructor ();
   getName(): string;
   setName(a: string): void;
+  getAddress(): string;
+  setAddress(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => RemoveAddressesFromWalletEndpointRequest;
 }
