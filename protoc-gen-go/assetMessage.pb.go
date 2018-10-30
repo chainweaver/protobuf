@@ -53,9 +53,9 @@ type TXRef struct {
 	Confirmed *timestamp.Timestamp `protobuf:"bytes,14,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
 	//Optional The transaction hash that spent this output. Only returned for outputs that have been spent. The spending transaction may be unconfirmed.
 	SpentBy string `protobuf:"bytes,15,opt,name=spent_by,json=spentBy,proto3" json:"spent_by,omitempty"`
-	//Optional Time this transaction was received by BlockCypher’s servers; only present for unconfirmed transactions.
+	//Optional Time this transaction was received by Block’s servers; only present for unconfirmed transactions.
 	Received *timestamp.Timestamp `protobuf:"bytes,16,opt,name=received,proto3" json:"received,omitempty"`
-	//Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
+	//Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
 	ReceiveCount int32 `protobuf:"varint,17,opt,name=receive_count,json=receiveCount,proto3" json:"receive_count,omitempty"`
 	//Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
 	DoubleOf             string   `protobuf:"bytes,18,opt,name=double_of,json=doubleOf,proto3" json:"double_of,omitempty"`
@@ -445,9 +445,9 @@ type TX struct {
 	Size int32 `protobuf:"varint,6,opt,name=size,proto3" json:"size,omitempty"`
 	//The likelihood that this transaction will make it to the next block; reflects the preference level miners have to include this transaction. Can be high, medium or low.
 	Preference string `protobuf:"bytes,7,opt,name=preference,proto3" json:"preference,omitempty"`
-	//Address of the peer that sent BlockCypher’s servers this transaction.
+	//Address of the peer that sent Block’s servers this transaction.
 	RelayedBy string `protobuf:"bytes,8,opt,name=relayed_by,json=relayedBy,proto3" json:"relayed_by,omitempty"`
-	//Time this transaction was received by BlockCypher’s servers.
+	//Time this transaction was received by Block’s servers.
 	Received *timestamp.Timestamp `protobuf:"bytes,9,opt,name=received,proto3" json:"received,omitempty"`
 	//Version number, typically 1 for Bitcoin transactions.
 	Ver int32 `protobuf:"varint,10,opt,name=ver,proto3" json:"ver,omitempty"`
@@ -471,9 +471,9 @@ type TX struct {
 	Confidence float32 `protobuf:"fixed32,19,opt,name=confidence,proto3" json:"confidence,omitempty"`
 	//Optional Time at which transaction was included in a block; only present for confirmed transactions.
 	Confirmed *timestamp.Timestamp `protobuf:"bytes,20,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
-	//Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
+	//Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
 	ReceiveCount int32 `protobuf:"varint,21,opt,name=receive_count,json=receiveCount,proto3" json:"receive_count,omitempty"`
-	//Optional Address BlockCypher will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent.
+	//Optional Address Block will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent.
 	ChangeAddress string `protobuf:"bytes,22,opt,name=change_address,json=changeAddress,proto3" json:"change_address,omitempty"`
 	//Optional Hash of the block that contains this transaction; only present for confirmed transactions.
 	BlockHash string `protobuf:"bytes,23,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
@@ -485,9 +485,9 @@ type TX struct {
 	DataProtocol string `protobuf:"bytes,26,opt,name=data_protocol,json=dataProtocol,proto3" json:"data_protocol,omitempty"`
 	//Optional Hex-encoded bytes of the transaction, as sent over the network.
 	Hex string `protobuf:"bytes,27,opt,name=hex,proto3" json:"hex,omitempty"`
-	//Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the BlockCypher URL to query the next set of TXInputs (within a TX object).
+	//Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the Block URL to query the next set of TXInputs (within a TX object).
 	NextInputs *any.Any `protobuf:"bytes,28,opt,name=next_inputs,json=nextInputs,proto3" json:"next_inputs,omitempty"`
-	//Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the BlockCypher URL to query the next set of TXOutputs(within a TX object).
+	//Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the Block URL to query the next set of TXOutputs(within a TX object).
 	NextOutputs          *any.Any `protobuf:"bytes,29,opt,name=next_outputs,json=nextOutputs,proto3" json:"next_outputs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

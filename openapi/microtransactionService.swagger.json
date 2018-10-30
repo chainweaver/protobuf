@@ -59,16 +59,16 @@
         },
         "token": {
           "type": "string",
-          "title": "Your BlockCypher API token"
+          "title": "Your Block API token"
         },
         "change_address": {
           "type": "string",
-          "description": "Optional Address BlockCypher will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address."
+          "description": "Optional Address Block will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address."
         },
         "wait_guarantee": {
           "type": "boolean",
           "format": "boolean",
-          "description": "Optional If not set, defaults to true, which means the API will wait for BlockCypher to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast."
+          "description": "Optional If not set, defaults to true, which means the API will wait for Block to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast."
         },
         "tosign": {
           "type": "array",
@@ -101,7 +101,7 @@
         "fees": {
           "type": "integer",
           "format": "int32",
-          "description": "Optional BlockCypher’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. BlockCypher pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter."
+          "description": "Optional Block’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. Block pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter."
         },
         "hash": {
           "type": "string",

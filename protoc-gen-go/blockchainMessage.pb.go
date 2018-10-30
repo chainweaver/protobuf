@@ -29,11 +29,11 @@ type Blockchain struct {
 	Hash string `protobuf:"bytes,3,opt,name=hash,proto3" json:"hash,omitempty"`
 	// The time of the latest update to the blockchain; typically when the latest block was added.
 	Time string `protobuf:"bytes,4,opt,name=time,proto3" json:"time,omitempty"`
-	// The BlockCypher URL to query for more information on the latest confirmed block; returns a Block.
+	// The Block URL to query for more information on the latest confirmed block; returns a Block.
 	LatestUrl string `protobuf:"bytes,5,opt,name=latest_url,json=latestUrl,proto3" json:"latest_url,omitempty"`
 	// The hash of the second-to-latest confirmed block in the blockchain.
 	PreviousHash string `protobuf:"bytes,6,opt,name=previous_hash,json=previousHash,proto3" json:"previous_hash,omitempty"`
-	// The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block.
+	// The Block URL to query for more information on the second-to-latest confirmed block; returns a Block.
 	PreviousUrl string `protobuf:"bytes,7,opt,name=previous_url,json=previousUrl,proto3" json:"previous_url,omitempty"`
 	// N/A, will be deprecated soon.
 	PeerCount int32 `protobuf:"varint,8,opt,name=peer_count,json=peerCount,proto3" json:"peer_count,omitempty"`
@@ -196,9 +196,9 @@ type Block struct {
 	Ver int32 `protobuf:"varint,8,opt,name=ver,proto3" json:"ver,omitempty"`
 	// Recorded time at which block was built. Note: Miners rarely post accurate clock times.
 	Time string `protobuf:"bytes,9,opt,name=time,proto3" json:"time,omitempty"`
-	// The time BlockCypher’s servers receive the block. Our servers’ clock is continuously adjusted and accurate.
+	// The time Block’s servers receive the block. Our servers’ clock is continuously adjusted and accurate.
 	ReceivedTime string `protobuf:"bytes,10,opt,name=received_time,json=receivedTime,proto3" json:"received_time,omitempty"`
-	// Address of the peer that sent BlockCypher’s servers this block.
+	// Address of the peer that sent Block’s servers this block.
 	RelayedBy string `protobuf:"bytes,11,opt,name=relayed_by,json=relayedBy,proto3" json:"relayed_by,omitempty"`
 	// The block-encoded difficulty target.
 	Bits int32 `protobuf:"varint,12,opt,name=bits,proto3" json:"bits,omitempty"`
@@ -208,15 +208,15 @@ type Block struct {
 	NTx int32 `protobuf:"varint,14,opt,name=n_tx,json=nTx,proto3" json:"n_tx,omitempty"`
 	// The hash of the previous block in the blockchain.
 	PrevBlock string `protobuf:"bytes,15,opt,name=prev_block,json=prevBlock,proto3" json:"prev_block,omitempty"`
-	// The BlockCypher URL to query for more information on the previous block.
+	// The Block URL to query for more information on the previous block.
 	PrevBlockUrl string `protobuf:"bytes,16,opt,name=prev_block_url,json=prevBlockUrl,proto3" json:"prev_block_url,omitempty"`
-	// The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es).
+	// The base Block URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es).
 	TxUrl string `protobuf:"bytes,17,opt,name=tx_url,json=txUrl,proto3" json:"tx_url,omitempty"`
 	// The Merkle root of this block.
 	MrklRoot string `protobuf:"bytes,18,opt,name=mrkl_root,json=mrklRoot,proto3" json:"mrkl_root,omitempty"`
 	// An array of transaction hashes in this block. By default, only 20 are included.
 	Txids []string `protobuf:"bytes,19,rep,name=txids,proto3" json:"txids,omitempty"`
-	// Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).
+	// Optional If there are more transactions that couldn’t fit in the txids array, this is the Block URL to query the next set of transactions (within a Block object).
 	NextTxids            string   `protobuf:"bytes,20,opt,name=next_txids,json=nextTxids,proto3" json:"next_txids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

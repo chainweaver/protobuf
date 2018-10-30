@@ -31,11 +31,11 @@ type MicroTX struct {
 	ToAddress string `protobuf:"bytes,4,opt,name=to_address,json=toAddress,proto3" json:"to_address,omitempty"`
 	// Value you’re sending/you’ve sent in satoshis.
 	ValueSatoshis int64 `protobuf:"varint,5,opt,name=value_satoshis,json=valueSatoshis,proto3" json:"value_satoshis,omitempty"`
-	// Your BlockCypher API token
+	// Your Block API token
 	Token string `protobuf:"bytes,6,opt,name=token,proto3" json:"token,omitempty"`
-	// Optional Address BlockCypher will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address.
+	// Optional Address Block will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address.
 	ChangeAddress string `protobuf:"bytes,7,opt,name=change_address,json=changeAddress,proto3" json:"change_address,omitempty"`
-	// Optional If not set, defaults to true, which means the API will wait for BlockCypher to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast.
+	// Optional If not set, defaults to true, which means the API will wait for Block to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast.
 	WaitGuarantee bool `protobuf:"varint,8,opt,name=wait_guarantee,json=waitGuarantee,proto3" json:"wait_guarantee,omitempty"`
 	// Optional Hex-encoded data for you to sign after initiating the microtransaction. Sent in reply to a microtransaction generated using from_pubkey/a public key.
 	Tosign []string `protobuf:"bytes,9,rep,name=tosign,proto3" json:"tosign,omitempty"`
@@ -45,7 +45,7 @@ type MicroTX struct {
 	Inputs []*TXInput `protobuf:"bytes,11,rep,name=inputs,proto3" json:"inputs,omitempty"`
 	// Optional Partial list of outputs that will be used with this transaction. Outputs themselves are heavily pared down, see cURL sample. Only returned when using from_pubkey.
 	Outputs []*TXOutput `protobuf:"bytes,12,rep,name=outputs,proto3" json:"outputs,omitempty"`
-	// Optional BlockCypher’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. BlockCypher pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter.
+	// Optional Block’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. Block pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter.
 	Fees int32 `protobuf:"varint,13,opt,name=fees,proto3" json:"fees,omitempty"`
 	// Optional The hash of the finalized transaction, once sent.
 	Hash                 string   `protobuf:"bytes,14,opt,name=hash,proto3" json:"hash,omitempty"`

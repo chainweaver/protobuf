@@ -153,11 +153,11 @@
         },
         "received_time": {
           "type": "string",
-          "description": "The time BlockCypher’s servers receive the block. Our servers’ clock is continuously adjusted and accurate."
+          "description": "The time Block’s servers receive the block. Our servers’ clock is continuously adjusted and accurate."
         },
         "relayed_by": {
           "type": "string",
-          "description": "Address of the peer that sent BlockCypher’s servers this block."
+          "description": "Address of the peer that sent Block’s servers this block."
         },
         "bits": {
           "type": "integer",
@@ -180,11 +180,11 @@
         },
         "prev_block_url": {
           "type": "string",
-          "description": "The BlockCypher URL to query for more information on the previous block."
+          "description": "The Block URL to query for more information on the previous block."
         },
         "tx_url": {
           "type": "string",
-          "description": "The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es)."
+          "description": "The base Block URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es)."
         },
         "mrkl_root": {
           "type": "string",
@@ -199,7 +199,7 @@
         },
         "next_txids": {
           "type": "string",
-          "description": "Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
+          "description": "Optional If there are more transactions that couldn’t fit in the txids array, this is the Block URL to query the next set of transactions (within a Block object)."
         }
       }
     },
@@ -225,7 +225,7 @@
         },
         "latest_url": {
           "type": "string",
-          "description": "The BlockCypher URL to query for more information on the latest confirmed block; returns a Block."
+          "description": "The Block URL to query for more information on the latest confirmed block; returns a Block."
         },
         "previous_hash": {
           "type": "string",
@@ -233,7 +233,7 @@
         },
         "previous_url": {
           "type": "string",
-          "description": "The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block."
+          "description": "The Block URL to query for more information on the second-to-latest confirmed block; returns a Block."
         },
         "peer_count": {
           "type": "integer",

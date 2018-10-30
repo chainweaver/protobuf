@@ -38,9 +38,9 @@ message TXRef {
   google.protobuf.Timestamp confirmed = 14;   
   //Optional The transaction hash that spent this output. Only returned for outputs that have been spent. The spending transaction may be unconfirmed.
   string spent_by = 15; 
-  //Optional Time this transaction was received by BlockCypher’s servers; only present for unconfirmed transactions.
+  //Optional Time this transaction was received by Block’s servers; only present for unconfirmed transactions.
   google.protobuf.Timestamp received = 16; 
-  //Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
+  //Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
   int32 receive_count = 17;  
   //Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
   string double_of = 18; 
@@ -101,9 +101,9 @@ message TX {
   int32 size = 6; 
   //The likelihood that this transaction will make it to the next block; reflects the preference level miners have to include this transaction. Can be high, medium or low.
   string preference = 7;  
-  //Address of the peer that sent BlockCypher’s servers this transaction.
+  //Address of the peer that sent Block’s servers this transaction.
   string relayed_by = 8; 
-  //Time this transaction was received by BlockCypher’s servers.
+  //Time this transaction was received by Block’s servers.
   google.protobuf.Timestamp received = 9; 
   //Version number, typically 1 for Bitcoin transactions.
   int32 ver = 10;  
@@ -127,9 +127,9 @@ message TX {
   float confidence = 19;
   //Optional Time at which transaction was included in a block; only present for confirmed transactions.
   google.protobuf.Timestamp confirmed = 20; 
-  //Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
+  //Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
   int32 receive_count = 21; 
-  //Optional Address BlockCypher will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent.
+  //Optional Address Block will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent.
   string change_address = 22;
   //Optional Hash of the block that contains this transaction; only present for confirmed transactions.
   string block_hash = 23; 
@@ -141,9 +141,9 @@ message TX {
   string data_protocol = 26; 
   //Optional Hex-encoded bytes of the transaction, as sent over the network.
   string hex = 27; 
-  //Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the BlockCypher URL to query the next set of TXInputs (within a TX object).
+  //Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the Block URL to query the next set of TXInputs (within a TX object).
   google.protobuf.Any next_inputs = 28;  
-  //Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the BlockCypher URL to query the next set of TXOutputs(within a TX object).
+  //Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the Block URL to query the next set of TXOutputs(within a TX object).
   google.protobuf.Any next_outputs = 29; 
 }
 

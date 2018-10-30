@@ -457,12 +457,12 @@
         },
         "relayed_by": {
           "type": "string",
-          "description": "Address of the peer that sent BlockCypher’s servers this transaction."
+          "description": "Address of the peer that sent Block’s servers this transaction."
         },
         "received": {
           "type": "string",
           "format": "date-time",
-          "description": "Time this transaction was received by BlockCypher’s servers."
+          "description": "Time this transaction was received by Block’s servers."
         },
         "ver": {
           "type": "integer",
@@ -526,11 +526,11 @@
         "receive_count": {
           "type": "integer",
           "format": "int32",
-          "description": "Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions."
+          "description": "Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions."
         },
         "change_address": {
           "type": "string",
-          "description": "Optional Address BlockCypher will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent."
+          "description": "Optional Address Block will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent."
         },
         "block_hash": {
           "type": "string",
@@ -555,11 +555,11 @@
         },
         "next_inputs": {
           "$ref": "#/definitions/protobufAny",
-          "description": "Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the BlockCypher URL to query the next set of TXInputs (within a TX object)."
+          "description": "Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the Block URL to query the next set of TXInputs (within a TX object)."
         },
         "next_outputs": {
           "$ref": "#/definitions/protobufAny",
-          "description": "Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the BlockCypher URL to query the next set of TXOutputs(within a TX object)."
+          "description": "Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the Block URL to query the next set of TXOutputs(within a TX object)."
         }
       }
     },
@@ -728,12 +728,12 @@
         "received": {
           "type": "string",
           "format": "date-time",
-          "description": "Optional Time this transaction was received by BlockCypher’s servers; only present for unconfirmed transactions."
+          "description": "Optional Time this transaction was received by Block’s servers; only present for unconfirmed transactions."
         },
         "receive_count": {
           "type": "integer",
           "format": "int32",
-          "description": "Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions."
+          "description": "Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions."
         },
         "double_of": {
           "type": "string",

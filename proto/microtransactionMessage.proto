@@ -15,11 +15,11 @@ message MicroTX {
   string to_address = 4; 
   // Value you’re sending/you’ve sent in satoshis.
   int64 value_satoshis = 5;   
-  // Your BlockCypher API token
+  // Your Block API token
   string token = 6; 
-  // Optional Address BlockCypher will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address.
+  // Optional Address Block will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address.
   string change_address = 7;  
-  // Optional If not set, defaults to true, which means the API will wait for BlockCypher to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast.
+  // Optional If not set, defaults to true, which means the API will wait for Block to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast.
   bool wait_guarantee = 8; 
   // Optional Hex-encoded data for you to sign after initiating the microtransaction. Sent in reply to a microtransaction generated using from_pubkey/a public key.
   repeated string tosign = 9; 
@@ -29,7 +29,7 @@ message MicroTX {
   repeated TXInput inputs = 11; 
   // Optional Partial list of outputs that will be used with this transaction. Outputs themselves are heavily pared down, see cURL sample. Only returned when using from_pubkey.
   repeated TXOutput outputs = 12; 
-  // Optional BlockCypher’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. BlockCypher pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter.
+  // Optional Block’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. Block pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter.
   int32 fees = 13;    
   // Optional The hash of the finalized transaction, once sent.
   string hash = 14; 
