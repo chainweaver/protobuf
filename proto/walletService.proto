@@ -5,6 +5,7 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
 
 import "google/api/annotations.proto";
 import "walletMessage.proto";
+import "commonMessage.proto";
 
 service WalletService {
   rpc CreateWalletEndpoint (CreateWalletEndpointRequest) returns (Wallet) {
@@ -61,19 +62,20 @@ service WalletService {
       body: "*"
     };
   }
-  rpc DeriveAddressInWalletEndpoint (DeriveAddressInWalletEndpointRequest) returns (NullValue) {
+  rpc DeriveAddressInWalletEndpoint (DeriveAddressInWalletEndpointRequest) returns (HDWallet) {
     option (google.api.http) = {
-      get: "/wallets/hd/{name}/addresses/derive"
+      post: "/wallets/hd/{name}/addresses/derive"
+      body: "*"
     };
   }
   rpc DeleteWalletEndpoint (DeleteWalletEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      delete: "/wallet/{name}"
+      delete: "/wallets/{name}"
     };
   }
   rpc DeleteWalletHDEndpoint (DeleteWalletEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      delete: "/wallet/hd/{name}"
+      delete: "/wallets/hd/{name}"
     };           
   }
 }

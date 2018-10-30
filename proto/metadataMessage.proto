@@ -3,8 +3,6 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
 
-message NullValue {}
-
 message KeyValues {
   repeated KeyPair keypair	= 1;
 }
@@ -14,52 +12,50 @@ message KeyPair {
   string value = 2;
 }
 
-message DeleteMetadataEndpointRequest {}
+message GetMetadataAddressEndpointRequest {
+  string address = 1;
+  bool private = 2;
+}
 
-message GetMetadata_addressEndpointRequest {
-  bool private = 1;
+message GetMetadataTxhashEndpointRequest {
+  string txhash = 1;
+  bool private = 2;
+}
+
+message GetMetadataBlockhashEndpointRequest {
+  string blockhash = 1;
+  bool private = 2;
+}
+
+message PutMetadataAddressEndpointRequest {
+  repeated KeyPair keypair	= 1;
   string address = 2;
+  bool private = 3;
 }
 
-message GetMetadata_txhashEndpointRequest {
-  bool private = 1;
+message PutMetadataTxhashEndpointRequest {
+  repeated KeyPair keypair	= 1;
   string txhash = 2;
+  bool private = 3;
 }
 
-message GetMetadata_blockhashEndpointRequest {
-  bool private = 1;
-  string blockhash = 2;
+message PutMetadataBlockhashEndpointRequest {
+  repeated KeyPair keypair	= 1;
+  string block_hash = 2;
+  bool private = 3;
 }
 
-message PutMetadata_addressEndpointRequest {
-  bool private = 1;
-  repeated KeyPair keypair	= 2;
-  string address = 3;
-}
-
-message PutMetadata_txhashEndpointRequest {
-  bool private = 1;
-  repeated KeyPair keypair	= 2;
-  string txhash = 3;
-}
-
-message PutMetadata_block_hashEndpointRequest {
-  bool private = 1;
-  repeated KeyPair keypair	= 2;
-  string block_hash = 3;
-}
-
-message DeleteMetadata_addressEndpointRequest {
+message DeleteMetadataAddressEndpointRequest {
   string name = 1;
   string address = 2;
 }
 
-message DeleteMetadata_txhashEndpointRequest {
+message DeleteMetadataTxhashEndpointRequest {
   string name = 1;
   string txhash = 2;
 }
 
-message DeleteMetadata_block_heightEndpointRequest {
+message DeleteMetadataBlockheightEndpointRequest {
   string name = 1;
   string block_height = 2;
 }

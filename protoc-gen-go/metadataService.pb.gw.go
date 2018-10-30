@@ -29,11 +29,11 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 var (
-	filter_MetadataService_GetMetadata_addressEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"address": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_MetadataService_GetMetadataAddressEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"address": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_MetadataService_GetMetadata_addressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetMetadata_addressEndpointRequest
+func request_MetadataService_GetMetadataAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetMetadataAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -54,21 +54,21 @@ func request_MetadataService_GetMetadata_addressEndpoint_0(ctx context.Context, 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "address", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_GetMetadata_addressEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_GetMetadataAddressEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetMetadata_addressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetMetadataAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_MetadataService_GetMetadata_txhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"txhash": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_MetadataService_GetMetadataTxhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"txhash": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_MetadataService_GetMetadata_txhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetMetadata_txhashEndpointRequest
+func request_MetadataService_GetMetadataTxhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetMetadataTxhashEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -89,21 +89,21 @@ func request_MetadataService_GetMetadata_txhashEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "txhash", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_GetMetadata_txhashEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_GetMetadataTxhashEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetMetadata_txhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetMetadataTxhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_MetadataService_GetMetadata_blockhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"blockhash": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_MetadataService_GetMetadataBlockhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"blockhash": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_MetadataService_GetMetadata_blockhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetMetadata_blockhashEndpointRequest
+func request_MetadataService_GetMetadataBlockhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetMetadataBlockhashEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -124,17 +124,17 @@ func request_MetadataService_GetMetadata_blockhashEndpoint_0(ctx context.Context
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "blockhash", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_GetMetadata_blockhashEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_GetMetadataBlockhashEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetMetadata_blockhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetMetadataBlockhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_MetadataService_PutMetadata_addressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PutMetadata_addressEndpointRequest
+func request_MetadataService_PutMetadataAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PutMetadataAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -159,13 +159,13 @@ func request_MetadataService_PutMetadata_addressEndpoint_0(ctx context.Context, 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "address", err)
 	}
 
-	msg, err := client.PutMetadata_addressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.PutMetadataAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_MetadataService_PutMetadata_txhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PutMetadata_txhashEndpointRequest
+func request_MetadataService_PutMetadataTxhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PutMetadataTxhashEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -190,13 +190,13 @@ func request_MetadataService_PutMetadata_txhashEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "txhash", err)
 	}
 
-	msg, err := client.PutMetadata_txhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.PutMetadataTxhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_MetadataService_PutMetadata_blockhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PutMetadata_block_hashEndpointRequest
+func request_MetadataService_PutMetadataBlockhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PutMetadataBlockhashEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -221,17 +221,17 @@ func request_MetadataService_PutMetadata_blockhashEndpoint_0(ctx context.Context
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "block_hash", err)
 	}
 
-	msg, err := client.PutMetadata_blockhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.PutMetadataBlockhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_MetadataService_DeleteMetadata_addressEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"address": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_MetadataService_DeleteMetadataAddressEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"address": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_MetadataService_DeleteMetadata_addressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DeleteMetadata_addressEndpointRequest
+func request_MetadataService_DeleteMetadataAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteMetadataAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -252,21 +252,21 @@ func request_MetadataService_DeleteMetadata_addressEndpoint_0(ctx context.Contex
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "address", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_DeleteMetadata_addressEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_DeleteMetadataAddressEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.DeleteMetadata_addressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.DeleteMetadataAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_MetadataService_DeleteMetadata_txhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"txhash": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_MetadataService_DeleteMetadataTxhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"txhash": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_MetadataService_DeleteMetadata_txhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DeleteMetadata_txhashEndpointRequest
+func request_MetadataService_DeleteMetadataTxhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteMetadataTxhashEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -287,21 +287,21 @@ func request_MetadataService_DeleteMetadata_txhashEndpoint_0(ctx context.Context
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "txhash", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_DeleteMetadata_txhashEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_DeleteMetadataTxhashEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.DeleteMetadata_txhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.DeleteMetadataTxhashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_MetadataService_DeleteMetadata_blockheightEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"block_height": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_MetadataService_DeleteMetadataBlockheightEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"block_height": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_MetadataService_DeleteMetadata_blockheightEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DeleteMetadata_block_heightEndpointRequest
+func request_MetadataService_DeleteMetadataBlockheightEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteMetadataBlockheightEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -322,11 +322,11 @@ func request_MetadataService_DeleteMetadata_blockheightEndpoint_0(ctx context.Co
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "block_height", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_DeleteMetadata_blockheightEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_MetadataService_DeleteMetadataBlockheightEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.DeleteMetadata_blockheightEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.DeleteMetadataBlockheightEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -369,7 +369,7 @@ func RegisterMetadataServiceHandler(ctx context.Context, mux *runtime.ServeMux, 
 // "MetadataServiceClient" to call the correct interceptors.
 func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client MetadataServiceClient) error {
 
-	mux.Handle("GET", pattern_MetadataService_GetMetadata_addressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_MetadataService_GetMetadataAddressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -387,18 +387,18 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataService_GetMetadata_addressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataService_GetMetadataAddressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataService_GetMetadata_addressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataService_GetMetadataAddressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_MetadataService_GetMetadata_txhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_MetadataService_GetMetadataTxhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -416,18 +416,18 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataService_GetMetadata_txhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataService_GetMetadataTxhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataService_GetMetadata_txhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataService_GetMetadataTxhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_MetadataService_GetMetadata_blockhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_MetadataService_GetMetadataBlockhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -445,18 +445,18 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataService_GetMetadata_blockhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataService_GetMetadataBlockhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataService_GetMetadata_blockhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataService_GetMetadataBlockhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_MetadataService_PutMetadata_addressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_MetadataService_PutMetadataAddressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -474,18 +474,18 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataService_PutMetadata_addressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataService_PutMetadataAddressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataService_PutMetadata_addressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataService_PutMetadataAddressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_MetadataService_PutMetadata_txhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_MetadataService_PutMetadataTxhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -503,18 +503,18 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataService_PutMetadata_txhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataService_PutMetadataTxhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataService_PutMetadata_txhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataService_PutMetadataTxhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_MetadataService_PutMetadata_blockhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_MetadataService_PutMetadataBlockhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -532,18 +532,18 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataService_PutMetadata_blockhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataService_PutMetadataBlockhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataService_PutMetadata_blockhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataService_PutMetadataBlockhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_MetadataService_DeleteMetadata_addressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_MetadataService_DeleteMetadataAddressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -561,18 +561,18 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataService_DeleteMetadata_addressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataService_DeleteMetadataAddressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataService_DeleteMetadata_addressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataService_DeleteMetadataAddressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_MetadataService_DeleteMetadata_txhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_MetadataService_DeleteMetadataTxhashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -590,18 +590,18 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataService_DeleteMetadata_txhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataService_DeleteMetadataTxhashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataService_DeleteMetadata_txhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataService_DeleteMetadataTxhashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_MetadataService_DeleteMetadata_blockheightEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_MetadataService_DeleteMetadataBlockheightEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -619,14 +619,14 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataService_DeleteMetadata_blockheightEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataService_DeleteMetadataBlockheightEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataService_DeleteMetadata_blockheightEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataService_DeleteMetadataBlockheightEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -634,41 +634,41 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 }
 
 var (
-	pattern_MetadataService_GetMetadata_addressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"addrs", "address", "meta"}, ""))
+	pattern_MetadataService_GetMetadataAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"addrs", "address", "meta"}, ""))
 
-	pattern_MetadataService_GetMetadata_txhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"txs", "txhash", "meta"}, ""))
+	pattern_MetadataService_GetMetadataTxhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"txs", "txhash", "meta"}, ""))
 
-	pattern_MetadataService_GetMetadata_blockhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"blocks", "blockhash", "meta"}, ""))
+	pattern_MetadataService_GetMetadataBlockhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"blocks", "blockhash", "meta"}, ""))
 
-	pattern_MetadataService_PutMetadata_addressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"addrs", "address", "meta"}, ""))
+	pattern_MetadataService_PutMetadataAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"addrs", "address", "meta"}, ""))
 
-	pattern_MetadataService_PutMetadata_txhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"txs", "txhash", "meta"}, ""))
+	pattern_MetadataService_PutMetadataTxhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"txs", "txhash", "meta"}, ""))
 
-	pattern_MetadataService_PutMetadata_blockhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"blocks", "block_hash", "meta"}, ""))
+	pattern_MetadataService_PutMetadataBlockhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"blocks", "block_hash", "meta"}, ""))
 
-	pattern_MetadataService_DeleteMetadata_addressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"addrs", "address", "meta"}, ""))
+	pattern_MetadataService_DeleteMetadataAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"addrs", "address", "meta"}, ""))
 
-	pattern_MetadataService_DeleteMetadata_txhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"txs", "txhash", "meta"}, ""))
+	pattern_MetadataService_DeleteMetadataTxhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"txs", "txhash", "meta"}, ""))
 
-	pattern_MetadataService_DeleteMetadata_blockheightEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"blocks", "block_height", "meta"}, ""))
+	pattern_MetadataService_DeleteMetadataBlockheightEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"blocks", "block_height", "meta"}, ""))
 )
 
 var (
-	forward_MetadataService_GetMetadata_addressEndpoint_0 = runtime.ForwardResponseMessage
+	forward_MetadataService_GetMetadataAddressEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_MetadataService_GetMetadata_txhashEndpoint_0 = runtime.ForwardResponseMessage
+	forward_MetadataService_GetMetadataTxhashEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_MetadataService_GetMetadata_blockhashEndpoint_0 = runtime.ForwardResponseMessage
+	forward_MetadataService_GetMetadataBlockhashEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_MetadataService_PutMetadata_addressEndpoint_0 = runtime.ForwardResponseMessage
+	forward_MetadataService_PutMetadataAddressEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_MetadataService_PutMetadata_txhashEndpoint_0 = runtime.ForwardResponseMessage
+	forward_MetadataService_PutMetadataTxhashEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_MetadataService_PutMetadata_blockhashEndpoint_0 = runtime.ForwardResponseMessage
+	forward_MetadataService_PutMetadataBlockhashEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_MetadataService_DeleteMetadata_addressEndpoint_0 = runtime.ForwardResponseMessage
+	forward_MetadataService_DeleteMetadataAddressEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_MetadataService_DeleteMetadata_txhashEndpoint_0 = runtime.ForwardResponseMessage
+	forward_MetadataService_DeleteMetadataTxhashEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_MetadataService_DeleteMetadata_blockheightEndpoint_0 = runtime.ForwardResponseMessage
+	forward_MetadataService_DeleteMetadataBlockheightEndpoint_0 = runtime.ForwardResponseMessage
 )

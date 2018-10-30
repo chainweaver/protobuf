@@ -1,61 +1,61 @@
-export class DeleteMetadata_addressEndpointRequest {
+export class DeleteMetadataAddressEndpointRequest {
   constructor ();
   getName(): string;
   setName(a: string): void;
   getAddress(): string;
   setAddress(a: string): void;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DeleteMetadata_addressEndpointRequest;
+  static deserializeBinary: (bytes: {}) => DeleteMetadataAddressEndpointRequest;
 }
 
-export class DeleteMetadata_block_heightEndpointRequest {
+export class DeleteMetadataBlockheightEndpointRequest {
   constructor ();
   getName(): string;
   setName(a: string): void;
   getBlockHeight(): string;
   setBlockHeight(a: string): void;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DeleteMetadata_block_heightEndpointRequest;
+  static deserializeBinary: (bytes: {}) => DeleteMetadataBlockheightEndpointRequest;
 }
 
-export class DeleteMetadata_txhashEndpointRequest {
+export class DeleteMetadataTxhashEndpointRequest {
   constructor ();
   getName(): string;
   setName(a: string): void;
   getTxhash(): string;
   setTxhash(a: string): void;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DeleteMetadata_txhashEndpointRequest;
+  static deserializeBinary: (bytes: {}) => DeleteMetadataTxhashEndpointRequest;
 }
 
-export class GetMetadata_addressEndpointRequest {
+export class GetMetadataAddressEndpointRequest {
   constructor ();
-  getPrivate(): boolean;
-  setPrivate(a: boolean): void;
   getAddress(): string;
   setAddress(a: string): void;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetMetadata_addressEndpointRequest;
-}
-
-export class GetMetadata_blockhashEndpointRequest {
-  constructor ();
   getPrivate(): boolean;
   setPrivate(a: boolean): void;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => GetMetadataAddressEndpointRequest;
+}
+
+export class GetMetadataBlockhashEndpointRequest {
+  constructor ();
   getBlockhash(): string;
   setBlockhash(a: string): void;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetMetadata_blockhashEndpointRequest;
-}
-
-export class GetMetadata_txhashEndpointRequest {
-  constructor ();
   getPrivate(): boolean;
   setPrivate(a: boolean): void;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => GetMetadataBlockhashEndpointRequest;
+}
+
+export class GetMetadataTxhashEndpointRequest {
+  constructor ();
   getTxhash(): string;
   setTxhash(a: string): void;
+  getPrivate(): boolean;
+  setPrivate(a: boolean): void;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetMetadata_txhashEndpointRequest;
+  static deserializeBinary: (bytes: {}) => GetMetadataTxhashEndpointRequest;
 }
 
 export class KeyValues {
@@ -72,39 +72,39 @@ export class NullValue {
   static deserializeBinary: (bytes: {}) => NullValue;
 }
 
-export class PutMetadata_addressEndpointRequest {
+export class PutMetadataAddressEndpointRequest {
   constructor ();
-  getPrivate(): boolean;
-  setPrivate(a: boolean): void;
   getKeypair(): {};
   setKeypair(a: {}): void;
   getAddress(): string;
   setAddress(a: string): void;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => PutMetadata_addressEndpointRequest;
-}
-
-export class PutMetadata_block_hashEndpointRequest {
-  constructor ();
   getPrivate(): boolean;
   setPrivate(a: boolean): void;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => PutMetadataAddressEndpointRequest;
+}
+
+export class PutMetadataBlockhashEndpointRequest {
+  constructor ();
   getKeypair(): {};
   setKeypair(a: {}): void;
   getBlockHash(): string;
   setBlockHash(a: string): void;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => PutMetadata_block_hashEndpointRequest;
-}
-
-export class PutMetadata_txhashEndpointRequest {
-  constructor ();
   getPrivate(): boolean;
   setPrivate(a: boolean): void;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => PutMetadataBlockhashEndpointRequest;
+}
+
+export class PutMetadataTxhashEndpointRequest {
+  constructor ();
   getKeypair(): {};
   setKeypair(a: {}): void;
   getTxhash(): string;
   setTxhash(a: string): void;
+  getPrivate(): boolean;
+  setPrivate(a: boolean): void;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => PutMetadata_txhashEndpointRequest;
+  static deserializeBinary: (bytes: {}) => PutMetadataTxhashEndpointRequest;
 }
 

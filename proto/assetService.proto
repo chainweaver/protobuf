@@ -5,7 +5,7 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
 
 import "google/api/annotations.proto";
 import "assetMessage.proto";
-import "walletMessage.proto";
+import "commonMessage.proto";
 
 service AssetService {
   rpc GenerateAssetAddressEndpoint (GenerateAssetAddressEndpointRequest) returns (AddressKeychain) {

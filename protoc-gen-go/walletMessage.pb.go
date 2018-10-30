@@ -20,256 +20,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type Wallet struct {
-	// User token associated with this wallet.
-	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	// Name of the wallet.
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// List of addresses associated with this wallet.
-	Addresses            []string `protobuf:"bytes,3,rep,name=addresses,proto3" json:"addresses,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *Wallet) Reset()         { *m = Wallet{} }
-func (m *Wallet) String() string { return proto.CompactTextString(m) }
-func (*Wallet) ProtoMessage()    {}
-func (*Wallet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{0}
-}
-
-func (m *Wallet) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Wallet.Unmarshal(m, b)
-}
-func (m *Wallet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Wallet.Marshal(b, m, deterministic)
-}
-func (m *Wallet) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Wallet.Merge(m, src)
-}
-func (m *Wallet) XXX_Size() int {
-	return xxx_messageInfo_Wallet.Size(m)
-}
-func (m *Wallet) XXX_DiscardUnknown() {
-	xxx_messageInfo_Wallet.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Wallet proto.InternalMessageInfo
-
-func (m *Wallet) GetToken() string {
-	if m != nil {
-		return m.Token
-	}
-	return ""
-}
-
-func (m *Wallet) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *Wallet) GetAddresses() []string {
-	if m != nil {
-		return m.Addresses
-	}
-	return nil
-}
-
-type HDWallet struct {
-	// User token associated with this HD wallet.
-	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	// Name of the HD wallet.
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// List of HD chains associated with this wallet, each containing HDAddresses. A single chain is returned if the wallet has no subchains.
-	Chains []*HDChain `protobuf:"bytes,3,rep,name=chains,proto3" json:"chains,omitempty"`
-	// true for HD wallets, not present for normal wallets.
-	Hd bool `protobuf:"varint,4,opt,name=hd,proto3" json:"hd,omitempty"`
-	// The extended public key all addresses in the HD wallet are derived from. It’s encoded in BIP32 format
-	ExtendedPublicKey string `protobuf:"bytes,5,opt,name=extended_public_key,json=extendedPublicKey,proto3" json:"extended_public_key,omitempty"`
-	// optional returned for HD wallets created with subchains.
-	SubchainIndexes      []int32  `protobuf:"varint,6,rep,packed,name=subchain_indexes,json=subchainIndexes,proto3" json:"subchain_indexes,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *HDWallet) Reset()         { *m = HDWallet{} }
-func (m *HDWallet) String() string { return proto.CompactTextString(m) }
-func (*HDWallet) ProtoMessage()    {}
-func (*HDWallet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{1}
-}
-
-func (m *HDWallet) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_HDWallet.Unmarshal(m, b)
-}
-func (m *HDWallet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_HDWallet.Marshal(b, m, deterministic)
-}
-func (m *HDWallet) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_HDWallet.Merge(m, src)
-}
-func (m *HDWallet) XXX_Size() int {
-	return xxx_messageInfo_HDWallet.Size(m)
-}
-func (m *HDWallet) XXX_DiscardUnknown() {
-	xxx_messageInfo_HDWallet.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_HDWallet proto.InternalMessageInfo
-
-func (m *HDWallet) GetToken() string {
-	if m != nil {
-		return m.Token
-	}
-	return ""
-}
-
-func (m *HDWallet) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *HDWallet) GetChains() []*HDChain {
-	if m != nil {
-		return m.Chains
-	}
-	return nil
-}
-
-func (m *HDWallet) GetHd() bool {
-	if m != nil {
-		return m.Hd
-	}
-	return false
-}
-
-func (m *HDWallet) GetExtendedPublicKey() string {
-	if m != nil {
-		return m.ExtendedPublicKey
-	}
-	return ""
-}
-
-func (m *HDWallet) GetSubchainIndexes() []int32 {
-	if m != nil {
-		return m.SubchainIndexes
-	}
-	return nil
-}
-
-type HDChain struct {
-	// Array of HDAddresses associated with this subchain.
-	ChainAddresses []*HDAddress `protobuf:"bytes,1,rep,name=chain_addresses,json=chainAddresses,proto3" json:"chain_addresses,omitempty"`
-	// optional Index of the subchain, returned if the wallet has subchains.
-	Index                int64    `protobuf:"varint,2,opt,name=index,proto3" json:"index,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *HDChain) Reset()         { *m = HDChain{} }
-func (m *HDChain) String() string { return proto.CompactTextString(m) }
-func (*HDChain) ProtoMessage()    {}
-func (*HDChain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{2}
-}
-
-func (m *HDChain) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_HDChain.Unmarshal(m, b)
-}
-func (m *HDChain) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_HDChain.Marshal(b, m, deterministic)
-}
-func (m *HDChain) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_HDChain.Merge(m, src)
-}
-func (m *HDChain) XXX_Size() int {
-	return xxx_messageInfo_HDChain.Size(m)
-}
-func (m *HDChain) XXX_DiscardUnknown() {
-	xxx_messageInfo_HDChain.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_HDChain proto.InternalMessageInfo
-
-func (m *HDChain) GetChainAddresses() []*HDAddress {
-	if m != nil {
-		return m.ChainAddresses
-	}
-	return nil
-}
-
-func (m *HDChain) GetIndex() int64 {
-	if m != nil {
-		return m.Index
-	}
-	return 0
-}
-
-type HDAddress struct {
-	// Standard address representation.
-	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	// The BIP32 path of the HD address.
-	Path string `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
-	// optional Contains the hex-encoded public key if returned by Derive Address in Wallet endpoint.
-	Public               string   `protobuf:"bytes,3,opt,name=public,proto3" json:"public,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *HDAddress) Reset()         { *m = HDAddress{} }
-func (m *HDAddress) String() string { return proto.CompactTextString(m) }
-func (*HDAddress) ProtoMessage()    {}
-func (*HDAddress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{3}
-}
-
-func (m *HDAddress) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_HDAddress.Unmarshal(m, b)
-}
-func (m *HDAddress) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_HDAddress.Marshal(b, m, deterministic)
-}
-func (m *HDAddress) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_HDAddress.Merge(m, src)
-}
-func (m *HDAddress) XXX_Size() int {
-	return xxx_messageInfo_HDAddress.Size(m)
-}
-func (m *HDAddress) XXX_DiscardUnknown() {
-	xxx_messageInfo_HDAddress.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_HDAddress proto.InternalMessageInfo
-
-func (m *HDAddress) GetAddress() string {
-	if m != nil {
-		return m.Address
-	}
-	return ""
-}
-
-func (m *HDAddress) GetPath() string {
-	if m != nil {
-		return m.Path
-	}
-	return ""
-}
-
-func (m *HDAddress) GetPublic() string {
-	if m != nil {
-		return m.Public
-	}
-	return ""
-}
-
 type ListWallets struct {
 	WalletName           []string `protobuf:"bytes,1,rep,name=wallet_name,json=walletName,proto3" json:"wallet_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -281,7 +31,7 @@ func (m *ListWallets) Reset()         { *m = ListWallets{} }
 func (m *ListWallets) String() string { return proto.CompactTextString(m) }
 func (*ListWallets) ProtoMessage()    {}
 func (*ListWallets) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{4}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{0}
 }
 
 func (m *ListWallets) XXX_Unmarshal(b []byte) error {
@@ -309,109 +59,6 @@ func (m *ListWallets) GetWalletName() []string {
 	return nil
 }
 
-type AddressKeychain struct {
-	// Standard address representation.
-	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	// Hex-encoded Public key.
-	Public string `protobuf:"bytes,2,opt,name=public,proto3" json:"public,omitempty"`
-	// Hex-encoded Private key.
-	Private string `protobuf:"bytes,3,opt,name=private,proto3" json:"private,omitempty"`
-	// Wallet import format, a common encoding for the private key.
-	Wif string `protobuf:"bytes,4,opt,name=wif,proto3" json:"wif,omitempty"`
-	// Optional Array of public keys to provide to generate a multisig address.
-	Pubkeys []string `protobuf:"bytes,5,rep,name=pubkeys,proto3" json:"pubkeys,omitempty"`
-	// Optional If generating a multisig address, the type of multisig script; typically “multisig-n-of-m”, where n and m are integers.
-	ScriptType string `protobuf:"bytes,6,opt,name=script_type,json=scriptType,proto3" json:"script_type,omitempty"`
-	// Optional If generating an OAP address, this represents the parent blockchain’s underlying address (the typical address listed above).
-	OriginalAddress string `protobuf:"bytes,7,opt,name=original_address,json=originalAddress,proto3" json:"original_address,omitempty"`
-	// Optional The OAP address, if generated using the Generate Asset Address Endpoint.
-	OapAddress           string   `protobuf:"bytes,8,opt,name=oap_address,json=oapAddress,proto3" json:"oap_address,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *AddressKeychain) Reset()         { *m = AddressKeychain{} }
-func (m *AddressKeychain) String() string { return proto.CompactTextString(m) }
-func (*AddressKeychain) ProtoMessage()    {}
-func (*AddressKeychain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{5}
-}
-
-func (m *AddressKeychain) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AddressKeychain.Unmarshal(m, b)
-}
-func (m *AddressKeychain) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AddressKeychain.Marshal(b, m, deterministic)
-}
-func (m *AddressKeychain) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AddressKeychain.Merge(m, src)
-}
-func (m *AddressKeychain) XXX_Size() int {
-	return xxx_messageInfo_AddressKeychain.Size(m)
-}
-func (m *AddressKeychain) XXX_DiscardUnknown() {
-	xxx_messageInfo_AddressKeychain.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_AddressKeychain proto.InternalMessageInfo
-
-func (m *AddressKeychain) GetAddress() string {
-	if m != nil {
-		return m.Address
-	}
-	return ""
-}
-
-func (m *AddressKeychain) GetPublic() string {
-	if m != nil {
-		return m.Public
-	}
-	return ""
-}
-
-func (m *AddressKeychain) GetPrivate() string {
-	if m != nil {
-		return m.Private
-	}
-	return ""
-}
-
-func (m *AddressKeychain) GetWif() string {
-	if m != nil {
-		return m.Wif
-	}
-	return ""
-}
-
-func (m *AddressKeychain) GetPubkeys() []string {
-	if m != nil {
-		return m.Pubkeys
-	}
-	return nil
-}
-
-func (m *AddressKeychain) GetScriptType() string {
-	if m != nil {
-		return m.ScriptType
-	}
-	return ""
-}
-
-func (m *AddressKeychain) GetOriginalAddress() string {
-	if m != nil {
-		return m.OriginalAddress
-	}
-	return ""
-}
-
-func (m *AddressKeychain) GetOapAddress() string {
-	if m != nil {
-		return m.OapAddress
-	}
-	return ""
-}
-
 type WalletAddressKeychain struct {
 	Wallet               *Wallet          `protobuf:"bytes,1,opt,name=wallet,proto3" json:"wallet,omitempty"`
 	Addresskeychain      *AddressKeychain `protobuf:"bytes,2,opt,name=addresskeychain,proto3" json:"addresskeychain,omitempty"`
@@ -424,7 +71,7 @@ func (m *WalletAddressKeychain) Reset()         { *m = WalletAddressKeychain{} }
 func (m *WalletAddressKeychain) String() string { return proto.CompactTextString(m) }
 func (*WalletAddressKeychain) ProtoMessage()    {}
 func (*WalletAddressKeychain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{6}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{1}
 }
 
 func (m *WalletAddressKeychain) XXX_Unmarshal(b []byte) error {
@@ -459,37 +106,6 @@ func (m *WalletAddressKeychain) GetAddresskeychain() *AddressKeychain {
 	return nil
 }
 
-type NullValue struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *NullValue) Reset()         { *m = NullValue{} }
-func (m *NullValue) String() string { return proto.CompactTextString(m) }
-func (*NullValue) ProtoMessage()    {}
-func (*NullValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{7}
-}
-
-func (m *NullValue) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_NullValue.Unmarshal(m, b)
-}
-func (m *NullValue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_NullValue.Marshal(b, m, deterministic)
-}
-func (m *NullValue) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_NullValue.Merge(m, src)
-}
-func (m *NullValue) XXX_Size() int {
-	return xxx_messageInfo_NullValue.Size(m)
-}
-func (m *NullValue) XXX_DiscardUnknown() {
-	xxx_messageInfo_NullValue.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_NullValue proto.InternalMessageInfo
-
 type CreateWalletEndpointRequest struct {
 	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
@@ -503,7 +119,7 @@ func (m *CreateWalletEndpointRequest) Reset()         { *m = CreateWalletEndpoin
 func (m *CreateWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateWalletEndpointRequest) ProtoMessage()    {}
 func (*CreateWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{8}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{2}
 }
 
 func (m *CreateWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -561,7 +177,7 @@ func (m *CreateWalletHDEndpointRequest) Reset()         { *m = CreateWalletHDEnd
 func (m *CreateWalletHDEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateWalletHDEndpointRequest) ProtoMessage()    {}
 func (*CreateWalletHDEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{9}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{3}
 }
 
 func (m *CreateWalletHDEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -634,7 +250,7 @@ func (m *ListWalletsEndpointRequest) Reset()         { *m = ListWalletsEndpointR
 func (m *ListWalletsEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ListWalletsEndpointRequest) ProtoMessage()    {}
 func (*ListWalletsEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{10}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{4}
 }
 
 func (m *ListWalletsEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -666,7 +282,7 @@ func (m *GetWalletEndpointRequest) Reset()         { *m = GetWalletEndpointReque
 func (m *GetWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetWalletEndpointRequest) ProtoMessage()    {}
 func (*GetWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{11}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{5}
 }
 
 func (m *GetWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -706,7 +322,7 @@ func (m *AddAddressesToWalletEndpointRequest) Reset()         { *m = AddAddresse
 func (m *AddAddressesToWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddAddressesToWalletEndpointRequest) ProtoMessage()    {}
 func (*AddAddressesToWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{12}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{6}
 }
 
 func (m *AddAddressesToWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -754,7 +370,7 @@ func (m *GetWalletAddressesEndpointRequest) Reset()         { *m = GetWalletAddr
 func (m *GetWalletAddressesEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetWalletAddressesEndpointRequest) ProtoMessage()    {}
 func (*GetWalletAddressesEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{13}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{7}
 }
 
 func (m *GetWalletAddressesEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -810,7 +426,7 @@ func (m *RemoveAddressesFromWalletEndpointRequest) Reset() {
 func (m *RemoveAddressesFromWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*RemoveAddressesFromWalletEndpointRequest) ProtoMessage()    {}
 func (*RemoveAddressesFromWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{14}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{8}
 }
 
 func (m *RemoveAddressesFromWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -856,7 +472,7 @@ func (m *GenerateAdressInWalletEndpointRequest) Reset()         { *m = GenerateA
 func (m *GenerateAdressInWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GenerateAdressInWalletEndpointRequest) ProtoMessage()    {}
 func (*GenerateAdressInWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{15}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{9}
 }
 
 func (m *GenerateAdressInWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -897,7 +513,7 @@ func (m *DeriveAddressInWalletEndpointRequest) Reset()         { *m = DeriveAddr
 func (m *DeriveAddressInWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeriveAddressInWalletEndpointRequest) ProtoMessage()    {}
 func (*DeriveAddressInWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{16}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{10}
 }
 
 func (m *DeriveAddressInWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -950,7 +566,7 @@ func (m *DeleteWalletEndpointRequest) Reset()         { *m = DeleteWalletEndpoin
 func (m *DeleteWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteWalletEndpointRequest) ProtoMessage()    {}
 func (*DeleteWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2a4f2beabc42ed9b, []int{17}
+	return fileDescriptor_2a4f2beabc42ed9b, []int{11}
 }
 
 func (m *DeleteWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -979,14 +595,8 @@ func (m *DeleteWalletEndpointRequest) GetName() string {
 }
 
 func init() {
-	proto.RegisterType((*Wallet)(nil), "fairwaycorp.blockchainprotobuf.Wallet")
-	proto.RegisterType((*HDWallet)(nil), "fairwaycorp.blockchainprotobuf.HDWallet")
-	proto.RegisterType((*HDChain)(nil), "fairwaycorp.blockchainprotobuf.HDChain")
-	proto.RegisterType((*HDAddress)(nil), "fairwaycorp.blockchainprotobuf.HDAddress")
 	proto.RegisterType((*ListWallets)(nil), "fairwaycorp.blockchainprotobuf.ListWallets")
-	proto.RegisterType((*AddressKeychain)(nil), "fairwaycorp.blockchainprotobuf.AddressKeychain")
 	proto.RegisterType((*WalletAddressKeychain)(nil), "fairwaycorp.blockchainprotobuf.WalletAddressKeychain")
-	proto.RegisterType((*NullValue)(nil), "fairwaycorp.blockchainprotobuf.NullValue")
 	proto.RegisterType((*CreateWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.CreateWalletEndpointRequest")
 	proto.RegisterType((*CreateWalletHDEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.CreateWalletHDEndpointRequest")
 	proto.RegisterType((*ListWalletsEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.ListWalletsEndpointRequest")
@@ -1002,53 +612,40 @@ func init() {
 func init() { proto.RegisterFile("walletMessage.proto", fileDescriptor_2a4f2beabc42ed9b) }
 
 var fileDescriptor_2a4f2beabc42ed9b = []byte{
-	// 754 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x54, 0x5d, 0x4f, 0xdb, 0x48,
-	0x14, 0x95, 0x13, 0x12, 0x92, 0x6b, 0x2d, 0x61, 0x87, 0xdd, 0x95, 0xb5, 0xb0, 0x4b, 0xd6, 0xbb,
-	0xec, 0x86, 0x87, 0x38, 0x5b, 0xfa, 0x54, 0x21, 0xb5, 0x4a, 0x49, 0x0b, 0x88, 0x16, 0xd1, 0x11,
-	0xea, 0xd7, 0x4b, 0x34, 0xb6, 0x2f, 0x89, 0x15, 0xc7, 0xe3, 0xda, 0x63, 0x42, 0xfa, 0xb3, 0xfa,
-	0x8b, 0xfa, 0x27, 0xda, 0xe7, 0xca, 0x33, 0x76, 0xbe, 0x44, 0x21, 0x54, 0x7d, 0xe9, 0xdb, 0xdc,
-	0x33, 0x73, 0xef, 0x39, 0x73, 0xee, 0xdc, 0x81, 0x8d, 0x11, 0xf3, 0x7d, 0x14, 0xcf, 0x31, 0x8e,
-	0x59, 0x0f, 0xad, 0x30, 0xe2, 0x82, 0x93, 0x3f, 0x2f, 0x98, 0x17, 0x8d, 0xd8, 0xd8, 0xe1, 0x51,
-	0x68, 0xd9, 0x3e, 0x77, 0x06, 0x4e, 0x9f, 0x79, 0x81, 0xdc, 0xb4, 0x93, 0x0b, 0xf3, 0x0c, 0xca,
-	0xaf, 0x64, 0x1a, 0xf9, 0x05, 0x4a, 0x82, 0x0f, 0x30, 0x30, 0xb4, 0xba, 0xd6, 0xa8, 0x52, 0x15,
-	0x10, 0x02, 0x2b, 0x01, 0x1b, 0xa2, 0x51, 0x90, 0xa0, 0x5c, 0x93, 0x2d, 0xa8, 0x32, 0xd7, 0x8d,
-	0x30, 0x8e, 0x31, 0x36, 0x8a, 0xf5, 0x62, 0xa3, 0x4a, 0xa7, 0x80, 0xf9, 0x51, 0x83, 0xca, 0x51,
-	0xe7, 0xce, 0x45, 0x1f, 0x41, 0x59, 0x2a, 0x53, 0x15, 0xf5, 0xbd, 0xff, 0xac, 0x9b, 0x95, 0x5b,
-	0x47, 0x9d, 0x83, 0x34, 0xa6, 0x59, 0x1a, 0x59, 0x83, 0x42, 0xdf, 0x35, 0x56, 0xea, 0x5a, 0xa3,
-	0x42, 0x0b, 0x7d, 0x97, 0x58, 0xb0, 0x81, 0x57, 0x02, 0x03, 0x17, 0xdd, 0x6e, 0x98, 0xd8, 0xbe,
-	0xe7, 0x74, 0x07, 0x38, 0x36, 0x4a, 0x92, 0xf3, 0xe7, 0x7c, 0xeb, 0x4c, 0xee, 0x9c, 0xe0, 0x98,
-	0xec, 0xc2, 0x7a, 0x9c, 0xd8, 0xb2, 0x58, 0xd7, 0x0b, 0x5c, 0xbc, 0xc2, 0xd8, 0x28, 0xd7, 0x8b,
-	0x8d, 0x12, 0xad, 0xe5, 0xf8, 0xb1, 0x82, 0xcd, 0x18, 0x56, 0x33, 0x76, 0x42, 0xa1, 0xa6, 0x52,
-	0xa6, 0x8e, 0x68, 0x52, 0xff, 0xee, 0xed, 0xfa, 0xdb, 0x2a, 0x85, 0xae, 0xc9, 0x8d, 0x76, 0x5e,
-	0x20, 0x35, 0x4d, 0x0a, 0x90, 0xfe, 0x14, 0xa9, 0x0a, 0xcc, 0x17, 0x50, 0x9d, 0xa4, 0x10, 0x03,
-	0x56, 0x33, 0xc2, 0xcc, 0xd9, 0x3c, 0x4c, 0xbd, 0x0d, 0x99, 0xe8, 0xe7, 0xde, 0xa6, 0x6b, 0xf2,
-	0x1b, 0x94, 0x95, 0x03, 0x46, 0x51, 0xa2, 0x59, 0x64, 0x5a, 0xa0, 0x3f, 0xf3, 0x62, 0xa1, 0x7a,
-	0x15, 0x93, 0x6d, 0xd0, 0xd5, 0x13, 0xea, 0xca, 0xee, 0x68, 0xb2, 0xb3, 0xa0, 0xa0, 0x53, 0x36,
-	0x44, 0xf3, 0xb3, 0x06, 0xb5, 0x4c, 0xc1, 0x09, 0x8e, 0xa5, 0xea, 0x1b, 0x94, 0x4c, 0x59, 0x0b,
-	0xb3, 0xac, 0x69, 0x46, 0x18, 0x79, 0x97, 0x4c, 0x60, 0x26, 0x27, 0x0f, 0xc9, 0x3a, 0x14, 0x47,
-	0xde, 0x85, 0xec, 0x61, 0x95, 0xa6, 0x4b, 0x79, 0x36, 0xb1, 0x07, 0x38, 0x8e, 0x8d, 0x92, 0x94,
-	0x93, 0x87, 0xa9, 0xd8, 0xd8, 0x89, 0xbc, 0x50, 0x74, 0xc5, 0x38, 0x44, 0xa3, 0x2c, 0x73, 0x40,
-	0x41, 0xe7, 0xe3, 0x10, 0xd3, 0x7e, 0xf2, 0xc8, 0xeb, 0x79, 0x01, 0xf3, 0xf3, 0xe6, 0x18, 0xab,
-	0xf2, 0x54, 0x2d, 0xc7, 0x73, 0x37, 0xb7, 0x41, 0xe7, 0x2c, 0x9c, 0x9c, 0xaa, 0xa8, 0x5a, 0x9c,
-	0x85, 0xd9, 0x01, 0xf3, 0x83, 0x06, 0xbf, 0x2a, 0x97, 0x16, 0xaf, 0xff, 0x10, 0xca, 0xca, 0x20,
-	0x79, 0x7b, 0x7d, 0xef, 0xdf, 0xdb, 0xda, 0xae, 0xca, 0xd0, 0x2c, 0x8b, 0xbc, 0x81, 0x5a, 0x46,
-	0x3b, 0xc8, 0x4a, 0x4a, 0xb7, 0xf4, 0xbd, 0xd6, 0x6d, 0x85, 0x16, 0x94, 0xd0, 0xc5, 0x3a, 0xa6,
-	0x0e, 0xd5, 0xd3, 0xc4, 0xf7, 0x5f, 0x32, 0x3f, 0x41, 0x13, 0x61, 0xf3, 0x20, 0x42, 0x26, 0x50,
-	0xf1, 0x3f, 0x09, 0xdc, 0x90, 0x7b, 0x81, 0xa0, 0xf8, 0x2e, 0xc1, 0xf8, 0xfb, 0x0d, 0xff, 0x27,
-	0x0d, 0xfe, 0x98, 0xe5, 0x39, 0xea, 0x7c, 0x3b, 0xd3, 0x8f, 0xf4, 0x23, 0x6c, 0xc1, 0xef, 0x33,
-	0x93, 0xb4, 0x70, 0x67, 0xd3, 0x02, 0xe3, 0x10, 0xc5, 0xf5, 0xce, 0xe7, 0x37, 0xd7, 0xa6, 0x37,
-	0x37, 0x07, 0xf0, 0x77, 0xdb, 0x75, 0x27, 0x1f, 0xc2, 0x39, 0x5f, 0x3a, 0x95, 0xfc, 0x0f, 0x1b,
-	0x7c, 0xe8, 0x89, 0xb9, 0xc7, 0x8a, 0xb1, 0xf4, 0xb5, 0x42, 0xaf, 0xdb, 0x32, 0x87, 0xf0, 0xd7,
-	0x44, 0xdc, 0x04, 0x5d, 0x86, 0x8a, 0xc0, 0x4a, 0x12, 0xa3, 0x9b, 0xd5, 0x96, 0x6b, 0x52, 0x07,
-	0xfd, 0x3d, 0x46, 0xdc, 0x66, 0x3e, 0x0b, 0x1c, 0x35, 0xdf, 0x15, 0x3a, 0x0b, 0x99, 0xaf, 0xa1,
-	0x41, 0x71, 0xc8, 0x2f, 0x71, 0xc2, 0xf5, 0x34, 0xe2, 0xc3, 0xe5, 0x2f, 0x38, 0xf3, 0xdf, 0x14,
-	0xe6, 0xfe, 0x1b, 0x73, 0x1f, 0x76, 0x0e, 0x31, 0xc0, 0x88, 0x09, 0x6c, 0x4b, 0xe4, 0x38, 0x58,
-	0xde, 0xf2, 0x11, 0xfc, 0xd3, 0xc1, 0xc8, 0x9b, 0xc8, 0xba, 0x43, 0x6e, 0xfa, 0xa4, 0x1d, 0x9e,
-	0x04, 0x42, 0x0a, 0x2a, 0x51, 0x15, 0x90, 0x1d, 0x58, 0x9b, 0x7f, 0x3d, 0xd2, 0x8d, 0x22, 0xfd,
-	0x69, 0xee, 0xed, 0x98, 0xf7, 0x60, 0xb3, 0x83, 0x3e, 0x7e, 0x6d, 0x30, 0xaf, 0xe1, 0x7b, 0xbc,
-	0xff, 0xf6, 0x41, 0xcf, 0x13, 0xfd, 0xc4, 0xb6, 0x1c, 0x3e, 0x6c, 0x65, 0x43, 0xd1, 0x4c, 0xa7,
-	0xa2, 0x35, 0x9d, 0x8a, 0x66, 0x3e, 0x16, 0x2d, 0xb9, 0x70, 0x9a, 0x3d, 0x0c, 0x9a, 0x3d, 0x6e,
-	0x97, 0x65, 0x78, 0xff, 0x4b, 0x00, 0x00, 0x00, 0xff, 0xff, 0x90, 0xdd, 0xa2, 0x76, 0x2e, 0x08,
-	0x00, 0x00,
+	// 560 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x53, 0x4d, 0x6f, 0xd3, 0x40,
+	0x10, 0x95, 0xf3, 0x45, 0x33, 0x11, 0x2d, 0x6c, 0x40, 0xb2, 0xda, 0x02, 0xc1, 0x50, 0x08, 0x87,
+	0x38, 0x50, 0x4e, 0xa8, 0x12, 0x28, 0x34, 0xd0, 0x56, 0x05, 0x84, 0x2c, 0x24, 0x3e, 0x2e, 0xd1,
+	0xda, 0x9e, 0x26, 0x56, 0xec, 0xdd, 0xe0, 0x5d, 0x93, 0x86, 0x9f, 0xc5, 0x7f, 0xe3, 0x8e, 0x3a,
+	0xb6, 0xf3, 0xa5, 0x40, 0x43, 0x6f, 0x3b, 0x6f, 0x76, 0xde, 0x9b, 0x79, 0x9a, 0x81, 0xfa, 0x98,
+	0x87, 0x21, 0xea, 0xf7, 0xa8, 0x14, 0xef, 0xa3, 0x3d, 0x8a, 0xa5, 0x96, 0xec, 0xee, 0x19, 0x0f,
+	0xe2, 0x31, 0x9f, 0x78, 0x32, 0x1e, 0xd9, 0x6e, 0x28, 0xbd, 0xa1, 0x37, 0xe0, 0x81, 0xa0, 0xa4,
+	0x9b, 0x9c, 0x6d, 0xd7, 0x3d, 0x19, 0x45, 0x52, 0x2c, 0x14, 0x59, 0x36, 0xd4, 0xde, 0x05, 0x4a,
+	0x7f, 0x26, 0x3e, 0xc5, 0xee, 0x41, 0x2d, 0xa5, 0xee, 0x09, 0x1e, 0xa1, 0x69, 0x34, 0x8a, 0xcd,
+	0xaa, 0x03, 0x29, 0xf4, 0x81, 0x47, 0x68, 0xfd, 0x32, 0xe0, 0x76, 0xfa, 0xb9, 0xe3, 0xfb, 0x31,
+	0x2a, 0x75, 0x8a, 0x13, 0x92, 0x61, 0x2f, 0xa1, 0x92, 0xfe, 0x33, 0x8d, 0x86, 0xd1, 0xac, 0xed,
+	0x3f, 0xb2, 0xff, 0xdd, 0x8f, 0x9d, 0xd2, 0x38, 0x59, 0x15, 0xfb, 0x0a, 0x5b, 0x3c, 0xa5, 0x1c,
+	0x66, 0x94, 0x66, 0x81, 0x88, 0xda, 0x97, 0x11, 0x2d, 0x75, 0xe2, 0x2c, 0xf3, 0x58, 0x08, 0x3b,
+	0x87, 0x31, 0x72, 0x8d, 0xa9, 0xe4, 0x1b, 0xe1, 0x8f, 0x64, 0x20, 0xb4, 0x83, 0xdf, 0x13, 0x54,
+	0x9a, 0xdd, 0x82, 0xb2, 0x96, 0x43, 0x14, 0xd4, 0x78, 0xd5, 0x49, 0x03, 0xc6, 0xa0, 0x44, 0x1e,
+	0x14, 0x08, 0xa4, 0x37, 0xdb, 0x85, 0x6a, 0xc6, 0x8d, 0xca, 0x2c, 0x92, 0x39, 0x33, 0xc0, 0xfa,
+	0x6d, 0xc0, 0x9d, 0x79, 0x9d, 0xe3, 0xee, 0xd5, 0x95, 0x5e, 0x41, 0x85, 0x7a, 0x4f, 0x65, 0x6a,
+	0xfb, 0x8f, 0x2f, 0x33, 0xe1, 0xb8, 0x7b, 0x48, 0xc3, 0x67, 0x65, 0x6c, 0x13, 0x0a, 0x03, 0xdf,
+	0x2c, 0x35, 0x8c, 0xe6, 0x86, 0x53, 0x18, 0xf8, 0xcc, 0x86, 0x3a, 0x9e, 0x6b, 0x14, 0x3e, 0xfa,
+	0xbd, 0x51, 0xe2, 0x86, 0x81, 0xd7, 0x1b, 0xe2, 0xc4, 0x2c, 0x93, 0xe6, 0xcd, 0x3c, 0xf5, 0x91,
+	0x32, 0xa7, 0x38, 0x61, 0x4f, 0xe0, 0x86, 0x4a, 0x5c, 0x22, 0xeb, 0x05, 0xc2, 0xc7, 0x73, 0x54,
+	0x66, 0xa5, 0x51, 0x6c, 0x96, 0x9d, 0xad, 0x1c, 0x3f, 0x49, 0x61, 0x6b, 0x17, 0xb6, 0xe7, 0x76,
+	0x68, 0x69, 0x66, 0xcb, 0x06, 0xf3, 0x08, 0xf5, 0x6a, 0xe7, 0xf3, 0xc9, 0x8d, 0xd9, 0xe4, 0xd6,
+	0x10, 0x1e, 0x74, 0x7c, 0xbf, 0x93, 0xbb, 0xfa, 0x49, 0xae, 0x5d, 0xca, 0x9e, 0x42, 0x5d, 0x46,
+	0x81, 0x5e, 0xd8, 0x4f, 0x54, 0xe4, 0xeb, 0x86, 0xb3, 0x2a, 0x65, 0x45, 0x70, 0x7f, 0xda, 0xdc,
+	0x14, 0x5d, 0x47, 0x8a, 0x41, 0x29, 0x51, 0xe8, 0x67, 0xdc, 0xf4, 0x66, 0x0d, 0xa8, 0xfd, 0xc4,
+	0x58, 0xba, 0x3c, 0xe4, 0xc2, 0x43, 0xb3, 0x48, 0xa9, 0x79, 0xc8, 0xfa, 0x02, 0x4d, 0x07, 0x23,
+	0xf9, 0x03, 0xa7, 0x5a, 0x6f, 0x63, 0x19, 0xad, 0x3f, 0xa0, 0x09, 0xd7, 0xb2, 0x75, 0xcb, 0x96,
+	0x25, 0x0f, 0xad, 0x03, 0xd8, 0x3b, 0x42, 0x81, 0x31, 0xd7, 0xd8, 0x21, 0xe4, 0x44, 0xac, 0x6f,
+	0xf9, 0x18, 0x1e, 0x76, 0x31, 0x0e, 0xa6, 0x6d, 0xfd, 0x47, 0xed, 0xc5, 0x4a, 0x7b, 0x32, 0x11,
+	0x9a, 0x1a, 0x2a, 0x3b, 0x69, 0xc0, 0xf6, 0x60, 0x73, 0x71, 0x7b, 0xc8, 0x8d, 0xa2, 0x73, 0x7d,
+	0x61, 0x77, 0xac, 0x67, 0xb0, 0xd3, 0xc5, 0x10, 0xff, 0x76, 0x98, 0x2b, 0xf4, 0x5e, 0x1f, 0x7c,
+	0x7b, 0xd1, 0x0f, 0xf4, 0x20, 0x71, 0x6d, 0x4f, 0x46, 0xed, 0xec, 0x28, 0x5a, 0x17, 0x57, 0xd1,
+	0x9e, 0x5d, 0x45, 0x2b, 0x3f, 0x8b, 0x36, 0x3d, 0xbc, 0x56, 0x1f, 0x45, 0xab, 0x2f, 0xdd, 0x0a,
+	0x85, 0xcf, 0xff, 0x04, 0x00, 0x00, 0xff, 0xff, 0x54, 0x33, 0x6b, 0x48, 0x40, 0x05, 0x00, 0x00,
 }

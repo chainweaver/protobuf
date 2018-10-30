@@ -16,7 +16,7 @@ var google_api_annotations_pb = require('./google/api/annotations_pb.js')
 
 var assetMessage_pb = require('./assetMessage_pb.js')
 
-var walletMessage_pb = require('./walletMessage_pb.js')
+var commonMessage_pb = require('./commonMessage_pb.js')
 const proto = {};
 proto.fairwaycorp = {};
 proto.fairwaycorp.blockchainprotobuf = require('./assetService_pb.js');
@@ -86,12 +86,12 @@ proto.fairwaycorp.blockchainprotobuf.AssetServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.AddressKeychain>}
  */
 const methodInfo_GenerateAssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  walletMessage_pb.AddressKeychain,
+  commonMessage_pb.AddressKeychain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.GenerateAssetAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  walletMessage_pb.AddressKeychain.deserializeBinary
+  commonMessage_pb.AddressKeychain.deserializeBinary
 );
 
 
@@ -142,12 +142,12 @@ proto.fairwaycorp.blockchainprotobuf.AssetServicePromiseClient.prototype.generat
  *   !proto.fairwaycorp.blockchainprotobuf.OAPTX>}
  */
 const methodInfo_IssueAssetEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  assetMessage_pb.OAPTX,
+  commonMessage_pb.OAPTX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.OAPIssue} request */
   function(request) {
     return request.serializeBinary();
   },
-  assetMessage_pb.OAPTX.deserializeBinary
+  commonMessage_pb.OAPTX.deserializeBinary
 );
 
 
@@ -198,12 +198,12 @@ proto.fairwaycorp.blockchainprotobuf.AssetServicePromiseClient.prototype.issueAs
  *   !proto.fairwaycorp.blockchainprotobuf.OAPTX>}
  */
 const methodInfo_TransferAssetEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  assetMessage_pb.OAPTX,
+  commonMessage_pb.OAPTX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.TransferAssetEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  assetMessage_pb.OAPTX.deserializeBinary
+  commonMessage_pb.OAPTX.deserializeBinary
 );
 
 
@@ -254,12 +254,12 @@ proto.fairwaycorp.blockchainprotobuf.AssetServicePromiseClient.prototype.transfe
  *   !proto.fairwaycorp.blockchainprotobuf.ArrayString>}
  */
 const methodInfo_ListAssetTXsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  assetMessage_pb.ArrayString,
+  commonMessage_pb.ArrayString,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.ListAssetTXsEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  assetMessage_pb.ArrayString.deserializeBinary
+  commonMessage_pb.ArrayString.deserializeBinary
 );
 
 
@@ -310,12 +310,12 @@ proto.fairwaycorp.blockchainprotobuf.AssetServicePromiseClient.prototype.listAss
  *   !proto.fairwaycorp.blockchainprotobuf.OAPTX>}
  */
 const methodInfo_GetAssetTXEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  assetMessage_pb.OAPTX,
+  commonMessage_pb.OAPTX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.GetAssetTXEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  assetMessage_pb.OAPTX.deserializeBinary
+  commonMessage_pb.OAPTX.deserializeBinary
 );
 
 
@@ -366,12 +366,12 @@ proto.fairwaycorp.blockchainprotobuf.AssetServicePromiseClient.prototype.getAsse
  *   !proto.fairwaycorp.blockchainprotobuf.Address>}
  */
 const methodInfo_GetAssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  assetMessage_pb.Address,
+  commonMessage_pb.Address,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.GetAssetAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  assetMessage_pb.Address.deserializeBinary
+  commonMessage_pb.Address.deserializeBinary
 );
 
 

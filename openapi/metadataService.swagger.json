@@ -17,7 +17,7 @@
   "paths": {
     "/addrs/{address}/meta": {
       "get": {
-        "operationId": "GetMetadata_addressEndpoint",
+        "operationId": "GetMetadataAddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -46,7 +46,7 @@
         ]
       },
       "delete": {
-        "operationId": "DeleteMetadata_addressEndpoint",
+        "operationId": "DeleteMetadataAddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -74,7 +74,7 @@
         ]
       },
       "put": {
-        "operationId": "PutMetadata_addressEndpoint",
+        "operationId": "PutMetadataAddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -95,7 +95,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufPutMetadata_addressEndpointRequest"
+              "$ref": "#/definitions/blockchainprotobufPutMetadataAddressEndpointRequest"
             }
           }
         ],
@@ -106,7 +106,7 @@
     },
     "/blocks/{block_hash}/meta": {
       "put": {
-        "operationId": "PutMetadata_blockhashEndpoint",
+        "operationId": "PutMetadataBlockhashEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -127,7 +127,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufPutMetadata_block_hashEndpointRequest"
+              "$ref": "#/definitions/blockchainprotobufPutMetadataBlockhashEndpointRequest"
             }
           }
         ],
@@ -138,7 +138,7 @@
     },
     "/blocks/{block_height}/meta": {
       "delete": {
-        "operationId": "DeleteMetadata_blockheightEndpoint",
+        "operationId": "DeleteMetadataBlockheightEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -168,7 +168,7 @@
     },
     "/blocks/{blockhash}/meta": {
       "get": {
-        "operationId": "GetMetadata_blockhashEndpoint",
+        "operationId": "GetMetadataBlockhashEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -199,7 +199,7 @@
     },
     "/txs/{txhash}/meta": {
       "get": {
-        "operationId": "GetMetadata_txhashEndpoint",
+        "operationId": "GetMetadataTxhashEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -228,7 +228,7 @@
         ]
       },
       "delete": {
-        "operationId": "DeleteMetadata_txhashEndpoint",
+        "operationId": "DeleteMetadataTxhashEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -256,7 +256,7 @@
         ]
       },
       "put": {
-        "operationId": "PutMetadata_txhashEndpoint",
+        "operationId": "PutMetadataTxhashEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -277,7 +277,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufPutMetadata_txhashEndpointRequest"
+              "$ref": "#/definitions/blockchainprotobufPutMetadataTxhashEndpointRequest"
             }
           }
         ],
@@ -313,13 +313,9 @@
     "blockchainprotobufNullValue": {
       "type": "object"
     },
-    "blockchainprotobufPutMetadata_addressEndpointRequest": {
+    "blockchainprotobufPutMetadataAddressEndpointRequest": {
       "type": "object",
       "properties": {
-        "private": {
-          "type": "boolean",
-          "format": "boolean"
-        },
         "keypair": {
           "type": "array",
           "items": {
@@ -328,16 +324,16 @@
         },
         "address": {
           "type": "string"
-        }
-      }
-    },
-    "blockchainprotobufPutMetadata_block_hashEndpointRequest": {
-      "type": "object",
-      "properties": {
+        },
         "private": {
           "type": "boolean",
           "format": "boolean"
-        },
+        }
+      }
+    },
+    "blockchainprotobufPutMetadataBlockhashEndpointRequest": {
+      "type": "object",
+      "properties": {
         "keypair": {
           "type": "array",
           "items": {
@@ -346,16 +342,16 @@
         },
         "block_hash": {
           "type": "string"
-        }
-      }
-    },
-    "blockchainprotobufPutMetadata_txhashEndpointRequest": {
-      "type": "object",
-      "properties": {
+        },
         "private": {
           "type": "boolean",
           "format": "boolean"
-        },
+        }
+      }
+    },
+    "blockchainprotobufPutMetadataTxhashEndpointRequest": {
+      "type": "object",
+      "properties": {
         "keypair": {
           "type": "array",
           "items": {
@@ -364,6 +360,10 @@
         },
         "txhash": {
           "type": "string"
+        },
+        "private": {
+          "type": "boolean",
+          "format": "boolean"
         }
       }
     }

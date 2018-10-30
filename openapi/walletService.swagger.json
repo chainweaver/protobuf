@@ -15,54 +15,6 @@
     "application/json"
   ],
   "paths": {
-    "/wallet/hd/{name}": {
-      "delete": {
-        "operationId": "DeleteWalletHDEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "WalletService"
-        ]
-      }
-    },
-    "/wallet/{name}": {
-      "delete": {
-        "operationId": "DeleteWalletEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "WalletService"
-        ]
-      }
-    },
     "/wallets": {
       "get": {
         "operationId": "ListWalletsEndpoint",
@@ -151,6 +103,28 @@
         "tags": [
           "WalletService"
         ]
+      },
+      "delete": {
+        "operationId": "DeleteWalletHDEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
       }
     },
     "/wallets/hd/{name}/addresses": {
@@ -192,13 +166,13 @@
       }
     },
     "/wallets/hd/{name}/addresses/derive": {
-      "get": {
+      "post": {
         "operationId": "DeriveAddressInWalletEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/blockchainprotobufHDWallet"
             }
           }
         },
@@ -210,18 +184,12 @@
             "type": "string"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "subchain_index",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufDeriveAddressInWalletEndpointRequest"
+            }
           }
         ],
         "tags": [
@@ -237,6 +205,28 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/blockchainprotobufWallet"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WalletService"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteWalletEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
             }
           }
         },
@@ -480,6 +470,22 @@
             "type": "integer",
             "format": "int32"
           }
+        }
+      }
+    },
+    "blockchainprotobufDeriveAddressInWalletEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "subchain_index": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },

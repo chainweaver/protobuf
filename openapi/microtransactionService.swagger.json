@@ -183,15 +183,15 @@
           "type": "string",
           "description": "Raw hexadecimal encoding of the encumbrance script for this output."
         },
-        "script_type": {
-          "type": "string",
-          "description": "Addresses that correspond to this output; typically this will only have a single address, and you can think of this output as having “sent” value to the address contained herein."
-        },
         "addresses": {
           "type": "array",
           "items": {
             "type": "string"
           },
+          "description": "Addresses that correspond to this output; typically this will only have a single address, and you can think of this output as having “sent” value to the address contained herein."
+        },
+        "script_type": {
+          "type": "string",
           "description": "The type of encumbrance script used for this output."
         },
         "spent_by": {

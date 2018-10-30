@@ -20,37 +20,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type NullValue struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *NullValue) Reset()         { *m = NullValue{} }
-func (m *NullValue) String() string { return proto.CompactTextString(m) }
-func (*NullValue) ProtoMessage()    {}
-func (*NullValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{0}
-}
-
-func (m *NullValue) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_NullValue.Unmarshal(m, b)
-}
-func (m *NullValue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_NullValue.Marshal(b, m, deterministic)
-}
-func (m *NullValue) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_NullValue.Merge(m, src)
-}
-func (m *NullValue) XXX_Size() int {
-	return xxx_messageInfo_NullValue.Size(m)
-}
-func (m *NullValue) XXX_DiscardUnknown() {
-	xxx_messageInfo_NullValue.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_NullValue proto.InternalMessageInfo
-
 type KeyValues struct {
 	Keypair              []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
@@ -62,7 +31,7 @@ func (m *KeyValues) Reset()         { *m = KeyValues{} }
 func (m *KeyValues) String() string { return proto.CompactTextString(m) }
 func (*KeyValues) ProtoMessage()    {}
 func (*KeyValues) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{1}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{0}
 }
 
 func (m *KeyValues) XXX_Unmarshal(b []byte) error {
@@ -102,7 +71,7 @@ func (m *KeyPair) Reset()         { *m = KeyPair{} }
 func (m *KeyPair) String() string { return proto.CompactTextString(m) }
 func (*KeyPair) ProtoMessage()    {}
 func (*KeyPair) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{2}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{1}
 }
 
 func (m *KeyPair) XXX_Unmarshal(b []byte) error {
@@ -137,40 +106,9 @@ func (m *KeyPair) GetValue() string {
 	return ""
 }
 
-type DeleteMetadataEndpointRequest struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeleteMetadataEndpointRequest) Reset()         { *m = DeleteMetadataEndpointRequest{} }
-func (m *DeleteMetadataEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*DeleteMetadataEndpointRequest) ProtoMessage()    {}
-func (*DeleteMetadataEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{3}
-}
-
-func (m *DeleteMetadataEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeleteMetadataEndpointRequest.Unmarshal(m, b)
-}
-func (m *DeleteMetadataEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeleteMetadataEndpointRequest.Marshal(b, m, deterministic)
-}
-func (m *DeleteMetadataEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteMetadataEndpointRequest.Merge(m, src)
-}
-func (m *DeleteMetadataEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_DeleteMetadataEndpointRequest.Size(m)
-}
-func (m *DeleteMetadataEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteMetadataEndpointRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeleteMetadataEndpointRequest proto.InternalMessageInfo
-
 type GetMetadataAddressEndpointRequest struct {
-	Private              bool     `protobuf:"varint,1,opt,name=private,proto3" json:"private,omitempty"`
-	Address              string   `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	Address              string   `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Private              bool     `protobuf:"varint,2,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -180,7 +118,7 @@ func (m *GetMetadataAddressEndpointRequest) Reset()         { *m = GetMetadataAd
 func (m *GetMetadataAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMetadataAddressEndpointRequest) ProtoMessage()    {}
 func (*GetMetadataAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{4}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{2}
 }
 
 func (m *GetMetadataAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -201,13 +139,6 @@ func (m *GetMetadataAddressEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetMetadataAddressEndpointRequest proto.InternalMessageInfo
 
-func (m *GetMetadataAddressEndpointRequest) GetPrivate() bool {
-	if m != nil {
-		return m.Private
-	}
-	return false
-}
-
 func (m *GetMetadataAddressEndpointRequest) GetAddress() string {
 	if m != nil {
 		return m.Address
@@ -215,9 +146,16 @@ func (m *GetMetadataAddressEndpointRequest) GetAddress() string {
 	return ""
 }
 
+func (m *GetMetadataAddressEndpointRequest) GetPrivate() bool {
+	if m != nil {
+		return m.Private
+	}
+	return false
+}
+
 type GetMetadataTxhashEndpointRequest struct {
-	Private              bool     `protobuf:"varint,1,opt,name=private,proto3" json:"private,omitempty"`
-	Txhash               string   `protobuf:"bytes,2,opt,name=txhash,proto3" json:"txhash,omitempty"`
+	Txhash               string   `protobuf:"bytes,1,opt,name=txhash,proto3" json:"txhash,omitempty"`
+	Private              bool     `protobuf:"varint,2,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -227,7 +165,7 @@ func (m *GetMetadataTxhashEndpointRequest) Reset()         { *m = GetMetadataTxh
 func (m *GetMetadataTxhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMetadataTxhashEndpointRequest) ProtoMessage()    {}
 func (*GetMetadataTxhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{5}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{3}
 }
 
 func (m *GetMetadataTxhashEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -248,13 +186,6 @@ func (m *GetMetadataTxhashEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetMetadataTxhashEndpointRequest proto.InternalMessageInfo
 
-func (m *GetMetadataTxhashEndpointRequest) GetPrivate() bool {
-	if m != nil {
-		return m.Private
-	}
-	return false
-}
-
 func (m *GetMetadataTxhashEndpointRequest) GetTxhash() string {
 	if m != nil {
 		return m.Txhash
@@ -262,9 +193,16 @@ func (m *GetMetadataTxhashEndpointRequest) GetTxhash() string {
 	return ""
 }
 
+func (m *GetMetadataTxhashEndpointRequest) GetPrivate() bool {
+	if m != nil {
+		return m.Private
+	}
+	return false
+}
+
 type GetMetadataBlockhashEndpointRequest struct {
-	Private              bool     `protobuf:"varint,1,opt,name=private,proto3" json:"private,omitempty"`
-	Blockhash            string   `protobuf:"bytes,2,opt,name=blockhash,proto3" json:"blockhash,omitempty"`
+	Blockhash            string   `protobuf:"bytes,1,opt,name=blockhash,proto3" json:"blockhash,omitempty"`
+	Private              bool     `protobuf:"varint,2,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -274,7 +212,7 @@ func (m *GetMetadataBlockhashEndpointRequest) Reset()         { *m = GetMetadata
 func (m *GetMetadataBlockhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMetadataBlockhashEndpointRequest) ProtoMessage()    {}
 func (*GetMetadataBlockhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{6}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{4}
 }
 
 func (m *GetMetadataBlockhashEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -295,13 +233,6 @@ func (m *GetMetadataBlockhashEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetMetadataBlockhashEndpointRequest proto.InternalMessageInfo
 
-func (m *GetMetadataBlockhashEndpointRequest) GetPrivate() bool {
-	if m != nil {
-		return m.Private
-	}
-	return false
-}
-
 func (m *GetMetadataBlockhashEndpointRequest) GetBlockhash() string {
 	if m != nil {
 		return m.Blockhash
@@ -309,10 +240,17 @@ func (m *GetMetadataBlockhashEndpointRequest) GetBlockhash() string {
 	return ""
 }
 
+func (m *GetMetadataBlockhashEndpointRequest) GetPrivate() bool {
+	if m != nil {
+		return m.Private
+	}
+	return false
+}
+
 type PutMetadataAddressEndpointRequest struct {
-	Private              bool       `protobuf:"varint,1,opt,name=private,proto3" json:"private,omitempty"`
-	Keypair              []*KeyPair `protobuf:"bytes,2,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	Address              string     `protobuf:"bytes,3,opt,name=address,proto3" json:"address,omitempty"`
+	Keypair              []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
+	Address              string     `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	Private              bool       `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -322,7 +260,7 @@ func (m *PutMetadataAddressEndpointRequest) Reset()         { *m = PutMetadataAd
 func (m *PutMetadataAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*PutMetadataAddressEndpointRequest) ProtoMessage()    {}
 func (*PutMetadataAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{7}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{5}
 }
 
 func (m *PutMetadataAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -343,13 +281,6 @@ func (m *PutMetadataAddressEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PutMetadataAddressEndpointRequest proto.InternalMessageInfo
 
-func (m *PutMetadataAddressEndpointRequest) GetPrivate() bool {
-	if m != nil {
-		return m.Private
-	}
-	return false
-}
-
 func (m *PutMetadataAddressEndpointRequest) GetKeypair() []*KeyPair {
 	if m != nil {
 		return m.Keypair
@@ -364,10 +295,17 @@ func (m *PutMetadataAddressEndpointRequest) GetAddress() string {
 	return ""
 }
 
+func (m *PutMetadataAddressEndpointRequest) GetPrivate() bool {
+	if m != nil {
+		return m.Private
+	}
+	return false
+}
+
 type PutMetadataTxhashEndpointRequest struct {
-	Private              bool       `protobuf:"varint,1,opt,name=private,proto3" json:"private,omitempty"`
-	Keypair              []*KeyPair `protobuf:"bytes,2,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	Txhash               string     `protobuf:"bytes,3,opt,name=txhash,proto3" json:"txhash,omitempty"`
+	Keypair              []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
+	Txhash               string     `protobuf:"bytes,2,opt,name=txhash,proto3" json:"txhash,omitempty"`
+	Private              bool       `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -377,7 +315,7 @@ func (m *PutMetadataTxhashEndpointRequest) Reset()         { *m = PutMetadataTxh
 func (m *PutMetadataTxhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*PutMetadataTxhashEndpointRequest) ProtoMessage()    {}
 func (*PutMetadataTxhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{8}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{6}
 }
 
 func (m *PutMetadataTxhashEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -398,13 +336,6 @@ func (m *PutMetadataTxhashEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PutMetadataTxhashEndpointRequest proto.InternalMessageInfo
 
-func (m *PutMetadataTxhashEndpointRequest) GetPrivate() bool {
-	if m != nil {
-		return m.Private
-	}
-	return false
-}
-
 func (m *PutMetadataTxhashEndpointRequest) GetKeypair() []*KeyPair {
 	if m != nil {
 		return m.Keypair
@@ -419,59 +350,66 @@ func (m *PutMetadataTxhashEndpointRequest) GetTxhash() string {
 	return ""
 }
 
-type PutMetadataBlockHashEndpointRequest struct {
-	Private              bool       `protobuf:"varint,1,opt,name=private,proto3" json:"private,omitempty"`
-	Keypair              []*KeyPair `protobuf:"bytes,2,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	BlockHash            string     `protobuf:"bytes,3,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
-}
-
-func (m *PutMetadataBlockHashEndpointRequest) Reset()         { *m = PutMetadataBlockHashEndpointRequest{} }
-func (m *PutMetadataBlockHashEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*PutMetadataBlockHashEndpointRequest) ProtoMessage()    {}
-func (*PutMetadataBlockHashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{9}
-}
-
-func (m *PutMetadataBlockHashEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PutMetadataBlockHashEndpointRequest.Unmarshal(m, b)
-}
-func (m *PutMetadataBlockHashEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PutMetadataBlockHashEndpointRequest.Marshal(b, m, deterministic)
-}
-func (m *PutMetadataBlockHashEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PutMetadataBlockHashEndpointRequest.Merge(m, src)
-}
-func (m *PutMetadataBlockHashEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_PutMetadataBlockHashEndpointRequest.Size(m)
-}
-func (m *PutMetadataBlockHashEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_PutMetadataBlockHashEndpointRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_PutMetadataBlockHashEndpointRequest proto.InternalMessageInfo
-
-func (m *PutMetadataBlockHashEndpointRequest) GetPrivate() bool {
+func (m *PutMetadataTxhashEndpointRequest) GetPrivate() bool {
 	if m != nil {
 		return m.Private
 	}
 	return false
 }
 
-func (m *PutMetadataBlockHashEndpointRequest) GetKeypair() []*KeyPair {
+type PutMetadataBlockhashEndpointRequest struct {
+	Keypair              []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
+	BlockHash            string     `protobuf:"bytes,2,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
+	Private              bool       `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
+}
+
+func (m *PutMetadataBlockhashEndpointRequest) Reset()         { *m = PutMetadataBlockhashEndpointRequest{} }
+func (m *PutMetadataBlockhashEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*PutMetadataBlockhashEndpointRequest) ProtoMessage()    {}
+func (*PutMetadataBlockhashEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5e8a16b8775dd4d7, []int{7}
+}
+
+func (m *PutMetadataBlockhashEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PutMetadataBlockhashEndpointRequest.Unmarshal(m, b)
+}
+func (m *PutMetadataBlockhashEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PutMetadataBlockhashEndpointRequest.Marshal(b, m, deterministic)
+}
+func (m *PutMetadataBlockhashEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PutMetadataBlockhashEndpointRequest.Merge(m, src)
+}
+func (m *PutMetadataBlockhashEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_PutMetadataBlockhashEndpointRequest.Size(m)
+}
+func (m *PutMetadataBlockhashEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_PutMetadataBlockhashEndpointRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PutMetadataBlockhashEndpointRequest proto.InternalMessageInfo
+
+func (m *PutMetadataBlockhashEndpointRequest) GetKeypair() []*KeyPair {
 	if m != nil {
 		return m.Keypair
 	}
 	return nil
 }
 
-func (m *PutMetadataBlockHashEndpointRequest) GetBlockHash() string {
+func (m *PutMetadataBlockhashEndpointRequest) GetBlockHash() string {
 	if m != nil {
 		return m.BlockHash
 	}
 	return ""
+}
+
+func (m *PutMetadataBlockhashEndpointRequest) GetPrivate() bool {
+	if m != nil {
+		return m.Private
+	}
+	return false
 }
 
 type DeleteMetadataAddressEndpointRequest struct {
@@ -486,7 +424,7 @@ func (m *DeleteMetadataAddressEndpointRequest) Reset()         { *m = DeleteMeta
 func (m *DeleteMetadataAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteMetadataAddressEndpointRequest) ProtoMessage()    {}
 func (*DeleteMetadataAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{10}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{8}
 }
 
 func (m *DeleteMetadataAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -533,7 +471,7 @@ func (m *DeleteMetadataTxhashEndpointRequest) Reset()         { *m = DeleteMetad
 func (m *DeleteMetadataTxhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteMetadataTxhashEndpointRequest) ProtoMessage()    {}
 func (*DeleteMetadataTxhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{11}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{9}
 }
 
 func (m *DeleteMetadataTxhashEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -568,7 +506,7 @@ func (m *DeleteMetadataTxhashEndpointRequest) GetTxhash() string {
 	return ""
 }
 
-type DeleteMetadataBlockHeightEndpointRequest struct {
+type DeleteMetadataBlockheightEndpointRequest struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	BlockHeight          string   `protobuf:"bytes,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -576,41 +514,41 @@ type DeleteMetadataBlockHeightEndpointRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *DeleteMetadataBlockHeightEndpointRequest) Reset() {
-	*m = DeleteMetadataBlockHeightEndpointRequest{}
+func (m *DeleteMetadataBlockheightEndpointRequest) Reset() {
+	*m = DeleteMetadataBlockheightEndpointRequest{}
 }
-func (m *DeleteMetadataBlockHeightEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*DeleteMetadataBlockHeightEndpointRequest) ProtoMessage()    {}
-func (*DeleteMetadataBlockHeightEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{12}
-}
-
-func (m *DeleteMetadataBlockHeightEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeleteMetadataBlockHeightEndpointRequest.Unmarshal(m, b)
-}
-func (m *DeleteMetadataBlockHeightEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeleteMetadataBlockHeightEndpointRequest.Marshal(b, m, deterministic)
-}
-func (m *DeleteMetadataBlockHeightEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteMetadataBlockHeightEndpointRequest.Merge(m, src)
-}
-func (m *DeleteMetadataBlockHeightEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_DeleteMetadataBlockHeightEndpointRequest.Size(m)
-}
-func (m *DeleteMetadataBlockHeightEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteMetadataBlockHeightEndpointRequest.DiscardUnknown(m)
+func (m *DeleteMetadataBlockheightEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteMetadataBlockheightEndpointRequest) ProtoMessage()    {}
+func (*DeleteMetadataBlockheightEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5e8a16b8775dd4d7, []int{10}
 }
 
-var xxx_messageInfo_DeleteMetadataBlockHeightEndpointRequest proto.InternalMessageInfo
+func (m *DeleteMetadataBlockheightEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteMetadataBlockheightEndpointRequest.Unmarshal(m, b)
+}
+func (m *DeleteMetadataBlockheightEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteMetadataBlockheightEndpointRequest.Marshal(b, m, deterministic)
+}
+func (m *DeleteMetadataBlockheightEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteMetadataBlockheightEndpointRequest.Merge(m, src)
+}
+func (m *DeleteMetadataBlockheightEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteMetadataBlockheightEndpointRequest.Size(m)
+}
+func (m *DeleteMetadataBlockheightEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteMetadataBlockheightEndpointRequest.DiscardUnknown(m)
+}
 
-func (m *DeleteMetadataBlockHeightEndpointRequest) GetName() string {
+var xxx_messageInfo_DeleteMetadataBlockheightEndpointRequest proto.InternalMessageInfo
+
+func (m *DeleteMetadataBlockheightEndpointRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *DeleteMetadataBlockHeightEndpointRequest) GetBlockHeight() string {
+func (m *DeleteMetadataBlockheightEndpointRequest) GetBlockHeight() string {
 	if m != nil {
 		return m.BlockHeight
 	}
@@ -618,51 +556,48 @@ func (m *DeleteMetadataBlockHeightEndpointRequest) GetBlockHeight() string {
 }
 
 func init() {
-	proto.RegisterType((*NullValue)(nil), "fairwaycorp.blockchainprotobuf.NullValue")
 	proto.RegisterType((*KeyValues)(nil), "fairwaycorp.blockchainprotobuf.KeyValues")
 	proto.RegisterType((*KeyPair)(nil), "fairwaycorp.blockchainprotobuf.KeyPair")
-	proto.RegisterType((*DeleteMetadataEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadataEndpointRequest")
-	proto.RegisterType((*GetMetadataAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.GetMetadata_addressEndpointRequest")
-	proto.RegisterType((*GetMetadataTxhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.GetMetadata_txhashEndpointRequest")
-	proto.RegisterType((*GetMetadataBlockhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.GetMetadata_blockhashEndpointRequest")
-	proto.RegisterType((*PutMetadataAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.PutMetadata_addressEndpointRequest")
-	proto.RegisterType((*PutMetadataTxhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.PutMetadata_txhashEndpointRequest")
-	proto.RegisterType((*PutMetadataBlockHashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.PutMetadata_block_hashEndpointRequest")
-	proto.RegisterType((*DeleteMetadataAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadata_addressEndpointRequest")
-	proto.RegisterType((*DeleteMetadataTxhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadata_txhashEndpointRequest")
-	proto.RegisterType((*DeleteMetadataBlockHeightEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadata_block_heightEndpointRequest")
+	proto.RegisterType((*GetMetadataAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.GetMetadataAddressEndpointRequest")
+	proto.RegisterType((*GetMetadataTxhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.GetMetadataTxhashEndpointRequest")
+	proto.RegisterType((*GetMetadataBlockhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.GetMetadataBlockhashEndpointRequest")
+	proto.RegisterType((*PutMetadataAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.PutMetadataAddressEndpointRequest")
+	proto.RegisterType((*PutMetadataTxhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.PutMetadataTxhashEndpointRequest")
+	proto.RegisterType((*PutMetadataBlockhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.PutMetadataBlockhashEndpointRequest")
+	proto.RegisterType((*DeleteMetadataAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadataAddressEndpointRequest")
+	proto.RegisterType((*DeleteMetadataTxhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadataTxhashEndpointRequest")
+	proto.RegisterType((*DeleteMetadataBlockheightEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadataBlockheightEndpointRequest")
 }
 
 func init() { proto.RegisterFile("metadataMessage.proto", fileDescriptor_5e8a16b8775dd4d7) }
 
 var fileDescriptor_5e8a16b8775dd4d7 = []byte{
-	// 436 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x93, 0x41, 0xab, 0xd3, 0x40,
-	0x10, 0xc7, 0xc9, 0x8b, 0xbe, 0x9a, 0xa9, 0x07, 0x09, 0x2a, 0x39, 0xf8, 0xf4, 0x75, 0x69, 0xb1,
-	0x08, 0x49, 0x51, 0x4f, 0xe2, 0x49, 0x51, 0x14, 0x4a, 0x4b, 0x09, 0x54, 0xc4, 0x83, 0x65, 0x93,
-	0x4c, 0x93, 0xa5, 0x69, 0x12, 0x93, 0x4d, 0x35, 0xdf, 0x44, 0xf0, 0xe8, 0x17, 0x95, 0x6c, 0x36,
-	0x26, 0x2d, 0x6d, 0x69, 0x55, 0xbc, 0xcd, 0xcc, 0x66, 0x7e, 0x33, 0xf9, 0xff, 0x77, 0xe1, 0xde,
-	0x1a, 0x39, 0xf5, 0x28, 0xa7, 0x13, 0xcc, 0x32, 0xea, 0xa3, 0x95, 0xa4, 0x31, 0x8f, 0xf5, 0x87,
-	0x4b, 0xca, 0xd2, 0xaf, 0xb4, 0x70, 0xe3, 0x34, 0xb1, 0x9c, 0x30, 0x76, 0x57, 0x6e, 0x40, 0x59,
-	0x24, 0x0e, 0x9d, 0x7c, 0x49, 0xba, 0xa0, 0x4d, 0xf3, 0x30, 0xfc, 0x40, 0xc3, 0x1c, 0xc9, 0x14,
-	0xb4, 0x31, 0x16, 0x22, 0xce, 0xf4, 0x57, 0xd0, 0x59, 0x61, 0x91, 0x50, 0x96, 0x1a, 0xca, 0xb5,
-	0x3a, 0xec, 0x3e, 0x7b, 0x6c, 0x1d, 0x67, 0x59, 0x63, 0x2c, 0x66, 0x94, 0xa5, 0x76, 0xdd, 0x47,
-	0x9e, 0x42, 0x47, 0xd6, 0xf4, 0x3b, 0xa0, 0xae, 0xb0, 0x30, 0x94, 0x6b, 0x65, 0xa8, 0xd9, 0x65,
-	0xa8, 0xdf, 0x85, 0x9b, 0x9b, 0x72, 0x92, 0x71, 0x21, 0x6a, 0x55, 0x42, 0x1e, 0xc1, 0xd5, 0x1b,
-	0x0c, 0x91, 0xe3, 0x44, 0xfe, 0xce, 0xdb, 0xc8, 0x4b, 0x62, 0x16, 0x71, 0x1b, 0xbf, 0xe4, 0x98,
-	0x71, 0xf2, 0x11, 0xc8, 0x3b, 0xe4, 0xf5, 0xe9, 0x82, 0x7a, 0x5e, 0x8a, 0x59, 0xb6, 0xf3, 0x95,
-	0x6e, 0x40, 0x27, 0x49, 0xd9, 0x86, 0x72, 0x14, 0x23, 0x6f, 0xd9, 0x75, 0x5a, 0x9e, 0xc8, 0x1e,
-	0x39, 0xb8, 0x4e, 0xc9, 0x1c, 0x7a, 0x6d, 0x32, 0xff, 0x16, 0xd0, 0x2c, 0x38, 0x1d, 0x7c, 0x1f,
-	0x2e, 0xab, 0x16, 0xc9, 0x95, 0x19, 0xf9, 0x0c, 0xfd, 0x36, 0x56, 0xe8, 0x76, 0x1e, 0xf9, 0x01,
-	0x68, 0xbf, 0xbb, 0x24, 0xbc, 0x29, 0x90, 0x1f, 0x0a, 0x90, 0x59, 0xfe, 0x17, 0x8a, 0xb4, 0x8c,
-	0xbe, 0xf8, 0x33, 0xa3, 0xdb, 0xa2, 0xaa, 0xdb, 0xa2, 0x7e, 0x57, 0xa0, 0xd7, 0xde, 0xee, 0x5c,
-	0x55, 0xff, 0xc1, 0x72, 0x8d, 0x31, 0xea, 0x96, 0x31, 0x3f, 0x15, 0x18, 0xb4, 0x57, 0x13, 0xac,
-	0xc5, 0x7f, 0x5f, 0xef, 0x0a, 0xa0, 0x99, 0x2c, 0x57, 0xac, 0xec, 0x7d, 0x5f, 0x6e, 0x39, 0x87,
-	0xc1, 0xf6, 0x83, 0x38, 0x64, 0xb0, 0x0e, 0x37, 0x22, 0xba, 0x46, 0xf9, 0xc4, 0x44, 0x7c, 0xe4,
-	0xb2, 0xdb, 0xd0, 0xdf, 0xc1, 0xee, 0x77, 0x66, 0x1f, 0xf5, 0xd0, 0x4d, 0x77, 0xe1, 0xc9, 0x0e,
-	0x53, 0xfe, 0x18, 0x32, 0x3f, 0xe0, 0xa7, 0x90, 0x7b, 0x70, 0xbb, 0xdd, 0x22, 0xf9, 0xdd, 0x4a,
-	0x0d, 0x51, 0x7a, 0xfd, 0xf2, 0xd3, 0x0b, 0x9f, 0xf1, 0x20, 0x77, 0x2c, 0x37, 0x5e, 0x8f, 0xa4,
-	0xd8, 0x66, 0xa9, 0xf6, 0xa8, 0x51, 0xdb, 0xac, 0xe5, 0x1e, 0x89, 0xc0, 0x35, 0x7d, 0x8c, 0x4c,
-	0x3f, 0x76, 0x2e, 0x45, 0xfa, 0xfc, 0x57, 0x00, 0x00, 0x00, 0xff, 0xff, 0x92, 0x52, 0xc5, 0xf9,
-	0x2d, 0x05, 0x00, 0x00,
+	// 425 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x92, 0x4f, 0x8b, 0x9b, 0x50,
+	0x14, 0xc5, 0x31, 0x69, 0x93, 0xe6, 0xa6, 0x8b, 0x22, 0x6d, 0x71, 0xd1, 0x16, 0x63, 0x0a, 0xcd,
+	0x46, 0x43, 0xdb, 0x55, 0xe9, 0x2a, 0xa1, 0xa5, 0x85, 0x90, 0x92, 0x4a, 0x68, 0xa1, 0x50, 0x86,
+	0xa7, 0xde, 0xe8, 0x23, 0x89, 0x3a, 0xfa, 0xcc, 0x8c, 0x9f, 0x64, 0x60, 0x76, 0xf3, 0x4d, 0x07,
+	0x9f, 0x4f, 0x62, 0x82, 0x9a, 0x81, 0xc9, 0xee, 0xfe, 0xf1, 0xfe, 0x3c, 0x9c, 0xf3, 0xe0, 0xd5,
+	0x16, 0x19, 0x71, 0x08, 0x23, 0x73, 0x8c, 0x63, 0xe2, 0xa2, 0x11, 0x46, 0x01, 0x0b, 0xe4, 0x77,
+	0x2b, 0x42, 0xa3, 0x2b, 0x92, 0xda, 0x41, 0x14, 0x1a, 0xd6, 0x26, 0xb0, 0xd7, 0xb6, 0x47, 0xa8,
+	0xcf, 0x97, 0x56, 0xb2, 0xd2, 0x7e, 0x41, 0x6f, 0x86, 0xe9, 0x1f, 0xb2, 0x49, 0x30, 0x96, 0x27,
+	0xd0, 0x5d, 0x63, 0x1a, 0x12, 0x1a, 0x29, 0x92, 0xda, 0x1e, 0xf5, 0x3f, 0x7d, 0x30, 0x9a, 0xcf,
+	0x8d, 0x19, 0xa6, 0x0b, 0x42, 0x23, 0xb3, 0xb8, 0xd3, 0x3e, 0x42, 0x57, 0xcc, 0xe4, 0x17, 0xd0,
+	0x5e, 0x63, 0xaa, 0x48, 0xaa, 0x34, 0xea, 0x99, 0x59, 0x29, 0xbf, 0x84, 0xa7, 0xbb, 0xec, 0x4f,
+	0x4a, 0x8b, 0xcf, 0xf2, 0x46, 0xfb, 0x0b, 0x83, 0x1f, 0xc8, 0xe6, 0x42, 0xfe, 0xc4, 0x71, 0x22,
+	0x8c, 0xe3, 0xef, 0xbe, 0x13, 0x06, 0xd4, 0x67, 0x26, 0x5e, 0x26, 0x18, 0x33, 0x59, 0x81, 0x2e,
+	0xc9, 0x37, 0x02, 0x58, 0xb4, 0xd9, 0x26, 0x8c, 0xe8, 0x8e, 0xb0, 0x1c, 0xfb, 0xcc, 0x2c, 0x5a,
+	0x6d, 0x09, 0x6a, 0x09, 0xbc, 0xbc, 0xf6, 0x48, 0xec, 0x1d, 0x73, 0x5f, 0x43, 0x87, 0xf1, 0x85,
+	0xc0, 0x8a, 0xae, 0x81, 0xfa, 0x1f, 0x86, 0x25, 0xea, 0x34, 0xf3, 0xa4, 0x0a, 0xfc, 0x06, 0x7a,
+	0x56, 0xb1, 0x13, 0xec, 0xfd, 0xa0, 0x01, 0x7f, 0x2b, 0xc1, 0x60, 0x91, 0x9c, 0xb2, 0xe3, 0xf1,
+	0x49, 0x95, 0x1d, 0x6d, 0xd5, 0x3a, 0xda, 0x3e, 0x14, 0x77, 0x23, 0x81, 0x5a, 0x12, 0x57, 0x6d,
+	0xe9, 0x19, 0xb4, 0xed, 0x53, 0x69, 0xd5, 0xa5, 0x72, 0xa4, 0xec, 0x4e, 0x82, 0x61, 0x49, 0x59,
+	0x6d, 0x2c, 0x67, 0x10, 0xf7, 0x16, 0x80, 0x7f, 0x76, 0x51, 0x12, 0x98, 0x47, 0xfb, 0xb3, 0x59,
+	0xe3, 0x12, 0xde, 0x7f, 0xc3, 0x0d, 0x32, 0x3c, 0x11, 0xae, 0x0c, 0x4f, 0x7c, 0xb2, 0x45, 0xf1,
+	0x6a, 0x78, 0x5d, 0x9f, 0x96, 0xf6, 0x1b, 0x86, 0x87, 0xd4, 0xea, 0x54, 0xaa, 0xa0, 0x35, 0x36,
+	0x6b, 0x04, 0x46, 0x87, 0xc8, 0xdc, 0x4e, 0xa4, 0xae, 0xc7, 0x1e, 0xc2, 0x1d, 0xc0, 0x73, 0xe1,
+	0x10, 0x3f, 0x11, 0xf4, 0x7e, 0xee, 0x11, 0x1f, 0x4d, 0xbf, 0xfe, 0xfb, 0xe2, 0x52, 0xe6, 0x25,
+	0x96, 0x61, 0x07, 0xdb, 0xb1, 0x88, 0x40, 0xcf, 0x32, 0x18, 0xef, 0x33, 0xd0, 0x8b, 0x10, 0xc6,
+	0xbc, 0xb0, 0x75, 0x17, 0x7d, 0xdd, 0x0d, 0xac, 0x0e, 0x6f, 0x3f, 0xdf, 0x07, 0x00, 0x00, 0xff,
+	0xff, 0xb9, 0x19, 0xcf, 0x3a, 0xf4, 0x04, 0x00, 0x00,
 }

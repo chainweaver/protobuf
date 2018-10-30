@@ -96,7 +96,7 @@ export class WalletServiceClient {
     request: DeriveAddressInWalletEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: NullValue) => void
+               response: HDWallet) => void
   ): grpcWeb.ClientReadableStream;
 
   deleteWalletEndpoint(
