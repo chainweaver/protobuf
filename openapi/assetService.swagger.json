@@ -362,13 +362,13 @@
         "inputs": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/protobufAny"
           }
         },
         "outputs": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/protobufAny"
           }
         }
       }

@@ -130,10 +130,10 @@ export class OAPTX {
   setOapMeta(a: string): void;
   getDoubleSpend(): boolean;
   setDoubleSpend(a: boolean): void;
-  getInputs(): string;
-  setInputs(a: string): void;
-  getOutputs(): string;
-  setOutputs(a: string): void;
+  getInputs(): {};
+  setInputs(a: {}): void;
+  getOutputs(): {};
+  setOutputs(a: {}): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => OAPTX;
 }

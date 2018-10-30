@@ -5,41 +5,41 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
 
 
 message MicroTX {
-  string from_pubkey		= 1;
-  string from_private		= 2;
-  string from_wif		= 3;
-  string to_address		= 4;
-  int64 value_satoshis		= 5;
-  string token		= 6;
-  string change_address		= 7;
-  bool wait_guarantee		= 8;
-  repeated string tosign	 	= 9;
-  repeated string signatures	 	= 10;
-  repeated TXInput inputs	 	= 11;
-  repeated TXOutput outputs	 	= 12;
-  int32 fees	 	= 13;
-  string hash		= 14;
+  string from_pubkey = 1;  // Hex-encoded public key from which you’re sending coins.
+  string from_private = 2;  // Hex-encoded private key from which you’re sending coins.
+  string from_wif = 3;  // WIF-encoded private key from which you’re sending coins.
+  string to_address = 4;  // The target address to which you’re sending coins.
+  int64 value_satoshis = 5;  // Value you’re sending/you’ve sent in satoshis.
+  string token = 6;  // Your BlockCypher API token
+  string change_address = 7;  // Optional Address BlockCypher will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address.
+  bool wait_guarantee = 8;  // Optional If not set, defaults to true, which means the API will wait for BlockCypher to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast.
+  repeated string tosign = 9;  // Optional Hex-encoded data for you to sign after initiating the microtransaction. Sent in reply to a microtransaction generated using from_pubkey/a public key.
+  repeated string signatures = 10;  // Optional Hex-encoded signatures for you to send back after having received (and signed) tosign.
+  repeated TXInput inputs = 11;  // Optional Partial list of inputs that will be used with this transaction. Inputs themsleves are heavily pared down, see cURL sample. Only returned when using from_pubkey.
+  repeated TXOutput outputs = 12;  // Optional Partial list of outputs that will be used with this transaction. Outputs themselves are heavily pared down, see cURL sample. Only returned when using from_pubkey.
+  int32 fees = 13;  // Optional BlockCypher’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. BlockCypher pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter.
+  string hash = 14;  // Optional The hash of the finalized transaction, once sent.
 }
 
 message TXInput {
-  string prev_hash			= 1;
-  int32 output_index	 		= 2;
-  int32 output_value	 		= 3;
-  string script_type		= 4;
-  string script		= 5;
-  repeated string addresses	 		= 6;
-  int32 sequence	 		= 7;
-  int32 age			= 8;
-  string wallet_name		= 9;
-  string wallet_token		= 10;
+  string prev_hash = 1;  // The previous transaction hash where this input was an output. Not present for coinbase transactions.
+  int32 output_index = 2;  // The index of the output being spent within the previous transaction. Not present for coinbase transactions.
+  int32 output_value = 3;  // The value of the output being spent within the previous transaction. Not present for coinbase transactions.
+  string script_type = 4;  // The type of script that encumbers the output corresponding to this input.
+  string script = 5;  // Raw hexadecimal encoding of the script.
+  repeated string addresses = 6;  // An array of public addresses associated with the output of the previous transaction.
+  int32 sequence = 7;  // Legacy 4-byte sequence number, not usually relevant unless dealing with locktime encumbrances.
+  int32 age = 8;  // Optional Number of confirmations of the previous transaction for which this input was an output. Currently, only returned in unconfirmed transactions.
+  string wallet_name = 9;  // Optional Name of Wallet or HDWallet from which to derive inputs. Only used when constructing transactions via the Creating Transactions process.
+  string wallet_token = 10;  // Optional Token associated with Wallet or HDWallet used to derive inputs. Only used when constructing transactions via the Creating Transactions process.  
 }
 
 message TXOutput {
-  int32 value			= 1;
-  string script		= 2;
-  repeated string addresses	 	= 3;
-  string script_type		= 4;
-  string spent_by		= 5;
-  string data_hex		= 6;
-  string data_string		= 7;
+  int32 value = 1;  // Value in this transaction output, in satoshis.
+  string script = 2;  // Raw hexadecimal encoding of the encumbrance script for this output.
+  repeated string addresses = 3;  // Addresses that correspond to this output; typically this will only have a single address, and you can think of this output as having “sent” value to the address contained herein.
+  string script_type = 4;  // The type of encumbrance script used for this output.
+  string spent_by = 5;  // Optional The transaction hash that spent this output. Only returned for outputs that have been spent. The spending transaction may be unconfirmed.
+  string data_hex = 6;  // Optional A hex-encoded representation of an OP_RETURN data output, without any other script instructions. Only returned for outputs whose script_type is null-data.
+  string data_string = 7;  // Optional An ASCII representation of an OP_RETURN data output, without any other script instructions. Only returned for outputs whose script_type is null-data and if its data falls into the visible ASCII range.  
 }
