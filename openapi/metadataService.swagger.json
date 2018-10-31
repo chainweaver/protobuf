@@ -62,12 +62,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "tags": [
@@ -106,6 +100,58 @@
       }
     },
     "/blocks/{block_hash}/meta": {
+      "get": {
+        "operationId": "GetMetadataBlockhashEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufKeyValues"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "private",
+            "description": "If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteMetadataBlockheightEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MetadataService"
+        ]
+      },
       "put": {
         "operationId": "PutMetadataBlockhashEndpoint",
         "responses": {
@@ -130,68 +176,6 @@
             "schema": {
               "$ref": "#/definitions/blockchainprotobufPutMetadataBlockhashEndpointRequest"
             }
-          }
-        ],
-        "tags": [
-          "MetadataService"
-        ]
-      }
-    },
-    "/blocks/{block_height}/meta": {
-      "delete": {
-        "operationId": "DeleteMetadataBlockheightEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "block_height",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "MetadataService"
-        ]
-      }
-    },
-    "/blocks/{blockhash}/meta": {
-      "get": {
-        "operationId": "GetMetadataBlockhashEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/blockchainprotobufKeyValues"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "blockhash",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "private",
-            "description": "If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.",
-            "in": "query",
-            "required": false,
-            "type": "boolean",
-            "format": "boolean"
           }
         ],
         "tags": [
@@ -246,12 +230,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "tags": [
@@ -291,24 +269,13 @@
     }
   },
   "definitions": {
-    "blockchainprotobufKeyPair": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
     "blockchainprotobufKeyValues": {
       "type": "object",
       "properties": {
-        "keypair": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/blockchainprotobufKeyPair"
+        "key_pairs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
           }
         }
       }
@@ -319,10 +286,10 @@
     "blockchainprotobufPutMetadataAddressEndpointRequest": {
       "type": "object",
       "properties": {
-        "keypair": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/blockchainprotobufKeyPair"
+        "key_pairs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
           }
         },
         "address": {
@@ -338,10 +305,10 @@
     "blockchainprotobufPutMetadataBlockhashEndpointRequest": {
       "type": "object",
       "properties": {
-        "keypair": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/blockchainprotobufKeyPair"
+        "key_pairs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
           }
         },
         "block_hash": {
@@ -357,10 +324,10 @@
     "blockchainprotobufPutMetadataTxhashEndpointRequest": {
       "type": "object",
       "properties": {
-        "keypair": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/blockchainprotobufKeyPair"
+        "key_pairs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
           }
         },
         "txhash": {

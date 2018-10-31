@@ -4,12 +4,7 @@ package fairwaycorp.blockchainprotobuf;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
 
 message KeyValues {
-  repeated KeyPair keypair	= 1;
-}
-
-message KeyPair {
-  string key = 1;
-  string value = 2;
+  map<string, string> key_pairs = 1;
 }
 
 message GetMetadataAddressEndpointRequest {
@@ -25,43 +20,40 @@ message GetMetadataTxhashEndpointRequest {
 }
 
 message GetMetadataBlockhashEndpointRequest {
-  string blockhash = 1;
+  string block_hash = 1;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
   bool private = 2;
 }
 
 message PutMetadataAddressEndpointRequest {
-  repeated KeyPair keypair	= 1;
+  map<string, string> key_pairs = 1;
   string address = 2;
   // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
   bool private = 3;
 }
 
 message PutMetadataTxhashEndpointRequest {
-  repeated KeyPair keypair	= 1;
+  map<string, string> key_pairs = 1;
   string txhash = 2;
   // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
   bool private = 3;
 }
 
 message PutMetadataBlockhashEndpointRequest {
-  repeated KeyPair keypair	= 1;
+  map<string, string> key_pairs = 1;
   string block_hash = 2;
   // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
   bool private = 3;
 }
 
 message DeleteMetadataAddressEndpointRequest {
-  string name = 1;
-  string address = 2;
+  string address = 1;
 }
 
 message DeleteMetadataTxhashEndpointRequest {
-  string name = 1;
-  string txhash = 2;
+  string txhash = 1;
 }
 
 message DeleteMetadataBlockheightEndpointRequest {
-  string name = 1;
-  string block_height = 2;
+  string block_hash = 1;
 }

@@ -21,10 +21,10 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type KeyValues struct {
-	Keypair              []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	KeyPairs             map[string]string `protobuf:"bytes,1,rep,name=key_pairs,json=keyPairs,proto3" json:"key_pairs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
 func (m *KeyValues) Reset()         { *m = KeyValues{} }
@@ -52,58 +52,11 @@ func (m *KeyValues) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_KeyValues proto.InternalMessageInfo
 
-func (m *KeyValues) GetKeypair() []*KeyPair {
+func (m *KeyValues) GetKeyPairs() map[string]string {
 	if m != nil {
-		return m.Keypair
+		return m.KeyPairs
 	}
 	return nil
-}
-
-type KeyPair struct {
-	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Value                string   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *KeyPair) Reset()         { *m = KeyPair{} }
-func (m *KeyPair) String() string { return proto.CompactTextString(m) }
-func (*KeyPair) ProtoMessage()    {}
-func (*KeyPair) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{1}
-}
-
-func (m *KeyPair) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_KeyPair.Unmarshal(m, b)
-}
-func (m *KeyPair) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_KeyPair.Marshal(b, m, deterministic)
-}
-func (m *KeyPair) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_KeyPair.Merge(m, src)
-}
-func (m *KeyPair) XXX_Size() int {
-	return xxx_messageInfo_KeyPair.Size(m)
-}
-func (m *KeyPair) XXX_DiscardUnknown() {
-	xxx_messageInfo_KeyPair.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_KeyPair proto.InternalMessageInfo
-
-func (m *KeyPair) GetKey() string {
-	if m != nil {
-		return m.Key
-	}
-	return ""
-}
-
-func (m *KeyPair) GetValue() string {
-	if m != nil {
-		return m.Value
-	}
-	return ""
 }
 
 type GetMetadataAddressEndpointRequest struct {
@@ -119,7 +72,7 @@ func (m *GetMetadataAddressEndpointRequest) Reset()         { *m = GetMetadataAd
 func (m *GetMetadataAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMetadataAddressEndpointRequest) ProtoMessage()    {}
 func (*GetMetadataAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{2}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{1}
 }
 
 func (m *GetMetadataAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -167,7 +120,7 @@ func (m *GetMetadataTxhashEndpointRequest) Reset()         { *m = GetMetadataTxh
 func (m *GetMetadataTxhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMetadataTxhashEndpointRequest) ProtoMessage()    {}
 func (*GetMetadataTxhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{3}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{2}
 }
 
 func (m *GetMetadataTxhashEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -203,7 +156,7 @@ func (m *GetMetadataTxhashEndpointRequest) GetPrivate() bool {
 }
 
 type GetMetadataBlockhashEndpointRequest struct {
-	Blockhash string `protobuf:"bytes,1,opt,name=blockhash,proto3" json:"blockhash,omitempty"`
+	BlockHash string `protobuf:"bytes,1,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
 	// If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
 	Private              bool     `protobuf:"varint,2,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -215,7 +168,7 @@ func (m *GetMetadataBlockhashEndpointRequest) Reset()         { *m = GetMetadata
 func (m *GetMetadataBlockhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMetadataBlockhashEndpointRequest) ProtoMessage()    {}
 func (*GetMetadataBlockhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{4}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{3}
 }
 
 func (m *GetMetadataBlockhashEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -236,9 +189,9 @@ func (m *GetMetadataBlockhashEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetMetadataBlockhashEndpointRequest proto.InternalMessageInfo
 
-func (m *GetMetadataBlockhashEndpointRequest) GetBlockhash() string {
+func (m *GetMetadataBlockhashEndpointRequest) GetBlockHash() string {
 	if m != nil {
-		return m.Blockhash
+		return m.BlockHash
 	}
 	return ""
 }
@@ -251,8 +204,8 @@ func (m *GetMetadataBlockhashEndpointRequest) GetPrivate() bool {
 }
 
 type PutMetadataAddressEndpointRequest struct {
-	Keypair []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	Address string     `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	KeyPairs map[string]string `protobuf:"bytes,1,rep,name=key_pairs,json=keyPairs,proto3" json:"key_pairs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Address  string            `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	// If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
 	Private              bool     `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -264,7 +217,7 @@ func (m *PutMetadataAddressEndpointRequest) Reset()         { *m = PutMetadataAd
 func (m *PutMetadataAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*PutMetadataAddressEndpointRequest) ProtoMessage()    {}
 func (*PutMetadataAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{5}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{4}
 }
 
 func (m *PutMetadataAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -285,9 +238,9 @@ func (m *PutMetadataAddressEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PutMetadataAddressEndpointRequest proto.InternalMessageInfo
 
-func (m *PutMetadataAddressEndpointRequest) GetKeypair() []*KeyPair {
+func (m *PutMetadataAddressEndpointRequest) GetKeyPairs() map[string]string {
 	if m != nil {
-		return m.Keypair
+		return m.KeyPairs
 	}
 	return nil
 }
@@ -307,8 +260,8 @@ func (m *PutMetadataAddressEndpointRequest) GetPrivate() bool {
 }
 
 type PutMetadataTxhashEndpointRequest struct {
-	Keypair []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	Txhash  string     `protobuf:"bytes,2,opt,name=txhash,proto3" json:"txhash,omitempty"`
+	KeyPairs map[string]string `protobuf:"bytes,1,rep,name=key_pairs,json=keyPairs,proto3" json:"key_pairs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Txhash   string            `protobuf:"bytes,2,opt,name=txhash,proto3" json:"txhash,omitempty"`
 	// If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
 	Private              bool     `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -320,7 +273,7 @@ func (m *PutMetadataTxhashEndpointRequest) Reset()         { *m = PutMetadataTxh
 func (m *PutMetadataTxhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*PutMetadataTxhashEndpointRequest) ProtoMessage()    {}
 func (*PutMetadataTxhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{6}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{5}
 }
 
 func (m *PutMetadataTxhashEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -341,9 +294,9 @@ func (m *PutMetadataTxhashEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PutMetadataTxhashEndpointRequest proto.InternalMessageInfo
 
-func (m *PutMetadataTxhashEndpointRequest) GetKeypair() []*KeyPair {
+func (m *PutMetadataTxhashEndpointRequest) GetKeyPairs() map[string]string {
 	if m != nil {
-		return m.Keypair
+		return m.KeyPairs
 	}
 	return nil
 }
@@ -363,8 +316,8 @@ func (m *PutMetadataTxhashEndpointRequest) GetPrivate() bool {
 }
 
 type PutMetadataBlockhashEndpointRequest struct {
-	Keypair   []*KeyPair `protobuf:"bytes,1,rep,name=keypair,proto3" json:"keypair,omitempty"`
-	BlockHash string     `protobuf:"bytes,2,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
+	KeyPairs  map[string]string `protobuf:"bytes,1,rep,name=key_pairs,json=keyPairs,proto3" json:"key_pairs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	BlockHash string            `protobuf:"bytes,2,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
 	// If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
 	Private              bool     `protobuf:"varint,3,opt,name=private,proto3" json:"private,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -376,7 +329,7 @@ func (m *PutMetadataBlockhashEndpointRequest) Reset()         { *m = PutMetadata
 func (m *PutMetadataBlockhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*PutMetadataBlockhashEndpointRequest) ProtoMessage()    {}
 func (*PutMetadataBlockhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{7}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{6}
 }
 
 func (m *PutMetadataBlockhashEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -397,9 +350,9 @@ func (m *PutMetadataBlockhashEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PutMetadataBlockhashEndpointRequest proto.InternalMessageInfo
 
-func (m *PutMetadataBlockhashEndpointRequest) GetKeypair() []*KeyPair {
+func (m *PutMetadataBlockhashEndpointRequest) GetKeyPairs() map[string]string {
 	if m != nil {
-		return m.Keypair
+		return m.KeyPairs
 	}
 	return nil
 }
@@ -419,8 +372,7 @@ func (m *PutMetadataBlockhashEndpointRequest) GetPrivate() bool {
 }
 
 type DeleteMetadataAddressEndpointRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Address              string   `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	Address              string   `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -430,7 +382,7 @@ func (m *DeleteMetadataAddressEndpointRequest) Reset()         { *m = DeleteMeta
 func (m *DeleteMetadataAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteMetadataAddressEndpointRequest) ProtoMessage()    {}
 func (*DeleteMetadataAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{8}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{7}
 }
 
 func (m *DeleteMetadataAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -451,13 +403,6 @@ func (m *DeleteMetadataAddressEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteMetadataAddressEndpointRequest proto.InternalMessageInfo
 
-func (m *DeleteMetadataAddressEndpointRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
 func (m *DeleteMetadataAddressEndpointRequest) GetAddress() string {
 	if m != nil {
 		return m.Address
@@ -466,8 +411,7 @@ func (m *DeleteMetadataAddressEndpointRequest) GetAddress() string {
 }
 
 type DeleteMetadataTxhashEndpointRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Txhash               string   `protobuf:"bytes,2,opt,name=txhash,proto3" json:"txhash,omitempty"`
+	Txhash               string   `protobuf:"bytes,1,opt,name=txhash,proto3" json:"txhash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -477,7 +421,7 @@ func (m *DeleteMetadataTxhashEndpointRequest) Reset()         { *m = DeleteMetad
 func (m *DeleteMetadataTxhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteMetadataTxhashEndpointRequest) ProtoMessage()    {}
 func (*DeleteMetadataTxhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{9}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{8}
 }
 
 func (m *DeleteMetadataTxhashEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -498,13 +442,6 @@ func (m *DeleteMetadataTxhashEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteMetadataTxhashEndpointRequest proto.InternalMessageInfo
 
-func (m *DeleteMetadataTxhashEndpointRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
 func (m *DeleteMetadataTxhashEndpointRequest) GetTxhash() string {
 	if m != nil {
 		return m.Txhash
@@ -513,8 +450,7 @@ func (m *DeleteMetadataTxhashEndpointRequest) GetTxhash() string {
 }
 
 type DeleteMetadataBlockheightEndpointRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	BlockHeight          string   `protobuf:"bytes,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
+	BlockHash            string   `protobuf:"bytes,1,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -526,7 +462,7 @@ func (m *DeleteMetadataBlockheightEndpointRequest) Reset() {
 func (m *DeleteMetadataBlockheightEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteMetadataBlockheightEndpointRequest) ProtoMessage()    {}
 func (*DeleteMetadataBlockheightEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5e8a16b8775dd4d7, []int{10}
+	return fileDescriptor_5e8a16b8775dd4d7, []int{9}
 }
 
 func (m *DeleteMetadataBlockheightEndpointRequest) XXX_Unmarshal(b []byte) error {
@@ -547,29 +483,25 @@ func (m *DeleteMetadataBlockheightEndpointRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteMetadataBlockheightEndpointRequest proto.InternalMessageInfo
 
-func (m *DeleteMetadataBlockheightEndpointRequest) GetName() string {
+func (m *DeleteMetadataBlockheightEndpointRequest) GetBlockHash() string {
 	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *DeleteMetadataBlockheightEndpointRequest) GetBlockHeight() string {
-	if m != nil {
-		return m.BlockHeight
+		return m.BlockHash
 	}
 	return ""
 }
 
 func init() {
 	proto.RegisterType((*KeyValues)(nil), "fairwaycorp.blockchainprotobuf.KeyValues")
-	proto.RegisterType((*KeyPair)(nil), "fairwaycorp.blockchainprotobuf.KeyPair")
+	proto.RegisterMapType((map[string]string)(nil), "fairwaycorp.blockchainprotobuf.KeyValues.KeyPairsEntry")
 	proto.RegisterType((*GetMetadataAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.GetMetadataAddressEndpointRequest")
 	proto.RegisterType((*GetMetadataTxhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.GetMetadataTxhashEndpointRequest")
 	proto.RegisterType((*GetMetadataBlockhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.GetMetadataBlockhashEndpointRequest")
 	proto.RegisterType((*PutMetadataAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.PutMetadataAddressEndpointRequest")
+	proto.RegisterMapType((map[string]string)(nil), "fairwaycorp.blockchainprotobuf.PutMetadataAddressEndpointRequest.KeyPairsEntry")
 	proto.RegisterType((*PutMetadataTxhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.PutMetadataTxhashEndpointRequest")
+	proto.RegisterMapType((map[string]string)(nil), "fairwaycorp.blockchainprotobuf.PutMetadataTxhashEndpointRequest.KeyPairsEntry")
 	proto.RegisterType((*PutMetadataBlockhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.PutMetadataBlockhashEndpointRequest")
+	proto.RegisterMapType((map[string]string)(nil), "fairwaycorp.blockchainprotobuf.PutMetadataBlockhashEndpointRequest.KeyPairsEntry")
 	proto.RegisterType((*DeleteMetadataAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadataAddressEndpointRequest")
 	proto.RegisterType((*DeleteMetadataTxhashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadataTxhashEndpointRequest")
 	proto.RegisterType((*DeleteMetadataBlockheightEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.DeleteMetadataBlockheightEndpointRequest")
@@ -578,32 +510,33 @@ func init() {
 func init() { proto.RegisterFile("metadataMessage.proto", fileDescriptor_5e8a16b8775dd4d7) }
 
 var fileDescriptor_5e8a16b8775dd4d7 = []byte{
-	// 425 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x92, 0x4f, 0x8b, 0x9b, 0x50,
-	0x14, 0xc5, 0x31, 0x69, 0x93, 0xe6, 0xa6, 0x8b, 0x22, 0x6d, 0x71, 0xd1, 0x16, 0x63, 0x0a, 0xcd,
-	0x46, 0x43, 0xdb, 0x55, 0xe9, 0x2a, 0xa1, 0xa5, 0x85, 0x90, 0x92, 0x4a, 0x68, 0xa1, 0x50, 0x86,
-	0xa7, 0xde, 0xe8, 0x23, 0x89, 0x3a, 0xfa, 0xcc, 0x8c, 0x9f, 0x64, 0x60, 0x76, 0xf3, 0x4d, 0x07,
-	0x9f, 0x4f, 0x62, 0x82, 0x9a, 0x81, 0xc9, 0xee, 0xfe, 0xf1, 0xfe, 0x3c, 0x9c, 0xf3, 0xe0, 0xd5,
-	0x16, 0x19, 0x71, 0x08, 0x23, 0x73, 0x8c, 0x63, 0xe2, 0xa2, 0x11, 0x46, 0x01, 0x0b, 0xe4, 0x77,
-	0x2b, 0x42, 0xa3, 0x2b, 0x92, 0xda, 0x41, 0x14, 0x1a, 0xd6, 0x26, 0xb0, 0xd7, 0xb6, 0x47, 0xa8,
-	0xcf, 0x97, 0x56, 0xb2, 0xd2, 0x7e, 0x41, 0x6f, 0x86, 0xe9, 0x1f, 0xb2, 0x49, 0x30, 0x96, 0x27,
-	0xd0, 0x5d, 0x63, 0x1a, 0x12, 0x1a, 0x29, 0x92, 0xda, 0x1e, 0xf5, 0x3f, 0x7d, 0x30, 0x9a, 0xcf,
-	0x8d, 0x19, 0xa6, 0x0b, 0x42, 0x23, 0xb3, 0xb8, 0xd3, 0x3e, 0x42, 0x57, 0xcc, 0xe4, 0x17, 0xd0,
-	0x5e, 0x63, 0xaa, 0x48, 0xaa, 0x34, 0xea, 0x99, 0x59, 0x29, 0xbf, 0x84, 0xa7, 0xbb, 0xec, 0x4f,
-	0x4a, 0x8b, 0xcf, 0xf2, 0x46, 0xfb, 0x0b, 0x83, 0x1f, 0xc8, 0xe6, 0x42, 0xfe, 0xc4, 0x71, 0x22,
-	0x8c, 0xe3, 0xef, 0xbe, 0x13, 0x06, 0xd4, 0x67, 0x26, 0x5e, 0x26, 0x18, 0x33, 0x59, 0x81, 0x2e,
-	0xc9, 0x37, 0x02, 0x58, 0xb4, 0xd9, 0x26, 0x8c, 0xe8, 0x8e, 0xb0, 0x1c, 0xfb, 0xcc, 0x2c, 0x5a,
-	0x6d, 0x09, 0x6a, 0x09, 0xbc, 0xbc, 0xf6, 0x48, 0xec, 0x1d, 0x73, 0x5f, 0x43, 0x87, 0xf1, 0x85,
-	0xc0, 0x8a, 0xae, 0x81, 0xfa, 0x1f, 0x86, 0x25, 0xea, 0x34, 0xf3, 0xa4, 0x0a, 0xfc, 0x06, 0x7a,
-	0x56, 0xb1, 0x13, 0xec, 0xfd, 0xa0, 0x01, 0x7f, 0x2b, 0xc1, 0x60, 0x91, 0x9c, 0xb2, 0xe3, 0xf1,
-	0x49, 0x95, 0x1d, 0x6d, 0xd5, 0x3a, 0xda, 0x3e, 0x14, 0x77, 0x23, 0x81, 0x5a, 0x12, 0x57, 0x6d,
-	0xe9, 0x19, 0xb4, 0xed, 0x53, 0x69, 0xd5, 0xa5, 0x72, 0xa4, 0xec, 0x4e, 0x82, 0x61, 0x49, 0x59,
-	0x6d, 0x2c, 0x67, 0x10, 0xf7, 0x16, 0x80, 0x7f, 0x76, 0x51, 0x12, 0x98, 0x47, 0xfb, 0xb3, 0x59,
-	0xe3, 0x12, 0xde, 0x7f, 0xc3, 0x0d, 0x32, 0x3c, 0x11, 0xae, 0x0c, 0x4f, 0x7c, 0xb2, 0x45, 0xf1,
-	0x6a, 0x78, 0x5d, 0x9f, 0x96, 0xf6, 0x1b, 0x86, 0x87, 0xd4, 0xea, 0x54, 0xaa, 0xa0, 0x35, 0x36,
-	0x6b, 0x04, 0x46, 0x87, 0xc8, 0xdc, 0x4e, 0xa4, 0xae, 0xc7, 0x1e, 0xc2, 0x1d, 0xc0, 0x73, 0xe1,
-	0x10, 0x3f, 0x11, 0xf4, 0x7e, 0xee, 0x11, 0x1f, 0x4d, 0xbf, 0xfe, 0xfb, 0xe2, 0x52, 0xe6, 0x25,
-	0x96, 0x61, 0x07, 0xdb, 0xb1, 0x88, 0x40, 0xcf, 0x32, 0x18, 0xef, 0x33, 0xd0, 0x8b, 0x10, 0xc6,
-	0xbc, 0xb0, 0x75, 0x17, 0x7d, 0xdd, 0x0d, 0xac, 0x0e, 0x6f, 0x3f, 0xdf, 0x07, 0x00, 0x00, 0xff,
-	0xff, 0xb9, 0x19, 0xcf, 0x3a, 0xf4, 0x04, 0x00, 0x00,
+	// 442 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0x5f, 0xeb, 0x93, 0x50,
+	0x18, 0xc7, 0xd1, 0xd1, 0xaf, 0xf9, 0x44, 0x10, 0x52, 0x21, 0x41, 0xe1, 0x5c, 0x17, 0xbb, 0xd1,
+	0x41, 0x5d, 0xf4, 0x67, 0x04, 0x35, 0x1a, 0x15, 0xb1, 0x5a, 0x32, 0x0a, 0xba, 0x68, 0x1c, 0xf5,
+	0x99, 0x8a, 0x4e, 0xcd, 0x73, 0x5c, 0x79, 0xdb, 0x6d, 0xef, 0xa1, 0x97, 0x1a, 0xe1, 0x9f, 0x35,
+	0x6d, 0xd3, 0x61, 0xbf, 0xdd, 0x9d, 0xc7, 0x87, 0xf3, 0xe1, 0x9c, 0xcf, 0xf7, 0xf1, 0xc0, 0xad,
+	0x0d, 0x32, 0x62, 0x11, 0x46, 0xe6, 0x48, 0x29, 0xb1, 0x51, 0x8b, 0xe2, 0x90, 0x85, 0xe2, 0xbd,
+	0x35, 0x71, 0xe3, 0x6f, 0x24, 0x35, 0xc3, 0x38, 0xd2, 0x0c, 0x3f, 0x34, 0x3d, 0xd3, 0x21, 0x6e,
+	0x90, 0x37, 0x8d, 0x64, 0xad, 0xfc, 0xe2, 0x40, 0x78, 0x8b, 0xe9, 0x47, 0xe2, 0x27, 0x48, 0xc5,
+	0x25, 0x08, 0x1e, 0xa6, 0xab, 0x88, 0xb8, 0x31, 0x95, 0x38, 0xb9, 0x37, 0xba, 0xf6, 0xe0, 0x91,
+	0xd6, 0x4e, 0xd0, 0xfe, 0xee, 0xce, 0x56, 0x8b, 0x6c, 0xe7, 0x2c, 0x60, 0x71, 0xaa, 0xf7, 0xbd,
+	0xb2, 0xbc, 0x33, 0x81, 0xeb, 0xb5, 0x96, 0x78, 0x03, 0x7a, 0x1e, 0xa6, 0x12, 0x27, 0x73, 0x23,
+	0x41, 0xcf, 0x96, 0xe2, 0x4d, 0xb8, 0xb2, 0xcd, 0x20, 0x12, 0x9f, 0x7f, 0x2b, 0x8a, 0xa7, 0xfc,
+	0x63, 0x4e, 0xf9, 0x04, 0x83, 0x57, 0xc8, 0xe6, 0xe5, 0xe5, 0x5e, 0x58, 0x56, 0x8c, 0x94, 0xce,
+	0x02, 0x2b, 0x0a, 0xdd, 0x80, 0xe9, 0xf8, 0x35, 0x41, 0xca, 0x44, 0x09, 0xae, 0x92, 0xa2, 0x53,
+	0x42, 0x77, 0x65, 0xd6, 0x89, 0x62, 0x77, 0x4b, 0x58, 0x81, 0xee, 0xeb, 0xbb, 0x52, 0x59, 0x82,
+	0x5c, 0x01, 0x2f, 0xbf, 0x3b, 0x84, 0x3a, 0xff, 0x72, 0x6f, 0xc3, 0x05, 0xcb, 0x1b, 0x25, 0xb6,
+	0xac, 0x5a, 0xa8, 0x5f, 0x60, 0x58, 0xa1, 0x4e, 0x33, 0x5d, 0xc7, 0xc0, 0x77, 0x01, 0x72, 0x95,
+	0xab, 0x0a, 0x5c, 0xc8, 0xbf, 0xbc, 0x6e, 0xe7, 0xff, 0xe0, 0x61, 0xb0, 0x48, 0x4e, 0xf9, 0xf0,
+	0x0f, 0x73, 0x7c, 0x7f, 0x2a, 0xc7, 0x93, 0xd4, 0xa6, 0x7c, 0xab, 0xf6, 0xf9, 0x46, 0xfb, 0xbd,
+	0xda, 0x3d, 0x2e, 0x37, 0x13, 0xbf, 0x39, 0x90, 0x2b, 0xc7, 0x3d, 0x9e, 0x9d, 0x77, 0xe8, 0xe0,
+	0x5d, 0x07, 0x07, 0x47, 0xa1, 0x8d, 0x0a, 0xf6, 0x83, 0xc2, 0x37, 0x0d, 0xca, 0x39, 0x05, 0xfc,
+	0xe4, 0x61, 0x58, 0x39, 0x6b, 0xe3, 0x98, 0x05, 0x87, 0x0e, 0x3e, 0x74, 0x70, 0xd0, 0xc4, 0x6d,
+	0xd4, 0x50, 0x1f, 0x6b, 0xbe, 0x65, 0xac, 0xcf, 0x69, 0xe3, 0x39, 0xdc, 0x7f, 0x89, 0x3e, 0x32,
+	0xfc, 0xdf, 0x57, 0x42, 0x79, 0x06, 0xc3, 0x3a, 0xa1, 0xd3, 0x73, 0xa0, 0xbc, 0x81, 0x51, 0x7d,
+	0x7b, 0x21, 0x0e, 0x5d, 0xdb, 0x61, 0xdd, 0xfe, 0xfc, 0xe9, 0xe4, 0xf3, 0x13, 0xdb, 0x65, 0x4e,
+	0x62, 0x68, 0x66, 0xb8, 0x19, 0x97, 0x51, 0xa9, 0x59, 0x56, 0xe3, 0x7d, 0x56, 0xea, 0x2e, 0xac,
+	0x71, 0xbe, 0x30, 0x55, 0x1b, 0x03, 0xd5, 0x0e, 0x8d, 0x8b, 0xbc, 0x7c, 0xf8, 0x27, 0x00, 0x00,
+	0xff, 0xff, 0x9d, 0x23, 0x45, 0x7b, 0x0c, 0x06, 0x00, 0x00,
 }

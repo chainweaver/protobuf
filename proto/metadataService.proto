@@ -20,7 +20,7 @@ service MetadataService {
   }
   rpc GetMetadataBlockhashEndpoint (GetMetadataBlockhashEndpointRequest) returns (KeyValues) {
     option (google.api.http) = {
-      get: "/blocks/{blockhash}/meta"
+      get: "/blocks/{block_hash}/meta"
     };
   }
   rpc PutMetadataAddressEndpoint (PutMetadataAddressEndpointRequest) returns (NullValue) {
@@ -53,7 +53,7 @@ service MetadataService {
   }
   rpc DeleteMetadataBlockheightEndpoint (DeleteMetadataBlockheightEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      delete: "/blocks/{block_height}/meta"
+      delete: "/blocks/{block_hash}/meta"
     };
   }
 }
