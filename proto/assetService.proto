@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+import "google/api/annotations.proto";
+import "assetMessage.proto";
+import "commonMessage.proto";
+
+service AssetService {
+  rpc GenerateAssetAddressEndpoint (NullValue) returns (AddressKeychain) {
+    option (google.api.http) = {
+      post: "/oap/addrs"
+      body: "*"
+    };
+  }
+  rpc IssueAssetEndpoint (OAPIssue) returns (OAPTX) {
+    option (google.api.http) = {
+      post: "/oap/issue"
+      body: "*"
+    };
+  }
+  rpc TransferAssetEndpoint (TransferAssetEndpointRequest) returns (OAPTX) {
+    option (google.api.http) = {
+      post: "/oap/{assetid}/transfer"
+      body: "*"
+    };
+  }
+  rpc ListAssetTXsEndpoint (ListAssetTXsEndpointRequest) returns (ArrayString) {
+    option (google.api.http) = {
+      get: "/oap/{assetid}/txs"
+    };
+  }
+  rpc GetAssetTXEndpoint (GetAssetTXEndpointRequest) returns (OAPTX) {
+    option (google.api.http) = {
+      get: "/oap/{assetid}/txs/{txhash}"
+    };
+  }
+  rpc GetAssetAddressEndpoint (GetAssetAddressEndpointRequest) returns (Address) {
+    option (google.api.http) = {
+      get: "/oap/{assetid}/addrs/{oapaddr}"
+    };
+  }
+}

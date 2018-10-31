@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+message KeyValues {
+  map<string, string> key_pairs = 1;
+}
+
+message GetMetadataAddressEndpointRequest {
+  string address = 1;
+  // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
+  bool private = 2;
+}
+
+message GetMetadataTxhashEndpointRequest {
+  string txhash = 1;
+  // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
+  bool private = 2;
+}
+
+message GetMetadataBlockhashEndpointRequest {
+  string block_hash = 1;
+  // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
+  bool private = 2;
+}
+
+message PutMetadataAddressEndpointRequest {
+  map<string, string> key_pairs = 1;
+  string address = 2;
+  // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
+  bool private = 3;
+}
+
+message PutMetadataTxhashEndpointRequest {
+  map<string, string> key_pairs = 1;
+  string txhash = 2;
+  // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
+  bool private = 3;
+}
+
+message PutMetadataBlockhashEndpointRequest {
+  map<string, string> key_pairs = 1;
+  string block_hash = 2;
+  // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
+  bool private = 3;
+}
+
+message DeleteMetadataAddressEndpointRequest {
+  string address = 1;
+}
+
+message DeleteMetadataTxhashEndpointRequest {
+  string txhash = 1;
+}
+
+message DeleteMetadataBlockheightEndpointRequest {
+  string block_hash = 1;
+}
