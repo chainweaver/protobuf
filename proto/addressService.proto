@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+import "google/api/annotations.proto";
+import "addressMessage.proto";
+import "commonMessage.proto";
+
+service Service {
+  rpc AddressBalanceEndpoint (AddressBalanceEndpointRequest) returns (Address) {
+    option (google.api.http) = {
+      get: "/addrs/{address}/balance"
+    };
+  }
+  rpc AddressEndpoint (AddressEndpointRequest) returns (Address) {
+    option (google.api.http) = {
+      get: "/addrs/{address}"
+    };
+  }
+  rpc AddressFullEndpoint (AddressFullEndpointRequest) returns (Address) {
+    option (google.api.http) = {
+      get: "/addrs/{address}/full"
+    };
+  }
+  rpc GenerateAddressEndpoint (GenerateAddressEndpointRequest) returns (AddressKeychain) {
+    option (google.api.http) = {
+      post: "/addrs"
+      body: "*"
+    };
+  }
+  rpc GenerateMultisigAddressEndpoint (AddressKeychain) returns (AddressKeychain) {
+    option (google.api.http) = {
+      post: "/addrs"
+      body: "*"
+    };
+  }
+}

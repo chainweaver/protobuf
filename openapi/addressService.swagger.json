@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "assetService.proto",
+    "title": "addressService.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,9 +15,9 @@
     "application/json"
   ],
   "paths": {
-    "/oap/addrs": {
+    "/addrs": {
       "post": {
-        "operationId": "GenerateAssetAddressEndpoint",
+        "operationId": "GenerateMultisigAddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -32,44 +32,18 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/blockchainprotobufAddressKeychain"
             }
           }
         ],
         "tags": [
-          "AssetService"
+          "Service"
         ]
       }
     },
-    "/oap/issue": {
-      "post": {
-        "operationId": "IssueAssetEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/blockchainprotobufOAPTX"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/blockchainprotobufOAPIssue"
-            }
-          }
-        ],
-        "tags": [
-          "AssetService"
-        ]
-      }
-    },
-    "/oap/{assetid}/addrs/{oapaddr}": {
+    "/addrs/{address}": {
       "get": {
-        "operationId": "GetAssetAddressEndpoint",
+        "operationId": "AddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -80,106 +54,62 @@
         },
         "parameters": [
           {
-            "name": "assetid",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "oapaddr",
+            "name": "address",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
         "tags": [
-          "AssetService"
+          "Service"
         ]
       }
     },
-    "/oap/{assetid}/transfer": {
-      "post": {
-        "operationId": "TransferAssetEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/blockchainprotobufOAPTX"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "assetid",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/blockchainprotobufTransferAssetEndpointRequest"
-            }
-          }
-        ],
-        "tags": [
-          "AssetService"
-        ]
-      }
-    },
-    "/oap/{assetid}/txs": {
+    "/addrs/{address}/balance": {
       "get": {
-        "operationId": "ListAssetTXsEndpoint",
+        "operationId": "AddressBalanceEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufArrayString"
+              "$ref": "#/definitions/blockchainprotobufAddress"
             }
           }
         },
         "parameters": [
           {
-            "name": "assetid",
+            "name": "address",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
         "tags": [
-          "AssetService"
+          "Service"
         ]
       }
     },
-    "/oap/{assetid}/txs/{txhash}": {
+    "/addrs/{address}/full": {
       "get": {
-        "operationId": "GetAssetTXEndpoint",
+        "operationId": "AddressFullEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufOAPTX"
+              "$ref": "#/definitions/blockchainprotobufAddress"
             }
           }
         },
         "parameters": [
           {
-            "name": "assetid",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "txhash",
+            "name": "address",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
         "tags": [
-          "AssetService"
+          "Service"
         ]
       }
     }
@@ -312,16 +242,8 @@
         }
       }
     },
-    "blockchainprotobufArrayString": {
-      "type": "object",
-      "properties": {
-        "arraystring": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
+    "blockchainprotobufGenerateAddressEndpointRequest": {
+      "type": "object"
     },
     "blockchainprotobufHDAddress": {
       "type": "object",
@@ -391,82 +313,6 @@
             "format": "int32"
           },
           "description": "optional returned for HD wallets created with subchains."
-        }
-      }
-    },
-    "blockchainprotobufNullValue": {
-      "type": "object"
-    },
-    "blockchainprotobufOAPIssue": {
-      "type": "object",
-      "properties": {
-        "from_private": {
-          "type": "string",
-          "description": "The private key being used to issue or transfer assets."
-        },
-        "to_address": {
-          "type": "string",
-          "description": "The target OAP address assets for issue or transfer."
-        },
-        "amount": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The amount of assets being issued or transfered."
-        },
-        "metadata": {
-          "type": "string",
-          "description": "Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction."
-        }
-      }
-    },
-    "blockchainprotobufOAPTX": {
-      "type": "object",
-      "properties": {
-        "ver": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Version of Open Assets Protocol transaction. Typically 1."
-        },
-        "assetid": {
-          "type": "string",
-          "description": "Unique indentifier associated with this asset; can be used to query other transactions associated with this asset."
-        },
-        "hash": {
-          "type": "string",
-          "description": "This transaction’s unique hash; same as the underlying transaction on the asset’s parent blockchain."
-        },
-        "confirmed": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Optional Time this transaction was confirmed; only returned for confirmed transactions."
-        },
-        "received": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time this transaction was received."
-        },
-        "oap_meta": {
-          "type": "string",
-          "description": "Optional Associated hex-encoded metadata with this transaction, if it exists."
-        },
-        "double_spend": {
-          "type": "boolean",
-          "format": "boolean",
-          "description": "true if this is an attempted double spend; false otherwise."
-        },
-        "inputs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "description": "Array of input data, which can be seen explicitly in the cURL example. Very similar to array of TXInputs, but with values related to assets instead of satoshis."
-        },
-        "outputs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "description": "Array of output data, which can be seen explicitly in the cURL example. Very similar to array of TXOutputs, but with values related to assets instead of satoshis."
         }
       }
     },
@@ -791,31 +637,6 @@
         "double_of": {
           "type": "string",
           "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
-        }
-      }
-    },
-    "blockchainprotobufTransferAssetEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "assetid": {
-          "type": "string"
-        },
-        "from_private": {
-          "type": "string",
-          "description": "The private key being used to issue or transfer assets."
-        },
-        "to_address": {
-          "type": "string",
-          "description": "The target OAP address assets for issue or transfer."
-        },
-        "amount": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The amount of assets being issued or transfered."
-        },
-        "metadata": {
-          "type": "string",
-          "description": "Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction."
         }
       }
     },

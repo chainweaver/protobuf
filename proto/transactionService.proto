@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+import "google/api/annotations.proto";
+import "transactionMessage.proto";
+import "commonMessage.proto";
+
+service TransactionService {
+  rpc TransactionHashEndpoint (TransactionHashEndpointRequest) returns (TX) {
+    option (google.api.http) = {
+      get: "/txs/{txhash}"
+    };
+  }
+  rpc UnconfirmedTransactionsEndpoint (UnconfirmedTransactionsEndpointRequest) returns (TXS) {
+    option (google.api.http) = {
+      get: "/txs"
+    };
+  }
+  rpc NewTransactionEndpoint (TX) returns (TXSkeleton) {
+    option (google.api.http) = {
+      post: "/txs/new"
+      body: "*"
+    };
+  }
+  rpc SendTransactionEndpoint (TXSkeleton) returns (TXSkeleton) {
+    option (google.api.http) = {
+      post: "/txs/send"
+      body: "*"
+    };
+  }
+  rpc PushRawTransactionEndpoint (PushRawTransactionEndpointRequest) returns (TX) {
+    option (google.api.http) = {
+      post: "/txs/push"
+      body: "*"
+    };
+  }
+  rpc DecodeRawTransactionEndpoint (DecodeRawTransactionEndpointRequest) returns (TX) {
+    option (google.api.http) = {
+      post: "/txs/decode"
+      body: "*"
+    };
+  }
+  rpc DataEndpoint (NullData) returns (NullData) {
+    option (google.api.http) = {
+      post: "/txs/data"
+      body: "*"
+    };
+  }
+  rpc TransactionPropagationEndpoint (TransactionPropagationEndpointRequest) returns (DescribedBelow) {
+    option (google.api.http) = {
+      get: "/txs/{txhash}/propagation"
+    };
+  }
+}

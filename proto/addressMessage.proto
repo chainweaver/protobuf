@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+message AddressBalanceEndpointRequest {
+  string address = 1;
+}
+
+message AddressEndpointRequest {
+  string address = 1;
+}
+
+message AddressFullEndpointRequest {
+  string address = 1;
+}
+
+message GenerateAddressEndpointRequest {}
