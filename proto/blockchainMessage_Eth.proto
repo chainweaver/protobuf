@@ -90,16 +90,18 @@ message ChainEndpointRequest {
 
 message BlockHashEndpointRequest {
   string stage = 1;
+  string block_hash = 2;
   // Filters response to only include transaction hashes after txstart in the block.
-  int32 txstart = 2;
+  int32 txstart = 3;
   // Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.
-  int32 limit = 3;
+  int32 limit = 4;
 }
 
 message BlockHeightEndpointRequest {
   string stage = 1;
+  string block_height = 2;
   // Filters response to only include transaction hashes after txstart in the block.
-  int32 txstart = 2;
+  int32 txstart = 3;
   // Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.
-  int32 limit = 3;
+  int32 limit = 4;
 }

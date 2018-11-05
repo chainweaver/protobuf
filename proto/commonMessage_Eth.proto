@@ -153,7 +153,7 @@ message Contract {
   // Hex-encoded binary compilation of this contract.
   string bin = 8;
   // JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher.
-  ABI abi = 9;
+  google.protobuf.Any abi = 9;
   // Hex-encoded address of this contract.
   string address = 10;
   // Timestamp when this contract was confirmed in the Ethereum blockchain.
@@ -176,7 +176,7 @@ message Event {
   // optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6.
   int32 confirmations = 5;
   // optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage.
-  google.protobuf.Any  url = 6;
+  google.protobuf.Any url = 6;
   // Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage.
   int32 callback_errors = 7;
 }
