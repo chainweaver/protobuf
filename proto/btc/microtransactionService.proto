@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
+
+import "google/api/annotations.proto";
+import "microtransactionMessage.proto";
+
+service MicrotransactionService {
+  rpc MicrotransactionEndpoint (MicroTXRequest) returns (MicroTX) {
+    option (google.api.http) = {
+      post: "/btc/{network}/txs/micro"
+      body: "*"
+    };
+  }
+}

@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/eth/{stage}/contracts": {
+    "/eth/{network}/contracts": {
       "post": {
         "operationId": "PostCreateContractEndpoint",
         "responses": {
@@ -28,7 +28,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -39,7 +39,7 @@
         ]
       }
     },
-    "/eth/{stage}/contracts/{address}": {
+    "/eth/{network}/contracts/{address}": {
       "get": {
         "operationId": "GetContractAddressEndpoint",
         "responses": {
@@ -52,7 +52,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -69,7 +69,7 @@
         ]
       }
     },
-    "/eth/{stage}/contracts/{address}/{method}": {
+    "/eth/{network}/contracts/{address}/{method}": {
       "post": {
         "operationId": "PostCallContractMethodEndpoint",
         "responses": {
@@ -82,7 +82,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"

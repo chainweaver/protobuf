@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.eth;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+
+message Blockchain {
+  // The name of the blockchain represented, in the form of $COIN.$CHAIN.
+  string name	= 1;  
+  // The current height of the blockchain; i.e., the number of blocks in the blockchain.
+  int32 height = 2; 
+  // The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3.
+  string hash	= 3; 
+  // The time of the latest update to the blockchain; typically when the latest block was added.
+  string time	= 4; 
+  // The BlockCypher URL to query for more information on the latest confirmed block; returns a Block.
+  string latest_url	= 5; 
+  // The hash of the second-to-latest confirmed block in the blockchain.
+  string previous_hash = 6; 
+  // The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block.
+  string previous_url	= 7;  
+  // Number of unconfirmed transactions in memory pool (likely to be included in next block).
+  int32 unconfirmed_count = 8;
+  // A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks.
+  int32 high_gas_price = 9;
+  // A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks.
+  int32 medium_gas_price = 10;
+  // A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks.
+  int32 low_gas_price = 11;
+  // Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
+  int32 last_fork_height = 13;  
+  // Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
+  string last_fork_hash = 14; 
+}
+
+message Block {
+  // The hash of the block; in Ethereum, the hashing function is Keccak/SHA3
+  string hash = 1;
+  // The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain.
+  int32 height = 2;
+  // The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain.
+  int32 depth = 3;
+  // The name of the blockchain represented, in the form of $COIN.$CHAIN
+  string chain = 4;
+  // The total number of wei transacted in this block.
+  int32 total = 5;
+  // The total number of fees—in wei—collected by miners in this block.
+  int32 fees = 6;
+  // Raw size of block (including header and all transactions) in bytes.
+  int32 size = 7;
+  // Block version.
+  int32 ver = 8;
+  // Recorded time at which block was built.
+  google.protobuf.Timestamp time = 9;
+  // The time BlockCypher’s servers receive the block.
+  google.protobuf.Timestamp received_time = 10;
+  // The Ethereum address of the miner that received the coinbase and fee reward.
+  string coinbase_addr = 11;
+  // Address of the peer that sent BlockCypher’s servers this block.
+  string relayed_by = 12;
+  // The number used by a miner to generate this block.
+  int32 nonce = 13;
+  // Number of transactions in this block.
+  int32 n_tx = 14;
+  // The hash of the previous block in the blockchain.
+  string prev_block = 15;
+  // The BlockCypher URL to query for more information on the previous block.
+  google.protobuf.Any  prev_block_url = 16;
+  // The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es).
+  google.protobuf.Any tx_url = 17;
+  // The Merkle root of this block.
+  string mrkl_root = 18;
+  // An array of transaction hashes in this block (initiated by externally controlled accounts). By default, only 20 are included.
+  repeated string txids = 19;
+  // An array of internal transaction hashes (initiated by internal contracts) in this block. By default, only 20 are included.
+  repeated string internal_txids = 20;
+  // Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).
+  google.protobuf.Any next_txids = 21;
+  // Optional If there are more internal transactions that couldn’t fit in the internal_txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).
+  google.protobuf.Any next_internal_txids = 22;
+  // List of uncle blocks by hash included by the miner of this block. You can read more about uncles here. 
+  repeated string uncles = 23;
+}
+
+message ChainEndpointRequest {
+  string network = 1;
+}
+
+message BlockHashEndpointRequest {
+  string network = 1;
+  string block_hash = 2;
+  // Filters response to only include transaction hashes after txstart in the block.
+  int32 txstart = 3;
+  // Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.
+  int32 limit = 4;
+}
+
+message BlockHeightEndpointRequest {
+  string network = 1;
+  string block_height = 2;
+  // Filters response to only include transaction hashes after txstart in the block.
+  int32 txstart = 3;
+  // Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.
+  int32 limit = 4;
+}

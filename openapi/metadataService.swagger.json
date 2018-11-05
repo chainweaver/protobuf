@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/btc/{stage}/addrs/{address}/meta": {
+    "/btc/{network}/addrs/{address}/meta": {
       "get": {
         "operationId": "GetMetadataAddressEndpoint",
         "responses": {
@@ -28,7 +28,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -64,7 +64,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -92,7 +92,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -117,7 +117,7 @@
         ]
       }
     },
-    "/btc/{stage}/blocks/{block_hash}/meta": {
+    "/btc/{network}/blocks/{block_hash}/meta": {
       "get": {
         "operationId": "GetMetadataBlockhashEndpoint",
         "responses": {
@@ -130,7 +130,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -166,7 +166,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -194,7 +194,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -219,7 +219,7 @@
         ]
       }
     },
-    "/btc/{stage}/txs/{txhash}/meta": {
+    "/btc/{network}/txs/{txhash}/meta": {
       "get": {
         "operationId": "GetMetadataTxhashEndpoint",
         "responses": {
@@ -232,7 +232,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -268,7 +268,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -296,7 +296,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -340,7 +340,7 @@
     "btcPutMetadataAddressEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "key_pairs": {
@@ -362,7 +362,7 @@
     "btcPutMetadataBlockhashEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "key_pairs": {
@@ -384,7 +384,7 @@
     "btcPutMetadataTxhashEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "key_pairs": {

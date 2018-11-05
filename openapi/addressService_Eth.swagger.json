@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/eth/{stage}/addr": {
+    "/eth/{network}/addr": {
       "post": {
         "operationId": "PostGenerateAddressEndpoint",
         "responses": {
@@ -28,7 +28,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -39,7 +39,7 @@
         ]
       }
     },
-    "/eth/{stage}/addr/{address}": {
+    "/eth/{network}/addr/{address}": {
       "get": {
         "operationId": "GetAddressEndpoint",
         "responses": {
@@ -52,7 +52,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -101,7 +101,7 @@
         ]
       }
     },
-    "/eth/{stage}/addrs/{address}/balance": {
+    "/eth/{network}/addrs/{address}/balance": {
       "get": {
         "operationId": "GetBalanceAddressEndpoint",
         "responses": {
@@ -114,7 +114,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"

@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/btc/{stage}/oap/addrs": {
+    "/btc/{network}/oap/addrs": {
       "post": {
         "operationId": "GenerateAssetAddressEndpoint",
         "responses": {
@@ -28,7 +28,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -47,7 +47,7 @@
         ]
       }
     },
-    "/btc/{stage}/oap/issue": {
+    "/btc/{network}/oap/issue": {
       "post": {
         "operationId": "IssueAssetEndpoint",
         "responses": {
@@ -60,7 +60,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -79,7 +79,7 @@
         ]
       }
     },
-    "/btc/{stage}/oap/{assetid}/addrs/{oapaddr}": {
+    "/btc/{network}/oap/{assetid}/addrs/{oapaddr}": {
       "get": {
         "operationId": "GetAssetAddressEndpoint",
         "responses": {
@@ -92,7 +92,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -115,7 +115,7 @@
         ]
       }
     },
-    "/btc/{stage}/oap/{assetid}/transfer": {
+    "/btc/{network}/oap/{assetid}/transfer": {
       "post": {
         "operationId": "TransferAssetEndpoint",
         "responses": {
@@ -128,7 +128,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -153,7 +153,7 @@
         ]
       }
     },
-    "/btc/{stage}/oap/{assetid}/txs": {
+    "/btc/{network}/oap/{assetid}/txs": {
       "get": {
         "operationId": "ListAssetTXsEndpoint",
         "responses": {
@@ -166,7 +166,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -183,7 +183,7 @@
         ]
       }
     },
-    "/btc/{stage}/oap/{assetid}/txs/{txhash}": {
+    "/btc/{network}/oap/{assetid}/txs/{txhash}": {
       "get": {
         "operationId": "GetAssetTXEndpoint",
         "responses": {
@@ -196,7 +196,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -433,7 +433,7 @@
     "btcNullValueRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         }
       }
@@ -441,7 +441,7 @@
     "btcOAPIssueRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "from_private": {
@@ -841,7 +841,7 @@
     "btcTransferAssetEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "assetid": {

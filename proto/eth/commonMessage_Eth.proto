@@ -1,0 +1,182 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.eth;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+
+message TXRef {
+  // Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1.
+  int32 block_height = 1;
+  // The hash of the transaction containing this input/output.
+  string tx_hash = 2;
+  // Index of this input in the enclosing transaction. 0 if it’s an input, -1 if it’s an output.
+  int32 tx_input_n = 3;
+  // Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output.
+  int32 tx_output_n = 4;
+  // The value transfered by this input/output in wei exchanged in the enclosing transaction.
+  int32 value = 5;
+  // true if this is an attempted double spend; false otherwise.
+  bool double_spend = 6;
+  // Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
+  int32 confirmations = 7;
+  // Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions.
+  int32 ref_balance = 8;
+  // Optional Time at which transaction was included in a block; only present for confirmed transactions.
+  google.protobuf.Timestamp confirmed = 9;
+  // Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
+  string double_of = 10;
+}
+
+message TXSkeleton {
+  // A temporary TX, usually returned fully filled.
+  TX	tx = 1;
+  // Array of hex-encoded data for you to sign, containing one element for you to sign. Still an array to maintain parity with the Bitcoin API.
+  repeated string tosign = 2;
+  // Array of signatures corresponding to all the data in tosign, typically provided by you. Only one signature is required.
+  repeated string signatures = 3;
+  // Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code.
+  repeated string errors = 4;
+}
+
+message TX {
+  // Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
+  int32 block_height = 1;
+  // The hash of the transaction.
+  string hash = 2;
+  // Array of Ethereum addresses involved in the transaction.
+  repeated string addresses = 3;
+  // The total number of wei exchanged in this transaction.
+  int32 total = 4;
+  // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used.
+  int32 fees = 5;
+  // The size of the transaction in bytes.
+  int32 size = 6;
+  // The amount of gas used by this transaction.
+  int32 gas_used = 7;
+  // The price of gas—in wei—in this transaction.
+  int32 gas_price = 8;
+  // Address of the peer that sent BlockCypher’s servers this transaction. May be empty.
+  string relayed_by = 9;
+  // Time this transaction was received by BlockCypher’s servers.
+  google.protobuf.Timestamp received = 10;
+  // Version number of this transaction.
+  int32 ver = 11;
+  // true if this is an attempted double spend; false otherwise.
+  bool double_spend = 12;
+  // Total number of inputs in the transaction.
+  int32 vin_sz = 13;
+  // Total number of outputs in the transaction.
+  int32 vout_sz = 14;
+  // Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
+  int32 confirmations = 15;
+  // An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API.
+  google.protobuf.Any inputs = 16;
+  // An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API.
+  google.protobuf.Any outputs = 17;
+  // Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions.
+  repeated string	internal_txids = 18;
+  // Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash).
+  string parent_tx = 19;
+  // Optional Time at which transaction was included in a block; only present for confirmed transactions.
+  google.protobuf.Timestamp confirmed = 20;
+  // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts.
+  int32 gas_limit = 21;
+  // Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed.
+  bool contract_creation = 22;
+  // Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
+  int32 receive_count = 23;
+  // Optional Hash of the block that contains this transaction; only present for confirmed transactions.
+  string block_hash = 24;
+  // Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions.
+  int32 block_index = 25;
+  // Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
+  string double_of = 26;
+  // Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”).
+  string execution_error = 27;
+}
+
+message Address {  
+  // The requested address.
+  string address = 1;
+  // Total amount of confirmed wei received by this address.
+  int32 total_received = 2;
+  // Total amount of confirmed wei sent by this address.
+  int32 total_sent = 3;
+  // Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0).
+  int32 balance = 4;
+  // Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation.
+  int32 unconfirmed_balance = 5;
+  // Total balance of wei, including confirmed and unconfirmed transactions, for this address.
+  int32 final_balance = 6;
+  // Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted.
+  int32 n_tx = 7;
+  // Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted.
+  int32 unconfirmed_n_tx = 8;
+  // Final number of transactions, including confirmed and unconfirmed transactions, for this address.
+  int32 final_n_tx	  = 9;
+  // Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.
+  google.protobuf.Any tx_url = 10;
+  // Optional Array of transaction summaries for this address. Usually only returned from the standard Address Endpoint.
+  repeated TXRef txrefs = 11;
+  // Optional All unconfirmed transaction summaries for this address. Usually only returned from the standard Address Endpoint.
+  repeated TXRef unconfirmed_txrefs = 12;
+  // Optional If true, then the Address object contains more transactions than shown. Useful for determining whether to poll the API for more transaction information.
+  bool hasMore = 13;
+}
+
+message AddressKeychain {
+  // Standard address representation.
+  string	address = 1;
+  // Hex-encoded Public key.
+  string public = 2;
+  // Hex-encoded Private key.
+  string private = 3;
+}
+
+message Contract {
+  // Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher.
+  repeated string solidity = 1;
+  // Parameters for either contract creation or method execution.
+  repeated string params = 2;
+  // Named contract(s) to publish; necessary to specify when first creating a contract.
+  repeated	string publish = 3;
+  // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
+  string private = 4;
+  // Maximum amount of gas to use in contract creation or method execution.
+  int32 gas_limit = 5;
+  // Amount (in wei) to transfer; can be used when creating a contract or calling a method.
+  int32 value = 6;
+  // Name of contract as published.
+  string name = 7;
+  // Hex-encoded binary compilation of this contract.
+  string bin = 8;
+  // JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher.
+  google.protobuf.Any abi = 9;
+  // Hex-encoded address of this contract.
+  string address = 10;
+  // Timestamp when this contract was confirmed in the Ethereum blockchain.
+  google.protobuf.Timestamp created = 11;
+  // Hex-encoded transaction hash that created this contract.
+  string creation_tx_hash = 12;
+  // If this is a response from a calling a contract method, this array of results may appear if the method returns any.
+  repeated string results = 13;
+}
+
+message Event {
+  // Identifier of the event; generated when a new request is created.
+  string id = 1;
+  // Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx.
+  string event = 2;
+  // optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction.
+  string	hash = 3;
+  // optional Only transactions associated with the given address will be sent.
+  string address = 4;
+  // optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6.
+  int32 confirmations = 5;
+  // optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage.
+  google.protobuf.Any url = 6;
+  // Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage.
+  int32 callback_errors = 7;
+}

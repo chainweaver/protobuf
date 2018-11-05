@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/eth/{stage}/txs": {
+    "/eth/{network}/txs": {
       "get": {
         "operationId": "GetUnconfirmedTransactionsEndpoint",
         "responses": {
@@ -28,7 +28,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -39,7 +39,7 @@
         ]
       }
     },
-    "/eth/{stage}/txs/decode": {
+    "/eth/{network}/txs/decode": {
       "post": {
         "operationId": "PostDecodeRawTransactionEndpoint",
         "responses": {
@@ -52,7 +52,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -71,7 +71,7 @@
         ]
       }
     },
-    "/eth/{stage}/txs/new": {
+    "/eth/{network}/txs/new": {
       "post": {
         "operationId": "PostCreateTransactionsEndpoint",
         "responses": {
@@ -84,7 +84,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -103,7 +103,7 @@
         ]
       }
     },
-    "/eth/{stage}/txs/push": {
+    "/eth/{network}/txs/push": {
       "put": {
         "operationId": "PostPushRawTransactionEndpoint",
         "responses": {
@@ -116,7 +116,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -135,7 +135,7 @@
         ]
       }
     },
-    "/eth/{stage}/txs/send": {
+    "/eth/{network}/txs/send": {
       "post": {
         "operationId": "PostSendTransactionEndpoint",
         "responses": {
@@ -148,7 +148,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -167,7 +167,7 @@
         ]
       }
     },
-    "/eth/{stage}/txs/{txhash}": {
+    "/eth/{network}/txs/{txhash}": {
       "get": {
         "operationId": "GetTransactionHashEndpoint",
         "responses": {
@@ -180,7 +180,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -202,7 +202,7 @@
     "ethPostCreateTransactionsEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "block_height": {
@@ -341,7 +341,7 @@
     "ethPostDecodeRawTransactionEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "txhex": {
@@ -352,7 +352,7 @@
     "ethPostPushRawTransactionEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "txhex": {
@@ -363,7 +363,7 @@
     "ethPostSendTransactionEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "tx": {

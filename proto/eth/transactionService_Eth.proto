@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.eth;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
+
+import "google/api/annotations.proto";
+import "transactionMessage_Eth.proto";
+import "commonMessage_Eth.proto";
+
+service TransactionService {
+  rpc GetTransactionHashEndpoint (GetTransactionHashEndpointRequest) returns (TX) {
+    option (google.api.http) = {
+      get: "/eth/{network}/txs/{txhash}"
+    };
+  }
+  rpc GetUnconfirmedTransactionsEndpoint (GetUnconfirmedTransactionsEndpointRequest) returns (TxArray) {
+    option (google.api.http) = {
+      get: "/eth/{network}/txs"
+    };
+  }
+  rpc PostCreateTransactionsEndpoint (PostCreateTransactionsEndpointRequest) returns (TXSkeleton) {
+    option (google.api.http) = {
+      post: "/eth/{network}/txs/new"
+      body: "*"
+    };
+  }
+  rpc PostSendTransactionEndpoint (PostSendTransactionEndpointRequest) returns (TXSkeleton) {
+    option (google.api.http) = {
+      post: "/eth/{network}/txs/send"
+      body: "*"
+    };
+  }
+  rpc PostDecodeRawTransactionEndpoint (PostDecodeRawTransactionEndpointRequest) returns (TX) {
+    option (google.api.http) = {
+      post: "/eth/{network}/txs/decode"
+      body: "*"
+    };
+  }
+  rpc PostPushRawTransactionEndpoint (PostPushRawTransactionEndpointRequest) returns (TX) {
+    option (google.api.http) = {
+      put: "/eth/{network}/txs/push"
+      body: "*"
+    };
+  }
+}

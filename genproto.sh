@@ -1,15 +1,17 @@
 #!/bin/bash
 
-rm -f ./protoc-gen-go/*
-rm -f ./protoc-gen-js/*
+rm -f ./protoc-gen-go/eth/*
+rm -f ./protoc-gen-go/btc/*
+rm -f ./protoc-gen-js/eth/*
+rm -f ./protoc-gen-js/btc/*
 
 protoc \
-  -I./proto-btc \
+  -I./proto/btc \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/ \
-  --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:./protoc-gen-js/ \
+  --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:./protoc-gen-js/btc/ \
   commonMessage.proto \
   assetMessage.proto \
   assetService.proto \
@@ -23,12 +25,12 @@ protoc \
   metadataService.proto 
 
 protoc \
-  -I./proto-eth \
+  -I./proto/eth \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/ \
-  --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:./protoc-gen-js/ \
+  --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:./protoc-gen-js/eth/ \
   commonMessage_Eth.proto \
   blockchainMessage_Eth.proto \
   blockchainService_Eth.proto \

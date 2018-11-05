@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/btc/{stage}/wallets": {
+    "/btc/{network}/wallets": {
       "get": {
         "operationId": "ListWalletsEndpoint",
         "responses": {
@@ -28,7 +28,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -50,7 +50,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -69,7 +69,7 @@
         ]
       }
     },
-    "/btc/{stage}/wallets/hd": {
+    "/btc/{network}/wallets/hd": {
       "post": {
         "operationId": "CreateWalletHDEndpoint",
         "responses": {
@@ -82,7 +82,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -101,7 +101,7 @@
         ]
       }
     },
-    "/btc/{stage}/wallets/hd/{name}": {
+    "/btc/{network}/wallets/hd/{name}": {
       "get": {
         "operationId": "GetWalletHDEndpoint",
         "responses": {
@@ -114,7 +114,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -142,7 +142,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -159,7 +159,7 @@
         ]
       }
     },
-    "/btc/{stage}/wallets/hd/{name}/addresses": {
+    "/btc/{network}/wallets/hd/{name}/addresses": {
       "get": {
         "operationId": "GetWalletAddressesHDEndpoint",
         "responses": {
@@ -172,7 +172,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -205,7 +205,7 @@
         ]
       }
     },
-    "/btc/{stage}/wallets/hd/{name}/addresses/derive": {
+    "/btc/{network}/wallets/hd/{name}/addresses/derive": {
       "post": {
         "operationId": "DeriveAddressInWalletEndpoint",
         "responses": {
@@ -218,7 +218,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -243,7 +243,7 @@
         ]
       }
     },
-    "/btc/{stage}/wallets/{name}": {
+    "/btc/{network}/wallets/{name}": {
       "get": {
         "operationId": "GetWalletEndpoint",
         "responses": {
@@ -256,7 +256,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -284,7 +284,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -301,7 +301,7 @@
         ]
       }
     },
-    "/btc/{stage}/wallets/{name}/addresses": {
+    "/btc/{network}/wallets/{name}/addresses": {
       "get": {
         "operationId": "GetWalletAddressesEndpoint",
         "responses": {
@@ -314,7 +314,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -358,7 +358,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -392,7 +392,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -417,7 +417,7 @@
         ]
       }
     },
-    "/btc/{stage}/wallets/{name}/addresses/generate": {
+    "/btc/{network}/wallets/{name}/addresses/generate": {
       "post": {
         "operationId": "GenerateAddressInWalletEndpoint",
         "responses": {
@@ -430,7 +430,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -460,7 +460,7 @@
     "btcAddAddressesToWalletEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "name": {
@@ -476,7 +476,7 @@
     "btcCreateWalletEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "token": {
@@ -496,7 +496,7 @@
     "btcCreateWalletHDEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "token": {
@@ -530,7 +530,7 @@
     "btcDeriveAddressInWalletEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "name": {
@@ -551,7 +551,7 @@
     "btcGenerateAdressInWalletEndpointRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "name": {

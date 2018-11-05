@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/btc/{stage}/txs/micro": {
+    "/btc/{network}/txs/micro": {
       "post": {
         "operationId": "MicrotransactionEndpoint",
         "responses": {
@@ -28,7 +28,7 @@
         },
         "parameters": [
           {
-            "name": "stage",
+            "name": "network",
             "in": "path",
             "required": true,
             "type": "string"
@@ -128,7 +128,7 @@
     "btcMicroTXRequest": {
       "type": "object",
       "properties": {
-        "stage": {
+        "network": {
           "type": "string"
         },
         "from_pubkey": {
