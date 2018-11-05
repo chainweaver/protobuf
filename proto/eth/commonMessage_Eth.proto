@@ -6,6 +6,16 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/e
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/any.proto";
 
+enum NetworkAllowingAlias {
+  option allow_alias = true;
+  MAIN = 0;
+  main = 0;
+  ROPSTEN = 1;
+  ropsten = 1;
+}
+
+message NullValue {}
+
 message TXRef {
   // Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1.
   int32 block_height = 1;
@@ -31,7 +41,7 @@ message TXRef {
 
 message TXSkeleton {
   // A temporary TX, usually returned fully filled.
-  TX	tx = 1;
+  TX tx = 1;
   // Array of hex-encoded data for you to sign, containing one element for you to sign. Still an array to maintain parity with the Bitcoin API.
   repeated string tosign = 2;
   // Array of signatures corresponding to all the data in tosign, typically provided by you. Only one signature is required.

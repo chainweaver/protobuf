@@ -1,7 +1,7 @@
 export class AddAddressesToWalletEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getName(): string;
   setName(a: string): void;
   getOmitwalletaddresses(): boolean;
@@ -12,8 +12,8 @@ export class AddAddressesToWalletEndpointRequest {
 
 export class CreateWalletEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getToken(): string;
   setToken(a: string): void;
   getName(): string;
@@ -26,8 +26,8 @@ export class CreateWalletEndpointRequest {
 
 export class CreateWalletHDEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getToken(): string;
   setToken(a: string): void;
   getName(): string;
@@ -46,8 +46,8 @@ export class CreateWalletHDEndpointRequest {
 
 export class DeleteWalletEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getName(): string;
   setName(a: string): void;
   serializeBinary(): Uint8Array;
@@ -56,8 +56,8 @@ export class DeleteWalletEndpointRequest {
 
 export class DeriveAddressInWalletEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getName(): string;
   setName(a: string): void;
   getCount(): number;
@@ -70,8 +70,8 @@ export class DeriveAddressInWalletEndpointRequest {
 
 export class GenerateAdressInWalletEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getName(): string;
   setName(a: string): void;
   serializeBinary(): Uint8Array;
@@ -80,8 +80,8 @@ export class GenerateAdressInWalletEndpointRequest {
 
 export class GetWalletAddressesEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getName(): string;
   setName(a: string): void;
   getUsed(): boolean;
@@ -94,8 +94,8 @@ export class GetWalletAddressesEndpointRequest {
 
 export class GetWalletEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getName(): string;
   setName(a: string): void;
   serializeBinary(): Uint8Array;
@@ -140,8 +140,8 @@ export class ListWallets {
 
 export class ListWalletsEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ListWalletsEndpointRequest;
 }
@@ -154,8 +154,8 @@ export class NullValue {
 
 export class RemoveAddressesFromWalletEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getName(): string;
   setName(a: string): void;
   getAddress(): string;

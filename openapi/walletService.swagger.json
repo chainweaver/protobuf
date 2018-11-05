@@ -31,7 +31,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           }
         ],
         "tags": [
@@ -53,7 +59,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "body",
@@ -85,7 +97,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "body",
@@ -117,7 +135,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -145,7 +169,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -175,7 +205,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -221,7 +257,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -259,7 +301,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -287,7 +335,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -317,7 +371,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -361,7 +421,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -395,7 +461,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -433,7 +505,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -461,7 +539,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
         "name": {
           "type": "string"
@@ -477,7 +555,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
         "token": {
           "type": "string"
@@ -497,7 +575,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
         "token": {
           "type": "string"
@@ -531,7 +609,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
         "name": {
           "type": "string"
@@ -552,7 +630,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
         "name": {
           "type": "string"
@@ -640,6 +718,16 @@
           }
         }
       }
+    },
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
     },
     "btcNullValue": {
       "type": "object"

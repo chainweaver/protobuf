@@ -31,7 +31,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
           }
         ],
         "tags": [
@@ -55,7 +61,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
           },
           {
             "name": "body",
@@ -87,7 +99,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
           },
           {
             "name": "body",
@@ -119,7 +137,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
           },
           {
             "name": "body",
@@ -151,7 +175,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
           },
           {
             "name": "body",
@@ -183,7 +213,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
           },
           {
             "name": "txhash",
@@ -199,11 +235,21 @@
     }
   },
   "definitions": {
+    "ethNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAIN",
+        "main",
+        "ROPSTEN",
+        "ropsten"
+      ],
+      "default": "MAIN"
+    },
     "ethPostCreateTransactionsEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
         },
         "block_height": {
           "type": "integer",
@@ -342,9 +388,9 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
         },
-        "txhex": {
+        "tx": {
           "type": "string"
         }
       }
@@ -353,9 +399,9 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
         },
-        "txhex": {
+        "tx": {
           "type": "string"
         }
       }
@@ -364,7 +410,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
         },
         "tx": {
           "$ref": "#/definitions/ethTX",

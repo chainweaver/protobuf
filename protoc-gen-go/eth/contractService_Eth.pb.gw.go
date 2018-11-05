@@ -38,6 +38,7 @@ func request_ContractService_PostCreateContractEndpoint_0(ctx context.Context, m
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -48,11 +49,13 @@ func request_ContractService_PostCreateContractEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ContractService_PostCreateContractEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
@@ -69,6 +72,7 @@ func request_ContractService_GetContractAddressEndpoint_0(ctx context.Context, m
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -79,11 +83,13 @@ func request_ContractService_GetContractAddressEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["address"]
 	if !ok {
@@ -107,6 +113,7 @@ func request_ContractService_PostCallContractMethodEndpoint_0(ctx context.Contex
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -117,11 +124,13 @@ func request_ContractService_PostCallContractMethodEndpoint_0(ctx context.Contex
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["address"]
 	if !ok {

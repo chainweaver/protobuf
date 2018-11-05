@@ -1,7 +1,7 @@
 export class GetTransactionHashEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getTxhash(): string;
   setTxhash(a: string): void;
   serializeBinary(): Uint8Array;
@@ -10,16 +10,16 @@ export class GetTransactionHashEndpointRequest {
 
 export class GetUnconfirmedTransactionsEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => GetUnconfirmedTransactionsEndpointRequest;
 }
 
 export class PostCreateTransactionsEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getBlockHeight(): number;
   setBlockHeight(a: number): void;
   getHash(): string;
@@ -80,28 +80,28 @@ export class PostCreateTransactionsEndpointRequest {
 
 export class PostDecodeRawTransactionEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
-  getTxhex(): string;
-  setTxhex(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
+  getTx(): string;
+  setTx(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => PostDecodeRawTransactionEndpointRequest;
 }
 
 export class PostPushRawTransactionEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
-  getTxhex(): string;
-  setTxhex(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
+  getTx(): string;
+  setTx(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => PostPushRawTransactionEndpointRequest;
 }
 
 export class PostSendTransactionEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getTx(): {};
   setTx(a: {}): void;
   getTosign(): string;

@@ -34,6 +34,7 @@ func request_TransactionService_GetTransactionHashEndpoint_0(ctx context.Context
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -44,11 +45,13 @@ func request_TransactionService_GetTransactionHashEndpoint_0(ctx context.Context
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["txhash"]
 	if !ok {
@@ -72,6 +75,7 @@ func request_TransactionService_GetUnconfirmedTransactionsEndpoint_0(ctx context
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -82,11 +86,13 @@ func request_TransactionService_GetUnconfirmedTransactionsEndpoint_0(ctx context
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.GetUnconfirmedTransactionsEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -103,6 +109,7 @@ func request_TransactionService_PostCreateTransactionsEndpoint_0(ctx context.Con
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -113,11 +120,13 @@ func request_TransactionService_PostCreateTransactionsEndpoint_0(ctx context.Con
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.PostCreateTransactionsEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -134,6 +143,7 @@ func request_TransactionService_PostSendTransactionEndpoint_0(ctx context.Contex
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -144,11 +154,13 @@ func request_TransactionService_PostSendTransactionEndpoint_0(ctx context.Contex
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.PostSendTransactionEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -165,6 +177,7 @@ func request_TransactionService_PostDecodeRawTransactionEndpoint_0(ctx context.C
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -175,11 +188,13 @@ func request_TransactionService_PostDecodeRawTransactionEndpoint_0(ctx context.C
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.PostDecodeRawTransactionEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -196,6 +211,7 @@ func request_TransactionService_PostPushRawTransactionEndpoint_0(ctx context.Con
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -206,11 +222,13 @@ func request_TransactionService_PostPushRawTransactionEndpoint_0(ctx context.Con
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.PostPushRawTransactionEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err

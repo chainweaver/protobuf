@@ -6,10 +6,18 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/b
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/any.proto";
 
+enum NetworkAllowingAlias {
+  option allow_alias = true;
+  MAINNET = 0;
+  mainnet = 0;
+  TEST = 1;
+  test = 1;
+}
+
 message NullValue {}
 
 message NullValueRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
 }
 
 message ArrayString {
@@ -262,7 +270,7 @@ message OAPIssue {
 }
 
 message OAPIssueRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   // The private key being used to issue or transfer assets.
   string from_private = 2; 
   // The target OAP address assets for issue or transfer.

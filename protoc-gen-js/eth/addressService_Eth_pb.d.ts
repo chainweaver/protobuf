@@ -44,8 +44,8 @@ export class AddressKeychain {
 
 export class GetAddressEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getAddress(): string;
   setAddress(a: string): void;
   getBefore(): number;
@@ -62,8 +62,8 @@ export class GetAddressEndpointRequest {
 
 export class GetBalanceAddressEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getAddress(): string;
   setAddress(a: string): void;
   serializeBinary(): Uint8Array;
@@ -72,8 +72,8 @@ export class GetBalanceAddressEndpointRequest {
 
 export class NullValueRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => NullValueRequest;
 }

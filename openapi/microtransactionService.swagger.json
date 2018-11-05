@@ -31,7 +31,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "body",
@@ -129,7 +135,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
         "from_pubkey": {
           "type": "string",
@@ -203,6 +209,16 @@
           "description": "Optional The hash of the finalized transaction, once sent."
         }
       }
+    },
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
     },
     "btcTXInput": {
       "type": "object",

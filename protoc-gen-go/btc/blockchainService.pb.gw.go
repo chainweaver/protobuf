@@ -34,6 +34,7 @@ func request_BlockchainService_ChainEndpoint_0(ctx context.Context, marshaler ru
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -44,11 +45,13 @@ func request_BlockchainService_ChainEndpoint_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.ChainEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -61,6 +64,7 @@ func request_BlockchainService_BlockHashEndpoint_0(ctx context.Context, marshale
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -71,11 +75,13 @@ func request_BlockchainService_BlockHashEndpoint_0(ctx context.Context, marshale
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["block_hash"]
 	if !ok {
@@ -99,6 +105,7 @@ func request_BlockchainService_BlockHeightEndpoint_0(ctx context.Context, marsha
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -109,11 +116,13 @@ func request_BlockchainService_BlockHeightEndpoint_0(ctx context.Context, marsha
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["block_height"]
 	if !ok {
@@ -137,6 +146,7 @@ func request_BlockchainService_FeatureEndpoint_0(ctx context.Context, marshaler 
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -147,11 +157,13 @@ func request_BlockchainService_FeatureEndpoint_0(ctx context.Context, marshaler 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {

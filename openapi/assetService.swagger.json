@@ -31,7 +31,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "body",
@@ -63,7 +69,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "body",
@@ -131,7 +143,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "assetid",
@@ -169,7 +187,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "assetid",
@@ -199,7 +223,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "assetid",
@@ -430,11 +460,21 @@
         }
       }
     },
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
+    },
     "btcNullValueRequest": {
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         }
       }
     },
@@ -442,7 +482,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
         "from_private": {
           "type": "string",
@@ -842,7 +882,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
         "assetid": {
           "type": "string"

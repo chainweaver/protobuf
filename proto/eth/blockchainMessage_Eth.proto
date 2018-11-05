@@ -5,6 +5,7 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/e
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/any.proto";
+import "commonMessage_Eth.proto";
 
 message Blockchain {
   // The name of the blockchain represented, in the form of $COIN.$CHAIN.
@@ -85,11 +86,11 @@ message Block {
 }
 
 message ChainEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
 }
 
 message BlockHashEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string block_hash = 2;
   // Filters response to only include transaction hashes after txstart in the block.
   int32 txstart = 3;
@@ -98,7 +99,7 @@ message BlockHashEndpointRequest {
 }
 
 message BlockHeightEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string block_height = 2;
   // Filters response to only include transaction hashes after txstart in the block.
   int32 txstart = 3;

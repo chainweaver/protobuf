@@ -3,33 +3,35 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf.btc;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
 
+import "commonMessage.proto";
+
 message KeyValues {
   map<string, string> key_pairs = 1;
 }
 
 message GetMetadataAddressEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string address = 2;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
   bool private = 3;
 }
 
 message GetMetadataTxhashEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string txhash = 2;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
   bool private = 3;
 }
 
 message GetMetadataBlockhashEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string block_hash = 2;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
   bool private = 3;
 }
 
 message PutMetadataAddressEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   map<string, string> key_pairs = 2;
   string address = 3;
   // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
@@ -37,7 +39,7 @@ message PutMetadataAddressEndpointRequest {
 }
 
 message PutMetadataTxhashEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   map<string, string> key_pairs = 2;
   string txhash = 3;
   // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
@@ -45,7 +47,7 @@ message PutMetadataTxhashEndpointRequest {
 }
 
 message PutMetadataBlockhashEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   map<string, string> key_pairs = 2;
   string block_hash = 3;
   // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
@@ -53,16 +55,16 @@ message PutMetadataBlockhashEndpointRequest {
 }
 
 message DeleteMetadataAddressEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string address = 2;
 }
 
 message DeleteMetadataTxhashEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string txhash = 2;
 }
 
 message DeleteMetadataBlockheightEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string block_hash = 2;
 }

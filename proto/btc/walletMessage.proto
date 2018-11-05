@@ -38,14 +38,14 @@ message WalletAddressKeychain {
 }
 
 message CreateWalletEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string token	= 2;
   string name = 3;
   repeated string addresses	= 4;
 }
 
 message CreateWalletHDEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string token 	= 2;
   string name = 3;
   repeated HDChain chains = 4;
@@ -55,23 +55,23 @@ message CreateWalletHDEndpointRequest {
 }
 
 message ListWalletsEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
 }
 
 message GetWalletEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string name = 2;
 }
 
 message AddAddressesToWalletEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string name = 2;
   // If omitWalletAddresses is true, the response will omit address information (useful to speed up the API call for larger wallets).
   bool omitWalletAddresses = 3;
 }
 
 message GetWalletAddressesEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string name = 2;
   // Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.
   bool used = 3;
@@ -80,18 +80,18 @@ message GetWalletAddressesEndpointRequest {
 }
 
 message RemoveAddressesFromWalletEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string name = 2;
   string address = 3;
 }
 
 message GenerateAdressInWalletEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string name = 2;
 }
 
 message DeriveAddressInWalletEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string name = 2;
   // Number of addresses to derive. If not set, default is one address.
   int32 count = 3;
@@ -100,6 +100,6 @@ message DeriveAddressInWalletEndpointRequest {
 }
 
 message DeleteWalletEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string name = 2;
 }

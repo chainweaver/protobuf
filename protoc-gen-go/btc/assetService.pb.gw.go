@@ -38,6 +38,7 @@ func request_AssetService_GenerateAssetAddressEndpoint_0(ctx context.Context, ma
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -48,11 +49,13 @@ func request_AssetService_GenerateAssetAddressEndpoint_0(ctx context.Context, ma
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.GenerateAssetAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -69,6 +72,7 @@ func request_AssetService_IssueAssetEndpoint_0(ctx context.Context, marshaler ru
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -79,11 +83,13 @@ func request_AssetService_IssueAssetEndpoint_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.IssueAssetEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -100,6 +106,7 @@ func request_AssetService_TransferAssetEndpoint_0(ctx context.Context, marshaler
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -110,11 +117,13 @@ func request_AssetService_TransferAssetEndpoint_0(ctx context.Context, marshaler
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["assetid"]
 	if !ok {
@@ -138,6 +147,7 @@ func request_AssetService_ListAssetTXsEndpoint_0(ctx context.Context, marshaler 
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -148,11 +158,13 @@ func request_AssetService_ListAssetTXsEndpoint_0(ctx context.Context, marshaler 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["assetid"]
 	if !ok {
@@ -176,6 +188,7 @@ func request_AssetService_GetAssetTXEndpoint_0(ctx context.Context, marshaler ru
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -186,11 +199,13 @@ func request_AssetService_GetAssetTXEndpoint_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["assetid"]
 	if !ok {

@@ -1,7 +1,7 @@
 export class DeleteMetadataAddressEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getAddress(): string;
   setAddress(a: string): void;
   serializeBinary(): Uint8Array;
@@ -10,8 +10,8 @@ export class DeleteMetadataAddressEndpointRequest {
 
 export class DeleteMetadataBlockheightEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getBlockHash(): string;
   setBlockHash(a: string): void;
   serializeBinary(): Uint8Array;
@@ -20,8 +20,8 @@ export class DeleteMetadataBlockheightEndpointRequest {
 
 export class DeleteMetadataTxhashEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getTxhash(): string;
   setTxhash(a: string): void;
   serializeBinary(): Uint8Array;
@@ -30,8 +30,8 @@ export class DeleteMetadataTxhashEndpointRequest {
 
 export class GetMetadataAddressEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getAddress(): string;
   setAddress(a: string): void;
   getPrivate(): boolean;
@@ -42,8 +42,8 @@ export class GetMetadataAddressEndpointRequest {
 
 export class GetMetadataBlockhashEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getBlockHash(): string;
   setBlockHash(a: string): void;
   getPrivate(): boolean;
@@ -54,8 +54,8 @@ export class GetMetadataBlockhashEndpointRequest {
 
 export class GetMetadataTxhashEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getTxhash(): string;
   setTxhash(a: string): void;
   getPrivate(): boolean;
@@ -80,8 +80,8 @@ export class NullValue {
 
 export class PutMetadataAddressEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getKeyPairs(): {};
   setKeyPairs(a: {}): void;
   getAddress(): string;
@@ -94,8 +94,8 @@ export class PutMetadataAddressEndpointRequest {
 
 export class PutMetadataBlockhashEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getKeyPairs(): {};
   setKeyPairs(a: {}): void;
   getBlockHash(): string;
@@ -108,8 +108,8 @@ export class PutMetadataBlockhashEndpointRequest {
 
 export class PutMetadataTxhashEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getKeyPairs(): {};
   setKeyPairs(a: {}): void;
   getTxhash(): string;

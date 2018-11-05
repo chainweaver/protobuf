@@ -12,16 +12,16 @@ message TxArray {
 }
 
 message GetTransactionHashEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string txhash = 2;
 }
 
 message GetUnconfirmedTransactionsEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
 }
 
 message PostCreateTransactionsEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   // Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
   int32 block_height = 2;
   // The hash of the transaction.
@@ -79,7 +79,7 @@ message PostCreateTransactionsEndpointRequest {
 }
 
 message PostSendTransactionEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   // A temporary TX, usually returned fully filled.
   TX	tx = 2;
   // Array of hex-encoded data for you to sign, containing one element for you to sign. Still an array to maintain parity with the Bitcoin API.
@@ -91,11 +91,11 @@ message PostSendTransactionEndpointRequest {
 }
 
 message PostDecodeRawTransactionEndpointRequest {
-  string network = 1;
-  string txhex = 2;
+  NetworkAllowingAlias network = 1;
+  string tx = 2;
 }
 
 message PostPushRawTransactionEndpointRequest {
-  string network = 1;
-  string txhex = 2;
+  NetworkAllowingAlias network = 1;
+  string tx = 2;
 }

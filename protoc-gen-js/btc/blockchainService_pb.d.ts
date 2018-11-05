@@ -46,8 +46,8 @@ export class Block {
 
 export class BlockHashEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getBlockHash(): string;
   setBlockHash(a: string): void;
   serializeBinary(): Uint8Array;
@@ -56,8 +56,8 @@ export class BlockHashEndpointRequest {
 
 export class BlockHeightEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getBlockHeight(): number;
   setBlockHeight(a: number): void;
   serializeBinary(): Uint8Array;
@@ -100,16 +100,16 @@ export class Blockchain {
 
 export class ChainEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ChainEndpointRequest;
 }
 
 export class Feature {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getName(): string;
   setName(a: string): void;
   getState(): string;
@@ -124,8 +124,8 @@ export class Feature {
 
 export class FeatureEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getName(): string;
   setName(a: string): void;
   serializeBinary(): Uint8Array;

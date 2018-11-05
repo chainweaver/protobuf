@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.eth;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
+
+import "google/api/annotations.proto";
+import "webhooksMessage_Eth.proto";
+import "commonMessage_Eth.proto";
+
+service WebHooksService {
+  rpc PostCreateWebHookEndpoint (PostCreateWebHookEndpointRequest) returns (Event) {
+    option (google.api.http) = {
+      post: "/hooks"
+    };
+  }
+  rpc GetListWebHooksEndpoint (GetListWebHooksEndpointRequest) returns (ArrayEvent) {
+    option (google.api.http) = {
+      get: "/hooks"
+    };
+  }
+  rpc GetWebHookIDEndpoint (GetWebHookIDEndpointRequest) returns (Event) {
+    option (google.api.http) = {
+      get: "/hooks/{webhookid}"
+    };
+  }
+  rpc DeleteWebHookEndpoint (DeleteWebHookEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      delete: "/hooks/{webhookid}"
+    };
+  }
+}

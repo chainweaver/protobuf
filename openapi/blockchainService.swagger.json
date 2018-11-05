@@ -31,7 +31,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           }
         ],
         "tags": [
@@ -55,7 +61,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "block_hash",
@@ -85,7 +97,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "block_height",
@@ -116,7 +134,13 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
           },
           {
             "name": "name",
@@ -301,7 +325,7 @@
       "type": "object",
       "properties": {
         "network": {
-          "type": "string"
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
         "name": {
           "type": "string"
@@ -317,6 +341,16 @@
           "type": "string"
         }
       }
+    },
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
     }
   }
 }

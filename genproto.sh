@@ -38,6 +38,8 @@ protoc \
   addressService_Eth.proto \
   transactionMessage_Eth.proto \
   transactionService_Eth.proto \
+  webhooksMessage_Eth.proto \
+  webhooksService_Eth.proto \
   contractMessage_Eth.proto \
   contractService_Eth.proto 
 

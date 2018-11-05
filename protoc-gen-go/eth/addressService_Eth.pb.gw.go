@@ -34,6 +34,7 @@ func request_AddressService_GetBalanceAddressEndpoint_0(ctx context.Context, mar
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -44,11 +45,13 @@ func request_AddressService_GetBalanceAddressEndpoint_0(ctx context.Context, mar
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["address"]
 	if !ok {
@@ -76,6 +79,7 @@ func request_AddressService_GetAddressEndpoint_0(ctx context.Context, marshaler 
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -86,11 +90,13 @@ func request_AddressService_GetAddressEndpoint_0(ctx context.Context, marshaler 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["address"]
 	if !ok {
@@ -118,6 +124,7 @@ func request_AddressService_PostGenerateAddressEndpoint_0(ctx context.Context, m
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -128,11 +135,13 @@ func request_AddressService_PostGenerateAddressEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.PostGenerateAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err

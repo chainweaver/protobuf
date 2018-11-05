@@ -3,13 +3,15 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf.eth;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
 
+import "commonMessage_Eth.proto";
+
 message GetBalanceAddressEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string address = 2;
 }
 
 message GetAddressEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string address = 2;
   // Filters response to only include transactions below before height in the blockchain.
   int32 before = 3;
@@ -22,5 +24,5 @@ message GetAddressEndpointRequest {
 }
 
 message NullValueRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
 }

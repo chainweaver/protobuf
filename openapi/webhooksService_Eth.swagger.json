@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "contractService_Eth.proto",
+    "title": "webhooksService_Eth.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,196 +15,174 @@
     "application/json"
   ],
   "paths": {
-    "/eth/{network}/contracts": {
-      "post": {
-        "operationId": "PostCreateContractEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ethContractArray"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
-            ]
-          }
-        ],
-        "tags": [
-          "ContractService"
-        ]
-      }
-    },
-    "/eth/{network}/contracts/{address}": {
+    "/hooks": {
       "get": {
-        "operationId": "GetContractAddressEndpoint",
+        "operationId": "GetListWebHooksEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/ethContract"
+              "$ref": "#/definitions/ethArrayEvent"
             }
           }
         },
         "parameters": [
           {
             "name": "network",
-            "in": "path",
-            "required": true,
+            "in": "query",
+            "required": false,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ]
+            ],
+            "default": "MAIN"
           },
           {
-            "name": "address",
-            "in": "path",
-            "required": true,
+            "name": "token",
+            "in": "query",
+            "required": false,
             "type": "string"
           }
         ],
         "tags": [
-          "ContractService"
+          "WebHooksService"
+        ]
+      },
+      "post": {
+        "operationId": "PostCreateWebHookEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ethEvent"
+            }
+          }
+        },
+        "tags": [
+          "WebHooksService"
         ]
       }
     },
-    "/eth/{network}/contracts/{address}/{method}": {
-      "post": {
-        "operationId": "PostCallContractMethodEndpoint",
+    "/hooks/{webhookid}": {
+      "get": {
+        "operationId": "GetWebHookIDEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/ethContract"
+              "$ref": "#/definitions/ethEvent"
             }
           }
         },
         "parameters": [
           {
-            "name": "network",
+            "name": "webhookid",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "network",
+            "in": "query",
+            "required": false,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ]
-          },
-          {
-            "name": "address",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "method",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            ],
+            "default": "MAIN"
           }
         ],
         "tags": [
-          "ContractService"
+          "WebHooksService"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteWebHookEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ethNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "network",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ],
+            "default": "MAIN"
+          }
+        ],
+        "tags": [
+          "WebHooksService"
         ]
       }
     }
   },
   "definitions": {
-    "ethContract": {
+    "ethArrayEvent": {
       "type": "object",
       "properties": {
-        "solidity": {
+        "event": {
           "type": "array",
           "items": {
-            "type": "string"
-          },
-          "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
-        },
-        "params": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Parameters for either contract creation or method execution."
-        },
-        "publish": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
-        },
-        "private": {
-          "type": "string",
-          "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
-        },
-        "gas_limit": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Maximum amount of gas to use in contract creation or method execution."
-        },
-        "value": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of contract as published."
-        },
-        "bin": {
-          "type": "string",
-          "description": "Hex-encoded binary compilation of this contract."
-        },
-        "abi": {
-          "$ref": "#/definitions/protobufAny",
-          "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
-        },
-        "address": {
-          "type": "string",
-          "description": "Hex-encoded address of this contract."
-        },
-        "created": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
-        },
-        "creation_tx_hash": {
-          "type": "string",
-          "description": "Hex-encoded transaction hash that created this contract."
-        },
-        "results": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+            "$ref": "#/definitions/ethEvent"
+          }
         }
       }
     },
-    "ethContractArray": {
+    "ethEvent": {
       "type": "object",
       "properties": {
-        "contract": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethContract"
-          }
+        "id": {
+          "type": "string",
+          "description": "Identifier of the event; generated when a new request is created."
+        },
+        "event": {
+          "type": "string",
+          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
+        },
+        "hash": {
+          "type": "string",
+          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+        },
+        "address": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given address will be sent."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+        },
+        "url": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+        },
+        "callback_errors": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
         }
       }
     },
@@ -217,6 +195,9 @@
         "ropsten"
       ],
       "default": "MAIN"
+    },
+    "ethNullValue": {
+      "type": "object"
     },
     "protobufAny": {
       "type": "object",

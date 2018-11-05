@@ -37,7 +37,7 @@ message MicroTX {
 }
 
 message MicroTXRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   // Hex-encoded public key from which you’re sending coins.
   string from_pubkey = 2;
   // Hex-encoded private key from which you’re sending coins.

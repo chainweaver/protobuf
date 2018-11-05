@@ -34,8 +34,8 @@ export class MicroTX {
 
 export class MicroTXRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getFromPubkey(): string;
   setFromPubkey(a: string): void;
   getFromPrivate(): string;

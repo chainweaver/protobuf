@@ -38,6 +38,7 @@ func request_WalletService_CreateWalletEndpoint_0(ctx context.Context, marshaler
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -48,11 +49,13 @@ func request_WalletService_CreateWalletEndpoint_0(ctx context.Context, marshaler
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.CreateWalletEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -69,6 +72,7 @@ func request_WalletService_CreateWalletHDEndpoint_0(ctx context.Context, marshal
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -79,11 +83,13 @@ func request_WalletService_CreateWalletHDEndpoint_0(ctx context.Context, marshal
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.CreateWalletHDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -96,6 +102,7 @@ func request_WalletService_ListWalletsEndpoint_0(ctx context.Context, marshaler 
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -106,11 +113,13 @@ func request_WalletService_ListWalletsEndpoint_0(ctx context.Context, marshaler 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.ListWalletsEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -123,6 +132,7 @@ func request_WalletService_GetWalletEndpoint_0(ctx context.Context, marshaler ru
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -133,11 +143,13 @@ func request_WalletService_GetWalletEndpoint_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -161,6 +173,7 @@ func request_WalletService_GetWalletHDEndpoint_0(ctx context.Context, marshaler 
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -171,11 +184,13 @@ func request_WalletService_GetWalletHDEndpoint_0(ctx context.Context, marshaler 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -203,6 +218,7 @@ func request_WalletService_AddAddressesToWalletEndpoint_0(ctx context.Context, m
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -213,11 +229,13 @@ func request_WalletService_AddAddressesToWalletEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -245,6 +263,7 @@ func request_WalletService_GetWalletAddressesEndpoint_0(ctx context.Context, mar
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -255,11 +274,13 @@ func request_WalletService_GetWalletAddressesEndpoint_0(ctx context.Context, mar
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -291,6 +312,7 @@ func request_WalletService_GetWalletAddressesHDEndpoint_0(ctx context.Context, m
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -301,11 +323,13 @@ func request_WalletService_GetWalletAddressesHDEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -337,6 +361,7 @@ func request_WalletService_RemoveAddressesFromWalletEndpoint_0(ctx context.Conte
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -347,11 +372,13 @@ func request_WalletService_RemoveAddressesFromWalletEndpoint_0(ctx context.Conte
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -383,6 +410,7 @@ func request_WalletService_GenerateAddressInWalletEndpoint_0(ctx context.Context
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -393,11 +421,13 @@ func request_WalletService_GenerateAddressInWalletEndpoint_0(ctx context.Context
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -425,6 +455,7 @@ func request_WalletService_DeriveAddressInWalletEndpoint_0(ctx context.Context, 
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -435,11 +466,13 @@ func request_WalletService_DeriveAddressInWalletEndpoint_0(ctx context.Context, 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -463,6 +496,7 @@ func request_WalletService_DeleteWalletEndpoint_0(ctx context.Context, marshaler
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -473,11 +507,13 @@ func request_WalletService_DeleteWalletEndpoint_0(ctx context.Context, marshaler
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -501,6 +537,7 @@ func request_WalletService_DeleteWalletHDEndpoint_0(ctx context.Context, marshal
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -511,11 +548,13 @@ func request_WalletService_DeleteWalletHDEndpoint_0(ctx context.Context, marshal
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["name"]
 	if !ok {

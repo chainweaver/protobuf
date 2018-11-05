@@ -38,6 +38,7 @@ func request_MetadataService_GetMetadataAddressEndpoint_0(ctx context.Context, m
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -48,11 +49,13 @@ func request_MetadataService_GetMetadataAddressEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["address"]
 	if !ok {
@@ -84,6 +87,7 @@ func request_MetadataService_GetMetadataTxhashEndpoint_0(ctx context.Context, ma
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -94,11 +98,13 @@ func request_MetadataService_GetMetadataTxhashEndpoint_0(ctx context.Context, ma
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["txhash"]
 	if !ok {
@@ -130,6 +136,7 @@ func request_MetadataService_GetMetadataBlockhashEndpoint_0(ctx context.Context,
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -140,11 +147,13 @@ func request_MetadataService_GetMetadataBlockhashEndpoint_0(ctx context.Context,
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["block_hash"]
 	if !ok {
@@ -176,6 +185,7 @@ func request_MetadataService_PutMetadataAddressEndpoint_0(ctx context.Context, m
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -186,11 +196,13 @@ func request_MetadataService_PutMetadataAddressEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["address"]
 	if !ok {
@@ -218,6 +230,7 @@ func request_MetadataService_PutMetadataTxhashEndpoint_0(ctx context.Context, ma
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -228,11 +241,13 @@ func request_MetadataService_PutMetadataTxhashEndpoint_0(ctx context.Context, ma
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["txhash"]
 	if !ok {
@@ -260,6 +275,7 @@ func request_MetadataService_PutMetadataBlockhashEndpoint_0(ctx context.Context,
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -270,11 +286,13 @@ func request_MetadataService_PutMetadataBlockhashEndpoint_0(ctx context.Context,
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["block_hash"]
 	if !ok {
@@ -298,6 +316,7 @@ func request_MetadataService_DeleteMetadataAddressEndpoint_0(ctx context.Context
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -308,11 +327,13 @@ func request_MetadataService_DeleteMetadataAddressEndpoint_0(ctx context.Context
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["address"]
 	if !ok {
@@ -336,6 +357,7 @@ func request_MetadataService_DeleteMetadataTxhashEndpoint_0(ctx context.Context,
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -346,11 +368,13 @@ func request_MetadataService_DeleteMetadataTxhashEndpoint_0(ctx context.Context,
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["txhash"]
 	if !ok {
@@ -374,6 +398,7 @@ func request_MetadataService_DeleteMetadataBlockheightEndpoint_0(ctx context.Con
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -384,11 +409,13 @@ func request_MetadataService_DeleteMetadataBlockheightEndpoint_0(ctx context.Con
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["block_hash"]
 	if !ok {

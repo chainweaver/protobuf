@@ -40,8 +40,8 @@ export class ContractArray {
 
 export class GetContractAddressEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getAddress(): string;
   setAddress(a: string): void;
   serializeBinary(): Uint8Array;
@@ -50,8 +50,8 @@ export class GetContractAddressEndpointRequest {
 
 export class PostCallContractMethodEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getAddress(): string;
   setAddress(a: string): void;
   getMethod(): string;
@@ -62,8 +62,8 @@ export class PostCallContractMethodEndpointRequest {
 
 export class PostCreateContractEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getSolidity(): string;
   setSolidity(a: string): void;
   getParams(): string;

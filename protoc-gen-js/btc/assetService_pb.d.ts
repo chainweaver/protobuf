@@ -80,8 +80,8 @@ export class GetAssetAddressEndpointRequest {
 
 export class GetAssetTXEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getAssetid(): string;
   setAssetid(a: string): void;
   getTxhash(): string;
@@ -92,8 +92,8 @@ export class GetAssetTXEndpointRequest {
 
 export class ListAssetTXsEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getAssetid(): string;
   setAssetid(a: string): void;
   serializeBinary(): Uint8Array;
@@ -102,16 +102,16 @@ export class ListAssetTXsEndpointRequest {
 
 export class NullValueRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => NullValueRequest;
 }
 
 export class OAPIssueRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getFromPrivate(): string;
   setFromPrivate(a: string): void;
   getToAddress(): string;
@@ -150,8 +150,8 @@ export class OAPTX {
 
 export class TransferAssetEndpointRequest {
   constructor ();
-  getNetwork(): string;
-  setNetwork(a: string): void;
+  getNetwork(): {};
+  setNetwork(a: {}): void;
   getAssetid(): string;
   setAssetid(a: string): void;
   getFromPrivate(): string;

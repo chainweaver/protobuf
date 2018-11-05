@@ -38,6 +38,7 @@ func request_MicrotransactionService_MicrotransactionEndpoint_0(ctx context.Cont
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -48,11 +49,13 @@ func request_MicrotransactionService_MicrotransactionEndpoint_0(ctx context.Cont
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
 	}
 
-	protoReq.Network, err = runtime.String(val)
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
 	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	msg, err := client.MicrotransactionEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err

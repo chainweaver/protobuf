@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 import "commonMessage_Eth.proto";
 
 message PostCreateContractEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   // Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher.
   repeated string solidity = 2;
   // Parameters for either contract creation or method execution.
@@ -38,12 +38,12 @@ message PostCreateContractEndpointRequest {
 }
 
 message GetContractAddressEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string address = 2;
 }
 
 message PostCallContractMethodEndpointRequest {
-  string network = 1;
+  NetworkAllowingAlias network = 1;
   string address = 2;
   string method = 3;
 }
