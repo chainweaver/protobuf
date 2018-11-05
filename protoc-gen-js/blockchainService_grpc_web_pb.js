@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for fairwaycorp.blockchainprotobuf
+ * @fileoverview gRPC-Web generated client stub for fairwaycorp.blockchainprotobuf.btc
  * @enhanceable
  * @public
  */
@@ -17,7 +17,8 @@ var google_api_annotations_pb = require('./google/api/annotations_pb.js')
 var blockchainMessage_pb = require('./blockchainMessage_pb.js')
 const proto = {};
 proto.fairwaycorp = {};
-proto.fairwaycorp.blockchainprotobuf = require('./blockchainService_pb.js');
+proto.fairwaycorp.blockchainprotobuf = {};
+proto.fairwaycorp.blockchainprotobuf.btc = require('./blockchainService_pb.js');
 
 /**
  * @param {string} hostname
@@ -27,7 +28,7 @@ proto.fairwaycorp.blockchainprotobuf = require('./blockchainService_pb.js');
  * @struct
  * @final
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -63,15 +64,15 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient =
  * @struct
  * @final
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
 
   /**
-   * @private @const {!proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient} The delegate callback based client
+   * @private @const {!proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient} The delegate callback based client
    */
-  this.delegateClient_ = new proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient(
+  this.delegateClient_ = new proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient(
       hostname, credentials, options);
 
 };
@@ -80,12 +81,12 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.ChainEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.Blockchain>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.ChainEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.Blockchain>}
  */
 const methodInfo_ChainEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   blockchainMessage_pb.Blockchain,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.ChainEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.ChainEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -94,19 +95,19 @@ const methodInfo_ChainEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.ChainEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ChainEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.Blockchain)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.Blockchain)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.Blockchain>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Blockchain>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient.prototype.chainEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient.prototype.chainEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.BlockchainService/ChainEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.BlockchainService/ChainEndpoint',
       request,
       metadata,
       methodInfo_ChainEndpoint,
@@ -115,14 +116,14 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient.prototype.chainEndp
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.ChainEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ChainEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.Blockchain>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Blockchain>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient.prototype.chainEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServicePromiseClient.prototype.chainEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.chainEndpoint(
@@ -136,12 +137,12 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient.prototype.ch
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.BlockHashEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.Block>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.Block>}
  */
 const methodInfo_BlockHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   blockchainMessage_pb.Block,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.BlockHashEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -150,19 +151,19 @@ const methodInfo_BlockHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.BlockHashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.Block)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.Block)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.Block>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Block>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient.prototype.blockHashEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient.prototype.blockHashEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.BlockchainService/BlockHashEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.BlockchainService/BlockHashEndpoint',
       request,
       metadata,
       methodInfo_BlockHashEndpoint,
@@ -171,14 +172,14 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient.prototype.blockHash
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.BlockHashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.Block>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Block>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient.prototype.blockHashEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServicePromiseClient.prototype.blockHashEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.blockHashEndpoint(
@@ -192,12 +193,12 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient.prototype.bl
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.BlockHeightEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.Block>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.Block>}
  */
 const methodInfo_BlockHeightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   blockchainMessage_pb.Block,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.BlockHeightEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -206,19 +207,19 @@ const methodInfo_BlockHeightEndpoint = new grpc.web.AbstractClientBase.MethodInf
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.BlockHeightEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.Block)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.Block)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.Block>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Block>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient.prototype.blockHeightEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient.prototype.blockHeightEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.BlockchainService/BlockHeightEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.BlockchainService/BlockHeightEndpoint',
       request,
       metadata,
       methodInfo_BlockHeightEndpoint,
@@ -227,14 +228,14 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient.prototype.blockHeig
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.BlockHeightEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.Block>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Block>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient.prototype.blockHeightEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServicePromiseClient.prototype.blockHeightEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.blockHeightEndpoint(
@@ -248,12 +249,12 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient.prototype.bl
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.FeatureEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.Feature>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.FeatureEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.Feature>}
  */
 const methodInfo_FeatureEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   blockchainMessage_pb.Feature,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.FeatureEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.FeatureEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -262,19 +263,19 @@ const methodInfo_FeatureEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.FeatureEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.FeatureEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.Feature)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.Feature)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.Feature>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Feature>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient.prototype.featureEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient.prototype.featureEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.BlockchainService/FeatureEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.BlockchainService/FeatureEndpoint',
       request,
       metadata,
       methodInfo_FeatureEndpoint,
@@ -283,14 +284,14 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServiceClient.prototype.featureEn
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.FeatureEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.FeatureEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.Feature>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Feature>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient.prototype.featureEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServicePromiseClient.prototype.featureEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.featureEndpoint(
@@ -301,5 +302,5 @@ proto.fairwaycorp.blockchainprotobuf.BlockchainServicePromiseClient.prototype.fe
 };
 
 
-module.exports = proto.fairwaycorp.blockchainprotobuf;
+module.exports = proto.fairwaycorp.blockchainprotobuf.btc;
 

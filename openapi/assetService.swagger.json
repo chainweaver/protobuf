@@ -15,24 +15,30 @@
     "application/json"
   ],
   "paths": {
-    "/oap/addrs": {
+    "/btc/{stage}/oap/addrs": {
       "post": {
         "operationId": "GenerateAssetAddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufAddressKeychain"
+              "$ref": "#/definitions/btcAddressKeychain"
             }
           }
         },
         "parameters": [
           {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValueRequest"
             }
           }
         ],
@@ -41,24 +47,30 @@
         ]
       }
     },
-    "/oap/issue": {
+    "/btc/{stage}/oap/issue": {
       "post": {
         "operationId": "IssueAssetEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufOAPTX"
+              "$ref": "#/definitions/btcOAPTX"
             }
           }
         },
         "parameters": [
           {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufOAPIssue"
+              "$ref": "#/definitions/btcOAPIssueRequest"
             }
           }
         ],
@@ -67,18 +79,24 @@
         ]
       }
     },
-    "/oap/{assetid}/addrs/{oapaddr}": {
+    "/btc/{stage}/oap/{assetid}/addrs/{oapaddr}": {
       "get": {
         "operationId": "GetAssetAddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufAddress"
+              "$ref": "#/definitions/btcAddress"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "assetid",
             "in": "path",
@@ -97,18 +115,24 @@
         ]
       }
     },
-    "/oap/{assetid}/transfer": {
+    "/btc/{stage}/oap/{assetid}/transfer": {
       "post": {
         "operationId": "TransferAssetEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufOAPTX"
+              "$ref": "#/definitions/btcOAPTX"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "assetid",
             "in": "path",
@@ -120,7 +144,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufTransferAssetEndpointRequest"
+              "$ref": "#/definitions/btcTransferAssetEndpointRequest"
             }
           }
         ],
@@ -129,18 +153,24 @@
         ]
       }
     },
-    "/oap/{assetid}/txs": {
+    "/btc/{stage}/oap/{assetid}/txs": {
       "get": {
         "operationId": "ListAssetTXsEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufArrayString"
+              "$ref": "#/definitions/btcArrayString"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "assetid",
             "in": "path",
@@ -153,18 +183,24 @@
         ]
       }
     },
-    "/oap/{assetid}/txs/{txhash}": {
+    "/btc/{stage}/oap/{assetid}/txs/{txhash}": {
       "get": {
         "operationId": "GetAssetTXEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufOAPTX"
+              "$ref": "#/definitions/btcOAPTX"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "assetid",
             "in": "path",
@@ -185,7 +221,7 @@
     }
   },
   "definitions": {
-    "blockchainprotobufAddress": {
+    "btcAddress": {
       "type": "object",
       "properties": {
         "address": {
@@ -193,11 +229,11 @@
           "description": "Optional The requested address. Not returned if querying a wallet/HD wallet."
         },
         "wallet": {
-          "$ref": "#/definitions/blockchainprotobufWallet",
+          "$ref": "#/definitions/btcWallet",
           "description": "Optional The requested wallet object. Only returned if querying by wallet name instead of public address."
         },
         "hd_wallet": {
-          "$ref": "#/definitions/blockchainprotobufHDWallet",
+          "$ref": "#/definitions/btcHDWallet",
           "description": "Optional The requested HD wallet object. Only returned if querying by HD wallet name instead of public address."
         },
         "total_received": {
@@ -247,21 +283,21 @@
         "txs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTX"
+            "$ref": "#/definitions/btcTX"
           },
           "description": "Array of full transaction details associated with this address. Usually only returned from the Address Full Endpoint."
         },
         "txrefs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXRef"
+            "$ref": "#/definitions/btcTXRef"
           },
           "description": "Optional Array of transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint."
         },
         "unconfirmed_txrefs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXRef"
+            "$ref": "#/definitions/btcTXRef"
           },
           "description": "Optional All unconfirmed transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint."
         },
@@ -272,7 +308,7 @@
         }
       }
     },
-    "blockchainprotobufAddressKeychain": {
+    "btcAddressKeychain": {
       "type": "object",
       "properties": {
         "address": {
@@ -312,7 +348,7 @@
         }
       }
     },
-    "blockchainprotobufArrayString": {
+    "btcArrayString": {
       "type": "object",
       "properties": {
         "arraystring": {
@@ -323,7 +359,7 @@
         }
       }
     },
-    "blockchainprotobufHDAddress": {
+    "btcHDAddress": {
       "type": "object",
       "properties": {
         "address": {
@@ -340,13 +376,13 @@
         }
       }
     },
-    "blockchainprotobufHDChain": {
+    "btcHDChain": {
       "type": "object",
       "properties": {
         "chain_addresses": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufHDAddress"
+            "$ref": "#/definitions/btcHDAddress"
           },
           "description": "Array of HDAddresses associated with this subchain."
         },
@@ -357,7 +393,7 @@
         }
       }
     },
-    "blockchainprotobufHDWallet": {
+    "btcHDWallet": {
       "type": "object",
       "properties": {
         "token": {
@@ -371,7 +407,7 @@
         "chains": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufHDChain"
+            "$ref": "#/definitions/btcHDChain"
           },
           "description": "List of HD chains associated with this wallet, each containing HDAddresses. A single chain is returned if the wallet has no subchains."
         },
@@ -394,12 +430,20 @@
         }
       }
     },
-    "blockchainprotobufNullValue": {
-      "type": "object"
-    },
-    "blockchainprotobufOAPIssue": {
+    "btcNullValueRequest": {
       "type": "object",
       "properties": {
+        "stage": {
+          "type": "string"
+        }
+      }
+    },
+    "btcOAPIssueRequest": {
+      "type": "object",
+      "properties": {
+        "stage": {
+          "type": "string"
+        },
         "from_private": {
           "type": "string",
           "description": "The private key being used to issue or transfer assets."
@@ -419,7 +463,7 @@
         }
       }
     },
-    "blockchainprotobufOAPTX": {
+    "btcOAPTX": {
       "type": "object",
       "properties": {
         "ver": {
@@ -470,7 +514,7 @@
         }
       }
     },
-    "blockchainprotobufTX": {
+    "btcTX": {
       "type": "object",
       "properties": {
         "block_height": {
@@ -550,14 +594,14 @@
         "inputs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXInput"
+            "$ref": "#/definitions/btcTXInput"
           },
           "description": "TXInput Array, limited to 20 by default."
         },
         "outputs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXOutput"
+            "$ref": "#/definitions/btcTXOutput"
           },
           "description": "TXOutput Array, limited to 20 by default."
         },
@@ -616,7 +660,7 @@
         }
       }
     },
-    "blockchainprotobufTXInput": {
+    "btcTXInput": {
       "type": "object",
       "properties": {
         "prev_hash": {
@@ -668,7 +712,7 @@
         }
       }
     },
-    "blockchainprotobufTXOutput": {
+    "btcTXOutput": {
       "type": "object",
       "properties": {
         "value": {
@@ -705,7 +749,7 @@
         }
       }
     },
-    "blockchainprotobufTXRef": {
+    "btcTXRef": {
       "type": "object",
       "properties": {
         "address": {
@@ -794,9 +838,12 @@
         }
       }
     },
-    "blockchainprotobufTransferAssetEndpointRequest": {
+    "btcTransferAssetEndpointRequest": {
       "type": "object",
       "properties": {
+        "stage": {
+          "type": "string"
+        },
         "assetid": {
           "type": "string"
         },
@@ -819,7 +866,7 @@
         }
       }
     },
-    "blockchainprotobufWallet": {
+    "btcWallet": {
       "type": "object",
       "properties": {
         "token": {
@@ -844,7 +891,7 @@
       "properties": {
         "type_url": {
           "type": "string",
-          "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
         },
         "value": {
           "type": "string",

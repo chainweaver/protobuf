@@ -2,11 +2,11 @@
 // source: walletService.proto
 
 /*
-Package protoc_gen_go is a reverse proxy.
+Package protoc_gen_go_btc is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package protoc_gen_go
+package protoc_gen_go_btc
 
 import (
 	"io"
@@ -36,6 +36,24 @@ func request_WalletService_CreateWalletEndpoint_0(ctx context.Context, marshaler
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	msg, err := client.CreateWalletEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -49,6 +67,24 @@ func request_WalletService_CreateWalletHDEndpoint_0(ctx context.Context, marshal
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	msg, err := client.CreateWalletHDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -57,6 +93,24 @@ func request_WalletService_CreateWalletHDEndpoint_0(ctx context.Context, marshal
 func request_WalletService_ListWalletsEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListWalletsEndpointRequest
 	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	msg, err := client.ListWalletsEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -73,6 +127,17 @@ func request_WalletService_GetWalletEndpoint_0(ctx context.Context, marshaler ru
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -100,6 +165,17 @@ func request_WalletService_GetWalletHDEndpoint_0(ctx context.Context, marshaler 
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -132,6 +208,17 @@ func request_WalletService_AddAddressesToWalletEndpoint_0(ctx context.Context, m
 		_   = err
 	)
 
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	val, ok = pathParams["name"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
@@ -149,7 +236,7 @@ func request_WalletService_AddAddressesToWalletEndpoint_0(ctx context.Context, m
 }
 
 var (
-	filter_WalletService_GetWalletAddressesEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_WalletService_GetWalletAddressesEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"stage": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_WalletService_GetWalletAddressesEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -162,6 +249,17 @@ func request_WalletService_GetWalletAddressesEndpoint_0(ctx context.Context, mar
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -184,7 +282,7 @@ func request_WalletService_GetWalletAddressesEndpoint_0(ctx context.Context, mar
 }
 
 var (
-	filter_WalletService_GetWalletAddressesHDEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_WalletService_GetWalletAddressesHDEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"stage": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_WalletService_GetWalletAddressesHDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -197,6 +295,17 @@ func request_WalletService_GetWalletAddressesHDEndpoint_0(ctx context.Context, m
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -219,7 +328,7 @@ func request_WalletService_GetWalletAddressesHDEndpoint_0(ctx context.Context, m
 }
 
 var (
-	filter_WalletService_RemoveAddressesFromWalletEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_WalletService_RemoveAddressesFromWalletEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"stage": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_WalletService_RemoveAddressesFromWalletEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -232,6 +341,17 @@ func request_WalletService_RemoveAddressesFromWalletEndpoint_0(ctx context.Conte
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -268,6 +388,17 @@ func request_WalletService_GenerateAddressInWalletEndpoint_0(ctx context.Context
 		_   = err
 	)
 
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	val, ok = pathParams["name"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
@@ -299,6 +430,17 @@ func request_WalletService_DeriveAddressInWalletEndpoint_0(ctx context.Context, 
 		_   = err
 	)
 
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	val, ok = pathParams["name"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
@@ -326,6 +468,17 @@ func request_WalletService_DeleteWalletEndpoint_0(ctx context.Context, marshaler
 		_   = err
 	)
 
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	val, ok = pathParams["name"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
@@ -352,6 +505,17 @@ func request_WalletService_DeleteWalletHDEndpoint_0(ctx context.Context, marshal
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -788,31 +952,31 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 }
 
 var (
-	pattern_WalletService_CreateWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"wallets"}, ""))
+	pattern_WalletService_CreateWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"btc", "stage", "wallets"}, ""))
 
-	pattern_WalletService_CreateWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"wallets", "hd"}, ""))
+	pattern_WalletService_CreateWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3}, []string{"btc", "stage", "wallets", "hd"}, ""))
 
-	pattern_WalletService_ListWalletsEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"wallets"}, ""))
+	pattern_WalletService_ListWalletsEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"btc", "stage", "wallets"}, ""))
 
-	pattern_WalletService_GetWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"wallets", "name"}, ""))
+	pattern_WalletService_GetWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"btc", "stage", "wallets", "name"}, ""))
 
-	pattern_WalletService_GetWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"wallets", "hd", "name"}, ""))
+	pattern_WalletService_GetWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"btc", "stage", "wallets", "hd", "name"}, ""))
 
-	pattern_WalletService_AddAddressesToWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"wallets", "name", "addresses"}, ""))
+	pattern_WalletService_AddAddressesToWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "wallets", "name", "addresses"}, ""))
 
-	pattern_WalletService_GetWalletAddressesEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"wallets", "name", "addresses"}, ""))
+	pattern_WalletService_GetWalletAddressesEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "wallets", "name", "addresses"}, ""))
 
-	pattern_WalletService_GetWalletAddressesHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"wallets", "hd", "name", "addresses"}, ""))
+	pattern_WalletService_GetWalletAddressesHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"btc", "stage", "wallets", "hd", "name", "addresses"}, ""))
 
-	pattern_WalletService_RemoveAddressesFromWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"wallets", "name", "addresses"}, ""))
+	pattern_WalletService_RemoveAddressesFromWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "wallets", "name", "addresses"}, ""))
 
-	pattern_WalletService_GenerateAddressInWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3}, []string{"wallets", "name", "addresses", "generate"}, ""))
+	pattern_WalletService_GenerateAddressInWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"btc", "stage", "wallets", "name", "addresses", "generate"}, ""))
 
-	pattern_WalletService_DeriveAddressInWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3, 2, 4}, []string{"wallets", "hd", "name", "addresses", "derive"}, ""))
+	pattern_WalletService_DeriveAddressInWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"btc", "stage", "wallets", "hd", "name", "addresses", "derive"}, ""))
 
-	pattern_WalletService_DeleteWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"wallets", "name"}, ""))
+	pattern_WalletService_DeleteWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"btc", "stage", "wallets", "name"}, ""))
 
-	pattern_WalletService_DeleteWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"wallets", "hd", "name"}, ""))
+	pattern_WalletService_DeleteWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"btc", "stage", "wallets", "hd", "name"}, ""))
 )
 
 var (

@@ -2,11 +2,11 @@
 // source: metadataService.proto
 
 /*
-Package protoc_gen_go is a reverse proxy.
+Package protoc_gen_go_btc is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package protoc_gen_go
+package protoc_gen_go_btc
 
 import (
 	"io"
@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 var (
-	filter_MetadataService_GetMetadataAddressEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"address": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_MetadataService_GetMetadataAddressEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"stage": 0, "address": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_MetadataService_GetMetadataAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -42,6 +42,17 @@ func request_MetadataService_GetMetadataAddressEndpoint_0(ctx context.Context, m
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["address"]
 	if !ok {
@@ -64,7 +75,7 @@ func request_MetadataService_GetMetadataAddressEndpoint_0(ctx context.Context, m
 }
 
 var (
-	filter_MetadataService_GetMetadataTxhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"txhash": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_MetadataService_GetMetadataTxhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"stage": 0, "txhash": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_MetadataService_GetMetadataTxhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -77,6 +88,17 @@ func request_MetadataService_GetMetadataTxhashEndpoint_0(ctx context.Context, ma
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["txhash"]
 	if !ok {
@@ -99,7 +121,7 @@ func request_MetadataService_GetMetadataTxhashEndpoint_0(ctx context.Context, ma
 }
 
 var (
-	filter_MetadataService_GetMetadataBlockhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"block_hash": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_MetadataService_GetMetadataBlockhashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"stage": 0, "block_hash": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_MetadataService_GetMetadataBlockhashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -112,6 +134,17 @@ func request_MetadataService_GetMetadataBlockhashEndpoint_0(ctx context.Context,
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["block_hash"]
 	if !ok {
@@ -148,6 +181,17 @@ func request_MetadataService_PutMetadataAddressEndpoint_0(ctx context.Context, m
 		_   = err
 	)
 
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	val, ok = pathParams["address"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "address")
@@ -178,6 +222,17 @@ func request_MetadataService_PutMetadataTxhashEndpoint_0(ctx context.Context, ma
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["txhash"]
 	if !ok {
@@ -210,6 +265,17 @@ func request_MetadataService_PutMetadataBlockhashEndpoint_0(ctx context.Context,
 		_   = err
 	)
 
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	val, ok = pathParams["block_hash"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "block_hash")
@@ -236,6 +302,17 @@ func request_MetadataService_DeleteMetadataAddressEndpoint_0(ctx context.Context
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["address"]
 	if !ok {
@@ -264,6 +341,17 @@ func request_MetadataService_DeleteMetadataTxhashEndpoint_0(ctx context.Context,
 		_   = err
 	)
 
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	val, ok = pathParams["txhash"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "txhash")
@@ -290,6 +378,17 @@ func request_MetadataService_DeleteMetadataBlockheightEndpoint_0(ctx context.Con
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["block_hash"]
 	if !ok {
@@ -610,23 +709,23 @@ func RegisterMetadataServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 }
 
 var (
-	pattern_MetadataService_GetMetadataAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"addrs", "address", "meta"}, ""))
+	pattern_MetadataService_GetMetadataAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "addrs", "address", "meta"}, ""))
 
-	pattern_MetadataService_GetMetadataTxhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"txs", "txhash", "meta"}, ""))
+	pattern_MetadataService_GetMetadataTxhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "txs", "txhash", "meta"}, ""))
 
-	pattern_MetadataService_GetMetadataBlockhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"blocks", "block_hash", "meta"}, ""))
+	pattern_MetadataService_GetMetadataBlockhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "blocks", "block_hash", "meta"}, ""))
 
-	pattern_MetadataService_PutMetadataAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"addrs", "address", "meta"}, ""))
+	pattern_MetadataService_PutMetadataAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "addrs", "address", "meta"}, ""))
 
-	pattern_MetadataService_PutMetadataTxhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"txs", "txhash", "meta"}, ""))
+	pattern_MetadataService_PutMetadataTxhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "txs", "txhash", "meta"}, ""))
 
-	pattern_MetadataService_PutMetadataBlockhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"blocks", "block_hash", "meta"}, ""))
+	pattern_MetadataService_PutMetadataBlockhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "blocks", "block_hash", "meta"}, ""))
 
-	pattern_MetadataService_DeleteMetadataAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"addrs", "address", "meta"}, ""))
+	pattern_MetadataService_DeleteMetadataAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "addrs", "address", "meta"}, ""))
 
-	pattern_MetadataService_DeleteMetadataTxhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"txs", "txhash", "meta"}, ""))
+	pattern_MetadataService_DeleteMetadataTxhashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "txs", "txhash", "meta"}, ""))
 
-	pattern_MetadataService_DeleteMetadataBlockheightEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"blocks", "block_hash", "meta"}, ""))
+	pattern_MetadataService_DeleteMetadataBlockheightEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "stage", "blocks", "block_hash", "meta"}, ""))
 )
 
 var (

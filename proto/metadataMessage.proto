@@ -1,59 +1,68 @@
 syntax = "proto3";
 
-package fairwaycorp.blockchainprotobuf;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go-btc";
 
 message KeyValues {
   map<string, string> key_pairs = 1;
 }
 
 message GetMetadataAddressEndpointRequest {
-  string address = 1;
+  string stage = 1;
+  string address = 2;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
-  bool private = 2;
+  bool private = 3;
 }
 
 message GetMetadataTxhashEndpointRequest {
-  string txhash = 1;
+  string stage = 1;
+  string txhash = 2;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
-  bool private = 2;
+  bool private = 3;
 }
 
 message GetMetadataBlockhashEndpointRequest {
-  string block_hash = 1;
+  string stage = 1;
+  string block_hash = 2;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
-  bool private = 2;
+  bool private = 3;
 }
 
 message PutMetadataAddressEndpointRequest {
-  map<string, string> key_pairs = 1;
-  string address = 2;
+  string stage = 1;
+  map<string, string> key_pairs = 2;
+  string address = 3;
   // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
-  bool private = 3;
+  bool private = 4;
 }
 
 message PutMetadataTxhashEndpointRequest {
-  map<string, string> key_pairs = 1;
-  string txhash = 2;
+  string stage = 1;
+  map<string, string> key_pairs = 2;
+  string txhash = 3;
   // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
-  bool private = 3;
+  bool private = 4;
 }
 
 message PutMetadataBlockhashEndpointRequest {
-  map<string, string> key_pairs = 1;
-  string block_hash = 2;
+  string stage = 1;
+  map<string, string> key_pairs = 2;
+  string block_hash = 3;
   // If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata.
-  bool private = 3;
+  bool private = 4;
 }
 
 message DeleteMetadataAddressEndpointRequest {
-  string address = 1;
+  string stage = 1;
+  string address = 2;
 }
 
 message DeleteMetadataTxhashEndpointRequest {
-  string txhash = 1;
+  string stage = 1;
+  string txhash = 2;
 }
 
 message DeleteMetadataBlockheightEndpointRequest {
-  string block_hash = 1;
+  string stage = 1;
+  string block_hash = 2;
 }

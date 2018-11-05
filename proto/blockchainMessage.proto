@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package fairwaycorp.blockchainprotobuf;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go-btc";
 
 message Blockchain {
   // The name of the blockchain represented, in the form of $COIN.$CHAIN.
@@ -78,22 +78,28 @@ message Block {
 }
 
 message Feature {
-  string name = 1;
-  string state = 2;
-  int64 last_transition_height = 3;
-  string last_transition_hash = 4;
+  string stage = 1;
+  string name = 2;
+  string state = 3;
+  int64 last_transition_height = 4;
+  string last_transition_hash = 5;
 }
 
-message ChainEndpointRequest {}
+message ChainEndpointRequest {
+  string stage = 1;
+}
 
 message BlockHashEndpointRequest {
-  string block_hash = 1;
+  string stage = 1;
+  string block_hash = 2;
 }
 
 message BlockHeightEndpointRequest {
-  int32 block_height = 1;
+  string stage = 1;
+  int32 block_height = 2;
 }
 
 message FeatureEndpointRequest {
-  string name = 1;
+  string stage = 1;
+  string name = 2;
 }

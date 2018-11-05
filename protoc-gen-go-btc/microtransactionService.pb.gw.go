@@ -2,11 +2,11 @@
 // source: microtransactionService.proto
 
 /*
-Package protoc_gen_go is a reverse proxy.
+Package protoc_gen_go_btc is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package protoc_gen_go
+package protoc_gen_go_btc
 
 import (
 	"io"
@@ -29,11 +29,29 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 func request_MicrotransactionService_MicrotransactionEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client MicrotransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq MicroTX
+	var protoReq MicroTXRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
 	}
 
 	msg, err := client.MicrotransactionEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -112,7 +130,7 @@ func RegisterMicrotransactionServiceHandlerClient(ctx context.Context, mux *runt
 }
 
 var (
-	pattern_MicrotransactionService_MicrotransactionEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"txs", "micro"}, ""))
+	pattern_MicrotransactionService_MicrotransactionEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3}, []string{"btc", "stage", "txs", "micro"}, ""))
 )
 
 var (

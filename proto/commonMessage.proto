@@ -1,12 +1,16 @@
 syntax = "proto3";
 
-package fairwaycorp.blockchainprotobuf;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go-btc";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/any.proto";
 
 message NullValue {}
+
+message NullValueRequest {
+  string stage = 1;
+}
 
 message ArrayString {
   repeated string arraystring = 1;
@@ -255,6 +259,18 @@ message OAPIssue {
   int32 amount = 3;
   // Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction.  
   string metadata = 4;  
+}
+
+message OAPIssueRequest {
+  string stage = 1;
+  // The private key being used to issue or transfer assets.
+  string from_private = 2; 
+  // The target OAP address assets for issue or transfer.
+  string to_address = 3; 
+  // The amount of assets being issued or transfered.
+  int32 amount = 4;
+  // Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction.  
+  string metadata = 5;  
 }
 
 message OAPTX {

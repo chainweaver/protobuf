@@ -6,8 +6,8 @@ import {
   GetAssetAddressEndpointRequest,
   GetAssetTXEndpointRequest,
   ListAssetTXsEndpointRequest,
-  NullValue,
-  OAPIssue,
+  NullValueRequest,
+  OAPIssueRequest,
   OAPTX,
   TransferAssetEndpointRequest} from './assetService_pb';
 
@@ -17,14 +17,14 @@ export class AssetServiceClient {
                options: { [s: string]: {}; });
 
   generateAssetAddressEndpoint(
-    request: NullValue,
+    request: NullValueRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: AddressKeychain) => void
   ): grpcWeb.ClientReadableStream;
 
   issueAssetEndpoint(
-    request: OAPIssue,
+    request: OAPIssueRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: OAPTX) => void

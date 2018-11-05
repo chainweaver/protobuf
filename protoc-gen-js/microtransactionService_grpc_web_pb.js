@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for fairwaycorp.blockchainprotobuf
+ * @fileoverview gRPC-Web generated client stub for fairwaycorp.blockchainprotobuf.btc
  * @enhanceable
  * @public
  */
@@ -17,7 +17,8 @@ var google_api_annotations_pb = require('./google/api/annotations_pb.js')
 var microtransactionMessage_pb = require('./microtransactionMessage_pb.js')
 const proto = {};
 proto.fairwaycorp = {};
-proto.fairwaycorp.blockchainprotobuf = require('./microtransactionService_pb.js');
+proto.fairwaycorp.blockchainprotobuf = {};
+proto.fairwaycorp.blockchainprotobuf.btc = require('./microtransactionService_pb.js');
 
 /**
  * @param {string} hostname
@@ -27,7 +28,7 @@ proto.fairwaycorp.blockchainprotobuf = require('./microtransactionService_pb.js'
  * @struct
  * @final
  */
-proto.fairwaycorp.blockchainprotobuf.MicrotransactionServiceClient =
+proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -63,15 +64,15 @@ proto.fairwaycorp.blockchainprotobuf.MicrotransactionServiceClient =
  * @struct
  * @final
  */
-proto.fairwaycorp.blockchainprotobuf.MicrotransactionServicePromiseClient =
+proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
 
   /**
-   * @private @const {!proto.fairwaycorp.blockchainprotobuf.MicrotransactionServiceClient} The delegate callback based client
+   * @private @const {!proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServiceClient} The delegate callback based client
    */
-  this.delegateClient_ = new proto.fairwaycorp.blockchainprotobuf.MicrotransactionServiceClient(
+  this.delegateClient_ = new proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServiceClient(
       hostname, credentials, options);
 
 };
@@ -80,12 +81,12 @@ proto.fairwaycorp.blockchainprotobuf.MicrotransactionServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.MicroTX,
- *   !proto.fairwaycorp.blockchainprotobuf.MicroTX>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.MicroTX>}
  */
 const methodInfo_MicrotransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   microtransactionMessage_pb.MicroTX,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.MicroTX} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -94,19 +95,19 @@ const methodInfo_MicrotransactionEndpoint = new grpc.web.AbstractClientBase.Meth
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.MicroTX} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.MicroTX)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.MicroTX)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.MicroTX>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.MicroTX>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.MicrotransactionServiceClient.prototype.microtransactionEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServiceClient.prototype.microtransactionEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.MicrotransactionService/MicrotransactionEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.MicrotransactionService/MicrotransactionEndpoint',
       request,
       metadata,
       methodInfo_MicrotransactionEndpoint,
@@ -115,14 +116,14 @@ proto.fairwaycorp.blockchainprotobuf.MicrotransactionServiceClient.prototype.mic
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.MicroTX} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.MicroTX>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.MicroTX>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.MicrotransactionServicePromiseClient.prototype.microtransactionEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServicePromiseClient.prototype.microtransactionEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.microtransactionEndpoint(
@@ -133,5 +134,5 @@ proto.fairwaycorp.blockchainprotobuf.MicrotransactionServicePromiseClient.protot
 };
 
 
-module.exports = proto.fairwaycorp.blockchainprotobuf;
+module.exports = proto.fairwaycorp.blockchainprotobuf.btc;
 

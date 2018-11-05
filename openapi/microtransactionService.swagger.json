@@ -15,24 +15,30 @@
     "application/json"
   ],
   "paths": {
-    "/txs/micro": {
+    "/btc/{stage}/txs/micro": {
       "post": {
         "operationId": "MicrotransactionEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufMicroTX"
+              "$ref": "#/definitions/btcMicroTX"
             }
           }
         },
         "parameters": [
           {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufMicroTX"
+              "$ref": "#/definitions/btcMicroTXRequest"
             }
           }
         ],
@@ -43,7 +49,7 @@
     }
   },
   "definitions": {
-    "blockchainprotobufMicroTX": {
+    "btcMicroTX": {
       "type": "object",
       "properties": {
         "from_pubkey": {
@@ -97,14 +103,14 @@
         "inputs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXInput"
+            "$ref": "#/definitions/btcTXInput"
           },
           "description": "Optional Partial list of inputs that will be used with this transaction. Inputs themsleves are heavily pared down, see cURL sample. Only returned when using from_pubkey."
         },
         "outputs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXOutput"
+            "$ref": "#/definitions/btcTXOutput"
           },
           "description": "Optional Partial list of outputs that will be used with this transaction. Outputs themselves are heavily pared down, see cURL sample. Only returned when using from_pubkey."
         },
@@ -119,7 +125,86 @@
         }
       }
     },
-    "blockchainprotobufTXInput": {
+    "btcMicroTXRequest": {
+      "type": "object",
+      "properties": {
+        "stage": {
+          "type": "string"
+        },
+        "from_pubkey": {
+          "type": "string",
+          "description": "Hex-encoded public key from which you’re sending coins."
+        },
+        "from_private": {
+          "type": "string",
+          "description": "Hex-encoded private key from which you’re sending coins."
+        },
+        "from_wif": {
+          "type": "string",
+          "description": "WIF-encoded private key from which you’re sending coins."
+        },
+        "to_address": {
+          "type": "string",
+          "description": "The target address to which you’re sending coins."
+        },
+        "value_satoshis": {
+          "type": "string",
+          "format": "int64",
+          "description": "Value you’re sending/you’ve sent in satoshis."
+        },
+        "token": {
+          "type": "string",
+          "title": "Your Block API token"
+        },
+        "change_address": {
+          "type": "string",
+          "description": "Optional Address Block will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address."
+        },
+        "wait_guarantee": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Optional If not set, defaults to true, which means the API will wait for Block to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast."
+        },
+        "tosign": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Hex-encoded data for you to sign after initiating the microtransaction. Sent in reply to a microtransaction generated using from_pubkey/a public key."
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Hex-encoded signatures for you to send back after having received (and signed) tosign."
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcTXInput"
+          },
+          "description": "Optional Partial list of inputs that will be used with this transaction. Inputs themsleves are heavily pared down, see cURL sample. Only returned when using from_pubkey."
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcTXOutput"
+          },
+          "description": "Optional Partial list of outputs that will be used with this transaction. Outputs themselves are heavily pared down, see cURL sample. Only returned when using from_pubkey."
+        },
+        "fees": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Block’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. Block pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter."
+        },
+        "hash": {
+          "type": "string",
+          "description": "Optional The hash of the finalized transaction, once sent."
+        }
+      }
+    },
+    "btcTXInput": {
       "type": "object",
       "properties": {
         "prev_hash": {
@@ -171,7 +256,7 @@
         }
       }
     },
-    "blockchainprotobufTXOutput": {
+    "btcTXOutput": {
       "type": "object",
       "properties": {
         "value": {

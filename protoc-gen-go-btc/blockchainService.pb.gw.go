@@ -2,11 +2,11 @@
 // source: blockchainService.proto
 
 /*
-Package protoc_gen_go is a reverse proxy.
+Package protoc_gen_go_btc is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package protoc_gen_go
+package protoc_gen_go_btc
 
 import (
 	"io"
@@ -32,6 +32,24 @@ func request_BlockchainService_ChainEndpoint_0(ctx context.Context, marshaler ru
 	var protoReq ChainEndpointRequest
 	var metadata runtime.ServerMetadata
 
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	msg, err := client.ChainEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -47,6 +65,17 @@ func request_BlockchainService_BlockHashEndpoint_0(ctx context.Context, marshale
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["block_hash"]
 	if !ok {
@@ -75,6 +104,17 @@ func request_BlockchainService_BlockHeightEndpoint_0(ctx context.Context, marsha
 		_   = err
 	)
 
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
+
 	val, ok = pathParams["block_height"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "block_height")
@@ -101,6 +141,17 @@ func request_BlockchainService_FeatureEndpoint_0(ctx context.Context, marshaler 
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["stage"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "stage")
+	}
+
+	protoReq.Stage, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "stage", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -276,13 +327,13 @@ func RegisterBlockchainServiceHandlerClient(ctx context.Context, mux *runtime.Se
 }
 
 var (
-	pattern_BlockchainService_ChainEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{1, 0}, []string(nil), ""))
+	pattern_BlockchainService_ChainEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 1, 0}, []string{"btc", "stage"}, ""))
 
-	pattern_BlockchainService_BlockHashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"blocks", "block_hash"}, ""))
+	pattern_BlockchainService_BlockHashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"btc", "stage", "blocks", "block_hash"}, ""))
 
-	pattern_BlockchainService_BlockHeightEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"blocks", "block_height"}, ""))
+	pattern_BlockchainService_BlockHeightEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"btc", "stage", "blocks", "block_height"}, ""))
 
-	pattern_BlockchainService_FeatureEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"feature", "name"}, ""))
+	pattern_BlockchainService_FeatureEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"btc", "stage", "feature", "name"}, ""))
 )
 
 var (

@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package fairwaycorp.blockchainprotobuf;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go-btc";
 
 import "google/api/annotations.proto";
 import "metadataMessage.proto";
@@ -10,50 +10,50 @@ import "commonMessage.proto";
 service MetadataService {
   rpc GetMetadataAddressEndpoint (GetMetadataAddressEndpointRequest) returns (KeyValues) {
     option (google.api.http) = {
-      get: "/addrs/{address}/meta"
+      get: "/btc/{stage}/addrs/{address}/meta"
     };
   }
   rpc GetMetadataTxhashEndpoint (GetMetadataTxhashEndpointRequest) returns (KeyValues) {
     option (google.api.http) = {
-      get: "/txs/{txhash}/meta"
+      get: "/btc/{stage}/txs/{txhash}/meta"
     };
   }
   rpc GetMetadataBlockhashEndpoint (GetMetadataBlockhashEndpointRequest) returns (KeyValues) {
     option (google.api.http) = {
-      get: "/blocks/{block_hash}/meta"
+      get: "/btc/{stage}/blocks/{block_hash}/meta"
     };
   }
   rpc PutMetadataAddressEndpoint (PutMetadataAddressEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      put: "/addrs/{address}/meta"
+      put: "/btc/{stage}/addrs/{address}/meta"
       body: "*"
     };
   }
   rpc PutMetadataTxhashEndpoint (PutMetadataTxhashEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      put: "/txs/{txhash}/meta"
+      put: "/btc/{stage}/txs/{txhash}/meta"
       body: "*"
     };
   }
   rpc PutMetadataBlockhashEndpoint (PutMetadataBlockhashEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      put: "/blocks/{block_hash}/meta"
+      put: "/btc/{stage}/blocks/{block_hash}/meta"
       body: "*"
     };
   }
   rpc DeleteMetadataAddressEndpoint (DeleteMetadataAddressEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      delete: "/addrs/{address}/meta",
+      delete: "/btc/{stage}/addrs/{address}/meta",
     };
   }
   rpc DeleteMetadataTxhashEndpoint (DeleteMetadataTxhashEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      delete: "/txs/{txhash}/meta"
+      delete: "/btc/{stage}/txs/{txhash}/meta"
     };
   }
   rpc DeleteMetadataBlockheightEndpoint (DeleteMetadataBlockheightEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      delete: "/blocks/{block_hash}/meta"
+      delete: "/btc/{stage}/blocks/{block_hash}/meta"
     };
   }
 }

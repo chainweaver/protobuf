@@ -1,6 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 import {
-  MicroTX} from './microtransactionService_pb';
+  MicroTX,
+  MicroTXRequest} from './microtransactionService_pb';
 
 export class MicrotransactionServiceClient {
   constructor (hostname: string,
@@ -8,7 +9,7 @@ export class MicrotransactionServiceClient {
                options: { [s: string]: {}; });
 
   microtransactionEndpoint(
-    request: MicroTX,
+    request: MicroTXRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: MicroTX) => void

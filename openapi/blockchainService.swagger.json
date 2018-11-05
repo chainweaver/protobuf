@@ -15,34 +15,48 @@
     "application/json"
   ],
   "paths": {
-    "/*": {
+    "/btc/{stage}/*": {
       "get": {
         "operationId": "ChainEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufBlockchain"
+              "$ref": "#/definitions/btcBlockchain"
             }
           }
         },
+        "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "tags": [
           "BlockchainService"
         ]
       }
     },
-    "/blocks/{block_hash}": {
+    "/btc/{stage}/blocks/{block_hash}": {
       "get": {
         "operationId": "BlockHashEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufBlock"
+              "$ref": "#/definitions/btcBlock"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "block_hash",
             "in": "path",
@@ -55,18 +69,24 @@
         ]
       }
     },
-    "/blocks/{block_height}": {
+    "/btc/{stage}/blocks/{block_height}": {
       "get": {
         "operationId": "BlockHeightEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufBlock"
+              "$ref": "#/definitions/btcBlock"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "block_height",
             "in": "path",
@@ -80,18 +100,24 @@
         ]
       }
     },
-    "/feature/{name}": {
+    "/btc/{stage}/feature/{name}": {
       "get": {
         "operationId": "FeatureEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufFeature"
+              "$ref": "#/definitions/btcFeature"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "name",
             "in": "path",
@@ -106,7 +132,7 @@
     }
   },
   "definitions": {
-    "blockchainprotobufBlock": {
+    "btcBlock": {
       "type": "object",
       "properties": {
         "hash": {
@@ -203,7 +229,7 @@
         }
       }
     },
-    "blockchainprotobufBlockchain": {
+    "btcBlockchain": {
       "type": "object",
       "properties": {
         "name": {
@@ -271,9 +297,12 @@
         }
       }
     },
-    "blockchainprotobufFeature": {
+    "btcFeature": {
       "type": "object",
       "properties": {
+        "stage": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },

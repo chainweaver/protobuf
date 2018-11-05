@@ -15,18 +15,24 @@
     "application/json"
   ],
   "paths": {
-    "/addrs/{address}/meta": {
+    "/btc/{stage}/addrs/{address}/meta": {
       "get": {
         "operationId": "GetMetadataAddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufKeyValues"
+              "$ref": "#/definitions/btcKeyValues"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "address",
             "in": "path",
@@ -52,11 +58,17 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "address",
             "in": "path",
@@ -74,11 +86,17 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "address",
             "in": "path",
@@ -90,7 +108,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufPutMetadataAddressEndpointRequest"
+              "$ref": "#/definitions/btcPutMetadataAddressEndpointRequest"
             }
           }
         ],
@@ -99,18 +117,24 @@
         ]
       }
     },
-    "/blocks/{block_hash}/meta": {
+    "/btc/{stage}/blocks/{block_hash}/meta": {
       "get": {
         "operationId": "GetMetadataBlockhashEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufKeyValues"
+              "$ref": "#/definitions/btcKeyValues"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "block_hash",
             "in": "path",
@@ -136,11 +160,17 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "block_hash",
             "in": "path",
@@ -158,11 +188,17 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "block_hash",
             "in": "path",
@@ -174,7 +210,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufPutMetadataBlockhashEndpointRequest"
+              "$ref": "#/definitions/btcPutMetadataBlockhashEndpointRequest"
             }
           }
         ],
@@ -183,18 +219,24 @@
         ]
       }
     },
-    "/txs/{txhash}/meta": {
+    "/btc/{stage}/txs/{txhash}/meta": {
       "get": {
         "operationId": "GetMetadataTxhashEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufKeyValues"
+              "$ref": "#/definitions/btcKeyValues"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "txhash",
             "in": "path",
@@ -220,11 +262,17 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "txhash",
             "in": "path",
@@ -242,11 +290,17 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
         "parameters": [
+          {
+            "name": "stage",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "txhash",
             "in": "path",
@@ -258,7 +312,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufPutMetadataTxhashEndpointRequest"
+              "$ref": "#/definitions/btcPutMetadataTxhashEndpointRequest"
             }
           }
         ],
@@ -269,7 +323,7 @@
     }
   },
   "definitions": {
-    "blockchainprotobufKeyValues": {
+    "btcKeyValues": {
       "type": "object",
       "properties": {
         "key_pairs": {
@@ -280,12 +334,15 @@
         }
       }
     },
-    "blockchainprotobufNullValue": {
+    "btcNullValue": {
       "type": "object"
     },
-    "blockchainprotobufPutMetadataAddressEndpointRequest": {
+    "btcPutMetadataAddressEndpointRequest": {
       "type": "object",
       "properties": {
+        "stage": {
+          "type": "string"
+        },
         "key_pairs": {
           "type": "object",
           "additionalProperties": {
@@ -302,9 +359,12 @@
         }
       }
     },
-    "blockchainprotobufPutMetadataBlockhashEndpointRequest": {
+    "btcPutMetadataBlockhashEndpointRequest": {
       "type": "object",
       "properties": {
+        "stage": {
+          "type": "string"
+        },
         "key_pairs": {
           "type": "object",
           "additionalProperties": {
@@ -321,9 +381,12 @@
         }
       }
     },
-    "blockchainprotobufPutMetadataTxhashEndpointRequest": {
+    "btcPutMetadataTxhashEndpointRequest": {
       "type": "object",
       "properties": {
+        "stage": {
+          "type": "string"
+        },
         "key_pairs": {
           "type": "object",
           "additionalProperties": {

@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for fairwaycorp.blockchainprotobuf
+ * @fileoverview gRPC-Web generated client stub for fairwaycorp.blockchainprotobuf.btc
  * @enhanceable
  * @public
  */
@@ -19,7 +19,8 @@ var walletMessage_pb = require('./walletMessage_pb.js')
 var commonMessage_pb = require('./commonMessage_pb.js')
 const proto = {};
 proto.fairwaycorp = {};
-proto.fairwaycorp.blockchainprotobuf = require('./walletService_pb.js');
+proto.fairwaycorp.blockchainprotobuf = {};
+proto.fairwaycorp.blockchainprotobuf.btc = require('./walletService_pb.js');
 
 /**
  * @param {string} hostname
@@ -29,7 +30,7 @@ proto.fairwaycorp.blockchainprotobuf = require('./walletService_pb.js');
  * @struct
  * @final
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -65,15 +66,15 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient =
  * @struct
  * @final
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
 
   /**
-   * @private @const {!proto.fairwaycorp.blockchainprotobuf.WalletServiceClient} The delegate callback based client
+   * @private @const {!proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient} The delegate callback based client
    */
-  this.delegateClient_ = new proto.fairwaycorp.blockchainprotobuf.WalletServiceClient(
+  this.delegateClient_ = new proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient(
       hostname, credentials, options);
 
 };
@@ -82,12 +83,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.CreateWalletEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.Wallet>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  */
 const methodInfo_CreateWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Wallet,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.CreateWalletEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -96,19 +97,19 @@ const methodInfo_CreateWalletEndpoint = new grpc.web.AbstractClientBase.MethodIn
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.CreateWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.Wallet)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.Wallet)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.Wallet>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Wallet>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.createWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.createWalletEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/CreateWalletEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/CreateWalletEndpoint',
       request,
       metadata,
       methodInfo_CreateWalletEndpoint,
@@ -117,14 +118,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.createWalletE
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.CreateWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.Wallet>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.createWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.createWalletEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.createWalletEndpoint(
@@ -138,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.create
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.CreateWalletHDEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.HDWallet>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>}
  */
 const methodInfo_CreateWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.HDWallet,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.CreateWalletHDEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -152,19 +153,19 @@ const methodInfo_CreateWalletHDEndpoint = new grpc.web.AbstractClientBase.Method
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.CreateWalletHDEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.HDWallet)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.HDWallet)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.HDWallet>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.createWalletHDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.createWalletHDEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/CreateWalletHDEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/CreateWalletHDEndpoint',
       request,
       metadata,
       methodInfo_CreateWalletHDEndpoint,
@@ -173,14 +174,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.createWalletH
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.CreateWalletHDEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.HDWallet>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.createWalletHDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.createWalletHDEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.createWalletHDEndpoint(
@@ -194,12 +195,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.create
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.ListWalletsEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.ListWallets>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.ListWalletsEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.ListWallets>}
  */
 const methodInfo_ListWalletsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   walletMessage_pb.ListWallets,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.ListWalletsEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.ListWalletsEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -208,19 +209,19 @@ const methodInfo_ListWalletsEndpoint = new grpc.web.AbstractClientBase.MethodInf
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.ListWalletsEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ListWalletsEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.ListWallets)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.ListWallets)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.ListWallets>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.ListWallets>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.listWalletsEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.listWalletsEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/ListWalletsEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/ListWalletsEndpoint',
       request,
       metadata,
       methodInfo_ListWalletsEndpoint,
@@ -229,14 +230,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.listWalletsEn
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.ListWalletsEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ListWalletsEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.ListWallets>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.ListWallets>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.listWalletsEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.listWalletsEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.listWalletsEndpoint(
@@ -250,12 +251,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.listWa
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.GetWalletEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.Wallet>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  */
 const methodInfo_GetWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Wallet,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -264,19 +265,19 @@ const methodInfo_GetWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.Wallet)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.Wallet)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.Wallet>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Wallet>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.getWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.getWalletEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/GetWalletEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletEndpoint',
       request,
       metadata,
       methodInfo_GetWalletEndpoint,
@@ -285,14 +286,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.getWalletEndp
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.Wallet>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.getWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.getWalletEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.getWalletEndpoint(
@@ -306,12 +307,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.getWal
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.GetWalletEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.HDWallet>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>}
  */
 const methodInfo_GetWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.HDWallet,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -320,19 +321,19 @@ const methodInfo_GetWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInf
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.HDWallet)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.HDWallet)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.HDWallet>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.getWalletHDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.getWalletHDEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/GetWalletHDEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletHDEndpoint',
       request,
       metadata,
       methodInfo_GetWalletHDEndpoint,
@@ -341,14 +342,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.getWalletHDEn
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.HDWallet>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.getWalletHDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.getWalletHDEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.getWalletHDEndpoint(
@@ -362,12 +363,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.getWal
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.AddAddressesToWalletEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.Wallet>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.AddAddressesToWalletEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  */
 const methodInfo_AddAddressesToWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Wallet,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.AddAddressesToWalletEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.AddAddressesToWalletEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -376,19 +377,19 @@ const methodInfo_AddAddressesToWalletEndpoint = new grpc.web.AbstractClientBase.
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.AddAddressesToWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AddAddressesToWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.Wallet)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.Wallet)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.Wallet>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Wallet>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.addAddressesToWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.addAddressesToWalletEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/AddAddressesToWalletEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/AddAddressesToWalletEndpoint',
       request,
       metadata,
       methodInfo_AddAddressesToWalletEndpoint,
@@ -397,14 +398,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.addAddressesT
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.AddAddressesToWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AddAddressesToWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.Wallet>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.addAddressesToWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.addAddressesToWalletEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.addAddressesToWalletEndpoint(
@@ -418,12 +419,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.addAdd
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.GetWalletAddressesEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.Wallet>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  */
 const methodInfo_GetWalletAddressesEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Wallet,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletAddressesEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -432,19 +433,19 @@ const methodInfo_GetWalletAddressesEndpoint = new grpc.web.AbstractClientBase.Me
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletAddressesEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.Wallet)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.Wallet)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.Wallet>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Wallet>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.getWalletAddressesEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.getWalletAddressesEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/GetWalletAddressesEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletAddressesEndpoint',
       request,
       metadata,
       methodInfo_GetWalletAddressesEndpoint,
@@ -453,14 +454,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.getWalletAddr
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletAddressesEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.Wallet>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.getWalletAddressesEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.getWalletAddressesEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.getWalletAddressesEndpoint(
@@ -474,12 +475,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.getWal
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.GetWalletAddressesEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.HDChain>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.HDChain>}
  */
 const methodInfo_GetWalletAddressesHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.HDChain,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletAddressesEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -488,19 +489,19 @@ const methodInfo_GetWalletAddressesHDEndpoint = new grpc.web.AbstractClientBase.
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletAddressesEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.HDChain)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.HDChain)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.HDChain>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.HDChain>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.getWalletAddressesHDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.getWalletAddressesHDEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/GetWalletAddressesHDEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletAddressesHDEndpoint',
       request,
       metadata,
       methodInfo_GetWalletAddressesHDEndpoint,
@@ -509,14 +510,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.getWalletAddr
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GetWalletAddressesEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.HDChain>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.HDChain>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.getWalletAddressesHDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.getWalletAddressesHDEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.getWalletAddressesHDEndpoint(
@@ -530,12 +531,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.getWal
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.RemoveAddressesFromWalletEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.NullValue>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.RemoveAddressesFromWalletEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
 const methodInfo_RemoveAddressesFromWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.RemoveAddressesFromWalletEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.RemoveAddressesFromWalletEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -544,19 +545,19 @@ const methodInfo_RemoveAddressesFromWalletEndpoint = new grpc.web.AbstractClient
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.RemoveAddressesFromWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.RemoveAddressesFromWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.NullValue)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.NullValue)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.NullValue>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.NullValue>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.removeAddressesFromWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.removeAddressesFromWalletEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/RemoveAddressesFromWalletEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/RemoveAddressesFromWalletEndpoint',
       request,
       metadata,
       methodInfo_RemoveAddressesFromWalletEndpoint,
@@ -565,14 +566,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.removeAddress
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.RemoveAddressesFromWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.RemoveAddressesFromWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.NullValue>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.removeAddressesFromWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.removeAddressesFromWalletEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.removeAddressesFromWalletEndpoint(
@@ -586,12 +587,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.remove
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.GenerateAdressInWalletEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.WalletAddressKeychain>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.GenerateAdressInWalletEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain>}
  */
 const methodInfo_GenerateAddressInWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   walletMessage_pb.WalletAddressKeychain,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.GenerateAdressInWalletEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GenerateAdressInWalletEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -600,19 +601,19 @@ const methodInfo_GenerateAddressInWalletEndpoint = new grpc.web.AbstractClientBa
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GenerateAdressInWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GenerateAdressInWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.WalletAddressKeychain)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.WalletAddressKeychain>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.generateAddressInWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.generateAddressInWalletEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/GenerateAddressInWalletEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/GenerateAddressInWalletEndpoint',
       request,
       metadata,
       methodInfo_GenerateAddressInWalletEndpoint,
@@ -621,14 +622,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.generateAddre
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.GenerateAdressInWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GenerateAdressInWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.WalletAddressKeychain>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.generateAddressInWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.generateAddressInWalletEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.generateAddressInWalletEndpoint(
@@ -642,12 +643,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.genera
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.DeriveAddressInWalletEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.HDWallet>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.DeriveAddressInWalletEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>}
  */
 const methodInfo_DeriveAddressInWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.HDWallet,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.DeriveAddressInWalletEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeriveAddressInWalletEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -656,19 +657,19 @@ const methodInfo_DeriveAddressInWalletEndpoint = new grpc.web.AbstractClientBase
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.DeriveAddressInWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeriveAddressInWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.HDWallet)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.HDWallet)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.HDWallet>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.deriveAddressInWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.deriveAddressInWalletEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/DeriveAddressInWalletEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/DeriveAddressInWalletEndpoint',
       request,
       metadata,
       methodInfo_DeriveAddressInWalletEndpoint,
@@ -677,14 +678,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.deriveAddress
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.DeriveAddressInWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeriveAddressInWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.HDWallet>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.deriveAddressInWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.deriveAddressInWalletEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.deriveAddressInWalletEndpoint(
@@ -698,12 +699,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.derive
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.DeleteWalletEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.NullValue>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
 const methodInfo_DeleteWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.DeleteWalletEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -712,19 +713,19 @@ const methodInfo_DeleteWalletEndpoint = new grpc.web.AbstractClientBase.MethodIn
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.DeleteWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.NullValue)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.NullValue)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.NullValue>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.NullValue>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.deleteWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.deleteWalletEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/DeleteWalletEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/DeleteWalletEndpoint',
       request,
       metadata,
       methodInfo_DeleteWalletEndpoint,
@@ -733,14 +734,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.deleteWalletE
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.DeleteWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.NullValue>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.deleteWalletEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.deleteWalletEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.deleteWalletEndpoint(
@@ -754,12 +755,12 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.delete
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.DeleteWalletEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.NullValue>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
 const methodInfo_DeleteWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.DeleteWalletEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -768,19 +769,19 @@ const methodInfo_DeleteWalletHDEndpoint = new grpc.web.AbstractClientBase.Method
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.DeleteWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.NullValue)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.NullValue)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.NullValue>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.NullValue>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.deleteWalletHDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.deleteWalletHDEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.WalletService/DeleteWalletHDEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.WalletService/DeleteWalletHDEndpoint',
       request,
       metadata,
       methodInfo_DeleteWalletHDEndpoint,
@@ -789,14 +790,14 @@ proto.fairwaycorp.blockchainprotobuf.WalletServiceClient.prototype.deleteWalletH
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.DeleteWalletEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.NullValue>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.deleteWalletHDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.deleteWalletHDEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.deleteWalletHDEndpoint(
@@ -807,5 +808,5 @@ proto.fairwaycorp.blockchainprotobuf.WalletServicePromiseClient.prototype.delete
 };
 
 
-module.exports = proto.fairwaycorp.blockchainprotobuf;
+module.exports = proto.fairwaycorp.blockchainprotobuf.btc;
 

@@ -1,5 +1,7 @@
 export class AddAddressesToWalletEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getName(): string;
   setName(a: string): void;
   getOmitwalletaddresses(): boolean;
@@ -10,6 +12,8 @@ export class AddAddressesToWalletEndpointRequest {
 
 export class CreateWalletEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getToken(): string;
   setToken(a: string): void;
   getName(): string;
@@ -22,6 +26,8 @@ export class CreateWalletEndpointRequest {
 
 export class CreateWalletHDEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getToken(): string;
   setToken(a: string): void;
   getName(): string;
@@ -40,6 +46,8 @@ export class CreateWalletHDEndpointRequest {
 
 export class DeleteWalletEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getName(): string;
   setName(a: string): void;
   serializeBinary(): Uint8Array;
@@ -48,6 +56,8 @@ export class DeleteWalletEndpointRequest {
 
 export class DeriveAddressInWalletEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getName(): string;
   setName(a: string): void;
   getCount(): number;
@@ -60,6 +70,8 @@ export class DeriveAddressInWalletEndpointRequest {
 
 export class GenerateAdressInWalletEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getName(): string;
   setName(a: string): void;
   serializeBinary(): Uint8Array;
@@ -68,6 +80,8 @@ export class GenerateAdressInWalletEndpointRequest {
 
 export class GetWalletAddressesEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getName(): string;
   setName(a: string): void;
   getUsed(): boolean;
@@ -80,6 +94,8 @@ export class GetWalletAddressesEndpointRequest {
 
 export class GetWalletEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getName(): string;
   setName(a: string): void;
   serializeBinary(): Uint8Array;
@@ -124,6 +140,8 @@ export class ListWallets {
 
 export class ListWalletsEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ListWalletsEndpointRequest;
 }
@@ -136,6 +154,8 @@ export class NullValue {
 
 export class RemoveAddressesFromWalletEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getName(): string;
   setName(a: string): void;
   getAddress(): string;

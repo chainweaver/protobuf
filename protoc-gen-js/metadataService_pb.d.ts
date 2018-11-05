@@ -1,5 +1,7 @@
 export class DeleteMetadataAddressEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getAddress(): string;
   setAddress(a: string): void;
   serializeBinary(): Uint8Array;
@@ -8,6 +10,8 @@ export class DeleteMetadataAddressEndpointRequest {
 
 export class DeleteMetadataBlockheightEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getBlockHash(): string;
   setBlockHash(a: string): void;
   serializeBinary(): Uint8Array;
@@ -16,6 +20,8 @@ export class DeleteMetadataBlockheightEndpointRequest {
 
 export class DeleteMetadataTxhashEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getTxhash(): string;
   setTxhash(a: string): void;
   serializeBinary(): Uint8Array;
@@ -24,6 +30,8 @@ export class DeleteMetadataTxhashEndpointRequest {
 
 export class GetMetadataAddressEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getAddress(): string;
   setAddress(a: string): void;
   getPrivate(): boolean;
@@ -34,6 +42,8 @@ export class GetMetadataAddressEndpointRequest {
 
 export class GetMetadataBlockhashEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getBlockHash(): string;
   setBlockHash(a: string): void;
   getPrivate(): boolean;
@@ -44,6 +54,8 @@ export class GetMetadataBlockhashEndpointRequest {
 
 export class GetMetadataTxhashEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getTxhash(): string;
   setTxhash(a: string): void;
   getPrivate(): boolean;
@@ -68,6 +80,8 @@ export class NullValue {
 
 export class PutMetadataAddressEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getKeyPairs(): {};
   setKeyPairs(a: {}): void;
   getAddress(): string;
@@ -80,6 +94,8 @@ export class PutMetadataAddressEndpointRequest {
 
 export class PutMetadataBlockhashEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getKeyPairs(): {};
   setKeyPairs(a: {}): void;
   getBlockHash(): string;
@@ -92,6 +108,8 @@ export class PutMetadataBlockhashEndpointRequest {
 
 export class PutMetadataTxhashEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getKeyPairs(): {};
   setKeyPairs(a: {}): void;
   getTxhash(): string;

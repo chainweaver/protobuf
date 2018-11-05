@@ -68,6 +68,8 @@ export class ArrayString {
 
 export class GetAssetAddressEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getAssetid(): string;
   setAssetid(a: string): void;
   getOapaddr(): string;
@@ -78,6 +80,8 @@ export class GetAssetAddressEndpointRequest {
 
 export class GetAssetTXEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getAssetid(): string;
   setAssetid(a: string): void;
   getTxhash(): string;
@@ -88,20 +92,26 @@ export class GetAssetTXEndpointRequest {
 
 export class ListAssetTXsEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getAssetid(): string;
   setAssetid(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ListAssetTXsEndpointRequest;
 }
 
-export class NullValue {
+export class NullValueRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => NullValue;
+  static deserializeBinary: (bytes: {}) => NullValueRequest;
 }
 
-export class OAPIssue {
+export class OAPIssueRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getFromPrivate(): string;
   setFromPrivate(a: string): void;
   getToAddress(): string;
@@ -111,7 +121,7 @@ export class OAPIssue {
   getMetadata(): string;
   setMetadata(a: string): void;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => OAPIssue;
+  static deserializeBinary: (bytes: {}) => OAPIssueRequest;
 }
 
 export class OAPTX {
@@ -140,6 +150,8 @@ export class OAPTX {
 
 export class TransferAssetEndpointRequest {
   constructor ();
+  getStage(): string;
+  setStage(a: string): void;
   getAssetid(): string;
   setAssetid(a: string): void;
   getFromPrivate(): string;
