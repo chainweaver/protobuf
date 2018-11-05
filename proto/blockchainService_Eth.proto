@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.eth;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go-eth";
+
+import "google/api/annotations.proto";
+import "blockchainMessage_Eth.proto";
+
+service BlockchainService {
+  rpc ChainEndpoint (ChainEndpointRequest) returns (Blockchain) {
+    option (google.api.http) = {
+      get: "/eth/{stage}/*"
+    };
+  }
+  rpc BlockHashEndpoint (BlockHashEndpointRequest) returns (Block) {
+    option (google.api.http) = {
+      get: "/eth/{stage}/blocks/{block_hash}"
+    };
+  }
+  rpc BlockHeightEndpoint (BlockHeightEndpointRequest) returns (Block) {
+    option (google.api.http) = {
+      get: "/eth/{stage}/blocks/{block_height}"
+    };
+  }
+}

@@ -149,7 +149,7 @@
           "format": "int32",
           "description": "The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain."
         },
-        "chain": {
+        "stage": {
           "type": "string",
           "title": "The name of the blockchain represented, in the form of $COIN.$CHAIN"
         },

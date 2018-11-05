@@ -42,7 +42,7 @@ message Block {
   // The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain.
   int32 depth = 3; 
   // The name of the blockchain represented, in the form of $COIN.$CHAIN
-  string chain = 4;
+  string stage = 4;
   // The total number of satoshis transacted in this block.
   int32 total = 5;
   // The total number of fees—in satoshis—collected by miners in this block.

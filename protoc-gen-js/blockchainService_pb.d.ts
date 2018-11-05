@@ -6,8 +6,8 @@ export class Block {
   setHeight(a: number): void;
   getDepth(): number;
   setDepth(a: number): void;
-  getChain(): string;
-  setChain(a: string): void;
+  getStage(): string;
+  setStage(a: string): void;
   getTotal(): number;
   setTotal(a: number): void;
   getFees(): number;
