@@ -4,7 +4,7 @@ rm -f ./protoc-gen-go/*
 rm -f ./protoc-gen-js/*
 
 protoc \
-  -I./proto \
+  -I./proto-btc \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
@@ -23,7 +23,7 @@ protoc \
   metadataService.proto 
 
 protoc \
-  -I./proto \
+  -I./proto-eth \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
