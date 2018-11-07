@@ -70,11 +70,11 @@ export class GetBalanceAddressEndpointRequest {
   static deserializeBinary: (bytes: {}) => GetBalanceAddressEndpointRequest;
 }
 
-export class NullValueRequest {
+export class PostGenerateAddressEndpointRequest {
   constructor ();
   getNetwork(): {};
   setNetwork(a: {}): void;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => NullValueRequest;
+  static deserializeBinary: (bytes: {}) => PostGenerateAddressEndpointRequest;
 }
 

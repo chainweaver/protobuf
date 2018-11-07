@@ -18,7 +18,7 @@ service AddressService {
       get: "/eth/{network}/addr/{address}"
     };
   }
-  rpc PostGenerateAddressEndpoint (NullValueRequest) returns (AddressKeychain) {
+  rpc PostGenerateAddressEndpoint (PostGenerateAddressEndpointRequest) returns (AddressKeychain) {
     option (google.api.http) = {
       post: "/eth/{network}/addr"
     };

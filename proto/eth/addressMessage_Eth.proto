@@ -23,6 +23,6 @@ message GetAddressEndpointRequest {
   int32 confirmations = 6;
 }
 
-message NullValueRequest {
+message PostGenerateAddressEndpointRequest {
   NetworkAllowingAlias network = 1;
 }

@@ -14,6 +14,8 @@ grpc.web = require('grpc-web');
 
 var google_api_annotations_pb = require('./google/api/annotations_pb.js')
 
+var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js')
+
 var blockchainMessage_Eth_pb = require('./blockchainMessage_Eth_pb.js')
 const proto = {};
 proto.fairwaycorp = {};
@@ -85,12 +87,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Blockchain>}
  */
 const methodInfo_ChainEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  blockchainMessage_Eth_pb.Blockchain,
+  commonMessage_Eth_pb.Blockchain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.ChainEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  blockchainMessage_Eth_pb.Blockchain.deserializeBinary
+  commonMessage_Eth_pb.Blockchain.deserializeBinary
 );
 
 
@@ -141,12 +143,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototyp
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Block>}
  */
 const methodInfo_BlockHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  blockchainMessage_Eth_pb.Block,
+  commonMessage_Eth_pb.Block,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHashEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  blockchainMessage_Eth_pb.Block.deserializeBinary
+  commonMessage_Eth_pb.Block.deserializeBinary
 );
 
 
@@ -197,12 +199,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototyp
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Block>}
  */
 const methodInfo_BlockHeightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  blockchainMessage_Eth_pb.Block,
+  commonMessage_Eth_pb.Block,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHeightEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  blockchainMessage_Eth_pb.Block.deserializeBinary
+  commonMessage_Eth_pb.Block.deserializeBinary
 );
 
 

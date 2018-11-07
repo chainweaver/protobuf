@@ -15,12 +15,12 @@ service ContractService {
   }
   rpc GetContractAddressEndpoint (GetContractAddressEndpointRequest) returns (Contract) {
     option (google.api.http) = {
-      get: "/eth/{network}/contracts/{address}"
+      get: "/eth/{network}/contracts/{query_address}"
     };
   }
   rpc PostCallContractMethodEndpoint (PostCallContractMethodEndpointRequest) returns (Contract) {
     option (google.api.http) = {
-      post: "/eth/{network}/contracts/{address}/{method}"
+      post: "/eth/{network}/contracts/{query_address}/{method}"
     };
   }
 }

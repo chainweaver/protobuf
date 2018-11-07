@@ -45,7 +45,7 @@
         ]
       }
     },
-    "/eth/{network}/contracts/{address}": {
+    "/eth/{network}/contracts/{query_address}": {
       "get": {
         "operationId": "GetContractAddressEndpoint",
         "responses": {
@@ -70,7 +70,7 @@
             ]
           },
           {
-            "name": "address",
+            "name": "query_address",
             "in": "path",
             "required": true,
             "type": "string"
@@ -81,7 +81,7 @@
         ]
       }
     },
-    "/eth/{network}/contracts/{address}/{method}": {
+    "/eth/{network}/contracts/{query_address}/{method}": {
       "post": {
         "operationId": "PostCallContractMethodEndpoint",
         "responses": {
@@ -106,7 +106,7 @@
             ]
           },
           {
-            "name": "address",
+            "name": "query_address",
             "in": "path",
             "required": true,
             "type": "string"
@@ -129,10 +129,7 @@
       "type": "object",
       "properties": {
         "solidity": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
+          "type": "string",
           "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
         },
         "params": {

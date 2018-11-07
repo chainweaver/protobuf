@@ -119,7 +119,7 @@ func request_AddressService_GetAddressEndpoint_0(ctx context.Context, marshaler 
 }
 
 func request_AddressService_PostGenerateAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AddressServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq NullValueRequest
+	var protoReq PostGenerateAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (

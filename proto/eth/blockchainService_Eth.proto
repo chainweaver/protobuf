@@ -4,6 +4,7 @@ package fairwaycorp.blockchainprotobuf.eth;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
 
 import "google/api/annotations.proto";
+import "commonMessage_Eth.proto";
 import "blockchainMessage_Eth.proto";
 
 service BlockchainService {

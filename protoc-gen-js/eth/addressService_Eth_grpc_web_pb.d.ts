@@ -4,7 +4,7 @@ import {
   AddressKeychain,
   GetAddressEndpointRequest,
   GetBalanceAddressEndpointRequest,
-  NullValueRequest} from './addressService_Eth_pb';
+  PostGenerateAddressEndpointRequest} from './addressService_Eth_pb';
 
 export class AddressServiceClient {
   constructor (hostname: string,
@@ -26,7 +26,7 @@ export class AddressServiceClient {
   ): grpcWeb.ClientReadableStream;
 
   postGenerateAddressEndpoint(
-    request: NullValueRequest,
+    request: PostGenerateAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: AddressKeychain) => void

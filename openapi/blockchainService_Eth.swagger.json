@@ -285,10 +285,11 @@
         },
         "time": {
           "type": "string",
+          "format": "date-time",
           "description": "The time of the latest update to the blockchain; typically when the latest block was added."
         },
         "latest_url": {
-          "type": "string",
+          "$ref": "#/definitions/protobufAny",
           "description": "The BlockCypher URL to query for more information on the latest confirmed block; returns a Block."
         },
         "previous_hash": {
@@ -296,7 +297,7 @@
           "description": "The hash of the second-to-latest confirmed block in the blockchain."
         },
         "previous_url": {
-          "type": "string",
+          "$ref": "#/definitions/protobufAny",
           "description": "The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block."
         },
         "unconfirmed_count": {
