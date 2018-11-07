@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/eth/{network}/*": {
+    "/eth/{network}": {
       "get": {
         "operationId": "ChainEndpoint",
         "responses": {

@@ -285,7 +285,7 @@ func RegisterBlockchainServiceHandlerClient(ctx context.Context, mux *runtime.Se
 }
 
 var (
-	pattern_BlockchainService_ChainEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 1, 0}, []string{"eth", "network"}, ""))
+	pattern_BlockchainService_ChainEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"eth", "network"}, ""))
 
 	pattern_BlockchainService_BlockHashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "blocks", "block_hash"}, ""))
 
