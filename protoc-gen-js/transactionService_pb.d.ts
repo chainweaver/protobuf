@@ -26,6 +26,72 @@ export class DescribedBelow {
   static deserializeBinary: (bytes: {}) => DescribedBelow;
 }
 
+export class NewTransactionEndpointRequest {
+  constructor ();
+  getBlockHeight(): number;
+  setBlockHeight(a: number): void;
+  getHash(): string;
+  setHash(a: string): void;
+  getAddresses(): string;
+  setAddresses(a: string): void;
+  getTotal(): number;
+  setTotal(a: number): void;
+  getFees(): number;
+  setFees(a: number): void;
+  getSize(): number;
+  setSize(a: number): void;
+  getPreference(): string;
+  setPreference(a: string): void;
+  getRelayedBy(): string;
+  setRelayedBy(a: string): void;
+  getReceived(): {};
+  setReceived(a: {}): void;
+  getVer(): number;
+  setVer(a: number): void;
+  getLockTime(): number;
+  setLockTime(a: number): void;
+  getDoubleSpend(): boolean;
+  setDoubleSpend(a: boolean): void;
+  getVinSz(): number;
+  setVinSz(a: number): void;
+  getVoutSz(): number;
+  setVoutSz(a: number): void;
+  getConfirmations(): number;
+  setConfirmations(a: number): void;
+  getInputs(): {};
+  setInputs(a: {}): void;
+  getOutputs(): {};
+  setOutputs(a: {}): void;
+  getOptInRbf(): boolean;
+  setOptInRbf(a: boolean): void;
+  getConfidence(): number;
+  setConfidence(a: number): void;
+  getConfirmed(): {};
+  setConfirmed(a: {}): void;
+  getReceiveCount(): number;
+  setReceiveCount(a: number): void;
+  getChangeAddress(): string;
+  setChangeAddress(a: string): void;
+  getBlockHash(): string;
+  setBlockHash(a: string): void;
+  getBlockIndex(): number;
+  setBlockIndex(a: number): void;
+  getDoubleOf(): string;
+  setDoubleOf(a: string): void;
+  getDataProtocol(): string;
+  setDataProtocol(a: string): void;
+  getHex(): string;
+  setHex(a: string): void;
+  getNextInputs(): {};
+  setNextInputs(a: {}): void;
+  getNextOutputs(): {};
+  setNextOutputs(a: {}): void;
+  getIncludetosigntx(): boolean;
+  setIncludetosigntx(a: boolean): void;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => NewTransactionEndpointRequest;
+}
+
 export class NullData {
   constructor ();
   getData(): string;
@@ -142,6 +208,16 @@ export class TransactionHashEndpointRequest {
   constructor ();
   getTxhash(): string;
   setTxhash(a: string): void;
+  getLimit(): number;
+  setLimit(a: number): void;
+  getInstart(): number;
+  setInstart(a: number): void;
+  getOutstart(): number;
+  setOutstart(a: number): void;
+  getIncludehex(): boolean;
+  setIncludehex(a: boolean): void;
+  getIncludeconfidence(): boolean;
+  setIncludeconfidence(a: boolean): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => TransactionHashEndpointRequest;
 }

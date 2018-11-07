@@ -26,7 +26,11 @@ protoc \
   analyticsMessage.proto \
   analyticsService.proto \
   transactionMessage.proto \
-  transactionService.proto
+  transactionService.proto \
+  addressforwardingMessage.proto \
+  addressforwardingService.proto \
+  confidencefactorMessage.proto \
+  confidencefactorService.proto
 
 echo -n > ./openapi/openapi.json
 find ./openapi/ -name "*.json" -print0 | xargs -0 jq -s add ./openapi/openapi.json >> ./openapi/openapi.json

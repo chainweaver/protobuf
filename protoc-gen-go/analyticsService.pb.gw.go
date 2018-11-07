@@ -86,6 +86,10 @@ func request_AnalyticsService_GetAnalyticsJob_0(ctx context.Context, marshaler r
 
 }
 
+var (
+	filter_AnalyticsService_GetAnalyticsJobResults_0 = &utilities.DoubleArray{Encoding: map[string]int{"ticket": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+)
+
 func request_AnalyticsService_GetAnalyticsJobResults_0(ctx context.Context, marshaler runtime.Marshaler, client AnalyticsServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetAnalyticsJobResultsRequest
 	var metadata runtime.ServerMetadata
@@ -106,6 +110,10 @@ func request_AnalyticsService_GetAnalyticsJobResults_0(ctx context.Context, mars
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "ticket", err)
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_AnalyticsService_GetAnalyticsJobResults_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.GetAnalyticsJobResults(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))

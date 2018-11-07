@@ -26,30 +26,30 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 func init() { proto.RegisterFile("addressService.proto", fileDescriptor_4999ebbb587b528d) }
 
 var fileDescriptor_4999ebbb587b528d = []byte{
-	// 359 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x90, 0x4d, 0x4b, 0xc3, 0x30,
-	0x18, 0xc7, 0xa9, 0x87, 0x09, 0xf5, 0xa0, 0x66, 0xea, 0x46, 0xf1, 0x8d, 0x5d, 0x04, 0xa1, 0x0d,
-	0x28, 0x08, 0x4e, 0x14, 0x1c, 0xa8, 0x07, 0xd9, 0x45, 0x6f, 0xde, 0xd2, 0x2c, 0xcb, 0x82, 0x59,
-	0x9e, 0xda, 0xa4, 0xca, 0x10, 0x2f, 0x9e, 0x3d, 0x29, 0x08, 0x1e, 0xbc, 0xf8, 0x95, 0xfc, 0x0a,
-	0x7e, 0x10, 0x59, 0xda, 0x4e, 0x9d, 0x6f, 0x9d, 0x78, 0x6b, 0x93, 0xfc, 0x7f, 0xff, 0xdf, 0xf3,
-	0xb8, 0x33, 0xa4, 0xd5, 0x8a, 0x99, 0xd6, 0xc7, 0x2c, 0x3e, 0x17, 0x94, 0x05, 0x51, 0x0c, 0x06,
-	0xd0, 0x62, 0x9b, 0x88, 0xf8, 0x82, 0xf4, 0x28, 0xc4, 0x51, 0x10, 0x4a, 0xa0, 0xa7, 0xb4, 0x43,
-	0x84, 0xb2, 0x97, 0x61, 0xd2, 0xf6, 0xe6, 0x39, 0x00, 0x97, 0x0c, 0x93, 0x48, 0x60, 0xa2, 0x14,
-	0x18, 0x62, 0x04, 0x28, 0x9d, 0xa6, 0xbd, 0x9c, 0xd9, 0x64, 0x5a, 0x13, 0x9e, 0x31, 0xbd, 0x32,
-	0x85, 0x6e, 0x17, 0xd4, 0x87, 0xc3, 0xb5, 0xdb, 0x92, 0x3b, 0x9e, 0x55, 0xa3, 0x27, 0xc7, 0x9d,
-	0xdb, 0x4d, 0x93, 0x0d, 0x22, 0x89, 0xa2, 0x6c, 0x4f, 0xb5, 0x22, 0x10, 0xca, 0xa0, 0xed, 0xe0,
-	0x67, 0xa1, 0xe0, 0xeb, 0xdc, 0x11, 0x3b, 0x4b, 0x98, 0x36, 0xde, 0x4a, 0xc1, 0x78, 0x6d, 0xf9,
-	0xfa, 0xf9, 0xe5, 0x6e, 0xcc, 0x43, 0x55, 0xdc, 0x1f, 0x41, 0xe3, 0xcb, 0x6c, 0x92, 0x2b, 0x1c,
-	0xa6, 0x64, 0x74, 0xe3, 0xb8, 0x93, 0xd9, 0xeb, 0x81, 0xdd, 0x46, 0x41, 0xfc, 0x9f, 0xb5, 0xaa,
-	0x56, 0x0b, 0xa1, 0xa9, 0x61, 0x2d, 0xf4, 0xe0, 0xb8, 0xe5, 0xec, 0xd5, 0x7e, 0x22, 0xe5, 0x40,
-	0xa9, 0x5e, 0x10, 0xfd, 0x3e, 0x34, 0xb2, 0xd6, 0x82, 0xd5, 0xaa, 0xa0, 0xd9, 0x4f, 0xdb, 0x6a,
-	0x27, 0x52, 0xa2, 0x47, 0xc7, 0xad, 0x1c, 0x30, 0xc5, 0x62, 0x62, 0xd8, 0xf0, 0xca, 0x76, 0x7e,
-	0xeb, 0xf8, 0x26, 0x98, 0x3b, 0xe2, 0x82, 0x8e, 0x87, 0xac, 0x67, 0xcf, 0x6b, 0xd3, 0xd6, 0x75,
-	0xa2, 0x56, 0x4a, 0x5d, 0xeb, 0xce, 0x2a, 0xba, 0x77, 0xdc, 0xa5, 0xbc, 0xa6, 0x99, 0x48, 0x23,
-	0xb4, 0xe0, 0xc3, 0x9e, 0xa3, 0xf6, 0xfc, 0x87, 0x58, 0x63, 0xeb, 0x64, 0x93, 0x0b, 0xd3, 0x49,
-	0xc2, 0x80, 0x42, 0x17, 0x67, 0x3c, 0xbf, 0x0f, 0xc4, 0x6f, 0x40, 0x3f, 0x27, 0x62, 0xfb, 0x41,
-	0x7d, 0xce, 0x94, 0xcf, 0x21, 0x2c, 0xd9, 0xdf, 0xf5, 0xd7, 0x00, 0x00, 0x00, 0xff, 0xff, 0x90,
-	0x6e, 0xae, 0x3b, 0xd9, 0x03, 0x00, 0x00,
+	// 361 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x90, 0x4d, 0x4b, 0x33, 0x31,
+	0x10, 0xc7, 0xd9, 0xe7, 0xd0, 0x43, 0x1e, 0x78, 0x5e, 0x52, 0xb5, 0x65, 0xf1, 0x8d, 0x5e, 0x04,
+	0x61, 0x37, 0xa0, 0x20, 0x58, 0x51, 0xb0, 0xa0, 0x1e, 0xa4, 0x17, 0xbd, 0x79, 0xcb, 0xa6, 0x69,
+	0x1a, 0x4c, 0x33, 0xeb, 0x26, 0xab, 0x14, 0xf1, 0xe2, 0xd9, 0x9b, 0x20, 0xf4, 0xe0, 0xc5, 0xaf,
+	0xe4, 0x57, 0xf0, 0x83, 0x48, 0xd3, 0xdd, 0x6a, 0xeb, 0xdb, 0x56, 0xbc, 0xed, 0x4e, 0xe6, 0xff,
+	0x9b, 0xdf, 0x0c, 0x9a, 0xa1, 0xad, 0x56, 0xc2, 0x8d, 0x39, 0xe6, 0xc9, 0xb9, 0x64, 0x3c, 0x8c,
+	0x13, 0xb0, 0x80, 0x17, 0xdb, 0x54, 0x26, 0x17, 0xb4, 0xc7, 0x20, 0x89, 0xc3, 0x48, 0x01, 0x3b,
+	0x65, 0x1d, 0x2a, 0xb5, 0x7b, 0x8c, 0xd2, 0xb6, 0x3f, 0x2f, 0x00, 0x84, 0xe2, 0x84, 0xc6, 0x92,
+	0x50, 0xad, 0xc1, 0x52, 0x2b, 0x41, 0x9b, 0x61, 0xda, 0xcf, 0x99, 0x4d, 0x6e, 0x0c, 0x15, 0x19,
+	0xd3, 0x2f, 0x33, 0xe8, 0x76, 0x41, 0x8f, 0x15, 0xd7, 0xfa, 0x25, 0xf4, 0x67, 0x77, 0xcc, 0x00,
+	0x3f, 0x78, 0x68, 0x2e, 0x2b, 0x35, 0xa8, 0xa2, 0x9a, 0xf1, 0x3d, 0xdd, 0x8a, 0x41, 0x6a, 0x8b,
+	0xb7, 0xc3, 0xcf, 0xbd, 0xc2, 0xf7, 0x73, 0x47, 0xfc, 0x2c, 0xe5, 0xc6, 0xfa, 0x2b, 0x05, 0xe3,
+	0xb5, 0xe5, 0xeb, 0xc7, 0xa7, 0xdb, 0x5f, 0x3e, 0xae, 0x92, 0xc1, 0x26, 0x86, 0x5c, 0x66, 0x0b,
+	0x5d, 0x91, 0x68, 0x48, 0xc6, 0x37, 0x1e, 0xfa, 0x9b, 0x75, 0x8f, 0xec, 0x36, 0x0a, 0xe2, 0xbf,
+	0xad, 0x55, 0x75, 0x5a, 0x18, 0xff, 0x9b, 0xd4, 0xc2, 0x7d, 0x0f, 0x95, 0xb3, 0xae, 0xfd, 0x54,
+	0xa9, 0x91, 0x52, 0xbd, 0x20, 0xfa, 0x75, 0x68, 0x6a, 0xad, 0x05, 0xa7, 0x55, 0xc1, 0xb3, 0x6f,
+	0xae, 0xd5, 0x4e, 0x95, 0xc2, 0xf7, 0x1e, 0xaa, 0x1c, 0x70, 0xcd, 0x13, 0x6a, 0xf9, 0xe4, 0xc9,
+	0x76, 0xbe, 0x9a, 0xf1, 0x41, 0x30, 0x77, 0x24, 0x05, 0x1d, 0x0f, 0x79, 0xcf, 0xd5, 0x6b, 0xff,
+	0x9d, 0xeb, 0xef, 0x5a, 0x69, 0xe8, 0x5a, 0xf7, 0x56, 0xf1, 0x9d, 0x87, 0x96, 0xf2, 0x31, 0xcd,
+	0x54, 0x59, 0x69, 0xa4, 0x98, 0xf4, 0x9c, 0x76, 0xce, 0x4f, 0x88, 0x35, 0xb6, 0x4e, 0x36, 0x85,
+	0xb4, 0x9d, 0x34, 0x0a, 0x19, 0x74, 0x49, 0xc6, 0x0b, 0x06, 0x40, 0xf2, 0x02, 0x0c, 0x72, 0x22,
+	0x71, 0x1f, 0x2c, 0x10, 0x5c, 0x07, 0x02, 0xa2, 0x92, 0xfb, 0x5d, 0x7f, 0x0e, 0x00, 0x00, 0xff,
+	0xff, 0xbe, 0xa4, 0x27, 0x32, 0xe0, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -60,10 +60,10 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// ServiceClient is the client API for Service service.
+// AddressServiceClient is the client API for AddressService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type ServiceClient interface {
+type AddressServiceClient interface {
 	AddressBalanceEndpoint(ctx context.Context, in *AddressBalanceEndpointRequest, opts ...grpc.CallOption) (*Address, error)
 	AddressEndpoint(ctx context.Context, in *AddressEndpointRequest, opts ...grpc.CallOption) (*Address, error)
 	AddressFullEndpoint(ctx context.Context, in *AddressFullEndpointRequest, opts ...grpc.CallOption) (*Address, error)
@@ -71,61 +71,61 @@ type ServiceClient interface {
 	GenerateMultisigAddressEndpoint(ctx context.Context, in *AddressKeychain, opts ...grpc.CallOption) (*AddressKeychain, error)
 }
 
-type serviceClient struct {
+type addressServiceClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewServiceClient(cc *grpc.ClientConn) ServiceClient {
-	return &serviceClient{cc}
+func NewAddressServiceClient(cc *grpc.ClientConn) AddressServiceClient {
+	return &addressServiceClient{cc}
 }
 
-func (c *serviceClient) AddressBalanceEndpoint(ctx context.Context, in *AddressBalanceEndpointRequest, opts ...grpc.CallOption) (*Address, error) {
+func (c *addressServiceClient) AddressBalanceEndpoint(ctx context.Context, in *AddressBalanceEndpointRequest, opts ...grpc.CallOption) (*Address, error) {
 	out := new(Address)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.Service/AddressBalanceEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.AddressService/AddressBalanceEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *serviceClient) AddressEndpoint(ctx context.Context, in *AddressEndpointRequest, opts ...grpc.CallOption) (*Address, error) {
+func (c *addressServiceClient) AddressEndpoint(ctx context.Context, in *AddressEndpointRequest, opts ...grpc.CallOption) (*Address, error) {
 	out := new(Address)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.Service/AddressEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.AddressService/AddressEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *serviceClient) AddressFullEndpoint(ctx context.Context, in *AddressFullEndpointRequest, opts ...grpc.CallOption) (*Address, error) {
+func (c *addressServiceClient) AddressFullEndpoint(ctx context.Context, in *AddressFullEndpointRequest, opts ...grpc.CallOption) (*Address, error) {
 	out := new(Address)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.Service/AddressFullEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.AddressService/AddressFullEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *serviceClient) GenerateAddressEndpoint(ctx context.Context, in *GenerateAddressEndpointRequest, opts ...grpc.CallOption) (*AddressKeychain, error) {
+func (c *addressServiceClient) GenerateAddressEndpoint(ctx context.Context, in *GenerateAddressEndpointRequest, opts ...grpc.CallOption) (*AddressKeychain, error) {
 	out := new(AddressKeychain)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.Service/GenerateAddressEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.AddressService/GenerateAddressEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *serviceClient) GenerateMultisigAddressEndpoint(ctx context.Context, in *AddressKeychain, opts ...grpc.CallOption) (*AddressKeychain, error) {
+func (c *addressServiceClient) GenerateMultisigAddressEndpoint(ctx context.Context, in *AddressKeychain, opts ...grpc.CallOption) (*AddressKeychain, error) {
 	out := new(AddressKeychain)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.Service/GenerateMultisigAddressEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.AddressService/GenerateMultisigAddressEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ServiceServer is the server API for Service service.
-type ServiceServer interface {
+// AddressServiceServer is the server API for AddressService service.
+type AddressServiceServer interface {
 	AddressBalanceEndpoint(context.Context, *AddressBalanceEndpointRequest) (*Address, error)
 	AddressEndpoint(context.Context, *AddressEndpointRequest) (*Address, error)
 	AddressFullEndpoint(context.Context, *AddressFullEndpointRequest) (*Address, error)
@@ -133,123 +133,123 @@ type ServiceServer interface {
 	GenerateMultisigAddressEndpoint(context.Context, *AddressKeychain) (*AddressKeychain, error)
 }
 
-func RegisterServiceServer(s *grpc.Server, srv ServiceServer) {
-	s.RegisterService(&_Service_serviceDesc, srv)
+func RegisterAddressServiceServer(s *grpc.Server, srv AddressServiceServer) {
+	s.RegisterService(&_AddressService_serviceDesc, srv)
 }
 
-func _Service_AddressBalanceEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AddressService_AddressBalanceEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddressBalanceEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ServiceServer).AddressBalanceEndpoint(ctx, in)
+		return srv.(AddressServiceServer).AddressBalanceEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.Service/AddressBalanceEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.AddressService/AddressBalanceEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).AddressBalanceEndpoint(ctx, req.(*AddressBalanceEndpointRequest))
+		return srv.(AddressServiceServer).AddressBalanceEndpoint(ctx, req.(*AddressBalanceEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Service_AddressEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AddressService_AddressEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddressEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ServiceServer).AddressEndpoint(ctx, in)
+		return srv.(AddressServiceServer).AddressEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.Service/AddressEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.AddressService/AddressEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).AddressEndpoint(ctx, req.(*AddressEndpointRequest))
+		return srv.(AddressServiceServer).AddressEndpoint(ctx, req.(*AddressEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Service_AddressFullEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AddressService_AddressFullEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddressFullEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ServiceServer).AddressFullEndpoint(ctx, in)
+		return srv.(AddressServiceServer).AddressFullEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.Service/AddressFullEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.AddressService/AddressFullEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).AddressFullEndpoint(ctx, req.(*AddressFullEndpointRequest))
+		return srv.(AddressServiceServer).AddressFullEndpoint(ctx, req.(*AddressFullEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Service_GenerateAddressEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AddressService_GenerateAddressEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenerateAddressEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ServiceServer).GenerateAddressEndpoint(ctx, in)
+		return srv.(AddressServiceServer).GenerateAddressEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.Service/GenerateAddressEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.AddressService/GenerateAddressEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).GenerateAddressEndpoint(ctx, req.(*GenerateAddressEndpointRequest))
+		return srv.(AddressServiceServer).GenerateAddressEndpoint(ctx, req.(*GenerateAddressEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Service_GenerateMultisigAddressEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AddressService_GenerateMultisigAddressEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddressKeychain)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ServiceServer).GenerateMultisigAddressEndpoint(ctx, in)
+		return srv.(AddressServiceServer).GenerateMultisigAddressEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.Service/GenerateMultisigAddressEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.AddressService/GenerateMultisigAddressEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).GenerateMultisigAddressEndpoint(ctx, req.(*AddressKeychain))
+		return srv.(AddressServiceServer).GenerateMultisigAddressEndpoint(ctx, req.(*AddressKeychain))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Service_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "fairwaycorp.blockchainprotobuf.Service",
-	HandlerType: (*ServiceServer)(nil),
+var _AddressService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "fairwaycorp.blockchainprotobuf.AddressService",
+	HandlerType: (*AddressServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "AddressBalanceEndpoint",
-			Handler:    _Service_AddressBalanceEndpoint_Handler,
+			Handler:    _AddressService_AddressBalanceEndpoint_Handler,
 		},
 		{
 			MethodName: "AddressEndpoint",
-			Handler:    _Service_AddressEndpoint_Handler,
+			Handler:    _AddressService_AddressEndpoint_Handler,
 		},
 		{
 			MethodName: "AddressFullEndpoint",
-			Handler:    _Service_AddressFullEndpoint_Handler,
+			Handler:    _AddressService_AddressFullEndpoint_Handler,
 		},
 		{
 			MethodName: "GenerateAddressEndpoint",
-			Handler:    _Service_GenerateAddressEndpoint_Handler,
+			Handler:    _AddressService_GenerateAddressEndpoint_Handler,
 		},
 		{
 			MethodName: "GenerateMultisigAddressEndpoint",
-			Handler:    _Service_GenerateMultisigAddressEndpoint_Handler,
+			Handler:    _AddressService_GenerateMultisigAddressEndpoint_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

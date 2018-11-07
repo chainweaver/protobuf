@@ -2,6 +2,7 @@ import * as grpcWeb from 'grpc-web';
 import {
   DecodeRawTransactionEndpointRequest,
   DescribedBelow,
+  NewTransactionEndpointRequest,
   NullData,
   PushRawTransactionEndpointRequest,
   TX,
@@ -31,7 +32,7 @@ export class TransactionServiceClient {
   ): grpcWeb.ClientReadableStream;
 
   newTransactionEndpoint(
-    request: TX,
+    request: NewTransactionEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TXSkeleton) => void

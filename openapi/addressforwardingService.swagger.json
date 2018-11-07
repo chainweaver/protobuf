@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "analyticsService.proto",
+    "title": "addressforwardingService.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,50 +15,21 @@
     "application/json"
   ],
   "paths": {
-    "/analytics/job/{ticket}": {
+    "/forwards": {
       "get": {
-        "operationId": "GetAnalyticsJob",
+        "operationId": "ListForwardsEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufJob"
+              "$ref": "#/definitions/blockchainprotobufListForwardsEndpointResponse"
             }
           }
         },
         "parameters": [
           {
-            "name": "ticket",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "AnalyticsService"
-        ]
-      }
-    },
-    "/analytics/job/{ticket}/results": {
-      "get": {
-        "operationId": "GetAnalyticsJobResults",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/blockchainprotobufJobResults"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "ticket",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "page",
+            "name": "start",
+            "description": "Returns list of address forwards starting at the start index; useful for paging beyond the limit of 200 address forwards.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -66,171 +37,183 @@
           }
         ],
         "tags": [
-          "AnalyticsService"
+          "AddressForwardingService"
         ]
-      }
-    },
-    "/analytics/{enginename}": {
+      },
       "post": {
-        "operationId": "CreateAnalyticsJob",
+        "operationId": "CreateForwardEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufJob"
+              "$ref": "#/definitions/blockchainprotobufAddressForward"
             }
           }
         },
         "parameters": [
           {
-            "name": "enginename",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufJobArgs"
+              "$ref": "#/definitions/blockchainprotobufCreateForwardEndpointRequest"
             }
           }
         ],
         "tags": [
-          "AnalyticsService"
+          "AddressForwardingService"
+        ]
+      }
+    },
+    "/forwards/{payid}": {
+      "get": {
+        "operationId": "DeleteForwardEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/blockchainprotobufDeleteForwardEndpointResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "payid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AddressForwardingService"
         ]
       }
     }
   },
   "definitions": {
-    "blockchainprotobufJob": {
+    "blockchainprotobufAddressForward": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the address forwarding request; generated when a new request is created."
+        },
         "token": {
           "type": "string",
-          "description": "The token that created this job."
+          "description": "The mandatory user token."
         },
-        "analytics_engine": {
+        "destination": {
           "type": "string",
-          "description": "The engine used for the job query."
+          "description": "The required destination address for address forwarding."
         },
-        "created_at": {
+        "input_address": {
           "type": "string",
-          "format": "date-time",
-          "description": "The time this job was created."
+          "description": "The address which will automatically forward to destination; generated when a new request is created."
         },
-        "completed_at": {
+        "process_fees_address": {
           "type": "string",
-          "format": "date-time",
-          "description": "Optional When this job was completed; only present on complete jobs."
+          "description": "Optional Address to forward processing fees, if specified. Allows you to receive a fee for your own services."
         },
-        "finished": {
-          "type": "boolean",
-          "format": "boolean",
-          "description": "true if this job is finished processing, false otherwise."
+        "process_fees_satoshis": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
         },
-        "started": {
-          "type": "boolean",
-          "format": "boolean",
-          "description": "true if this job has begun processing, false otherwise."
+        "process_fees_percent": {
+          "type": "number",
+          "format": "float",
+          "description": "Optional Percentage of the transaction to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
         },
-        "ticket": {
-          "type": "string",
-          "description": "Unique identifier for this job, used to get job status and results."
-        },
-        "result_path": {
+        "callback_url": {
           "$ref": "#/definitions/protobufAny",
-          "description": "ptional URL to query job results; only present on complete jobs."
+          "description": "Optional The URL to call anytime a new is forwarded."
         },
-        "args": {
-          "$ref": "#/definitions/blockchainprotobufJobArgs",
-          "description": "Query arguments for this job."
-        }
-      }
-    },
-    "blockchainprotobufJobArgs": {
-      "type": "object",
-      "properties": {
-        "address": {
-          "type": "string",
-          "description": "Address hash this job is querying."
-        },
-        "value_threshold": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Minimal/threshold value (in satoshis) to query."
-        },
-        "limit": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Limit of results to return."
-        },
-        "start": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Beginning of time range to query."
-        },
-        "end": {
-          "type": "string",
-          "format": "date-time",
-          "description": "End of time range to query."
-        },
-        "degree": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Degree of connectiveness to query."
-        },
-        "source": {
-          "type": "string",
-          "title": "IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)"
-        },
-        "enginename": {
-          "type": "string"
-        }
-      }
-    },
-    "blockchainprotobufJobResultArr": {
-      "type": "object",
-      "properties": {
-        "DstAddr": {
-          "type": "string"
-        },
-        "SrcAddr": {
-          "type": "string"
-        },
-        "TxHash": {
-          "type": "string"
-        },
-        "Value": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "blockchainprotobufJobResults": {
-      "type": "object",
-      "properties": {
-        "page": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Current page of results."
-        },
-        "more": {
+        "enable_confirmations": {
           "type": "boolean",
           "format": "boolean",
-          "description": "true if there are more results in a separate page; false otherwise."
+          "description": "Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook."
         },
-        "next_page": {
-          "$ref": "#/definitions/protobufAny",
-          "description": "Optional URL to get the next page of results; only present if there are more results to show."
+        "mining_fees_satoshis": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000."
         },
-        "results": {
+        "txs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufJobResultArr"
+            "type": "string"
           },
-          "description": "Results of analytics job; structure of results are dependent on engine-type of query, but are generally either strings of address hashes or JSON objects."
+          "description": "Optional History of forwarding transaction hashes for this address forward; not present if this request has yet to forward any transactions."
+        }
+      }
+    },
+    "blockchainprotobufCreateForwardEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the address forwarding request; generated when a new request is created."
+        },
+        "token": {
+          "type": "string",
+          "description": "The mandatory user token."
+        },
+        "destination": {
+          "type": "string",
+          "description": "The required destination address for address forwarding."
+        },
+        "input_address": {
+          "type": "string",
+          "description": "The address which will automatically forward to destination; generated when a new request is created."
+        },
+        "process_fees_address": {
+          "type": "string",
+          "description": "Optional Address to forward processing fees, if specified. Allows you to receive a fee for your own services."
+        },
+        "process_fees_satoshis": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
+        },
+        "process_fees_percent": {
+          "type": "number",
+          "format": "float",
+          "description": "Optional Percentage of the transaction to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
+        },
+        "callback_url": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "Optional The URL to call anytime a new is forwarded."
+        },
+        "enable_confirmations": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook."
+        },
+        "mining_fees_satoshis": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000."
+        },
+        "txs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional History of forwarding transaction hashes for this address forward; not present if this request has yet to forward any transactions."
+        }
+      }
+    },
+    "blockchainprotobufDeleteForwardEndpointResponse": {
+      "type": "object"
+    },
+    "blockchainprotobufListForwardsEndpointResponse": {
+      "type": "object",
+      "properties": {
+        "forwards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/blockchainprotobufAddressForward"
+          }
         }
       }
     },

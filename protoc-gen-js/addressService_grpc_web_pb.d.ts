@@ -7,7 +7,7 @@ import {
   AddressKeychain,
   GenerateAddressEndpointRequest} from './addressService_pb';
 
-export class ServiceClient {
+export class AddressServiceClient {
   constructor (hostname: string,
                credentials: {},
                options: { [s: string]: {}; });

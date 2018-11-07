@@ -10,6 +10,8 @@ export class GetAnalyticsJobResultsRequest {
   constructor ();
   getTicket(): string;
   setTicket(a: string): void;
+  getPage(): number;
+  setPage(a: number): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => GetAnalyticsJobResultsRequest;
 }

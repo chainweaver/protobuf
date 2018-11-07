@@ -194,12 +194,12 @@ proto.fairwaycorp.blockchainprotobuf.TransactionServicePromiseClient.prototype.u
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.TX,
+ *   !proto.fairwaycorp.blockchainprotobuf.NewTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.TXSkeleton>}
  */
 const methodInfo_NewTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.TXSkeleton,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.TX} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.NewTransactionEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -208,7 +208,7 @@ const methodInfo_NewTransactionEndpoint = new grpc.web.AbstractClientBase.Method
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.TX} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.NewTransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -229,7 +229,7 @@ proto.fairwaycorp.blockchainprotobuf.TransactionServiceClient.prototype.newTrans
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.TX} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.NewTransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
