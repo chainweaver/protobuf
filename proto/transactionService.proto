@@ -18,7 +18,7 @@ service TransactionService {
       get: "/txs"
     };
   }
-  rpc NewTransactionEndpoint (TX) returns (TXSkeleton) {
+  rpc NewTransactionEndpoint (NewTransactionEndpointRequest) returns (TXSkeleton) {
     option (google.api.http) = {
       post: "/txs/new"
       body: "*"

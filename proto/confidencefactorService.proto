@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+
+import "google/api/annotations.proto";
+import "confidencefactorMessage.proto";
+import "commonMessage.proto";
+
+service ConfidenceFactorService {
+  rpc TransactionConfidenceEndpoint (TransactionConfidenceEndpointRequest) returns (TXConfidence) {
+    option (google.api.http) = {
+      get: "/txs/{txhash}/confidence"
+    };
+  }
+}

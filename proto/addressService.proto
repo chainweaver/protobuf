@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 import "addressMessage.proto";
 import "commonMessage.proto";
 
-service Service {
+service AddressService {
   rpc AddressBalanceEndpoint (AddressBalanceEndpointRequest) returns (Address) {
     option (google.api.http) = {
       get: "/addrs/{address}/balance"

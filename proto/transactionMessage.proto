@@ -3,12 +3,88 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+
+import "commonMessage.proto";
 
 message TransactionHashEndpointRequest {
   string txhash = 1;
+  //Filters TXInputs/TXOutputs, if unset, default is 20.
+  int32 limit = 2;
+  //Filters TX to only include TXInputs from this input index and above.
+  int32 instart = 3;
+  //Filters TX to only include TXOutputs from this output index and above.
+  int32 outstart = 4;
+  //If true, includes hex-encoded raw transaction; false by default.
+  bool includeHex = 6;
+  //If true, includes the confidence attribute (useful for unconfirmed transactions). For more info about this figure, check the Confidence Factor documentation.
+  bool includeConfidence = 7;
 }
 
 message UnconfirmedTransactionsEndpointRequest {}
+
+message NewTransactionEndpointRequest {
+  //	Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
+  int32 block_height = 1;  
+  //The hash of the transaction. While reasonably unique, using hashes as identifiers may be unsafe.
+  string hash = 2;  
+  //Array of bitcoin public addresses involved in the transaction.
+  repeated string addresses = 3;   
+  //The total number of satoshis exchanged in this transaction.
+  int32 total = 4; 
+  //The total number of fees—in satoshis—collected by miners in this transaction.
+  int32 fees = 5;  
+  //The size of the transaction in bytes.
+  int32 size = 6; 
+  //The likelihood that this transaction will make it to the next block; reflects the preference level miners have to include this transaction. Can be high, medium or low.
+  string preference = 7;  
+  //Address of the peer that sent Block’s servers this transaction.
+  string relayed_by = 8; 
+  //Time this transaction was received by Block’s servers.
+  google.protobuf.Timestamp received = 9; 
+  //Version number, typically 1 for Bitcoin transactions.
+  int32 ver = 10;  
+  //Time when transaction can be valid. Can be interpreted in two ways: if less than 500 million, refers to block height. If more, refers to Unix epoch time.
+  int32 lock_time = 11;  
+  //true if this is an attempted double spend; false otherwise.
+  bool double_spend = 12;  
+  //Total number of inputs in the transaction.
+  int32 vin_sz = 13; 
+  //Total number of outputs in the transaction.
+  int32 vout_sz = 14; 
+  //Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
+  int32 confirmations = 15;  
+  //TXInput Array, limited to 20 by default.
+  repeated TXInput inputs = 16;
+  //TXOutput Array, limited to 20 by default.
+  repeated TXOutput outputs = 17; 
+  //Optional Returns true if this transaction has opted in to Replace-By-Fee (RBF), either true or not present. You can read more about Opt-In RBF here.
+  bool opt_in_rbf = 18; 
+  //Optional The percentage chance this transaction will not be double-spent against, if unconfirmed. For more information, check the section on Confidence Factor.
+  float confidence = 19;
+  //Optional Time at which transaction was included in a block; only present for confirmed transactions.
+  google.protobuf.Timestamp confirmed = 20; 
+  //Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
+  int32 receive_count = 21; 
+  //Optional Address Block will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent.
+  string change_address = 22;
+  //Optional Hash of the block that contains this transaction; only present for confirmed transactions.
+  string block_hash = 23; 
+  //Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions.
+  int32 block_index = 24; 
+  //Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
+  string double_of = 25; 
+  //Optional Returned if this transaction contains an OP_RETURN associated with a known data protocol. Data protocols currently detected: blockchainid ; openassets ; factom ; colu ; coinspark ; omni
+  string data_protocol = 26; 
+  //Optional Hex-encoded bytes of the transaction, as sent over the network.
+  string hex = 27; 
+  //Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the Block URL to query the next set of TXInputs (within a TX object).
+  google.protobuf.Any next_inputs = 28;  
+  //Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the Block URL to query the next set of TXOutputs(within a TX object).
+  google.protobuf.Any next_outputs = 29; 
+  bool includeToSignTx = 30;
+}
 
 message PushRawTransactionEndpointRequest {
   string tx = 1;
@@ -21,3 +97,5 @@ message DecodeRawTransactionEndpointRequest {
 message TransactionPropagationEndpointRequest {
   string txhash = 1;
 }
+
+
