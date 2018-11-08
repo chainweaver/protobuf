@@ -15,17 +15,31 @@
     "application/json"
   ],
   "paths": {
-    "/wallets": {
+    "/btc/{network}/wallets": {
       "get": {
         "operationId": "ListWalletsEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufListWallets"
+              "$ref": "#/definitions/btcListWallets"
             }
           }
         },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          }
+        ],
         "tags": [
           "WalletService"
         ]
@@ -36,17 +50,29 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufWallet"
+              "$ref": "#/definitions/btcWallet"
             }
           }
         },
         "parameters": [
           {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufCreateWalletEndpointRequest"
+              "$ref": "#/definitions/btcCreateWalletEndpointRequest"
             }
           }
         ],
@@ -55,24 +81,36 @@
         ]
       }
     },
-    "/wallets/hd": {
+    "/btc/{network}/wallets/hd": {
       "post": {
         "operationId": "CreateWalletHDEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufHDWallet"
+              "$ref": "#/definitions/btcHDWallet"
             }
           }
         },
         "parameters": [
           {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufCreateWalletHDEndpointRequest"
+              "$ref": "#/definitions/btcCreateWalletHDEndpointRequest"
             }
           }
         ],
@@ -81,18 +119,30 @@
         ]
       }
     },
-    "/wallets/hd/{name}": {
+    "/btc/{network}/wallets/hd/{name}": {
       "get": {
         "operationId": "GetWalletHDEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufHDWallet"
+              "$ref": "#/definitions/btcHDWallet"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -110,11 +160,23 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -127,18 +189,30 @@
         ]
       }
     },
-    "/wallets/hd/{name}/addresses": {
+    "/btc/{network}/wallets/hd/{name}/addresses": {
       "get": {
         "operationId": "GetWalletAddressesHDEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufHDChain"
+              "$ref": "#/definitions/btcHDChain"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -167,18 +241,30 @@
         ]
       }
     },
-    "/wallets/hd/{name}/addresses/derive": {
+    "/btc/{network}/wallets/hd/{name}/addresses/derive": {
       "post": {
         "operationId": "DeriveAddressInWalletEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufHDWallet"
+              "$ref": "#/definitions/btcHDWallet"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -190,7 +276,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufDeriveAddressInWalletEndpointRequest"
+              "$ref": "#/definitions/btcDeriveAddressInWalletEndpointRequest"
             }
           }
         ],
@@ -199,18 +285,30 @@
         ]
       }
     },
-    "/wallets/{name}": {
+    "/btc/{network}/wallets/{name}": {
       "get": {
         "operationId": "GetWalletEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufWallet"
+              "$ref": "#/definitions/btcWallet"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -228,11 +326,23 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -245,18 +355,30 @@
         ]
       }
     },
-    "/wallets/{name}/addresses": {
+    "/btc/{network}/wallets/{name}/addresses": {
       "get": {
         "operationId": "GetWalletAddressesEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufWallet"
+              "$ref": "#/definitions/btcWallet"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -290,11 +412,23 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufNullValue"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -318,11 +452,23 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufWallet"
+              "$ref": "#/definitions/btcWallet"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -334,7 +480,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufAddAddressesToWalletEndpointRequest"
+              "$ref": "#/definitions/btcAddAddressesToWalletEndpointRequest"
             }
           }
         ],
@@ -343,18 +489,30 @@
         ]
       }
     },
-    "/wallets/{name}/addresses/generate": {
+    "/btc/{network}/wallets/{name}/addresses/generate": {
       "post": {
         "operationId": "GenerateAddressInWalletEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufWalletAddressKeychain"
+              "$ref": "#/definitions/btcWalletAddressKeychain"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "name",
             "in": "path",
@@ -366,7 +524,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufGenerateAdressInWalletEndpointRequest"
+              "$ref": "#/definitions/btcGenerateAdressInWalletEndpointRequest"
             }
           }
         ],
@@ -377,9 +535,12 @@
     }
   },
   "definitions": {
-    "blockchainprotobufAddAddressesToWalletEndpointRequest": {
+    "btcAddAddressesToWalletEndpointRequest": {
       "type": "object",
       "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
         "name": {
           "type": "string"
         },
@@ -390,9 +551,12 @@
         }
       }
     },
-    "blockchainprotobufCreateWalletEndpointRequest": {
+    "btcCreateWalletEndpointRequest": {
       "type": "object",
       "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
         "token": {
           "type": "string"
         },
@@ -407,9 +571,12 @@
         }
       }
     },
-    "blockchainprotobufCreateWalletHDEndpointRequest": {
+    "btcCreateWalletHDEndpointRequest": {
       "type": "object",
       "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
         "token": {
           "type": "string"
         },
@@ -419,7 +586,7 @@
         "chains": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufHDChain"
+            "$ref": "#/definitions/btcHDChain"
           }
         },
         "hd": {
@@ -438,9 +605,12 @@
         }
       }
     },
-    "blockchainprotobufDeriveAddressInWalletEndpointRequest": {
+    "btcDeriveAddressInWalletEndpointRequest": {
       "type": "object",
       "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
         "name": {
           "type": "string"
         },
@@ -456,15 +626,18 @@
         }
       }
     },
-    "blockchainprotobufGenerateAdressInWalletEndpointRequest": {
+    "btcGenerateAdressInWalletEndpointRequest": {
       "type": "object",
       "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
         "name": {
           "type": "string"
         }
       }
     },
-    "blockchainprotobufHDAddress": {
+    "btcHDAddress": {
       "type": "object",
       "properties": {
         "address": {
@@ -481,13 +654,13 @@
         }
       }
     },
-    "blockchainprotobufHDChain": {
+    "btcHDChain": {
       "type": "object",
       "properties": {
         "chain_addresses": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufHDAddress"
+            "$ref": "#/definitions/btcHDAddress"
           },
           "description": "Array of HDAddresses associated with this subchain."
         },
@@ -498,7 +671,7 @@
         }
       }
     },
-    "blockchainprotobufHDWallet": {
+    "btcHDWallet": {
       "type": "object",
       "properties": {
         "token": {
@@ -512,7 +685,7 @@
         "chains": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufHDChain"
+            "$ref": "#/definitions/btcHDChain"
           },
           "description": "List of HD chains associated with this wallet, each containing HDAddresses. A single chain is returned if the wallet has no subchains."
         },
@@ -535,7 +708,7 @@
         }
       }
     },
-    "blockchainprotobufListWallets": {
+    "btcListWallets": {
       "type": "object",
       "properties": {
         "wallet_names": {
@@ -546,10 +719,20 @@
         }
       }
     },
-    "blockchainprotobufNullValue": {
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
+    },
+    "btcNullValue": {
       "type": "object"
     },
-    "blockchainprotobufWallet": {
+    "btcWallet": {
       "type": "object",
       "properties": {
         "token": {
@@ -569,7 +752,7 @@
         }
       }
     },
-    "blockchainprotobufWalletAddressKeychain": {
+    "btcWalletAddressKeychain": {
       "type": "object",
       "properties": {
         "token": {

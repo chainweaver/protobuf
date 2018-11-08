@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.eth;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
+
+import "google/api/annotations.proto";
+import "addressMessage_Eth.proto";
+import "commonMessage_Eth.proto";
+
+service AddressService {
+  rpc GetBalanceAddressEndpoint (GetBalanceAddressEndpointRequest) returns (Address) {
+    option (google.api.http) = {
+      get: "/eth/{network}/addrs/{address}/balance"
+    };
+  }
+  rpc GetAddressEndpoint (GetAddressEndpointRequest) returns (Address) {
+    option (google.api.http) = {
+      get: "/eth/{network}/addr/{address}"
+    };
+  }
+  rpc PostGenerateAddressEndpoint (PostGenerateAddressEndpointRequest) returns (AddressKeychain) {
+    option (google.api.http) = {
+      post: "/eth/{network}/addr"
+    };
+  }
+}

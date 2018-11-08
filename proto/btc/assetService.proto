@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
+
+import "google/api/annotations.proto";
+import "assetMessage.proto";
+import "commonMessage.proto";
+
+service AssetService {
+  rpc GenerateAssetAddressEndpoint (NullValueRequest) returns (AddressKeychain) {
+    option (google.api.http) = {
+      post: "/btc/{network}/oap/addrs"
+      body: "*"
+    };
+  }
+  rpc IssueAssetEndpoint (OAPIssueRequest) returns (OAPTX) {
+    option (google.api.http) = {
+      post: "/btc/{network}/oap/issue"
+      body: "*"
+    };
+  }
+  rpc TransferAssetEndpoint (TransferAssetEndpointRequest) returns (OAPTX) {
+    option (google.api.http) = {
+      post: "/btc/{network}/oap/{assetid}/transfer"
+      body: "*"
+    };
+  }
+  rpc ListAssetTXsEndpoint (ListAssetTXsEndpointRequest) returns (ArrayString) {
+    option (google.api.http) = {
+      get: "/btc/{network}/oap/{assetid}/txs"
+    };
+  }
+  rpc GetAssetTXEndpoint (GetAssetTXEndpointRequest) returns (OAPTX) {
+    option (google.api.http) = {
+      get: "/btc/{network}/oap/{assetid}/txs/{txhash}"
+    };
+  }
+  rpc GetAssetAddressEndpoint (GetAssetAddressEndpointRequest) returns (Address) {
+    option (google.api.http) = {
+      get: "/btc/{network}/oap/{assetid}/addrs/{oapaddr}"
+    };
+  }
+}
