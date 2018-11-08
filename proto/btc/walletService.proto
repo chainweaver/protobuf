@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
+
+import "google/api/annotations.proto";
+import "walletMessage.proto";
+import "commonMessage.proto";
+
+service WalletService {
+  rpc CreateWalletEndpoint (CreateWalletEndpointRequest) returns (Wallet) {
+    option (google.api.http) = {
+      post: "/btc/{network}/wallets"
+      body: "*"
+    };
+  }
+  rpc CreateWalletHDEndpoint (CreateWalletHDEndpointRequest) returns (HDWallet) {
+    option (google.api.http) = {
+      post: "/btc/{network}/wallets/hd"
+      body: "*"
+    };
+  }
+  rpc ListWalletsEndpoint (ListWalletsEndpointRequest) returns (ListWallets) {
+    option (google.api.http) = {
+      get: "/btc/{network}/wallets"
+    };
+  }
+  rpc GetWalletEndpoint (GetWalletEndpointRequest) returns (Wallet) {
+    option (google.api.http) = {
+      get: "/btc/{network}/wallets/{name}"
+    };
+  }
+  rpc GetWalletHDEndpoint (GetWalletEndpointRequest) returns (HDWallet) {
+    option (google.api.http) = {
+      get: "/btc/{network}/wallets/hd/{name}"
+    };
+  }
+  rpc AddAddressesToWalletEndpoint (AddAddressesToWalletEndpointRequest) returns (Wallet) {
+    option (google.api.http) = {
+      post: "/btc/{network}/wallets/{name}/addresses"
+      body: "*"
+    };
+  }
+  rpc GetWalletAddressesEndpoint (GetWalletAddressesEndpointRequest) returns (Wallet) {
+    option (google.api.http) = {
+      get: "/btc/{network}/wallets/{name}/addresses"
+    };
+  }
+  rpc GetWalletAddressesHDEndpoint (GetWalletAddressesEndpointRequest) returns (HDChain) {
+    option (google.api.http) = {
+      get: "/btc/{network}/wallets/hd/{name}/addresses"
+    };
+  }
+  rpc RemoveAddressesFromWalletEndpoint (RemoveAddressesFromWalletEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      delete: "/btc/{network}/wallets/{name}/addresses"
+    };
+  }
+  rpc GenerateAddressInWalletEndpoint (GenerateAdressInWalletEndpointRequest) returns (WalletAddressKeychain) {
+    option (google.api.http) = {
+      post: "/btc/{network}/wallets/{name}/addresses/generate"
+      body: "*"
+    };
+  }
+  rpc DeriveAddressInWalletEndpoint (DeriveAddressInWalletEndpointRequest) returns (HDWallet) {
+    option (google.api.http) = {
+      post: "/btc/{network}/wallets/hd/{name}/addresses/derive"
+      body: "*"
+    };
+  }
+  rpc DeleteWalletEndpoint (DeleteWalletEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      delete: "/btc/{network}/wallets/{name}"
+    };
+  }
+  rpc DeleteWalletHDEndpoint (DeleteWalletEndpointRequest) returns (NullValue) {
+    option (google.api.http) = {
+      delete: "/btc/{network}/wallets/hd/{name}"
+    };
+  }
+}

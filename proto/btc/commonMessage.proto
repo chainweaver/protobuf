@@ -1,0 +1,462 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+
+enum NetworkAllowingAlias {
+  option allow_alias = true;
+  MAINNET = 0;
+  mainnet = 0;
+  TEST = 1;
+  test = 1;
+}
+
+message NullValue {}
+
+message NullValueRequest {
+  NetworkAllowingAlias network = 1;
+}
+
+message ArrayString {
+  repeated string arraystring = 1;
+}
+
+message TXInput {
+  // The previous transaction hash where this input was an output. Not present for coinbase transactions.
+  string prev_hash = 1;  
+  // The index of the output being spent within the previous transaction. Not present for coinbase transactions.
+  int32 output_index = 2;  
+  // The value of the output being spent within the previous transaction. Not present for coinbase transactions.
+  int32 output_value = 3;  
+  // The type of script that encumbers the output corresponding to this input.
+  string script_type = 4;  
+  // Raw hexadecimal encoding of the script.
+  string script = 5; 
+  // An array of public addresses associated with the output of the previous transaction.
+  repeated string addresses = 6;   
+  // Legacy 4-byte sequence number, not usually relevant unless dealing with locktime encumbrances.
+  int32 sequence = 7; 
+  // Optional Number of confirmations of the previous transaction for which this input was an output. Currently, only returned in unconfirmed transactions.
+  int32 age = 8;  
+  // Optional Name of Wallet or HDWallet from which to derive inputs. Only used when constructing transactions via the Creating Transactions process.
+  string wallet_name = 9; 
+  // Optional Token associated with Wallet or HDWallet used to derive inputs. Only used when constructing transactions via the Creating Transactions process.  
+  string wallet_token = 10; 
+}
+
+message TXOutput {
+  // Value in this transaction output, in satoshis.
+  int32 value = 1; 
+  // Raw hexadecimal encoding of the encumbrance script for this output.
+  string script = 2;  
+  // Addresses that correspond to this output; typically this will only have a single address, and you can think of this output as having “sent” value to the address contained herein.
+  repeated string addresses = 3; 
+  // The type of encumbrance script used for this output.
+  string script_type = 4; 
+  // Optional The transaction hash that spent this output. Only returned for outputs that have been spent. The spending transaction may be unconfirmed.
+  string spent_by = 5; 
+  // Optional A hex-encoded representation of an OP_RETURN data output, without any other script instructions. Only returned for outputs whose script_type is null-data.
+  string data_hex = 6; 
+  // Optional An ASCII representation of an OP_RETURN data output, without any other script instructions. Only returned for outputs whose script_type is null-data and if its data falls into the visible ASCII range.  
+  string data_string = 7; 
+}
+
+message TX {
+  //	Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
+  int32 block_height = 1;  
+  //The hash of the transaction. While reasonably unique, using hashes as identifiers may be unsafe.
+  string hash = 2;  
+  //Array of bitcoin public addresses involved in the transaction.
+  repeated string addresses = 3;   
+  //The total number of satoshis exchanged in this transaction.
+  int32 total = 4; 
+  //The total number of fees—in satoshis—collected by miners in this transaction.
+  int32 fees = 5;  
+  //The size of the transaction in bytes.
+  int32 size = 6; 
+  //The likelihood that this transaction will make it to the next block; reflects the preference level miners have to include this transaction. Can be high, medium or low.
+  string preference = 7;  
+  //Address of the peer that sent Block’s servers this transaction.
+  string relayed_by = 8; 
+  //Time this transaction was received by Block’s servers.
+  google.protobuf.Timestamp received = 9; 
+  //Version number, typically 1 for Bitcoin transactions.
+  int32 ver = 10;  
+  //Time when transaction can be valid. Can be interpreted in two ways: if less than 500 million, refers to block height. If more, refers to Unix epoch time.
+  int32 lock_time = 11;  
+  //true if this is an attempted double spend; false otherwise.
+  bool double_spend = 12;  
+  //Total number of inputs in the transaction.
+  int32 vin_sz = 13; 
+  //Total number of outputs in the transaction.
+  int32 vout_sz = 14; 
+  //Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
+  int32 confirmations = 15;  
+  //TXInput Array, limited to 20 by default.
+  repeated TXInput inputs = 16;
+  //TXOutput Array, limited to 20 by default.
+  repeated TXOutput outputs = 17; 
+  //Optional Returns true if this transaction has opted in to Replace-By-Fee (RBF), either true or not present. You can read more about Opt-In RBF here.
+  bool opt_in_rbf = 18; 
+  //Optional The percentage chance this transaction will not be double-spent against, if unconfirmed. For more information, check the section on Confidence Factor.
+  float confidence = 19;
+  //Optional Time at which transaction was included in a block; only present for confirmed transactions.
+  google.protobuf.Timestamp confirmed = 20; 
+  //Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
+  int32 receive_count = 21; 
+  //Optional Address Block will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent.
+  string change_address = 22;
+  //Optional Hash of the block that contains this transaction; only present for confirmed transactions.
+  string block_hash = 23; 
+  //Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions.
+  int32 block_index = 24; 
+  //Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
+  string double_of = 25; 
+  //Optional Returned if this transaction contains an OP_RETURN associated with a known data protocol. Data protocols currently detected: blockchainid ; openassets ; factom ; colu ; coinspark ; omni
+  string data_protocol = 26; 
+  //Optional Hex-encoded bytes of the transaction, as sent over the network.
+  string hex = 27; 
+  //Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the Block URL to query the next set of TXInputs (within a TX object).
+  google.protobuf.Any next_inputs = 28;  
+  //Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the Block URL to query the next set of TXOutputs(within a TX object).
+  google.protobuf.Any next_outputs = 29; 
+}
+
+message Wallet {
+  // User token associated with this wallet.
+  string token	= 1;  
+  // Name of the wallet.
+  string name = 2;  
+  // List of addresses associated with this wallet.
+  repeated string addresses	= 3; 
+}
+
+message HDWallet {
+  // User token associated with this HD wallet.
+  string token	= 1;  
+  // Name of the HD wallet.
+  string name = 2;
+  // List of HD chains associated with this wallet, each containing HDAddresses. A single chain is returned if the wallet has no subchains.
+  repeated HDChain chains = 3;
+  // true for HD wallets, not present for normal wallets.
+  bool hd = 4;  
+  // The extended public key all addresses in the HD wallet are derived from. It’s encoded in BIP32 format
+  string extended_public_key = 5;  
+  // optional returned for HD wallets created with subchains.
+  repeated int32 subchain_indexes = 6; 
+}
+
+message HDChain {
+  // Array of HDAddresses associated with this subchain.
+  repeated HDAddress chain_addresses = 1;  
+  // optional Index of the subchain, returned if the wallet has subchains.
+  int64 index = 2; 
+}
+
+message Address {  
+  // Optional The requested address. Not returned if querying a wallet/HD wallet.
+  string address = 1;
+  // Optional The requested wallet object. Only returned if querying by wallet name instead of public address.
+  Wallet wallet = 2; 
+  // Optional The requested HD wallet object. Only returned if querying by HD wallet name instead of public address.
+  HDWallet hd_wallet = 3; 
+  // Total amount of confirmed satoshis received by this address.
+  int32 total_received = 4;
+  // Total amount of confirmed satoshis sent by this address.
+  int32 total_sent = 5; 
+  // Balance of confirmed satoshis on this address. This is the difference between outputs and inputs on this address, but only for transactions that have been included into a block (i.e., for transactions whose confirmations > 0).
+  int32 balance = 6; 
+  // Balance of unconfirmed satoshis on this address. Can be negative (if unconfirmed transactions are just spending outputs). Only unconfirmed transactions (haven’t made it into a block) are included.
+  int32 unconfirmed_balance = 7; 
+  // Total balance of satoshis, including confirmed and unconfirmed transactions, for this address.
+  int32 final_balance = 8;  
+  // Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted.
+  int32 n_tx = 9; 
+  // Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted.
+  int32 unconfirmed_n_tx = 10;
+  // Final number of transactions, including confirmed and unconfirmed transactions, for this address.
+  int32 final_n_tx = 11;
+  // Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.
+  string tx_url = 12; 
+  // Array of full transaction details associated with this address. Usually only returned from the Address Full Endpoint.
+  repeated TX txs = 13;  
+  // Optional Array of transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint.
+  repeated TXRef txrefs = 14; 
+  // Optional All unconfirmed transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint.
+  repeated TXRef unconfirmed_txrefs = 15; 
+  // Optional If true, then the Address object contains more transactions than shown. Useful for determining whether to poll the API for more transaction information.
+  bool hasMore = 16; 
+}
+
+message HDAddress {
+  // Standard address representation.
+  string address = 1; 
+  // The BIP32 path of the HD address.
+  string path = 2; 
+  // optional Contains the hex-encoded public key if returned by Derive Address in Wallet endpoint.
+  string public = 3; 
+}
+
+message AddressKeychain {
+  // Standard address representation.
+  string address = 1;
+  // Hex-encoded Public key.
+  string public = 2;  
+  // Hex-encoded Private key.
+  string private = 3;   
+  // Wallet import format, a common encoding for the private key.
+  string wif = 4; 
+  // Optional Array of public keys to provide to generate a multisig address.
+  repeated string pubkeys  = 5;   
+  // Optional If generating a multisig address, the type of multisig script; typically “multisig-n-of-m”, where n and m are integers.
+  string script_type = 6;  
+  // Optional If generating an OAP address, this represents the parent blockchain’s underlying address (the typical address listed above).
+  string original_address = 7;  
+  // Optional The OAP address, if generated using the Generate Asset Address Endpoint.
+  string oap_address = 8; 
+}
+
+message TXRef {
+  //	Optional The address associated with this transaction input/output. Only returned when querying an address endpoint via a wallet/HD wallet name.
+  string address = 1; 
+  //Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1.
+  int32 block_height = 2;  
+  //	The hash of the transaction containing this input/output. While reasonably unique, using hashes as identifiers may be unsafe.
+  string tx_hash = 3;  
+  //Index of this input in the enclosing transaction. It’s a negative number for an output.
+  int32 tx_input_n = 4; 
+  //Index of this output in the enclosing transaction. It’s a negative number for an input.
+  int32 tx_output_n = 5;  
+  //The value transfered by this input/output in satoshis exchanged in the enclosing transaction.
+  int32 value = 6;  
+  //	The likelihood that the enclosing transaction will make it to the next block; reflects the preference level miners have to include the enclosing transaction. Can be high, medium or low.
+  string preference = 7;  
+  //	true if this is an output and was spent. If it’s an input, or an unspent output, it will be false.
+  bool spent = 8;
+  //	true if this is an attempted double spend; false otherwise.
+  bool double_spend = 9;  
+  //	Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
+  int32 confirmations	   = 10; 
+  //Optional Raw, hex-encoded script of this input/output.
+  string script = 11; 
+  //Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions.
+  int32 ref_balance = 12; 
+  //	Optional The percentage chance this transaction will not be double-spent against, if unconfirmed. For more information, check the section on Confidence Factor.
+  float confidence = 13;   
+  //Optional Time at which transaction was included in a block; only present for confirmed transactions.
+  google.protobuf.Timestamp confirmed = 14;   
+  //Optional The transaction hash that spent this output. Only returned for outputs that have been spent. The spending transaction may be unconfirmed.
+  string spent_by = 15; 
+  //Optional Time this transaction was received by Block’s servers; only present for unconfirmed transactions.
+  google.protobuf.Timestamp received = 16; 
+  //Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
+  int32 receive_count = 17;  
+  //Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
+  string double_of = 18; 
+}
+
+message OAPIssue {
+  // The private key being used to issue or transfer assets.
+  string from_private = 1; 
+  // The target OAP address assets for issue or transfer.
+  string to_address = 2; 
+  // The amount of assets being issued or transfered.
+  int32 amount = 3;
+  // Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction.  
+  string metadata = 4;  
+}
+
+message OAPIssueRequest {
+  NetworkAllowingAlias network = 1;
+  // The private key being used to issue or transfer assets.
+  string from_private = 2; 
+  // The target OAP address assets for issue or transfer.
+  string to_address = 3; 
+  // The amount of assets being issued or transfered.
+  int32 amount = 4;
+  // Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction.  
+  string metadata = 5;  
+}
+
+message OAPTX {
+  // Version of Open Assets Protocol transaction. Typically 1.
+  int32 ver = 1; 
+  // Unique indentifier associated with this asset; can be used to query other transactions associated with this asset.
+  string assetid = 2; 
+  // This transaction’s unique hash; same as the underlying transaction on the asset’s parent blockchain.
+  string hash = 3;  
+  // Optional Time this transaction was confirmed; only returned for confirmed transactions.
+  google.protobuf.Timestamp confirmed = 4; 
+  // Time this transaction was received.
+  google.protobuf.Timestamp received = 5; 
+  // Optional Associated hex-encoded metadata with this transaction, if it exists.
+  string oap_meta = 6; 
+  // true if this is an attempted double spend; false otherwise.
+  bool double_spend = 7; 
+  // Array of input data, which can be seen explicitly in the cURL example. Very similar to array of TXInputs, but with values related to assets instead of satoshis.
+  repeated google.protobuf.Any inputs = 8; 
+  // Array of output data, which can be seen explicitly in the cURL example. Very similar to array of TXOutputs, but with values related to assets instead of satoshis.  
+  repeated google.protobuf.Any outputs = 9; 
+}
+
+message TXSkeleton {
+  //A temporary TX, usually returned fully filled but missing input scripts.
+  TX tx = 1;
+  //Array of hex-encoded data for you to sign, one for each input.
+  repeated string tosign = 2;
+  //Array of signatures corresponding to all the data in tosign, typically provided by you.
+  repeated string signatures = 3;
+  //Array of public keys corresponding to each signature. In general, these are provided by you, and correspond to the signatures you provide.
+  repeated string pubkeys = 4;
+  //Optional Array of hex-encoded, work-in-progress transactions; optionally returned to validate the tosign data locally.
+  repeated string tosign_tx = 5;
+  //Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code.
+  repeated TXerror errors = 6;
+}
+
+message TXerror {
+  string error = 1;
+}
+
+
+message NullData {
+  //The string representing the data to embed, can be either hex-encoded or plaintext.
+  string data = 1;
+  //Optional Your BlockCypher API token, can either be included here or as a URL Parameter in your request.
+  string token = 2;
+  //Optional The encoding of your data, can be either string (for plaintext) or hex (for hex-encoded). If not set, defaults to hex.
+  string encoding = 3;
+  //Optional The hash of the transaction containing your data; only part of return object.
+  string hash = 4;
+}
+
+
+message DescribedBelow {
+  //The hash of the transaction you queried.
+  string transaction = 1;
+  //An object containing latitude and longitude floats representing the first location to broadcast this transaction to BlockCypher.
+  FirstLocation first_location = 2;
+  //Optional The name of the city closest to the first_location. If no nearby city can be found, this is not returned.
+  string first_city = 3;
+  //The name of the country containing the first_location.
+  string first_country = 4;
+  //An object containing latitude and longitude floats representing BlockCypher’s best guess of likely origin of this transaction, based on the radius of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers.
+  AggregatedOrigin aggregated_origin = 5;
+  //The radius (in meters) of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers. In a general sense, this represents an approximate confidence interval in our calculated aggregated_origin; the smaller the radius, the more confidence in our aggregated_origin assessment.
+  int32 aggregated_origin_radius = 6;
+  //The timestamp when BlockCypher first received this transaction.
+  google.protobuf.Timestamp first_received = 7;
+}
+
+message FirstLocation {
+  float latitude = 1;
+  float longitude = 2;
+}
+
+message AggregatedOrigin {
+  float latitude = 1;
+  float longitude = 2;
+}
+
+
+message JobArgs {
+  //Address hash this job is querying.
+  string address = 1;
+  //Minimal/threshold value (in satoshis) to query.
+  int32 value_threshold = 2;
+  //Limit of results to return.
+  int32 limit = 3;
+  //Beginning of time range to query.
+  google.protobuf.Timestamp start = 4;
+  //End of time range to query.
+  google.protobuf.Timestamp end = 5;
+  //Degree of connectiveness to query.
+  int32 degree = 6;
+  //IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)
+  string source = 7;
+  string enginename = 8;
+}
+
+message Job {
+  //The token that created this job.
+  string token = 1;
+  //The engine used for the job query.
+  string analytics_engine = 2;
+  //The time this job was created.
+  google.protobuf.Timestamp created_at = 3;
+  //Optional When this job was completed; only present on complete jobs.
+  google.protobuf.Timestamp completed_at = 4;
+  //true if this job is finished processing, false otherwise.
+  bool finished = 5;
+  //true if this job has begun processing, false otherwise.
+  bool started = 6;
+  //Unique identifier for this job, used to get job status and results.
+  string ticket = 7;
+  //ptional URL to query job results; only present on complete jobs.
+  google.protobuf.Any result_path = 8;
+  //Query arguments for this job.
+  JobArgs args = 9;
+}
+
+message JobResults {
+  //Current page of results.
+  int32 page = 1;
+  //true if there are more results in a separate page; false otherwise.
+  bool more = 2;
+  //Optional URL to get the next page of results; only present if there are more results to show.
+  google.protobuf.Any next_page = 3;
+  //Results of analytics job; structure of results are dependent on engine-type of query, but are generally either strings of address hashes or JSON objects.
+  repeated JobResultArr results = 4;
+}
+
+message JobResultArr {
+  string DstAddr = 1;
+  string SrcAddr = 2;
+  string TxHash = 3;
+  int32 Value = 4;
+}
+
+message TXS {
+  repeated TX txs = 1;
+}
+
+message TXConfidence {
+  //The age of the transaction in milliseconds, based on the earliest time BlockCypher saw it relayed in the network.
+  int32 age_millis = 1;
+  //Number of peers that have sent this transaction to BlockCypher; only positive for unconfirmed transactions. -1 for confirmed transactions.
+  int32 receive_count = 2;
+  //A number from 0 to 1 representing BlockCypher’s confidence that the transaction won’t be double-spent against.
+  float confidence = 3;
+  //The hash of the transaction. While reasonably unique, using hashes as identifiers may be unsafe.
+  string txhash = 4;
+  //The BlockCypher URL one can use to query more detailed information about this transaction.
+  google.protobuf.Any txurl = 5;
+}
+
+message AddressForward {
+  //Identifier of the address forwarding request; generated when a new request is created.
+  string id = 1;
+  //The mandatory user token.
+  string token = 2;
+  //The required destination address for address forwarding.
+  string destination = 3;
+  //The address which will automatically forward to destination; generated when a new request is created.
+  string input_address = 4;
+  //Optional Address to forward processing fees, if specified. Allows you to receive a fee for your own services.
+  string process_fees_address = 5;
+  //Optional Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified.
+  int32 process_fees_satoshis = 6;
+  //Optional Percentage of the transaction to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified.
+  float process_fees_percent = 7;
+  //Optional The URL to call anytime a new is forwarded.
+  google.protobuf.Any callback_url = 8;
+  //Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook.
+  bool enable_confirmations = 9;
+  //Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000.
+  int32 mining_fees_satoshis = 10;
+  //Optional History of forwarding transaction hashes for this address forward; not present if this request has yet to forward any transactions.
+  repeated string txs = 11;
+}
