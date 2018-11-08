@@ -15,18 +15,30 @@
     "application/json"
   ],
   "paths": {
-    "/analytics/job/{ticket}": {
+    "/btc/{network}/analytics/job/{ticket}": {
       "get": {
         "operationId": "GetAnalyticsJob",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufJob"
+              "$ref": "#/definitions/btcJob"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "ticket",
             "in": "path",
@@ -39,18 +51,30 @@
         ]
       }
     },
-    "/analytics/job/{ticket}/results": {
+    "/btc/{network}/analytics/job/{ticket}/results": {
       "get": {
         "operationId": "GetAnalyticsJobResults",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufJobResults"
+              "$ref": "#/definitions/btcJobResults"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "ticket",
             "in": "path",
@@ -70,18 +94,30 @@
         ]
       }
     },
-    "/analytics/{enginename}": {
+    "/btc/{network}/analytics/{enginename}": {
       "post": {
         "operationId": "CreateAnalyticsJob",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufJob"
+              "$ref": "#/definitions/btcJob"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "enginename",
             "in": "path",
@@ -93,7 +129,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufJobArgs"
+              "$ref": "#/definitions/btcCreateAnalyticsJobRequest"
             }
           }
         ],
@@ -104,7 +140,51 @@
     }
   },
   "definitions": {
-    "blockchainprotobufJob": {
+    "btcCreateAnalyticsJobRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "enginename": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string",
+          "description": "Address hash this job is querying."
+        },
+        "value_threshold": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Minimal/threshold value (in satoshis) to query."
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Limit of results to return."
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Beginning of time range to query."
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of time range to query."
+        },
+        "degree": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Degree of connectiveness to query."
+        },
+        "source": {
+          "type": "string",
+          "title": "IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)"
+        }
+      }
+    },
+    "btcJob": {
       "type": "object",
       "properties": {
         "token": {
@@ -144,12 +224,12 @@
           "description": "ptional URL to query job results; only present on complete jobs."
         },
         "args": {
-          "$ref": "#/definitions/blockchainprotobufJobArgs",
+          "$ref": "#/definitions/btcJobArgs",
           "description": "Query arguments for this job."
         }
       }
     },
-    "blockchainprotobufJobArgs": {
+    "btcJobArgs": {
       "type": "object",
       "properties": {
         "address": {
@@ -184,13 +264,10 @@
         "source": {
           "type": "string",
           "title": "IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)"
-        },
-        "enginename": {
-          "type": "string"
         }
       }
     },
-    "blockchainprotobufJobResultArr": {
+    "btcJobResultArr": {
       "type": "object",
       "properties": {
         "DstAddr": {
@@ -208,7 +285,7 @@
         }
       }
     },
-    "blockchainprotobufJobResults": {
+    "btcJobResults": {
       "type": "object",
       "properties": {
         "page": {
@@ -228,11 +305,21 @@
         "results": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufJobResultArr"
+            "$ref": "#/definitions/btcJobResultArr"
           },
           "description": "Results of analytics job; structure of results are dependent on engine-type of query, but are generally either strings of address hashes or JSON objects."
         }
       }
+    },
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
     },
     "protobufAny": {
       "type": "object",

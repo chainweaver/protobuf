@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package fairwaycorp.blockchainprotobuf;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
 
 import "google/api/annotations.proto";
 import "addressforwardingMessage.proto";
@@ -10,18 +10,18 @@ import "commonMessage.proto";
 service AddressForwardingService {
   rpc CreateForwardEndpoint (CreateForwardEndpointRequest) returns (AddressForward) {
     option (google.api.http) = {
-      post: "/forwards"
+      post: "/btc/{network}/forwards"
       body: "*"
     };
   }
   rpc ListForwardsEndpoint (ListForwardsEndpointRequest) returns (ListForwardsEndpointResponse) {
     option (google.api.http) = {
-      get: "/forwards"
+      get: "/btc/{network}/forwards"
     };
   }
   rpc DeleteForwardEndpoint (DeleteForwardEndpointRequest) returns (DeleteForwardEndpointResponse) {
     option (google.api.http) = {
-      get: "/forwards/{payid}"
+      get: "/btc/{network}/forwards/{payid}"
     };
   }
 }

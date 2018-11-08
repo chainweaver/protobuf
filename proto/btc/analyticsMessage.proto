@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
+
+import "google/protobuf/timestamp.proto";
+
+import "commonMessage.proto";
+
+message CreateAnalyticsJobRequest {
+  NetworkAllowingAlias network = 1;
+  string enginename = 2;
+  //Address hash this job is querying.
+  string address = 3;
+  //Minimal/threshold value (in satoshis) to query.
+  int32 value_threshold = 4;
+  //Limit of results to return.
+  int32 limit = 5;
+  //Beginning of time range to query.
+  google.protobuf.Timestamp start = 6;
+  //End of time range to query.
+  google.protobuf.Timestamp end = 7;
+  //Degree of connectiveness to query.
+  int32 degree = 8;
+  //IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)
+  string source = 9;
+}
+
+message GetAnalyticsJobRequest {
+  NetworkAllowingAlias network = 1;
+  string ticket = 2;
+}
+
+message GetAnalyticsJobResultsRequest {
+  NetworkAllowingAlias network = 1;
+  string ticket = 2;
+  int32 page = 3;
+}

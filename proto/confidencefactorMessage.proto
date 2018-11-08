@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package fairwaycorp.blockchainprotobuf;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
-
-
-message TransactionConfidenceEndpointRequest {
-  string txhash = 1;
-}

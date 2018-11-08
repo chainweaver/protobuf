@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package fairwaycorp.blockchainprotobuf;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go";
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
 
 import "google/api/annotations.proto";
 import "transactionMessage.proto";
@@ -10,47 +10,47 @@ import "commonMessage.proto";
 service TransactionService {
   rpc TransactionHashEndpoint (TransactionHashEndpointRequest) returns (TX) {
     option (google.api.http) = {
-      get: "/txs/{txhash}"
+      get: "/btc/{network}/txs/{txhash}"
     };
   }
   rpc UnconfirmedTransactionsEndpoint (UnconfirmedTransactionsEndpointRequest) returns (TXS) {
     option (google.api.http) = {
-      get: "/txs"
+      get: "/btc/{network}/txs"
     };
   }
   rpc NewTransactionEndpoint (NewTransactionEndpointRequest) returns (TXSkeleton) {
     option (google.api.http) = {
-      post: "/txs/new"
+      post: "/btc/{network}/txs/new"
       body: "*"
     };
   }
-  rpc SendTransactionEndpoint (TXSkeleton) returns (TXSkeleton) {
+  rpc SendTransactionEndpoint (SendTransactionEndpointRequest) returns (TXSkeleton) {
     option (google.api.http) = {
-      post: "/txs/send"
+      post: "/btc/{network}/txs/send"
       body: "*"
     };
   }
   rpc PushRawTransactionEndpoint (PushRawTransactionEndpointRequest) returns (TX) {
     option (google.api.http) = {
-      post: "/txs/push"
+      post: "/btc/{network}/txs/push"
       body: "*"
     };
   }
   rpc DecodeRawTransactionEndpoint (DecodeRawTransactionEndpointRequest) returns (TX) {
     option (google.api.http) = {
-      post: "/txs/decode"
+      post: "/btc/{network}/txs/decode"
       body: "*"
     };
   }
-  rpc DataEndpoint (NullData) returns (NullData) {
+  rpc DataEndpoint (DataEndpointRequest) returns (NullData) {
     option (google.api.http) = {
-      post: "/txs/data"
+      post: "/btc/{network}/txs/data"
       body: "*"
     };
   }
   rpc TransactionPropagationEndpoint (TransactionPropagationEndpointRequest) returns (DescribedBelow) {
     option (google.api.http) = {
-      get: "/txs/{txhash}/propagation"
+      get: "/btc/{network}/txs/{txhash}/propagation"
     };
   }
 }

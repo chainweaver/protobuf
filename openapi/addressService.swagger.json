@@ -15,24 +15,36 @@
     "application/json"
   ],
   "paths": {
-    "/addrs": {
+    "/btc/{network}/addrs": {
       "post": {
         "operationId": "GenerateMultisigAddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufAddressKeychain"
+              "$ref": "#/definitions/btcAddressKeychain"
             }
           }
         },
         "parameters": [
           {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufAddressKeychain"
+              "$ref": "#/definitions/btcGenerateMultisigAddressEndpointRequest"
             }
           }
         ],
@@ -41,21 +53,32 @@
         ]
       }
     },
-    "/addrs/{address}": {
+    "/btc/{network}/addrs/{address}": {
       "get": {
         "operationId": "AddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufAddress"
+              "$ref": "#/definitions/btcAddress"
             }
           }
         },
         "parameters": [
           {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
             "name": "address",
-            "description": "address",
             "in": "path",
             "required": true,
             "type": "string"
@@ -138,18 +161,30 @@
         ]
       }
     },
-    "/addrs/{address}/balance": {
+    "/btc/{network}/addrs/{address}/balance": {
       "get": {
         "operationId": "AddressBalanceEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufAddress"
+              "$ref": "#/definitions/btcAddress"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "address",
             "in": "path",
@@ -170,18 +205,30 @@
         ]
       }
     },
-    "/addrs/{address}/full": {
+    "/btc/{network}/addrs/{address}/full": {
       "get": {
         "operationId": "AddressFullEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufAddress"
+              "$ref": "#/definitions/btcAddress"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "address",
             "description": "address",
@@ -269,7 +316,7 @@
     }
   },
   "definitions": {
-    "blockchainprotobufAddress": {
+    "btcAddress": {
       "type": "object",
       "properties": {
         "address": {
@@ -277,11 +324,11 @@
           "description": "Optional The requested address. Not returned if querying a wallet/HD wallet."
         },
         "wallet": {
-          "$ref": "#/definitions/blockchainprotobufWallet",
+          "$ref": "#/definitions/btcWallet",
           "description": "Optional The requested wallet object. Only returned if querying by wallet name instead of public address."
         },
         "hd_wallet": {
-          "$ref": "#/definitions/blockchainprotobufHDWallet",
+          "$ref": "#/definitions/btcHDWallet",
           "description": "Optional The requested HD wallet object. Only returned if querying by HD wallet name instead of public address."
         },
         "total_received": {
@@ -325,27 +372,27 @@
           "description": "Final number of transactions, including confirmed and unconfirmed transactions, for this address."
         },
         "tx_url": {
-          "type": "string",
+          "$ref": "#/definitions/protobufAny",
           "description": "Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash."
         },
         "txs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTX"
+            "$ref": "#/definitions/btcTX"
           },
           "description": "Array of full transaction details associated with this address. Usually only returned from the Address Full Endpoint."
         },
         "txrefs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXRef"
+            "$ref": "#/definitions/btcTXRef"
           },
           "description": "Optional Array of transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint."
         },
         "unconfirmed_txrefs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXRef"
+            "$ref": "#/definitions/btcTXRef"
           },
           "description": "Optional All unconfirmed transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint."
         },
@@ -356,7 +403,7 @@
         }
       }
     },
-    "blockchainprotobufAddressKeychain": {
+    "btcAddressKeychain": {
       "type": "object",
       "properties": {
         "address": {
@@ -396,10 +443,58 @@
         }
       }
     },
-    "blockchainprotobufGenerateAddressEndpointRequest": {
-      "type": "object"
+    "btcGenerateAddressEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        }
+      }
     },
-    "blockchainprotobufHDAddress": {
+    "btcGenerateMultisigAddressEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "address": {
+          "type": "string",
+          "description": "Standard address representation."
+        },
+        "public": {
+          "type": "string",
+          "description": "Hex-encoded Public key."
+        },
+        "private": {
+          "type": "string",
+          "description": "Hex-encoded Private key."
+        },
+        "wif": {
+          "type": "string",
+          "description": "Wallet import format, a common encoding for the private key."
+        },
+        "pubkeys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Array of public keys to provide to generate a multisig address."
+        },
+        "script_type": {
+          "type": "string",
+          "description": "Optional If generating a multisig address, the type of multisig script; typically “multisig-n-of-m”, where n and m are integers."
+        },
+        "original_address": {
+          "type": "string",
+          "description": "Optional If generating an OAP address, this represents the parent blockchain’s underlying address (the typical address listed above)."
+        },
+        "oap_address": {
+          "type": "string",
+          "description": "Optional The OAP address, if generated using the Generate Asset Address Endpoint."
+        }
+      }
+    },
+    "btcHDAddress": {
       "type": "object",
       "properties": {
         "address": {
@@ -416,13 +511,13 @@
         }
       }
     },
-    "blockchainprotobufHDChain": {
+    "btcHDChain": {
       "type": "object",
       "properties": {
         "chain_addresses": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufHDAddress"
+            "$ref": "#/definitions/btcHDAddress"
           },
           "description": "Array of HDAddresses associated with this subchain."
         },
@@ -433,7 +528,7 @@
         }
       }
     },
-    "blockchainprotobufHDWallet": {
+    "btcHDWallet": {
       "type": "object",
       "properties": {
         "token": {
@@ -447,7 +542,7 @@
         "chains": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufHDChain"
+            "$ref": "#/definitions/btcHDChain"
           },
           "description": "List of HD chains associated with this wallet, each containing HDAddresses. A single chain is returned if the wallet has no subchains."
         },
@@ -470,7 +565,17 @@
         }
       }
     },
-    "blockchainprotobufTX": {
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
+    },
+    "btcTX": {
       "type": "object",
       "properties": {
         "block_height": {
@@ -550,14 +655,14 @@
         "inputs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXInput"
+            "$ref": "#/definitions/btcTXInput"
           },
           "description": "TXInput Array, limited to 20 by default."
         },
         "outputs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufTXOutput"
+            "$ref": "#/definitions/btcTXOutput"
           },
           "description": "TXOutput Array, limited to 20 by default."
         },
@@ -616,7 +721,7 @@
         }
       }
     },
-    "blockchainprotobufTXInput": {
+    "btcTXInput": {
       "type": "object",
       "properties": {
         "prev_hash": {
@@ -668,7 +773,7 @@
         }
       }
     },
-    "blockchainprotobufTXOutput": {
+    "btcTXOutput": {
       "type": "object",
       "properties": {
         "value": {
@@ -705,7 +810,7 @@
         }
       }
     },
-    "blockchainprotobufTXRef": {
+    "btcTXRef": {
       "type": "object",
       "properties": {
         "address": {
@@ -794,7 +899,7 @@
         }
       }
     },
-    "blockchainprotobufWallet": {
+    "btcWallet": {
       "type": "object",
       "properties": {
         "token": {

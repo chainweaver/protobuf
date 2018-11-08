@@ -15,18 +15,30 @@
     "application/json"
   ],
   "paths": {
-    "/forwards": {
+    "/btc/{network}/forwards": {
       "get": {
         "operationId": "ListForwardsEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufListForwardsEndpointResponse"
+              "$ref": "#/definitions/btcListForwardsEndpointResponse"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "start",
             "description": "Returns list of address forwards starting at the start index; useful for paging beyond the limit of 200 address forwards.",
@@ -46,17 +58,29 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufAddressForward"
+              "$ref": "#/definitions/btcAddressForward"
             }
           }
         },
         "parameters": [
           {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufCreateForwardEndpointRequest"
+              "$ref": "#/definitions/btcCreateForwardEndpointRequest"
             }
           }
         ],
@@ -65,18 +89,30 @@
         ]
       }
     },
-    "/forwards/{payid}": {
+    "/btc/{network}/forwards/{payid}": {
       "get": {
         "operationId": "DeleteForwardEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufDeleteForwardEndpointResponse"
+              "$ref": "#/definitions/btcDeleteForwardEndpointResponse"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "payid",
             "in": "path",
@@ -91,7 +127,7 @@
     }
   },
   "definitions": {
-    "blockchainprotobufAddressForward": {
+    "btcAddressForward": {
       "type": "object",
       "properties": {
         "id": {
@@ -147,9 +183,12 @@
         }
       }
     },
-    "blockchainprotobufCreateForwardEndpointRequest": {
+    "btcCreateForwardEndpointRequest": {
       "type": "object",
       "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
         "id": {
           "type": "string",
           "description": "Identifier of the address forwarding request; generated when a new request is created."
@@ -203,19 +242,29 @@
         }
       }
     },
-    "blockchainprotobufDeleteForwardEndpointResponse": {
+    "btcDeleteForwardEndpointResponse": {
       "type": "object"
     },
-    "blockchainprotobufListForwardsEndpointResponse": {
+    "btcListForwardsEndpointResponse": {
       "type": "object",
       "properties": {
         "forwards": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/blockchainprotobufAddressForward"
+            "$ref": "#/definitions/btcAddressForward"
           }
         }
       }
+    },
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
     },
     "protobufAny": {
       "type": "object",

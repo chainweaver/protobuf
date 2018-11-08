@@ -15,18 +15,30 @@
     "application/json"
   ],
   "paths": {
-    "/txs/{txhash}/confidence": {
+    "/btc/{network}/txs/{txhash}/confidence": {
       "get": {
         "operationId": "TransactionConfidenceEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/blockchainprotobufTXConfidence"
+              "$ref": "#/definitions/btcTXConfidence"
             }
           }
         },
         "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
           {
             "name": "txhash",
             "in": "path",
@@ -41,7 +53,17 @@
     }
   },
   "definitions": {
-    "blockchainprotobufTXConfidence": {
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
+    },
+    "btcTXConfidence": {
       "type": "object",
       "properties": {
         "age_millis": {

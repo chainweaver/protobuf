@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
+
+import "commonMessage.proto";
+
+message TransactionConfidenceEndpointRequest {
+  NetworkAllowingAlias network = 1;
+  string txhash = 2;
+}

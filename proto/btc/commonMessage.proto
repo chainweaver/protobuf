@@ -180,7 +180,7 @@ message Address {
   // Final number of transactions, including confirmed and unconfirmed transactions, for this address.
   int32 final_n_tx = 11;
   // Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.
-  string tx_url = 12; 
+  google.protobuf.Any tx_url = 12; 
   // Array of full transaction details associated with this address. Usually only returned from the Address Full Endpoint.
   repeated TX txs = 13;  
   // Optional Array of transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint.
@@ -361,7 +361,6 @@ message AggregatedOrigin {
   float longitude = 2;
 }
 
-
 message JobArgs {
   //Address hash this job is querying.
   string address = 1;
@@ -377,7 +376,6 @@ message JobArgs {
   int32 degree = 6;
   //IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)
   string source = 7;
-  string enginename = 8;
 }
 
 message Job {
