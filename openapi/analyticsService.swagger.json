@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "contractService_Eth.proto",
+    "title": "analyticsService.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,44 +15,14 @@
     "application/json"
   ],
   "paths": {
-    "/eth/{network}/contracts": {
-      "post": {
-        "operationId": "PostCreateContractEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ethContractArray"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
-            ]
-          }
-        ],
-        "tags": [
-          "ContractService"
-        ]
-      }
-    },
-    "/eth/{network}/contracts/{query_address}": {
+    "/btc/{network}/analytics/job/{ticket}": {
       "get": {
-        "operationId": "GetContractAddressEndpoint",
+        "operationId": "GetAnalyticsJob",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/ethContract"
+              "$ref": "#/definitions/btcJob"
             }
           }
         },
@@ -63,32 +33,32 @@
             "required": true,
             "type": "string",
             "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
             ]
           },
           {
-            "name": "query_address",
+            "name": "ticket",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
         "tags": [
-          "ContractService"
+          "AnalyticsService"
         ]
       }
     },
-    "/eth/{network}/contracts/{query_address}/{method}": {
-      "post": {
-        "operationId": "PostCallContractMethodEndpoint",
+    "/btc/{network}/analytics/job/{ticket}/results": {
+      "get": {
+        "operationId": "GetAnalyticsJobResults",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/ethContract"
+              "$ref": "#/definitions/btcJobResults"
             }
           }
         },
@@ -99,121 +69,257 @@
             "required": true,
             "type": "string",
             "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
             ]
           },
           {
-            "name": "query_address",
+            "name": "ticket",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "method",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
-          "ContractService"
+          "AnalyticsService"
+        ]
+      }
+    },
+    "/btc/{network}/analytics/{enginename}": {
+      "post": {
+        "operationId": "CreateAnalyticsJob",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btcJob"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
+            "name": "enginename",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/btcCreateAnalyticsJobRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AnalyticsService"
         ]
       }
     }
   },
   "definitions": {
-    "ethContract": {
+    "btcCreateAnalyticsJobRequest": {
       "type": "object",
       "properties": {
-        "solidity": {
-          "type": "string",
-          "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
         },
-        "params": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Parameters for either contract creation or method execution."
-        },
-        "publish": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
-        },
-        "private": {
-          "type": "string",
-          "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
-        },
-        "gas_limit": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Maximum amount of gas to use in contract creation or method execution."
-        },
-        "value": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of contract as published."
-        },
-        "bin": {
-          "type": "string",
-          "description": "Hex-encoded binary compilation of this contract."
-        },
-        "abi": {
-          "$ref": "#/definitions/protobufAny",
-          "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
+        "enginename": {
+          "type": "string"
         },
         "address": {
           "type": "string",
-          "description": "Hex-encoded address of this contract."
+          "description": "Address hash this job is querying."
         },
-        "created": {
+        "value_threshold": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Minimal/threshold value (in satoshis) to query."
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Limit of results to return."
+        },
+        "start": {
           "type": "string",
           "format": "date-time",
-          "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
+          "description": "Beginning of time range to query."
         },
-        "creation_tx_hash": {
+        "end": {
           "type": "string",
-          "description": "Hex-encoded transaction hash that created this contract."
+          "format": "date-time",
+          "description": "End of time range to query."
+        },
+        "degree": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Degree of connectiveness to query."
+        },
+        "source": {
+          "type": "string",
+          "title": "IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)"
+        }
+      }
+    },
+    "btcJob": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "The token that created this job."
+        },
+        "analytics_engine": {
+          "type": "string",
+          "description": "The engine used for the job query."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time this job was created."
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Optional When this job was completed; only present on complete jobs."
+        },
+        "finished": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "true if this job is finished processing, false otherwise."
+        },
+        "started": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "true if this job has begun processing, false otherwise."
+        },
+        "ticket": {
+          "type": "string",
+          "description": "Unique identifier for this job, used to get job status and results."
+        },
+        "result_path": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "ptional URL to query job results; only present on complete jobs."
+        },
+        "args": {
+          "$ref": "#/definitions/btcJobArgs",
+          "description": "Query arguments for this job."
+        }
+      }
+    },
+    "btcJobArgs": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "Address hash this job is querying."
+        },
+        "value_threshold": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Minimal/threshold value (in satoshis) to query."
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Limit of results to return."
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Beginning of time range to query."
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of time range to query."
+        },
+        "degree": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Degree of connectiveness to query."
+        },
+        "source": {
+          "type": "string",
+          "title": "IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)"
+        }
+      }
+    },
+    "btcJobResultArr": {
+      "type": "object",
+      "properties": {
+        "DstAddr": {
+          "type": "string"
+        },
+        "SrcAddr": {
+          "type": "string"
+        },
+        "TxHash": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "btcJobResults": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Current page of results."
+        },
+        "more": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "true if there are more results in a separate page; false otherwise."
+        },
+        "next_page": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "Optional URL to get the next page of results; only present if there are more results to show."
         },
         "results": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/btcJobResultArr"
           },
-          "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+          "description": "Results of analytics job; structure of results are dependent on engine-type of query, but are generally either strings of address hashes or JSON objects."
         }
       }
     },
-    "ethContractArray": {
-      "type": "object",
-      "properties": {
-        "contract": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethContract"
-          }
-        }
-      }
-    },
-    "ethNetworkAllowingAlias": {
+    "btcNetworkAllowingAlias": {
       "type": "string",
       "enum": [
-        "MAIN",
-        "main",
-        "ROPSTEN",
-        "ropsten"
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
       ],
-      "default": "MAIN"
+      "default": "MAINNET"
     },
     "protobufAny": {
       "type": "object",

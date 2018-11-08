@@ -22,7 +22,17 @@ protoc \
   walletMessage.proto \
   walletService.proto \
   metadataMessage.proto \
-  metadataService.proto 
+  metadataService.proto \
+  addressMessage.proto \
+  addressService.proto \
+  analyticsMessage.proto \
+  analyticsService.proto \
+  transactionMessage.proto \
+  transactionService.proto \
+  addressforwardingMessage.proto \
+  addressforwardingService.proto \
+  confidencefactorMessage.proto \
+  confidencefactorService.proto
 
 protoc \
   -I./proto/eth \

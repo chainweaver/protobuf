@@ -22,8 +22,8 @@ export class Address {
   setUnconfirmedNTx(a: number): void;
   getFinalNTx(): number;
   setFinalNTx(a: number): void;
-  getTxUrl(): string;
-  setTxUrl(a: string): void;
+  getTxUrl(): {};
+  setTxUrl(a: {}): void;
   getTxs(): {};
   setTxs(a: {}): void;
   getTxrefs(): {};

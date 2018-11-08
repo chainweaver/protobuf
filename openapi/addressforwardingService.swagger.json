@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "contractService_Eth.proto",
+    "title": "addressforwardingService.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,44 +15,14 @@
     "application/json"
   ],
   "paths": {
-    "/eth/{network}/contracts": {
-      "post": {
-        "operationId": "PostCreateContractEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ethContractArray"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
-            ]
-          }
-        ],
-        "tags": [
-          "ContractService"
-        ]
-      }
-    },
-    "/eth/{network}/contracts/{query_address}": {
+    "/btc/{network}/forwards": {
       "get": {
-        "operationId": "GetContractAddressEndpoint",
+        "operationId": "ListForwardsEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/ethContract"
+              "$ref": "#/definitions/btcListForwardsEndpointResponse"
             }
           }
         },
@@ -63,32 +33,70 @@
             "required": true,
             "type": "string",
             "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
             ]
           },
           {
-            "name": "query_address",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "start",
+            "description": "Returns list of address forwards starting at the start index; useful for paging beyond the limit of 200 address forwards.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
-          "ContractService"
+          "AddressForwardingService"
+        ]
+      },
+      "post": {
+        "operationId": "CreateForwardEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btcAddressForward"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/btcCreateForwardEndpointRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AddressForwardingService"
         ]
       }
     },
-    "/eth/{network}/contracts/{query_address}/{method}": {
-      "post": {
-        "operationId": "PostCallContractMethodEndpoint",
+    "/btc/{network}/forwards/{payid}": {
+      "get": {
+        "operationId": "DeleteForwardEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/ethContract"
+              "$ref": "#/definitions/btcDeleteForwardEndpointResponse"
             }
           }
         },
@@ -99,121 +107,164 @@
             "required": true,
             "type": "string",
             "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
             ]
           },
           {
-            "name": "query_address",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "method",
+            "name": "payid",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
         "tags": [
-          "ContractService"
+          "AddressForwardingService"
         ]
       }
     }
   },
   "definitions": {
-    "ethContract": {
+    "btcAddressForward": {
       "type": "object",
       "properties": {
-        "solidity": {
+        "id": {
           "type": "string",
-          "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
+          "description": "Identifier of the address forwarding request; generated when a new request is created."
         },
-        "params": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Parameters for either contract creation or method execution."
-        },
-        "publish": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
-        },
-        "private": {
+        "token": {
           "type": "string",
-          "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
+          "description": "The mandatory user token."
         },
-        "gas_limit": {
+        "destination": {
+          "type": "string",
+          "description": "The required destination address for address forwarding."
+        },
+        "input_address": {
+          "type": "string",
+          "description": "The address which will automatically forward to destination; generated when a new request is created."
+        },
+        "process_fees_address": {
+          "type": "string",
+          "description": "Optional Address to forward processing fees, if specified. Allows you to receive a fee for your own services."
+        },
+        "process_fees_satoshis": {
           "type": "integer",
           "format": "int32",
-          "description": "Maximum amount of gas to use in contract creation or method execution."
+          "description": "Optional Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
         },
-        "value": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
+        "process_fees_percent": {
+          "type": "number",
+          "format": "float",
+          "description": "Optional Percentage of the transaction to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
         },
-        "name": {
-          "type": "string",
-          "description": "Name of contract as published."
-        },
-        "bin": {
-          "type": "string",
-          "description": "Hex-encoded binary compilation of this contract."
-        },
-        "abi": {
+        "callback_url": {
           "$ref": "#/definitions/protobufAny",
-          "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
+          "description": "Optional The URL to call anytime a new is forwarded."
         },
-        "address": {
-          "type": "string",
-          "description": "Hex-encoded address of this contract."
+        "enable_confirmations": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook."
         },
-        "created": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
+        "mining_fees_satoshis": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000."
         },
-        "creation_tx_hash": {
-          "type": "string",
-          "description": "Hex-encoded transaction hash that created this contract."
-        },
-        "results": {
+        "txs": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+          "description": "Optional History of forwarding transaction hashes for this address forward; not present if this request has yet to forward any transactions."
         }
       }
     },
-    "ethContractArray": {
+    "btcCreateForwardEndpointRequest": {
       "type": "object",
       "properties": {
-        "contract": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "id": {
+          "type": "string",
+          "description": "Identifier of the address forwarding request; generated when a new request is created."
+        },
+        "token": {
+          "type": "string",
+          "description": "The mandatory user token."
+        },
+        "destination": {
+          "type": "string",
+          "description": "The required destination address for address forwarding."
+        },
+        "input_address": {
+          "type": "string",
+          "description": "The address which will automatically forward to destination; generated when a new request is created."
+        },
+        "process_fees_address": {
+          "type": "string",
+          "description": "Optional Address to forward processing fees, if specified. Allows you to receive a fee for your own services."
+        },
+        "process_fees_satoshis": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
+        },
+        "process_fees_percent": {
+          "type": "number",
+          "format": "float",
+          "description": "Optional Percentage of the transaction to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
+        },
+        "callback_url": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "Optional The URL to call anytime a new is forwarded."
+        },
+        "enable_confirmations": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook."
+        },
+        "mining_fees_satoshis": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000."
+        },
+        "txs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ethContract"
+            "type": "string"
+          },
+          "description": "Optional History of forwarding transaction hashes for this address forward; not present if this request has yet to forward any transactions."
+        }
+      }
+    },
+    "btcDeleteForwardEndpointResponse": {
+      "type": "object"
+    },
+    "btcListForwardsEndpointResponse": {
+      "type": "object",
+      "properties": {
+        "forwards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcAddressForward"
           }
         }
       }
     },
-    "ethNetworkAllowingAlias": {
+    "btcNetworkAllowingAlias": {
       "type": "string",
       "enum": [
-        "MAIN",
-        "main",
-        "ROPSTEN",
-        "ropsten"
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
       ],
-      "default": "MAIN"
+      "default": "MAINNET"
     },
     "protobufAny": {
       "type": "object",

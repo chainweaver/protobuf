@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
+
+import "google/api/annotations.proto";
+import "analyticsMessage.proto";
+import "commonMessage.proto";
+
+service AnalyticsService {
+  rpc CreateAnalyticsJob (CreateAnalyticsJobRequest) returns (Job) {
+    option (google.api.http) = {
+      post: "/btc/{network}/analytics/{enginename}"
+      body: "*"
+    };
+  }
+  rpc GetAnalyticsJob (GetAnalyticsJobRequest) returns (Job) {
+    option (google.api.http) = {
+      get: "/btc/{network}/analytics/job/{ticket}"
+    };
+  }
+  rpc GetAnalyticsJobResults (GetAnalyticsJobResultsRequest) returns (JobResults) {
+    option (google.api.http) = {
+      get: "/btc/{network}/analytics/job/{ticket}/results"
+    };
+  }
+}

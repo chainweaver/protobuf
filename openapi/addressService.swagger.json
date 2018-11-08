@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "assetService.proto",
+    "title": "addressService.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,9 +15,9 @@
     "application/json"
   ],
   "paths": {
-    "/btc/{network}/oap/addrs": {
+    "/btc/{network}/addrs": {
       "post": {
-        "operationId": "GenerateAssetAddressEndpoint",
+        "operationId": "GenerateMultisigAddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -44,56 +44,18 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcNullValueRequest"
+              "$ref": "#/definitions/btcGenerateMultisigAddressEndpointRequest"
             }
           }
         ],
         "tags": [
-          "AssetService"
+          "AddressService"
         ]
       }
     },
-    "/btc/{network}/oap/issue": {
-      "post": {
-        "operationId": "IssueAssetEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/btcOAPTX"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAINNET",
-              "mainnet",
-              "TEST",
-              "test"
-            ]
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/btcOAPIssueRequest"
-            }
-          }
-        ],
-        "tags": [
-          "AssetService"
-        ]
-      }
-    },
-    "/btc/{network}/oap/{assetid}/addrs/{oapaddr}": {
+    "/btc/{network}/addrs/{address}": {
       "get": {
-        "operationId": "GetAssetAddressEndpoint",
+        "operationId": "AddressEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -107,42 +69,6 @@
             "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "assetid",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "oapaddr",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "AssetService"
-        ]
-      }
-    },
-    "/btc/{network}/oap/{assetid}/transfer": {
-      "post": {
-        "operationId": "TransferAssetEndpoint",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/btcOAPTX"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
             "type": "string",
             "enum": [
               "MAINNET",
@@ -152,33 +78,97 @@
             ]
           },
           {
-            "name": "assetid",
+            "name": "address",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/btcTransferAssetEndpointRequest"
-            }
+            "name": "unspentOnly",
+            "description": "If unspentOnly is true, filters response to only include unspent transaction outputs (UTXOs).",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "includeScript",
+            "description": "If includeScript is true, includes raw script of input or output within returned TXRefs.",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "includeConfidence",
+            "description": "If true, includes the confidence attribute (useful for unconfirmed transactions) within returned TXRefs. For more info about this figure, check the Confidence Factor documentation.",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "before",
+            "description": "Filters response to only include transactions below before height in the blockchain.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "after",
+            "description": "Filters response to only include transactions above after height in the blockchain.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "description": "limit sets the minimum number of returned TXRefs; there can be less if there are less than limit TXRefs associated with this address, but there can be more in the rare case of more TXRefs in the block at the bottom of your call. This ensures paging by block height never misses TXRefs. Defaults to 200, maximum is 2000.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "confirmations",
+            "description": "If set, only returns the balance and TXRefs that have at least this number of confirmations.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "confidence",
+            "description": "Filters response to only include TXRefs above confidence in percent; e.g., if this is set to 99, will only return TXRefs with 99% confidence or above (including all confirmed TXRefs). For more detail on confidence, check the Confidence Factor documentation.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "omitWalletAddresses",
+            "description": "If omitWalletAddresses is true and you’re querying a Wallet or HDWallet, the response will omit address information (useful to speed up the API call for larger wallets).",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
           }
         ],
         "tags": [
-          "AssetService"
+          "AddressService"
         ]
       }
     },
-    "/btc/{network}/oap/{assetid}/txs": {
+    "/btc/{network}/addrs/{address}/balance": {
       "get": {
-        "operationId": "ListAssetTXsEndpoint",
+        "operationId": "AddressBalanceEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/btcArrayString"
+              "$ref": "#/definitions/btcAddress"
             }
           }
         },
@@ -196,25 +186,33 @@
             ]
           },
           {
-            "name": "assetid",
+            "name": "address",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "omitWalletAddresses",
+            "description": "If omitWalletAddresses is true and you’re querying a Wallet or HDWallet, the response will omit address information (useful to speed up the API call for larger wallets).",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
           }
         ],
         "tags": [
-          "AssetService"
+          "AddressService"
         ]
       }
     },
-    "/btc/{network}/oap/{assetid}/txs/{txhash}": {
+    "/btc/{network}/addrs/{address}/full": {
       "get": {
-        "operationId": "GetAssetTXEndpoint",
+        "operationId": "AddressFullEndpoint",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/btcOAPTX"
+              "$ref": "#/definitions/btcAddress"
             }
           }
         },
@@ -232,20 +230,87 @@
             ]
           },
           {
-            "name": "assetid",
+            "name": "address",
+            "description": "address",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "txhash",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "before",
+            "description": "Filters response to only include transactions below before height in the blockchain.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "after",
+            "description": "Filters response to only include transactions above after height in the blockchain.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "description": "limit sets the minimum number of returned TXs; there can be less if there are less than limit TXs associated with this address, but there can also be more in the rare case of more TXs in the block at the bottom of your call. This ensures paging by block height never misses TXs. Defaults to 10, maximum is 50.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "txlimit",
+            "description": "This filters the TXInputs/TXOutputs within the returned TXs to include a maximum of txlimit items.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "confirmations",
+            "description": "If set, only returns the balance and TXs that have at least this number of confirmations.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "confidence",
+            "description": "Filters response to only include TXs above confidence in percent; e.g., if this is set to 99, will only return TXs with 99% confidence or above (including all confirmed TXs). For more detail on confidence, check the Confidence Factor documentation.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "includeHex",
+            "description": "If true, includes hex-encoded raw transaction for each TX; false by default.",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "includeConfidence",
+            "description": "If true, includes the confidence attribute (useful for unconfirmed transactions) within returned TXs. For more info about this figure, check the Confidence Factor documentation.",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "omitWalletAddresses",
+            "description": "If omitWalletAddresses is true and you’re querying a Wallet or HDWallet, the response will omit address information (useful to speed up the API call for larger wallets).",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
           }
         ],
         "tags": [
-          "AssetService"
+          "AddressService"
         ]
       }
     }
@@ -378,14 +443,54 @@
         }
       }
     },
-    "btcArrayString": {
+    "btcGenerateAddressEndpointRequest": {
       "type": "object",
       "properties": {
-        "arraystring": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        }
+      }
+    },
+    "btcGenerateMultisigAddressEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "address": {
+          "type": "string",
+          "description": "Standard address representation."
+        },
+        "public": {
+          "type": "string",
+          "description": "Hex-encoded Public key."
+        },
+        "private": {
+          "type": "string",
+          "description": "Hex-encoded Private key."
+        },
+        "wif": {
+          "type": "string",
+          "description": "Wallet import format, a common encoding for the private key."
+        },
+        "pubkeys": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Optional Array of public keys to provide to generate a multisig address."
+        },
+        "script_type": {
+          "type": "string",
+          "description": "Optional If generating a multisig address, the type of multisig script; typically “multisig-n-of-m”, where n and m are integers."
+        },
+        "original_address": {
+          "type": "string",
+          "description": "Optional If generating an OAP address, this represents the parent blockchain’s underlying address (the typical address listed above)."
+        },
+        "oap_address": {
+          "type": "string",
+          "description": "Optional The OAP address, if generated using the Generate Asset Address Endpoint."
         }
       }
     },
@@ -469,90 +574,6 @@
         "test"
       ],
       "default": "MAINNET"
-    },
-    "btcNullValueRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        }
-      }
-    },
-    "btcOAPIssueRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        },
-        "from_private": {
-          "type": "string",
-          "description": "The private key being used to issue or transfer assets."
-        },
-        "to_address": {
-          "type": "string",
-          "description": "The target OAP address assets for issue or transfer."
-        },
-        "amount": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The amount of assets being issued or transfered."
-        },
-        "metadata": {
-          "type": "string",
-          "description": "Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction."
-        }
-      }
-    },
-    "btcOAPTX": {
-      "type": "object",
-      "properties": {
-        "ver": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Version of Open Assets Protocol transaction. Typically 1."
-        },
-        "assetid": {
-          "type": "string",
-          "description": "Unique indentifier associated with this asset; can be used to query other transactions associated with this asset."
-        },
-        "hash": {
-          "type": "string",
-          "description": "This transaction’s unique hash; same as the underlying transaction on the asset’s parent blockchain."
-        },
-        "confirmed": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Optional Time this transaction was confirmed; only returned for confirmed transactions."
-        },
-        "received": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time this transaction was received."
-        },
-        "oap_meta": {
-          "type": "string",
-          "description": "Optional Associated hex-encoded metadata with this transaction, if it exists."
-        },
-        "double_spend": {
-          "type": "boolean",
-          "format": "boolean",
-          "description": "true if this is an attempted double spend; false otherwise."
-        },
-        "inputs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "description": "Array of input data, which can be seen explicitly in the cURL example. Very similar to array of TXInputs, but with values related to assets instead of satoshis."
-        },
-        "outputs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "description": "Array of output data, which can be seen explicitly in the cURL example. Very similar to array of TXOutputs, but with values related to assets instead of satoshis."
-        }
-      }
     },
     "btcTX": {
       "type": "object",
@@ -875,34 +896,6 @@
         "double_of": {
           "type": "string",
           "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
-        }
-      }
-    },
-    "btcTransferAssetEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        },
-        "assetid": {
-          "type": "string"
-        },
-        "from_private": {
-          "type": "string",
-          "description": "The private key being used to issue or transfer assets."
-        },
-        "to_address": {
-          "type": "string",
-          "description": "The target OAP address assets for issue or transfer."
-        },
-        "amount": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The amount of assets being issued or transfered."
-        },
-        "metadata": {
-          "type": "string",
-          "description": "Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction."
         }
       }
     },

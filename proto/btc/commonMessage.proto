@@ -180,7 +180,7 @@ message Address {
   // Final number of transactions, including confirmed and unconfirmed transactions, for this address.
   int32 final_n_tx = 11;
   // Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.
-  string tx_url = 12; 
+  google.protobuf.Any tx_url = 12; 
   // Array of full transaction details associated with this address. Usually only returned from the Address Full Endpoint.
   repeated TX txs = 13;  
   // Optional Array of transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint.
@@ -300,4 +300,161 @@ message OAPTX {
   repeated google.protobuf.Any inputs = 8; 
   // Array of output data, which can be seen explicitly in the cURL example. Very similar to array of TXOutputs, but with values related to assets instead of satoshis.  
   repeated google.protobuf.Any outputs = 9; 
+}
+
+message TXSkeleton {
+  //A temporary TX, usually returned fully filled but missing input scripts.
+  TX tx = 1;
+  //Array of hex-encoded data for you to sign, one for each input.
+  repeated string tosign = 2;
+  //Array of signatures corresponding to all the data in tosign, typically provided by you.
+  repeated string signatures = 3;
+  //Array of public keys corresponding to each signature. In general, these are provided by you, and correspond to the signatures you provide.
+  repeated string pubkeys = 4;
+  //Optional Array of hex-encoded, work-in-progress transactions; optionally returned to validate the tosign data locally.
+  repeated string tosign_tx = 5;
+  //Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code.
+  repeated TXerror errors = 6;
+}
+
+message TXerror {
+  string error = 1;
+}
+
+
+message NullData {
+  //The string representing the data to embed, can be either hex-encoded or plaintext.
+  string data = 1;
+  //Optional Your BlockCypher API token, can either be included here or as a URL Parameter in your request.
+  string token = 2;
+  //Optional The encoding of your data, can be either string (for plaintext) or hex (for hex-encoded). If not set, defaults to hex.
+  string encoding = 3;
+  //Optional The hash of the transaction containing your data; only part of return object.
+  string hash = 4;
+}
+
+
+message DescribedBelow {
+  //The hash of the transaction you queried.
+  string transaction = 1;
+  //An object containing latitude and longitude floats representing the first location to broadcast this transaction to BlockCypher.
+  FirstLocation first_location = 2;
+  //Optional The name of the city closest to the first_location. If no nearby city can be found, this is not returned.
+  string first_city = 3;
+  //The name of the country containing the first_location.
+  string first_country = 4;
+  //An object containing latitude and longitude floats representing BlockCypher’s best guess of likely origin of this transaction, based on the radius of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers.
+  AggregatedOrigin aggregated_origin = 5;
+  //The radius (in meters) of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers. In a general sense, this represents an approximate confidence interval in our calculated aggregated_origin; the smaller the radius, the more confidence in our aggregated_origin assessment.
+  int32 aggregated_origin_radius = 6;
+  //The timestamp when BlockCypher first received this transaction.
+  google.protobuf.Timestamp first_received = 7;
+}
+
+message FirstLocation {
+  float latitude = 1;
+  float longitude = 2;
+}
+
+message AggregatedOrigin {
+  float latitude = 1;
+  float longitude = 2;
+}
+
+message JobArgs {
+  //Address hash this job is querying.
+  string address = 1;
+  //Minimal/threshold value (in satoshis) to query.
+  int32 value_threshold = 2;
+  //Limit of results to return.
+  int32 limit = 3;
+  //Beginning of time range to query.
+  google.protobuf.Timestamp start = 4;
+  //End of time range to query.
+  google.protobuf.Timestamp end = 5;
+  //Degree of connectiveness to query.
+  int32 degree = 6;
+  //IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)
+  string source = 7;
+}
+
+message Job {
+  //The token that created this job.
+  string token = 1;
+  //The engine used for the job query.
+  string analytics_engine = 2;
+  //The time this job was created.
+  google.protobuf.Timestamp created_at = 3;
+  //Optional When this job was completed; only present on complete jobs.
+  google.protobuf.Timestamp completed_at = 4;
+  //true if this job is finished processing, false otherwise.
+  bool finished = 5;
+  //true if this job has begun processing, false otherwise.
+  bool started = 6;
+  //Unique identifier for this job, used to get job status and results.
+  string ticket = 7;
+  //ptional URL to query job results; only present on complete jobs.
+  google.protobuf.Any result_path = 8;
+  //Query arguments for this job.
+  JobArgs args = 9;
+}
+
+message JobResults {
+  //Current page of results.
+  int32 page = 1;
+  //true if there are more results in a separate page; false otherwise.
+  bool more = 2;
+  //Optional URL to get the next page of results; only present if there are more results to show.
+  google.protobuf.Any next_page = 3;
+  //Results of analytics job; structure of results are dependent on engine-type of query, but are generally either strings of address hashes or JSON objects.
+  repeated JobResultArr results = 4;
+}
+
+message JobResultArr {
+  string DstAddr = 1;
+  string SrcAddr = 2;
+  string TxHash = 3;
+  int32 Value = 4;
+}
+
+message TXS {
+  repeated TX txs = 1;
+}
+
+message TXConfidence {
+  //The age of the transaction in milliseconds, based on the earliest time BlockCypher saw it relayed in the network.
+  int32 age_millis = 1;
+  //Number of peers that have sent this transaction to BlockCypher; only positive for unconfirmed transactions. -1 for confirmed transactions.
+  int32 receive_count = 2;
+  //A number from 0 to 1 representing BlockCypher’s confidence that the transaction won’t be double-spent against.
+  float confidence = 3;
+  //The hash of the transaction. While reasonably unique, using hashes as identifiers may be unsafe.
+  string txhash = 4;
+  //The BlockCypher URL one can use to query more detailed information about this transaction.
+  google.protobuf.Any txurl = 5;
+}
+
+message AddressForward {
+  //Identifier of the address forwarding request; generated when a new request is created.
+  string id = 1;
+  //The mandatory user token.
+  string token = 2;
+  //The required destination address for address forwarding.
+  string destination = 3;
+  //The address which will automatically forward to destination; generated when a new request is created.
+  string input_address = 4;
+  //Optional Address to forward processing fees, if specified. Allows you to receive a fee for your own services.
+  string process_fees_address = 5;
+  //Optional Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified.
+  int32 process_fees_satoshis = 6;
+  //Optional Percentage of the transaction to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified.
+  float process_fees_percent = 7;
+  //Optional The URL to call anytime a new is forwarded.
+  google.protobuf.Any callback_url = 8;
+  //Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook.
+  bool enable_confirmations = 9;
+  //Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000.
+  int32 mining_fees_satoshis = 10;
+  //Optional History of forwarding transaction hashes for this address forward; not present if this request has yet to forward any transactions.
+  repeated string txs = 11;
 }
