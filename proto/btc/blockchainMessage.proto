@@ -94,11 +94,15 @@ message ChainEndpointRequest {
 message BlockHashEndpointRequest {
   NetworkAllowingAlias network = 1;
   string block_hash = 2;
+  int32 txstart = 3;
+  int32 limit = 4;
 }
 
 message BlockHeightEndpointRequest {
   NetworkAllowingAlias network = 1;
   int32 block_height = 2;
+  int32 txstart = 3;
+  int32 limit = 4;
 }
 
 message FeatureEndpointRequest {

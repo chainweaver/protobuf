@@ -33,7 +33,7 @@ proto.fairwaycorp.blockchainprotobuf.eth = require('./contractService_Eth_pb.js'
 proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -69,7 +69,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient =
 proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient} The delegate callback based client

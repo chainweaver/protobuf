@@ -33,7 +33,7 @@ proto.fairwaycorp.blockchainprotobuf.btc = require('./confidencefactorService_pb
 proto.fairwaycorp.blockchainprotobuf.btc.ConfidenceFactorServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -69,7 +69,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.ConfidenceFactorServiceClient =
 proto.fairwaycorp.blockchainprotobuf.btc.ConfidenceFactorServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!proto.fairwaycorp.blockchainprotobuf.btc.ConfidenceFactorServiceClient} The delegate callback based client
