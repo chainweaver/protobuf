@@ -1,0 +1,360 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "blockchainService_Eth.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/eth/{network}": {
+      "get": {
+        "operationId": "ChainEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ethBlockchain"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          }
+        ],
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    },
+    "/eth/{network}/blocks/{block_hash}": {
+      "get": {
+        "operationId": "BlockHashEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ethBlock"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "block_hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "txstart",
+            "description": "Filters response to only include transaction hashes after txstart in the block.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    },
+    "/eth/{network}/blocks/{block_height}": {
+      "get": {
+        "operationId": "BlockHeightEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ethBlock"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "block_height",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "txstart",
+            "description": "Filters response to only include transaction hashes after txstart in the block.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ethBlock": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string",
+          "title": "The hash of the block; in Ethereum, the hashing function is Keccak/SHA3"
+        },
+        "height": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain."
+        },
+        "depth": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain."
+        },
+        "chain": {
+          "type": "string",
+          "title": "The name of the blockchain represented, in the form of $COIN.$CHAIN"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The total number of wei transacted in this block."
+        },
+        "fees": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The total number of fees—in wei—collected by miners in this block."
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Raw size of block (including header and all transactions) in bytes."
+        },
+        "ver": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Block version."
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recorded time at which block was built."
+        },
+        "received_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time BlockCypher’s servers receive the block."
+        },
+        "coinbase_addr": {
+          "type": "string",
+          "description": "The Ethereum address of the miner that received the coinbase and fee reward."
+        },
+        "relayed_by": {
+          "type": "string",
+          "description": "Address of the peer that sent BlockCypher’s servers this block."
+        },
+        "nonce": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number used by a miner to generate this block."
+        },
+        "n_tx": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of transactions in this block."
+        },
+        "prev_block": {
+          "type": "string",
+          "description": "The hash of the previous block in the blockchain."
+        },
+        "prev_block_url": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "The BlockCypher URL to query for more information on the previous block."
+        },
+        "tx_url": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es)."
+        },
+        "mrkl_root": {
+          "type": "string",
+          "description": "The Merkle root of this block."
+        },
+        "txids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of transaction hashes in this block (initiated by externally controlled accounts). By default, only 20 are included."
+        },
+        "internal_txids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of internal transaction hashes (initiated by internal contracts) in this block. By default, only 20 are included."
+        },
+        "next_txids": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
+        },
+        "next_internal_txids": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "Optional If there are more internal transactions that couldn’t fit in the internal_txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
+        },
+        "uncles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of uncle blocks by hash included by the miner of this block. You can read more about uncles here."
+        }
+      }
+    },
+    "ethBlockchain": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the blockchain represented, in the form of $COIN.$CHAIN."
+        },
+        "height": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The current height of the blockchain; i.e., the number of blocks in the blockchain."
+        },
+        "hash": {
+          "type": "string",
+          "description": "The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3."
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time of the latest update to the blockchain; typically when the latest block was added."
+        },
+        "latest_url": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "The BlockCypher URL to query for more information on the latest confirmed block; returns a Block."
+        },
+        "previous_hash": {
+          "type": "string",
+          "description": "The hash of the second-to-latest confirmed block in the blockchain."
+        },
+        "previous_url": {
+          "$ref": "#/definitions/protobufAny",
+          "description": "The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block."
+        },
+        "unconfirmed_count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of unconfirmed transactions in memory pool (likely to be included in next block)."
+        },
+        "high_gas_price": {
+          "type": "integer",
+          "format": "int32",
+          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks."
+        },
+        "medium_gas_price": {
+          "type": "integer",
+          "format": "int32",
+          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks."
+        },
+        "low_gas_price": {
+          "type": "integer",
+          "format": "int32",
+          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks."
+        },
+        "last_fork_height": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
+        },
+        "last_fork_hash": {
+          "type": "string",
+          "description": "Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
+        }
+      }
+    },
+    "ethNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAIN",
+        "main",
+        "ROPSTEN",
+        "ropsten"
+      ],
+      "default": "MAIN"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        },
+        "value": {
+          "type": "string",
+          "format": "byte",
+          "description": "Must be a valid serialized protocol buffer of the above specified type."
+        }
+      },
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    }
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "microtransactionService.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/btc/{network}/txs/micro": {
+      "post": {
+        "operationId": "MicrotransactionEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/btcMicroTX"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/btcMicroTXRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MicrotransactionService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "btcMicroTX": {
+      "type": "object",
+      "properties": {
+        "from_pubkey": {
+          "type": "string",
+          "description": "Hex-encoded public key from which you’re sending coins."
+        },
+        "from_private": {
+          "type": "string",
+          "description": "Hex-encoded private key from which you’re sending coins."
+        },
+        "from_wif": {
+          "type": "string",
+          "description": "WIF-encoded private key from which you’re sending coins."
+        },
+        "to_address": {
+          "type": "string",
+          "description": "The target address to which you’re sending coins."
+        },
+        "value_satoshis": {
+          "type": "string",
+          "format": "int64",
+          "description": "Value you’re sending/you’ve sent in satoshis."
+        },
+        "token": {
+          "type": "string",
+          "title": "Your Block API token"
+        },
+        "change_address": {
+          "type": "string",
+          "description": "Optional Address Block will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address."
+        },
+        "wait_guarantee": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Optional If not set, defaults to true, which means the API will wait for Block to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast."
+        },
+        "tosign": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Hex-encoded data for you to sign after initiating the microtransaction. Sent in reply to a microtransaction generated using from_pubkey/a public key."
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Hex-encoded signatures for you to send back after having received (and signed) tosign."
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcTXInput"
+          },
+          "description": "Optional Partial list of inputs that will be used with this transaction. Inputs themsleves are heavily pared down, see cURL sample. Only returned when using from_pubkey."
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcTXOutput"
+          },
+          "description": "Optional Partial list of outputs that will be used with this transaction. Outputs themselves are heavily pared down, see cURL sample. Only returned when using from_pubkey."
+        },
+        "fees": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Block’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. Block pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter."
+        },
+        "hash": {
+          "type": "string",
+          "description": "Optional The hash of the finalized transaction, once sent."
+        }
+      }
+    },
+    "btcMicroTXRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "from_pubkey": {
+          "type": "string",
+          "description": "Hex-encoded public key from which you’re sending coins."
+        },
+        "from_private": {
+          "type": "string",
+          "description": "Hex-encoded private key from which you’re sending coins."
+        },
+        "from_wif": {
+          "type": "string",
+          "description": "WIF-encoded private key from which you’re sending coins."
+        },
+        "to_address": {
+          "type": "string",
+          "description": "The target address to which you’re sending coins."
+        },
+        "value_satoshis": {
+          "type": "string",
+          "format": "int64",
+          "description": "Value you’re sending/you’ve sent in satoshis."
+        },
+        "token": {
+          "type": "string",
+          "title": "Your Block API token"
+        },
+        "change_address": {
+          "type": "string",
+          "description": "Optional Address Block will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address."
+        },
+        "wait_guarantee": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Optional If not set, defaults to true, which means the API will wait for Block to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast."
+        },
+        "tosign": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Hex-encoded data for you to sign after initiating the microtransaction. Sent in reply to a microtransaction generated using from_pubkey/a public key."
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Hex-encoded signatures for you to send back after having received (and signed) tosign."
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcTXInput"
+          },
+          "description": "Optional Partial list of inputs that will be used with this transaction. Inputs themsleves are heavily pared down, see cURL sample. Only returned when using from_pubkey."
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcTXOutput"
+          },
+          "description": "Optional Partial list of outputs that will be used with this transaction. Outputs themselves are heavily pared down, see cURL sample. Only returned when using from_pubkey."
+        },
+        "fees": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Block’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. Block pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter."
+        },
+        "hash": {
+          "type": "string",
+          "description": "Optional The hash of the finalized transaction, once sent."
+        }
+      }
+    },
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
+    },
+    "btcTXInput": {
+      "type": "object",
+      "properties": {
+        "prev_hash": {
+          "type": "string",
+          "description": "The previous transaction hash where this input was an output. Not present for coinbase transactions."
+        },
+        "output_index": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The index of the output being spent within the previous transaction. Not present for coinbase transactions."
+        },
+        "output_value": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The value of the output being spent within the previous transaction. Not present for coinbase transactions."
+        },
+        "script_type": {
+          "type": "string",
+          "description": "The type of script that encumbers the output corresponding to this input."
+        },
+        "script": {
+          "type": "string",
+          "description": "Raw hexadecimal encoding of the script."
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of public addresses associated with the output of the previous transaction."
+        },
+        "sequence": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Legacy 4-byte sequence number, not usually relevant unless dealing with locktime encumbrances."
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Number of confirmations of the previous transaction for which this input was an output. Currently, only returned in unconfirmed transactions."
+        },
+        "wallet_name": {
+          "type": "string",
+          "description": "Optional Name of Wallet or HDWallet from which to derive inputs. Only used when constructing transactions via the Creating Transactions process."
+        },
+        "wallet_token": {
+          "type": "string",
+          "description": "Optional Token associated with Wallet or HDWallet used to derive inputs. Only used when constructing transactions via the Creating Transactions process."
+        }
+      }
+    },
+    "btcTXOutput": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Value in this transaction output, in satoshis."
+        },
+        "script": {
+          "type": "string",
+          "description": "Raw hexadecimal encoding of the encumbrance script for this output."
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Addresses that correspond to this output; typically this will only have a single address, and you can think of this output as having “sent” value to the address contained herein."
+        },
+        "script_type": {
+          "type": "string",
+          "description": "The type of encumbrance script used for this output."
+        },
+        "spent_by": {
+          "type": "string",
+          "description": "Optional The transaction hash that spent this output. Only returned for outputs that have been spent. The spending transaction may be unconfirmed."
+        },
+        "data_hex": {
+          "type": "string",
+          "description": "Optional A hex-encoded representation of an OP_RETURN data output, without any other script instructions. Only returned for outputs whose script_type is null-data."
+        },
+        "data_string": {
+          "type": "string",
+          "description": "Optional An ASCII representation of an OP_RETURN data output, without any other script instructions. Only returned for outputs whose script_type is null-data and if its data falls into the visible ASCII range."
+        }
+      }
+    }
+  }
+}

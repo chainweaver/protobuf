@@ -4,13 +4,15 @@ rm -f ./protoc-gen-go/eth/*
 rm -f ./protoc-gen-go/btc/*
 rm -f ./protoc-gen-js/eth/*
 rm -f ./protoc-gen-js/btc/*
+rm -f ./openapi/btc/*
+rm -f ./openapi/eth/*
 
 protoc \
   -I./proto/btc \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
-  --swagger_out=logtostderr=true:./openapi/ \
+  --swagger_out=logtostderr=true:./openapi/btc/ \
   --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:./protoc-gen-js/btc/ \
   commonMessage.proto \
   assetMessage.proto \
@@ -39,7 +41,7 @@ protoc \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
-  --swagger_out=logtostderr=true:./openapi/ \
+  --swagger_out=logtostderr=true:./openapi/eth/ \
   --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:./protoc-gen-js/eth/ \
   commonMessage_Eth.proto \
   blockchainMessage_Eth.proto \
@@ -53,5 +55,16 @@ protoc \
   contractMessage_Eth.proto \
   contractService_Eth.proto 
 
-echo -n > ./openapi/openapi.json
-find ./openapi/ -name "*.json" -print0 | xargs -0 jq -s add ./openapi/openapi.json >> ./openapi/openapi.json
+btcFileCount=`find ./openapi/btc -name "*Service*.json" | wc -l`
+btcJqParam=".[0]"
+for ((i=1; i < $btcFileCount; i++)); do
+  btcJqParam+="*.[$i]"
+done
+jq -s `echo $btcJqParam` `find ./openapi/btc -name "*Service*.json"` > ./openapi/btc/openapi.json
+
+ethFileCount=`find ./openapi/eth -name "*Service*.json" | wc -l`
+ethJqParam=".[0]"
+for ((i=1; i < $ethFileCount; i++)); do
+  ethJqParam+="*.[$i]"
+done
+jq -s `echo $ethJqParam` `find ./openapi/eth -name "*Service*.json"` > ./openapi/eth/openapi.json
