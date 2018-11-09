@@ -11,9 +11,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
-var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
+goog.object.extend(proto, commonMessage_Eth_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.ContractArray', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest', null, global);
@@ -81,9 +80,9 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.toObj
     value: jspb.Message.getFieldWithDefault(msg, 7, 0),
     name: jspb.Message.getFieldWithDefault(msg, 8, ""),
     bin: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    abi: (f = msg.getAbi()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
+    abi: jspb.Message.getFieldWithDefault(msg, 10, ""),
     address: jspb.Message.getFieldWithDefault(msg, 11, ""),
-    created: (f = msg.getCreated()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    created: jspb.Message.getFieldWithDefault(msg, 12, ""),
     creationTxHash: jspb.Message.getFieldWithDefault(msg, 13, ""),
     resultsList: jspb.Message.getRepeatedField(msg, 14)
   };
@@ -159,8 +158,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.deser
       msg.setBin(value);
       break;
     case 10:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setAbi(value);
       break;
     case 11:
@@ -168,8 +166,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.deser
       msg.setAddress(value);
       break;
     case 12:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setCreated(value);
       break;
     case 13:
@@ -273,11 +270,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.seria
     );
   }
   f = message.getAbi();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       10,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getAddress();
@@ -288,11 +284,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.seria
     );
   }
   f = message.getCreated();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       12,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getCreationTxHash();
@@ -358,7 +353,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.proto
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.addParams = function(value, opt_index) {
@@ -387,7 +382,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.proto
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.addPublish = function(value, opt_index) {
@@ -476,32 +471,17 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.proto
 
 
 /**
- * optional google.protobuf.Any abi = 10;
- * @return {?proto.google.protobuf.Any}
+ * optional string abi = 10;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.getAbi = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 10));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.setAbi = function(value) {
-  jspb.Message.setWrapperField(this, 10, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.clearAbi = function() {
-  this.setAbi(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.hasAbi = function() {
-  return jspb.Message.getField(this, 10) != null;
+  jspb.Message.setProto3StringField(this, 10, value);
 };
 
 
@@ -521,32 +501,17 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.proto
 
 
 /**
- * optional google.protobuf.Timestamp created = 12;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string created = 12;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.getCreated = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 12));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.setCreated = function(value) {
-  jspb.Message.setWrapperField(this, 12, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.clearCreated = function() {
-  this.setCreated(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.hasCreated = function() {
-  return jspb.Message.getField(this, 12) != null;
+  jspb.Message.setProto3StringField(this, 12, value);
 };
 
 
@@ -581,7 +546,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.proto
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.addResults = function(value, opt_index) {
@@ -828,9 +793,9 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.t
     value: jspb.Message.getFieldWithDefault(msg, 9, 0),
     name: jspb.Message.getFieldWithDefault(msg, 10, ""),
     bin: jspb.Message.getFieldWithDefault(msg, 11, ""),
-    abi: (f = msg.getAbi()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
+    abi: jspb.Message.getFieldWithDefault(msg, 12, ""),
     address: jspb.Message.getFieldWithDefault(msg, 13, ""),
-    created: (f = msg.getCreated()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    created: jspb.Message.getFieldWithDefault(msg, 14, ""),
     creationTxHash: jspb.Message.getFieldWithDefault(msg, 15, ""),
     resultsList: jspb.Message.getRepeatedField(msg, 16)
   };
@@ -914,8 +879,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.d
       msg.setBin(value);
       break;
     case 12:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setAbi(value);
       break;
     case 13:
@@ -923,8 +887,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.d
       msg.setAddress(value);
       break;
     case 14:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setCreated(value);
       break;
     case 15:
@@ -1042,11 +1005,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.s
     );
   }
   f = message.getAbi();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       12,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getAddress();
@@ -1057,11 +1019,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.s
     );
   }
   f = message.getCreated();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       14,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getCreationTxHash();
@@ -1157,7 +1118,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.p
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.addParams = function(value, opt_index) {
@@ -1186,7 +1147,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.p
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.addPublish = function(value, opt_index) {
@@ -1275,32 +1236,17 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.p
 
 
 /**
- * optional google.protobuf.Any abi = 12;
- * @return {?proto.google.protobuf.Any}
+ * optional string abi = 12;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.getAbi = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 12));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.setAbi = function(value) {
-  jspb.Message.setWrapperField(this, 12, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.clearAbi = function() {
-  this.setAbi(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.hasAbi = function() {
-  return jspb.Message.getField(this, 12) != null;
+  jspb.Message.setProto3StringField(this, 12, value);
 };
 
 
@@ -1320,32 +1266,17 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.p
 
 
 /**
- * optional google.protobuf.Timestamp created = 14;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string created = 14;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.getCreated = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 14));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.setCreated = function(value) {
-  jspb.Message.setWrapperField(this, 14, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.clearCreated = function() {
-  this.setCreated(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.hasCreated = function() {
-  return jspb.Message.getField(this, 14) != null;
+  jspb.Message.setProto3StringField(this, 14, value);
 };
 
 
@@ -1380,7 +1311,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.p
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.addResults = function(value, opt_index) {

@@ -11,8 +11,6 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.Address', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.AddressForward', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain', null, global);
@@ -451,7 +449,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.setArraystringLis
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.addArraystring = function(value, opt_index) {
@@ -797,7 +795,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXInput.prototype.setAddressesList = fu
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXInput.prototype.addAddresses = function(value, opt_index) {
@@ -1122,7 +1120,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXOutput.prototype.setAddressesList = f
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXOutput.prototype.addAddresses = function(value, opt_index) {
@@ -1257,7 +1255,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.toObject = function(includeInstance,
     size: jspb.Message.getFieldWithDefault(msg, 6, 0),
     preference: jspb.Message.getFieldWithDefault(msg, 7, ""),
     relayedBy: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    received: (f = msg.getReceived()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    received: jspb.Message.getFieldWithDefault(msg, 9, ""),
     ver: jspb.Message.getFieldWithDefault(msg, 10, 0),
     lockTime: jspb.Message.getFieldWithDefault(msg, 11, 0),
     doubleSpend: jspb.Message.getFieldWithDefault(msg, 12, false),
@@ -1270,7 +1268,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.toObject = function(includeInstance,
     proto.fairwaycorp.blockchainprotobuf.btc.TXOutput.toObject, includeInstance),
     optInRbf: jspb.Message.getFieldWithDefault(msg, 18, false),
     confidence: +jspb.Message.getFieldWithDefault(msg, 19, 0.0),
-    confirmed: (f = msg.getConfirmed()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    confirmed: jspb.Message.getFieldWithDefault(msg, 20, ""),
     receiveCount: jspb.Message.getFieldWithDefault(msg, 21, 0),
     changeAddress: jspb.Message.getFieldWithDefault(msg, 22, ""),
     blockHash: jspb.Message.getFieldWithDefault(msg, 23, ""),
@@ -1278,8 +1276,8 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.toObject = function(includeInstance,
     doubleOf: jspb.Message.getFieldWithDefault(msg, 25, ""),
     dataProtocol: jspb.Message.getFieldWithDefault(msg, 26, ""),
     hex: jspb.Message.getFieldWithDefault(msg, 27, ""),
-    nextInputs: (f = msg.getNextInputs()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
-    nextOutputs: (f = msg.getNextOutputs()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
+    nextInputs: jspb.Message.getFieldWithDefault(msg, 28, ""),
+    nextOutputs: jspb.Message.getFieldWithDefault(msg, 29, "")
   };
 
   if (includeInstance) {
@@ -1349,8 +1347,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.deserializeBinaryFromReader = functi
       msg.setRelayedBy(value);
       break;
     case 9:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setReceived(value);
       break;
     case 10:
@@ -1396,8 +1393,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.deserializeBinaryFromReader = functi
       msg.setConfidence(value);
       break;
     case 20:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setConfirmed(value);
       break;
     case 21:
@@ -1429,13 +1425,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.deserializeBinaryFromReader = functi
       msg.setHex(value);
       break;
     case 28:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setNextInputs(value);
       break;
     case 29:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setNextOutputs(value);
       break;
     default:
@@ -1524,11 +1518,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.serializeBinaryToWriter = function(m
     );
   }
   f = message.getReceived();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       9,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getVer();
@@ -1604,11 +1597,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.serializeBinaryToWriter = function(m
     );
   }
   f = message.getConfirmed();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       20,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getReceiveCount();
@@ -1661,19 +1653,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.serializeBinaryToWriter = function(m
     );
   }
   f = message.getNextInputs();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       28,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getNextOutputs();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       29,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
 };
@@ -1725,7 +1715,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.setAddressesList = functio
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.addAddresses = function(value, opt_index) {
@@ -1814,32 +1804,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.setRelayedBy = function(va
 
 
 /**
- * optional google.protobuf.Timestamp received = 9;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string received = 9;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.getReceived = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 9));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.setReceived = function(value) {
-  jspb.Message.setWrapperField(this, 9, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.clearReceived = function() {
-  this.setReceived(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.hasReceived = function() {
-  return jspb.Message.getField(this, 9) != null;
+  jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -2030,32 +2005,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.setConfidence = function(v
 
 
 /**
- * optional google.protobuf.Timestamp confirmed = 20;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string confirmed = 20;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.getConfirmed = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 20));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 20, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.setConfirmed = function(value) {
-  jspb.Message.setWrapperField(this, 20, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.clearConfirmed = function() {
-  this.setConfirmed(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.hasConfirmed = function() {
-  return jspb.Message.getField(this, 20) != null;
+  jspb.Message.setProto3StringField(this, 20, value);
 };
 
 
@@ -2165,62 +2125,32 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.setHex = function(value) {
 
 
 /**
- * optional google.protobuf.Any next_inputs = 28;
- * @return {?proto.google.protobuf.Any}
+ * optional string next_inputs = 28;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.getNextInputs = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 28));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 28, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.setNextInputs = function(value) {
-  jspb.Message.setWrapperField(this, 28, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.clearNextInputs = function() {
-  this.setNextInputs(undefined);
+  jspb.Message.setProto3StringField(this, 28, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.hasNextInputs = function() {
-  return jspb.Message.getField(this, 28) != null;
-};
-
-
-/**
- * optional google.protobuf.Any next_outputs = 29;
- * @return {?proto.google.protobuf.Any}
+ * optional string next_outputs = 29;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.getNextOutputs = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 29));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 29, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.setNextOutputs = function(value) {
-  jspb.Message.setWrapperField(this, 29, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.clearNextOutputs = function() {
-  this.setNextOutputs(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.hasNextOutputs = function() {
-  return jspb.Message.getField(this, 29) != null;
+  jspb.Message.setProto3StringField(this, 29, value);
 };
 
 
@@ -2428,7 +2358,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Wallet.prototype.setAddressesList = fun
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Wallet.prototype.addAddresses = function(value, opt_index) {
@@ -2747,7 +2677,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.HDWallet.prototype.setSubchainIndexesLi
 
 
 /**
- * @param {!number} value
+ * @param {number} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.HDWallet.prototype.addSubchainIndexes = function(value, opt_index) {
@@ -3020,7 +2950,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Address.toObject = function(includeInst
     nTx: jspb.Message.getFieldWithDefault(msg, 9, 0),
     unconfirmedNTx: jspb.Message.getFieldWithDefault(msg, 10, 0),
     finalNTx: jspb.Message.getFieldWithDefault(msg, 11, 0),
-    txUrl: (f = msg.getTxUrl()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
+    txUrl: jspb.Message.getFieldWithDefault(msg, 12, ""),
     txsList: jspb.Message.toObjectList(msg.getTxsList(),
     proto.fairwaycorp.blockchainprotobuf.btc.TX.toObject, includeInstance),
     txrefsList: jspb.Message.toObjectList(msg.getTxrefsList(),
@@ -3111,8 +3041,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Address.deserializeBinaryFromReader = f
       msg.setFinalNTx(value);
       break;
     case 12:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setTxUrl(value);
       break;
     case 13:
@@ -3243,11 +3172,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.Address.serializeBinaryToWriter = funct
     );
   }
   f = message.getTxUrl();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       12,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getTxsList();
@@ -3322,7 +3250,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.clearWallet = functio
 
 /**
  * Returns whether this field is set.
- * @return {!boolean}
+ * @return {boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.hasWallet = function() {
   return jspb.Message.getField(this, 2) != null;
@@ -3352,7 +3280,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.clearHdWallet = funct
 
 /**
  * Returns whether this field is set.
- * @return {!boolean}
+ * @return {boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.hasHdWallet = function() {
   return jspb.Message.getField(this, 3) != null;
@@ -3480,32 +3408,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.setFinalNTx = functio
 
 
 /**
- * optional google.protobuf.Any tx_url = 12;
- * @return {?proto.google.protobuf.Any}
+ * optional string tx_url = 12;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.getTxUrl = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 12));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.setTxUrl = function(value) {
-  jspb.Message.setWrapperField(this, 12, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.clearTxUrl = function() {
-  this.setTxUrl(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.hasTxUrl = function() {
-  return jspb.Message.getField(this, 12) != null;
+  jspb.Message.setProto3StringField(this, 12, value);
 };
 
 
@@ -4109,7 +4022,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain.prototype.setPubkeysLis
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain.prototype.addPubkeys = function(value, opt_index) {
@@ -4227,9 +4140,9 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXRef.toObject = function(includeInstan
     script: jspb.Message.getFieldWithDefault(msg, 11, ""),
     refBalance: jspb.Message.getFieldWithDefault(msg, 12, 0),
     confidence: +jspb.Message.getFieldWithDefault(msg, 13, 0.0),
-    confirmed: (f = msg.getConfirmed()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    confirmed: jspb.Message.getFieldWithDefault(msg, 14, ""),
     spentBy: jspb.Message.getFieldWithDefault(msg, 15, ""),
-    received: (f = msg.getReceived()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    received: jspb.Message.getFieldWithDefault(msg, 16, ""),
     receiveCount: jspb.Message.getFieldWithDefault(msg, 17, 0),
     doubleOf: jspb.Message.getFieldWithDefault(msg, 18, "")
   };
@@ -4321,8 +4234,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXRef.deserializeBinaryFromReader = fun
       msg.setConfidence(value);
       break;
     case 14:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setConfirmed(value);
       break;
     case 15:
@@ -4330,8 +4242,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXRef.deserializeBinaryFromReader = fun
       msg.setSpentBy(value);
       break;
     case 16:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setReceived(value);
       break;
     case 17:
@@ -4463,11 +4374,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXRef.serializeBinaryToWriter = functio
     );
   }
   f = message.getConfirmed();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       14,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getSpentBy();
@@ -4478,11 +4388,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXRef.serializeBinaryToWriter = functio
     );
   }
   f = message.getReceived();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       16,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getReceiveCount();
@@ -4702,32 +4611,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.setConfidence = functio
 
 
 /**
- * optional google.protobuf.Timestamp confirmed = 14;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string confirmed = 14;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.getConfirmed = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 14));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.setConfirmed = function(value) {
-  jspb.Message.setWrapperField(this, 14, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.clearConfirmed = function() {
-  this.setConfirmed(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.hasConfirmed = function() {
-  return jspb.Message.getField(this, 14) != null;
+  jspb.Message.setProto3StringField(this, 14, value);
 };
 
 
@@ -4747,32 +4641,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.setSpentBy = function(v
 
 
 /**
- * optional google.protobuf.Timestamp received = 16;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string received = 16;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.getReceived = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 16));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.setReceived = function(value) {
-  jspb.Message.setWrapperField(this, 16, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.clearReceived = function() {
-  this.setReceived(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.TXRef.prototype.hasReceived = function() {
-  return jspb.Message.getField(this, 16) != null;
+  jspb.Message.setProto3StringField(this, 16, value);
 };
 
 
@@ -5336,14 +5215,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.toObject = function(includeInstan
     ver: jspb.Message.getFieldWithDefault(msg, 1, 0),
     assetid: jspb.Message.getFieldWithDefault(msg, 2, ""),
     hash: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    confirmed: (f = msg.getConfirmed()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    received: (f = msg.getReceived()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    confirmed: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    received: jspb.Message.getFieldWithDefault(msg, 5, ""),
     oapMeta: jspb.Message.getFieldWithDefault(msg, 6, ""),
     doubleSpend: jspb.Message.getFieldWithDefault(msg, 7, false),
-    inputsList: jspb.Message.toObjectList(msg.getInputsList(),
-    google_protobuf_any_pb.Any.toObject, includeInstance),
-    outputsList: jspb.Message.toObjectList(msg.getOutputsList(),
-    google_protobuf_any_pb.Any.toObject, includeInstance)
+    inputsList: jspb.Message.getRepeatedField(msg, 8),
+    outputsList: jspb.Message.getRepeatedField(msg, 9)
   };
 
   if (includeInstance) {
@@ -5393,13 +5270,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.deserializeBinaryFromReader = fun
       msg.setHash(value);
       break;
     case 4:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setConfirmed(value);
       break;
     case 5:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setReceived(value);
       break;
     case 6:
@@ -5411,13 +5286,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.deserializeBinaryFromReader = fun
       msg.setDoubleSpend(value);
       break;
     case 8:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.addInputs(value);
       break;
     case 9:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.addOutputs(value);
       break;
     default:
@@ -5471,19 +5344,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.serializeBinaryToWriter = functio
     );
   }
   f = message.getConfirmed();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       4,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getReceived();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       5,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getOapMeta();
@@ -5502,18 +5373,16 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.serializeBinaryToWriter = functio
   }
   f = message.getInputsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       8,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getOutputsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       9,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
 };
@@ -5565,62 +5434,32 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.setHash = function(valu
 
 
 /**
- * optional google.protobuf.Timestamp confirmed = 4;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string confirmed = 4;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.getConfirmed = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.setConfirmed = function(value) {
-  jspb.Message.setWrapperField(this, 4, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.clearConfirmed = function() {
-  this.setConfirmed(undefined);
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.hasConfirmed = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
-
-/**
- * optional google.protobuf.Timestamp received = 5;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string received = 5;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.getReceived = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.setReceived = function(value) {
-  jspb.Message.setWrapperField(this, 5, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.clearReceived = function() {
-  this.setReceived(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.hasReceived = function() {
-  return jspb.Message.getField(this, 5) != null;
+  jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -5657,28 +5496,26 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.setDoubleSpend = functi
 
 
 /**
- * repeated google.protobuf.Any inputs = 8;
- * @return {!Array<!proto.google.protobuf.Any>}
+ * repeated string inputs = 8;
+ * @return {!Array<string>}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.getInputsList = function() {
-  return /** @type{!Array<!proto.google.protobuf.Any>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 8));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 8));
 };
 
 
-/** @param {!Array<!proto.google.protobuf.Any>} value */
+/** @param {!Array<string>} value */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.setInputsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 8, value);
+  jspb.Message.setField(this, 8, value || []);
 };
 
 
 /**
- * @param {!proto.google.protobuf.Any=} opt_value
+ * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.google.protobuf.Any}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.addInputs = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 8, opt_value, proto.google.protobuf.Any, opt_index);
+proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.addInputs = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 8, value, opt_index);
 };
 
 
@@ -5688,28 +5525,26 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.clearInputsList = funct
 
 
 /**
- * repeated google.protobuf.Any outputs = 9;
- * @return {!Array<!proto.google.protobuf.Any>}
+ * repeated string outputs = 9;
+ * @return {!Array<string>}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.getOutputsList = function() {
-  return /** @type{!Array<!proto.google.protobuf.Any>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 9));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 9));
 };
 
 
-/** @param {!Array<!proto.google.protobuf.Any>} value */
+/** @param {!Array<string>} value */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.setOutputsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 9, value);
+  jspb.Message.setField(this, 9, value || []);
 };
 
 
 /**
- * @param {!proto.google.protobuf.Any=} opt_value
+ * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.google.protobuf.Any}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.addOutputs = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 9, opt_value, proto.google.protobuf.Any, opt_index);
+proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.addOutputs = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 9, value, opt_index);
 };
 
 
@@ -5940,7 +5775,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.clearTx = function
 
 /**
  * Returns whether this field is set.
- * @return {!boolean}
+ * @return {boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.hasTx = function() {
   return jspb.Message.getField(this, 1) != null;
@@ -5963,7 +5798,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.setTosignList = fu
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.addTosign = function(value, opt_index) {
@@ -5992,7 +5827,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.setSignaturesList 
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.addSignatures = function(value, opt_index) {
@@ -6021,7 +5856,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.setPubkeysList = f
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.addPubkeys = function(value, opt_index) {
@@ -6050,7 +5885,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.setTosignTxList = 
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.addTosignTx = function(value, opt_index) {
@@ -6512,7 +6347,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.toObject = function(incl
     firstCountry: jspb.Message.getFieldWithDefault(msg, 4, ""),
     aggregatedOrigin: (f = msg.getAggregatedOrigin()) && proto.fairwaycorp.blockchainprotobuf.btc.AggregatedOrigin.toObject(includeInstance, f),
     aggregatedOriginRadius: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    firstReceived: (f = msg.getFirstReceived()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    firstReceived: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -6576,8 +6411,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.deserializeBinaryFromRea
       msg.setAggregatedOriginRadius(value);
       break;
     case 7:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setFirstReceived(value);
       break;
     default:
@@ -6654,11 +6488,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.serializeBinaryToWriter 
     );
   }
   f = message.getFirstReceived();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       7,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
 };
@@ -6702,7 +6535,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.clearFirstLoca
 
 /**
  * Returns whether this field is set.
- * @return {!boolean}
+ * @return {boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.hasFirstLocation = function() {
   return jspb.Message.getField(this, 2) != null;
@@ -6762,7 +6595,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.clearAggregate
 
 /**
  * Returns whether this field is set.
- * @return {!boolean}
+ * @return {boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.hasAggregatedOrigin = function() {
   return jspb.Message.getField(this, 5) != null;
@@ -6785,32 +6618,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.setAggregatedO
 
 
 /**
- * optional google.protobuf.Timestamp first_received = 7;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string first_received = 7;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.getFirstReceived = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.setFirstReceived = function(value) {
-  jspb.Message.setWrapperField(this, 7, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.clearFirstReceived = function() {
-  this.setFirstReceived(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.hasFirstReceived = function() {
-  return jspb.Message.getField(this, 7) != null;
+  jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -7202,8 +7020,8 @@ proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.toObject = function(includeInst
     address: jspb.Message.getFieldWithDefault(msg, 1, ""),
     valueThreshold: jspb.Message.getFieldWithDefault(msg, 2, 0),
     limit: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    start: (f = msg.getStart()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    end: (f = msg.getEnd()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    start: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    end: jspb.Message.getFieldWithDefault(msg, 5, ""),
     degree: jspb.Message.getFieldWithDefault(msg, 6, 0),
     source: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
@@ -7255,13 +7073,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.deserializeBinaryFromReader = f
       msg.setLimit(value);
       break;
     case 4:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setStart(value);
       break;
     case 5:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setEnd(value);
       break;
     case 6:
@@ -7323,19 +7139,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.serializeBinaryToWriter = funct
     );
   }
   f = message.getStart();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       4,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getEnd();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       5,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getDegree();
@@ -7401,62 +7215,32 @@ proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.prototype.setLimit = function(v
 
 
 /**
- * optional google.protobuf.Timestamp start = 4;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string start = 4;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.prototype.getStart = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.prototype.setStart = function(value) {
-  jspb.Message.setWrapperField(this, 4, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.prototype.clearStart = function() {
-  this.setStart(undefined);
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.prototype.hasStart = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
-
-/**
- * optional google.protobuf.Timestamp end = 5;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string end = 5;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.prototype.getEnd = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.prototype.setEnd = function(value) {
-  jspb.Message.setWrapperField(this, 5, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.prototype.clearEnd = function() {
-  this.setEnd(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.prototype.hasEnd = function() {
-  return jspb.Message.getField(this, 5) != null;
+  jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -7539,12 +7323,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.Job.toObject = function(includeInstance
   var f, obj = {
     token: jspb.Message.getFieldWithDefault(msg, 1, ""),
     analyticsEngine: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    completedAt: (f = msg.getCompletedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    createdAt: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    completedAt: jspb.Message.getFieldWithDefault(msg, 4, ""),
     finished: jspb.Message.getFieldWithDefault(msg, 5, false),
     started: jspb.Message.getFieldWithDefault(msg, 6, false),
     ticket: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    resultPath: (f = msg.getResultPath()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
+    resultPath: jspb.Message.getFieldWithDefault(msg, 8, ""),
     args: (f = msg.getArgs()) && proto.fairwaycorp.blockchainprotobuf.btc.JobArgs.toObject(includeInstance, f)
   };
 
@@ -7591,13 +7375,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.Job.deserializeBinaryFromReader = funct
       msg.setAnalyticsEngine(value);
       break;
     case 3:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setCreatedAt(value);
       break;
     case 4:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setCompletedAt(value);
       break;
     case 5:
@@ -7613,8 +7395,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Job.deserializeBinaryFromReader = funct
       msg.setTicket(value);
       break;
     case 8:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setResultPath(value);
       break;
     case 9:
@@ -7666,19 +7447,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.Job.serializeBinaryToWriter = function(
     );
   }
   f = message.getCreatedAt();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getCompletedAt();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       4,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getFinished();
@@ -7703,11 +7482,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.Job.serializeBinaryToWriter = function(
     );
   }
   f = message.getResultPath();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       8,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getArgs();
@@ -7752,62 +7530,32 @@ proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.setAnalyticsEngine = func
 
 
 /**
- * optional google.protobuf.Timestamp created_at = 3;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string created_at = 3;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.getCreatedAt = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.setCreatedAt = function(value) {
-  jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.clearCreatedAt = function() {
-  this.setCreatedAt(undefined);
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.hasCreatedAt = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-/**
- * optional google.protobuf.Timestamp completed_at = 4;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string completed_at = 4;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.getCompletedAt = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.setCompletedAt = function(value) {
-  jspb.Message.setWrapperField(this, 4, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.clearCompletedAt = function() {
-  this.setCompletedAt(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.hasCompletedAt = function() {
-  return jspb.Message.getField(this, 4) != null;
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -7861,32 +7609,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.setTicket = function(valu
 
 
 /**
- * optional google.protobuf.Any result_path = 8;
- * @return {?proto.google.protobuf.Any}
+ * optional string result_path = 8;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.getResultPath = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 8));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.setResultPath = function(value) {
-  jspb.Message.setWrapperField(this, 8, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.clearResultPath = function() {
-  this.setResultPath(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.hasResultPath = function() {
-  return jspb.Message.getField(this, 8) != null;
+  jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -7913,7 +7646,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.clearArgs = function() {
 
 /**
  * Returns whether this field is set.
- * @return {!boolean}
+ * @return {boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.hasArgs = function() {
   return jspb.Message.getField(this, 9) != null;
@@ -7976,7 +7709,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.JobResults.toObject = function(includeI
   var f, obj = {
     page: jspb.Message.getFieldWithDefault(msg, 1, 0),
     more: jspb.Message.getFieldWithDefault(msg, 2, false),
-    nextPage: (f = msg.getNextPage()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
+    nextPage: jspb.Message.getFieldWithDefault(msg, 3, ""),
     resultsList: jspb.Message.toObjectList(msg.getResultsList(),
     proto.fairwaycorp.blockchainprotobuf.btc.JobResultArr.toObject, includeInstance)
   };
@@ -8024,8 +7757,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.JobResults.deserializeBinaryFromReader 
       msg.setMore(value);
       break;
     case 3:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setNextPage(value);
       break;
     case 4:
@@ -8077,11 +7809,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.JobResults.serializeBinaryToWriter = fu
     );
   }
   f = message.getNextPage();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getResultsList();
@@ -8128,32 +7859,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.JobResults.prototype.setMore = function
 
 
 /**
- * optional google.protobuf.Any next_page = 3;
- * @return {?proto.google.protobuf.Any}
+ * optional string next_page = 3;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.JobResults.prototype.getNextPage = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.JobResults.prototype.setNextPage = function(value) {
-  jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.JobResults.prototype.clearNextPage = function() {
-  this.setNextPage(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.JobResults.prototype.hasNextPage = function() {
-  return jspb.Message.getField(this, 3) != null;
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -8630,7 +8346,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXConfidence.toObject = function(includ
     receiveCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
     confidence: +jspb.Message.getFieldWithDefault(msg, 3, 0.0),
     txhash: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    txurl: (f = msg.getTxurl()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
+    txurl: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -8684,8 +8400,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXConfidence.deserializeBinaryFromReade
       msg.setTxhash(value);
       break;
     case 5:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setTxurl(value);
       break;
     default:
@@ -8746,11 +8461,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXConfidence.serializeBinaryToWriter = 
     );
   }
   f = message.getTxurl();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       5,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
 };
@@ -8817,32 +8531,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXConfidence.prototype.setTxhash = func
 
 
 /**
- * optional google.protobuf.Any txurl = 5;
- * @return {?proto.google.protobuf.Any}
+ * optional string txurl = 5;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXConfidence.prototype.getTxurl = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 5));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.TXConfidence.prototype.setTxurl = function(value) {
-  jspb.Message.setWrapperField(this, 5, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.TXConfidence.prototype.clearTxurl = function() {
-  this.setTxurl(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.TXConfidence.prototype.hasTxurl = function() {
-  return jspb.Message.getField(this, 5) != null;
+  jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -8907,7 +8606,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.toObject = function(incl
     processFeesAddress: jspb.Message.getFieldWithDefault(msg, 5, ""),
     processFeesSatoshis: jspb.Message.getFieldWithDefault(msg, 6, 0),
     processFeesPercent: +jspb.Message.getFieldWithDefault(msg, 7, 0.0),
-    callbackUrl: (f = msg.getCallbackUrl()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
+    callbackUrl: jspb.Message.getFieldWithDefault(msg, 8, ""),
     enableConfirmations: jspb.Message.getFieldWithDefault(msg, 9, false),
     miningFeesSatoshis: jspb.Message.getFieldWithDefault(msg, 10, 0),
     txsList: jspb.Message.getRepeatedField(msg, 11)
@@ -8976,8 +8675,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.deserializeBinaryFromRea
       msg.setProcessFeesPercent(value);
       break;
     case 8:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setCallbackUrl(value);
       break;
     case 9:
@@ -9071,11 +8769,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.serializeBinaryToWriter 
     );
   }
   f = message.getCallbackUrl();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       8,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getEnableConfirmations();
@@ -9208,32 +8905,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.prototype.setProcessFees
 
 
 /**
- * optional google.protobuf.Any callback_url = 8;
- * @return {?proto.google.protobuf.Any}
+ * optional string callback_url = 8;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.prototype.getCallbackUrl = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 8));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.prototype.setCallbackUrl = function(value) {
-  jspb.Message.setWrapperField(this, 8, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.prototype.clearCallbackUrl = function() {
-  this.setCallbackUrl(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.prototype.hasCallbackUrl = function() {
-  return jspb.Message.getField(this, 8) != null;
+  jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -9285,7 +8967,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.prototype.setTxsList = f
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.prototype.addTxs = function(value, opt_index) {

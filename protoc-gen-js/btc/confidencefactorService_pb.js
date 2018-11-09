@@ -12,6 +12,8 @@ var goog = jspb;
 var global = Function('return this')();
 
 var google_api_annotations_pb = require('./google/api/annotations_pb.js');
+goog.object.extend(proto, google_api_annotations_pb);
 var confidencefactorMessage_pb = require('./confidencefactorMessage_pb.js');
+goog.object.extend(proto, confidencefactorMessage_pb);
 var commonMessage_pb = require('./commonMessage_pb.js');
-goog.object.extend(exports, proto.fairwaycorp.blockchainprotobuf.btc);
+goog.object.extend(proto, commonMessage_pb);

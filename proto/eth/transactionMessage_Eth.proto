@@ -3,8 +3,6 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf.eth;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
 
-import "google/protobuf/timestamp.proto";
-import "google/protobuf/any.proto";
 import "commonMessage_Eth.proto";
 
 message TxArray {
@@ -41,7 +39,7 @@ message PostCreateTransactionsEndpointRequest {
   // Address of the peer that sent BlockCypher’s servers this transaction. May be empty.
   string relayed_by = 10;
   // Time this transaction was received by BlockCypher’s servers.
-  google.protobuf.Timestamp received = 11;
+  string received = 11;
   // Version number of this transaction.
   int32 ver = 12;
   // true if this is an attempted double spend; false otherwise.
@@ -53,15 +51,15 @@ message PostCreateTransactionsEndpointRequest {
   // Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
   int32 confirmations = 16;
   // An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API.
-  google.protobuf.Any inputs = 17;
+  string inputs = 17;
   // An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API.
-  google.protobuf.Any outputs = 18;
+  string outputs = 18;
   // Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions.
   repeated string	internal_txids = 19;
   // Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash).
   string parent_tx = 20;
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
-  google.protobuf.Timestamp confirmed = 21;
+  string confirmed = 21;
   // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts.
   int32 gas_limit = 22;
   // Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed.

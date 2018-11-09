@@ -14,8 +14,8 @@ export class AddressForward {
   setProcessFeesSatoshis(a: number): void;
   getProcessFeesPercent(): number;
   setProcessFeesPercent(a: number): void;
-  getCallbackUrl(): {};
-  setCallbackUrl(a: {}): void;
+  getCallbackUrl(): string;
+  setCallbackUrl(a: string): void;
   getEnableConfirmations(): boolean;
   setEnableConfirmations(a: boolean): void;
   getMiningFeesSatoshis(): number;
@@ -44,8 +44,8 @@ export class CreateForwardEndpointRequest {
   setProcessFeesSatoshis(a: number): void;
   getProcessFeesPercent(): number;
   setProcessFeesPercent(a: number): void;
-  getCallbackUrl(): {};
-  setCallbackUrl(a: {}): void;
+  getCallbackUrl(): string;
+  setCallbackUrl(a: string): void;
   getEnableConfirmations(): boolean;
   setEnableConfirmations(a: boolean): void;
   getMiningFeesSatoshis(): number;

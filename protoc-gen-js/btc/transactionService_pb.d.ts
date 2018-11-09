@@ -38,8 +38,8 @@ export class DescribedBelow {
   setAggregatedOrigin(a: {}): void;
   getAggregatedOriginRadius(): number;
   setAggregatedOriginRadius(a: number): void;
-  getFirstReceived(): {};
-  setFirstReceived(a: {}): void;
+  getFirstReceived(): string;
+  setFirstReceived(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => DescribedBelow;
 }
@@ -64,8 +64,8 @@ export class NewTransactionEndpointRequest {
   setPreference(a: string): void;
   getRelayedBy(): string;
   setRelayedBy(a: string): void;
-  getReceived(): {};
-  setReceived(a: {}): void;
+  getReceived(): string;
+  setReceived(a: string): void;
   getVer(): number;
   setVer(a: number): void;
   getLockTime(): number;
@@ -86,8 +86,8 @@ export class NewTransactionEndpointRequest {
   setOptInRbf(a: boolean): void;
   getConfidence(): number;
   setConfidence(a: number): void;
-  getConfirmed(): {};
-  setConfirmed(a: {}): void;
+  getConfirmed(): string;
+  setConfirmed(a: string): void;
   getReceiveCount(): number;
   setReceiveCount(a: number): void;
   getChangeAddress(): string;
@@ -102,10 +102,10 @@ export class NewTransactionEndpointRequest {
   setDataProtocol(a: string): void;
   getHex(): string;
   setHex(a: string): void;
-  getNextInputs(): {};
-  setNextInputs(a: {}): void;
-  getNextOutputs(): {};
-  setNextOutputs(a: {}): void;
+  getNextInputs(): string;
+  setNextInputs(a: string): void;
+  getNextOutputs(): string;
+  setNextOutputs(a: string): void;
   getIncludetosigntx(): boolean;
   setIncludetosigntx(a: boolean): void;
   serializeBinary(): Uint8Array;
@@ -174,8 +174,8 @@ export class TX {
   setPreference(a: string): void;
   getRelayedBy(): string;
   setRelayedBy(a: string): void;
-  getReceived(): {};
-  setReceived(a: {}): void;
+  getReceived(): string;
+  setReceived(a: string): void;
   getVer(): number;
   setVer(a: number): void;
   getLockTime(): number;
@@ -196,8 +196,8 @@ export class TX {
   setOptInRbf(a: boolean): void;
   getConfidence(): number;
   setConfidence(a: number): void;
-  getConfirmed(): {};
-  setConfirmed(a: {}): void;
+  getConfirmed(): string;
+  setConfirmed(a: string): void;
   getReceiveCount(): number;
   setReceiveCount(a: number): void;
   getChangeAddress(): string;
@@ -212,10 +212,10 @@ export class TX {
   setDataProtocol(a: string): void;
   getHex(): string;
   setHex(a: string): void;
-  getNextInputs(): {};
-  setNextInputs(a: {}): void;
-  getNextOutputs(): {};
-  setNextOutputs(a: {}): void;
+  getNextInputs(): string;
+  setNextInputs(a: string): void;
+  getNextOutputs(): string;
+  setNextOutputs(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => TX;
 }

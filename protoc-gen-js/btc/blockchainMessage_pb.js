@@ -12,6 +12,7 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_pb = require('./commonMessage_pb.js');
+goog.object.extend(proto, commonMessage_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.Block', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest', null, global);
@@ -1160,7 +1161,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Block.prototype.setTxidsList = function
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Block.prototype.addTxids = function(value, opt_index) {

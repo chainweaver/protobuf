@@ -11,8 +11,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
+goog.object.extend(proto, commonMessage_Eth_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GetListWebHooksEndpointRequest', null, global);
@@ -71,7 +71,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest.toObje
     hash: jspb.Message.getFieldWithDefault(msg, 4, ""),
     address: jspb.Message.getFieldWithDefault(msg, 5, ""),
     confirmations: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    url: (f = msg.getUrl()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
+    url: jspb.Message.getFieldWithDefault(msg, 7, ""),
     callbackErrors: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
@@ -134,8 +134,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest.deseri
       msg.setConfirmations(value);
       break;
     case 7:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setUrl(value);
       break;
     case 8:
@@ -214,11 +213,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest.serial
     );
   }
   f = message.getUrl();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       7,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getCallbackErrors();
@@ -322,32 +320,17 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest.protot
 
 
 /**
- * optional google.protobuf.Any url = 7;
- * @return {?proto.google.protobuf.Any}
+ * optional string url = 7;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest.prototype.getUrl = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 7));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest.prototype.setUrl = function(value) {
-  jspb.Message.setWrapperField(this, 7, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest.prototype.clearUrl = function() {
-  this.setUrl(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest.prototype.hasUrl = function() {
-  return jspb.Message.getField(this, 7) != null;
+  jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
