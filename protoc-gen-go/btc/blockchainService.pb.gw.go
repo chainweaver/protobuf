@@ -58,6 +58,10 @@ func request_BlockchainService_ChainEndpoint_0(ctx context.Context, marshaler ru
 
 }
 
+var (
+	filter_BlockchainService_BlockHashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "block_hash": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+)
+
 func request_BlockchainService_BlockHashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client BlockchainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq BlockHashEndpointRequest
 	var metadata runtime.ServerMetadata
@@ -94,10 +98,18 @@ func request_BlockchainService_BlockHashEndpoint_0(ctx context.Context, marshale
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "block_hash", err)
 	}
 
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_BlockchainService_BlockHashEndpoint_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
 	msg, err := client.BlockHashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
+
+var (
+	filter_BlockchainService_BlockHeightEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "block_height": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+)
 
 func request_BlockchainService_BlockHeightEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client BlockchainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq BlockHeightEndpointRequest
@@ -133,6 +145,10 @@ func request_BlockchainService_BlockHeightEndpoint_0(ctx context.Context, marsha
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "block_height", err)
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_BlockchainService_BlockHeightEndpoint_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.BlockHeightEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))

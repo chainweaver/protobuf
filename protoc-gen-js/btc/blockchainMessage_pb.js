@@ -1628,7 +1628,9 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.prototype.toOb
 proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    blockHash: jspb.Message.getFieldWithDefault(msg, 2, "")
+    blockHash: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    txstart: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    limit: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -1673,6 +1675,14 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.deserializeBin
       var value = /** @type {string} */ (reader.readString());
       msg.setBlockHash(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTxstart(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setLimit(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1716,6 +1726,20 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.serializeBinar
       f
     );
   }
+  f = message.getTxstart();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
+  f = message.getLimit();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -1746,6 +1770,36 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.prototype.getB
 /** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.prototype.setBlockHash = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int32 txstart = 3;
+ * @return {number}
+ */
+proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.prototype.getTxstart = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.prototype.setTxstart = function(value) {
+  jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int32 limit = 4;
+ * @return {number}
+ */
+proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.prototype.getLimit = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest.prototype.setLimit = function(value) {
+  jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
@@ -1797,7 +1851,9 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.prototype.to
 proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    blockHeight: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    blockHeight: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    txstart: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    limit: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -1842,6 +1898,14 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.deserializeB
       var value = /** @type {number} */ (reader.readInt32());
       msg.setBlockHeight(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTxstart(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setLimit(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1885,6 +1949,20 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.serializeBin
       f
     );
   }
+  f = message.getTxstart();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
+  f = message.getLimit();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -1915,6 +1993,36 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.prototype.ge
 /** @param {number} value */
 proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.prototype.setBlockHeight = function(value) {
   jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int32 txstart = 3;
+ * @return {number}
+ */
+proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.prototype.getTxstart = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.prototype.setTxstart = function(value) {
+  jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int32 limit = 4;
+ * @return {number}
+ */
+proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.prototype.getLimit = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest.prototype.setLimit = function(value) {
+  jspb.Message.setProto3IntField(this, 4, value);
 };
 
 

@@ -50,6 +50,10 @@ export class BlockHashEndpointRequest {
   setNetwork(a: {}): void;
   getBlockHash(): string;
   setBlockHash(a: string): void;
+  getTxstart(): number;
+  setTxstart(a: number): void;
+  getLimit(): number;
+  setLimit(a: number): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => BlockHashEndpointRequest;
 }
@@ -60,6 +64,10 @@ export class BlockHeightEndpointRequest {
   setNetwork(a: {}): void;
   getBlockHeight(): number;
   setBlockHeight(a: number): void;
+  getTxstart(): number;
+  setTxstart(a: number): void;
+  getLimit(): number;
+  setLimit(a: number): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => BlockHeightEndpointRequest;
 }

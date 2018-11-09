@@ -1825,6 +1825,20 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "txstart",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
@@ -1860,6 +1874,20 @@
             "name": "block_height",
             "in": "path",
             "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "txstart",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
             "type": "integer",
             "format": "int32"
           }
