@@ -33,7 +33,7 @@ proto.fairwaycorp.blockchainprotobuf.btc = require('./metadataService_pb.js');
 proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -69,7 +69,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient =
 proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient} The delegate callback based client

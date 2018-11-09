@@ -13,7 +13,8 @@ protoc \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/btc/ \
-  --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:./protoc-gen-js/btc/ \
+  --js_out=import_style=commonjs,binary:./protoc-gen-js/btc/ \
+  --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:./protoc-gen-js/btc/ \
   commonMessage.proto \
   assetMessage.proto \
   assetService.proto \
@@ -42,7 +43,8 @@ protoc \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/eth/ \
-  --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:./protoc-gen-js/eth/ \
+  --js_out=import_style=commonjs,binary:./protoc-gen-js/eth/ \
+  --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:./protoc-gen-js/eth/ \
   commonMessage_Eth.proto \
   blockchainMessage_Eth.proto \
   blockchainService_Eth.proto \

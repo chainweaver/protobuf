@@ -31,7 +31,7 @@ proto.fairwaycorp.blockchainprotobuf.btc = require('./microtransactionService_pb
 proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -67,7 +67,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServiceClient =
 proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServiceClient} The delegate callback based client

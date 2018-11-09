@@ -33,7 +33,7 @@ proto.fairwaycorp.blockchainprotobuf.btc = require('./assetService_pb.js');
 proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -69,7 +69,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient =
 proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient} The delegate callback based client

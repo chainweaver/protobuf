@@ -33,7 +33,7 @@ proto.fairwaycorp.blockchainprotobuf.btc = require('./addressforwardingService_p
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -69,7 +69,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient =
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient} The delegate callback based client

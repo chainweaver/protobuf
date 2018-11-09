@@ -33,7 +33,7 @@ proto.fairwaycorp.blockchainprotobuf.btc = require('./analyticsService_pb.js');
 proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -69,7 +69,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient =
 proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options['format'] = 'binary';
 
   /**
    * @private @const {!proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient} The delegate callback based client
