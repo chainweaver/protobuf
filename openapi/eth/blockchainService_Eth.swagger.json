@@ -159,13 +159,13 @@
           "title": "The hash of the block; in Ethereum, the hashing function is Keccak/SHA3"
         },
         "height": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain."
         },
         "depth": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain."
         },
         "chain": {
@@ -174,22 +174,22 @@
         },
         "total": {
           "type": "string",
-          "format": "int64",
+          "format": "uint64",
           "description": "The total number of wei transacted in this block."
         },
         "fees": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The total number of fees—in wei—collected by miners in this block."
         },
         "size": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Raw size of block (including header and all transactions) in bytes."
         },
         "ver": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Block version."
         },
         "time": {
@@ -209,13 +209,13 @@
           "description": "Address of the peer that sent BlockCypher’s servers this block."
         },
         "nonce": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The number used by a miner to generate this block."
         },
         "n_tx": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Number of transactions in this block."
         },
         "prev_block": {
@@ -273,8 +273,8 @@
           "description": "The name of the blockchain represented, in the form of $COIN.$CHAIN."
         },
         "height": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The current height of the blockchain; i.e., the number of blocks in the blockchain."
         },
         "hash": {
@@ -298,28 +298,28 @@
           "description": "The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block."
         },
         "unconfirmed_count": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Number of unconfirmed transactions in memory pool (likely to be included in next block)."
         },
         "high_gas_price": {
           "type": "string",
-          "format": "int64",
+          "format": "uint64",
           "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks."
         },
         "medium_gas_price": {
           "type": "string",
-          "format": "int64",
+          "format": "uint64",
           "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks."
         },
         "low_gas_price": {
           "type": "string",
-          "format": "int64",
+          "format": "uint64",
           "description": "A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks."
         },
         "last_fork_height": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
         },
         "last_fork_hash": {

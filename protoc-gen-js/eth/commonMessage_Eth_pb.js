@@ -239,7 +239,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.deserializeBinaryFromReader 
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setHeight(value);
       break;
     case 3:
@@ -263,23 +263,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.deserializeBinaryFromReader 
       msg.setPreviousUrl(value);
       break;
     case 8:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setUnconfirmedCount(value);
       break;
     case 9:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setHighGasPrice(value);
       break;
     case 10:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setMediumGasPrice(value);
       break;
     case 11:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setLowGasPrice(value);
       break;
     case 13:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setLastForkHeight(value);
       break;
     case 14:
@@ -324,7 +324,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.serializeBinaryToWriter = fu
   }
   f = message.getHeight();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       2,
       f
     );
@@ -366,35 +366,35 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.serializeBinaryToWriter = fu
   }
   f = message.getUnconfirmedCount();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       8,
       f
     );
   }
   f = message.getHighGasPrice();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeUint64(
       9,
       f
     );
   }
   f = message.getMediumGasPrice();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeUint64(
       10,
       f
     );
   }
   f = message.getLowGasPrice();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeUint64(
       11,
       f
     );
   }
   f = message.getLastForkHeight();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       13,
       f
     );
@@ -425,7 +425,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.setName = function
 
 
 /**
- * optional int32 height = 2;
+ * optional uint64 height = 2;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.getHeight = function() {
@@ -515,7 +515,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.setPreviousUrl = f
 
 
 /**
- * optional int32 unconfirmed_count = 8;
+ * optional uint64 unconfirmed_count = 8;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.getUnconfirmedCount = function() {
@@ -530,7 +530,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.setUnconfirmedCoun
 
 
 /**
- * optional int64 high_gas_price = 9;
+ * optional uint64 high_gas_price = 9;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.getHighGasPrice = function() {
@@ -545,7 +545,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.setHighGasPrice = 
 
 
 /**
- * optional int64 medium_gas_price = 10;
+ * optional uint64 medium_gas_price = 10;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.getMediumGasPrice = function() {
@@ -560,7 +560,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.setMediumGasPrice 
 
 
 /**
- * optional int64 low_gas_price = 11;
+ * optional uint64 low_gas_price = 11;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.getLowGasPrice = function() {
@@ -575,7 +575,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.setLowGasPrice = f
 
 
 /**
- * optional int32 last_fork_height = 13;
+ * optional uint64 last_fork_height = 13;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.getLastForkHeight = function() {
@@ -722,11 +722,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.deserializeBinaryFromReader = fun
       msg.setHash(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setHeight(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setDepth(value);
       break;
     case 4:
@@ -734,19 +734,19 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.deserializeBinaryFromReader = fun
       msg.setChain(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setTotal(value);
       break;
     case 6:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setFees(value);
       break;
     case 7:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setSize(value);
       break;
     case 8:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setVer(value);
       break;
     case 9:
@@ -766,11 +766,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.deserializeBinaryFromReader = fun
       msg.setRelayedBy(value);
       break;
     case 13:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setNonce(value);
       break;
     case 14:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setNTx(value);
       break;
     case 15:
@@ -847,14 +847,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.serializeBinaryToWriter = functio
   }
   f = message.getHeight();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       2,
       f
     );
   }
   f = message.getDepth();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       3,
       f
     );
@@ -868,28 +868,28 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.serializeBinaryToWriter = functio
   }
   f = message.getTotal();
   if (f !== 0) {
-    writer.writeInt64(
+    writer.writeUint64(
       5,
       f
     );
   }
   f = message.getFees();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       6,
       f
     );
   }
   f = message.getSize();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       7,
       f
     );
   }
   f = message.getVer();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       8,
       f
     );
@@ -924,14 +924,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.serializeBinaryToWriter = functio
   }
   f = message.getNonce();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       13,
       f
     );
   }
   f = message.getNTx();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       14,
       f
     );
@@ -1018,7 +1018,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setHash = function(valu
 
 
 /**
- * optional int32 height = 2;
+ * optional uint64 height = 2;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getHeight = function() {
@@ -1033,7 +1033,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setHeight = function(va
 
 
 /**
- * optional int32 depth = 3;
+ * optional uint64 depth = 3;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getDepth = function() {
@@ -1063,7 +1063,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setChain = function(val
 
 
 /**
- * optional int64 total = 5;
+ * optional uint64 total = 5;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getTotal = function() {
@@ -1078,7 +1078,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setTotal = function(val
 
 
 /**
- * optional int32 fees = 6;
+ * optional uint64 fees = 6;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getFees = function() {
@@ -1093,7 +1093,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setFees = function(valu
 
 
 /**
- * optional int32 size = 7;
+ * optional uint64 size = 7;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getSize = function() {
@@ -1108,7 +1108,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setSize = function(valu
 
 
 /**
- * optional int32 ver = 8;
+ * optional uint64 ver = 8;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getVer = function() {
@@ -1183,7 +1183,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setRelayedBy = function
 
 
 /**
- * optional int32 nonce = 13;
+ * optional uint64 nonce = 13;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getNonce = function() {
@@ -1198,7 +1198,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setNonce = function(val
 
 
 /**
- * optional int32 n_tx = 14;
+ * optional uint64 n_tx = 14;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getNTx = function() {
@@ -1483,7 +1483,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.deserializeBinaryFromReader = fun
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setBlockHeight(value);
       break;
     case 2:
@@ -1491,15 +1491,15 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.deserializeBinaryFromReader = fun
       msg.setTxHash(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setTxInputN(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setTxOutputN(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setValue(value);
       break;
     case 6:
@@ -1507,11 +1507,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.deserializeBinaryFromReader = fun
       msg.setDoubleSpend(value);
       break;
     case 7:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setConfirmations(value);
       break;
     case 8:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setRefBalance(value);
       break;
     case 9:
@@ -1553,7 +1553,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.serializeBinaryToWriter = functio
   var f = undefined;
   f = message.getBlockHeight();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       1,
       f
     );
@@ -1567,21 +1567,21 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.serializeBinaryToWriter = functio
   }
   f = message.getTxInputN();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       3,
       f
     );
   }
   f = message.getTxOutputN();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       4,
       f
     );
   }
   f = message.getValue();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       5,
       f
     );
@@ -1595,14 +1595,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.serializeBinaryToWriter = functio
   }
   f = message.getConfirmations();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       7,
       f
     );
   }
   f = message.getRefBalance();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       8,
       f
     );
@@ -1625,7 +1625,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.serializeBinaryToWriter = functio
 
 
 /**
- * optional int32 block_height = 1;
+ * optional uint64 block_height = 1;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.getBlockHeight = function() {
@@ -1655,7 +1655,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.setTxHash = function(va
 
 
 /**
- * optional int32 tx_input_n = 3;
+ * optional uint64 tx_input_n = 3;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.getTxInputN = function() {
@@ -1670,7 +1670,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.setTxInputN = function(
 
 
 /**
- * optional int32 tx_output_n = 4;
+ * optional uint64 tx_output_n = 4;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.getTxOutputN = function() {
@@ -1685,7 +1685,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.setTxOutputN = function
 
 
 /**
- * optional int32 value = 5;
+ * optional uint64 value = 5;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.getValue = function() {
@@ -1717,7 +1717,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.setDoubleSpend = functi
 
 
 /**
- * optional int32 confirmations = 7;
+ * optional uint64 confirmations = 7;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.getConfirmations = function() {
@@ -1732,7 +1732,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.setConfirmations = func
 
 
 /**
- * optional int32 ref_balance = 8;
+ * optional uint64 ref_balance = 8;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.getRefBalance = function() {
@@ -2183,7 +2183,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setBlockHeight(value);
       break;
     case 2:
@@ -2195,23 +2195,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.deserializeBinaryFromReader = functi
       msg.addAddresses(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setTotal(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setFees(value);
       break;
     case 6:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setSize(value);
       break;
     case 7:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setGasUsed(value);
       break;
     case 8:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setGasPrice(value);
       break;
     case 9:
@@ -2223,7 +2223,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.deserializeBinaryFromReader = functi
       msg.setReceived(value);
       break;
     case 11:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setVer(value);
       break;
     case 12:
@@ -2231,15 +2231,15 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.deserializeBinaryFromReader = functi
       msg.setDoubleSpend(value);
       break;
     case 13:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setVinSz(value);
       break;
     case 14:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setVoutSz(value);
       break;
     case 15:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setConfirmations(value);
       break;
     case 16:
@@ -2263,7 +2263,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.deserializeBinaryFromReader = functi
       msg.setConfirmed(value);
       break;
     case 21:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setGasLimit(value);
       break;
     case 22:
@@ -2271,7 +2271,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.deserializeBinaryFromReader = functi
       msg.setContractCreation(value);
       break;
     case 23:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setReceiveCount(value);
       break;
     case 24:
@@ -2279,7 +2279,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.deserializeBinaryFromReader = functi
       msg.setBlockHash(value);
       break;
     case 25:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setBlockIndex(value);
       break;
     case 26:
@@ -2321,7 +2321,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
   var f = undefined;
   f = message.getBlockHeight();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       1,
       f
     );
@@ -2342,35 +2342,35 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
   }
   f = message.getTotal();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       4,
       f
     );
   }
   f = message.getFees();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       5,
       f
     );
   }
   f = message.getSize();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       6,
       f
     );
   }
   f = message.getGasUsed();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       7,
       f
     );
   }
   f = message.getGasPrice();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       8,
       f
     );
@@ -2391,7 +2391,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
   }
   f = message.getVer();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       11,
       f
     );
@@ -2405,21 +2405,21 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
   }
   f = message.getVinSz();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       13,
       f
     );
   }
   f = message.getVoutSz();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       14,
       f
     );
   }
   f = message.getConfirmations();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       15,
       f
     );
@@ -2461,7 +2461,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
   }
   f = message.getGasLimit();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       21,
       f
     );
@@ -2475,7 +2475,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
   }
   f = message.getReceiveCount();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       23,
       f
     );
@@ -2489,7 +2489,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
   }
   f = message.getBlockIndex();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       25,
       f
     );
@@ -2512,7 +2512,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
 
 
 /**
- * optional int32 block_height = 1;
+ * optional uint64 block_height = 1;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getBlockHeight = function() {
@@ -2571,7 +2571,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.clearAddressesList = funct
 
 
 /**
- * optional int32 total = 4;
+ * optional uint64 total = 4;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getTotal = function() {
@@ -2586,7 +2586,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setTotal = function(value)
 
 
 /**
- * optional int32 fees = 5;
+ * optional uint64 fees = 5;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getFees = function() {
@@ -2601,7 +2601,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setFees = function(value) 
 
 
 /**
- * optional int32 size = 6;
+ * optional uint64 size = 6;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getSize = function() {
@@ -2616,7 +2616,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setSize = function(value) 
 
 
 /**
- * optional int32 gas_used = 7;
+ * optional uint64 gas_used = 7;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getGasUsed = function() {
@@ -2631,7 +2631,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setGasUsed = function(valu
 
 
 /**
- * optional int32 gas_price = 8;
+ * optional uint64 gas_price = 8;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getGasPrice = function() {
@@ -2676,7 +2676,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setReceived = function(val
 
 
 /**
- * optional int32 ver = 11;
+ * optional uint64 ver = 11;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getVer = function() {
@@ -2708,7 +2708,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setDoubleSpend = function(
 
 
 /**
- * optional int32 vin_sz = 13;
+ * optional uint64 vin_sz = 13;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getVinSz = function() {
@@ -2723,7 +2723,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setVinSz = function(value)
 
 
 /**
- * optional int32 vout_sz = 14;
+ * optional uint64 vout_sz = 14;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getVoutSz = function() {
@@ -2738,7 +2738,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setVoutSz = function(value
 
 
 /**
- * optional int32 confirmations = 15;
+ * optional uint64 confirmations = 15;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getConfirmations = function() {
@@ -2842,7 +2842,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setConfirmed = function(va
 
 
 /**
- * optional int32 gas_limit = 21;
+ * optional uint64 gas_limit = 21;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getGasLimit = function() {
@@ -2874,7 +2874,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setContractCreation = func
 
 
 /**
- * optional int32 receive_count = 23;
+ * optional uint64 receive_count = 23;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getReceiveCount = function() {
@@ -2904,7 +2904,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setBlockHash = function(va
 
 
 /**
- * optional int32 block_index = 25;
+ * optional uint64 block_index = 25;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getBlockIndex = function() {
@@ -3058,35 +3058,35 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.deserializeBinaryFromReader = f
       msg.setAddress(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setTotalReceived(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setTotalSent(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setBalance(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setUnconfirmedBalance(value);
       break;
     case 6:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setFinalBalance(value);
       break;
     case 7:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setNTx(value);
       break;
     case 8:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setUnconfirmedNTx(value);
       break;
     case 9:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setFinalNTx(value);
       break;
     case 10:
@@ -3145,56 +3145,56 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.serializeBinaryToWriter = funct
   }
   f = message.getTotalReceived();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       2,
       f
     );
   }
   f = message.getTotalSent();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       3,
       f
     );
   }
   f = message.getBalance();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       4,
       f
     );
   }
   f = message.getUnconfirmedBalance();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       5,
       f
     );
   }
   f = message.getFinalBalance();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       6,
       f
     );
   }
   f = message.getNTx();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       7,
       f
     );
   }
   f = message.getUnconfirmedNTx();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       8,
       f
     );
   }
   f = message.getFinalNTx();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       9,
       f
     );
@@ -3248,7 +3248,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.setAddress = function
 
 
 /**
- * optional int32 total_received = 2;
+ * optional uint64 total_received = 2;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.getTotalReceived = function() {
@@ -3263,7 +3263,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.setTotalReceived = fu
 
 
 /**
- * optional int32 total_sent = 3;
+ * optional uint64 total_sent = 3;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.getTotalSent = function() {
@@ -3278,7 +3278,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.setTotalSent = functi
 
 
 /**
- * optional int32 balance = 4;
+ * optional uint64 balance = 4;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.getBalance = function() {
@@ -3293,7 +3293,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.setBalance = function
 
 
 /**
- * optional int32 unconfirmed_balance = 5;
+ * optional uint64 unconfirmed_balance = 5;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.getUnconfirmedBalance = function() {
@@ -3308,7 +3308,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.setUnconfirmedBalance
 
 
 /**
- * optional int32 final_balance = 6;
+ * optional uint64 final_balance = 6;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.getFinalBalance = function() {
@@ -3323,7 +3323,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.setFinalBalance = fun
 
 
 /**
- * optional int32 n_tx = 7;
+ * optional uint64 n_tx = 7;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.getNTx = function() {
@@ -3338,7 +3338,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.setNTx = function(val
 
 
 /**
- * optional int32 unconfirmed_n_tx = 8;
+ * optional uint64 unconfirmed_n_tx = 8;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.getUnconfirmedNTx = function() {
@@ -3353,7 +3353,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.setUnconfirmedNTx = f
 
 
 /**
- * optional int32 final_n_tx = 9;
+ * optional uint64 final_n_tx = 9;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Address.prototype.getFinalNTx = function() {
@@ -3777,11 +3777,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.Contract.deserializeBinaryFromReader = 
       msg.setPrivate(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setGasLimit(value);
       break;
     case 6:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setValue(value);
       break;
     case 7:
@@ -3871,14 +3871,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.Contract.serializeBinaryToWriter = func
   }
   f = message.getGasLimit();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       5,
       f
     );
   }
   f = message.getValue();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       6,
       f
     );
@@ -4024,7 +4024,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.setPrivate = functio
 
 
 /**
- * optional int32 gas_limit = 5;
+ * optional uint64 gas_limit = 5;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.getGasLimit = function() {
@@ -4039,7 +4039,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.setGasLimit = functi
 
 
 /**
- * optional int32 value = 6;
+ * optional uint64 value = 6;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.getValue = function() {
@@ -4279,7 +4279,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.deserializeBinaryFromReader = fun
       msg.setAddress(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setConfirmations(value);
       break;
     case 6:
@@ -4287,7 +4287,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.deserializeBinaryFromReader = fun
       msg.setUrl(value);
       break;
     case 7:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setCallbackErrors(value);
       break;
     default:
@@ -4349,7 +4349,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.serializeBinaryToWriter = functio
   }
   f = message.getConfirmations();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       5,
       f
     );
@@ -4363,7 +4363,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.serializeBinaryToWriter = functio
   }
   f = message.getCallbackErrors();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       7,
       f
     );
@@ -4432,7 +4432,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.prototype.setAddress = function(v
 
 
 /**
- * optional int32 confirmations = 5;
+ * optional uint64 confirmations = 5;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Event.prototype.getConfirmations = function() {
@@ -4462,7 +4462,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.prototype.setUrl = function(value
 
 
 /**
- * optional int32 callback_errors = 7;
+ * optional uint64 callback_errors = 7;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Event.prototype.getCallbackErrors = function() {

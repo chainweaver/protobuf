@@ -151,13 +151,13 @@
           "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
         },
         "gas_limit": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Maximum amount of gas to use in contract creation or method execution."
         },
         "value": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
         },
         "name": {
