@@ -734,7 +734,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.deserializeBinaryFromReader = fun
       msg.setChain(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setTotal(value);
       break;
     case 6:
@@ -868,7 +868,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.serializeBinaryToWriter = functio
   }
   f = message.getTotal();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeInt64(
       5,
       f
     );
@@ -1063,7 +1063,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setChain = function(val
 
 
 /**
- * optional int32 total = 5;
+ * optional int64 total = 5;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getTotal = function() {

@@ -173,8 +173,8 @@
           "title": "The name of the blockchain represented, in the form of $COIN.$CHAIN"
         },
         "total": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "int64",
           "description": "The total number of wei transacted in this block."
         },
         "fees": {

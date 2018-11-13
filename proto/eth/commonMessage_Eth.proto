@@ -52,7 +52,7 @@ message Block {
   // The name of the blockchain represented, in the form of $COIN.$CHAIN
   string chain = 4;
   // The total number of wei transacted in this block.
-  int32 total = 5;
+  int64 total = 5;
   // The total number of fees—in wei—collected by miners in this block.
   int32 fees = 6;
   // Raw size of block (including header and all transactions) in bytes.
