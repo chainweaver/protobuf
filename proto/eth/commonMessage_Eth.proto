@@ -31,11 +31,11 @@ message Blockchain {
   // Number of unconfirmed transactions in memory pool (likely to be included in next block).
   int32 unconfirmed_count = 8;
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks.
-  int32 high_gas_price = 9;
+  int64 high_gas_price = 9;
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks.
-  int32 medium_gas_price = 10;
+  int64 medium_gas_price = 10;
   // A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks.
-  int32 low_gas_price = 11;
+  int64 low_gas_price = 11;
   // Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
   int32 last_fork_height = 13;  
   // Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.

@@ -267,15 +267,15 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.deserializeBinaryFromReader 
       msg.setUnconfirmedCount(value);
       break;
     case 9:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setHighGasPrice(value);
       break;
     case 10:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setMediumGasPrice(value);
       break;
     case 11:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setLowGasPrice(value);
       break;
     case 13:
@@ -373,21 +373,21 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.serializeBinaryToWriter = fu
   }
   f = message.getHighGasPrice();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeInt64(
       9,
       f
     );
   }
   f = message.getMediumGasPrice();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeInt64(
       10,
       f
     );
   }
   f = message.getLowGasPrice();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeInt64(
       11,
       f
     );
@@ -530,7 +530,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.setUnconfirmedCoun
 
 
 /**
- * optional int32 high_gas_price = 9;
+ * optional int64 high_gas_price = 9;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.getHighGasPrice = function() {
@@ -545,7 +545,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.setHighGasPrice = 
 
 
 /**
- * optional int32 medium_gas_price = 10;
+ * optional int64 medium_gas_price = 10;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.getMediumGasPrice = function() {
@@ -560,7 +560,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.setMediumGasPrice 
 
 
 /**
- * optional int32 low_gas_price = 11;
+ * optional int64 low_gas_price = 11;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Blockchain.prototype.getLowGasPrice = function() {

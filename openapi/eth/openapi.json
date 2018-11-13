@@ -886,18 +886,18 @@
           "description": "Number of unconfirmed transactions in memory pool (likely to be included in next block)."
         },
         "high_gas_price": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "int64",
           "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks."
         },
         "medium_gas_price": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "int64",
           "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks."
         },
         "low_gas_price": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "int64",
           "description": "A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks."
         },
         "last_fork_height": {
