@@ -68,7 +68,7 @@ message Block {
   // Address of the peer that sent BlockCypher’s servers this block.
   string relayed_by = 12;
   // The number used by a miner to generate this block.
-  uint64 nonce = 13;
+  uint32 nonce = 13;
   // Number of transactions in this block.
   uint64 n_tx = 14;
   // The hash of the previous block in the blockchain.
