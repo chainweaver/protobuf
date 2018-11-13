@@ -11,8 +11,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var commonMessage_pb = require('./commonMessage_pb.js');
+goog.object.extend(proto, commonMessage_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobResultsRequest', null, global);
@@ -68,8 +68,8 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.toObject = fu
     address: jspb.Message.getFieldWithDefault(msg, 3, ""),
     valueThreshold: jspb.Message.getFieldWithDefault(msg, 4, 0),
     limit: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    start: (f = msg.getStart()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    end: (f = msg.getEnd()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    start: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    end: jspb.Message.getFieldWithDefault(msg, 7, ""),
     degree: jspb.Message.getFieldWithDefault(msg, 8, 0),
     source: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
@@ -129,13 +129,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.deserializeBi
       msg.setLimit(value);
       break;
     case 6:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setStart(value);
       break;
     case 7:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setEnd(value);
       break;
     case 8:
@@ -211,19 +209,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.serializeBina
     );
   }
   f = message.getStart();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       6,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getEnd();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       7,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getDegree();
@@ -319,62 +315,32 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.prototype.set
 
 
 /**
- * optional google.protobuf.Timestamp start = 6;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string start = 6;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.prototype.getStart = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 6));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.prototype.setStart = function(value) {
-  jspb.Message.setWrapperField(this, 6, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.prototype.clearStart = function() {
-  this.setStart(undefined);
+  jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.prototype.hasStart = function() {
-  return jspb.Message.getField(this, 6) != null;
-};
-
-
-/**
- * optional google.protobuf.Timestamp end = 7;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string end = 7;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.prototype.getEnd = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.prototype.setEnd = function(value) {
-  jspb.Message.setWrapperField(this, 7, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.prototype.clearEnd = function() {
-  this.setEnd(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest.prototype.hasEnd = function() {
-  return jspb.Message.getField(this, 7) != null;
+  jspb.Message.setProto3StringField(this, 7, value);
 };
 
 

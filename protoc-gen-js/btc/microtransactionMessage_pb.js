@@ -12,6 +12,7 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_pb = require('./commonMessage_pb.js');
+goog.object.extend(proto, commonMessage_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.MicroTX', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest', null, global);
 
@@ -448,7 +449,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MicroTX.prototype.setTosignList = funct
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.MicroTX.prototype.addTosign = function(value, opt_index) {
@@ -477,7 +478,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MicroTX.prototype.setSignaturesList = f
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.MicroTX.prototype.addSignatures = function(value, opt_index) {
@@ -1043,7 +1044,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest.prototype.setTosignList 
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest.prototype.addTosign = function(value, opt_index) {
@@ -1072,7 +1073,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest.prototype.setSignaturesL
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest.prototype.addSignatures = function(value, opt_index) {

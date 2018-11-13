@@ -3,8 +3,6 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf.btc;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
 
-import "google/protobuf/any.proto";
-
 import "commonMessage.proto";
 
 message CreateForwardEndpointRequest {
@@ -24,7 +22,7 @@ message CreateForwardEndpointRequest {
   //Optional Percentage of the transaction to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified.
   float process_fees_percent = 8;
   //Optional The URL to call anytime a new is forwarded.
-  google.protobuf.Any callback_url = 9;
+  string callback_url = 9;
   //Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook.
   bool enable_confirmations = 10;
   //Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000.

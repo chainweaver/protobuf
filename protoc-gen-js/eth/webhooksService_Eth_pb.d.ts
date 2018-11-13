@@ -28,8 +28,8 @@ export class Event {
   setAddress(a: string): void;
   getConfirmations(): number;
   setConfirmations(a: number): void;
-  getUrl(): {};
-  setUrl(a: {}): void;
+  getUrl(): string;
+  setUrl(a: string): void;
   getCallbackErrors(): number;
   setCallbackErrors(a: number): void;
   serializeBinary(): Uint8Array;
@@ -76,8 +76,8 @@ export class PostCreateWebHookEndpointRequest {
   setAddress(a: string): void;
   getConfirmations(): number;
   setConfirmations(a: number): void;
-  getUrl(): {};
-  setUrl(a: {}): void;
+  getUrl(): string;
+  setUrl(a: string): void;
   getCallbackErrors(): number;
   setCallbackErrors(a: number): void;
   serializeBinary(): Uint8Array;

@@ -3,8 +3,6 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf.btc;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
 
-import "google/protobuf/timestamp.proto";
-
 import "commonMessage.proto";
 
 message CreateAnalyticsJobRequest {
@@ -17,9 +15,9 @@ message CreateAnalyticsJobRequest {
   //Limit of results to return.
   int32 limit = 5;
   //Beginning of time range to query.
-  google.protobuf.Timestamp start = 6;
+  string start = 6;
   //End of time range to query.
-  google.protobuf.Timestamp end = 7;
+  string end = 7;
   //Degree of connectiveness to query.
   int32 degree = 8;
   //IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)

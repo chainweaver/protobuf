@@ -3,8 +3,6 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf.eth;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
 
-import "google/protobuf/any.proto";
-import "google/protobuf/timestamp.proto";
 import "commonMessage_Eth.proto";
 
 message PostCreateContractEndpointRequest {
@@ -26,11 +24,11 @@ message PostCreateContractEndpointRequest {
   // Hex-encoded binary compilation of this contract.
   string bin = 9;
   // JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher.
-  google.protobuf.Any abi = 10;
+  string abi = 10;
   // Hex-encoded address of this contract.
   string address = 11;
   // Timestamp when this contract was confirmed in the Ethereum blockchain.
-  google.protobuf.Timestamp created = 12;
+  string created = 12;
   // Hex-encoded transaction hash that created this contract.
   string creation_tx_hash = 13;
   // If this is a response from a calling a contract method, this array of results may appear if the method returns any.
@@ -63,11 +61,11 @@ message PostCallContractMethodEndpointRequest {
   // Hex-encoded binary compilation of this contract.
   string bin = 11;
   // JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher.
-  google.protobuf.Any abi = 12;
+  string abi = 12;
   // Hex-encoded address of this contract.
   string address = 13;
   // Timestamp when this contract was confirmed in the Ethereum blockchain.
-  google.protobuf.Timestamp created = 14;
+  string created = 14;
   // Hex-encoded transaction hash that created this contract.
   string creation_tx_hash = 15;
   // If this is a response from a calling a contract method, this array of results may appear if the method returns any.

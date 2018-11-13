@@ -11,8 +11,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
 var commonMessage_pb = require('./commonMessage_pb.js');
+goog.object.extend(proto, commonMessage_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointResponse', null, global);
@@ -80,7 +80,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.toObject =
     processFeesAddress: jspb.Message.getFieldWithDefault(msg, 6, ""),
     processFeesSatoshis: jspb.Message.getFieldWithDefault(msg, 7, 0),
     processFeesPercent: +jspb.Message.getFieldWithDefault(msg, 8, 0.0),
-    callbackUrl: (f = msg.getCallbackUrl()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
+    callbackUrl: jspb.Message.getFieldWithDefault(msg, 9, ""),
     enableConfirmations: jspb.Message.getFieldWithDefault(msg, 10, false),
     miningFeesSatoshis: jspb.Message.getFieldWithDefault(msg, 11, 0),
     txsList: jspb.Message.getRepeatedField(msg, 12)
@@ -153,8 +153,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.deserializ
       msg.setProcessFeesPercent(value);
       break;
     case 9:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setCallbackUrl(value);
       break;
     case 10:
@@ -255,11 +254,10 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.serializeB
     );
   }
   f = message.getCallbackUrl();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       9,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
+      f
     );
   }
   f = message.getEnableConfirmations();
@@ -407,32 +405,17 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.prototype.
 
 
 /**
- * optional google.protobuf.Any callback_url = 9;
- * @return {?proto.google.protobuf.Any}
+ * optional string callback_url = 9;
+ * @return {string}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.prototype.getCallbackUrl = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 9));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
-/** @param {?proto.google.protobuf.Any|undefined} value */
+/** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.prototype.setCallbackUrl = function(value) {
-  jspb.Message.setWrapperField(this, 9, value);
-};
-
-
-proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.prototype.clearCallbackUrl = function() {
-  this.setCallbackUrl(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.prototype.hasCallbackUrl = function() {
-  return jspb.Message.getField(this, 9) != null;
+  jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -484,7 +467,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.prototype.
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.prototype.addTxs = function(value, opt_index) {

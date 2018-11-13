@@ -12,6 +12,7 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_pb = require('./commonMessage_pb.js');
+goog.object.extend(proto, commonMessage_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.AddAddressesToWalletEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest', null, global);
@@ -174,7 +175,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.ListWallets.prototype.setWalletNamesLis
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.ListWallets.prototype.addWalletNames = function(value, opt_index) {
@@ -487,7 +488,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain.prototype.setAddr
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain.prototype.addAddresses = function(value, opt_index) {
@@ -576,7 +577,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain.prototype.setPubk
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain.prototype.addPubkeys = function(value, opt_index) {
@@ -865,7 +866,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest.prototype.s
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest.prototype.addAddresses = function(value, opt_index) {
@@ -1211,7 +1212,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest.prototype
 
 
 /**
- * @param {!number} value
+ * @param {number} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest.prototype.addSubchainIndexes = function(value, opt_index) {

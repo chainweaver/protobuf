@@ -22,8 +22,8 @@ export class Address {
   setUnconfirmedNTx(a: number): void;
   getFinalNTx(): number;
   setFinalNTx(a: number): void;
-  getTxUrl(): {};
-  setTxUrl(a: {}): void;
+  getTxUrl(): string;
+  setTxUrl(a: string): void;
   getTxs(): {};
   setTxs(a: {}): void;
   getTxrefs(): {};
@@ -132,18 +132,18 @@ export class OAPTX {
   setAssetid(a: string): void;
   getHash(): string;
   setHash(a: string): void;
-  getConfirmed(): {};
-  setConfirmed(a: {}): void;
-  getReceived(): {};
-  setReceived(a: {}): void;
+  getConfirmed(): string;
+  setConfirmed(a: string): void;
+  getReceived(): string;
+  setReceived(a: string): void;
   getOapMeta(): string;
   setOapMeta(a: string): void;
   getDoubleSpend(): boolean;
   setDoubleSpend(a: boolean): void;
-  getInputs(): {};
-  setInputs(a: {}): void;
-  getOutputs(): {};
-  setOutputs(a: {}): void;
+  getInputs(): string;
+  setInputs(a: string): void;
+  getOutputs(): string;
+  setOutputs(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => OAPTX;
 }

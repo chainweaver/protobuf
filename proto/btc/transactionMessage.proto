@@ -3,9 +3,6 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf.btc;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
 
-import "google/protobuf/timestamp.proto";
-import "google/protobuf/any.proto";
-
 import "commonMessage.proto";
 
 message TransactionHashEndpointRequest {
@@ -46,7 +43,7 @@ message NewTransactionEndpointRequest {
   //Address of the peer that sent Block’s servers this transaction.
   string relayed_by = 9;
   //Time this transaction was received by Block’s servers.
-  google.protobuf.Timestamp received = 10;
+  string received = 10;
   //Version number, typically 1 for Bitcoin transactions.
   int32 ver = 11;
   //Time when transaction can be valid. Can be interpreted in two ways: if less than 500 million, refers to block height. If more, refers to Unix epoch time.
@@ -68,7 +65,7 @@ message NewTransactionEndpointRequest {
   //Optional The percentage chance this transaction will not be double-spent against, if unconfirmed. For more information, check the section on Confidence Factor.
   float confidence = 20;
   //Optional Time at which transaction was included in a block; only present for confirmed transactions.
-  google.protobuf.Timestamp confirmed = 21;
+  string confirmed = 21;
   //Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
   int32 receive_count = 22;
   //Optional Address Block will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent.
@@ -84,9 +81,9 @@ message NewTransactionEndpointRequest {
   //Optional Hex-encoded bytes of the transaction, as sent over the network.
   string hex = 28;
   //Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the Block URL to query the next set of TXInputs (within a TX object).
-  google.protobuf.Any next_inputs = 29;
+  string next_inputs = 29;
   //Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the Block URL to query the next set of TXOutputs(within a TX object).
-  google.protobuf.Any next_outputs = 30;
+  string next_outputs = 30;
   bool includeToSignTx = 31;
 }
 

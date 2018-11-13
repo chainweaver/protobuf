@@ -3,9 +3,6 @@ syntax = "proto3";
 package fairwaycorp.blockchainprotobuf.btc;
 option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
 
-import "google/protobuf/timestamp.proto";
-import "google/protobuf/any.proto";
-
 enum NetworkAllowingAlias {
   option allow_alias = true;
   MAINNET = 0;
@@ -82,7 +79,7 @@ message TX {
   //Address of the peer that sent Block’s servers this transaction.
   string relayed_by = 8; 
   //Time this transaction was received by Block’s servers.
-  google.protobuf.Timestamp received = 9; 
+  string received = 9; 
   //Version number, typically 1 for Bitcoin transactions.
   int32 ver = 10;  
   //Time when transaction can be valid. Can be interpreted in two ways: if less than 500 million, refers to block height. If more, refers to Unix epoch time.
@@ -104,7 +101,7 @@ message TX {
   //Optional The percentage chance this transaction will not be double-spent against, if unconfirmed. For more information, check the section on Confidence Factor.
   float confidence = 19;
   //Optional Time at which transaction was included in a block; only present for confirmed transactions.
-  google.protobuf.Timestamp confirmed = 20; 
+  string confirmed = 20; 
   //Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
   int32 receive_count = 21; 
   //Optional Address Block will use to send back your change, if you constructed this transaction. If not set, defaults to the address from which the coins were originally sent.
@@ -120,9 +117,9 @@ message TX {
   //Optional Hex-encoded bytes of the transaction, as sent over the network.
   string hex = 27; 
   //Optional If there are more transaction inptus that couldn’t fit into the TXInput array, this is the Block URL to query the next set of TXInputs (within a TX object).
-  google.protobuf.Any next_inputs = 28;  
+  string next_inputs = 28;  
   //Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the Block URL to query the next set of TXOutputs(within a TX object).
-  google.protobuf.Any next_outputs = 29; 
+  string next_outputs = 29; 
 }
 
 message Wallet {
@@ -180,7 +177,7 @@ message Address {
   // Final number of transactions, including confirmed and unconfirmed transactions, for this address.
   int32 final_n_tx = 11;
   // Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.
-  google.protobuf.Any tx_url = 12; 
+  string tx_url = 12; 
   // Array of full transaction details associated with this address. Usually only returned from the Address Full Endpoint.
   repeated TX txs = 13;  
   // Optional Array of transaction inputs and outputs for this address. Usually only returned from the standard Address Endpoint.
@@ -247,11 +244,11 @@ message TXRef {
   //	Optional The percentage chance this transaction will not be double-spent against, if unconfirmed. For more information, check the section on Confidence Factor.
   float confidence = 13;   
   //Optional Time at which transaction was included in a block; only present for confirmed transactions.
-  google.protobuf.Timestamp confirmed = 14;   
+  string confirmed = 14;   
   //Optional The transaction hash that spent this output. Only returned for outputs that have been spent. The spending transaction may be unconfirmed.
   string spent_by = 15; 
   //Optional Time this transaction was received by Block’s servers; only present for unconfirmed transactions.
-  google.protobuf.Timestamp received = 16; 
+  string received = 16; 
   //Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions.
   int32 receive_count = 17;  
   //Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
@@ -289,17 +286,17 @@ message OAPTX {
   // This transaction’s unique hash; same as the underlying transaction on the asset’s parent blockchain.
   string hash = 3;  
   // Optional Time this transaction was confirmed; only returned for confirmed transactions.
-  google.protobuf.Timestamp confirmed = 4; 
+  string confirmed = 4; 
   // Time this transaction was received.
-  google.protobuf.Timestamp received = 5; 
+  string received = 5; 
   // Optional Associated hex-encoded metadata with this transaction, if it exists.
   string oap_meta = 6; 
   // true if this is an attempted double spend; false otherwise.
   bool double_spend = 7; 
   // Array of input data, which can be seen explicitly in the cURL example. Very similar to array of TXInputs, but with values related to assets instead of satoshis.
-  repeated google.protobuf.Any inputs = 8; 
+  repeated string inputs = 8; 
   // Array of output data, which can be seen explicitly in the cURL example. Very similar to array of TXOutputs, but with values related to assets instead of satoshis.  
-  repeated google.protobuf.Any outputs = 9; 
+  repeated string outputs = 9; 
 }
 
 message TXSkeleton {
@@ -348,7 +345,7 @@ message DescribedBelow {
   //The radius (in meters) of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers. In a general sense, this represents an approximate confidence interval in our calculated aggregated_origin; the smaller the radius, the more confidence in our aggregated_origin assessment.
   int32 aggregated_origin_radius = 6;
   //The timestamp when BlockCypher first received this transaction.
-  google.protobuf.Timestamp first_received = 7;
+  string first_received = 7;
 }
 
 message FirstLocation {
@@ -369,9 +366,9 @@ message JobArgs {
   //Limit of results to return.
   int32 limit = 3;
   //Beginning of time range to query.
-  google.protobuf.Timestamp start = 4;
+  string start = 4;
   //End of time range to query.
-  google.protobuf.Timestamp end = 5;
+  string end = 5;
   //Degree of connectiveness to query.
   int32 degree = 6;
   //IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port combination found from another API lookup (for example, relayed_by from the Transaction Hash Endpoint)
@@ -384,9 +381,9 @@ message Job {
   //The engine used for the job query.
   string analytics_engine = 2;
   //The time this job was created.
-  google.protobuf.Timestamp created_at = 3;
+  string created_at = 3;
   //Optional When this job was completed; only present on complete jobs.
-  google.protobuf.Timestamp completed_at = 4;
+  string completed_at = 4;
   //true if this job is finished processing, false otherwise.
   bool finished = 5;
   //true if this job has begun processing, false otherwise.
@@ -394,7 +391,7 @@ message Job {
   //Unique identifier for this job, used to get job status and results.
   string ticket = 7;
   //ptional URL to query job results; only present on complete jobs.
-  google.protobuf.Any result_path = 8;
+  string result_path = 8;
   //Query arguments for this job.
   JobArgs args = 9;
 }
@@ -405,7 +402,7 @@ message JobResults {
   //true if there are more results in a separate page; false otherwise.
   bool more = 2;
   //Optional URL to get the next page of results; only present if there are more results to show.
-  google.protobuf.Any next_page = 3;
+  string next_page = 3;
   //Results of analytics job; structure of results are dependent on engine-type of query, but are generally either strings of address hashes or JSON objects.
   repeated JobResultArr results = 4;
 }
@@ -431,7 +428,7 @@ message TXConfidence {
   //The hash of the transaction. While reasonably unique, using hashes as identifiers may be unsafe.
   string txhash = 4;
   //The BlockCypher URL one can use to query more detailed information about this transaction.
-  google.protobuf.Any txurl = 5;
+  string txurl = 5;
 }
 
 message AddressForward {
@@ -450,7 +447,7 @@ message AddressForward {
   //Optional Percentage of the transaction to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified.
   float process_fees_percent = 7;
   //Optional The URL to call anytime a new is forwarded.
-  google.protobuf.Any callback_url = 8;
+  string callback_url = 8;
   //Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook.
   bool enable_confirmations = 9;
   //Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000.

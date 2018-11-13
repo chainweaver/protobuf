@@ -8,8 +8,8 @@ export class TXConfidence {
   setConfidence(a: number): void;
   getTxhash(): string;
   setTxhash(a: string): void;
-  getTxurl(): {};
-  setTxurl(a: {}): void;
+  getTxurl(): string;
+  setTxurl(a: string): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => TXConfidence;
 }
