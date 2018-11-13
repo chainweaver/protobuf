@@ -766,7 +766,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.deserializeBinaryFromReader = fun
       msg.setRelayedBy(value);
       break;
     case 13:
-      var value = /** @type {number} */ (reader.readUint32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setNonce(value);
       break;
     case 14:
@@ -924,7 +924,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.serializeBinaryToWriter = functio
   }
   f = message.getNonce();
   if (f !== 0) {
-    writer.writeUint32(
+    writer.writeUint64(
       13,
       f
     );
@@ -1183,7 +1183,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setRelayedBy = function
 
 
 /**
- * optional uint32 nonce = 13;
+ * optional uint64 nonce = 13;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.getNonce = function() {

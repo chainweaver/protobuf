@@ -792,8 +792,8 @@
           "description": "Address of the peer that sent BlockCypher’s servers this block."
         },
         "nonce": {
-          "type": "integer",
-          "format": "int64",
+          "type": "string",
+          "format": "uint64",
           "description": "The number used by a miner to generate this block."
         },
         "n_tx": {
