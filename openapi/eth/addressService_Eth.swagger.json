@@ -254,8 +254,8 @@
       "type": "object",
       "properties": {
         "block_height": {
-          "type": "string",
-          "format": "uint64",
+          "type": "integer",
+          "format": "int32",
           "description": "Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1."
         },
         "tx_hash": {

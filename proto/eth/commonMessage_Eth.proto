@@ -93,7 +93,7 @@ message Block {
 
 message TXRef {
   // Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1.
-  uint64 block_height = 1;
+  int32 block_height = 1;
   // The hash of the transaction containing this input/output.
   string tx_hash = 2;
   // Index of this input in the enclosing transaction. 0 if it’s an input, -1 if it’s an output.
@@ -125,9 +125,20 @@ message TXSkeleton {
   repeated string errors = 4;
 }
 
+message InputType {
+  uint64 sequence = 1;
+  repeated string addresses = 2;
+}
+
+message OutputType {
+  uint64 value = 1;
+  string script = 2;
+  repeated string addresses = 3;
+}
+
 message TX {
   // Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
-  uint64 block_height = 1;
+  int32 block_height = 1;
   // The hash of the transaction.
   string hash = 2;
   // Array of Ethereum addresses involved in the transaction.
@@ -157,9 +168,9 @@ message TX {
   // Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
   uint64 confirmations = 15;
   // An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API.
-  string inputs = 16;
+  repeated InputType inputs = 16;
   // An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API.
-  string outputs = 17;
+  repeated OutputType outputs = 17;
   // Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions.
   repeated string	internal_txids = 18;
   // Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash).

@@ -17,8 +17,10 @@ goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.Block', null, global
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.Blockchain', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.Contract', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.Event', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.InputType', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.NullValue', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.OutputType', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.TX', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.TXRef', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton', null, global);
@@ -1483,7 +1485,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.deserializeBinaryFromReader = fun
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setBlockHeight(value);
       break;
     case 2:
@@ -1553,7 +1555,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.serializeBinaryToWriter = functio
   var f = undefined;
   f = message.getBlockHeight();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeInt32(
       1,
       f
     );
@@ -1625,7 +1627,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.serializeBinaryToWriter = functio
 
 
 /**
- * optional uint64 block_height = 1;
+ * optional int32 block_height = 1;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.getBlockHeight = function() {
@@ -2076,6 +2078,413 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton.prototype.clearErrorsList = 
  * @extends {jspb.Message}
  * @constructor
  */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.InputType.repeatedFields_, null);
+};
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.InputType, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.fairwaycorp.blockchainprotobuf.eth.InputType.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.InputType';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.eth.InputType.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.InputType} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    sequence: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    addressesList: jspb.Message.getRepeatedField(msg, 2)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.InputType}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.InputType;
+  return proto.fairwaycorp.blockchainprotobuf.eth.InputType.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.InputType} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.InputType}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setSequence(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addAddresses(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.fairwaycorp.blockchainprotobuf.eth.InputType.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.InputType} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSequence();
+  if (f !== 0) {
+    writer.writeUint64(
+      1,
+      f
+    );
+  }
+  f = message.getAddressesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint64 sequence = 1;
+ * @return {number}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.getSequence = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.setSequence = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * repeated string addresses = 2;
+ * @return {!Array<string>}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.getAddressesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/** @param {!Array<string>} value */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.setAddressesList = function(value) {
+  jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.addAddresses = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.clearAddressesList = function() {
+  this.setAddressesList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.OutputType.repeatedFields_, null);
+};
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.OutputType, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.fairwaycorp.blockchainprotobuf.eth.OutputType.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.OutputType';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.repeatedFields_ = [3];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.eth.OutputType.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    value: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    script: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    addressesList: jspb.Message.getRepeatedField(msg, 3)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.OutputType;
+  return proto.fairwaycorp.blockchainprotobuf.eth.OutputType.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setValue(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setScript(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addAddresses(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.fairwaycorp.blockchainprotobuf.eth.OutputType.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getValue();
+  if (f !== 0) {
+    writer.writeUint64(
+      1,
+      f
+    );
+  }
+  f = message.getScript();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getAddressesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional uint64 value = 1;
+ * @return {number}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.getValue = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/** @param {number} value */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.setValue = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string script = 2;
+ * @return {string}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.getScript = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.setScript = function(value) {
+  jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * repeated string addresses = 3;
+ * @return {!Array<string>}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.getAddressesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 3));
+};
+
+
+/** @param {!Array<string>} value */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.setAddressesList = function(value) {
+  jspb.Message.setField(this, 3, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.addAddresses = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+};
+
+
+proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.clearAddressesList = function() {
+  this.setAddressesList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.fairwaycorp.blockchainprotobuf.eth.TX = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.TX.repeatedFields_, null);
 };
@@ -2088,7 +2497,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TX.repeatedFields_ = [3,18];
+proto.fairwaycorp.blockchainprotobuf.eth.TX.repeatedFields_ = [3,16,17,18];
 
 
 
@@ -2134,8 +2543,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.toObject = function(includeInstance,
     vinSz: jspb.Message.getFieldWithDefault(msg, 13, 0),
     voutSz: jspb.Message.getFieldWithDefault(msg, 14, 0),
     confirmations: jspb.Message.getFieldWithDefault(msg, 15, 0),
-    inputs: jspb.Message.getFieldWithDefault(msg, 16, ""),
-    outputs: jspb.Message.getFieldWithDefault(msg, 17, ""),
+    inputsList: jspb.Message.toObjectList(msg.getInputsList(),
+    proto.fairwaycorp.blockchainprotobuf.eth.InputType.toObject, includeInstance),
+    outputsList: jspb.Message.toObjectList(msg.getOutputsList(),
+    proto.fairwaycorp.blockchainprotobuf.eth.OutputType.toObject, includeInstance),
     internalTxidsList: jspb.Message.getRepeatedField(msg, 18),
     parentTx: jspb.Message.getFieldWithDefault(msg, 19, ""),
     confirmed: jspb.Message.getFieldWithDefault(msg, 20, ""),
@@ -2183,7 +2594,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setBlockHeight(value);
       break;
     case 2:
@@ -2243,12 +2654,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.deserializeBinaryFromReader = functi
       msg.setConfirmations(value);
       break;
     case 16:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setInputs(value);
+      var value = new proto.fairwaycorp.blockchainprotobuf.eth.InputType;
+      reader.readMessage(value,proto.fairwaycorp.blockchainprotobuf.eth.InputType.deserializeBinaryFromReader);
+      msg.addInputs(value);
       break;
     case 17:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setOutputs(value);
+      var value = new proto.fairwaycorp.blockchainprotobuf.eth.OutputType;
+      reader.readMessage(value,proto.fairwaycorp.blockchainprotobuf.eth.OutputType.deserializeBinaryFromReader);
+      msg.addOutputs(value);
       break;
     case 18:
       var value = /** @type {string} */ (reader.readString());
@@ -2321,7 +2734,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
   var f = undefined;
   f = message.getBlockHeight();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeInt32(
       1,
       f
     );
@@ -2424,18 +2837,20 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
       f
     );
   }
-  f = message.getInputs();
+  f = message.getInputsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedMessage(
       16,
-      f
+      f,
+      proto.fairwaycorp.blockchainprotobuf.eth.InputType.serializeBinaryToWriter
     );
   }
-  f = message.getOutputs();
+  f = message.getOutputsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedMessage(
       17,
-      f
+      f,
+      proto.fairwaycorp.blockchainprotobuf.eth.OutputType.serializeBinaryToWriter
     );
   }
   f = message.getInternalTxidsList();
@@ -2512,7 +2927,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.serializeBinaryToWriter = function(m
 
 
 /**
- * optional uint64 block_height = 1;
+ * optional int32 block_height = 1;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getBlockHeight = function() {
@@ -2753,32 +3168,64 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setConfirmations = functio
 
 
 /**
- * optional string inputs = 16;
- * @return {string}
+ * repeated InputType inputs = 16;
+ * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.InputType>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getInputs = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getInputsList = function() {
+  return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.InputType>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.fairwaycorp.blockchainprotobuf.eth.InputType, 16));
 };
 
 
-/** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setInputs = function(value) {
-  jspb.Message.setProto3StringField(this, 16, value);
+/** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.InputType>} value */
+proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setInputsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 16, value);
 };
 
 
 /**
- * optional string outputs = 17;
- * @return {string}
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.InputType=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.InputType}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getOutputs = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 17, ""));
+proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.addInputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 16, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.InputType, opt_index);
 };
 
 
-/** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setOutputs = function(value) {
-  jspb.Message.setProto3StringField(this, 17, value);
+proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.clearInputsList = function() {
+  this.setInputsList([]);
+};
+
+
+/**
+ * repeated OutputType outputs = 17;
+ * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.OutputType>}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.getOutputsList = function() {
+  return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.OutputType>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.fairwaycorp.blockchainprotobuf.eth.OutputType, 17));
+};
+
+
+/** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.OutputType>} value */
+proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setOutputsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 17, value);
+};
+
+
+/**
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.addOutputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 17, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.OutputType, opt_index);
+};
+
+
+proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.clearOutputsList = function() {
+  this.setOutputsList([]);
 };
 
 
