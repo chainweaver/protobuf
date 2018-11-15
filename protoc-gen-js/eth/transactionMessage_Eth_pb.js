@@ -522,7 +522,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.repeatedFields_ = [4,19];
+proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.repeatedFields_ = [4,17,18,19];
 
 
 
@@ -569,8 +569,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.t
     vinSz: jspb.Message.getFieldWithDefault(msg, 14, 0),
     voutSz: jspb.Message.getFieldWithDefault(msg, 15, 0),
     confirmations: jspb.Message.getFieldWithDefault(msg, 16, 0),
-    inputs: jspb.Message.getFieldWithDefault(msg, 17, ""),
-    outputs: jspb.Message.getFieldWithDefault(msg, 18, ""),
+    inputsList: jspb.Message.toObjectList(msg.getInputsList(),
+    commonMessage_Eth_pb.InputType.toObject, includeInstance),
+    outputsList: jspb.Message.toObjectList(msg.getOutputsList(),
+    commonMessage_Eth_pb.OutputType.toObject, includeInstance),
     internalTxidsList: jspb.Message.getRepeatedField(msg, 19),
     parentTx: jspb.Message.getFieldWithDefault(msg, 20, ""),
     confirmed: jspb.Message.getFieldWithDefault(msg, 21, ""),
@@ -682,12 +684,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.d
       msg.setConfirmations(value);
       break;
     case 17:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setInputs(value);
+      var value = new commonMessage_Eth_pb.InputType;
+      reader.readMessage(value,commonMessage_Eth_pb.InputType.deserializeBinaryFromReader);
+      msg.addInputs(value);
       break;
     case 18:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setOutputs(value);
+      var value = new commonMessage_Eth_pb.OutputType;
+      reader.readMessage(value,commonMessage_Eth_pb.OutputType.deserializeBinaryFromReader);
+      msg.addOutputs(value);
       break;
     case 19:
       var value = /** @type {string} */ (reader.readString());
@@ -870,18 +874,20 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.s
       f
     );
   }
-  f = message.getInputs();
+  f = message.getInputsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedMessage(
       17,
-      f
+      f,
+      commonMessage_Eth_pb.InputType.serializeBinaryToWriter
     );
   }
-  f = message.getOutputs();
+  f = message.getOutputsList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedMessage(
       18,
-      f
+      f,
+      commonMessage_Eth_pb.OutputType.serializeBinaryToWriter
     );
   }
   f = message.getInternalTxidsList();
@@ -1214,32 +1220,64 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.p
 
 
 /**
- * optional string inputs = 17;
- * @return {string}
+ * repeated InputType inputs = 17;
+ * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.InputType>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.getInputs = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 17, ""));
+proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.getInputsList = function() {
+  return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.InputType>} */ (
+    jspb.Message.getRepeatedWrapperField(this, commonMessage_Eth_pb.InputType, 17));
 };
 
 
-/** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.setInputs = function(value) {
-  jspb.Message.setProto3StringField(this, 17, value);
+/** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.InputType>} value */
+proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.setInputsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 17, value);
 };
 
 
 /**
- * optional string outputs = 18;
- * @return {string}
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.InputType=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.InputType}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.getOutputs = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 18, ""));
+proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.addInputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 17, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.InputType, opt_index);
 };
 
 
-/** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.setOutputs = function(value) {
-  jspb.Message.setProto3StringField(this, 18, value);
+proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.clearInputsList = function() {
+  this.setInputsList([]);
+};
+
+
+/**
+ * repeated OutputType outputs = 18;
+ * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.OutputType>}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.getOutputsList = function() {
+  return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.OutputType>} */ (
+    jspb.Message.getRepeatedWrapperField(this, commonMessage_Eth_pb.OutputType, 18));
+};
+
+
+/** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.OutputType>} value */
+proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.setOutputsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 18, value);
+};
+
+
+/**
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.addOutputs = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 18, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.OutputType, opt_index);
+};
+
+
+proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.clearOutputsList = function() {
+  this.setOutputsList([]);
 };
 
 

@@ -921,6 +921,39 @@
       ],
       "default": "MAIN"
     },
+    "ethInputType": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethOutputType": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "script": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "ethPostCreateTransactionsEndpointRequest": {
       "type": "object",
       "properties": {
@@ -1002,11 +1035,17 @@
           "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
         },
         "inputs": {
-          "type": "string",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethInputType"
+          },
           "description": "An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API."
         },
         "outputs": {
-          "type": "string",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethOutputType"
+          },
           "description": "An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API."
         },
         "internal_txids": {
@@ -1117,8 +1156,8 @@
       "type": "object",
       "properties": {
         "block_height": {
-          "type": "string",
-          "format": "uint64",
+          "type": "integer",
+          "format": "int32",
           "description": "Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1."
         },
         "hash": {
@@ -1191,11 +1230,17 @@
           "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
         },
         "inputs": {
-          "type": "string",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethInputType"
+          },
           "description": "An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API."
         },
         "outputs": {
-          "type": "string",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethOutputType"
+          },
           "description": "An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API."
         },
         "internal_txids": {
@@ -1430,8 +1475,8 @@
       "type": "object",
       "properties": {
         "block_height": {
-          "type": "string",
-          "format": "uint64",
+          "type": "integer",
+          "format": "int32",
           "description": "Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1."
         },
         "tx_hash": {
