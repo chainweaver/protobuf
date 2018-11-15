@@ -17,7 +17,7 @@ message Blockchain {
   // The name of the blockchain represented, in the form of $COIN.$CHAIN.
   string name	= 1;  
   // The current height of the blockchain; i.e., the number of blocks in the blockchain.
-  int32 height = 2; 
+  uint64 height = 2; 
   // The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3.
   string hash	= 3; 
   // The time of the latest update to the blockchain; typically when the latest block was added.
@@ -29,15 +29,15 @@ message Blockchain {
   // The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block.
   string previous_url = 7;  
   // Number of unconfirmed transactions in memory pool (likely to be included in next block).
-  int32 unconfirmed_count = 8;
+  uint64 unconfirmed_count = 8;
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks.
-  int64 high_gas_price = 9;
+  uint64 high_gas_price = 9;
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks.
-  int64 medium_gas_price = 10;
+  uint64 medium_gas_price = 10;
   // A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks.
-  int64 low_gas_price = 11;
+  uint64 low_gas_price = 11;
   // Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
-  int32 last_fork_height = 13;  
+  uint64 last_fork_height = 13;  
   // Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
   string last_fork_hash = 14; 
 }
@@ -46,19 +46,19 @@ message Block {
   // The hash of the block; in Ethereum, the hashing function is Keccak/SHA3
   string hash = 1;
   // The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain.
-  int32 height = 2;
+  uint64 height = 2;
   // The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain.
-  int32 depth = 3;
+  uint64 depth = 3;
   // The name of the blockchain represented, in the form of $COIN.$CHAIN
   string chain = 4;
   // The total number of wei transacted in this block.
-  int32 total = 5;
+  uint64 total = 5;
   // The total number of fees—in wei—collected by miners in this block.
-  int32 fees = 6;
+  uint64 fees = 6;
   // Raw size of block (including header and all transactions) in bytes.
-  int32 size = 7;
+  uint64 size = 7;
   // Block version.
-  int32 ver = 8;
+  uint64 ver = 8;
   // Recorded time at which block was built.
   string time = 9;
   // The time BlockCypher’s servers receive the block.
@@ -68,9 +68,9 @@ message Block {
   // Address of the peer that sent BlockCypher’s servers this block.
   string relayed_by = 12;
   // The number used by a miner to generate this block.
-  int32 nonce = 13;
+  uint64 nonce = 13;
   // Number of transactions in this block.
-  int32 n_tx = 14;
+  uint64 n_tx = 14;
   // The hash of the previous block in the blockchain.
   string prev_block = 15;
   // The BlockCypher URL to query for more information on the previous block.
@@ -93,21 +93,21 @@ message Block {
 
 message TXRef {
   // Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1.
-  int32 block_height = 1;
+  uint64 block_height = 1;
   // The hash of the transaction containing this input/output.
   string tx_hash = 2;
   // Index of this input in the enclosing transaction. 0 if it’s an input, -1 if it’s an output.
-  int32 tx_input_n = 3;
+  uint64 tx_input_n = 3;
   // Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output.
-  int32 tx_output_n = 4;
+  uint64 tx_output_n = 4;
   // The value transfered by this input/output in wei exchanged in the enclosing transaction.
-  int32 value = 5;
+  uint64 value = 5;
   // true if this is an attempted double spend; false otherwise.
   bool double_spend = 6;
   // Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
-  int32 confirmations = 7;
+  uint64 confirmations = 7;
   // Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions.
-  int32 ref_balance = 8;
+  uint64 ref_balance = 8;
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
   string confirmed = 9;
   // Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
@@ -127,35 +127,35 @@ message TXSkeleton {
 
 message TX {
   // Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
-  int32 block_height = 1;
+  uint64 block_height = 1;
   // The hash of the transaction.
   string hash = 2;
   // Array of Ethereum addresses involved in the transaction.
   repeated string addresses = 3;
   // The total number of wei exchanged in this transaction.
-  int32 total = 4;
+  uint64 total = 4;
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used.
-  int32 fees = 5;
+  uint64 fees = 5;
   // The size of the transaction in bytes.
-  int32 size = 6;
+  uint64 size = 6;
   // The amount of gas used by this transaction.
-  int32 gas_used = 7;
+  uint64 gas_used = 7;
   // The price of gas—in wei—in this transaction.
-  int32 gas_price = 8;
+  uint64 gas_price = 8;
   // Address of the peer that sent BlockCypher’s servers this transaction. May be empty.
   string relayed_by = 9;
   // Time this transaction was received by BlockCypher’s servers.
   string received = 10;
   // Version number of this transaction.
-  int32 ver = 11;
+  uint64 ver = 11;
   // true if this is an attempted double spend; false otherwise.
   bool double_spend = 12;
   // Total number of inputs in the transaction.
-  int32 vin_sz = 13;
+  uint64 vin_sz = 13;
   // Total number of outputs in the transaction.
-  int32 vout_sz = 14;
+  uint64 vout_sz = 14;
   // Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
-  int32 confirmations = 15;
+  uint64 confirmations = 15;
   // An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API.
   string inputs = 16;
   // An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API.
@@ -167,15 +167,15 @@ message TX {
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
   string confirmed = 20;
   // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts.
-  int32 gas_limit = 21;
+  uint64 gas_limit = 21;
   // Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed.
   bool contract_creation = 22;
   // Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
-  int32 receive_count = 23;
+  uint64 receive_count = 23;
   // Optional Hash of the block that contains this transaction; only present for confirmed transactions.
   string block_hash = 24;
   // Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions.
-  int32 block_index = 25;
+  uint64 block_index = 25;
   // Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
   string double_of = 26;
   // Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”).
@@ -186,21 +186,21 @@ message Address {
   // The requested address.
   string address = 1;
   // Total amount of confirmed wei received by this address.
-  int32 total_received = 2;
+  uint64 total_received = 2;
   // Total amount of confirmed wei sent by this address.
-  int32 total_sent = 3;
+  uint64 total_sent = 3;
   // Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0).
-  int32 balance = 4;
+  uint64 balance = 4;
   // Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation.
-  int32 unconfirmed_balance = 5;
+  uint64 unconfirmed_balance = 5;
   // Total balance of wei, including confirmed and unconfirmed transactions, for this address.
-  int32 final_balance = 6;
+  uint64 final_balance = 6;
   // Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted.
-  int32 n_tx = 7;
+  uint64 n_tx = 7;
   // Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted.
-  int32 unconfirmed_n_tx = 8;
+  uint64 unconfirmed_n_tx = 8;
   // Final number of transactions, including confirmed and unconfirmed transactions, for this address.
-  int32 final_n_tx = 9;
+  uint64 final_n_tx = 9;
   // Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.
   string tx_url = 10;
   // Optional Array of transaction summaries for this address. Usually only returned from the standard Address Endpoint.
@@ -230,9 +230,9 @@ message Contract {
   // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
   string private = 4;
   // Maximum amount of gas to use in contract creation or method execution.
-  int32 gas_limit = 5;
+  uint64 gas_limit = 5;
   // Amount (in wei) to transfer; can be used when creating a contract or calling a method.
-  int32 value = 6;
+  uint64 value = 6;
   // Name of contract as published.
   string name = 7;
   // Hex-encoded binary compilation of this contract.
@@ -259,9 +259,9 @@ message Event {
   // optional Only transactions associated with the given address will be sent.
   string address = 4;
   // optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6.
-  int32 confirmations = 5;
+  uint64 confirmations = 5;
   // optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage.
   string url = 6;
   // Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage.
-  int32 callback_errors = 7;
+  uint64 callback_errors = 7;
 }

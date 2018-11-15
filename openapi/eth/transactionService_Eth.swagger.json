@@ -441,8 +441,8 @@
       "type": "object",
       "properties": {
         "block_height": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1."
         },
         "hash": {
@@ -457,28 +457,28 @@
           "description": "Array of Ethereum addresses involved in the transaction."
         },
         "total": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The total number of wei exchanged in this transaction."
         },
         "fees": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used."
         },
         "size": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The size of the transaction in bytes."
         },
         "gas_used": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The amount of gas used by this transaction."
         },
         "gas_price": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The price of gas—in wei—in this transaction."
         },
         "relayed_by": {
@@ -490,8 +490,8 @@
           "description": "Time this transaction was received by BlockCypher’s servers."
         },
         "ver": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Version number of this transaction."
         },
         "double_spend": {
@@ -500,18 +500,18 @@
           "description": "true if this is an attempted double spend; false otherwise."
         },
         "vin_sz": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Total number of inputs in the transaction."
         },
         "vout_sz": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Total number of outputs in the transaction."
         },
         "confirmations": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
         },
         "inputs": {
@@ -538,8 +538,8 @@
           "description": "Optional Time at which transaction was included in a block; only present for confirmed transactions."
         },
         "gas_limit": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts."
         },
         "contract_creation": {
@@ -548,8 +548,8 @@
           "description": "Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed."
         },
         "receive_count": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions."
         },
         "block_hash": {
@@ -557,8 +557,8 @@
           "description": "Optional Hash of the block that contains this transaction; only present for confirmed transactions."
         },
         "block_index": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions."
         },
         "double_of": {

@@ -159,43 +159,43 @@
           "description": "The requested address."
         },
         "total_received": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Total amount of confirmed wei received by this address."
         },
         "total_sent": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Total amount of confirmed wei sent by this address."
         },
         "balance": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Balance of confirmed wei on this address. (i.e., for transactions whose confirmations \u003e 0)."
         },
         "unconfirmed_balance": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation."
         },
         "final_balance": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Total balance of wei, including confirmed and unconfirmed transactions, for this address."
         },
         "n_tx": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations \u003e 0) are counted."
         },
         "unconfirmed_n_tx": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted."
         },
         "final_n_tx": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Final number of transactions, including confirmed and unconfirmed transactions, for this address."
         },
         "tx_url": {
@@ -254,8 +254,8 @@
       "type": "object",
       "properties": {
         "block_height": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1."
         },
         "tx_hash": {
@@ -263,18 +263,18 @@
           "description": "The hash of the transaction containing this input/output."
         },
         "tx_input_n": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Index of this input in the enclosing transaction. 0 if it’s an input, -1 if it’s an output."
         },
         "tx_output_n": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output."
         },
         "value": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The value transfered by this input/output in wei exchanged in the enclosing transaction."
         },
         "double_spend": {
@@ -283,13 +283,13 @@
           "description": "true if this is an attempted double spend; false otherwise."
         },
         "confirmations": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
         },
         "ref_balance": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions."
         },
         "confirmed": {
