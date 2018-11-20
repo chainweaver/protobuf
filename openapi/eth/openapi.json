@@ -926,7 +926,7 @@
       "properties": {
         "sequence": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "addresses": {
           "type": "array",
@@ -941,7 +941,7 @@
       "properties": {
         "value": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "script": {
           "type": "string"
@@ -1490,7 +1490,7 @@
         },
         "tx_output_n": {
           "type": "string",
-          "format": "uint64",
+          "format": "int64",
           "description": "Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output."
         },
         "value": {

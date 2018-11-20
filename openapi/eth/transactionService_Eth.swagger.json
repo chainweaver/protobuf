@@ -240,7 +240,7 @@
       "properties": {
         "sequence": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "addresses": {
           "type": "array",
@@ -265,7 +265,7 @@
       "properties": {
         "value": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "script": {
           "type": "string"
