@@ -27,15 +27,15 @@ message PostCreateTransactionsEndpointRequest {
   // Array of Ethereum addresses involved in the transaction.
   repeated string addresses = 4;
   // The total number of wei exchanged in this transaction.
-  int32 total = 5;
+  uint64 total = 5;
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used.
-  int32 fees = 6;
+  uint64 fees = 6;
   // The size of the transaction in bytes.
-  int32 size = 7;
+  uint64 size = 7;
   // The amount of gas used by this transaction.
-  int32 gas_used = 8;
+  uint64 gas_used = 8;
   // The price of gas—in wei—in this transaction.
-  int32 gas_price = 9;
+  uint64 gas_price = 9;
   // Address of the peer that sent BlockCypher’s servers this transaction. May be empty.
   string relayed_by = 10;
   // Time this transaction was received by BlockCypher’s servers.
