@@ -76,8 +76,8 @@ export class JobResults {
   setMore(a: boolean): void;
   getNextPage(): string;
   setNextPage(a: string): void;
-  getResults(): {};
-  setResults(a: {}): void;
+  getResultsList(): {}[];
+  setResultsList(a: {}[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => JobResults;
 }

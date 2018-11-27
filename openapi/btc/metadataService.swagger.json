@@ -20,7 +20,7 @@
         "operationId": "GetMetadataAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcKeyValues"
             }
@@ -62,7 +62,7 @@
         "operationId": "DeleteMetadataAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -96,7 +96,7 @@
         "operationId": "PutMetadataAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -140,7 +140,7 @@
         "operationId": "GetMetadataBlockhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcKeyValues"
             }
@@ -182,7 +182,7 @@
         "operationId": "DeleteMetadataBlockheightEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -216,7 +216,7 @@
         "operationId": "PutMetadataBlockhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -260,7 +260,7 @@
         "operationId": "GetMetadataTxhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcKeyValues"
             }
@@ -302,7 +302,7 @@
         "operationId": "DeleteMetadataTxhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -336,7 +336,7 @@
         "operationId": "PutMetadataTxhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }

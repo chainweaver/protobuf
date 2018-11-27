@@ -66,8 +66,8 @@ export class GetMetadataTxhashEndpointRequest {
 
 export class KeyValues {
   constructor ();
-  getKeyPairs(): {};
-  setKeyPairs(a: {}): void;
+  getKeyPairsList(): {}[];
+  setKeyPairsList(a: {}[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => KeyValues;
 }
@@ -82,8 +82,8 @@ export class PutMetadataAddressEndpointRequest {
   constructor ();
   getNetwork(): {};
   setNetwork(a: {}): void;
-  getKeyPairs(): {};
-  setKeyPairs(a: {}): void;
+  getKeyPairsList(): {}[];
+  setKeyPairsList(a: {}[]): void;
   getAddress(): string;
   setAddress(a: string): void;
   getPrivate(): boolean;
@@ -96,8 +96,8 @@ export class PutMetadataBlockhashEndpointRequest {
   constructor ();
   getNetwork(): {};
   setNetwork(a: {}): void;
-  getKeyPairs(): {};
-  setKeyPairs(a: {}): void;
+  getKeyPairsList(): {}[];
+  setKeyPairsList(a: {}[]): void;
   getBlockHash(): string;
   setBlockHash(a: string): void;
   getPrivate(): boolean;
@@ -110,8 +110,8 @@ export class PutMetadataTxhashEndpointRequest {
   constructor ();
   getNetwork(): {};
   setNetwork(a: {}): void;
-  getKeyPairs(): {};
-  setKeyPairs(a: {}): void;
+  getKeyPairsList(): {}[];
+  setKeyPairsList(a: {}[]): void;
   getTxhash(): string;
   setTxhash(a: string): void;
   getPrivate(): boolean;

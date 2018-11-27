@@ -1,7 +1,7 @@
 export class ArrayEvent {
   constructor ();
-  getEvent(): {};
-  setEvent(a: {}): void;
+  getEventList(): {}[];
+  setEventList(a: {}[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ArrayEvent;
 }

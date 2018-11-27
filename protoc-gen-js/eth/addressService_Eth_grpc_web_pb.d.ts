@@ -8,29 +8,51 @@ import {
 
 export class AddressServiceClient {
   constructor (hostname: string,
-               credentials: {},
-               options: { [s: string]: {}; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   getBalanceAddressEndpoint(
     request: GetBalanceAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
-  ): grpcWeb.ClientReadableStream;
+  ): grpcWeb.ClientReadableStream<Address>;
 
   getAddressEndpoint(
     request: GetAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
-  ): grpcWeb.ClientReadableStream;
+  ): grpcWeb.ClientReadableStream<Address>;
 
   postGenerateAddressEndpoint(
     request: PostGenerateAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: AddressKeychain) => void
-  ): grpcWeb.ClientReadableStream;
+  ): grpcWeb.ClientReadableStream<AddressKeychain>;
+
+}
+
+export class AddressServicePromiseClient {
+  constructor (hostname: string,
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
+
+  getBalanceAddressEndpoint(
+    request: GetBalanceAddressEndpointRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<Address>;
+
+  getAddressEndpoint(
+    request: GetAddressEndpointRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<Address>;
+
+  postGenerateAddressEndpoint(
+    request: PostGenerateAddressEndpointRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<AddressKeychain>;
 
 }
 

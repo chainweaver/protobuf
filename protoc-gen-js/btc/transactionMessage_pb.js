@@ -12,7 +12,6 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_pb = require('./commonMessage_pb.js');
-goog.object.extend(proto, commonMessage_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DataEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DecodeRawTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest', null, global);
@@ -1032,7 +1031,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.addAddresses = function(value, opt_index) {
@@ -1737,7 +1736,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototyp
 
 /**
  * Returns whether this field is set.
- * @return {boolean}
+ * @return {!boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototype.hasTx = function() {
   return jspb.Message.getField(this, 2) != null;
@@ -1760,7 +1759,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototyp
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototype.addTosign = function(value, opt_index) {
@@ -1789,7 +1788,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototyp
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototype.addSignatures = function(value, opt_index) {
@@ -1818,7 +1817,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototyp
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototype.addPubkeys = function(value, opt_index) {
@@ -1847,7 +1846,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototyp
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest.prototype.addTosignTx = function(value, opt_index) {

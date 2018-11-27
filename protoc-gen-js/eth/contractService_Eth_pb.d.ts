@@ -2,10 +2,10 @@ export class Contract {
   constructor ();
   getSolidity(): string;
   setSolidity(a: string): void;
-  getParams(): string;
-  setParams(a: string): void;
-  getPublish(): string;
-  setPublish(a: string): void;
+  getParamsList(): string[];
+  setParamsList(a: string[]): void;
+  getPublishList(): string[];
+  setPublishList(a: string[]): void;
   getPrivate(): string;
   setPrivate(a: string): void;
   getGasLimit(): number;
@@ -24,16 +24,16 @@ export class Contract {
   setCreated(a: string): void;
   getCreationTxHash(): string;
   setCreationTxHash(a: string): void;
-  getResults(): string;
-  setResults(a: string): void;
+  getResultsList(): string[];
+  setResultsList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => Contract;
 }
 
 export class ContractArray {
   constructor ();
-  getContract(): {};
-  setContract(a: {}): void;
+  getContractList(): {}[];
+  setContractList(a: {}[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ContractArray;
 }
@@ -58,10 +58,10 @@ export class PostCallContractMethodEndpointRequest {
   setMethod(a: string): void;
   getSolidity(): string;
   setSolidity(a: string): void;
-  getParams(): string;
-  setParams(a: string): void;
-  getPublish(): string;
-  setPublish(a: string): void;
+  getParamsList(): string[];
+  setParamsList(a: string[]): void;
+  getPublishList(): string[];
+  setPublishList(a: string[]): void;
   getPrivate(): string;
   setPrivate(a: string): void;
   getGasLimit(): number;
@@ -80,8 +80,8 @@ export class PostCallContractMethodEndpointRequest {
   setCreated(a: string): void;
   getCreationTxHash(): string;
   setCreationTxHash(a: string): void;
-  getResults(): string;
-  setResults(a: string): void;
+  getResultsList(): string[];
+  setResultsList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => PostCallContractMethodEndpointRequest;
 }
@@ -92,10 +92,10 @@ export class PostCreateContractEndpointRequest {
   setNetwork(a: {}): void;
   getSolidity(): string;
   setSolidity(a: string): void;
-  getParams(): string;
-  setParams(a: string): void;
-  getPublish(): string;
-  setPublish(a: string): void;
+  getParamsList(): string[];
+  setParamsList(a: string[]): void;
+  getPublishList(): string[];
+  setPublishList(a: string[]): void;
   getPrivate(): string;
   setPrivate(a: string): void;
   getGasLimit(): number;
@@ -114,8 +114,8 @@ export class PostCreateContractEndpointRequest {
   setCreated(a: string): void;
   getCreationTxHash(): string;
   setCreationTxHash(a: string): void;
-  getResults(): string;
-  setResults(a: string): void;
+  getResultsList(): string[];
+  setResultsList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => PostCreateContractEndpointRequest;
 }

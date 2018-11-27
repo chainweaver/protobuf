@@ -12,7 +12,6 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
-goog.object.extend(proto, commonMessage_Eth_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GetTransactionHashEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GetUnconfirmedTransactionsEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest', null, global);
@@ -1024,7 +1023,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.p
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.addAddresses = function(value, opt_index) {
@@ -1297,7 +1296,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.p
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.addInternalTxids = function(value, opt_index) {
@@ -1669,7 +1668,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest.prot
 
 /**
  * Returns whether this field is set.
- * @return {boolean}
+ * @return {!boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest.prototype.hasTx = function() {
   return jspb.Message.getField(this, 2) != null;
@@ -1692,7 +1691,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest.prot
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest.prototype.addTosign = function(value, opt_index) {
@@ -1721,7 +1720,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest.prot
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest.prototype.addSignatures = function(value, opt_index) {
@@ -1750,7 +1749,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest.prot
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest.prototype.addErrors = function(value, opt_index) {

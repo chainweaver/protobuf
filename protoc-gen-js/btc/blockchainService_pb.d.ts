@@ -36,8 +36,8 @@ export class Block {
   setTxUrl(a: string): void;
   getMrklRoot(): string;
   setMrklRoot(a: string): void;
-  getTxids(): string;
-  setTxids(a: string): void;
+  getTxidsList(): string[];
+  setTxidsList(a: string[]): void;
   getNextTxids(): string;
   setNextTxids(a: string): void;
   serializeBinary(): Uint8Array;

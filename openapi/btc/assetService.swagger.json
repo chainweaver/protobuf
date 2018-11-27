@@ -20,7 +20,7 @@
         "operationId": "GenerateAssetAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddressKeychain"
             }
@@ -58,7 +58,7 @@
         "operationId": "IssueAssetEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcOAPTX"
             }
@@ -96,7 +96,7 @@
         "operationId": "GetAssetAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddress"
             }
@@ -132,7 +132,7 @@
         "operationId": "TransferAssetEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcOAPTX"
             }
@@ -176,7 +176,7 @@
         "operationId": "ListAssetTXsEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcArrayString"
             }
@@ -212,7 +212,7 @@
         "operationId": "GetAssetTXEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcOAPTX"
             }

@@ -20,7 +20,7 @@
         "operationId": "GetUnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethTxArray"
             }
@@ -50,7 +50,7 @@
         "operationId": "PostDecodeRawTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethTX"
             }
@@ -88,7 +88,7 @@
         "operationId": "PostCreateTransactionsEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethTXSkeleton"
             }
@@ -126,7 +126,7 @@
         "operationId": "PostPushRawTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethTX"
             }
@@ -164,7 +164,7 @@
         "operationId": "PostSendTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethTXSkeleton"
             }
@@ -202,7 +202,7 @@
         "operationId": "GetTransactionHashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethTX"
             }

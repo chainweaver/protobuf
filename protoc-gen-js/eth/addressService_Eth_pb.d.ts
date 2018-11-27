@@ -20,10 +20,10 @@ export class Address {
   setFinalNTx(a: number): void;
   getTxUrl(): string;
   setTxUrl(a: string): void;
-  getTxrefs(): {};
-  setTxrefs(a: {}): void;
-  getUnconfirmedTxrefs(): {};
-  setUnconfirmedTxrefs(a: {}): void;
+  getTxrefsList(): {}[];
+  setTxrefsList(a: {}[]): void;
+  getUnconfirmedTxrefsList(): {}[];
+  setUnconfirmedTxrefsList(a: {}[]): void;
   getHasmore(): boolean;
   setHasmore(a: boolean): void;
   serializeBinary(): Uint8Array;

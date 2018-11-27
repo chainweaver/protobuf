@@ -20,8 +20,8 @@ export class AddressForward {
   setEnableConfirmations(a: boolean): void;
   getMiningFeesSatoshis(): number;
   setMiningFeesSatoshis(a: number): void;
-  getTxs(): string;
-  setTxs(a: string): void;
+  getTxsList(): string[];
+  setTxsList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => AddressForward;
 }
@@ -50,8 +50,8 @@ export class CreateForwardEndpointRequest {
   setEnableConfirmations(a: boolean): void;
   getMiningFeesSatoshis(): number;
   setMiningFeesSatoshis(a: number): void;
-  getTxs(): string;
-  setTxs(a: string): void;
+  getTxsList(): string[];
+  setTxsList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => CreateForwardEndpointRequest;
 }
@@ -84,8 +84,8 @@ export class ListForwardsEndpointRequest {
 
 export class ListForwardsEndpointResponse {
   constructor ();
-  getForwards(): {};
-  setForwards(a: {}): void;
+  getForwardsList(): {}[];
+  setForwardsList(a: {}[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ListForwardsEndpointResponse;
 }

@@ -12,7 +12,6 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
-goog.object.extend(proto, commonMessage_Eth_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.ContractArray', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest', null, global);
@@ -353,7 +352,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.proto
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.addParams = function(value, opt_index) {
@@ -382,7 +381,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.proto
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.addPublish = function(value, opt_index) {
@@ -546,7 +545,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.proto
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest.prototype.addResults = function(value, opt_index) {
@@ -1118,7 +1117,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.p
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.addParams = function(value, opt_index) {
@@ -1147,7 +1146,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.p
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.addPublish = function(value, opt_index) {
@@ -1311,7 +1310,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.p
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest.prototype.addResults = function(value, opt_index) {

@@ -24,8 +24,8 @@ export class PostCreateTransactionsEndpointRequest {
   setBlockHeight(a: number): void;
   getHash(): string;
   setHash(a: string): void;
-  getAddresses(): string;
-  setAddresses(a: string): void;
+  getAddressesList(): string[];
+  setAddressesList(a: string[]): void;
   getTotal(): number;
   setTotal(a: number): void;
   getFees(): number;
@@ -50,12 +50,12 @@ export class PostCreateTransactionsEndpointRequest {
   setVoutSz(a: number): void;
   getConfirmations(): number;
   setConfirmations(a: number): void;
-  getInputs(): {};
-  setInputs(a: {}): void;
-  getOutputs(): {};
-  setOutputs(a: {}): void;
-  getInternalTxids(): string;
-  setInternalTxids(a: string): void;
+  getInputsList(): {}[];
+  setInputsList(a: {}[]): void;
+  getOutputsList(): {}[];
+  setOutputsList(a: {}[]): void;
+  getInternalTxidsList(): string[];
+  setInternalTxidsList(a: string[]): void;
   getParentTx(): string;
   setParentTx(a: string): void;
   getConfirmed(): string;
@@ -104,12 +104,12 @@ export class PostSendTransactionEndpointRequest {
   setNetwork(a: {}): void;
   getTx(): {};
   setTx(a: {}): void;
-  getTosign(): string;
-  setTosign(a: string): void;
-  getSignatures(): string;
-  setSignatures(a: string): void;
-  getErrors(): string;
-  setErrors(a: string): void;
+  getTosignList(): string[];
+  setTosignList(a: string[]): void;
+  getSignaturesList(): string[];
+  setSignaturesList(a: string[]): void;
+  getErrorsList(): string[];
+  setErrorsList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => PostSendTransactionEndpointRequest;
 }
@@ -120,8 +120,8 @@ export class TX {
   setBlockHeight(a: number): void;
   getHash(): string;
   setHash(a: string): void;
-  getAddresses(): string;
-  setAddresses(a: string): void;
+  getAddressesList(): string[];
+  setAddressesList(a: string[]): void;
   getTotal(): number;
   setTotal(a: number): void;
   getFees(): number;
@@ -146,12 +146,12 @@ export class TX {
   setVoutSz(a: number): void;
   getConfirmations(): number;
   setConfirmations(a: number): void;
-  getInputs(): {};
-  setInputs(a: {}): void;
-  getOutputs(): {};
-  setOutputs(a: {}): void;
-  getInternalTxids(): string;
-  setInternalTxids(a: string): void;
+  getInputsList(): {}[];
+  setInputsList(a: {}[]): void;
+  getOutputsList(): {}[];
+  setOutputsList(a: {}[]): void;
+  getInternalTxidsList(): string[];
+  setInternalTxidsList(a: string[]): void;
   getParentTx(): string;
   setParentTx(a: string): void;
   getConfirmed(): string;
@@ -178,20 +178,20 @@ export class TXSkeleton {
   constructor ();
   getTx(): {};
   setTx(a: {}): void;
-  getTosign(): string;
-  setTosign(a: string): void;
-  getSignatures(): string;
-  setSignatures(a: string): void;
-  getErrors(): string;
-  setErrors(a: string): void;
+  getTosignList(): string[];
+  setTosignList(a: string[]): void;
+  getSignaturesList(): string[];
+  setSignaturesList(a: string[]): void;
+  getErrorsList(): string[];
+  setErrorsList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => TXSkeleton;
 }
 
 export class TxArray {
   constructor ();
-  getResult(): {};
-  setResult(a: {}): void;
+  getResultList(): {}[];
+  setResultList(a: {}[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => TxArray;
 }

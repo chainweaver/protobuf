@@ -20,7 +20,7 @@
         "operationId": "MicrotransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcMicroTX"
             }
@@ -58,7 +58,7 @@
         "operationId": "GetAnalyticsJob",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcJob"
             }
@@ -94,7 +94,7 @@
         "operationId": "GetAnalyticsJobResults",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcJobResults"
             }
@@ -137,7 +137,7 @@
         "operationId": "CreateAnalyticsJob",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcJob"
             }
@@ -181,7 +181,7 @@
         "operationId": "ListForwardsEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcListForwardsEndpointResponse"
             }
@@ -217,7 +217,7 @@
         "operationId": "CreateForwardEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddressForward"
             }
@@ -255,7 +255,7 @@
         "operationId": "DeleteForwardEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcDeleteForwardEndpointResponse"
             }
@@ -291,7 +291,7 @@
         "operationId": "GetMetadataAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcKeyValues"
             }
@@ -333,7 +333,7 @@
         "operationId": "DeleteMetadataAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -367,7 +367,7 @@
         "operationId": "PutMetadataAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -411,7 +411,7 @@
         "operationId": "GetMetadataBlockhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcKeyValues"
             }
@@ -453,7 +453,7 @@
         "operationId": "DeleteMetadataBlockheightEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -487,7 +487,7 @@
         "operationId": "PutMetadataBlockhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -531,7 +531,7 @@
         "operationId": "GetMetadataTxhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcKeyValues"
             }
@@ -573,7 +573,7 @@
         "operationId": "DeleteMetadataTxhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -607,7 +607,7 @@
         "operationId": "PutMetadataTxhashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -651,7 +651,7 @@
         "operationId": "ListWalletsEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcListWallets"
             }
@@ -679,7 +679,7 @@
         "operationId": "CreateWalletEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcWallet"
             }
@@ -717,7 +717,7 @@
         "operationId": "CreateWalletHDEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcHDWallet"
             }
@@ -755,7 +755,7 @@
         "operationId": "GetWalletHDEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcHDWallet"
             }
@@ -789,7 +789,7 @@
         "operationId": "DeleteWalletHDEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -825,7 +825,7 @@
         "operationId": "GetWalletAddressesHDEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcHDChain"
             }
@@ -877,7 +877,7 @@
         "operationId": "DeriveAddressInWalletEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcHDWallet"
             }
@@ -921,7 +921,7 @@
         "operationId": "GetWalletEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcWallet"
             }
@@ -955,7 +955,7 @@
         "operationId": "DeleteWalletEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -991,7 +991,7 @@
         "operationId": "GetWalletAddressesEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcWallet"
             }
@@ -1041,7 +1041,7 @@
         "operationId": "RemoveAddressesFromWalletEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullValue"
             }
@@ -1081,7 +1081,7 @@
         "operationId": "AddAddressesToWalletEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcWallet"
             }
@@ -1125,7 +1125,7 @@
         "operationId": "GenerateAddressInWalletEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcWalletAddressKeychain"
             }
@@ -1169,7 +1169,7 @@
         "operationId": "TransactionConfidenceEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTXConfidence"
             }
@@ -1205,7 +1205,7 @@
         "operationId": "GenerateAssetAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddressKeychain"
             }
@@ -1243,7 +1243,7 @@
         "operationId": "IssueAssetEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcOAPTX"
             }
@@ -1281,7 +1281,7 @@
         "operationId": "GetAssetAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddress"
             }
@@ -1317,7 +1317,7 @@
         "operationId": "TransferAssetEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcOAPTX"
             }
@@ -1361,7 +1361,7 @@
         "operationId": "ListAssetTXsEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcArrayString"
             }
@@ -1397,7 +1397,7 @@
         "operationId": "GetAssetTXEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcOAPTX"
             }
@@ -1439,7 +1439,7 @@
         "operationId": "UnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTXS"
             }
@@ -1469,7 +1469,7 @@
         "operationId": "DataEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullData"
             }
@@ -1507,7 +1507,7 @@
         "operationId": "DecodeRawTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTX"
             }
@@ -1545,7 +1545,7 @@
         "operationId": "NewTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTXSkeleton"
             }
@@ -1583,7 +1583,7 @@
         "operationId": "PushRawTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTX"
             }
@@ -1621,7 +1621,7 @@
         "operationId": "SendTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTXSkeleton"
             }
@@ -1659,7 +1659,7 @@
         "operationId": "TransactionHashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTX"
             }
@@ -1735,7 +1735,7 @@
         "operationId": "TransactionPropagationEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcDescribedBelow"
             }
@@ -1771,7 +1771,7 @@
         "operationId": "ChainEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcBlockchain"
             }
@@ -1801,7 +1801,7 @@
         "operationId": "BlockHashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcBlock"
             }
@@ -1851,7 +1851,7 @@
         "operationId": "BlockHeightEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcBlock"
             }
@@ -1902,7 +1902,7 @@
         "operationId": "FeatureEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcFeature"
             }
@@ -1938,7 +1938,7 @@
         "operationId": "GenerateMultisigAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddressKeychain"
             }
@@ -1976,7 +1976,7 @@
         "operationId": "AddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddress"
             }
@@ -2084,7 +2084,7 @@
         "operationId": "AddressBalanceEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddress"
             }
@@ -2128,7 +2128,7 @@
         "operationId": "AddressFullEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddress"
             }

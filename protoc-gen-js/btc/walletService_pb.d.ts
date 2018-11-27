@@ -18,8 +18,8 @@ export class CreateWalletEndpointRequest {
   setToken(a: string): void;
   getName(): string;
   setName(a: string): void;
-  getAddresses(): string;
-  setAddresses(a: string): void;
+  getAddressesList(): string[];
+  setAddressesList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => CreateWalletEndpointRequest;
 }
@@ -32,14 +32,14 @@ export class CreateWalletHDEndpointRequest {
   setToken(a: string): void;
   getName(): string;
   setName(a: string): void;
-  getChains(): {};
-  setChains(a: {}): void;
+  getChainsList(): {}[];
+  setChainsList(a: {}[]): void;
   getHd(): boolean;
   setHd(a: boolean): void;
   getExtendedPublicKey(): string;
   setExtendedPublicKey(a: string): void;
-  getSubchainIndexes(): number;
-  setSubchainIndexes(a: number): void;
+  getSubchainIndexesList(): number[];
+  setSubchainIndexesList(a: number[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => CreateWalletHDEndpointRequest;
 }
@@ -104,8 +104,8 @@ export class GetWalletEndpointRequest {
 
 export class HDChain {
   constructor ();
-  getChainAddresses(): {};
-  setChainAddresses(a: {}): void;
+  getChainAddressesList(): {}[];
+  setChainAddressesList(a: {}[]): void;
   getIndex(): number;
   setIndex(a: number): void;
   serializeBinary(): Uint8Array;
@@ -118,22 +118,22 @@ export class HDWallet {
   setToken(a: string): void;
   getName(): string;
   setName(a: string): void;
-  getChains(): {};
-  setChains(a: {}): void;
+  getChainsList(): {}[];
+  setChainsList(a: {}[]): void;
   getHd(): boolean;
   setHd(a: boolean): void;
   getExtendedPublicKey(): string;
   setExtendedPublicKey(a: string): void;
-  getSubchainIndexes(): number;
-  setSubchainIndexes(a: number): void;
+  getSubchainIndexesList(): number[];
+  setSubchainIndexesList(a: number[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => HDWallet;
 }
 
 export class ListWallets {
   constructor ();
-  getWalletNames(): string;
-  setWalletNames(a: string): void;
+  getWalletNamesList(): string[];
+  setWalletNamesList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ListWallets;
 }
@@ -170,8 +170,8 @@ export class Wallet {
   setToken(a: string): void;
   getName(): string;
   setName(a: string): void;
-  getAddresses(): string;
-  setAddresses(a: string): void;
+  getAddressesList(): string[];
+  setAddressesList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => Wallet;
 }
@@ -182,8 +182,8 @@ export class WalletAddressKeychain {
   setToken(a: string): void;
   getName(): string;
   setName(a: string): void;
-  getAddresses(): string;
-  setAddresses(a: string): void;
+  getAddressesList(): string[];
+  setAddressesList(a: string[]): void;
   getAddress(): string;
   setAddress(a: string): void;
   getPublic(): string;
@@ -192,8 +192,8 @@ export class WalletAddressKeychain {
   setPrivate(a: string): void;
   getWif(): string;
   setWif(a: string): void;
-  getPubkeys(): string;
-  setPubkeys(a: string): void;
+  getPubkeysList(): string[];
+  setPubkeysList(a: string[]): void;
   getScriptType(): string;
   setScriptType(a: string): void;
   getOriginalAddress(): string;

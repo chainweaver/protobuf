@@ -12,7 +12,6 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_pb = require('./commonMessage_pb.js');
-goog.object.extend(proto, commonMessage_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.GetAssetAddressEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.GetAssetTXEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.IssueAssetEndpointRequest', null, global);

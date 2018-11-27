@@ -24,12 +24,12 @@ export class Address {
   setFinalNTx(a: number): void;
   getTxUrl(): string;
   setTxUrl(a: string): void;
-  getTxs(): {};
-  setTxs(a: {}): void;
-  getTxrefs(): {};
-  setTxrefs(a: {}): void;
-  getUnconfirmedTxrefs(): {};
-  setUnconfirmedTxrefs(a: {}): void;
+  getTxsList(): {}[];
+  setTxsList(a: {}[]): void;
+  getTxrefsList(): {}[];
+  setTxrefsList(a: {}[]): void;
+  getUnconfirmedTxrefsList(): {}[];
+  setUnconfirmedTxrefsList(a: {}[]): void;
   getHasmore(): boolean;
   setHasmore(a: boolean): void;
   serializeBinary(): Uint8Array;
@@ -46,8 +46,8 @@ export class AddressKeychain {
   setPrivate(a: string): void;
   getWif(): string;
   setWif(a: string): void;
-  getPubkeys(): string;
-  setPubkeys(a: string): void;
+  getPubkeysList(): string[];
+  setPubkeysList(a: string[]): void;
   getScriptType(): string;
   setScriptType(a: string): void;
   getOriginalAddress(): string;
@@ -60,8 +60,8 @@ export class AddressKeychain {
 
 export class ArrayString {
   constructor ();
-  getArraystring(): string;
-  setArraystring(a: string): void;
+  getArraystringList(): string[];
+  setArraystringList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ArrayString;
 }
@@ -140,10 +140,10 @@ export class OAPTX {
   setOapMeta(a: string): void;
   getDoubleSpend(): boolean;
   setDoubleSpend(a: boolean): void;
-  getInputs(): string;
-  setInputs(a: string): void;
-  getOutputs(): string;
-  setOutputs(a: string): void;
+  getInputsList(): string[];
+  setInputsList(a: string[]): void;
+  getOutputsList(): string[];
+  setOutputsList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => OAPTX;
 }

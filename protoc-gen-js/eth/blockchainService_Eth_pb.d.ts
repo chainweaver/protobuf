@@ -36,16 +36,16 @@ export class Block {
   setTxUrl(a: string): void;
   getMrklRoot(): string;
   setMrklRoot(a: string): void;
-  getTxids(): string;
-  setTxids(a: string): void;
-  getInternalTxids(): string;
-  setInternalTxids(a: string): void;
+  getTxidsList(): string[];
+  setTxidsList(a: string[]): void;
+  getInternalTxidsList(): string[];
+  setInternalTxidsList(a: string[]): void;
   getNextTxids(): string;
   setNextTxids(a: string): void;
   getNextInternalTxids(): string;
   setNextInternalTxids(a: string): void;
-  getUncles(): string;
-  setUncles(a: string): void;
+  getUnclesList(): string[];
+  setUnclesList(a: string[]): void;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => Block;
 }

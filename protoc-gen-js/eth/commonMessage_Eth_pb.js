@@ -1290,7 +1290,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setTxidsList = function
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.addTxids = function(value, opt_index) {
@@ -1319,7 +1319,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setInternalTxidsList = 
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.addInternalTxids = function(value, opt_index) {
@@ -1378,7 +1378,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.setUnclesList = functio
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Block.prototype.addUncles = function(value, opt_index) {
@@ -1973,7 +1973,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton.prototype.clearTx = function
 
 /**
  * Returns whether this field is set.
- * @return {boolean}
+ * @return {!boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton.prototype.hasTx = function() {
   return jspb.Message.getField(this, 1) != null;
@@ -1996,7 +1996,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton.prototype.setTosignList = fu
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton.prototype.addTosign = function(value, opt_index) {
@@ -2025,7 +2025,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton.prototype.setSignaturesList 
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton.prototype.addSignatures = function(value, opt_index) {
@@ -2054,7 +2054,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton.prototype.setErrorsList = fu
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton.prototype.addErrors = function(value, opt_index) {
@@ -2244,7 +2244,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.setAddressesList = 
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.addAddresses = function(value, opt_index) {
@@ -2461,7 +2461,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.setAddressesList =
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.addAddresses = function(value, opt_index) {
@@ -2972,7 +2972,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setAddressesList = functio
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.addAddresses = function(value, opt_index) {
@@ -3245,7 +3245,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.setInternalTxidsList = fun
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TX.prototype.addInternalTxids = function(value, opt_index) {
@@ -4413,7 +4413,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.setParamsList = func
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.addParams = function(value, opt_index) {
@@ -4442,7 +4442,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.setPublishList = fun
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.addPublish = function(value, opt_index) {
@@ -4606,7 +4606,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.setResultsList = fun
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.eth.Contract.prototype.addResults = function(value, opt_index) {

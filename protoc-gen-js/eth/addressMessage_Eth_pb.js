@@ -12,7 +12,6 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
-goog.object.extend(proto, commonMessage_Eth_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GetAddressEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GetBalanceAddressEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.PostGenerateAddressEndpointRequest', null, global);
