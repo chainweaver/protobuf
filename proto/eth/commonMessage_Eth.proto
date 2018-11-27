@@ -99,7 +99,7 @@ message TXRef {
   // Index of this input in the enclosing transaction. 0 if it’s an input, -1 if it’s an output.
   uint64 tx_input_n = 3;
   // Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output.
-  uint64 tx_output_n = 4;
+  int64 tx_output_n = 4;
   // The value transfered by this input/output in wei exchanged in the enclosing transaction.
   uint64 value = 5;
   // true if this is an attempted double spend; false otherwise.
@@ -126,12 +126,12 @@ message TXSkeleton {
 }
 
 message InputType {
-  uint64 sequence = 1;
+  int64 sequence = 1;
   repeated string addresses = 2;
 }
 
 message OutputType {
-  uint64 value = 1;
+  int64 value = 1;
   string script = 2;
   repeated string addresses = 3;
 }
