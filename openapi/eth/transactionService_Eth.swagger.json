@@ -240,7 +240,7 @@
       "properties": {
         "sequence": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "addresses": {
           "type": "array",
@@ -265,7 +265,7 @@
       "properties": {
         "value": {
           "type": "string",
-          "format": "uint64"
+          "format": "int64"
         },
         "script": {
           "type": "string"
@@ -301,28 +301,28 @@
           "description": "Array of Ethereum addresses involved in the transaction."
         },
         "total": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The total number of wei exchanged in this transaction."
         },
         "fees": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used."
         },
         "size": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The size of the transaction in bytes."
         },
         "gas_used": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The amount of gas used by this transaction."
         },
         "gas_price": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "format": "uint64",
           "description": "The price of gas—in wei—in this transaction."
         },
         "relayed_by": {

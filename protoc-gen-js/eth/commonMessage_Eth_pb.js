@@ -1497,7 +1497,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.deserializeBinaryFromReader = fun
       msg.setTxInputN(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setTxOutputN(value);
       break;
     case 5:
@@ -1576,7 +1576,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.serializeBinaryToWriter = functio
   }
   f = message.getTxOutputN();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeInt64(
       4,
       f
     );
@@ -1672,7 +1672,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.setTxInputN = function(
 
 
 /**
- * optional uint64 tx_output_n = 4;
+ * optional int64 tx_output_n = 4;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.TXRef.prototype.getTxOutputN = function() {
@@ -2160,7 +2160,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.InputType.deserializeBinaryFromReader =
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setSequence(value);
       break;
     case 2:
@@ -2198,7 +2198,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.InputType.serializeBinaryToWriter = fun
   var f = undefined;
   f = message.getSequence();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeInt64(
       1,
       f
     );
@@ -2214,7 +2214,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.InputType.serializeBinaryToWriter = fun
 
 
 /**
- * optional uint64 sequence = 1;
+ * optional int64 sequence = 1;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.InputType.prototype.getSequence = function() {
@@ -2351,7 +2351,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.OutputType.deserializeBinaryFromReader 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setValue(value);
       break;
     case 2:
@@ -2393,7 +2393,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.OutputType.serializeBinaryToWriter = fu
   var f = undefined;
   f = message.getValue();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeInt64(
       1,
       f
     );
@@ -2416,7 +2416,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.OutputType.serializeBinaryToWriter = fu
 
 
 /**
- * optional uint64 value = 1;
+ * optional int64 value = 1;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.OutputType.prototype.getValue = function() {

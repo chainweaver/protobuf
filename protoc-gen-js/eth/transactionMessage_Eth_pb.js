@@ -635,23 +635,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.d
       msg.addAddresses(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setTotal(value);
       break;
     case 6:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setFees(value);
       break;
     case 7:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setSize(value);
       break;
     case 8:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setGasUsed(value);
       break;
     case 9:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setGasPrice(value);
       break;
     case 10:
@@ -791,35 +791,35 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.s
   }
   f = message.getTotal();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       5,
       f
     );
   }
   f = message.getFees();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       6,
       f
     );
   }
   f = message.getSize();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       7,
       f
     );
   }
   f = message.getGasUsed();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       8,
       f
     );
   }
   f = message.getGasPrice();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       9,
       f
     );
@@ -1037,7 +1037,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.p
 
 
 /**
- * optional int32 total = 5;
+ * optional uint64 total = 5;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.getTotal = function() {
@@ -1052,7 +1052,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.p
 
 
 /**
- * optional int32 fees = 6;
+ * optional uint64 fees = 6;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.getFees = function() {
@@ -1067,7 +1067,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.p
 
 
 /**
- * optional int32 size = 7;
+ * optional uint64 size = 7;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.getSize = function() {
@@ -1082,7 +1082,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.p
 
 
 /**
- * optional int32 gas_used = 8;
+ * optional uint64 gas_used = 8;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.getGasUsed = function() {
@@ -1097,7 +1097,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.p
 
 
 /**
- * optional int32 gas_price = 9;
+ * optional uint64 gas_price = 9;
  * @return {number}
  */
 proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest.prototype.getGasPrice = function() {
