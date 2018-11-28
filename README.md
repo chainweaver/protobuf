@@ -4,7 +4,7 @@
 
 | lib | version |
 |----|---|
-| protobuf | 3.6.1 |
+| protobuf | 3.6.1.1 |
 | jq | 1.6 |
 | protoc-gen-go | 1.2.0 |
 | protoc-gen-grpc-gateway | 1.5.1 |
@@ -17,8 +17,8 @@
 Install the latest version at that time. (because it can not be installed by version specification)
 
 ```
-brew install protobuf
-brew install jq
+brew install protobuf (or brew upgrade protobuf)
+brew install jq (or brew upgrade jq)
 ```
 
 ### for golang
