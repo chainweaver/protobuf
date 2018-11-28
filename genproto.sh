@@ -15,6 +15,7 @@ protoc \
   --swagger_out=logtostderr=true:./openapi/btc/ \
   --js_out=import_style=commonjs,binary:./protoc-gen-js/btc/ \
   --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:./protoc-gen-js/btc/ \
+  --doc_out=./doc --doc_opt=html,btc.html \
   commonMessage.proto \
   assetMessage.proto \
   assetService.proto \
@@ -45,6 +46,7 @@ protoc \
   --swagger_out=logtostderr=true:./openapi/eth/ \
   --js_out=import_style=commonjs,binary:./protoc-gen-js/eth/ \
   --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:./protoc-gen-js/eth/ \
+  --doc_out=./doc --doc_opt=html,eth.html \
   commonMessage_Eth.proto \
   blockchainMessage_Eth.proto \
   blockchainService_Eth.proto \

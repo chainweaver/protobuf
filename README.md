@@ -10,7 +10,7 @@
 | protoc-gen-grpc-gateway | 1.5.1 |
 | protoc-gen-swagger | 1.5.1 |
 | grpc-web | 1.0.2 |
-
+| protoc-gen-doc | 1.1.0 |
 
 ## Install Protocol Buffers compiler
 
@@ -21,7 +21,7 @@ brew install protobuf (or brew upgrade protobuf)
 brew install jq (or brew upgrade jq)
 ```
 
-### for golang
+### for golang, grpc-gateway and swagger
 
 ```
 mkdir -p $GOPATH/src/github.com/golang
@@ -52,7 +52,18 @@ git checkout -b 1.0.3 refs/tags/1.0.3
 sudo make install-plugin
 ```
 
-## Compile Protocol Buffers
+### for protobuf doc
+
+```
+mkdir -p $GOPATH/src/github.com/pseudomuto
+cd $GOPATH/src/github.com/pseudomuto
+git clone git@github.com:pseudomuto/protoc-gen-doc.git
+cd protoc-gen-doc
+git checkout -b v1.1.0 refs/tags/v1.1.0
+go install
+```
+
+## Compile Protocol Buffers of Blockchain API
 
 ```
 mkdir -p $GOPATH/src/github.com/fairway-corp
@@ -69,3 +80,4 @@ cd blockchain-protobuf
 * [https://github.com/grpc-ecosystem/grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway)
 * [https://github.com/grpc/grpc-web](https://github.com/grpc/grpc-web)
 * [https://github.com/golang/protobuf](https://github.com/golang/protobuf)
+* [https://github.com/pseudomuto/protoc-gen-doc](https://github.com/pseudomuto/protoc-gen-doc)
