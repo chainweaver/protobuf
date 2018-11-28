@@ -20,7 +20,7 @@
         "operationId": "GenerateMultisigAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddressKeychain"
             }
@@ -58,7 +58,7 @@
         "operationId": "AddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddress"
             }
@@ -166,7 +166,7 @@
         "operationId": "AddressBalanceEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddress"
             }
@@ -210,7 +210,7 @@
         "operationId": "AddressFullEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddress"
             }

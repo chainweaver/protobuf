@@ -20,7 +20,7 @@
         "operationId": "UnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTXS"
             }
@@ -50,7 +50,7 @@
         "operationId": "DataEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcNullData"
             }
@@ -88,7 +88,7 @@
         "operationId": "DecodeRawTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTX"
             }
@@ -126,7 +126,7 @@
         "operationId": "NewTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTXSkeleton"
             }
@@ -164,7 +164,7 @@
         "operationId": "PushRawTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTX"
             }
@@ -202,7 +202,7 @@
         "operationId": "SendTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTXSkeleton"
             }
@@ -240,7 +240,7 @@
         "operationId": "TransactionHashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcTX"
             }
@@ -316,7 +316,7 @@
         "operationId": "TransactionPropagationEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcDescribedBelow"
             }

@@ -20,7 +20,7 @@
         "operationId": "PostCreateContractEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethContractArray"
             }
@@ -50,7 +50,7 @@
         "operationId": "GetContractAddressEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethContract"
             }
@@ -86,7 +86,7 @@
         "operationId": "PostCallContractMethodEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethContract"
             }

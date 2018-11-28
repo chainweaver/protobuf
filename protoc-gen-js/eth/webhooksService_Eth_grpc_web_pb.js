@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Event>}
  */
-const methodInfo_PostCreateWebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WebHooksService_PostCreateWebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Event,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.postCre
       '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/PostCreateWebHookEndpoint',
       request,
       metadata,
-      methodInfo_PostCreateWebHookEndpoint,
+      methodInfo_WebHooksService_PostCreateWebHookEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetListWebHooksEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent>}
  */
-const methodInfo_GetListWebHooksEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WebHooksService_GetListWebHooksEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   webhooksMessage_Eth_pb.ArrayEvent,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetListWebHooksEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.getList
       '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/GetListWebHooksEndpoint',
       request,
       metadata,
-      methodInfo_GetListWebHooksEndpoint,
+      methodInfo_WebHooksService_GetListWebHooksEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetWebHookIDEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Event>}
  */
-const methodInfo_GetWebHookIDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WebHooksService_GetWebHookIDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Event,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetWebHookIDEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.getWebH
       '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/GetWebHookIDEndpoint',
       request,
       metadata,
-      methodInfo_GetWebHookIDEndpoint,
+      methodInfo_WebHooksService_GetWebHookIDEndpoint,
       callback);
 };
 
@@ -254,7 +254,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.NullValue>}
  */
-const methodInfo_DeleteWebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WebHooksService_DeleteWebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} request */
   function(request) {
@@ -280,7 +280,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.deleteW
       '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/DeleteWebHookEndpoint',
       request,
       metadata,
-      methodInfo_DeleteWebHookEndpoint,
+      methodInfo_WebHooksService_DeleteWebHookEndpoint,
       callback);
 };
 

@@ -20,7 +20,7 @@
         "operationId": "ChainEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethBlockchain"
             }
@@ -50,7 +50,7 @@
         "operationId": "BlockHashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethBlock"
             }
@@ -102,7 +102,7 @@
         "operationId": "BlockHeightEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethBlock"
             }

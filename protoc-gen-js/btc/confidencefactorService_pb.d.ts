@@ -10,17 +10,36 @@ export class TXConfidence {
   setTxhash(a: string): void;
   getTxurl(): string;
   setTxurl(a: string): void;
+  toObject(): TXConfidence.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => TXConfidence;
 }
 
+export namespace TXConfidence {
+  export type AsObject = {
+    AgeMillis: number;
+    ReceiveCount: number;
+    Confidence: number;
+    Txhash: string;
+    Txurl: string;
+  }
+}
+
 export class TransactionConfidenceEndpointRequest {
   constructor ();
-  getNetwork(): {};
-  setNetwork(a: {}): void;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
   getTxhash(): string;
   setTxhash(a: string): void;
+  toObject(): TransactionConfidenceEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => TransactionConfidenceEndpointRequest;
+}
+
+export namespace TransactionConfidenceEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Txhash: string;
+  }
 }
 

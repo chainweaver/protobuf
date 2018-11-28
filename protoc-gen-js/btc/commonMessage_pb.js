@@ -449,7 +449,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.setArraystringLis
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.addArraystring = function(value, opt_index) {
@@ -795,7 +795,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXInput.prototype.setAddressesList = fu
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXInput.prototype.addAddresses = function(value, opt_index) {
@@ -1120,7 +1120,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXOutput.prototype.setAddressesList = f
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXOutput.prototype.addAddresses = function(value, opt_index) {
@@ -1715,7 +1715,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.setAddressesList = functio
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TX.prototype.addAddresses = function(value, opt_index) {
@@ -2358,7 +2358,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Wallet.prototype.setAddressesList = fun
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Wallet.prototype.addAddresses = function(value, opt_index) {
@@ -2677,7 +2677,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.HDWallet.prototype.setSubchainIndexesLi
 
 
 /**
- * @param {number} value
+ * @param {!number} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.HDWallet.prototype.addSubchainIndexes = function(value, opt_index) {
@@ -3250,7 +3250,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.clearWallet = functio
 
 /**
  * Returns whether this field is set.
- * @return {boolean}
+ * @return {!boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.hasWallet = function() {
   return jspb.Message.getField(this, 2) != null;
@@ -3280,7 +3280,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.clearHdWallet = funct
 
 /**
  * Returns whether this field is set.
- * @return {boolean}
+ * @return {!boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Address.prototype.hasHdWallet = function() {
   return jspb.Message.getField(this, 3) != null;
@@ -4022,7 +4022,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain.prototype.setPubkeysLis
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain.prototype.addPubkeys = function(value, opt_index) {
@@ -5511,7 +5511,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.setInputsList = functio
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.addInputs = function(value, opt_index) {
@@ -5540,7 +5540,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.setOutputsList = functi
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.OAPTX.prototype.addOutputs = function(value, opt_index) {
@@ -5775,7 +5775,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.clearTx = function
 
 /**
  * Returns whether this field is set.
- * @return {boolean}
+ * @return {!boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.hasTx = function() {
   return jspb.Message.getField(this, 1) != null;
@@ -5798,7 +5798,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.setTosignList = fu
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.addTosign = function(value, opt_index) {
@@ -5827,7 +5827,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.setSignaturesList 
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.addSignatures = function(value, opt_index) {
@@ -5856,7 +5856,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.setPubkeysList = f
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.addPubkeys = function(value, opt_index) {
@@ -5885,7 +5885,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.setTosignTxList = 
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton.prototype.addTosignTx = function(value, opt_index) {
@@ -6535,7 +6535,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.clearFirstLoca
 
 /**
  * Returns whether this field is set.
- * @return {boolean}
+ * @return {!boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.hasFirstLocation = function() {
   return jspb.Message.getField(this, 2) != null;
@@ -6595,7 +6595,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.clearAggregate
 
 /**
  * Returns whether this field is set.
- * @return {boolean}
+ * @return {!boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow.prototype.hasAggregatedOrigin = function() {
   return jspb.Message.getField(this, 5) != null;
@@ -7646,7 +7646,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.clearArgs = function() {
 
 /**
  * Returns whether this field is set.
- * @return {boolean}
+ * @return {!boolean}
  */
 proto.fairwaycorp.blockchainprotobuf.btc.Job.prototype.hasArgs = function() {
   return jspb.Message.getField(this, 9) != null;
@@ -8967,7 +8967,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.prototype.setTxsList = f
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForward.prototype.addTxs = function(value, opt_index) {

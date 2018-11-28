@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetBalanceAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  */
-const methodInfo_GetBalanceAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_GetBalanceAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Address,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBalanceAddressEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.getBalan
       '/fairwaycorp.blockchainprotobuf.eth.AddressService/GetBalanceAddressEndpoint',
       request,
       metadata,
-      methodInfo_GetBalanceAddressEndpoint,
+      methodInfo_AddressService_GetBalanceAddressEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.g
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  */
-const methodInfo_GetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_GetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Address,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetAddressEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.getAddre
       '/fairwaycorp.blockchainprotobuf.eth.AddressService/GetAddressEndpoint',
       request,
       metadata,
-      methodInfo_GetAddressEndpoint,
+      methodInfo_AddressService_GetAddressEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.g
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostGenerateAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.AddressKeychain>}
  */
-const methodInfo_PostGenerateAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_PostGenerateAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.AddressKeychain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostGenerateAddressEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.postGene
       '/fairwaycorp.blockchainprotobuf.eth.AddressService/PostGenerateAddressEndpoint',
       request,
       metadata,
-      methodInfo_PostGenerateAddressEndpoint,
+      methodInfo_AddressService_PostGenerateAddressEndpoint,
       callback);
 };
 

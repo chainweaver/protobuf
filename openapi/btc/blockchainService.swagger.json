@@ -20,7 +20,7 @@
         "operationId": "ChainEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcBlockchain"
             }
@@ -50,7 +50,7 @@
         "operationId": "BlockHashEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcBlock"
             }
@@ -100,7 +100,7 @@
         "operationId": "BlockHeightEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcBlock"
             }
@@ -151,7 +151,7 @@
         "operationId": "FeatureEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcFeature"
             }

@@ -20,16 +20,33 @@ export class AddressForward {
   setEnableConfirmations(a: boolean): void;
   getMiningFeesSatoshis(): number;
   setMiningFeesSatoshis(a: number): void;
-  getTxs(): string;
-  setTxs(a: string): void;
+  getTxsList(): string[];
+  setTxsList(a: string[]): void;
+  toObject(): AddressForward.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => AddressForward;
 }
 
+export namespace AddressForward {
+  export type AsObject = {
+    Id: string;
+    Token: string;
+    Destination: string;
+    InputAddress: string;
+    ProcessFeesAddress: string;
+    ProcessFeesSatoshis: number;
+    ProcessFeesPercent: number;
+    CallbackUrl: string;
+    EnableConfirmations: boolean;
+    MiningFeesSatoshis: number;
+    TxsList: string[];
+  }
+}
+
 export class CreateForwardEndpointRequest {
   constructor ();
-  getNetwork(): {};
-  setNetwork(a: {}): void;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
   getId(): string;
   setId(a: string): void;
   getToken(): string;
@@ -50,43 +67,90 @@ export class CreateForwardEndpointRequest {
   setEnableConfirmations(a: boolean): void;
   getMiningFeesSatoshis(): number;
   setMiningFeesSatoshis(a: number): void;
-  getTxs(): string;
-  setTxs(a: string): void;
+  getTxsList(): string[];
+  setTxsList(a: string[]): void;
+  toObject(): CreateForwardEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => CreateForwardEndpointRequest;
 }
 
+export namespace CreateForwardEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Id: string;
+    Token: string;
+    Destination: string;
+    InputAddress: string;
+    ProcessFeesAddress: string;
+    ProcessFeesSatoshis: number;
+    ProcessFeesPercent: number;
+    CallbackUrl: string;
+    EnableConfirmations: boolean;
+    MiningFeesSatoshis: number;
+    TxsList: string[];
+  }
+}
+
 export class DeleteForwardEndpointRequest {
   constructor ();
-  getNetwork(): {};
-  setNetwork(a: {}): void;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
   getPayid(): string;
   setPayid(a: string): void;
+  toObject(): DeleteForwardEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => DeleteForwardEndpointRequest;
 }
 
+export namespace DeleteForwardEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Payid: string;
+  }
+}
+
 export class DeleteForwardEndpointResponse {
   constructor ();
+  toObject(): DeleteForwardEndpointResponse.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => DeleteForwardEndpointResponse;
 }
 
+export namespace DeleteForwardEndpointResponse {
+  export type AsObject = {
+  }
+}
+
 export class ListForwardsEndpointRequest {
   constructor ();
-  getNetwork(): {};
-  setNetwork(a: {}): void;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
   getStart(): number;
   setStart(a: number): void;
+  toObject(): ListForwardsEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ListForwardsEndpointRequest;
 }
 
+export namespace ListForwardsEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Start: number;
+  }
+}
+
 export class ListForwardsEndpointResponse {
   constructor ();
-  getForwards(): {};
-  setForwards(a: {}): void;
+  getForwardsList(): AddressForward[];
+  setForwardsList(a: AddressForward[]): void;
+  toObject(): ListForwardsEndpointResponse.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ListForwardsEndpointResponse;
+}
+
+export namespace ListForwardsEndpointResponse {
+  export type AsObject = {
+    ForwardsList: AddressForward[];
+  }
 }
 

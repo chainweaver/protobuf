@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.AddressForward>}
  */
-const methodInfo_CreateForwardEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressForwardingService_CreateForwardEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.AddressForward,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient.prototyp
       '/fairwaycorp.blockchainprotobuf.btc.AddressForwardingService/CreateForwardEndpoint',
       request,
       metadata,
-      methodInfo_CreateForwardEndpoint,
+      methodInfo_AddressForwardingService_CreateForwardEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServicePromiseClient.p
  *   !proto.fairwaycorp.blockchainprotobuf.btc.ListForwardsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.ListForwardsEndpointResponse>}
  */
-const methodInfo_ListForwardsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressForwardingService_ListForwardsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   addressforwardingMessage_pb.ListForwardsEndpointResponse,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.ListForwardsEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient.prototyp
       '/fairwaycorp.blockchainprotobuf.btc.AddressForwardingService/ListForwardsEndpoint',
       request,
       metadata,
-      methodInfo_ListForwardsEndpoint,
+      methodInfo_AddressForwardingService_ListForwardsEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServicePromiseClient.p
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointResponse>}
  */
-const methodInfo_DeleteForwardEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressForwardingService_DeleteForwardEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   addressforwardingMessage_pb.DeleteForwardEndpointResponse,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient.prototyp
       '/fairwaycorp.blockchainprotobuf.btc.AddressForwardingService/DeleteForwardEndpoint',
       request,
       metadata,
-      methodInfo_DeleteForwardEndpoint,
+      methodInfo_AddressForwardingService_DeleteForwardEndpoint,
       callback);
 };
 

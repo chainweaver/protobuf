@@ -20,7 +20,7 @@
         "operationId": "GetListWebHooksEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethArrayEvent"
             }
@@ -55,7 +55,7 @@
         "operationId": "PostCreateWebHookEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethEvent"
             }
@@ -71,7 +71,7 @@
         "operationId": "GetWebHookIDEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethEvent"
             }
@@ -106,7 +106,7 @@
         "operationId": "DeleteWebHookEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ethNullValue"
             }

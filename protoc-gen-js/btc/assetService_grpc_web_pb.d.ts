@@ -5,58 +5,103 @@ import {
   ArrayString,
   GetAssetAddressEndpointRequest,
   GetAssetTXEndpointRequest,
+  HDAddress,
+  HDChain,
+  HDWallet,
   ListAssetTXsEndpointRequest,
   NullValueRequest,
   OAPIssueRequest,
   OAPTX,
-  TransferAssetEndpointRequest} from './assetService_pb';
+  TX,
+  TXInput,
+  TXOutput,
+  TXRef,
+  TransferAssetEndpointRequest,
+  Wallet} from './assetService_pb';
 
 export class AssetServiceClient {
   constructor (hostname: string,
-               credentials: {},
-               options: { [s: string]: {}; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   generateAssetAddressEndpoint(
     request: NullValueRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: AddressKeychain) => void
-  ): grpcWeb.ClientReadableStream;
+  ): grpcWeb.ClientReadableStream<AddressKeychain>;
 
   issueAssetEndpoint(
     request: OAPIssueRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: OAPTX) => void
-  ): grpcWeb.ClientReadableStream;
+  ): grpcWeb.ClientReadableStream<OAPTX>;
 
   transferAssetEndpoint(
     request: TransferAssetEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: OAPTX) => void
-  ): grpcWeb.ClientReadableStream;
+  ): grpcWeb.ClientReadableStream<OAPTX>;
 
   listAssetTXsEndpoint(
     request: ListAssetTXsEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: ArrayString) => void
-  ): grpcWeb.ClientReadableStream;
+  ): grpcWeb.ClientReadableStream<ArrayString>;
 
   getAssetTXEndpoint(
     request: GetAssetTXEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: OAPTX) => void
-  ): grpcWeb.ClientReadableStream;
+  ): grpcWeb.ClientReadableStream<OAPTX>;
 
   getAssetAddressEndpoint(
     request: GetAssetAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
-  ): grpcWeb.ClientReadableStream;
+  ): grpcWeb.ClientReadableStream<Address>;
+
+}
+
+export class AssetServicePromiseClient {
+  constructor (hostname: string,
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
+
+  generateAssetAddressEndpoint(
+    request: NullValueRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<AddressKeychain>;
+
+  issueAssetEndpoint(
+    request: OAPIssueRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<OAPTX>;
+
+  transferAssetEndpoint(
+    request: TransferAssetEndpointRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<OAPTX>;
+
+  listAssetTXsEndpoint(
+    request: ListAssetTXsEndpointRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<ArrayString>;
+
+  getAssetTXEndpoint(
+    request: GetAssetTXEndpointRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<OAPTX>;
+
+  getAssetAddressEndpoint(
+    request: GetAssetAddressEndpointRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<Address>;
 
 }
 

@@ -20,7 +20,7 @@
         "operationId": "ListForwardsEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcListForwardsEndpointResponse"
             }
@@ -56,7 +56,7 @@
         "operationId": "CreateForwardEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcAddressForward"
             }
@@ -94,7 +94,7 @@
         "operationId": "DeleteForwardEndpoint",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/btcDeleteForwardEndpointResponse"
             }

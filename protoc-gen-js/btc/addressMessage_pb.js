@@ -12,7 +12,6 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_pb = require('./commonMessage_pb.js');
-goog.object.extend(proto, commonMessage_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.AddressBalanceEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.AddressEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.AddressFullEndpointRequest', null, global);
@@ -1517,7 +1516,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.GenerateMultisigAddressEndpointRequest.
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.GenerateMultisigAddressEndpointRequest.prototype.addPubkeys = function(value, opt_index) {

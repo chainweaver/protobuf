@@ -12,7 +12,6 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_pb = require('./commonMessage_pb.js');
-goog.object.extend(proto, commonMessage_pb);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointResponse', null, global);
@@ -467,7 +466,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.prototype.
 
 
 /**
- * @param {string} value
+ * @param {!string} value
  * @param {number=} opt_index
  */
 proto.fairwaycorp.blockchainprotobuf.btc.CreateForwardEndpointRequest.prototype.addTxs = function(value, opt_index) {

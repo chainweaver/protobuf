@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.ConfidenceFactorServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TransactionConfidenceEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TXConfidence>}
  */
-const methodInfo_TransactionConfidenceEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ConfidenceFactorService_TransactionConfidenceEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.TXConfidence,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.TransactionConfidenceEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.ConfidenceFactorServiceClient.prototype
       '/fairwaycorp.blockchainprotobuf.btc.ConfidenceFactorService/TransactionConfidenceEndpoint',
       request,
       metadata,
-      methodInfo_TransactionConfidenceEndpoint,
+      methodInfo_ConfidenceFactorService_TransactionConfidenceEndpoint,
       callback);
 };
 

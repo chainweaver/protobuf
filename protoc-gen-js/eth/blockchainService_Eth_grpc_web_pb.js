@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.eth.ChainEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Blockchain>}
  */
-const methodInfo_ChainEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_ChainEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Blockchain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.ChainEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServiceClient.prototype.chain
       '/fairwaycorp.blockchainprotobuf.eth.BlockchainService/ChainEndpoint',
       request,
       metadata,
-      methodInfo_ChainEndpoint,
+      methodInfo_BlockchainService_ChainEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototyp
  *   !proto.fairwaycorp.blockchainprotobuf.eth.BlockHashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Block>}
  */
-const methodInfo_BlockHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_BlockHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Block,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHashEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServiceClient.prototype.block
       '/fairwaycorp.blockchainprotobuf.eth.BlockchainService/BlockHashEndpoint',
       request,
       metadata,
-      methodInfo_BlockHashEndpoint,
+      methodInfo_BlockchainService_BlockHashEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototyp
  *   !proto.fairwaycorp.blockchainprotobuf.eth.BlockHeightEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Block>}
  */
-const methodInfo_BlockHeightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_BlockHeightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Block,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHeightEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServiceClient.prototype.block
       '/fairwaycorp.blockchainprotobuf.eth.BlockchainService/BlockHeightEndpoint',
       request,
       metadata,
-      methodInfo_BlockHeightEndpoint,
+      methodInfo_BlockchainService_BlockHeightEndpoint,
       callback);
 };
 
