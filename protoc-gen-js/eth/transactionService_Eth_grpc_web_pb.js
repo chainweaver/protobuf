@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetTransactionHashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TX>}
  */
-const methodInfo_GetTransactionHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_GetTransactionHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetTransactionHashEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.getT
       '/fairwaycorp.blockchainprotobuf.eth.TransactionService/GetTransactionHashEndpoint',
       request,
       metadata,
-      methodInfo_GetTransactionHashEndpoint,
+      methodInfo_TransactionService_GetTransactionHashEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetUnconfirmedTransactionsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TxArray>}
  */
-const methodInfo_GetUnconfirmedTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_GetUnconfirmedTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   transactionMessage_Eth_pb.TxArray,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetUnconfirmedTransactionsEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.getU
       '/fairwaycorp.blockchainprotobuf.eth.TransactionService/GetUnconfirmedTransactionsEndpoint',
       request,
       metadata,
-      methodInfo_GetUnconfirmedTransactionsEndpoint,
+      methodInfo_TransactionService_GetUnconfirmedTransactionsEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton>}
  */
-const methodInfo_PostCreateTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_PostCreateTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TXSkeleton,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.post
       '/fairwaycorp.blockchainprotobuf.eth.TransactionService/PostCreateTransactionsEndpoint',
       request,
       metadata,
-      methodInfo_PostCreateTransactionsEndpoint,
+      methodInfo_TransactionService_PostCreateTransactionsEndpoint,
       callback);
 };
 
@@ -254,7 +254,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton>}
  */
-const methodInfo_PostSendTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_PostSendTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TXSkeleton,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest} request */
   function(request) {
@@ -280,7 +280,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.post
       '/fairwaycorp.blockchainprotobuf.eth.TransactionService/PostSendTransactionEndpoint',
       request,
       metadata,
-      methodInfo_PostSendTransactionEndpoint,
+      methodInfo_TransactionService_PostSendTransactionEndpoint,
       callback);
 };
 
@@ -310,7 +310,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostDecodeRawTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TX>}
  */
-const methodInfo_PostDecodeRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_PostDecodeRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostDecodeRawTransactionEndpointRequest} request */
   function(request) {
@@ -336,7 +336,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.post
       '/fairwaycorp.blockchainprotobuf.eth.TransactionService/PostDecodeRawTransactionEndpoint',
       request,
       metadata,
-      methodInfo_PostDecodeRawTransactionEndpoint,
+      methodInfo_TransactionService_PostDecodeRawTransactionEndpoint,
       callback);
 };
 
@@ -366,7 +366,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostPushRawTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TX>}
  */
-const methodInfo_PostPushRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_PostPushRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostPushRawTransactionEndpointRequest} request */
   function(request) {
@@ -392,7 +392,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.post
       '/fairwaycorp.blockchainprotobuf.eth.TransactionService/PostPushRawTransactionEndpoint',
       request,
       metadata,
-      methodInfo_PostPushRawTransactionEndpoint,
+      methodInfo_TransactionService_PostPushRawTransactionEndpoint,
       callback);
 };
 

@@ -4,6 +4,8 @@ import {
   GetAnalyticsJobRequest,
   GetAnalyticsJobResultsRequest,
   Job,
+  JobArgs,
+  JobResultArr,
   JobResults} from './analyticsService_pb';
 
 export class AnalyticsServiceClient {

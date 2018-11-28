@@ -1,7 +1,9 @@
 import * as grpcWeb from 'grpc-web';
 import {
   MicroTX,
-  MicroTXRequest} from './microtransactionService_pb';
+  MicroTXRequest,
+  TXInput,
+  TXOutput} from './microtransactionService_pb';
 
 export class MicrotransactionServiceClient {
   constructor (hostname: string,

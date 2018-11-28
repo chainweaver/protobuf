@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.AddressBalanceEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Address>}
  */
-const methodInfo_AddressBalanceEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_AddressBalanceEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Address,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.AddressBalanceEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServiceClient.prototype.addressB
       '/fairwaycorp.blockchainprotobuf.btc.AddressService/AddressBalanceEndpoint',
       request,
       metadata,
-      methodInfo_AddressBalanceEndpoint,
+      methodInfo_AddressService_AddressBalanceEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServicePromiseClient.prototype.a
  *   !proto.fairwaycorp.blockchainprotobuf.btc.AddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Address>}
  */
-const methodInfo_AddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_AddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Address,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.AddressEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServiceClient.prototype.addressE
       '/fairwaycorp.blockchainprotobuf.btc.AddressService/AddressEndpoint',
       request,
       metadata,
-      methodInfo_AddressEndpoint,
+      methodInfo_AddressService_AddressEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServicePromiseClient.prototype.a
  *   !proto.fairwaycorp.blockchainprotobuf.btc.AddressFullEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Address>}
  */
-const methodInfo_AddressFullEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_AddressFullEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Address,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.AddressFullEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServiceClient.prototype.addressF
       '/fairwaycorp.blockchainprotobuf.btc.AddressService/AddressFullEndpoint',
       request,
       metadata,
-      methodInfo_AddressFullEndpoint,
+      methodInfo_AddressService_AddressFullEndpoint,
       callback);
 };
 
@@ -254,7 +254,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServicePromiseClient.prototype.a
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GenerateAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain>}
  */
-const methodInfo_GenerateAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_GenerateAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.AddressKeychain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GenerateAddressEndpointRequest} request */
   function(request) {
@@ -280,7 +280,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServiceClient.prototype.generate
       '/fairwaycorp.blockchainprotobuf.btc.AddressService/GenerateAddressEndpoint',
       request,
       metadata,
-      methodInfo_GenerateAddressEndpoint,
+      methodInfo_AddressService_GenerateAddressEndpoint,
       callback);
 };
 
@@ -310,7 +310,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServicePromiseClient.prototype.g
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GenerateMultisigAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain>}
  */
-const methodInfo_GenerateMultisigAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_GenerateMultisigAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.AddressKeychain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GenerateMultisigAddressEndpointRequest} request */
   function(request) {
@@ -336,7 +336,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressServiceClient.prototype.generate
       '/fairwaycorp.blockchainprotobuf.btc.AddressService/GenerateMultisigAddressEndpoint',
       request,
       metadata,
-      methodInfo_GenerateMultisigAddressEndpoint,
+      methodInfo_AddressService_GenerateMultisigAddressEndpoint,
       callback);
 };
 

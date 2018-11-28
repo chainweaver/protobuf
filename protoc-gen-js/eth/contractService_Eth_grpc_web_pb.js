@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.ContractArray>}
  */
-const methodInfo_PostCreateContractEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ContractService_PostCreateContractEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   contractMessage_Eth_pb.ContractArray,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.postCre
       '/fairwaycorp.blockchainprotobuf.eth.ContractService/PostCreateContractEndpoint',
       request,
       metadata,
-      methodInfo_PostCreateContractEndpoint,
+      methodInfo_ContractService_PostCreateContractEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Contract>}
  */
-const methodInfo_GetContractAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ContractService_GetContractAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Contract,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.getCont
       '/fairwaycorp.blockchainprotobuf.eth.ContractService/GetContractAddressEndpoint',
       request,
       metadata,
-      methodInfo_GetContractAddressEndpoint,
+      methodInfo_ContractService_GetContractAddressEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Contract>}
  */
-const methodInfo_PostCallContractMethodEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ContractService_PostCallContractMethodEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Contract,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.postCal
       '/fairwaycorp.blockchainprotobuf.eth.ContractService/PostCallContractMethodEndpoint',
       request,
       metadata,
-      methodInfo_PostCallContractMethodEndpoint,
+      methodInfo_ContractService_PostCallContractMethodEndpoint,
       callback);
 };
 

@@ -5,11 +5,19 @@ import {
   ArrayString,
   GetAssetAddressEndpointRequest,
   GetAssetTXEndpointRequest,
+  HDAddress,
+  HDChain,
+  HDWallet,
   ListAssetTXsEndpointRequest,
   NullValueRequest,
   OAPIssueRequest,
   OAPTX,
-  TransferAssetEndpointRequest} from './assetService_pb';
+  TX,
+  TXInput,
+  TXOutput,
+  TXRef,
+  TransferAssetEndpointRequest,
+  Wallet} from './assetService_pb';
 
 export class AssetServiceClient {
   constructor (hostname: string,

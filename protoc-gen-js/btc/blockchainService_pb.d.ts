@@ -40,36 +40,82 @@ export class Block {
   setTxidsList(a: string[]): void;
   getNextTxids(): string;
   setNextTxids(a: string): void;
+  toObject(): Block.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => Block;
 }
 
+export namespace Block {
+  export type AsObject = {
+    Hash: string;
+    Height: number;
+    Depth: number;
+    Network: string;
+    Total: number;
+    Fees: number;
+    Size: number;
+    Ver: number;
+    Time: string;
+    ReceivedTime: string;
+    RelayedBy: string;
+    Bits: number;
+    Nonce: number;
+    NTx: number;
+    PrevBlock: string;
+    PrevBlockUrl: string;
+    TxUrl: string;
+    MrklRoot: string;
+    TxidsList: string[];
+    NextTxids: string;
+  }
+}
+
 export class BlockHashEndpointRequest {
   constructor ();
-  getNetwork(): {};
-  setNetwork(a: {}): void;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
   getBlockHash(): string;
   setBlockHash(a: string): void;
   getTxstart(): number;
   setTxstart(a: number): void;
   getLimit(): number;
   setLimit(a: number): void;
+  toObject(): BlockHashEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => BlockHashEndpointRequest;
 }
 
+export namespace BlockHashEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    BlockHash: string;
+    Txstart: number;
+    Limit: number;
+  }
+}
+
 export class BlockHeightEndpointRequest {
   constructor ();
-  getNetwork(): {};
-  setNetwork(a: {}): void;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
   getBlockHeight(): number;
   setBlockHeight(a: number): void;
   getTxstart(): number;
   setTxstart(a: number): void;
   getLimit(): number;
   setLimit(a: number): void;
+  toObject(): BlockHeightEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => BlockHeightEndpointRequest;
+}
+
+export namespace BlockHeightEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    BlockHeight: number;
+    Txstart: number;
+    Limit: number;
+  }
 }
 
 export class Blockchain {
@@ -102,22 +148,49 @@ export class Blockchain {
   setLastForkHeight(a: number): void;
   getLastForkHash(): string;
   setLastForkHash(a: string): void;
+  toObject(): Blockchain.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => Blockchain;
 }
 
+export namespace Blockchain {
+  export type AsObject = {
+    Name: string;
+    Height: number;
+    Hash: string;
+    Time: string;
+    LatestUrl: string;
+    PreviousHash: string;
+    PreviousUrl: string;
+    PeerCount: number;
+    HighFeePerKb: number;
+    MediumFeePerKb: number;
+    LowFeePerKb: number;
+    UnconfirmedCount: number;
+    LastForkHeight: number;
+    LastForkHash: string;
+  }
+}
+
 export class ChainEndpointRequest {
   constructor ();
-  getNetwork(): {};
-  setNetwork(a: {}): void;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  toObject(): ChainEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ChainEndpointRequest;
 }
 
+export namespace ChainEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+  }
+}
+
 export class Feature {
   constructor ();
-  getNetwork(): {};
-  setNetwork(a: {}): void;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
   getName(): string;
   setName(a: string): void;
   getState(): string;
@@ -126,17 +199,36 @@ export class Feature {
   setLastTransitionHeight(a: number): void;
   getLastTransitionHash(): string;
   setLastTransitionHash(a: string): void;
+  toObject(): Feature.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => Feature;
 }
 
+export namespace Feature {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Name: string;
+    State: string;
+    LastTransitionHeight: number;
+    LastTransitionHash: string;
+  }
+}
+
 export class FeatureEndpointRequest {
   constructor ();
-  getNetwork(): {};
-  setNetwork(a: {}): void;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
   getName(): string;
   setName(a: string): void;
+  toObject(): FeatureEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => FeatureEndpointRequest;
+}
+
+export namespace FeatureEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Name: string;
+  }
 }
 

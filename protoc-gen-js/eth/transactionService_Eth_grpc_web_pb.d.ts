@@ -2,6 +2,8 @@ import * as grpcWeb from 'grpc-web';
 import {
   GetTransactionHashEndpointRequest,
   GetUnconfirmedTransactionsEndpointRequest,
+  InputType,
+  OutputType,
   PostCreateTransactionsEndpointRequest,
   PostDecodeRawTransactionEndpointRequest,
   PostPushRawTransactionEndpointRequest,

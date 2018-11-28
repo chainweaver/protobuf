@@ -1,15 +1,20 @@
 import * as grpcWeb from 'grpc-web';
 import {
+  AggregatedOrigin,
   DataEndpointRequest,
   DecodeRawTransactionEndpointRequest,
   DescribedBelow,
+  FirstLocation,
   NewTransactionEndpointRequest,
   NullData,
   PushRawTransactionEndpointRequest,
   SendTransactionEndpointRequest,
   TX,
+  TXInput,
+  TXOutput,
   TXS,
   TXSkeleton,
+  TXerror,
   TransactionHashEndpointRequest,
   TransactionPropagationEndpointRequest,
   UnconfirmedTransactionsEndpointRequest} from './transactionService_pb';

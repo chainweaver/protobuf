@@ -7,10 +7,14 @@ import {
   GetMetadataBlockhashEndpointRequest,
   GetMetadataTxhashEndpointRequest,
   KeyValues,
+  KeyPairsEntry,
   NullValue,
   PutMetadataAddressEndpointRequest,
+  KeyPairsEntry,
   PutMetadataBlockhashEndpointRequest,
-  PutMetadataTxhashEndpointRequest} from './metadataService_pb';
+  KeyPairsEntry,
+  PutMetadataTxhashEndpointRequest,
+  KeyPairsEntry} from './metadataService_pb';
 
 export class MetadataServiceClient {
   constructor (hostname: string,

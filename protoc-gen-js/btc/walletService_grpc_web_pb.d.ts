@@ -8,6 +8,7 @@ import {
   GenerateAdressInWalletEndpointRequest,
   GetWalletAddressesEndpointRequest,
   GetWalletEndpointRequest,
+  HDAddress,
   HDChain,
   HDWallet,
   ListWallets,

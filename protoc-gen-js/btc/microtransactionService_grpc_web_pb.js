@@ -84,7 +84,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.MicroTX>}
  */
-const methodInfo_MicrotransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MicrotransactionService_MicrotransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   microtransactionMessage_pb.MicroTX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest} request */
   function(request) {
@@ -110,7 +110,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServiceClient.prototype
       '/fairwaycorp.blockchainprotobuf.btc.MicrotransactionService/MicrotransactionEndpoint',
       request,
       metadata,
-      methodInfo_MicrotransactionEndpoint,
+      methodInfo_MicrotransactionService_MicrotransactionEndpoint,
       callback);
 };
 

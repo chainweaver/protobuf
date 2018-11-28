@@ -6,7 +6,15 @@ import {
   AddressFullEndpointRequest,
   AddressKeychain,
   GenerateAddressEndpointRequest,
-  GenerateMultisigAddressEndpointRequest} from './addressService_pb';
+  GenerateMultisigAddressEndpointRequest,
+  HDAddress,
+  HDChain,
+  HDWallet,
+  TX,
+  TXInput,
+  TXOutput,
+  TXRef,
+  Wallet} from './addressService_pb';
 
 export class AddressServiceClient {
   constructor (hostname: string,

@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValueRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain>}
  */
-const methodInfo_GenerateAssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AssetService_GenerateAssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.AddressKeychain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.NullValueRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.generateAs
       '/fairwaycorp.blockchainprotobuf.btc.AssetService/GenerateAssetAddressEndpoint',
       request,
       metadata,
-      methodInfo_GenerateAssetAddressEndpoint,
+      methodInfo_AssetService_GenerateAssetAddressEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.gen
  *   !proto.fairwaycorp.blockchainprotobuf.btc.OAPIssueRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.OAPTX>}
  */
-const methodInfo_IssueAssetEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AssetService_IssueAssetEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.OAPTX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.OAPIssueRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.issueAsset
       '/fairwaycorp.blockchainprotobuf.btc.AssetService/IssueAssetEndpoint',
       request,
       metadata,
-      methodInfo_IssueAssetEndpoint,
+      methodInfo_AssetService_IssueAssetEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.iss
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TransferAssetEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.OAPTX>}
  */
-const methodInfo_TransferAssetEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AssetService_TransferAssetEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.OAPTX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.TransferAssetEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.transferAs
       '/fairwaycorp.blockchainprotobuf.btc.AssetService/TransferAssetEndpoint',
       request,
       metadata,
-      methodInfo_TransferAssetEndpoint,
+      methodInfo_AssetService_TransferAssetEndpoint,
       callback);
 };
 
@@ -254,7 +254,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.tra
  *   !proto.fairwaycorp.blockchainprotobuf.btc.ListAssetTXsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.ArrayString>}
  */
-const methodInfo_ListAssetTXsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AssetService_ListAssetTXsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.ArrayString,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.ListAssetTXsEndpointRequest} request */
   function(request) {
@@ -280,7 +280,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.listAssetT
       '/fairwaycorp.blockchainprotobuf.btc.AssetService/ListAssetTXsEndpoint',
       request,
       metadata,
-      methodInfo_ListAssetTXsEndpoint,
+      methodInfo_AssetService_ListAssetTXsEndpoint,
       callback);
 };
 
@@ -310,7 +310,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.lis
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetAssetTXEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.OAPTX>}
  */
-const methodInfo_GetAssetTXEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AssetService_GetAssetTXEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.OAPTX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAssetTXEndpointRequest} request */
   function(request) {
@@ -336,7 +336,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.getAssetTX
       '/fairwaycorp.blockchainprotobuf.btc.AssetService/GetAssetTXEndpoint',
       request,
       metadata,
-      methodInfo_GetAssetTXEndpoint,
+      methodInfo_AssetService_GetAssetTXEndpoint,
       callback);
 };
 
@@ -366,7 +366,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.get
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetAssetAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Address>}
  */
-const methodInfo_GetAssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AssetService_GetAssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Address,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAssetAddressEndpointRequest} request */
   function(request) {
@@ -392,7 +392,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.getAssetAd
       '/fairwaycorp.blockchainprotobuf.btc.AssetService/GetAssetAddressEndpoint',
       request,
       metadata,
-      methodInfo_GetAssetAddressEndpoint,
+      methodInfo_AssetService_GetAssetAddressEndpoint,
       callback);
 };
 

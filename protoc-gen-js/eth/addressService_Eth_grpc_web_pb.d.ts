@@ -4,7 +4,8 @@ import {
   AddressKeychain,
   GetAddressEndpointRequest,
   GetBalanceAddressEndpointRequest,
-  PostGenerateAddressEndpointRequest} from './addressService_Eth_pb';
+  PostGenerateAddressEndpointRequest,
+  TXRef} from './addressService_Eth_pb';
 
 export class AddressServiceClient {
   constructor (hostname: string,

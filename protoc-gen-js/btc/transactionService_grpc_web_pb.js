@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TransactionHashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TX>}
  */
-const methodInfo_TransactionHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_TransactionHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.TX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.TransactionHashEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServiceClient.prototype.tran
       '/fairwaycorp.blockchainprotobuf.btc.TransactionService/TransactionHashEndpoint',
       request,
       metadata,
-      methodInfo_TransactionHashEndpoint,
+      methodInfo_TransactionService_TransactionHashEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.btc.UnconfirmedTransactionsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TXS>}
  */
-const methodInfo_UnconfirmedTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_UnconfirmedTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.TXS,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.UnconfirmedTransactionsEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServiceClient.prototype.unco
       '/fairwaycorp.blockchainprotobuf.btc.TransactionService/UnconfirmedTransactionsEndpoint',
       request,
       metadata,
-      methodInfo_UnconfirmedTransactionsEndpoint,
+      methodInfo_TransactionService_UnconfirmedTransactionsEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton>}
  */
-const methodInfo_NewTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_NewTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.TXSkeleton,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServiceClient.prototype.newT
       '/fairwaycorp.blockchainprotobuf.btc.TransactionService/NewTransactionEndpoint',
       request,
       metadata,
-      methodInfo_NewTransactionEndpoint,
+      methodInfo_TransactionService_NewTransactionEndpoint,
       callback);
 };
 
@@ -254,7 +254,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton>}
  */
-const methodInfo_SendTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_SendTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.TXSkeleton,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest} request */
   function(request) {
@@ -280,7 +280,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServiceClient.prototype.send
       '/fairwaycorp.blockchainprotobuf.btc.TransactionService/SendTransactionEndpoint',
       request,
       metadata,
-      methodInfo_SendTransactionEndpoint,
+      methodInfo_TransactionService_SendTransactionEndpoint,
       callback);
 };
 
@@ -310,7 +310,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.btc.PushRawTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TX>}
  */
-const methodInfo_PushRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_PushRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.TX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.PushRawTransactionEndpointRequest} request */
   function(request) {
@@ -336,7 +336,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServiceClient.prototype.push
       '/fairwaycorp.blockchainprotobuf.btc.TransactionService/PushRawTransactionEndpoint',
       request,
       metadata,
-      methodInfo_PushRawTransactionEndpoint,
+      methodInfo_TransactionService_PushRawTransactionEndpoint,
       callback);
 };
 
@@ -366,7 +366,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DecodeRawTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TX>}
  */
-const methodInfo_DecodeRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_DecodeRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.TX,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DecodeRawTransactionEndpointRequest} request */
   function(request) {
@@ -392,7 +392,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServiceClient.prototype.deco
       '/fairwaycorp.blockchainprotobuf.btc.TransactionService/DecodeRawTransactionEndpoint',
       request,
       metadata,
-      methodInfo_DecodeRawTransactionEndpoint,
+      methodInfo_TransactionService_DecodeRawTransactionEndpoint,
       callback);
 };
 
@@ -422,7 +422,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DataEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullData>}
  */
-const methodInfo_DataEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_DataEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullData,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DataEndpointRequest} request */
   function(request) {
@@ -448,7 +448,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServiceClient.prototype.data
       '/fairwaycorp.blockchainprotobuf.btc.TransactionService/DataEndpoint',
       request,
       metadata,
-      methodInfo_DataEndpoint,
+      methodInfo_TransactionService_DataEndpoint,
       callback);
 };
 
@@ -478,7 +478,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.btc.TransactionPropagationEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow>}
  */
-const methodInfo_TransactionPropagationEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_TransactionPropagationEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.DescribedBelow,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.TransactionPropagationEndpointRequest} request */
   function(request) {
@@ -504,7 +504,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.TransactionServiceClient.prototype.tran
       '/fairwaycorp.blockchainprotobuf.btc.TransactionService/TransactionPropagationEndpoint',
       request,
       metadata,
-      methodInfo_TransactionPropagationEndpoint,
+      methodInfo_TransactionService_TransactionPropagationEndpoint,
       callback);
 };
 

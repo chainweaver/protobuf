@@ -84,7 +84,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.ChainEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Blockchain>}
  */
-const methodInfo_ChainEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_ChainEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   blockchainMessage_pb.Blockchain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.ChainEndpointRequest} request */
   function(request) {
@@ -110,7 +110,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient.prototype.chain
       '/fairwaycorp.blockchainprotobuf.btc.BlockchainService/ChainEndpoint',
       request,
       metadata,
-      methodInfo_ChainEndpoint,
+      methodInfo_BlockchainService_ChainEndpoint,
       callback);
 };
 
@@ -140,7 +140,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServicePromiseClient.prototyp
  *   !proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Block>}
  */
-const methodInfo_BlockHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_BlockHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   blockchainMessage_pb.Block,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.BlockHashEndpointRequest} request */
   function(request) {
@@ -166,7 +166,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient.prototype.block
       '/fairwaycorp.blockchainprotobuf.btc.BlockchainService/BlockHashEndpoint',
       request,
       metadata,
-      methodInfo_BlockHashEndpoint,
+      methodInfo_BlockchainService_BlockHashEndpoint,
       callback);
 };
 
@@ -196,7 +196,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServicePromiseClient.prototyp
  *   !proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Block>}
  */
-const methodInfo_BlockHeightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_BlockHeightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   blockchainMessage_pb.Block,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.BlockHeightEndpointRequest} request */
   function(request) {
@@ -222,7 +222,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient.prototype.block
       '/fairwaycorp.blockchainprotobuf.btc.BlockchainService/BlockHeightEndpoint',
       request,
       metadata,
-      methodInfo_BlockHeightEndpoint,
+      methodInfo_BlockchainService_BlockHeightEndpoint,
       callback);
 };
 
@@ -252,7 +252,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServicePromiseClient.prototyp
  *   !proto.fairwaycorp.blockchainprotobuf.btc.FeatureEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Feature>}
  */
-const methodInfo_FeatureEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_FeatureEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   blockchainMessage_pb.Feature,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.FeatureEndpointRequest} request */
   function(request) {
@@ -278,7 +278,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.BlockchainServiceClient.prototype.featu
       '/fairwaycorp.blockchainprotobuf.btc.BlockchainService/FeatureEndpoint',
       request,
       metadata,
-      methodInfo_FeatureEndpoint,
+      methodInfo_BlockchainService_FeatureEndpoint,
       callback);
 };
 

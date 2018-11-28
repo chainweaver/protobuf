@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>}
  */
-const methodInfo_GetMetadataAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_GetMetadataAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   metadataMessage_pb.KeyValues,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.getMeta
       '/fairwaycorp.blockchainprotobuf.btc.MetadataService/GetMetadataAddressEndpoint',
       request,
       metadata,
-      methodInfo_GetMetadataAddressEndpoint,
+      methodInfo_MetadataService_GetMetadataAddressEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>}
  */
-const methodInfo_GetMetadataTxhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_GetMetadataTxhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   metadataMessage_pb.KeyValues,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.getMeta
       '/fairwaycorp.blockchainprotobuf.btc.MetadataService/GetMetadataTxhashEndpoint',
       request,
       metadata,
-      methodInfo_GetMetadataTxhashEndpoint,
+      methodInfo_MetadataService_GetMetadataTxhashEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>}
  */
-const methodInfo_GetMetadataBlockhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_GetMetadataBlockhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   metadataMessage_pb.KeyValues,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.getMeta
       '/fairwaycorp.blockchainprotobuf.btc.MetadataService/GetMetadataBlockhashEndpoint',
       request,
       metadata,
-      methodInfo_GetMetadataBlockhashEndpoint,
+      methodInfo_MetadataService_GetMetadataBlockhashEndpoint,
       callback);
 };
 
@@ -254,7 +254,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.btc.PutMetadataAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
-const methodInfo_PutMetadataAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_PutMetadataAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.PutMetadataAddressEndpointRequest} request */
   function(request) {
@@ -280,7 +280,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.putMeta
       '/fairwaycorp.blockchainprotobuf.btc.MetadataService/PutMetadataAddressEndpoint',
       request,
       metadata,
-      methodInfo_PutMetadataAddressEndpoint,
+      methodInfo_MetadataService_PutMetadataAddressEndpoint,
       callback);
 };
 
@@ -310,7 +310,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.btc.PutMetadataTxhashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
-const methodInfo_PutMetadataTxhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_PutMetadataTxhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.PutMetadataTxhashEndpointRequest} request */
   function(request) {
@@ -336,7 +336,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.putMeta
       '/fairwaycorp.blockchainprotobuf.btc.MetadataService/PutMetadataTxhashEndpoint',
       request,
       metadata,
-      methodInfo_PutMetadataTxhashEndpoint,
+      methodInfo_MetadataService_PutMetadataTxhashEndpoint,
       callback);
 };
 
@@ -366,7 +366,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.btc.PutMetadataBlockhashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
-const methodInfo_PutMetadataBlockhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_PutMetadataBlockhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.PutMetadataBlockhashEndpointRequest} request */
   function(request) {
@@ -392,7 +392,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.putMeta
       '/fairwaycorp.blockchainprotobuf.btc.MetadataService/PutMetadataBlockhashEndpoint',
       request,
       metadata,
-      methodInfo_PutMetadataBlockhashEndpoint,
+      methodInfo_MetadataService_PutMetadataBlockhashEndpoint,
       callback);
 };
 
@@ -422,7 +422,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteMetadataAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
-const methodInfo_DeleteMetadataAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_DeleteMetadataAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteMetadataAddressEndpointRequest} request */
   function(request) {
@@ -448,7 +448,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.deleteM
       '/fairwaycorp.blockchainprotobuf.btc.MetadataService/DeleteMetadataAddressEndpoint',
       request,
       metadata,
-      methodInfo_DeleteMetadataAddressEndpoint,
+      methodInfo_MetadataService_DeleteMetadataAddressEndpoint,
       callback);
 };
 
@@ -478,7 +478,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteMetadataTxhashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
-const methodInfo_DeleteMetadataTxhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_DeleteMetadataTxhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteMetadataTxhashEndpointRequest} request */
   function(request) {
@@ -504,7 +504,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.deleteM
       '/fairwaycorp.blockchainprotobuf.btc.MetadataService/DeleteMetadataTxhashEndpoint',
       request,
       metadata,
-      methodInfo_DeleteMetadataTxhashEndpoint,
+      methodInfo_MetadataService_DeleteMetadataTxhashEndpoint,
       callback);
 };
 
@@ -534,7 +534,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteMetadataBlockheightEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
-const methodInfo_DeleteMetadataBlockheightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_DeleteMetadataBlockheightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteMetadataBlockheightEndpointRequest} request */
   function(request) {
@@ -560,7 +560,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.deleteM
       '/fairwaycorp.blockchainprotobuf.btc.MetadataService/DeleteMetadataBlockheightEndpoint',
       request,
       metadata,
-      methodInfo_DeleteMetadataBlockheightEndpoint,
+      methodInfo_MetadataService_DeleteMetadataBlockheightEndpoint,
       callback);
 };
 

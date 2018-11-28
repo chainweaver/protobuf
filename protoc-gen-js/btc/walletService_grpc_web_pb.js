@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  */
-const methodInfo_CreateWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_CreateWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Wallet,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.createWal
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/CreateWalletEndpoint',
       request,
       metadata,
-      methodInfo_CreateWalletEndpoint,
+      methodInfo_WalletService_CreateWalletEndpoint,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.cr
  *   !proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>}
  */
-const methodInfo_CreateWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_CreateWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.HDWallet,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.createWal
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/CreateWalletHDEndpoint',
       request,
       metadata,
-      methodInfo_CreateWalletHDEndpoint,
+      methodInfo_WalletService_CreateWalletHDEndpoint,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.cr
  *   !proto.fairwaycorp.blockchainprotobuf.btc.ListWalletsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.ListWallets>}
  */
-const methodInfo_ListWalletsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_ListWalletsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   walletMessage_pb.ListWallets,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.ListWalletsEndpointRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.listWalle
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/ListWalletsEndpoint',
       request,
       metadata,
-      methodInfo_ListWalletsEndpoint,
+      methodInfo_WalletService_ListWalletsEndpoint,
       callback);
 };
 
@@ -254,7 +254,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.li
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  */
-const methodInfo_GetWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_GetWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Wallet,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest} request */
   function(request) {
@@ -280,7 +280,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.getWallet
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletEndpoint',
       request,
       metadata,
-      methodInfo_GetWalletEndpoint,
+      methodInfo_WalletService_GetWalletEndpoint,
       callback);
 };
 
@@ -310,7 +310,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.ge
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>}
  */
-const methodInfo_GetWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_GetWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.HDWallet,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest} request */
   function(request) {
@@ -336,7 +336,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.getWallet
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletHDEndpoint',
       request,
       metadata,
-      methodInfo_GetWalletHDEndpoint,
+      methodInfo_WalletService_GetWalletHDEndpoint,
       callback);
 };
 
@@ -366,7 +366,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.ge
  *   !proto.fairwaycorp.blockchainprotobuf.btc.AddAddressesToWalletEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  */
-const methodInfo_AddAddressesToWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_AddAddressesToWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Wallet,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.AddAddressesToWalletEndpointRequest} request */
   function(request) {
@@ -392,7 +392,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.addAddres
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/AddAddressesToWalletEndpoint',
       request,
       metadata,
-      methodInfo_AddAddressesToWalletEndpoint,
+      methodInfo_WalletService_AddAddressesToWalletEndpoint,
       callback);
 };
 
@@ -422,7 +422,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.ad
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Wallet>}
  */
-const methodInfo_GetWalletAddressesEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_GetWalletAddressesEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Wallet,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest} request */
   function(request) {
@@ -448,7 +448,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.getWallet
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletAddressesEndpoint',
       request,
       metadata,
-      methodInfo_GetWalletAddressesEndpoint,
+      methodInfo_WalletService_GetWalletAddressesEndpoint,
       callback);
 };
 
@@ -478,7 +478,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.ge
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.HDChain>}
  */
-const methodInfo_GetWalletAddressesHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_GetWalletAddressesHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.HDChain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest} request */
   function(request) {
@@ -504,7 +504,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.getWallet
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletAddressesHDEndpoint',
       request,
       metadata,
-      methodInfo_GetWalletAddressesHDEndpoint,
+      methodInfo_WalletService_GetWalletAddressesHDEndpoint,
       callback);
 };
 
@@ -534,7 +534,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.ge
  *   !proto.fairwaycorp.blockchainprotobuf.btc.RemoveAddressesFromWalletEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
-const methodInfo_RemoveAddressesFromWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_RemoveAddressesFromWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.RemoveAddressesFromWalletEndpointRequest} request */
   function(request) {
@@ -560,7 +560,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.removeAdd
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/RemoveAddressesFromWalletEndpoint',
       request,
       metadata,
-      methodInfo_RemoveAddressesFromWalletEndpoint,
+      methodInfo_WalletService_RemoveAddressesFromWalletEndpoint,
       callback);
 };
 
@@ -590,7 +590,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.re
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GenerateAdressInWalletEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain>}
  */
-const methodInfo_GenerateAddressInWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_GenerateAddressInWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   walletMessage_pb.WalletAddressKeychain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GenerateAdressInWalletEndpointRequest} request */
   function(request) {
@@ -616,7 +616,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.generateA
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/GenerateAddressInWalletEndpoint',
       request,
       metadata,
-      methodInfo_GenerateAddressInWalletEndpoint,
+      methodInfo_WalletService_GenerateAddressInWalletEndpoint,
       callback);
 };
 
@@ -646,7 +646,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.ge
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DeriveAddressInWalletEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.HDWallet>}
  */
-const methodInfo_DeriveAddressInWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_DeriveAddressInWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.HDWallet,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeriveAddressInWalletEndpointRequest} request */
   function(request) {
@@ -672,7 +672,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.deriveAdd
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/DeriveAddressInWalletEndpoint',
       request,
       metadata,
-      methodInfo_DeriveAddressInWalletEndpoint,
+      methodInfo_WalletService_DeriveAddressInWalletEndpoint,
       callback);
 };
 
@@ -702,7 +702,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.de
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
-const methodInfo_DeleteWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_DeleteWalletEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest} request */
   function(request) {
@@ -728,7 +728,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.deleteWal
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/DeleteWalletEndpoint',
       request,
       metadata,
-      methodInfo_DeleteWalletEndpoint,
+      methodInfo_WalletService_DeleteWalletEndpoint,
       callback);
 };
 
@@ -758,7 +758,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServicePromiseClient.prototype.de
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
-const methodInfo_DeleteWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WalletService_DeleteWalletHDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest} request */
   function(request) {
@@ -784,7 +784,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.WalletServiceClient.prototype.deleteWal
       '/fairwaycorp.blockchainprotobuf.btc.WalletService/DeleteWalletHDEndpoint',
       request,
       metadata,
-      methodInfo_DeleteWalletHDEndpoint,
+      methodInfo_WalletService_DeleteWalletHDEndpoint,
       callback);
 };
 

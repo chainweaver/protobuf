@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Job>}
  */
-const methodInfo_CreateAnalyticsJob = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AnalyticsService_CreateAnalyticsJob = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Job,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateAnalyticsJobRequest} request */
   function(request) {
@@ -112,7 +112,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient.prototype.create
       '/fairwaycorp.blockchainprotobuf.btc.AnalyticsService/CreateAnalyticsJob',
       request,
       metadata,
-      methodInfo_CreateAnalyticsJob,
+      methodInfo_AnalyticsService_CreateAnalyticsJob,
       callback);
 };
 
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient.prototype
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Job>}
  */
-const methodInfo_GetAnalyticsJob = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AnalyticsService_GetAnalyticsJob = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Job,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobRequest} request */
   function(request) {
@@ -168,7 +168,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient.prototype.getAna
       '/fairwaycorp.blockchainprotobuf.btc.AnalyticsService/GetAnalyticsJob',
       request,
       metadata,
-      methodInfo_GetAnalyticsJob,
+      methodInfo_AnalyticsService_GetAnalyticsJob,
       callback);
 };
 
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient.prototype
  *   !proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobResultsRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.JobResults>}
  */
-const methodInfo_GetAnalyticsJobResults = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AnalyticsService_GetAnalyticsJobResults = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.JobResults,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobResultsRequest} request */
   function(request) {
@@ -224,7 +224,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient.prototype.getAna
       '/fairwaycorp.blockchainprotobuf.btc.AnalyticsService/GetAnalyticsJobResults',
       request,
       metadata,
-      methodInfo_GetAnalyticsJobResults,
+      methodInfo_AnalyticsService_GetAnalyticsJobResults,
       callback);
 };
 

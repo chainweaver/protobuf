@@ -46,7 +46,10 @@ go install
 ### for grpc-web (Javascript & Typescript)
 
 ```
-npm i -g grpc-web@1.0.2
+git clone git@github.com:grpc/grpc-web.git
+cd grpc-web
+git checkout -b 1.0.3 refs/tags/1.0.3
+sudo make install-plugin
 ```
 
 ## Compile Protocol Buffers
