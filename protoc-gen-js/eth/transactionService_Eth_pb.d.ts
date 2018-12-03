@@ -1,33 +1,18 @@
-export class GetTransactionHashEndpointRequest {
+export class DecodeRawTransactionEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
-  getTxhash(): string;
-  setTxhash(a: string): void;
-  toObject(): GetTransactionHashEndpointRequest.AsObject;
+  getTx(): string;
+  setTx(a: string): void;
+  toObject(): DecodeRawTransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetTransactionHashEndpointRequest;
+  static deserializeBinary: (bytes: {}) => DecodeRawTransactionEndpointRequest;
 }
 
-export namespace GetTransactionHashEndpointRequest {
+export namespace DecodeRawTransactionEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
-    Txhash: string;
-  }
-}
-
-export class GetUnconfirmedTransactionsEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  toObject(): GetUnconfirmedTransactionsEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetUnconfirmedTransactionsEndpointRequest;
-}
-
-export namespace GetUnconfirmedTransactionsEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
+    Tx: string;
   }
 }
 
@@ -49,28 +34,7 @@ export namespace InputType {
   }
 }
 
-export class OutputType {
-  constructor ();
-  getValue(): number;
-  setValue(a: number): void;
-  getScript(): string;
-  setScript(a: string): void;
-  getAddressesList(): string[];
-  setAddressesList(a: string[]): void;
-  toObject(): OutputType.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => OutputType;
-}
-
-export namespace OutputType {
-  export type AsObject = {
-    Value: number;
-    Script: string;
-    AddressesList: string[];
-  }
-}
-
-export class PostCreateTransactionsEndpointRequest {
+export class NewTransactionEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
@@ -128,12 +92,12 @@ export class PostCreateTransactionsEndpointRequest {
   setDoubleOf(a: string): void;
   getExecutionError(): string;
   setExecutionError(a: string): void;
-  toObject(): PostCreateTransactionsEndpointRequest.AsObject;
+  toObject(): NewTransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => PostCreateTransactionsEndpointRequest;
+  static deserializeBinary: (bytes: {}) => NewTransactionEndpointRequest;
 }
 
-export namespace PostCreateTransactionsEndpointRequest {
+export namespace NewTransactionEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     BlockHeight: number;
@@ -166,43 +130,46 @@ export namespace PostCreateTransactionsEndpointRequest {
   }
 }
 
-export class PostDecodeRawTransactionEndpointRequest {
+export class OutputType {
+  constructor ();
+  getValue(): number;
+  setValue(a: number): void;
+  getScript(): string;
+  setScript(a: string): void;
+  getAddressesList(): string[];
+  setAddressesList(a: string[]): void;
+  toObject(): OutputType.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => OutputType;
+}
+
+export namespace OutputType {
+  export type AsObject = {
+    Value: number;
+    Script: string;
+    AddressesList: string[];
+  }
+}
+
+export class PushRawTransactionEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
   getTx(): string;
   setTx(a: string): void;
-  toObject(): PostDecodeRawTransactionEndpointRequest.AsObject;
+  toObject(): PushRawTransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => PostDecodeRawTransactionEndpointRequest;
+  static deserializeBinary: (bytes: {}) => PushRawTransactionEndpointRequest;
 }
 
-export namespace PostDecodeRawTransactionEndpointRequest {
+export namespace PushRawTransactionEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Tx: string;
   }
 }
 
-export class PostPushRawTransactionEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getTx(): string;
-  setTx(a: string): void;
-  toObject(): PostPushRawTransactionEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => PostPushRawTransactionEndpointRequest;
-}
-
-export namespace PostPushRawTransactionEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Tx: string;
-  }
-}
-
-export class PostSendTransactionEndpointRequest {
+export class SendTransactionEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
@@ -214,12 +181,12 @@ export class PostSendTransactionEndpointRequest {
   setSignaturesList(a: string[]): void;
   getErrorsList(): string[];
   setErrorsList(a: string[]): void;
-  toObject(): PostSendTransactionEndpointRequest.AsObject;
+  toObject(): SendTransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => PostSendTransactionEndpointRequest;
+  static deserializeBinary: (bytes: {}) => SendTransactionEndpointRequest;
 }
 
-export namespace PostSendTransactionEndpointRequest {
+export namespace SendTransactionEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Tx: TX;
@@ -322,6 +289,21 @@ export namespace TX {
   }
 }
 
+export class TXS {
+  constructor ();
+  getResultList(): TX[];
+  setResultList(a: TX[]): void;
+  toObject(): TXS.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => TXS;
+}
+
+export namespace TXS {
+  export type AsObject = {
+    ResultList: TX[];
+  }
+}
+
 export class TXSkeleton {
   constructor ();
   getTx(): TX;
@@ -346,18 +328,36 @@ export namespace TXSkeleton {
   }
 }
 
-export class TxArray {
+export class TransactionHashEndpointRequest {
   constructor ();
-  getResultList(): TX[];
-  setResultList(a: TX[]): void;
-  toObject(): TxArray.AsObject;
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getTxhash(): string;
+  setTxhash(a: string): void;
+  toObject(): TransactionHashEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => TxArray;
+  static deserializeBinary: (bytes: {}) => TransactionHashEndpointRequest;
 }
 
-export namespace TxArray {
+export namespace TransactionHashEndpointRequest {
   export type AsObject = {
-    ResultList: TX[];
+    Network: NetworkAllowingAlias;
+    Txhash: string;
+  }
+}
+
+export class UnconfirmedTransactionsEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  toObject(): UnconfirmedTransactionsEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => UnconfirmedTransactionsEndpointRequest;
+}
+
+export namespace UnconfirmedTransactionsEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
   }
 }
 

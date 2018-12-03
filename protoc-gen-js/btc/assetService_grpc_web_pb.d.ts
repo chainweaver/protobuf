@@ -2,7 +2,6 @@ import * as grpcWeb from 'grpc-web';
 import {
   Address,
   AddressKeychain,
-  ArrayString,
   GetAssetAddressEndpointRequest,
   GetAssetTXEndpointRequest,
   HDAddress,
@@ -17,6 +16,7 @@ import {
   TXOutput,
   TXRef,
   TransferAssetEndpointRequest,
+  TxHashes,
   Wallet} from './assetService_pb';
 
 export class AssetServiceClient {
@@ -49,8 +49,8 @@ export class AssetServiceClient {
     request: ListAssetTXsEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: ArrayString) => void
-  ): grpcWeb.ClientReadableStream<ArrayString>;
+               response: TxHashes) => void
+  ): grpcWeb.ClientReadableStream<TxHashes>;
 
   getAssetTXEndpoint(
     request: GetAssetTXEndpointRequest,
@@ -91,7 +91,7 @@ export class AssetServicePromiseClient {
   listAssetTXsEndpoint(
     request: ListAssetTXsEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<ArrayString>;
+  ): Promise<TxHashes>;
 
   getAssetTXEndpoint(
     request: GetAssetTXEndpointRequest,

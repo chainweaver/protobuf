@@ -1,34 +1,34 @@
 import * as grpcWeb from 'grpc-web';
 import {
-  ArrayEvent,
+  CreateWebHookEndpointRequest,
   DeleteWebHookEndpointRequest,
   Event,
-  GetListWebHooksEndpointRequest,
-  GetWebHookIDEndpointRequest,
+  Events,
+  ListWebHooksEndpointRequest,
   NullValue,
-  PostCreateWebHookEndpointRequest} from './webhooksService_Eth_pb';
+  WebHookIDEndpointRequest} from './webhooksService_Eth_pb';
 
 export class WebHooksServiceClient {
   constructor (hostname: string,
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  postCreateWebHookEndpoint(
-    request: PostCreateWebHookEndpointRequest,
+  createWebHookEndpoint(
+    request: CreateWebHookEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Event) => void
   ): grpcWeb.ClientReadableStream<Event>;
 
-  getListWebHooksEndpoint(
-    request: GetListWebHooksEndpointRequest,
+  listWebHooksEndpoint(
+    request: ListWebHooksEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: ArrayEvent) => void
-  ): grpcWeb.ClientReadableStream<ArrayEvent>;
+               response: Events) => void
+  ): grpcWeb.ClientReadableStream<Events>;
 
-  getWebHookIDEndpoint(
-    request: GetWebHookIDEndpointRequest,
+  webHookIDEndpoint(
+    request: WebHookIDEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Event) => void
@@ -48,18 +48,18 @@ export class WebHooksServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  postCreateWebHookEndpoint(
-    request: PostCreateWebHookEndpointRequest,
+  createWebHookEndpoint(
+    request: CreateWebHookEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Event>;
 
-  getListWebHooksEndpoint(
-    request: GetListWebHooksEndpointRequest,
+  listWebHooksEndpoint(
+    request: ListWebHooksEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<ArrayEvent>;
+  ): Promise<Events>;
 
-  getWebHookIDEndpoint(
-    request: GetWebHookIDEndpointRequest,
+  webHookIDEndpoint(
+    request: WebHookIDEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Event>;
 

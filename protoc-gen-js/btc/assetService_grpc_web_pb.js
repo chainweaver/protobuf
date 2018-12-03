@@ -252,15 +252,15 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.tra
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.fairwaycorp.blockchainprotobuf.btc.ListAssetTXsEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.btc.ArrayString>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.TxHashes>}
  */
 const methodInfo_AssetService_ListAssetTXsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  commonMessage_pb.ArrayString,
+  commonMessage_pb.TxHashes,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.ListAssetTXsEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  commonMessage_pb.ArrayString.deserializeBinary
+  commonMessage_pb.TxHashes.deserializeBinary
 );
 
 
@@ -269,9 +269,9 @@ const methodInfo_AssetService_ListAssetTXsEndpoint = new grpc.web.AbstractClient
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.ArrayString)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.TxHashes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.ArrayString>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.TxHashes>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.listAssetTXsEndpoint =
@@ -290,7 +290,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.listAssetT
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.ArrayString>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.TxHashes>}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.listAssetTXsEndpoint =

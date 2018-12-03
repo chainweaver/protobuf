@@ -5,20 +5,20 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/e
 
 import "commonMessage_Eth.proto";
 
-message TxArray {
+message TXS {
   repeated TX result = 1;
 }
 
-message GetTransactionHashEndpointRequest {
+message TransactionHashEndpointRequest {
   NetworkAllowingAlias network = 1;
   string txhash = 2;
 }
 
-message GetUnconfirmedTransactionsEndpointRequest {
+message UnconfirmedTransactionsEndpointRequest {
   NetworkAllowingAlias network = 1;
 }
 
-message PostCreateTransactionsEndpointRequest {
+message NewTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   // Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
   int32 block_height = 2;
@@ -76,7 +76,7 @@ message PostCreateTransactionsEndpointRequest {
   string execution_error = 28;
 }
 
-message PostSendTransactionEndpointRequest {
+message SendTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   // A temporary TX, usually returned fully filled.
   TX	tx = 2;
@@ -88,12 +88,12 @@ message PostSendTransactionEndpointRequest {
   repeated string errors = 5;
 }
 
-message PostDecodeRawTransactionEndpointRequest {
+message DecodeRawTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   string tx = 2;
 }
 
-message PostPushRawTransactionEndpointRequest {
+message PushRawTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   string tx = 2;
 }

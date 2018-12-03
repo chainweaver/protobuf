@@ -17,8 +17,8 @@ message NullValueRequest {
   NetworkAllowingAlias network = 1;
 }
 
-message ArrayString {
-  repeated string arraystring = 1;
+message TxHashes {
+  repeated string hash = 1;
 }
 
 message TXInput {

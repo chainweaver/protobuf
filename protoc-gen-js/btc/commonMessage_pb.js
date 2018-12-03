@@ -15,7 +15,6 @@ goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.Address', null, glob
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.AddressForward', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.AggregatedOrigin', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.ArrayString', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DescribedBelow', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.FirstLocation', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.HDAddress', null, global);
@@ -40,6 +39,7 @@ goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.TXRef', null, global
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.TXS', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.TXSkeleton', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.TXerror', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.TxHashes', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.Wallet', null, global);
 
 /**
@@ -310,19 +310,19 @@ proto.fairwaycorp.blockchainprotobuf.btc.NullValueRequest.prototype.setNetwork =
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.repeatedFields_, null);
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.repeatedFields_, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.ArrayString, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.TxHashes, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.ArrayString';
+  proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.TxHashes';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.repeatedFields_ = [1];
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.repeatedFields_ = [1];
 
 
 
@@ -337,8 +337,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.toObject(opt_includeInstance, this);
 };
 
 
@@ -347,13 +347,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.toObject = functi
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayString} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.TxHashes} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.toObject = function(includeInstance, msg) {
   var f, obj = {
-    arraystringList: jspb.Message.getRepeatedField(msg, 1)
+    hashList: jspb.Message.getRepeatedField(msg, 1)
   };
 
   if (includeInstance) {
@@ -367,23 +367,23 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.toObject = function(include
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayString}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.TxHashes}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.ArrayString;
-  return proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.TxHashes;
+  return proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayString} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.TxHashes} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayString}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.TxHashes}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -392,7 +392,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.deserializeBinaryFromReader
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.addArraystring(value);
+      msg.addHash(value);
       break;
     default:
       reader.skipField();
@@ -407,9 +407,9 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.deserializeBinaryFromReader
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -417,13 +417,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.serializeBinary =
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayString} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.TxHashes} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getArraystringList();
+  f = message.getHashList();
   if (f.length > 0) {
     writer.writeRepeatedString(
       1,
@@ -434,16 +434,16 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.serializeBinaryToWriter = f
 
 
 /**
- * repeated string arraystring = 1;
+ * repeated string hash = 1;
  * @return {!Array<string>}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.getArraystringList = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.prototype.getHashList = function() {
   return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
 /** @param {!Array<string>} value */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.setArraystringList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.prototype.setHashList = function(value) {
   jspb.Message.setField(this, 1, value || []);
 };
 
@@ -452,13 +452,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.setArraystringLis
  * @param {!string} value
  * @param {number=} opt_index
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.addArraystring = function(value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.prototype.addHash = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayString.prototype.clearArraystringList = function() {
-  this.setArraystringList([]);
+proto.fairwaycorp.blockchainprotobuf.btc.TxHashes.prototype.clearHashList = function() {
+  this.setHashList([]);
 };
 
 
