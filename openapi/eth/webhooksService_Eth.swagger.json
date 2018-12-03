@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethArrayEvent"
+              "$ref": "#/definitions/ethEvents"
             }
           }
         },
@@ -150,17 +150,6 @@
     }
   },
   "definitions": {
-    "ethArrayEvent": {
-      "type": "object",
-      "properties": {
-        "event": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethEvent"
-          }
-        }
-      }
-    },
     "ethCreateWebHookEndpointRequest": {
       "type": "object",
       "properties": {
@@ -231,6 +220,17 @@
           "type": "string",
           "format": "uint64",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        }
+      }
+    },
+    "ethEvents": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethEvent"
+          }
         }
       }
     },

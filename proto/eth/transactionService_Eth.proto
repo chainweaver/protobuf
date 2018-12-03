@@ -13,12 +13,12 @@ service TransactionService {
       get: "/eth/{network}/txs/{txhash}"
     };
   }
-  rpc UnconfirmedTransactionEndpoint (UnconfirmedTransactionsEndpointRequest) returns (TxArray) {
+  rpc UnconfirmedTransactionsEndpoint (UnconfirmedTransactionsEndpointRequest) returns (TXS) {
     option (google.api.http) = {
       get: "/eth/{network}/txs"
     };
   }
-  rpc NewTransactionsEndpoint (NewTransactionEndpointRequest) returns (TXSkeleton) {
+  rpc NewTransactionEndpoint (NewTransactionEndpointRequest) returns (TXSkeleton) {
     option (google.api.http) = {
       post: "/eth/{network}/txs/new"
       body: "*"

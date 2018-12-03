@@ -334,11 +334,11 @@
                 </li>
               
                 <li>
-                  <a href="#fairwaycorp.blockchainprotobuf.eth.TransactionHashEndpointRequest"><span class="badge">M</span>TransactionHashEndpointRequest</a>
+                  <a href="#fairwaycorp.blockchainprotobuf.eth.TXS"><span class="badge">M</span>TXS</a>
                 </li>
               
                 <li>
-                  <a href="#fairwaycorp.blockchainprotobuf.eth.TxArray"><span class="badge">M</span>TxArray</a>
+                  <a href="#fairwaycorp.blockchainprotobuf.eth.TransactionHashEndpointRequest"><span class="badge">M</span>TransactionHashEndpointRequest</a>
                 </li>
               
                 <li>
@@ -372,15 +372,15 @@
             <ul>
               
                 <li>
-                  <a href="#fairwaycorp.blockchainprotobuf.eth.ArrayEvent"><span class="badge">M</span>ArrayEvent</a>
-                </li>
-              
-                <li>
                   <a href="#fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest"><span class="badge">M</span>CreateWebHookEndpointRequest</a>
                 </li>
               
                 <li>
                   <a href="#fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest"><span class="badge">M</span>DeleteWebHookEndpointRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#fairwaycorp.blockchainprotobuf.eth.Events"><span class="badge">M</span>Events</a>
                 </li>
               
                 <li>
@@ -422,7 +422,7 @@
                 </li>
               
                 <li>
-                  <a href="#fairwaycorp.blockchainprotobuf.eth.ContractArray"><span class="badge">M</span>ContractArray</a>
+                  <a href="#fairwaycorp.blockchainprotobuf.eth.Contracts"><span class="badge">M</span>Contracts</a>
                 </li>
               
                 <li>
@@ -2189,6 +2189,29 @@
 
         
       
+        <h3 id="fairwaycorp.blockchainprotobuf.eth.TXS">TXS</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>result</td>
+                  <td><a href="#fairwaycorp.blockchainprotobuf.eth.TX">TX</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="fairwaycorp.blockchainprotobuf.eth.TransactionHashEndpointRequest">TransactionHashEndpointRequest</h3>
         <p></p>
 
@@ -2210,29 +2233,6 @@
                   <td>txhash</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
-      
-        <h3 id="fairwaycorp.blockchainprotobuf.eth.TxArray">TxArray</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>result</td>
-                  <td><a href="#fairwaycorp.blockchainprotobuf.eth.TX">TX</a></td>
-                  <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
               
@@ -2301,14 +2301,14 @@
               </tr>
             
               <tr>
-                <td>UnconfirmedTransactionEndpoint</td>
+                <td>UnconfirmedTransactionsEndpoint</td>
                 <td><a href="#fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest">UnconfirmedTransactionsEndpointRequest</a></td>
-                <td><a href="#fairwaycorp.blockchainprotobuf.eth.TxArray">TxArray</a></td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.eth.TXS">TXS</a></td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>NewTransactionsEndpoint</td>
+                <td>NewTransactionEndpoint</td>
                 <td><a href="#fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest">NewTransactionEndpointRequest</a></td>
                 <td><a href="#fairwaycorp.blockchainprotobuf.eth.TXSkeleton">TXSkeleton</a></td>
                 <td><p></p></td>
@@ -2345,29 +2345,6 @@
       </div>
       <p></p>
 
-      
-        <h3 id="fairwaycorp.blockchainprotobuf.eth.ArrayEvent">ArrayEvent</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>event</td>
-                  <td><a href="#fairwaycorp.blockchainprotobuf.eth.Event">Event</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
       
         <h3 id="fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest">CreateWebHookEndpointRequest</h3>
         <p></p>
@@ -2462,6 +2439,29 @@
                   <td>webhookid</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="fairwaycorp.blockchainprotobuf.eth.Events">Events</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>event</td>
+                  <td><a href="#fairwaycorp.blockchainprotobuf.eth.Event">Event</a></td>
+                  <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
               
@@ -2569,7 +2569,7 @@
               <tr>
                 <td>ListWebHooksEndpoint</td>
                 <td><a href="#fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest">ListWebHooksEndpointRequest</a></td>
-                <td><a href="#fairwaycorp.blockchainprotobuf.eth.ArrayEvent">ArrayEvent</a></td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.eth.Events">Events</a></td>
                 <td><p></p></td>
               </tr>
             
@@ -2726,7 +2726,7 @@
 
         
       
-        <h3 id="fairwaycorp.blockchainprotobuf.eth.ContractArray">ContractArray</h3>
+        <h3 id="fairwaycorp.blockchainprotobuf.eth.Contracts">Contracts</h3>
         <p></p>
 
         
@@ -2924,7 +2924,7 @@
               <tr>
                 <td>CreateContractEndpoint</td>
                 <td><a href="#fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest">CreateContractEndpointRequest</a></td>
-                <td><a href="#fairwaycorp.blockchainprotobuf.eth.ContractArray">ContractArray</a></td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.eth.Contracts">Contracts</a></td>
                 <td><p></p></td>
               </tr>
             

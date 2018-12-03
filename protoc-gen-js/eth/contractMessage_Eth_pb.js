@@ -13,7 +13,7 @@ var global = Function('return this')();
 
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.CallContractMethodEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.ContractArray', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.Contracts', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest', null, global);
 
@@ -1334,19 +1334,19 @@ proto.fairwaycorp.blockchainprotobuf.eth.CallContractMethodEndpointRequest.proto
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.repeatedFields_, null);
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.Contracts.repeatedFields_, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.ContractArray, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.Contracts, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.ContractArray';
+  proto.fairwaycorp.blockchainprotobuf.eth.Contracts.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.Contracts';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.repeatedFields_ = [1];
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.repeatedFields_ = [1];
 
 
 
@@ -1361,8 +1361,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.eth.Contracts.toObject(opt_includeInstance, this);
 };
 
 
@@ -1371,11 +1371,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.prototype.toObject = func
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ContractArray} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.Contracts} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.toObject = function(includeInstance, msg) {
   var f, obj = {
     contractList: jspb.Message.toObjectList(msg.getContractList(),
     commonMessage_Eth_pb.Contract.toObject, includeInstance)
@@ -1392,23 +1392,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.toObject = function(inclu
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.ContractArray}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.Contracts}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.ContractArray;
-  return proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.Contracts;
+  return proto.fairwaycorp.blockchainprotobuf.eth.Contracts.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ContractArray} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.Contracts} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.ContractArray}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.Contracts}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1433,9 +1433,9 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.deserializeBinaryFromRead
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.eth.Contracts.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1443,11 +1443,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.prototype.serializeBinary
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ContractArray} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.Contracts} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getContractList();
   if (f.length > 0) {
@@ -1464,14 +1464,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.serializeBinaryToWriter =
  * repeated Contract contract = 1;
  * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.Contract>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.prototype.getContractList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.prototype.getContractList = function() {
   return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.Contract>} */ (
     jspb.Message.getRepeatedWrapperField(this, commonMessage_Eth_pb.Contract, 1));
 };
 
 
 /** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.Contract>} value */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.prototype.setContractList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.prototype.setContractList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -1481,12 +1481,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.prototype.setContractList
  * @param {number=} opt_index
  * @return {!proto.fairwaycorp.blockchainprotobuf.eth.Contract}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.prototype.addContract = function(opt_value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.prototype.addContract = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.Contract, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.eth.ContractArray.prototype.clearContractList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.Contracts.prototype.clearContractList = function() {
   this.setContractList([]);
 };
 

@@ -151,12 +151,12 @@
     },
     "/eth/{network}/txs": {
       "get": {
-        "operationId": "UnconfirmedTransactionEndpoint",
+        "operationId": "UnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethTxArray"
+              "$ref": "#/definitions/ethTXS"
             }
           }
         },
@@ -219,7 +219,7 @@
     },
     "/eth/{network}/txs/new": {
       "post": {
-        "operationId": "NewTransactionsEndpoint",
+        "operationId": "NewTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -374,7 +374,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethArrayEvent"
+              "$ref": "#/definitions/ethEvents"
             }
           }
         },
@@ -649,7 +649,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethContractArray"
+              "$ref": "#/definitions/ethContracts"
             }
           }
         },
@@ -1326,6 +1326,17 @@
         }
       }
     },
+    "ethTXS": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethTX"
+          }
+        }
+      }
+    },
     "ethTXSkeleton": {
       "type": "object",
       "properties": {
@@ -1353,28 +1364,6 @@
             "type": "string"
           },
           "description": "Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code."
-        }
-      }
-    },
-    "ethTxArray": {
-      "type": "object",
-      "properties": {
-        "result": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethTX"
-          }
-        }
-      }
-    },
-    "ethArrayEvent": {
-      "type": "object",
-      "properties": {
-        "event": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethEvent"
-          }
         }
       }
     },
@@ -1448,6 +1437,17 @@
           "type": "string",
           "format": "uint64",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        }
+      }
+    },
+    "ethEvents": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethEvent"
+          }
         }
       }
     },
@@ -1748,7 +1748,7 @@
         }
       }
     },
-    "ethContractArray": {
+    "ethContracts": {
       "type": "object",
       "properties": {
         "contract": {
