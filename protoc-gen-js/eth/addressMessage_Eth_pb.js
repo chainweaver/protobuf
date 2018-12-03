@@ -12,8 +12,8 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.AddressEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest', null, global);
 
 /**
@@ -26,12 +26,12 @@ goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpo
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest = function(opt_data) {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest';
+  proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest';
 }
 
 
@@ -46,8 +46,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -56,11 +56,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.prototype
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
     address: jspb.Message.getFieldWithDefault(msg, 2, "")
@@ -77,23 +77,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.toObject 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest;
-  return proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest;
+  return proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -121,9 +121,9 @@ proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.deseriali
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -131,11 +131,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.prototype
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNetwork();
   if (f !== 0.0) {
@@ -158,13 +158,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.serialize
  * optional NetworkAllowingAlias network = 1;
  * @return {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.prototype.getNetwork = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.prototype.getNetwork = function() {
   return /** @type {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias} value */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.prototype.setNetwork = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.prototype.setNetwork = function(value) {
   jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -173,13 +173,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.prototype
  * optional string address = 2;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.prototype.getAddress = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.prototype.getAddress = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest.prototype.setAddress = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest.prototype.setAddress = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 

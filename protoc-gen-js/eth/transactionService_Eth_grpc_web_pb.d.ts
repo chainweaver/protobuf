@@ -1,8 +1,8 @@
 import * as grpcWeb from 'grpc-web';
 import {
-  CreateTransactionsEndpointRequest,
   DecodeRawTransactionEndpointRequest,
   InputType,
+  NewTransactionEndpointRequest,
   OutputType,
   PushRawTransactionEndpointRequest,
   SendTransactionEndpointRequest,
@@ -24,15 +24,15 @@ export class TransactionServiceClient {
                response: TX) => void
   ): grpcWeb.ClientReadableStream<TX>;
 
-  unconfirmedTransactionsEndpoint(
+  unconfirmedTransactionEndpoint(
     request: UnconfirmedTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TxArray) => void
   ): grpcWeb.ClientReadableStream<TxArray>;
 
-  createTransactionsEndpoint(
-    request: CreateTransactionsEndpointRequest,
+  newTransactionsEndpoint(
+    request: NewTransactionEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TXSkeleton) => void
@@ -71,13 +71,13 @@ export class TransactionServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<TX>;
 
-  unconfirmedTransactionsEndpoint(
+  unconfirmedTransactionEndpoint(
     request: UnconfirmedTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TxArray>;
 
-  createTransactionsEndpoint(
-    request: CreateTransactionsEndpointRequest,
+  newTransactionsEndpoint(
+    request: NewTransactionEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TXSkeleton>;
 

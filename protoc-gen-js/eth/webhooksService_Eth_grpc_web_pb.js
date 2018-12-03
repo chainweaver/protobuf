@@ -251,12 +251,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.NullValue>}
  */
-const methodInfo_WebHooksService_WebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WebHooksService_DeleteWebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.NullValue,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -265,7 +265,7 @@ const methodInfo_WebHooksService_WebHookEndpoint = new grpc.web.AbstractClientBa
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -274,29 +274,29 @@ const methodInfo_WebHooksService_WebHookEndpoint = new grpc.web.AbstractClientBa
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.NullValue>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.webHookEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.deleteWebHookEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/WebHookEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/DeleteWebHookEndpoint',
       request,
       metadata,
-      methodInfo_WebHooksService_WebHookEndpoint,
+      methodInfo_WebHooksService_DeleteWebHookEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.NullValue>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.webHookEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.deleteWebHookEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.webHookEndpoint(
+    this.delegateClient_.deleteWebHookEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

@@ -17,7 +17,7 @@
   "paths": {
     "/eth/{network}/txs": {
       "get": {
-        "operationId": "UnconfirmedTransactionsEndpoint",
+        "operationId": "UnconfirmedTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -85,7 +85,7 @@
     },
     "/eth/{network}/txs/new": {
       "post": {
-        "operationId": "CreateTransactionsEndpoint",
+        "operationId": "NewTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -112,7 +112,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethCreateTransactionsEndpointRequest"
+              "$ref": "#/definitions/ethNewTransactionEndpointRequest"
             }
           }
         ],
@@ -235,7 +235,43 @@
     }
   },
   "definitions": {
-    "ethCreateTransactionsEndpointRequest": {
+    "ethDecodeRawTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "tx": {
+          "type": "string"
+        }
+      }
+    },
+    "ethInputType": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "type": "string",
+          "format": "int64"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAIN",
+        "main",
+        "ROPSTEN",
+        "ropsten"
+      ],
+      "default": "MAIN"
+    },
+    "ethNewTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -377,42 +413,6 @@
           "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
         }
       }
-    },
-    "ethDecodeRawTransactionEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/ethNetworkAllowingAlias"
-        },
-        "tx": {
-          "type": "string"
-        }
-      }
-    },
-    "ethInputType": {
-      "type": "object",
-      "properties": {
-        "sequence": {
-          "type": "string",
-          "format": "int64"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ethNetworkAllowingAlias": {
-      "type": "string",
-      "enum": [
-        "MAIN",
-        "main",
-        "ROPSTEN",
-        "ropsten"
-      ],
-      "default": "MAIN"
     },
     "ethOutputType": {
       "type": "object",

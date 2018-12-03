@@ -109,24 +109,6 @@ export namespace Contract {
   }
 }
 
-export class ContractAddressEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getQueryAddress(): string;
-  setQueryAddress(a: string): void;
-  toObject(): ContractAddressEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ContractAddressEndpointRequest;
-}
-
-export namespace ContractAddressEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    QueryAddress: string;
-  }
-}
-
 export class ContractArray {
   constructor ();
   getContractList(): Contract[];
@@ -193,6 +175,24 @@ export namespace CreateContractEndpointRequest {
     Created: string;
     CreationTxHash: string;
     ResultsList: string[];
+  }
+}
+
+export class GetContractAddressEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getQueryAddress(): string;
+  setQueryAddress(a: string): void;
+  toObject(): GetContractAddressEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => GetContractAddressEndpointRequest;
+}
+
+export namespace GetContractAddressEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    QueryAddress: string;
   }
 }
 

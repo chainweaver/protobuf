@@ -18,7 +18,7 @@ message UnconfirmedTransactionsEndpointRequest {
   NetworkAllowingAlias network = 1;
 }
 
-message CreateTransactionsEndpointRequest {
+message NewTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   // Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
   int32 block_height = 2;

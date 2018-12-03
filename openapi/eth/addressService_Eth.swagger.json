@@ -123,7 +123,7 @@
     },
     "/eth/{network}/addrs/{address}/balance": {
       "get": {
-        "operationId": "BalanceAddressEndpoint",
+        "operationId": "AddressBalanceEndpoint",
         "responses": {
           "200": {
             "description": "",

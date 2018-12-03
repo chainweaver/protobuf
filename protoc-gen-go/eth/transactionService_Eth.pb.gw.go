@@ -69,7 +69,7 @@ func request_TransactionService_TransactionHashEndpoint_0(ctx context.Context, m
 
 }
 
-func request_TransactionService_UnconfirmedTransactionsEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_TransactionService_UnconfirmedTransactionEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq UnconfirmedTransactionsEndpointRequest
 	var metadata runtime.ServerMetadata
 
@@ -94,13 +94,13 @@ func request_TransactionService_UnconfirmedTransactionsEndpoint_0(ctx context.Co
 
 	protoReq.Network = NetworkAllowingAlias(e)
 
-	msg, err := client.UnconfirmedTransactionsEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.UnconfirmedTransactionEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_TransactionService_CreateTransactionsEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CreateTransactionsEndpointRequest
+func request_TransactionService_NewTransactionsEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq NewTransactionEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -128,7 +128,7 @@ func request_TransactionService_CreateTransactionsEndpoint_0(ctx context.Context
 
 	protoReq.Network = NetworkAllowingAlias(e)
 
-	msg, err := client.CreateTransactionsEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.NewTransactionsEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -302,7 +302,7 @@ func RegisterTransactionServiceHandlerClient(ctx context.Context, mux *runtime.S
 
 	})
 
-	mux.Handle("GET", pattern_TransactionService_UnconfirmedTransactionsEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_TransactionService_UnconfirmedTransactionEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -320,18 +320,18 @@ func RegisterTransactionServiceHandlerClient(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_TransactionService_UnconfirmedTransactionsEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_TransactionService_UnconfirmedTransactionEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_TransactionService_UnconfirmedTransactionsEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_TransactionService_UnconfirmedTransactionEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_TransactionService_CreateTransactionsEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_TransactionService_NewTransactionsEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -349,14 +349,14 @@ func RegisterTransactionServiceHandlerClient(ctx context.Context, mux *runtime.S
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_TransactionService_CreateTransactionsEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_TransactionService_NewTransactionsEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_TransactionService_CreateTransactionsEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_TransactionService_NewTransactionsEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -453,9 +453,9 @@ func RegisterTransactionServiceHandlerClient(ctx context.Context, mux *runtime.S
 var (
 	pattern_TransactionService_TransactionHashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "txs", "txhash"}, ""))
 
-	pattern_TransactionService_UnconfirmedTransactionsEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"eth", "network", "txs"}, ""))
+	pattern_TransactionService_UnconfirmedTransactionEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"eth", "network", "txs"}, ""))
 
-	pattern_TransactionService_CreateTransactionsEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3}, []string{"eth", "network", "txs", "new"}, ""))
+	pattern_TransactionService_NewTransactionsEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3}, []string{"eth", "network", "txs", "new"}, ""))
 
 	pattern_TransactionService_SendTransactionEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3}, []string{"eth", "network", "txs", "send"}, ""))
 
@@ -467,9 +467,9 @@ var (
 var (
 	forward_TransactionService_TransactionHashEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_TransactionService_UnconfirmedTransactionsEndpoint_0 = runtime.ForwardResponseMessage
+	forward_TransactionService_UnconfirmedTransactionEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_TransactionService_CreateTransactionsEndpoint_0 = runtime.ForwardResponseMessage
+	forward_TransactionService_NewTransactionsEndpoint_0 = runtime.ForwardResponseMessage
 
 	forward_TransactionService_SendTransactionEndpoint_0 = runtime.ForwardResponseMessage
 

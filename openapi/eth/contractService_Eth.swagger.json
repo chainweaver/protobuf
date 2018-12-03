@@ -55,7 +55,7 @@
     },
     "/eth/{network}/contracts/{query_address}": {
       "get": {
-        "operationId": "ContractAddressEndpoint",
+        "operationId": "GetContractAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
