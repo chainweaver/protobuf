@@ -94,21 +94,6 @@ export namespace AddressKeychain {
   }
 }
 
-export class ArrayString {
-  constructor ();
-  getArraystringList(): string[];
-  setArraystringList(a: string[]): void;
-  toObject(): ArrayString.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ArrayString;
-}
-
-export namespace ArrayString {
-  export type AsObject = {
-    ArraystringList: string[];
-  }
-}
-
 export class GetAssetAddressEndpointRequest {
   constructor ();
   getNetwork(): string;
@@ -586,6 +571,21 @@ export namespace TransferAssetEndpointRequest {
     ToAddress: string;
     Amount: number;
     Metadata: string;
+  }
+}
+
+export class TxHashes {
+  constructor ();
+  getHashList(): string[];
+  setHashList(a: string[]): void;
+  toObject(): TxHashes.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => TxHashes;
+}
+
+export namespace TxHashes {
+  export type AsObject = {
+    HashList: string[];
   }
 }
 

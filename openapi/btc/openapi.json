@@ -1363,7 +1363,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcArrayString"
+              "$ref": "#/definitions/btcTxHashes"
             }
           }
         },
@@ -3276,17 +3276,6 @@
         }
       }
     },
-    "btcArrayString": {
-      "type": "object",
-      "properties": {
-        "arraystring": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "btcNullValueRequest": {
       "type": "object",
       "properties": {
@@ -3625,6 +3614,17 @@
         "metadata": {
           "type": "string",
           "description": "Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction."
+        }
+      }
+    },
+    "btcTxHashes": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },

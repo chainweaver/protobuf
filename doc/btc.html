@@ -195,10 +195,6 @@
                 </li>
               
                 <li>
-                  <a href="#fairwaycorp.blockchainprotobuf.btc.ArrayString"><span class="badge">M</span>ArrayString</a>
-                </li>
-              
-                <li>
                   <a href="#fairwaycorp.blockchainprotobuf.btc.DescribedBelow"><span class="badge">M</span>DescribedBelow</a>
                 </li>
               
@@ -288,6 +284,10 @@
               
                 <li>
                   <a href="#fairwaycorp.blockchainprotobuf.btc.TXerror"><span class="badge">M</span>TXerror</a>
+                </li>
+              
+                <li>
+                  <a href="#fairwaycorp.blockchainprotobuf.btc.TxHashes"><span class="badge">M</span>TxHashes</a>
                 </li>
               
                 <li>
@@ -1138,29 +1138,6 @@
                   <td>longitude</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
-      
-        <h3 id="fairwaycorp.blockchainprotobuf.btc.ArrayString">ArrayString</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>arraystring</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
               
@@ -2537,6 +2514,29 @@
 
         
       
+        <h3 id="fairwaycorp.blockchainprotobuf.btc.TxHashes">TxHashes</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>hash</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="fairwaycorp.blockchainprotobuf.btc.Wallet">Wallet</h3>
         <p></p>
 
@@ -2860,7 +2860,7 @@
               <tr>
                 <td>ListAssetTXsEndpoint</td>
                 <td><a href="#fairwaycorp.blockchainprotobuf.btc.ListAssetTXsEndpointRequest">ListAssetTXsEndpointRequest</a></td>
-                <td><a href="#fairwaycorp.blockchainprotobuf.btc.ArrayString">ArrayString</a></td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.btc.TxHashes">TxHashes</a></td>
                 <td><p></p></td>
               </tr>
             
