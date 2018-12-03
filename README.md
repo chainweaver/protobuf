@@ -60,7 +60,7 @@ It is necessary to install [dep](https://github.com/golang/dep) in advance
 mkdir -p $GOPATH/src/github.com/pseudomuto
 cd $GOPATH/src/github.com/pseudomuto
 git clone git@github.com:pseudomuto/protoc-gen-doc.git
-cd protoc-gen-doc
+cd protoc-gen-doc/cmd/protoc-gen-doc
 git checkout -b v1.1.0 refs/tags/v1.1.0
 dep ensure
 go install
