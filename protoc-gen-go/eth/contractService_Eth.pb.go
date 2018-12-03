@@ -36,9 +36,9 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ContractServiceClient interface {
-	PostCreateContractEndpoint(ctx context.Context, in *PostCreateContractEndpointRequest, opts ...grpc.CallOption) (*ContractArray, error)
-	GetContractAddressEndpoint(ctx context.Context, in *GetContractAddressEndpointRequest, opts ...grpc.CallOption) (*Contract, error)
-	PostCallContractMethodEndpoint(ctx context.Context, in *PostCallContractMethodEndpointRequest, opts ...grpc.CallOption) (*Contract, error)
+	CreateContractEndpoint(ctx context.Context, in *PostCreateContractEndpointRequest, opts ...grpc.CallOption) (*ContractArray, error)
+	ContractAddressEndpoint(ctx context.Context, in *GetContractAddressEndpointRequest, opts ...grpc.CallOption) (*Contract, error)
+	CallContractMethodEndpoint(ctx context.Context, in *PostCallContractMethodEndpointRequest, opts ...grpc.CallOption) (*Contract, error)
 }
 
 type contractServiceClient struct {
@@ -49,27 +49,27 @@ func NewContractServiceClient(cc *grpc.ClientConn) ContractServiceClient {
 	return &contractServiceClient{cc}
 }
 
-func (c *contractServiceClient) PostCreateContractEndpoint(ctx context.Context, in *PostCreateContractEndpointRequest, opts ...grpc.CallOption) (*ContractArray, error) {
+func (c *contractServiceClient) CreateContractEndpoint(ctx context.Context, in *PostCreateContractEndpointRequest, opts ...grpc.CallOption) (*ContractArray, error) {
 	out := new(ContractArray)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.ContractService/PostCreateContractEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.ContractService/CreateContractEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *contractServiceClient) GetContractAddressEndpoint(ctx context.Context, in *GetContractAddressEndpointRequest, opts ...grpc.CallOption) (*Contract, error) {
+func (c *contractServiceClient) ContractAddressEndpoint(ctx context.Context, in *GetContractAddressEndpointRequest, opts ...grpc.CallOption) (*Contract, error) {
 	out := new(Contract)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.ContractService/GetContractAddressEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.ContractService/ContractAddressEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *contractServiceClient) PostCallContractMethodEndpoint(ctx context.Context, in *PostCallContractMethodEndpointRequest, opts ...grpc.CallOption) (*Contract, error) {
+func (c *contractServiceClient) CallContractMethodEndpoint(ctx context.Context, in *PostCallContractMethodEndpointRequest, opts ...grpc.CallOption) (*Contract, error) {
 	out := new(Contract)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.ContractService/PostCallContractMethodEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.ContractService/CallContractMethodEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,65 +78,65 @@ func (c *contractServiceClient) PostCallContractMethodEndpoint(ctx context.Conte
 
 // ContractServiceServer is the server API for ContractService service.
 type ContractServiceServer interface {
-	PostCreateContractEndpoint(context.Context, *PostCreateContractEndpointRequest) (*ContractArray, error)
-	GetContractAddressEndpoint(context.Context, *GetContractAddressEndpointRequest) (*Contract, error)
-	PostCallContractMethodEndpoint(context.Context, *PostCallContractMethodEndpointRequest) (*Contract, error)
+	CreateContractEndpoint(context.Context, *PostCreateContractEndpointRequest) (*ContractArray, error)
+	ContractAddressEndpoint(context.Context, *GetContractAddressEndpointRequest) (*Contract, error)
+	CallContractMethodEndpoint(context.Context, *PostCallContractMethodEndpointRequest) (*Contract, error)
 }
 
 func RegisterContractServiceServer(s *grpc.Server, srv ContractServiceServer) {
 	s.RegisterService(&_ContractService_serviceDesc, srv)
 }
 
-func _ContractService_PostCreateContractEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ContractService_CreateContractEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PostCreateContractEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContractServiceServer).PostCreateContractEndpoint(ctx, in)
+		return srv.(ContractServiceServer).CreateContractEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.ContractService/PostCreateContractEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.ContractService/CreateContractEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContractServiceServer).PostCreateContractEndpoint(ctx, req.(*PostCreateContractEndpointRequest))
+		return srv.(ContractServiceServer).CreateContractEndpoint(ctx, req.(*PostCreateContractEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ContractService_GetContractAddressEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ContractService_ContractAddressEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetContractAddressEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContractServiceServer).GetContractAddressEndpoint(ctx, in)
+		return srv.(ContractServiceServer).ContractAddressEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.ContractService/GetContractAddressEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.ContractService/ContractAddressEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContractServiceServer).GetContractAddressEndpoint(ctx, req.(*GetContractAddressEndpointRequest))
+		return srv.(ContractServiceServer).ContractAddressEndpoint(ctx, req.(*GetContractAddressEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ContractService_PostCallContractMethodEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ContractService_CallContractMethodEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PostCallContractMethodEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContractServiceServer).PostCallContractMethodEndpoint(ctx, in)
+		return srv.(ContractServiceServer).CallContractMethodEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.ContractService/PostCallContractMethodEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.ContractService/CallContractMethodEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContractServiceServer).PostCallContractMethodEndpoint(ctx, req.(*PostCallContractMethodEndpointRequest))
+		return srv.(ContractServiceServer).CallContractMethodEndpoint(ctx, req.(*PostCallContractMethodEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -146,16 +146,16 @@ var _ContractService_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*ContractServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "PostCreateContractEndpoint",
-			Handler:    _ContractService_PostCreateContractEndpoint_Handler,
+			MethodName: "CreateContractEndpoint",
+			Handler:    _ContractService_CreateContractEndpoint_Handler,
 		},
 		{
-			MethodName: "GetContractAddressEndpoint",
-			Handler:    _ContractService_GetContractAddressEndpoint_Handler,
+			MethodName: "ContractAddressEndpoint",
+			Handler:    _ContractService_ContractAddressEndpoint_Handler,
 		},
 		{
-			MethodName: "PostCallContractMethodEndpoint",
-			Handler:    _ContractService_PostCallContractMethodEndpoint_Handler,
+			MethodName: "CallContractMethodEndpoint",
+			Handler:    _ContractService_CallContractMethodEndpoint_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -163,31 +163,31 @@ var _ContractService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("contractService_Eth.proto", fileDescriptor_contractService_Eth_369bff954fe62f3d)
+	proto.RegisterFile("contractService_Eth.proto", fileDescriptor_contractService_Eth_aaf5e4b0e460d32e)
 }
 
-var fileDescriptor_contractService_Eth_369bff954fe62f3d = []byte{
-	// 347 bytes of a gzipped FileDescriptorProto
+var fileDescriptor_contractService_Eth_aaf5e4b0e460d32e = []byte{
+	// 351 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x91, 0xc1, 0x4a, 0xeb, 0x40,
-	0x14, 0x86, 0xe9, 0xe5, 0x72, 0x17, 0xd9, 0x5c, 0xc8, 0x46, 0x0d, 0x22, 0x92, 0x95, 0x88, 0xc9,
-	0x58, 0xbb, 0x72, 0x21, 0xa2, 0xa5, 0x88, 0x0b, 0x41, 0x74, 0xe7, 0xa6, 0x4c, 0x26, 0xa7, 0xc9,
-	0xd0, 0x64, 0x4e, 0x3a, 0x73, 0x62, 0x29, 0xa5, 0x1b, 0x5f, 0xc1, 0x97, 0x71, 0xef, 0x23, 0xe8,
-	0x23, 0xb8, 0xf1, 0x2d, 0xa4, 0x53, 0x13, 0x15, 0x09, 0xb6, 0xee, 0x42, 0x0e, 0xe7, 0xff, 0xbe,
-	0x7f, 0x8e, 0xb3, 0x21, 0x50, 0x91, 0xe6, 0x82, 0xae, 0x41, 0xdf, 0x4a, 0x01, 0xfd, 0x1e, 0xa5,
-	0x61, 0xa1, 0x91, 0xd0, 0xf5, 0x07, 0x5c, 0xea, 0x31, 0x9f, 0x08, 0xd4, 0x45, 0x18, 0x65, 0x28,
-	0x86, 0x22, 0xe5, 0x52, 0xd9, 0x61, 0x54, 0x0e, 0x42, 0xa0, 0xd4, 0xdb, 0x4c, 0x10, 0x93, 0x0c,
-	0x18, 0x2f, 0x24, 0xe3, 0x4a, 0x21, 0x71, 0x92, 0xa8, 0xcc, 0x22, 0xc1, 0xab, 0xc3, 0x2f, 0xc0,
-	0x18, 0x9e, 0x7c, 0x0a, 0xf7, 0xd6, 0x04, 0xe6, 0x39, 0xaa, 0x6f, 0x83, 0x83, 0xd7, 0xbf, 0xce,
-	0xff, 0xee, 0x57, 0x27, 0xf7, 0xa1, 0xe5, 0x78, 0x97, 0x68, 0xa8, 0xab, 0x81, 0x13, 0x54, 0xd3,
-	0x9e, 0x8a, 0x0b, 0x94, 0x8a, 0xdc, 0x5e, 0xf8, 0xb3, 0x69, 0xd8, 0xbc, 0x7f, 0x05, 0xa3, 0x12,
-	0x0c, 0x79, 0xed, 0x65, 0x62, 0xaa, 0xe5, 0x13, 0xad, 0xf9, 0xc4, 0xdf, 0xbe, 0x7b, 0x7a, 0xb9,
-	0xff, 0xe3, 0xf9, 0xeb, 0x0c, 0x28, 0x65, 0x53, 0x05, 0x34, 0x46, 0x3d, 0x9c, 0xb1, 0xaa, 0xb7,
-	0x71, 0x1f, 0x5b, 0x8e, 0x77, 0x06, 0x54, 0xaf, 0xc5, 0xb1, 0x06, 0x63, 0x56, 0x53, 0x6f, 0xde,
-	0xaf, 0xd4, 0xf7, 0x56, 0x51, 0xf7, 0xf7, 0xad, 0xf5, 0xae, 0xbb, 0xd3, 0x64, 0xcd, 0xa6, 0xa3,
-	0x12, 0xf4, 0xa4, 0xcf, 0x17, 0xb4, 0x99, 0xfb, 0xdc, 0x72, 0xb6, 0xec, 0x03, 0xf2, 0x2c, 0xeb,
-	0xd6, 0x37, 0xa5, 0x14, 0xe3, 0xba, 0xc9, 0xf9, 0xd2, 0x47, 0x68, 0xcc, 0xf8, 0x5d, 0x9b, 0x43,
-	0xdb, 0xa6, 0xe3, 0xb7, 0x97, 0x6d, 0xc3, 0xa6, 0xb9, 0xc5, 0xce, 0x4e, 0x8f, 0x6f, 0x8e, 0x12,
-	0x49, 0x69, 0x19, 0x85, 0x02, 0x73, 0xf6, 0x0e, 0x0d, 0xe6, 0x54, 0xf6, 0x41, 0x0d, 0x2a, 0x2c,
-	0xb3, 0x1f, 0x22, 0x48, 0x40, 0x05, 0x09, 0xce, 0x69, 0xd1, 0x3f, 0xfb, 0xab, 0xf3, 0x16, 0x00,
-	0x00, 0xff, 0xff, 0x0c, 0x23, 0x41, 0xcd, 0x46, 0x03, 0x00, 0x00,
+	0x14, 0x86, 0xc9, 0xe5, 0x72, 0x17, 0xd9, 0x5c, 0xc8, 0xc2, 0x6a, 0xd0, 0x4d, 0xdc, 0x48, 0x31,
+	0x19, 0xab, 0xe0, 0xa2, 0x28, 0xa2, 0xa1, 0x88, 0x0b, 0x41, 0x74, 0xe7, 0xa6, 0x4c, 0x26, 0xa7,
+	0x49, 0x68, 0x32, 0x27, 0x9d, 0x39, 0xb1, 0x94, 0xd2, 0x8d, 0xaf, 0xe0, 0xc3, 0xb8, 0xf5, 0x1d,
+	0xfa, 0x0a, 0x7d, 0x10, 0x69, 0x6a, 0xa2, 0xa2, 0xc5, 0xd6, 0x5d, 0xc8, 0xe1, 0xff, 0xbf, 0xef,
+	0x67, 0xcc, 0x2d, 0x81, 0x92, 0x14, 0x17, 0x74, 0x07, 0xea, 0x21, 0x11, 0xd0, 0xed, 0x50, 0xec,
+	0xe5, 0x0a, 0x09, 0x2d, 0xa7, 0xc7, 0x13, 0x35, 0xe4, 0x23, 0x81, 0x2a, 0xf7, 0x82, 0x14, 0x45,
+	0x5f, 0xc4, 0x3c, 0x91, 0xe5, 0x31, 0x28, 0x7a, 0x1e, 0x50, 0x6c, 0x6f, 0x47, 0x88, 0x51, 0x0a,
+	0x8c, 0xe7, 0x09, 0xe3, 0x52, 0x22, 0x71, 0x4a, 0x50, 0xea, 0x45, 0x83, 0x5d, 0x97, 0x5f, 0x83,
+	0xd6, 0x3c, 0xfa, 0x50, 0x6e, 0x37, 0x04, 0x66, 0x19, 0xca, 0x2f, 0x87, 0xc3, 0xd9, 0x5f, 0xf3,
+	0xbf, 0xff, 0xd9, 0xc9, 0x7a, 0x36, 0xcc, 0x0d, 0x5f, 0x01, 0x27, 0xa8, 0x2e, 0x1d, 0x19, 0xe6,
+	0x98, 0x48, 0xb2, 0x3a, 0xde, 0xcf, 0x96, 0xde, 0x0d, 0x6a, 0xfa, 0x3e, 0x7f, 0x0b, 0x83, 0x02,
+	0x34, 0xd9, 0xad, 0x55, 0x6a, 0xaa, 0xf0, 0xb9, 0x52, 0x7c, 0xe4, 0xec, 0x3e, 0x4e, 0x67, 0x4f,
+	0x7f, 0x76, 0x9c, 0x4d, 0x06, 0x14, 0xb3, 0xb1, 0x04, 0x1a, 0xa2, 0xea, 0x4f, 0x58, 0xb5, 0x59,
+	0xb7, 0x8d, 0xa6, 0xf5, 0x62, 0x98, 0x8d, 0x3a, 0x16, 0x86, 0x0a, 0xb4, 0x5e, 0x4f, 0xfd, 0x12,
+	0x68, 0x49, 0xbe, 0x52, 0xdf, 0x5f, 0x47, 0xdd, 0x39, 0x28, 0xad, 0x9b, 0xd6, 0xde, 0x32, 0x6b,
+	0x36, 0x1e, 0x14, 0xa0, 0x46, 0x5d, 0xbe, 0xa0, 0x4d, 0xac, 0xa9, 0x61, 0xda, 0x3e, 0x4f, 0x53,
+	0xbf, 0x7e, 0x4b, 0x8a, 0x31, 0xac, 0x57, 0x5c, 0xad, 0xfc, 0x00, 0x4b, 0x3b, 0x7e, 0xb7, 0xe4,
+	0xa4, 0x5c, 0x72, 0xec, 0xb4, 0x56, 0x5d, 0xc2, 0xc6, 0x59, 0x89, 0x9d, 0xb4, 0x8d, 0xe6, 0xc5,
+	0xd9, 0xfd, 0x69, 0x94, 0x50, 0x5c, 0x04, 0x9e, 0xc0, 0x8c, 0xbd, 0x71, 0xdd, 0x39, 0x98, 0xbd,
+	0x83, 0xdd, 0x8a, 0xcc, 0xca, 0x0f, 0xe1, 0x46, 0x20, 0xdd, 0x08, 0xe7, 0xc0, 0xe0, 0x5f, 0xf9,
+	0xeb, 0xe8, 0x35, 0x00, 0x00, 0xff, 0xff, 0x8c, 0x45, 0xcd, 0x2b, 0x41, 0x03, 0x00, 0x00,
 }

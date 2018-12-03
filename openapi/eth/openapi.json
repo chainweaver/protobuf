@@ -151,7 +151,7 @@
     },
     "/eth/{network}/txs": {
       "get": {
-        "operationId": "GetUnconfirmedTransactionsEndpoint",
+        "operationId": "UnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -181,7 +181,7 @@
     },
     "/eth/{network}/txs/decode": {
       "post": {
-        "operationId": "PostDecodeRawTransactionEndpoint",
+        "operationId": "DecodeRawTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -219,7 +219,7 @@
     },
     "/eth/{network}/txs/new": {
       "post": {
-        "operationId": "PostCreateTransactionsEndpoint",
+        "operationId": "CreateTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -257,7 +257,7 @@
     },
     "/eth/{network}/txs/push": {
       "put": {
-        "operationId": "PostPushRawTransactionEndpoint",
+        "operationId": "PushRawTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -295,7 +295,7 @@
     },
     "/eth/{network}/txs/send": {
       "post": {
-        "operationId": "PostSendTransactionEndpoint",
+        "operationId": "SendTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -333,7 +333,7 @@
     },
     "/eth/{network}/txs/{txhash}": {
       "get": {
-        "operationId": "GetTransactionHashEndpoint",
+        "operationId": "TransactionHashEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -369,7 +369,7 @@
     },
     "/hooks": {
       "get": {
-        "operationId": "GetListWebHooksEndpoint",
+        "operationId": "ListWebHooksEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -404,7 +404,7 @@
         ]
       },
       "post": {
-        "operationId": "PostCreateWebHookEndpoint",
+        "operationId": "CreateWebHookEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -413,6 +413,16 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethPostCreateWebHookEndpointRequest"
+            }
+          }
+        ],
         "tags": [
           "WebHooksService"
         ]
@@ -420,7 +430,7 @@
     },
     "/hooks/{webhookid}": {
       "get": {
-        "operationId": "GetWebHookIDEndpoint",
+        "operationId": "WebHookIDEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -455,7 +465,7 @@
         ]
       },
       "delete": {
-        "operationId": "DeleteWebHookEndpoint",
+        "operationId": "WebHookEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -492,7 +502,7 @@
     },
     "/eth/{network}/addr": {
       "post": {
-        "operationId": "PostGenerateAddressEndpoint",
+        "operationId": "GenerateAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -513,6 +523,14 @@
               "ROPSTEN",
               "ropsten"
             ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethPostGenerateAddressEndpointRequest"
+            }
           }
         ],
         "tags": [
@@ -522,7 +540,7 @@
     },
     "/eth/{network}/addr/{address}": {
       "get": {
-        "operationId": "GetAddressEndpoint",
+        "operationId": "AddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -590,7 +608,7 @@
     },
     "/eth/{network}/addrs/{address}/balance": {
       "get": {
-        "operationId": "GetBalanceAddressEndpoint",
+        "operationId": "BalanceAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -626,7 +644,7 @@
     },
     "/eth/{network}/contracts": {
       "post": {
-        "operationId": "PostCreateContractEndpoint",
+        "operationId": "CreateContractEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -647,6 +665,14 @@
               "ROPSTEN",
               "ropsten"
             ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethPostCreateContractEndpointRequest"
+            }
           }
         ],
         "tags": [
@@ -656,7 +682,7 @@
     },
     "/eth/{network}/contracts/{query_address}": {
       "get": {
-        "operationId": "GetContractAddressEndpoint",
+        "operationId": "ContractAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -692,7 +718,7 @@
     },
     "/eth/{network}/contracts/{query_address}/{method}": {
       "post": {
-        "operationId": "PostCallContractMethodEndpoint",
+        "operationId": "CallContractMethodEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -725,6 +751,14 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethPostCallContractMethodEndpointRequest"
+            }
           }
         ],
         "tags": [
@@ -1382,6 +1416,44 @@
     "ethNullValue": {
       "type": "object"
     },
+    "ethPostCreateWebHookEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "id": {
+          "type": "string",
+          "description": "Identifier of the event; generated when a new request is created."
+        },
+        "event": {
+          "type": "string",
+          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
+        },
+        "hash": {
+          "type": "string",
+          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+        },
+        "address": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given address will be sent."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+        },
+        "url": {
+          "type": "string",
+          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+        },
+        "callback_errors": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        }
+      }
+    },
     "ethAddress": {
       "type": "object",
       "properties": {
@@ -1468,6 +1540,14 @@
         "private": {
           "type": "string",
           "description": "Hex-encoded Private key."
+        }
+      }
+    },
+    "ethPostGenerateAddressEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
         }
       }
     },
@@ -1599,6 +1679,154 @@
           "items": {
             "$ref": "#/definitions/ethContract"
           }
+        }
+      }
+    },
+    "ethPostCallContractMethodEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "query_address": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "solidity": {
+          "type": "string",
+          "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Parameters for either contract creation or method execution."
+        },
+        "publish": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
+        },
+        "private": {
+          "type": "string",
+          "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
+        },
+        "gas_limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum amount of gas to use in contract creation or method execution."
+        },
+        "value": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of contract as published."
+        },
+        "bin": {
+          "type": "string",
+          "description": "Hex-encoded binary compilation of this contract."
+        },
+        "abi": {
+          "type": "string",
+          "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
+        },
+        "address": {
+          "type": "string",
+          "description": "Hex-encoded address of this contract."
+        },
+        "created": {
+          "type": "string",
+          "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
+        },
+        "creation_tx_hash": {
+          "type": "string",
+          "description": "Hex-encoded transaction hash that created this contract."
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+        }
+      }
+    },
+    "ethPostCreateContractEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "solidity": {
+          "type": "string",
+          "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Parameters for either contract creation or method execution."
+        },
+        "publish": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
+        },
+        "private": {
+          "type": "string",
+          "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
+        },
+        "gas_limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum amount of gas to use in contract creation or method execution."
+        },
+        "value": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of contract as published."
+        },
+        "bin": {
+          "type": "string",
+          "description": "Hex-encoded binary compilation of this contract."
+        },
+        "abi": {
+          "type": "string",
+          "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
+        },
+        "address": {
+          "type": "string",
+          "description": "Hex-encoded address of this contract."
+        },
+        "created": {
+          "type": "string",
+          "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
+        },
+        "creation_tx_hash": {
+          "type": "string",
+          "description": "Hex-encoded transaction hash that created this contract."
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
         }
       }
     }
