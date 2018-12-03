@@ -1,10 +1,10 @@
 import * as grpcWeb from 'grpc-web';
 import {
+  CallContractMethodEndpointRequest,
   Contract,
+  ContractAddressEndpointRequest,
   ContractArray,
-  GetContractAddressEndpointRequest,
-  PostCallContractMethodEndpointRequest,
-  PostCreateContractEndpointRequest} from './contractService_Eth_pb';
+  CreateContractEndpointRequest} from './contractService_Eth_pb';
 
 export class ContractServiceClient {
   constructor (hostname: string,
@@ -12,21 +12,21 @@ export class ContractServiceClient {
                options: null | { [index: string]: string; });
 
   createContractEndpoint(
-    request: PostCreateContractEndpointRequest,
+    request: CreateContractEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: ContractArray) => void
   ): grpcWeb.ClientReadableStream<ContractArray>;
 
   contractAddressEndpoint(
-    request: GetContractAddressEndpointRequest,
+    request: ContractAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Contract) => void
   ): grpcWeb.ClientReadableStream<Contract>;
 
   callContractMethodEndpoint(
-    request: PostCallContractMethodEndpointRequest,
+    request: CallContractMethodEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Contract) => void
@@ -40,17 +40,17 @@ export class ContractServicePromiseClient {
                options: null | { [index: string]: string; });
 
   createContractEndpoint(
-    request: PostCreateContractEndpointRequest,
+    request: CreateContractEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<ContractArray>;
 
   contractAddressEndpoint(
-    request: GetContractAddressEndpointRequest,
+    request: ContractAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Contract>;
 
   callContractMethodEndpoint(
-    request: PostCallContractMethodEndpointRequest,
+    request: CallContractMethodEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Contract>;
 

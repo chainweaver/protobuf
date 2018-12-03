@@ -8,23 +8,23 @@ import "webhooksMessage_Eth.proto";
 import "commonMessage_Eth.proto";
 
 service WebHooksService {
-  rpc CreateWebHookEndpoint (PostCreateWebHookEndpointRequest) returns (Event) {
+  rpc CreateWebHookEndpoint (CreateWebHookEndpointRequest) returns (Event) {
     option (google.api.http) = {
       post: "/hooks"
       body: "*"
     };
   }
-  rpc ListWebHooksEndpoint (GetListWebHooksEndpointRequest) returns (ArrayEvent) {
+  rpc ListWebHooksEndpoint (ListWebHooksEndpointRequest) returns (ArrayEvent) {
     option (google.api.http) = {
       get: "/hooks"
     };
   }
-  rpc WebHookIDEndpoint (GetWebHookIDEndpointRequest) returns (Event) {
+  rpc WebHookIDEndpoint (WebHookIDEndpointRequest) returns (Event) {
     option (google.api.http) = {
       get: "/hooks/{webhookid}"
     };
   }
-  rpc WebHookEndpoint (DeleteWebHookEndpointRequest) returns (NullValue) {
+  rpc WebHookEndpoint (WebHookEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
       delete: "/hooks/{webhookid}"
     };

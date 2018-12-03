@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 func request_TransactionService_TransactionHashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetTransactionHashEndpointRequest
+	var protoReq TransactionHashEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -70,7 +70,7 @@ func request_TransactionService_TransactionHashEndpoint_0(ctx context.Context, m
 }
 
 func request_TransactionService_UnconfirmedTransactionsEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetUnconfirmedTransactionsEndpointRequest
+	var protoReq UnconfirmedTransactionsEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -100,7 +100,7 @@ func request_TransactionService_UnconfirmedTransactionsEndpoint_0(ctx context.Co
 }
 
 func request_TransactionService_CreateTransactionsEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PostCreateTransactionsEndpointRequest
+	var protoReq CreateTransactionsEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -134,7 +134,7 @@ func request_TransactionService_CreateTransactionsEndpoint_0(ctx context.Context
 }
 
 func request_TransactionService_SendTransactionEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PostSendTransactionEndpointRequest
+	var protoReq SendTransactionEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -168,7 +168,7 @@ func request_TransactionService_SendTransactionEndpoint_0(ctx context.Context, m
 }
 
 func request_TransactionService_DecodeRawTransactionEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PostDecodeRawTransactionEndpointRequest
+	var protoReq DecodeRawTransactionEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -202,7 +202,7 @@ func request_TransactionService_DecodeRawTransactionEndpoint_0(ctx context.Conte
 }
 
 func request_TransactionService_PushRawTransactionEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client TransactionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PostPushRawTransactionEndpointRequest
+	var protoReq PushRawTransactionEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {

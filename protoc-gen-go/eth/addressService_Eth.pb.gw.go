@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 func request_AddressService_BalanceAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AddressServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetBalanceAddressEndpointRequest
+	var protoReq BalanceAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -74,7 +74,7 @@ var (
 )
 
 func request_AddressService_AddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AddressServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetAddressEndpointRequest
+	var protoReq AddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -119,7 +119,7 @@ func request_AddressService_AddressEndpoint_0(ctx context.Context, marshaler run
 }
 
 func request_AddressService_GenerateAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AddressServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PostGenerateAddressEndpointRequest
+	var protoReq GenerateAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {

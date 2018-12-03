@@ -5,7 +5,7 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/e
 
 import "commonMessage_Eth.proto";
 
-message PostCreateWebHookEndpointRequest {
+message CreateWebHookEndpointRequest {
   NetworkAllowingAlias network = 1;
   // Identifier of the event; generated when a new request is created.
   string id = 2;
@@ -23,7 +23,7 @@ message PostCreateWebHookEndpointRequest {
   int32 callback_errors = 8;
 }
 
-message GetListWebHooksEndpointRequest {
+message ListWebHooksEndpointRequest {
   NetworkAllowingAlias network = 1;
   string token = 2;
 }
@@ -32,12 +32,12 @@ message ArrayEvent {
   repeated Event event = 1;
 }
 
-message GetWebHookIDEndpointRequest {
+message WebHookIDEndpointRequest {
   NetworkAllowingAlias network = 1;
   string webhookid = 2;
 }
 
-message DeleteWebHookEndpointRequest {
+message WebHookEndpointRequest {
   NetworkAllowingAlias network = 1;
   string webhookid = 2;
 }

@@ -74,7 +74,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethPostDecodeRawTransactionEndpointRequest"
+              "$ref": "#/definitions/ethDecodeRawTransactionEndpointRequest"
             }
           }
         ],
@@ -112,7 +112,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethPostCreateTransactionsEndpointRequest"
+              "$ref": "#/definitions/ethCreateTransactionsEndpointRequest"
             }
           }
         ],
@@ -150,7 +150,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethPostPushRawTransactionEndpointRequest"
+              "$ref": "#/definitions/ethPushRawTransactionEndpointRequest"
             }
           }
         ],
@@ -188,7 +188,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethPostSendTransactionEndpointRequest"
+              "$ref": "#/definitions/ethSendTransactionEndpointRequest"
             }
           }
         ],
@@ -235,50 +235,7 @@
     }
   },
   "definitions": {
-    "ethInputType": {
-      "type": "object",
-      "properties": {
-        "sequence": {
-          "type": "string",
-          "format": "int64"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ethNetworkAllowingAlias": {
-      "type": "string",
-      "enum": [
-        "MAIN",
-        "main",
-        "ROPSTEN",
-        "ropsten"
-      ],
-      "default": "MAIN"
-    },
-    "ethOutputType": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "format": "int64"
-        },
-        "script": {
-          "type": "string"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ethPostCreateTransactionsEndpointRequest": {
+    "ethCreateTransactionsEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -421,7 +378,7 @@
         }
       }
     },
-    "ethPostDecodeRawTransactionEndpointRequest": {
+    "ethDecodeRawTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -432,7 +389,50 @@
         }
       }
     },
-    "ethPostPushRawTransactionEndpointRequest": {
+    "ethInputType": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "type": "string",
+          "format": "int64"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAIN",
+        "main",
+        "ROPSTEN",
+        "ropsten"
+      ],
+      "default": "MAIN"
+    },
+    "ethOutputType": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "int64"
+        },
+        "script": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethPushRawTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -443,7 +443,7 @@
         }
       }
     },
-    "ethPostSendTransactionEndpointRequest": {
+    "ethSendTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {

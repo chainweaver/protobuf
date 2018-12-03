@@ -83,12 +83,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.ContractArray>}
  */
 const methodInfo_ContractService_CreateContractEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   contractMessage_Eth_pb.ContractArray,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -97,7 +97,7 @@ const methodInfo_ContractService_CreateContractEndpoint = new grpc.web.AbstractC
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -118,7 +118,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.createC
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateContractEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -139,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient.prototype.
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.ContractAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Contract>}
  */
 const methodInfo_ContractService_ContractAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Contract,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.ContractAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -153,7 +153,7 @@ const methodInfo_ContractService_ContractAddressEndpoint = new grpc.web.Abstract
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ContractAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -174,7 +174,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.contrac
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ContractAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -195,12 +195,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient.prototype.
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.CallContractMethodEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Contract>}
  */
 const methodInfo_ContractService_CallContractMethodEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Contract,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.CallContractMethodEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -209,7 +209,7 @@ const methodInfo_ContractService_CallContractMethodEndpoint = new grpc.web.Abstr
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CallContractMethodEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -230,7 +230,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.callCon
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCallContractMethodEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CallContractMethodEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata

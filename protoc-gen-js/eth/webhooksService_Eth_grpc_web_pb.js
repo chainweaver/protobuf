@@ -83,12 +83,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Event>}
  */
 const methodInfo_WebHooksService_CreateWebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Event,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -97,7 +97,7 @@ const methodInfo_WebHooksService_CreateWebHookEndpoint = new grpc.web.AbstractCl
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -118,7 +118,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.createW
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -139,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GetListWebHooksEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent>}
  */
 const methodInfo_WebHooksService_ListWebHooksEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   webhooksMessage_Eth_pb.ArrayEvent,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetListWebHooksEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -153,7 +153,7 @@ const methodInfo_WebHooksService_ListWebHooksEndpoint = new grpc.web.AbstractCli
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetListWebHooksEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -174,7 +174,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.listWeb
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetListWebHooksEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -195,12 +195,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GetWebHookIDEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Event>}
  */
 const methodInfo_WebHooksService_WebHookIDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Event,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetWebHookIDEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -209,7 +209,7 @@ const methodInfo_WebHooksService_WebHookIDEndpoint = new grpc.web.AbstractClient
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetWebHookIDEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -230,7 +230,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.webHook
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetWebHookIDEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -251,12 +251,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.NullValue>}
  */
 const methodInfo_WebHooksService_WebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.NullValue,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -265,7 +265,7 @@ const methodInfo_WebHooksService_WebHookEndpoint = new grpc.web.AbstractClientBa
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -286,7 +286,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.webHook
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata

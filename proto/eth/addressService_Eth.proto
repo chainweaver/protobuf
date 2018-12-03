@@ -8,17 +8,17 @@ import "addressMessage_Eth.proto";
 import "commonMessage_Eth.proto";
 
 service AddressService {
-  rpc BalanceAddressEndpoint (GetBalanceAddressEndpointRequest) returns (Address) {
+  rpc BalanceAddressEndpoint (BalanceAddressEndpointRequest) returns (Address) {
     option (google.api.http) = {
       get: "/eth/{network}/addrs/{address}/balance"
     };
   }
-  rpc AddressEndpoint (GetAddressEndpointRequest) returns (Address) {
+  rpc AddressEndpoint (AddressEndpointRequest) returns (Address) {
     option (google.api.http) = {
       get: "/eth/{network}/addr/{address}"
     };
   }
-  rpc GenerateAddressEndpoint (PostGenerateAddressEndpointRequest) returns (AddressKeychain) {
+  rpc GenerateAddressEndpoint (GenerateAddressEndpointRequest) returns (AddressKeychain) {
     option (google.api.http) = {
       post: "/eth/{network}/addr"
       body: "*"

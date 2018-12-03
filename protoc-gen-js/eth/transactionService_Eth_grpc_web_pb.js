@@ -83,12 +83,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GetTransactionHashEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.TransactionHashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TX>}
  */
 const methodInfo_TransactionService_TransactionHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TX,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetTransactionHashEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.TransactionHashEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -97,7 +97,7 @@ const methodInfo_TransactionService_TransactionHashEndpoint = new grpc.web.Abstr
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetTransactionHashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TransactionHashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -118,7 +118,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.tran
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetTransactionHashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TransactionHashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -139,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GetUnconfirmedTransactionsEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TxArray>}
  */
 const methodInfo_TransactionService_UnconfirmedTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   transactionMessage_Eth_pb.TxArray,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetUnconfirmedTransactionsEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -153,7 +153,7 @@ const methodInfo_TransactionService_UnconfirmedTransactionsEndpoint = new grpc.w
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetUnconfirmedTransactionsEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -174,7 +174,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.unco
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetUnconfirmedTransactionsEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -195,12 +195,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton>}
  */
 const methodInfo_TransactionService_CreateTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TXSkeleton,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionsEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -209,7 +209,7 @@ const methodInfo_TransactionService_CreateTransactionsEndpoint = new grpc.web.Ab
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionsEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -230,7 +230,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.crea
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateTransactionsEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionsEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -251,12 +251,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.SendTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton>}
  */
 const methodInfo_TransactionService_SendTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TXSkeleton,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.SendTransactionEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -265,7 +265,7 @@ const methodInfo_TransactionService_SendTransactionEndpoint = new grpc.web.Abstr
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.SendTransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -286,7 +286,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.send
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostSendTransactionEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.SendTransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -307,12 +307,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.PostDecodeRawTransactionEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.DecodeRawTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TX>}
  */
 const methodInfo_TransactionService_DecodeRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TX,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostDecodeRawTransactionEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.DecodeRawTransactionEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -321,7 +321,7 @@ const methodInfo_TransactionService_DecodeRawTransactionEndpoint = new grpc.web.
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostDecodeRawTransactionEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.DecodeRawTransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -342,7 +342,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.deco
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostDecodeRawTransactionEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.DecodeRawTransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -363,12 +363,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.PostPushRawTransactionEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.PushRawTransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TX>}
  */
 const methodInfo_TransactionService_PushRawTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TX,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostPushRawTransactionEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PushRawTransactionEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -377,7 +377,7 @@ const methodInfo_TransactionService_PushRawTransactionEndpoint = new grpc.web.Ab
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostPushRawTransactionEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PushRawTransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -398,7 +398,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.push
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostPushRawTransactionEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PushRawTransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata

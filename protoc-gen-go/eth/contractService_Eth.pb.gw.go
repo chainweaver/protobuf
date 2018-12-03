@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 func request_ContractService_CreateContractEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client ContractServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PostCreateContractEndpointRequest
+	var protoReq CreateContractEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -63,7 +63,7 @@ func request_ContractService_CreateContractEndpoint_0(ctx context.Context, marsh
 }
 
 func request_ContractService_ContractAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client ContractServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetContractAddressEndpointRequest
+	var protoReq ContractAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -104,7 +104,7 @@ func request_ContractService_ContractAddressEndpoint_0(ctx context.Context, mars
 }
 
 func request_ContractService_CallContractMethodEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client ContractServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PostCallContractMethodEndpointRequest
+	var protoReq CallContractMethodEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
