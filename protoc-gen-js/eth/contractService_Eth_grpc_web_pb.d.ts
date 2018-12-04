@@ -11,21 +11,21 @@ export class ContractServiceClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  createContractEndpoint(
+  postCreateContractEndpoint(
     request: PostCreateContractEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: ContractArray) => void
   ): grpcWeb.ClientReadableStream<ContractArray>;
 
-  contractAddressEndpoint(
+  getContractAddressEndpoint(
     request: GetContractAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Contract) => void
   ): grpcWeb.ClientReadableStream<Contract>;
 
-  callContractMethodEndpoint(
+  postCallContractMethodEndpoint(
     request: PostCallContractMethodEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
@@ -39,17 +39,17 @@ export class ContractServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  createContractEndpoint(
+  postCreateContractEndpoint(
     request: PostCreateContractEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<ContractArray>;
 
-  contractAddressEndpoint(
+  getContractAddressEndpoint(
     request: GetContractAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Contract>;
 
-  callContractMethodEndpoint(
+  postCallContractMethodEndpoint(
     request: PostCallContractMethodEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Contract>;

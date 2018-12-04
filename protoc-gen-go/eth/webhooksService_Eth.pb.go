@@ -36,10 +36,10 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type WebHooksServiceClient interface {
-	CreateWebHookEndpoint(ctx context.Context, in *PostCreateWebHookEndpointRequest, opts ...grpc.CallOption) (*Event, error)
-	ListWebHooksEndpoint(ctx context.Context, in *GetListWebHooksEndpointRequest, opts ...grpc.CallOption) (*ArrayEvent, error)
-	WebHookIDEndpoint(ctx context.Context, in *GetWebHookIDEndpointRequest, opts ...grpc.CallOption) (*Event, error)
-	WebHookEndpoint(ctx context.Context, in *DeleteWebHookEndpointRequest, opts ...grpc.CallOption) (*NullValue, error)
+	PostCreateWebHookEndpoint(ctx context.Context, in *PostCreateWebHookEndpointRequest, opts ...grpc.CallOption) (*Event, error)
+	GetListWebHooksEndpoint(ctx context.Context, in *GetListWebHooksEndpointRequest, opts ...grpc.CallOption) (*ArrayEvent, error)
+	GetWebHookIDEndpoint(ctx context.Context, in *GetWebHookIDEndpointRequest, opts ...grpc.CallOption) (*Event, error)
+	DeleteWebHookEndpoint(ctx context.Context, in *DeleteWebHookEndpointRequest, opts ...grpc.CallOption) (*NullValue, error)
 }
 
 type webHooksServiceClient struct {
@@ -50,36 +50,36 @@ func NewWebHooksServiceClient(cc *grpc.ClientConn) WebHooksServiceClient {
 	return &webHooksServiceClient{cc}
 }
 
-func (c *webHooksServiceClient) CreateWebHookEndpoint(ctx context.Context, in *PostCreateWebHookEndpointRequest, opts ...grpc.CallOption) (*Event, error) {
+func (c *webHooksServiceClient) PostCreateWebHookEndpoint(ctx context.Context, in *PostCreateWebHookEndpointRequest, opts ...grpc.CallOption) (*Event, error) {
 	out := new(Event)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/CreateWebHookEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/PostCreateWebHookEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *webHooksServiceClient) ListWebHooksEndpoint(ctx context.Context, in *GetListWebHooksEndpointRequest, opts ...grpc.CallOption) (*ArrayEvent, error) {
+func (c *webHooksServiceClient) GetListWebHooksEndpoint(ctx context.Context, in *GetListWebHooksEndpointRequest, opts ...grpc.CallOption) (*ArrayEvent, error) {
 	out := new(ArrayEvent)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/ListWebHooksEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/GetListWebHooksEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *webHooksServiceClient) WebHookIDEndpoint(ctx context.Context, in *GetWebHookIDEndpointRequest, opts ...grpc.CallOption) (*Event, error) {
+func (c *webHooksServiceClient) GetWebHookIDEndpoint(ctx context.Context, in *GetWebHookIDEndpointRequest, opts ...grpc.CallOption) (*Event, error) {
 	out := new(Event)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/WebHookIDEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/GetWebHookIDEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *webHooksServiceClient) WebHookEndpoint(ctx context.Context, in *DeleteWebHookEndpointRequest, opts ...grpc.CallOption) (*NullValue, error) {
+func (c *webHooksServiceClient) DeleteWebHookEndpoint(ctx context.Context, in *DeleteWebHookEndpointRequest, opts ...grpc.CallOption) (*NullValue, error) {
 	out := new(NullValue)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/WebHookEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/DeleteWebHookEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,84 +88,84 @@ func (c *webHooksServiceClient) WebHookEndpoint(ctx context.Context, in *DeleteW
 
 // WebHooksServiceServer is the server API for WebHooksService service.
 type WebHooksServiceServer interface {
-	CreateWebHookEndpoint(context.Context, *PostCreateWebHookEndpointRequest) (*Event, error)
-	ListWebHooksEndpoint(context.Context, *GetListWebHooksEndpointRequest) (*ArrayEvent, error)
-	WebHookIDEndpoint(context.Context, *GetWebHookIDEndpointRequest) (*Event, error)
-	WebHookEndpoint(context.Context, *DeleteWebHookEndpointRequest) (*NullValue, error)
+	PostCreateWebHookEndpoint(context.Context, *PostCreateWebHookEndpointRequest) (*Event, error)
+	GetListWebHooksEndpoint(context.Context, *GetListWebHooksEndpointRequest) (*ArrayEvent, error)
+	GetWebHookIDEndpoint(context.Context, *GetWebHookIDEndpointRequest) (*Event, error)
+	DeleteWebHookEndpoint(context.Context, *DeleteWebHookEndpointRequest) (*NullValue, error)
 }
 
 func RegisterWebHooksServiceServer(s *grpc.Server, srv WebHooksServiceServer) {
 	s.RegisterService(&_WebHooksService_serviceDesc, srv)
 }
 
-func _WebHooksService_CreateWebHookEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _WebHooksService_PostCreateWebHookEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PostCreateWebHookEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WebHooksServiceServer).CreateWebHookEndpoint(ctx, in)
+		return srv.(WebHooksServiceServer).PostCreateWebHookEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/CreateWebHookEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/PostCreateWebHookEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WebHooksServiceServer).CreateWebHookEndpoint(ctx, req.(*PostCreateWebHookEndpointRequest))
+		return srv.(WebHooksServiceServer).PostCreateWebHookEndpoint(ctx, req.(*PostCreateWebHookEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WebHooksService_ListWebHooksEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _WebHooksService_GetListWebHooksEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetListWebHooksEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WebHooksServiceServer).ListWebHooksEndpoint(ctx, in)
+		return srv.(WebHooksServiceServer).GetListWebHooksEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/ListWebHooksEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/GetListWebHooksEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WebHooksServiceServer).ListWebHooksEndpoint(ctx, req.(*GetListWebHooksEndpointRequest))
+		return srv.(WebHooksServiceServer).GetListWebHooksEndpoint(ctx, req.(*GetListWebHooksEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WebHooksService_WebHookIDEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _WebHooksService_GetWebHookIDEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetWebHookIDEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WebHooksServiceServer).WebHookIDEndpoint(ctx, in)
+		return srv.(WebHooksServiceServer).GetWebHookIDEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/WebHookIDEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/GetWebHookIDEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WebHooksServiceServer).WebHookIDEndpoint(ctx, req.(*GetWebHookIDEndpointRequest))
+		return srv.(WebHooksServiceServer).GetWebHookIDEndpoint(ctx, req.(*GetWebHookIDEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WebHooksService_WebHookEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _WebHooksService_DeleteWebHookEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteWebHookEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WebHooksServiceServer).WebHookEndpoint(ctx, in)
+		return srv.(WebHooksServiceServer).DeleteWebHookEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/WebHookEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.eth.WebHooksService/DeleteWebHookEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WebHooksServiceServer).WebHookEndpoint(ctx, req.(*DeleteWebHookEndpointRequest))
+		return srv.(WebHooksServiceServer).DeleteWebHookEndpoint(ctx, req.(*DeleteWebHookEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -175,20 +175,20 @@ var _WebHooksService_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*WebHooksServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateWebHookEndpoint",
-			Handler:    _WebHooksService_CreateWebHookEndpoint_Handler,
+			MethodName: "PostCreateWebHookEndpoint",
+			Handler:    _WebHooksService_PostCreateWebHookEndpoint_Handler,
 		},
 		{
-			MethodName: "ListWebHooksEndpoint",
-			Handler:    _WebHooksService_ListWebHooksEndpoint_Handler,
+			MethodName: "GetListWebHooksEndpoint",
+			Handler:    _WebHooksService_GetListWebHooksEndpoint_Handler,
 		},
 		{
-			MethodName: "WebHookIDEndpoint",
-			Handler:    _WebHooksService_WebHookIDEndpoint_Handler,
+			MethodName: "GetWebHookIDEndpoint",
+			Handler:    _WebHooksService_GetWebHookIDEndpoint_Handler,
 		},
 		{
-			MethodName: "WebHookEndpoint",
-			Handler:    _WebHooksService_WebHookEndpoint_Handler,
+			MethodName: "DeleteWebHookEndpoint",
+			Handler:    _WebHooksService_DeleteWebHookEndpoint_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -196,32 +196,32 @@ var _WebHooksService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("webhooksService_Eth.proto", fileDescriptor_webhooksService_Eth_405854c5059cdead)
+	proto.RegisterFile("webhooksService_Eth.proto", fileDescriptor_webhooksService_Eth_0558a84dae66722c)
 }
 
-var fileDescriptor_webhooksService_Eth_405854c5059cdead = []byte{
-	// 356 bytes of a gzipped FileDescriptorProto
+var fileDescriptor_webhooksService_Eth_0558a84dae66722c = []byte{
+	// 355 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0xd2, 0xc1, 0x4a, 0xf3, 0x40,
-	0x10, 0xc0, 0x71, 0xf2, 0xc1, 0x57, 0x24, 0x82, 0xd2, 0xa5, 0x22, 0x06, 0x4f, 0xbd, 0x59, 0x48,
-	0x16, 0xf4, 0x26, 0x48, 0xb5, 0xb6, 0xa8, 0xa0, 0x22, 0x0a, 0x0a, 0x5e, 0x64, 0x93, 0x4e, 0x93,
-	0xa5, 0xe9, 0x4e, 0xcc, 0x4e, 0x5a, 0x8a, 0x78, 0xf1, 0xea, 0xd1, 0x9b, 0x82, 0x2f, 0xe5, 0x2b,
-	0xf8, 0x20, 0xd2, 0x34, 0x89, 0x85, 0x56, 0x0c, 0xde, 0x42, 0x86, 0xf9, 0xf3, 0xcb, 0x6e, 0xcc,
-	0x8d, 0x11, 0xb8, 0x01, 0x62, 0x5f, 0x5f, 0x41, 0x3c, 0x94, 0x1e, 0xdc, 0x75, 0x28, 0x70, 0xa2,
-	0x18, 0x09, 0x59, 0xbd, 0x27, 0x64, 0x3c, 0x12, 0x63, 0x0f, 0xe3, 0xc8, 0x71, 0x43, 0xf4, 0xfa,
-	0x5e, 0x20, 0xa4, 0x4a, 0x87, 0x6e, 0xd2, 0x73, 0x80, 0x02, 0x6b, 0xd3, 0x47, 0xf4, 0x43, 0xe0,
-	0x22, 0x92, 0x5c, 0x28, 0x85, 0x24, 0x48, 0xa2, 0xd2, 0xd3, 0x82, 0x55, 0xc4, 0xcf, 0x40, 0x6b,
-	0xe1, 0xcf, 0xc4, 0xad, 0x75, 0x0f, 0x07, 0x03, 0x54, 0x73, 0x83, 0xed, 0xe7, 0xff, 0xe6, 0xea,
-	0x0d, 0xb8, 0xc7, 0x33, 0x26, 0xf6, 0x66, 0x98, 0x6b, 0x87, 0x31, 0x08, 0x82, 0x6c, 0xd2, 0x51,
-	0xdd, 0x08, 0xa5, 0x22, 0xd6, 0x76, 0x7e, 0x47, 0x3a, 0x17, 0xa8, 0x69, 0xe1, 0xfa, 0x25, 0xdc,
-	0x27, 0xa0, 0xc9, 0xda, 0x2a, 0x53, 0xe9, 0x0c, 0x41, 0x51, 0xbd, 0xfa, 0xf4, 0xf1, 0xf9, 0xf2,
-	0x6f, 0xb9, 0x5e, 0xe1, 0xe9, 0x87, 0xed, 0x1a, 0x0d, 0xf6, 0x6a, 0x98, 0xb5, 0x53, 0xa9, 0x29,
-	0x57, 0x17, 0xb8, 0x56, 0x99, 0xec, 0x11, 0xd0, 0xa2, 0xe5, 0x9c, 0xe6, 0x94, 0x69, 0x1c, 0xc4,
-	0xb1, 0x18, 0x4f, 0x7d, 0x2b, 0xa9, 0x6f, 0x89, 0x65, 0xbe, 0xc9, 0xd1, 0x55, 0xb3, 0xf6, 0x49,
-	0xbb, 0x90, 0x35, 0x4b, 0xca, 0xe6, 0x36, 0xff, 0x70, 0x62, 0x56, 0x2a, 0xaa, 0x31, 0x36, 0x15,
-	0xf1, 0x87, 0xec, 0xa7, 0x90, 0xdd, 0x47, 0xf6, 0x6e, 0x14, 0x97, 0x5d, 0xd8, 0xf6, 0xcb, 0xa4,
-	0xdb, 0x10, 0xc2, 0x8f, 0xd7, 0x69, 0x97, 0x29, 0x9c, 0x27, 0x61, 0x78, 0x2d, 0xc2, 0x04, 0x72,
-	0x60, 0x63, 0x01, 0xb0, 0xd5, 0xbc, 0xdd, 0xf3, 0x25, 0x05, 0x89, 0xeb, 0x78, 0x38, 0xe0, 0x59,
-	0xd6, 0x9e, 0x74, 0xf9, 0x77, 0xd7, 0xce, 0xc3, 0x3c, 0x7d, 0xf0, 0x6c, 0x1f, 0x94, 0xed, 0x23,
-	0x07, 0x0a, 0xdc, 0x4a, 0xfa, 0x6a, 0xe7, 0x2b, 0x00, 0x00, 0xff, 0xff, 0xfb, 0xcd, 0xf9, 0xd9,
-	0x68, 0x03, 0x00, 0x00,
+	0x10, 0xc0, 0x71, 0xf2, 0xc1, 0x57, 0x24, 0x07, 0x85, 0xa5, 0x52, 0x1a, 0x3c, 0xf5, 0xa6, 0x90,
+	0x2c, 0xe8, 0x59, 0xaa, 0xb5, 0xa5, 0x0a, 0x2a, 0xa2, 0xa0, 0xe0, 0x45, 0x36, 0xe9, 0x34, 0x59,
+	0x9a, 0xee, 0xc4, 0xec, 0xa4, 0xa5, 0x88, 0x17, 0x5f, 0xc1, 0x8b, 0x07, 0xf5, 0xe4, 0x1b, 0xf9,
+	0x0a, 0x3e, 0x88, 0x98, 0x76, 0x6b, 0xa5, 0x2d, 0x06, 0x6f, 0x21, 0xc3, 0xfc, 0xf3, 0x4b, 0xb2,
+	0x76, 0x75, 0x08, 0x7e, 0x84, 0xd8, 0xd3, 0x17, 0x90, 0x0e, 0x64, 0x00, 0x37, 0x2d, 0x8a, 0xbc,
+	0x24, 0x45, 0x42, 0x56, 0xeb, 0x0a, 0x99, 0x0e, 0xc5, 0x28, 0xc0, 0x34, 0xf1, 0xfc, 0x18, 0x83,
+	0x5e, 0x10, 0x09, 0xa9, 0xf2, 0xa1, 0x9f, 0x75, 0x3d, 0xa0, 0xc8, 0xd9, 0x08, 0x11, 0xc3, 0x18,
+	0xb8, 0x48, 0x24, 0x17, 0x4a, 0x21, 0x09, 0x92, 0xa8, 0xf4, 0xb8, 0xe0, 0x4c, 0xe3, 0x27, 0xa0,
+	0xb5, 0x08, 0x67, 0xe2, 0x4e, 0x25, 0xc0, 0x7e, 0x1f, 0xd5, 0xdc, 0x60, 0xfb, 0xe9, 0xbf, 0xbd,
+	0x76, 0x05, 0xfe, 0xe1, 0x8c, 0x89, 0x3d, 0x5b, 0x76, 0xf5, 0x0c, 0x35, 0x1d, 0xa4, 0x20, 0x08,
+	0x26, 0xd3, 0x96, 0xea, 0x24, 0x28, 0x15, 0xb1, 0xa6, 0xf7, 0x3b, 0xd4, 0x5b, 0xba, 0x7e, 0x0e,
+	0xb7, 0x19, 0x68, 0x72, 0x36, 0x8b, 0x54, 0x5a, 0x03, 0x50, 0x54, 0x5b, 0x7d, 0x78, 0xff, 0x78,
+	0xfc, 0xb7, 0x52, 0x2b, 0xf1, 0xfc, 0xe5, 0xd8, 0x8b, 0x65, 0x57, 0xda, 0x40, 0xc7, 0x52, 0x93,
+	0x91, 0x4f, 0x71, 0x8d, 0x22, 0xd9, 0x25, 0xcb, 0x86, 0xe6, 0x15, 0x69, 0xec, 0xa7, 0xa9, 0x18,
+	0xfd, 0xf0, 0x31, 0xe3, 0x7b, 0xb5, 0xec, 0x72, 0x1b, 0x4c, 0xfe, 0xa8, 0x39, 0xc5, 0xd5, 0x0b,
+	0xe2, 0xe6, 0x36, 0xff, 0xf0, 0xd1, 0x9c, 0x1c, 0x55, 0x66, 0x6c, 0x8c, 0xe2, 0x77, 0x93, 0xb3,
+	0x21, 0x3b, 0xf7, 0xec, 0xcd, 0xb2, 0xd7, 0x9b, 0x10, 0xc3, 0xfc, 0xbf, 0xdd, 0x2b, 0xf2, 0x80,
+	0x85, 0xab, 0x86, 0xe8, 0x16, 0x29, 0x9c, 0x66, 0x71, 0x7c, 0x29, 0xe2, 0x0c, 0x0c, 0x73, 0x6b,
+	0x01, 0xb3, 0x51, 0xbf, 0xde, 0x0d, 0x25, 0x45, 0x99, 0xef, 0x05, 0xd8, 0xe7, 0x93, 0xac, 0xfb,
+	0xd5, 0xe5, 0xdf, 0x5d, 0xd7, 0x84, 0x79, 0x7e, 0x11, 0xb8, 0x21, 0x28, 0x37, 0x44, 0x0e, 0x14,
+	0xf9, 0xa5, 0xfc, 0xd6, 0xce, 0x67, 0x00, 0x00, 0x00, 0xff, 0xff, 0x0b, 0xc7, 0x09, 0x5d, 0x75,
+	0x03, 0x00, 0x00,
 }

@@ -12,21 +12,21 @@ export class AddressServiceClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  balanceAddressEndpoint(
+  getBalanceAddressEndpoint(
     request: GetBalanceAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
   ): grpcWeb.ClientReadableStream<Address>;
 
-  addressEndpoint(
+  getAddressEndpoint(
     request: GetAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
   ): grpcWeb.ClientReadableStream<Address>;
 
-  generateAddressEndpoint(
+  postGenerateAddressEndpoint(
     request: PostGenerateAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
@@ -40,17 +40,17 @@ export class AddressServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  balanceAddressEndpoint(
+  getBalanceAddressEndpoint(
     request: GetBalanceAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Address>;
 
-  addressEndpoint(
+  getAddressEndpoint(
     request: GetAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Address>;
 
-  generateAddressEndpoint(
+  postGenerateAddressEndpoint(
     request: PostGenerateAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<AddressKeychain>;

@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetBalanceAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  */
-const methodInfo_AddressService_BalanceAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_GetBalanceAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Address,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBalanceAddressEndpointRequest} request */
   function(request) {
@@ -106,13 +106,13 @@ const methodInfo_AddressService_BalanceAddressEndpoint = new grpc.web.AbstractCl
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Address>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.balanceAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.getBalanceAddressEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.AddressService/BalanceAddressEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.AddressService/GetBalanceAddressEndpoint',
       request,
       metadata,
-      methodInfo_AddressService_BalanceAddressEndpoint,
+      methodInfo_AddressService_GetBalanceAddressEndpoint,
       callback);
 };
 
@@ -125,10 +125,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.balanceA
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.balanceAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.getBalanceAddressEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.balanceAddressEndpoint(
+    this.delegateClient_.getBalanceAddressEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.b
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  */
-const methodInfo_AddressService_AddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_GetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Address,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetAddressEndpointRequest} request */
   function(request) {
@@ -162,13 +162,13 @@ const methodInfo_AddressService_AddressEndpoint = new grpc.web.AbstractClientBas
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Address>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.addressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.getAddressEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.AddressService/AddressEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.AddressService/GetAddressEndpoint',
       request,
       metadata,
-      methodInfo_AddressService_AddressEndpoint,
+      methodInfo_AddressService_GetAddressEndpoint,
       callback);
 };
 
@@ -181,10 +181,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.addressE
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.addressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.getAddressEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.addressEndpoint(
+    this.delegateClient_.getAddressEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.a
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostGenerateAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.AddressKeychain>}
  */
-const methodInfo_AddressService_GenerateAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_PostGenerateAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.AddressKeychain,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostGenerateAddressEndpointRequest} request */
   function(request) {
@@ -218,13 +218,13 @@ const methodInfo_AddressService_GenerateAddressEndpoint = new grpc.web.AbstractC
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.AddressKeychain>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.generateAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.postGenerateAddressEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.AddressService/GenerateAddressEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.AddressService/PostGenerateAddressEndpoint',
       request,
       metadata,
-      methodInfo_AddressService_GenerateAddressEndpoint,
+      methodInfo_AddressService_PostGenerateAddressEndpoint,
       callback);
 };
 
@@ -237,10 +237,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.generate
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.AddressKeychain>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.generateAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.postGenerateAddressEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.generateAddressEndpoint(
+    this.delegateClient_.postGenerateAddressEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

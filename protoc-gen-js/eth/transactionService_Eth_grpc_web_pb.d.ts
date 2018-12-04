@@ -17,42 +17,42 @@ export class TransactionServiceClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  transactionHashEndpoint(
+  getTransactionHashEndpoint(
     request: GetTransactionHashEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TX) => void
   ): grpcWeb.ClientReadableStream<TX>;
 
-  unconfirmedTransactionsEndpoint(
+  getUnconfirmedTransactionsEndpoint(
     request: GetUnconfirmedTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TxArray) => void
   ): grpcWeb.ClientReadableStream<TxArray>;
 
-  createTransactionsEndpoint(
+  postCreateTransactionsEndpoint(
     request: PostCreateTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TXSkeleton) => void
   ): grpcWeb.ClientReadableStream<TXSkeleton>;
 
-  sendTransactionEndpoint(
+  postSendTransactionEndpoint(
     request: PostSendTransactionEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TXSkeleton) => void
   ): grpcWeb.ClientReadableStream<TXSkeleton>;
 
-  decodeRawTransactionEndpoint(
+  postDecodeRawTransactionEndpoint(
     request: PostDecodeRawTransactionEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TX) => void
   ): grpcWeb.ClientReadableStream<TX>;
 
-  pushRawTransactionEndpoint(
+  postPushRawTransactionEndpoint(
     request: PostPushRawTransactionEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
@@ -66,32 +66,32 @@ export class TransactionServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  transactionHashEndpoint(
+  getTransactionHashEndpoint(
     request: GetTransactionHashEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TX>;
 
-  unconfirmedTransactionsEndpoint(
+  getUnconfirmedTransactionsEndpoint(
     request: GetUnconfirmedTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TxArray>;
 
-  createTransactionsEndpoint(
+  postCreateTransactionsEndpoint(
     request: PostCreateTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TXSkeleton>;
 
-  sendTransactionEndpoint(
+  postSendTransactionEndpoint(
     request: PostSendTransactionEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TXSkeleton>;
 
-  decodeRawTransactionEndpoint(
+  postDecodeRawTransactionEndpoint(
     request: PostDecodeRawTransactionEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TX>;
 
-  pushRawTransactionEndpoint(
+  postPushRawTransactionEndpoint(
     request: PostPushRawTransactionEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TX>;

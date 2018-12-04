@@ -17,7 +17,7 @@
   "paths": {
     "/eth/{network}/addr": {
       "post": {
-        "operationId": "GenerateAddressEndpoint",
+        "operationId": "PostGenerateAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -38,14 +38,6 @@
               "ROPSTEN",
               "ropsten"
             ]
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ethPostGenerateAddressEndpointRequest"
-            }
           }
         ],
         "tags": [
@@ -55,7 +47,7 @@
     },
     "/eth/{network}/addr/{address}": {
       "get": {
-        "operationId": "AddressEndpoint",
+        "operationId": "GetAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -123,7 +115,7 @@
     },
     "/eth/{network}/addrs/{address}/balance": {
       "get": {
-        "operationId": "BalanceAddressEndpoint",
+        "operationId": "GetBalanceAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -257,14 +249,6 @@
         "ropsten"
       ],
       "default": "MAIN"
-    },
-    "ethPostGenerateAddressEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/ethNetworkAllowingAlias"
-        }
-      }
     },
     "ethTXRef": {
       "type": "object",

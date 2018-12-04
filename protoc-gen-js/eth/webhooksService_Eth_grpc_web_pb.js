@@ -86,7 +86,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient =
  *   !proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Event>}
  */
-const methodInfo_WebHooksService_CreateWebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WebHooksService_PostCreateWebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Event,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostCreateWebHookEndpointRequest} request */
   function(request) {
@@ -106,13 +106,13 @@ const methodInfo_WebHooksService_CreateWebHookEndpoint = new grpc.web.AbstractCl
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Event>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.createWebHookEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.postCreateWebHookEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/CreateWebHookEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/PostCreateWebHookEndpoint',
       request,
       metadata,
-      methodInfo_WebHooksService_CreateWebHookEndpoint,
+      methodInfo_WebHooksService_PostCreateWebHookEndpoint,
       callback);
 };
 
@@ -125,10 +125,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.createW
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Event>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.createWebHookEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.postCreateWebHookEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.createWebHookEndpoint(
+    this.delegateClient_.postCreateWebHookEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetListWebHooksEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent>}
  */
-const methodInfo_WebHooksService_ListWebHooksEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WebHooksService_GetListWebHooksEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   webhooksMessage_Eth_pb.ArrayEvent,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetListWebHooksEndpointRequest} request */
   function(request) {
@@ -162,13 +162,13 @@ const methodInfo_WebHooksService_ListWebHooksEndpoint = new grpc.web.AbstractCli
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.listWebHooksEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.getListWebHooksEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/ListWebHooksEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/GetListWebHooksEndpoint',
       request,
       metadata,
-      methodInfo_WebHooksService_ListWebHooksEndpoint,
+      methodInfo_WebHooksService_GetListWebHooksEndpoint,
       callback);
 };
 
@@ -181,10 +181,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.listWeb
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.listWebHooksEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.getListWebHooksEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.listWebHooksEndpoint(
+    this.delegateClient_.getListWebHooksEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -198,7 +198,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.eth.GetWebHookIDEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Event>}
  */
-const methodInfo_WebHooksService_WebHookIDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WebHooksService_GetWebHookIDEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Event,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetWebHookIDEndpointRequest} request */
   function(request) {
@@ -218,13 +218,13 @@ const methodInfo_WebHooksService_WebHookIDEndpoint = new grpc.web.AbstractClient
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Event>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.webHookIDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.getWebHookIDEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/WebHookIDEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/GetWebHookIDEndpoint',
       request,
       metadata,
-      methodInfo_WebHooksService_WebHookIDEndpoint,
+      methodInfo_WebHooksService_GetWebHookIDEndpoint,
       callback);
 };
 
@@ -237,10 +237,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.webHook
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Event>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.webHookIDEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.getWebHookIDEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.webHookIDEndpoint(
+    this.delegateClient_.getWebHookIDEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -254,7 +254,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
  *   !proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.NullValue>}
  */
-const methodInfo_WebHooksService_WebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_WebHooksService_DeleteWebHookEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} request */
   function(request) {
@@ -274,13 +274,13 @@ const methodInfo_WebHooksService_WebHookEndpoint = new grpc.web.AbstractClientBa
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.NullValue>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.webHookEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.deleteWebHookEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/WebHookEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.WebHooksService/DeleteWebHookEndpoint',
       request,
       metadata,
-      methodInfo_WebHooksService_WebHookEndpoint,
+      methodInfo_WebHooksService_DeleteWebHookEndpoint,
       callback);
 };
 
@@ -293,10 +293,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.webHook
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.NullValue>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.webHookEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.deleteWebHookEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.webHookEndpoint(
+    this.delegateClient_.deleteWebHookEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
