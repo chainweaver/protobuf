@@ -84,15 +84,15 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.eth.Contracts>}
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.ContractArray>}
  */
 const methodInfo_ContractService_CreateContractEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  contractMessage_Eth_pb.Contracts,
+  contractMessage_Eth_pb.ContractArray,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  contractMessage_Eth_pb.Contracts.deserializeBinary
+  contractMessage_Eth_pb.ContractArray.deserializeBinary
 );
 
 
@@ -101,9 +101,9 @@ const methodInfo_ContractService_CreateContractEndpoint = new grpc.web.AbstractC
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.eth.Contracts)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.eth.ContractArray)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Contracts>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.ContractArray>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.createContractEndpoint =
@@ -122,7 +122,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.createC
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Contracts>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.ContractArray>}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient.prototype.createContractEndpoint =

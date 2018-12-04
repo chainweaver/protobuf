@@ -14,7 +14,7 @@ service WebHooksService {
       body: "*"
     };
   }
-  rpc ListWebHooksEndpoint (ListWebHooksEndpointRequest) returns (Events) {
+  rpc ListWebHooksEndpoint (ListWebHooksEndpointRequest) returns (ArrayEvent) {
     option (google.api.http) = {
       get: "/hooks"
     };

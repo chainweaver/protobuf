@@ -109,16 +109,16 @@ export namespace Contract {
   }
 }
 
-export class Contracts {
+export class ContractArray {
   constructor ();
   getContractList(): Contract[];
   setContractList(a: Contract[]): void;
-  toObject(): Contracts.AsObject;
+  toObject(): ContractArray.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => Contracts;
+  static deserializeBinary: (bytes: {}) => ContractArray;
 }
 
-export namespace Contracts {
+export namespace ContractArray {
   export type AsObject = {
     ContractList: Contract[];
   }

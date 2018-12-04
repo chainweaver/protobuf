@@ -16,8 +16,8 @@ goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.DecodeRawTransaction
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.PushRawTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.SendTransactionEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.TXS', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.TransactionHashEndpointRequest', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.TxArray', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest', null, global);
 
 /**
@@ -30,19 +30,19 @@ goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransacti
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.TXS.repeatedFields_, null);
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.TxArray.repeatedFields_, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.TXS, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.TxArray, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.eth.TXS.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.TXS';
+  proto.fairwaycorp.blockchainprotobuf.eth.TxArray.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.TxArray';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.repeatedFields_ = [1];
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.repeatedFields_ = [1];
 
 
 
@@ -57,8 +57,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.eth.TXS.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.eth.TxArray.toObject(opt_includeInstance, this);
 };
 
 
@@ -67,11 +67,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXS.prototype.toObject = function(opt_i
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TXS} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.toObject = function(includeInstance, msg) {
   var f, obj = {
     resultList: jspb.Message.toObjectList(msg.getResultList(),
     commonMessage_Eth_pb.TX.toObject, includeInstance)
@@ -88,23 +88,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXS.toObject = function(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TXS}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.TXS;
-  return proto.fairwaycorp.blockchainprotobuf.eth.TXS.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.TxArray;
+  return proto.fairwaycorp.blockchainprotobuf.eth.TxArray.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TXS} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TXS}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -129,9 +129,9 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXS.deserializeBinaryFromReader = funct
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.eth.TXS.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.eth.TxArray.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -139,11 +139,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXS.prototype.serializeBinary = functio
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TXS} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getResultList();
   if (f.length > 0) {
@@ -160,14 +160,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXS.serializeBinaryToWriter = function(
  * repeated TX result = 1;
  * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.TX>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.prototype.getResultList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.getResultList = function() {
   return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.TX>} */ (
     jspb.Message.getRepeatedWrapperField(this, commonMessage_Eth_pb.TX, 1));
 };
 
 
 /** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.TX>} value */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.prototype.setResultList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.setResultList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -177,12 +177,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.TXS.prototype.setResultList = function(
  * @param {number=} opt_index
  * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TX}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.prototype.addResult = function(opt_value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.addResult = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.TX, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.eth.TXS.prototype.clearResultList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.clearResultList = function() {
   this.setResultList([]);
 };
 

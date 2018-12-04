@@ -12,9 +12,9 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.Events', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest', null, global);
 
@@ -528,19 +528,19 @@ proto.fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest.prototype.s
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.Events.repeatedFields_, null);
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.repeatedFields_, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.Events, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.eth.Events.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.Events';
+  proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.repeatedFields_ = [1];
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.repeatedFields_ = [1];
 
 
 
@@ -555,8 +555,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.eth.Events.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.toObject(opt_includeInstance, this);
 };
 
 
@@ -565,11 +565,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.Events.prototype.toObject = function(op
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.Events} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.toObject = function(includeInstance, msg) {
   var f, obj = {
     eventList: jspb.Message.toObjectList(msg.getEventList(),
     commonMessage_Eth_pb.Event.toObject, includeInstance)
@@ -586,23 +586,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.Events.toObject = function(includeInsta
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.Events}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.Events;
-  return proto.fairwaycorp.blockchainprotobuf.eth.Events.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent;
+  return proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.Events} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.Events}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -627,9 +627,9 @@ proto.fairwaycorp.blockchainprotobuf.eth.Events.deserializeBinaryFromReader = fu
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.eth.Events.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -637,11 +637,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.Events.prototype.serializeBinary = func
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.Events} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getEventList();
   if (f.length > 0) {
@@ -658,14 +658,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.Events.serializeBinaryToWriter = functi
  * repeated Event event = 1;
  * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.Event>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.prototype.getEventList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.prototype.getEventList = function() {
   return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.Event>} */ (
     jspb.Message.getRepeatedWrapperField(this, commonMessage_Eth_pb.Event, 1));
 };
 
 
 /** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.Event>} value */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.prototype.setEventList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.prototype.setEventList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -675,12 +675,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.Events.prototype.setEventList = functio
  * @param {number=} opt_index
  * @return {!proto.fairwaycorp.blockchainprotobuf.eth.Event}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.Events.prototype.addEvent = function(opt_value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.prototype.addEvent = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.Event, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.eth.Events.prototype.clearEventList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent.prototype.clearEventList = function() {
   this.setEventList([]);
 };
 

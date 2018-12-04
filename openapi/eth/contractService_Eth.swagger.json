@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethContracts"
+              "$ref": "#/definitions/ethContractArray"
             }
           }
         },
@@ -286,7 +286,7 @@
         }
       }
     },
-    "ethContracts": {
+    "ethContractArray": {
       "type": "object",
       "properties": {
         "contract": {

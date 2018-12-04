@@ -17,12 +17,12 @@
   "paths": {
     "/eth/{network}/txs": {
       "get": {
-        "operationId": "UnconfirmedTransactionsEndpoint",
+        "operationId": "UnconfirmedTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethTXS"
+              "$ref": "#/definitions/ethTxArray"
             }
           }
         },
@@ -85,7 +85,7 @@
     },
     "/eth/{network}/txs/new": {
       "post": {
-        "operationId": "NewTransactionEndpoint",
+        "operationId": "NewTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -616,17 +616,6 @@
         }
       }
     },
-    "ethTXS": {
-      "type": "object",
-      "properties": {
-        "result": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethTX"
-          }
-        }
-      }
-    },
     "ethTXSkeleton": {
       "type": "object",
       "properties": {
@@ -654,6 +643,17 @@
             "type": "string"
           },
           "description": "Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code."
+        }
+      }
+    },
+    "ethTxArray": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethTX"
+          }
         }
       }
     }

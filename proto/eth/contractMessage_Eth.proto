@@ -72,6 +72,6 @@ message CallContractMethodEndpointRequest {
   repeated string results = 16;
 }
 
-message Contracts {
+message ContractArray {
   repeated Contract contract = 1;
 }

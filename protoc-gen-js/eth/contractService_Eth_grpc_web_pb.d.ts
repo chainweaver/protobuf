@@ -2,7 +2,7 @@ import * as grpcWeb from 'grpc-web';
 import {
   CallContractMethodEndpointRequest,
   Contract,
-  Contracts,
+  ContractArray,
   CreateContractEndpointRequest,
   GetContractAddressEndpointRequest} from './contractService_Eth_pb';
 
@@ -15,8 +15,8 @@ export class ContractServiceClient {
     request: CreateContractEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: Contracts) => void
-  ): grpcWeb.ClientReadableStream<Contracts>;
+               response: ContractArray) => void
+  ): grpcWeb.ClientReadableStream<ContractArray>;
 
   getContractAddressEndpoint(
     request: GetContractAddressEndpointRequest,
@@ -42,7 +42,7 @@ export class ContractServicePromiseClient {
   createContractEndpoint(
     request: CreateContractEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<Contracts>;
+  ): Promise<ContractArray>;
 
   getContractAddressEndpoint(
     request: GetContractAddressEndpointRequest,

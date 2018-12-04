@@ -28,7 +28,7 @@ message ListWebHooksEndpointRequest {
   string token = 2;
 }
 
-message Events {
+message ArrayEvent {
   repeated Event event = 1;
 }
 

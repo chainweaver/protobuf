@@ -289,21 +289,6 @@ export namespace TX {
   }
 }
 
-export class TXS {
-  constructor ();
-  getResultList(): TX[];
-  setResultList(a: TX[]): void;
-  toObject(): TXS.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => TXS;
-}
-
-export namespace TXS {
-  export type AsObject = {
-    ResultList: TX[];
-  }
-}
-
 export class TXSkeleton {
   constructor ();
   getTx(): TX;
@@ -343,6 +328,21 @@ export namespace TransactionHashEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Txhash: string;
+  }
+}
+
+export class TxArray {
+  constructor ();
+  getResultList(): TX[];
+  setResultList(a: TX[]): void;
+  toObject(): TxArray.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => TxArray;
+}
+
+export namespace TxArray {
+  export type AsObject = {
+    ResultList: TX[];
   }
 }
 

@@ -8,7 +8,7 @@ import "contractMessage_Eth.proto";
 import "commonMessage_Eth.proto";
 
 service ContractService {
-  rpc CreateContractEndpoint (CreateContractEndpointRequest) returns (Contracts) {
+  rpc CreateContractEndpoint (CreateContractEndpointRequest) returns (ContractArray) {
     option (google.api.http) = {
       post: "/eth/{network}/contracts"
       body: "*"
