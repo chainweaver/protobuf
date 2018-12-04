@@ -1,10 +1,10 @@
 import * as grpcWeb from 'grpc-web';
 import {
   Address,
-  AddressEndpointRequest,
   AddressKeychain,
-  BalanceAddressEndpointRequest,
-  GenerateAddressEndpointRequest,
+  GetAddressEndpointRequest,
+  GetBalanceAddressEndpointRequest,
+  PostGenerateAddressEndpointRequest,
   TXRef} from './addressService_Eth_pb';
 
 export class AddressServiceClient {
@@ -13,21 +13,21 @@ export class AddressServiceClient {
                options: null | { [index: string]: string; });
 
   balanceAddressEndpoint(
-    request: BalanceAddressEndpointRequest,
+    request: GetBalanceAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
   ): grpcWeb.ClientReadableStream<Address>;
 
   addressEndpoint(
-    request: AddressEndpointRequest,
+    request: GetAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
   ): grpcWeb.ClientReadableStream<Address>;
 
   generateAddressEndpoint(
-    request: GenerateAddressEndpointRequest,
+    request: PostGenerateAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: AddressKeychain) => void
@@ -41,17 +41,17 @@ export class AddressServicePromiseClient {
                options: null | { [index: string]: string; });
 
   balanceAddressEndpoint(
-    request: BalanceAddressEndpointRequest,
+    request: GetBalanceAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Address>;
 
   addressEndpoint(
-    request: AddressEndpointRequest,
+    request: GetAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Address>;
 
   generateAddressEndpoint(
-    request: GenerateAddressEndpointRequest,
+    request: PostGenerateAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<AddressKeychain>;
 

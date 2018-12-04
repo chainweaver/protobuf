@@ -13,39 +13,21 @@ export namespace ArrayEvent {
   }
 }
 
-export class CreateWebHookEndpointRequest {
+export class DeleteWebHookEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
-  getId(): string;
-  setId(a: string): void;
-  getEvent(): string;
-  setEvent(a: string): void;
-  getHash(): string;
-  setHash(a: string): void;
-  getAddress(): string;
-  setAddress(a: string): void;
-  getConfirmations(): number;
-  setConfirmations(a: number): void;
-  getUrl(): string;
-  setUrl(a: string): void;
-  getCallbackErrors(): number;
-  setCallbackErrors(a: number): void;
-  toObject(): CreateWebHookEndpointRequest.AsObject;
+  getWebhookid(): string;
+  setWebhookid(a: string): void;
+  toObject(): DeleteWebHookEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CreateWebHookEndpointRequest;
+  static deserializeBinary: (bytes: {}) => DeleteWebHookEndpointRequest;
 }
 
-export namespace CreateWebHookEndpointRequest {
+export namespace DeleteWebHookEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
-    Id: string;
-    Event: string;
-    Hash: string;
-    Address: string;
-    Confirmations: number;
-    Url: string;
-    CallbackErrors: number;
+    Webhookid: string;
   }
 }
 
@@ -82,21 +64,39 @@ export namespace Event {
   }
 }
 
-export class ListWebHooksEndpointRequest {
+export class GetListWebHooksEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
   getToken(): string;
   setToken(a: string): void;
-  toObject(): ListWebHooksEndpointRequest.AsObject;
+  toObject(): GetListWebHooksEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ListWebHooksEndpointRequest;
+  static deserializeBinary: (bytes: {}) => GetListWebHooksEndpointRequest;
 }
 
-export namespace ListWebHooksEndpointRequest {
+export namespace GetListWebHooksEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Token: string;
+  }
+}
+
+export class GetWebHookIDEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getWebhookid(): string;
+  setWebhookid(a: string): void;
+  toObject(): GetWebHookIDEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => GetWebHookIDEndpointRequest;
+}
+
+export namespace GetWebHookIDEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Webhookid: string;
   }
 }
 
@@ -112,39 +112,39 @@ export namespace NullValue {
   }
 }
 
-export class WebHookEndpointRequest {
+export class PostCreateWebHookEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
-  getWebhookid(): string;
-  setWebhookid(a: string): void;
-  toObject(): WebHookEndpointRequest.AsObject;
+  getId(): string;
+  setId(a: string): void;
+  getEvent(): string;
+  setEvent(a: string): void;
+  getHash(): string;
+  setHash(a: string): void;
+  getAddress(): string;
+  setAddress(a: string): void;
+  getConfirmations(): number;
+  setConfirmations(a: number): void;
+  getUrl(): string;
+  setUrl(a: string): void;
+  getCallbackErrors(): number;
+  setCallbackErrors(a: number): void;
+  toObject(): PostCreateWebHookEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => WebHookEndpointRequest;
+  static deserializeBinary: (bytes: {}) => PostCreateWebHookEndpointRequest;
 }
 
-export namespace WebHookEndpointRequest {
+export namespace PostCreateWebHookEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
-    Webhookid: string;
-  }
-}
-
-export class WebHookIDEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getWebhookid(): string;
-  setWebhookid(a: string): void;
-  toObject(): WebHookIDEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => WebHookIDEndpointRequest;
-}
-
-export namespace WebHookIDEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Webhookid: string;
+    Id: string;
+    Event: string;
+    Hash: string;
+    Address: string;
+    Confirmations: number;
+    Url: string;
+    CallbackErrors: number;
   }
 }
 

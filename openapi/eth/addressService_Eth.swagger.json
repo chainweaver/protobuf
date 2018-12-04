@@ -44,7 +44,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethGenerateAddressEndpointRequest"
+              "$ref": "#/definitions/ethPostGenerateAddressEndpointRequest"
             }
           }
         ],
@@ -248,14 +248,6 @@
         }
       }
     },
-    "ethGenerateAddressEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/ethNetworkAllowingAlias"
-        }
-      }
-    },
     "ethNetworkAllowingAlias": {
       "type": "string",
       "enum": [
@@ -265,6 +257,14 @@
         "ropsten"
       ],
       "default": "MAIN"
+    },
+    "ethPostGenerateAddressEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        }
+      }
     },
     "ethTXRef": {
       "type": "object",

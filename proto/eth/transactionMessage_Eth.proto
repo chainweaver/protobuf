@@ -9,16 +9,16 @@ message TxArray {
   repeated TX result = 1;
 }
 
-message TransactionHashEndpointRequest {
+message GetTransactionHashEndpointRequest {
   NetworkAllowingAlias network = 1;
   string txhash = 2;
 }
 
-message UnconfirmedTransactionsEndpointRequest {
+message GetUnconfirmedTransactionsEndpointRequest {
   NetworkAllowingAlias network = 1;
 }
 
-message CreateTransactionsEndpointRequest {
+message PostCreateTransactionsEndpointRequest {
   NetworkAllowingAlias network = 1;
   // Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
   int32 block_height = 2;
@@ -76,7 +76,7 @@ message CreateTransactionsEndpointRequest {
   string execution_error = 28;
 }
 
-message SendTransactionEndpointRequest {
+message PostSendTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   // A temporary TX, usually returned fully filled.
   TX	tx = 2;
@@ -88,12 +88,12 @@ message SendTransactionEndpointRequest {
   repeated string errors = 5;
 }
 
-message DecodeRawTransactionEndpointRequest {
+message PostDecodeRawTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   string tx = 2;
 }
 
-message PushRawTransactionEndpointRequest {
+message PostPushRawTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   string tx = 2;
 }

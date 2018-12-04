@@ -83,12 +83,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.GetBalanceAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  */
 const methodInfo_AddressService_BalanceAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Address,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBalanceAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -97,7 +97,7 @@ const methodInfo_AddressService_BalanceAddressEndpoint = new grpc.web.AbstractCl
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBalanceAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -118,7 +118,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.balanceA
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBalanceAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -139,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.b
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.AddressEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.GetAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  */
 const methodInfo_AddressService_AddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Address,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.AddressEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -153,7 +153,7 @@ const methodInfo_AddressService_AddressEndpoint = new grpc.web.AbstractClientBas
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.AddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -174,7 +174,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.addressE
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.AddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -195,12 +195,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.a
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.PostGenerateAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.AddressKeychain>}
  */
 const methodInfo_AddressService_GenerateAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.AddressKeychain,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostGenerateAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -209,7 +209,7 @@ const methodInfo_AddressService_GenerateAddressEndpoint = new grpc.web.AbstractC
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostGenerateAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -230,7 +230,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.generate
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.PostGenerateAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata

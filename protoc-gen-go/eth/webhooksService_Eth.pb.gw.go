@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 func request_WebHooksService_CreateWebHookEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CreateWebHookEndpointRequest
+	var protoReq PostCreateWebHookEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -46,7 +46,7 @@ var (
 )
 
 func request_WebHooksService_ListWebHooksEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListWebHooksEndpointRequest
+	var protoReq GetListWebHooksEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_ListWebHooksEndpoint_0); err != nil {
@@ -63,7 +63,7 @@ var (
 )
 
 func request_WebHooksService_WebHookIDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq WebHookIDEndpointRequest
+	var protoReq GetWebHookIDEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -98,7 +98,7 @@ var (
 )
 
 func request_WebHooksService_WebHookEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq WebHookEndpointRequest
+	var protoReq DeleteWebHookEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
