@@ -11,6 +11,7 @@ service WebHooksService {
   rpc PostCreateWebHookEndpoint (PostCreateWebHookEndpointRequest) returns (Event) {
     option (google.api.http) = {
       post: "/hooks"
+      body: "*"
     };
   }
   rpc GetListWebHooksEndpoint (GetListWebHooksEndpointRequest) returns (ArrayEvent) {

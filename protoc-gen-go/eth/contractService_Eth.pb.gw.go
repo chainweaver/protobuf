@@ -28,13 +28,13 @@ var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
-var (
-	filter_ContractService_PostCreateContractEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
 func request_ContractService_PostCreateContractEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client ContractServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PostCreateContractEndpointRequest
 	var metadata runtime.ServerMetadata
+
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
 
 	var (
 		val string
@@ -56,10 +56,6 @@ func request_ContractService_PostCreateContractEndpoint_0(ctx context.Context, m
 	}
 
 	protoReq.Network = NetworkAllowingAlias(e)
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ContractService_PostCreateContractEndpoint_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
 
 	msg, err := client.PostCreateContractEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -107,13 +103,13 @@ func request_ContractService_GetContractAddressEndpoint_0(ctx context.Context, m
 
 }
 
-var (
-	filter_ContractService_PostCallContractMethodEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "query_address": 1, "method": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
-)
-
 func request_ContractService_PostCallContractMethodEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client ContractServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq PostCallContractMethodEndpointRequest
 	var metadata runtime.ServerMetadata
+
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
 
 	var (
 		val string
@@ -156,10 +152,6 @@ func request_ContractService_PostCallContractMethodEndpoint_0(ctx context.Contex
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "method", err)
-	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ContractService_PostCallContractMethodEndpoint_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.PostCallContractMethodEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
