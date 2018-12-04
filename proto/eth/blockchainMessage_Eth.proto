@@ -5,11 +5,11 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/e
 
 import "commonMessage_Eth.proto";
 
-message ChainEndpointRequest {
+message GetChainEndpointRequest {
   NetworkAllowingAlias network = 1;
 }
 
-message BlockHashEndpointRequest {
+message GetBlockHashEndpointRequest {
   NetworkAllowingAlias network = 1;
   string block_hash = 2;
   // Filters response to only include transaction hashes after txstart in the block.
@@ -18,7 +18,7 @@ message BlockHashEndpointRequest {
   int32 limit = 4;
 }
 
-message BlockHeightEndpointRequest {
+message GetBlockHeightEndpointRequest {
   NetworkAllowingAlias network = 1;
   string block_height = 2;
   // Filters response to only include transaction hashes after txstart in the block.

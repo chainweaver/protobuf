@@ -8,35 +8,35 @@ import "transactionMessage_Eth.proto";
 import "commonMessage_Eth.proto";
 
 service TransactionService {
-  rpc TransactionHashEndpoint (TransactionHashEndpointRequest) returns (TX) {
+  rpc GetTransactionHashEndpoint (GetTransactionHashEndpointRequest) returns (TX) {
     option (google.api.http) = {
       get: "/eth/{network}/txs/{txhash}"
     };
   }
-  rpc UnconfirmedTransactionsEndpoint (UnconfirmedTransactionsEndpointRequest) returns (TXS) {
+  rpc GetUnconfirmedTransactionsEndpoint (GetUnconfirmedTransactionsEndpointRequest) returns (TxArray) {
     option (google.api.http) = {
       get: "/eth/{network}/txs"
     };
   }
-  rpc NewTransactionEndpoint (NewTransactionEndpointRequest) returns (TXSkeleton) {
+  rpc PostCreateTransactionsEndpoint (PostCreateTransactionsEndpointRequest) returns (TXSkeleton) {
     option (google.api.http) = {
       post: "/eth/{network}/txs/new"
       body: "*"
     };
   }
-  rpc SendTransactionEndpoint (SendTransactionEndpointRequest) returns (TXSkeleton) {
+  rpc PostSendTransactionEndpoint (PostSendTransactionEndpointRequest) returns (TXSkeleton) {
     option (google.api.http) = {
       post: "/eth/{network}/txs/send"
       body: "*"
     };
   }
-  rpc DecodeRawTransactionEndpoint (DecodeRawTransactionEndpointRequest) returns (TX) {
+  rpc PostDecodeRawTransactionEndpoint (PostDecodeRawTransactionEndpointRequest) returns (TX) {
     option (google.api.http) = {
       post: "/eth/{network}/txs/decode"
       body: "*"
     };
   }
-  rpc PushRawTransactionEndpoint (PushRawTransactionEndpointRequest) returns (TX) {
+  rpc PostPushRawTransactionEndpoint (PostPushRawTransactionEndpointRequest) returns (TX) {
     option (google.api.http) = {
       put: "/eth/{network}/txs/push"
       body: "*"

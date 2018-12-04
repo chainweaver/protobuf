@@ -17,12 +17,12 @@
   "paths": {
     "/eth/{network}/contracts": {
       "post": {
-        "operationId": "CreateContractEndpoint",
+        "operationId": "PostCreateContractEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethContracts"
+              "$ref": "#/definitions/ethContractArray"
             }
           }
         },
@@ -44,7 +44,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethCreateContractEndpointRequest"
+              "$ref": "#/definitions/ethPostCreateContractEndpointRequest"
             }
           }
         ],
@@ -91,7 +91,7 @@
     },
     "/eth/{network}/contracts/{query_address}/{method}": {
       "post": {
-        "operationId": "CallContractMethodEndpoint",
+        "operationId": "PostCallContractMethodEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -130,7 +130,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethCallContractMethodEndpointRequest"
+              "$ref": "#/definitions/ethPostCallContractMethodEndpointRequest"
             }
           }
         ],
@@ -141,7 +141,96 @@
     }
   },
   "definitions": {
-    "ethCallContractMethodEndpointRequest": {
+    "ethContract": {
+      "type": "object",
+      "properties": {
+        "solidity": {
+          "type": "string",
+          "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Parameters for either contract creation or method execution."
+        },
+        "publish": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
+        },
+        "private": {
+          "type": "string",
+          "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
+        },
+        "gas_limit": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Maximum amount of gas to use in contract creation or method execution."
+        },
+        "value": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of contract as published."
+        },
+        "bin": {
+          "type": "string",
+          "description": "Hex-encoded binary compilation of this contract."
+        },
+        "abi": {
+          "type": "string",
+          "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
+        },
+        "address": {
+          "type": "string",
+          "description": "Hex-encoded address of this contract."
+        },
+        "created": {
+          "type": "string",
+          "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
+        },
+        "creation_tx_hash": {
+          "type": "string",
+          "description": "Hex-encoded transaction hash that created this contract."
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+        }
+      }
+    },
+    "ethContractArray": {
+      "type": "object",
+      "properties": {
+        "contract": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethContract"
+          }
+        }
+      }
+    },
+    "ethNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAIN",
+        "main",
+        "ROPSTEN",
+        "ropsten"
+      ],
+      "default": "MAIN"
+    },
+    "ethPostCallContractMethodEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -218,86 +307,7 @@
         }
       }
     },
-    "ethContract": {
-      "type": "object",
-      "properties": {
-        "solidity": {
-          "type": "string",
-          "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
-        },
-        "params": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Parameters for either contract creation or method execution."
-        },
-        "publish": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
-        },
-        "private": {
-          "type": "string",
-          "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
-        },
-        "gas_limit": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Maximum amount of gas to use in contract creation or method execution."
-        },
-        "value": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of contract as published."
-        },
-        "bin": {
-          "type": "string",
-          "description": "Hex-encoded binary compilation of this contract."
-        },
-        "abi": {
-          "type": "string",
-          "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
-        },
-        "address": {
-          "type": "string",
-          "description": "Hex-encoded address of this contract."
-        },
-        "created": {
-          "type": "string",
-          "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
-        },
-        "creation_tx_hash": {
-          "type": "string",
-          "description": "Hex-encoded transaction hash that created this contract."
-        },
-        "results": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
-        }
-      }
-    },
-    "ethContracts": {
-      "type": "object",
-      "properties": {
-        "contract": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethContract"
-          }
-        }
-      }
-    },
-    "ethCreateContractEndpointRequest": {
+    "ethPostCreateContractEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -367,16 +377,6 @@
           "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
         }
       }
-    },
-    "ethNetworkAllowingAlias": {
-      "type": "string",
-      "enum": [
-        "MAIN",
-        "main",
-        "ROPSTEN",
-        "ropsten"
-      ],
-      "default": "MAIN"
     }
   }
 }

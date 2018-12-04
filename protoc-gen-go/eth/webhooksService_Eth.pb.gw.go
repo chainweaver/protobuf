@@ -28,42 +28,42 @@ var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
-func request_WebHooksService_CreateWebHookEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CreateWebHookEndpointRequest
+func request_WebHooksService_PostCreateWebHookEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PostCreateWebHookEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.CreateWebHookEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.PostCreateWebHookEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_WebHooksService_ListWebHooksEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_WebHooksService_GetListWebHooksEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_WebHooksService_ListWebHooksEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListWebHooksEndpointRequest
+func request_WebHooksService_GetListWebHooksEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetListWebHooksEndpointRequest
 	var metadata runtime.ServerMetadata
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_ListWebHooksEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_GetListWebHooksEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.ListWebHooksEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetListWebHooksEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_WebHooksService_WebHookIDEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"webhookid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_WebHooksService_GetWebHookIDEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"webhookid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_WebHooksService_WebHookIDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq WebHookIDEndpointRequest
+func request_WebHooksService_GetWebHookIDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetWebHookIDEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -84,11 +84,11 @@ func request_WebHooksService_WebHookIDEndpoint_0(ctx context.Context, marshaler 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "webhookid", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_WebHookIDEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_GetWebHookIDEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.WebHookIDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetWebHookIDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -166,7 +166,7 @@ func RegisterWebHooksServiceHandler(ctx context.Context, mux *runtime.ServeMux, 
 // "WebHooksServiceClient" to call the correct interceptors.
 func RegisterWebHooksServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client WebHooksServiceClient) error {
 
-	mux.Handle("POST", pattern_WebHooksService_CreateWebHookEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_WebHooksService_PostCreateWebHookEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -184,18 +184,18 @@ func RegisterWebHooksServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WebHooksService_CreateWebHookEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WebHooksService_PostCreateWebHookEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WebHooksService_CreateWebHookEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WebHooksService_PostCreateWebHookEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_WebHooksService_ListWebHooksEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_WebHooksService_GetListWebHooksEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -213,18 +213,18 @@ func RegisterWebHooksServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WebHooksService_ListWebHooksEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WebHooksService_GetListWebHooksEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WebHooksService_ListWebHooksEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WebHooksService_GetListWebHooksEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_WebHooksService_WebHookIDEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_WebHooksService_GetWebHookIDEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -242,14 +242,14 @@ func RegisterWebHooksServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WebHooksService_WebHookIDEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WebHooksService_GetWebHookIDEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WebHooksService_WebHookIDEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WebHooksService_GetWebHookIDEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -286,21 +286,21 @@ func RegisterWebHooksServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 }
 
 var (
-	pattern_WebHooksService_CreateWebHookEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"hooks"}, ""))
+	pattern_WebHooksService_PostCreateWebHookEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"hooks"}, ""))
 
-	pattern_WebHooksService_ListWebHooksEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"hooks"}, ""))
+	pattern_WebHooksService_GetListWebHooksEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"hooks"}, ""))
 
-	pattern_WebHooksService_WebHookIDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"hooks", "webhookid"}, ""))
+	pattern_WebHooksService_GetWebHookIDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"hooks", "webhookid"}, ""))
 
 	pattern_WebHooksService_DeleteWebHookEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"hooks", "webhookid"}, ""))
 )
 
 var (
-	forward_WebHooksService_CreateWebHookEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WebHooksService_PostCreateWebHookEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_WebHooksService_ListWebHooksEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WebHooksService_GetListWebHooksEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_WebHooksService_WebHookIDEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WebHooksService_GetWebHookIDEndpoint_0 = runtime.ForwardResponseMessage
 
 	forward_WebHooksService_DeleteWebHookEndpoint_0 = runtime.ForwardResponseMessage
 )

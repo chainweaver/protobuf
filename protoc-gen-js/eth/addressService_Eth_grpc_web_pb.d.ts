@@ -1,10 +1,10 @@
 import * as grpcWeb from 'grpc-web';
 import {
   Address,
-  AddressBalanceEndpointRequest,
-  AddressEndpointRequest,
   AddressKeychain,
-  GenerateAddressEndpointRequest,
+  GetAddressEndpointRequest,
+  GetBalanceAddressEndpointRequest,
+  PostGenerateAddressEndpointRequest,
   TXRef} from './addressService_Eth_pb';
 
 export class AddressServiceClient {
@@ -12,22 +12,22 @@ export class AddressServiceClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  addressBalanceEndpoint(
-    request: AddressBalanceEndpointRequest,
+  getBalanceAddressEndpoint(
+    request: GetBalanceAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
   ): grpcWeb.ClientReadableStream<Address>;
 
-  addressEndpoint(
-    request: AddressEndpointRequest,
+  getAddressEndpoint(
+    request: GetAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
   ): grpcWeb.ClientReadableStream<Address>;
 
-  generateAddressEndpoint(
-    request: GenerateAddressEndpointRequest,
+  postGenerateAddressEndpoint(
+    request: PostGenerateAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: AddressKeychain) => void
@@ -40,18 +40,18 @@ export class AddressServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  addressBalanceEndpoint(
-    request: AddressBalanceEndpointRequest,
+  getBalanceAddressEndpoint(
+    request: GetBalanceAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Address>;
 
-  addressEndpoint(
-    request: AddressEndpointRequest,
+  getAddressEndpoint(
+    request: GetAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Address>;
 
-  generateAddressEndpoint(
-    request: GenerateAddressEndpointRequest,
+  postGenerateAddressEndpoint(
+    request: PostGenerateAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<AddressKeychain>;
 

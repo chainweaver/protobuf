@@ -1,22 +1,22 @@
 import * as grpcWeb from 'grpc-web';
 import {
-  CallContractMethodEndpointRequest,
   Contract,
-  Contracts,
-  CreateContractEndpointRequest,
-  GetContractAddressEndpointRequest} from './contractService_Eth_pb';
+  ContractArray,
+  GetContractAddressEndpointRequest,
+  PostCallContractMethodEndpointRequest,
+  PostCreateContractEndpointRequest} from './contractService_Eth_pb';
 
 export class ContractServiceClient {
   constructor (hostname: string,
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  createContractEndpoint(
-    request: CreateContractEndpointRequest,
+  postCreateContractEndpoint(
+    request: PostCreateContractEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: Contracts) => void
-  ): grpcWeb.ClientReadableStream<Contracts>;
+               response: ContractArray) => void
+  ): grpcWeb.ClientReadableStream<ContractArray>;
 
   getContractAddressEndpoint(
     request: GetContractAddressEndpointRequest,
@@ -25,8 +25,8 @@ export class ContractServiceClient {
                response: Contract) => void
   ): grpcWeb.ClientReadableStream<Contract>;
 
-  callContractMethodEndpoint(
-    request: CallContractMethodEndpointRequest,
+  postCallContractMethodEndpoint(
+    request: PostCallContractMethodEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Contract) => void
@@ -39,18 +39,18 @@ export class ContractServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  createContractEndpoint(
-    request: CreateContractEndpointRequest,
+  postCreateContractEndpoint(
+    request: PostCreateContractEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<Contracts>;
+  ): Promise<ContractArray>;
 
   getContractAddressEndpoint(
     request: GetContractAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Contract>;
 
-  callContractMethodEndpoint(
-    request: CallContractMethodEndpointRequest,
+  postCallContractMethodEndpoint(
+    request: PostCallContractMethodEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Contract>;
 

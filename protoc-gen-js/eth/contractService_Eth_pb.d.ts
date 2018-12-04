@@ -1,63 +1,3 @@
-export class CallContractMethodEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getQueryAddress(): string;
-  setQueryAddress(a: string): void;
-  getMethod(): string;
-  setMethod(a: string): void;
-  getSolidity(): string;
-  setSolidity(a: string): void;
-  getParamsList(): string[];
-  setParamsList(a: string[]): void;
-  getPublishList(): string[];
-  setPublishList(a: string[]): void;
-  getPrivate(): string;
-  setPrivate(a: string): void;
-  getGasLimit(): number;
-  setGasLimit(a: number): void;
-  getValue(): number;
-  setValue(a: number): void;
-  getName(): string;
-  setName(a: string): void;
-  getBin(): string;
-  setBin(a: string): void;
-  getAbi(): string;
-  setAbi(a: string): void;
-  getAddress(): string;
-  setAddress(a: string): void;
-  getCreated(): string;
-  setCreated(a: string): void;
-  getCreationTxHash(): string;
-  setCreationTxHash(a: string): void;
-  getResultsList(): string[];
-  setResultsList(a: string[]): void;
-  toObject(): CallContractMethodEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CallContractMethodEndpointRequest;
-}
-
-export namespace CallContractMethodEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    QueryAddress: string;
-    Method: string;
-    Solidity: string;
-    ParamsList: string[];
-    PublishList: string[];
-    Private: string;
-    GasLimit: number;
-    Value: number;
-    Name: string;
-    Bin: string;
-    Abi: string;
-    Address: string;
-    Created: string;
-    CreationTxHash: string;
-    ResultsList: string[];
-  }
-}
-
 export class Contract {
   constructor ();
   getSolidity(): string;
@@ -109,22 +49,100 @@ export namespace Contract {
   }
 }
 
-export class Contracts {
+export class ContractArray {
   constructor ();
   getContractList(): Contract[];
   setContractList(a: Contract[]): void;
-  toObject(): Contracts.AsObject;
+  toObject(): ContractArray.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => Contracts;
+  static deserializeBinary: (bytes: {}) => ContractArray;
 }
 
-export namespace Contracts {
+export namespace ContractArray {
   export type AsObject = {
     ContractList: Contract[];
   }
 }
 
-export class CreateContractEndpointRequest {
+export class GetContractAddressEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getQueryAddress(): string;
+  setQueryAddress(a: string): void;
+  toObject(): GetContractAddressEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => GetContractAddressEndpointRequest;
+}
+
+export namespace GetContractAddressEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    QueryAddress: string;
+  }
+}
+
+export class PostCallContractMethodEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getQueryAddress(): string;
+  setQueryAddress(a: string): void;
+  getMethod(): string;
+  setMethod(a: string): void;
+  getSolidity(): string;
+  setSolidity(a: string): void;
+  getParamsList(): string[];
+  setParamsList(a: string[]): void;
+  getPublishList(): string[];
+  setPublishList(a: string[]): void;
+  getPrivate(): string;
+  setPrivate(a: string): void;
+  getGasLimit(): number;
+  setGasLimit(a: number): void;
+  getValue(): number;
+  setValue(a: number): void;
+  getName(): string;
+  setName(a: string): void;
+  getBin(): string;
+  setBin(a: string): void;
+  getAbi(): string;
+  setAbi(a: string): void;
+  getAddress(): string;
+  setAddress(a: string): void;
+  getCreated(): string;
+  setCreated(a: string): void;
+  getCreationTxHash(): string;
+  setCreationTxHash(a: string): void;
+  getResultsList(): string[];
+  setResultsList(a: string[]): void;
+  toObject(): PostCallContractMethodEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => PostCallContractMethodEndpointRequest;
+}
+
+export namespace PostCallContractMethodEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    QueryAddress: string;
+    Method: string;
+    Solidity: string;
+    ParamsList: string[];
+    PublishList: string[];
+    Private: string;
+    GasLimit: number;
+    Value: number;
+    Name: string;
+    Bin: string;
+    Abi: string;
+    Address: string;
+    Created: string;
+    CreationTxHash: string;
+    ResultsList: string[];
+  }
+}
+
+export class PostCreateContractEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
@@ -154,12 +172,12 @@ export class CreateContractEndpointRequest {
   setCreationTxHash(a: string): void;
   getResultsList(): string[];
   setResultsList(a: string[]): void;
-  toObject(): CreateContractEndpointRequest.AsObject;
+  toObject(): PostCreateContractEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CreateContractEndpointRequest;
+  static deserializeBinary: (bytes: {}) => PostCreateContractEndpointRequest;
 }
 
-export namespace CreateContractEndpointRequest {
+export namespace PostCreateContractEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Solidity: string;
@@ -175,24 +193,6 @@ export namespace CreateContractEndpointRequest {
     Created: string;
     CreationTxHash: string;
     ResultsList: string[];
-  }
-}
-
-export class GetContractAddressEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getQueryAddress(): string;
-  setQueryAddress(a: string): void;
-  toObject(): GetContractAddressEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetContractAddressEndpointRequest;
-}
-
-export namespace GetContractAddressEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    QueryAddress: string;
   }
 }
 

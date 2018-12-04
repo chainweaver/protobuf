@@ -49,54 +49,6 @@ export namespace Address {
   }
 }
 
-export class AddressBalanceEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getAddress(): string;
-  setAddress(a: string): void;
-  toObject(): AddressBalanceEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => AddressBalanceEndpointRequest;
-}
-
-export namespace AddressBalanceEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Address: string;
-  }
-}
-
-export class AddressEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getAddress(): string;
-  setAddress(a: string): void;
-  getBefore(): number;
-  setBefore(a: number): void;
-  getAfter(): number;
-  setAfter(a: number): void;
-  getLimit(): number;
-  setLimit(a: number): void;
-  getConfirmations(): number;
-  setConfirmations(a: number): void;
-  toObject(): AddressEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => AddressEndpointRequest;
-}
-
-export namespace AddressEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Address: string;
-    Before: number;
-    After: number;
-    Limit: number;
-    Confirmations: number;
-  }
-}
-
 export class AddressKeychain {
   constructor ();
   getAddress(): string;
@@ -118,16 +70,64 @@ export namespace AddressKeychain {
   }
 }
 
-export class GenerateAddressEndpointRequest {
+export class GetAddressEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
-  toObject(): GenerateAddressEndpointRequest.AsObject;
+  getAddress(): string;
+  setAddress(a: string): void;
+  getBefore(): number;
+  setBefore(a: number): void;
+  getAfter(): number;
+  setAfter(a: number): void;
+  getLimit(): number;
+  setLimit(a: number): void;
+  getConfirmations(): number;
+  setConfirmations(a: number): void;
+  toObject(): GetAddressEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GenerateAddressEndpointRequest;
+  static deserializeBinary: (bytes: {}) => GetAddressEndpointRequest;
 }
 
-export namespace GenerateAddressEndpointRequest {
+export namespace GetAddressEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Address: string;
+    Before: number;
+    After: number;
+    Limit: number;
+    Confirmations: number;
+  }
+}
+
+export class GetBalanceAddressEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getAddress(): string;
+  setAddress(a: string): void;
+  toObject(): GetBalanceAddressEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => GetBalanceAddressEndpointRequest;
+}
+
+export namespace GetBalanceAddressEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Address: string;
+  }
+}
+
+export class PostGenerateAddressEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  toObject(): PostGenerateAddressEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => PostGenerateAddressEndpointRequest;
+}
+
+export namespace PostGenerateAddressEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
   }
