@@ -37,7 +37,7 @@ message WebHookIDEndpointRequest {
   string webhookid = 2;
 }
 
-message DeleteWebHookEndpointRequest {
+message WebHookEndpointRequest {
   NetworkAllowingAlias network = 1;
   string webhookid = 2;
 }

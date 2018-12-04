@@ -151,7 +151,7 @@
     },
     "/eth/{network}/txs": {
       "get": {
-        "operationId": "UnconfirmedTransactionEndpoint",
+        "operationId": "UnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -219,7 +219,7 @@
     },
     "/eth/{network}/txs/new": {
       "post": {
-        "operationId": "NewTransactionsEndpoint",
+        "operationId": "CreateTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -246,7 +246,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethNewTransactionEndpointRequest"
+              "$ref": "#/definitions/ethCreateTransactionsEndpointRequest"
             }
           }
         ],
@@ -465,7 +465,7 @@
         ]
       },
       "delete": {
-        "operationId": "DeleteWebHookEndpoint",
+        "operationId": "WebHookEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -608,7 +608,7 @@
     },
     "/eth/{network}/addrs/{address}/balance": {
       "get": {
-        "operationId": "AddressBalanceEndpoint",
+        "operationId": "BalanceAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -682,7 +682,7 @@
     },
     "/eth/{network}/contracts/{query_address}": {
       "get": {
-        "operationId": "GetContractAddressEndpoint",
+        "operationId": "ContractAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -955,33 +955,7 @@
       ],
       "default": "MAIN"
     },
-    "ethDecodeRawTransactionEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/ethNetworkAllowingAlias"
-        },
-        "tx": {
-          "type": "string"
-        }
-      }
-    },
-    "ethInputType": {
-      "type": "object",
-      "properties": {
-        "sequence": {
-          "type": "string",
-          "format": "int64"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ethNewTransactionEndpointRequest": {
+    "ethCreateTransactionsEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -1121,6 +1095,32 @@
         "execution_error": {
           "type": "string",
           "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
+        }
+      }
+    },
+    "ethDecodeRawTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "tx": {
+          "type": "string"
+        }
+      }
+    },
+    "ethInputType": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "type": "string",
+          "format": "int64"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },

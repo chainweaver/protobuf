@@ -8,7 +8,7 @@ import "addressMessage_Eth.proto";
 import "commonMessage_Eth.proto";
 
 service AddressService {
-  rpc AddressBalanceEndpoint (AddressBalanceEndpointRequest) returns (Address) {
+  rpc BalanceAddressEndpoint (BalanceAddressEndpointRequest) returns (Address) {
     option (google.api.http) = {
       get: "/eth/{network}/addrs/{address}/balance"
     };

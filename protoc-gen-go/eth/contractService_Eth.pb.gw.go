@@ -62,8 +62,8 @@ func request_ContractService_CreateContractEndpoint_0(ctx context.Context, marsh
 
 }
 
-func request_ContractService_GetContractAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client ContractServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetContractAddressEndpointRequest
+func request_ContractService_ContractAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client ContractServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ContractAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -98,7 +98,7 @@ func request_ContractService_GetContractAddressEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "query_address", err)
 	}
 
-	msg, err := client.GetContractAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.ContractAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -226,7 +226,7 @@ func RegisterContractServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 
 	})
 
-	mux.Handle("GET", pattern_ContractService_GetContractAddressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ContractService_ContractAddressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -244,14 +244,14 @@ func RegisterContractServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ContractService_GetContractAddressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ContractService_ContractAddressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ContractService_GetContractAddressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ContractService_ContractAddressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -290,7 +290,7 @@ func RegisterContractServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 var (
 	pattern_ContractService_CreateContractEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"eth", "network", "contracts"}, ""))
 
-	pattern_ContractService_GetContractAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "contracts", "query_address"}, ""))
+	pattern_ContractService_ContractAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "contracts", "query_address"}, ""))
 
 	pattern_ContractService_CallContractMethodEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"eth", "network", "contracts", "query_address", "method"}, ""))
 )
@@ -298,7 +298,7 @@ var (
 var (
 	forward_ContractService_CreateContractEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_ContractService_GetContractAddressEndpoint_0 = runtime.ForwardResponseMessage
+	forward_ContractService_ContractAddressEndpoint_0 = runtime.ForwardResponseMessage
 
 	forward_ContractService_CallContractMethodEndpoint_0 = runtime.ForwardResponseMessage
 )

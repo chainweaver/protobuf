@@ -1,40 +1,4 @@
-export class DecodeRawTransactionEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getTx(): string;
-  setTx(a: string): void;
-  toObject(): DecodeRawTransactionEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DecodeRawTransactionEndpointRequest;
-}
-
-export namespace DecodeRawTransactionEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Tx: string;
-  }
-}
-
-export class InputType {
-  constructor ();
-  getSequence(): number;
-  setSequence(a: number): void;
-  getAddressesList(): string[];
-  setAddressesList(a: string[]): void;
-  toObject(): InputType.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => InputType;
-}
-
-export namespace InputType {
-  export type AsObject = {
-    Sequence: number;
-    AddressesList: string[];
-  }
-}
-
-export class NewTransactionEndpointRequest {
+export class CreateTransactionsEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
@@ -92,12 +56,12 @@ export class NewTransactionEndpointRequest {
   setDoubleOf(a: string): void;
   getExecutionError(): string;
   setExecutionError(a: string): void;
-  toObject(): NewTransactionEndpointRequest.AsObject;
+  toObject(): CreateTransactionsEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => NewTransactionEndpointRequest;
+  static deserializeBinary: (bytes: {}) => CreateTransactionsEndpointRequest;
 }
 
-export namespace NewTransactionEndpointRequest {
+export namespace CreateTransactionsEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     BlockHeight: number;
@@ -127,6 +91,42 @@ export namespace NewTransactionEndpointRequest {
     BlockIndex: number;
     DoubleOf: string;
     ExecutionError: string;
+  }
+}
+
+export class DecodeRawTransactionEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getTx(): string;
+  setTx(a: string): void;
+  toObject(): DecodeRawTransactionEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => DecodeRawTransactionEndpointRequest;
+}
+
+export namespace DecodeRawTransactionEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Tx: string;
+  }
+}
+
+export class InputType {
+  constructor ();
+  getSequence(): number;
+  setSequence(a: number): void;
+  getAddressesList(): string[];
+  setAddressesList(a: string[]): void;
+  toObject(): InputType.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => InputType;
+}
+
+export namespace InputType {
+  export type AsObject = {
+    Sequence: number;
+    AddressesList: string[];
   }
 }
 

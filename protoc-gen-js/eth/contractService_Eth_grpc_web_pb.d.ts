@@ -2,9 +2,9 @@ import * as grpcWeb from 'grpc-web';
 import {
   CallContractMethodEndpointRequest,
   Contract,
+  ContractAddressEndpointRequest,
   ContractArray,
-  CreateContractEndpointRequest,
-  GetContractAddressEndpointRequest} from './contractService_Eth_pb';
+  CreateContractEndpointRequest} from './contractService_Eth_pb';
 
 export class ContractServiceClient {
   constructor (hostname: string,
@@ -18,8 +18,8 @@ export class ContractServiceClient {
                response: ContractArray) => void
   ): grpcWeb.ClientReadableStream<ContractArray>;
 
-  getContractAddressEndpoint(
-    request: GetContractAddressEndpointRequest,
+  contractAddressEndpoint(
+    request: ContractAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Contract) => void
@@ -44,8 +44,8 @@ export class ContractServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<ContractArray>;
 
-  getContractAddressEndpoint(
-    request: GetContractAddressEndpointRequest,
+  contractAddressEndpoint(
+    request: ContractAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Contract>;
 

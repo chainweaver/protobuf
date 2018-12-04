@@ -2,10 +2,10 @@ import * as grpcWeb from 'grpc-web';
 import {
   ArrayEvent,
   CreateWebHookEndpointRequest,
-  DeleteWebHookEndpointRequest,
   Event,
   ListWebHooksEndpointRequest,
   NullValue,
+  WebHookEndpointRequest,
   WebHookIDEndpointRequest} from './webhooksService_Eth_pb';
 
 export class WebHooksServiceClient {
@@ -34,8 +34,8 @@ export class WebHooksServiceClient {
                response: Event) => void
   ): grpcWeb.ClientReadableStream<Event>;
 
-  deleteWebHookEndpoint(
-    request: DeleteWebHookEndpointRequest,
+  webHookEndpoint(
+    request: WebHookEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: NullValue) => void
@@ -63,8 +63,8 @@ export class WebHooksServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<Event>;
 
-  deleteWebHookEndpoint(
-    request: DeleteWebHookEndpointRequest,
+  webHookEndpoint(
+    request: WebHookEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<NullValue>;
 

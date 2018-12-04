@@ -142,7 +142,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
  *   !proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TxArray>}
  */
-const methodInfo_TransactionService_UnconfirmedTransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_UnconfirmedTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   transactionMessage_Eth_pb.TxArray,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest} request */
   function(request) {
@@ -162,13 +162,13 @@ const methodInfo_TransactionService_UnconfirmedTransactionEndpoint = new grpc.we
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.TxArray>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.unconfirmedTransactionEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.unconfirmedTransactionsEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.TransactionService/UnconfirmedTransactionEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.TransactionService/UnconfirmedTransactionsEndpoint',
       request,
       metadata,
-      methodInfo_TransactionService_UnconfirmedTransactionEndpoint,
+      methodInfo_TransactionService_UnconfirmedTransactionsEndpoint,
       callback);
 };
 
@@ -181,10 +181,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.unco
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.TxArray>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototype.unconfirmedTransactionEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototype.unconfirmedTransactionsEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.unconfirmedTransactionEndpoint(
+    this.delegateClient_.unconfirmedTransactionsEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -195,12 +195,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototy
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionsEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton>}
  */
-const methodInfo_TransactionService_NewTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_TransactionService_CreateTransactionsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.TXSkeleton,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionsEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -209,7 +209,7 @@ const methodInfo_TransactionService_NewTransactionsEndpoint = new grpc.web.Abstr
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionsEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -218,29 +218,29 @@ const methodInfo_TransactionService_NewTransactionsEndpoint = new grpc.web.Abstr
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.newTransactionsEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.TransactionServiceClient.prototype.createTransactionsEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.TransactionService/NewTransactionsEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.TransactionService/CreateTransactionsEndpoint',
       request,
       metadata,
-      methodInfo_TransactionService_NewTransactionsEndpoint,
+      methodInfo_TransactionService_CreateTransactionsEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionsEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.TXSkeleton>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototype.newTransactionsEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.TransactionServicePromiseClient.prototype.createTransactionsEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.newTransactionsEndpoint(
+    this.delegateClient_.createTransactionsEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

@@ -24,7 +24,7 @@ service WebHooksService {
       get: "/hooks/{webhookid}"
     };
   }
-  rpc DeleteWebHookEndpoint (DeleteWebHookEndpointRequest) returns (NullValue) {
+  rpc WebHookEndpoint (WebHookEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
       delete: "/hooks/{webhookid}"
     };

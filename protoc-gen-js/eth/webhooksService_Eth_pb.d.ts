@@ -49,24 +49,6 @@ export namespace CreateWebHookEndpointRequest {
   }
 }
 
-export class DeleteWebHookEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getWebhookid(): string;
-  setWebhookid(a: string): void;
-  toObject(): DeleteWebHookEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DeleteWebHookEndpointRequest;
-}
-
-export namespace DeleteWebHookEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Webhookid: string;
-  }
-}
-
 export class Event {
   constructor ();
   getId(): string;
@@ -127,6 +109,24 @@ export class NullValue {
 
 export namespace NullValue {
   export type AsObject = {
+  }
+}
+
+export class WebHookEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getWebhookid(): string;
+  setWebhookid(a: string): void;
+  toObject(): WebHookEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => WebHookEndpointRequest;
+}
+
+export namespace WebHookEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Webhookid: string;
   }
 }
 

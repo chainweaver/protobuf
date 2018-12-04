@@ -83,12 +83,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  */
-const methodInfo_AddressService_AddressBalanceEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AddressService_BalanceAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Address,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -97,7 +97,7 @@ const methodInfo_AddressService_AddressBalanceEndpoint = new grpc.web.AbstractCl
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -106,29 +106,29 @@ const methodInfo_AddressService_AddressBalanceEndpoint = new grpc.web.AbstractCl
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Address>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.addressBalanceEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.AddressServiceClient.prototype.balanceAddressEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.AddressService/AddressBalanceEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.AddressService/BalanceAddressEndpoint',
       request,
       metadata,
-      methodInfo_AddressService_AddressBalanceEndpoint,
+      methodInfo_AddressService_BalanceAddressEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.AddressBalanceEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BalanceAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Address>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.addressBalanceEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.AddressServicePromiseClient.prototype.balanceAddressEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.addressBalanceEndpoint(
+    this.delegateClient_.balanceAddressEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

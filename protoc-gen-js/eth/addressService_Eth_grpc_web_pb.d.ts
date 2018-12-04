@@ -1,9 +1,9 @@
 import * as grpcWeb from 'grpc-web';
 import {
   Address,
-  AddressBalanceEndpointRequest,
   AddressEndpointRequest,
   AddressKeychain,
+  BalanceAddressEndpointRequest,
   GenerateAddressEndpointRequest,
   TXRef} from './addressService_Eth_pb';
 
@@ -12,8 +12,8 @@ export class AddressServiceClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  addressBalanceEndpoint(
-    request: AddressBalanceEndpointRequest,
+  balanceAddressEndpoint(
+    request: BalanceAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
@@ -40,8 +40,8 @@ export class AddressServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  addressBalanceEndpoint(
-    request: AddressBalanceEndpointRequest,
+  balanceAddressEndpoint(
+    request: BalanceAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Address>;
 

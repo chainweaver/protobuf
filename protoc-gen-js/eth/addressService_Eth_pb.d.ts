@@ -49,24 +49,6 @@ export namespace Address {
   }
 }
 
-export class AddressBalanceEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getAddress(): string;
-  setAddress(a: string): void;
-  toObject(): AddressBalanceEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => AddressBalanceEndpointRequest;
-}
-
-export namespace AddressBalanceEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Address: string;
-  }
-}
-
 export class AddressEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
@@ -115,6 +97,24 @@ export namespace AddressKeychain {
     Address: string;
     Public: string;
     Private: string;
+  }
+}
+
+export class BalanceAddressEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getAddress(): string;
+  setAddress(a: string): void;
+  toObject(): BalanceAddressEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => BalanceAddressEndpointRequest;
+}
+
+export namespace BalanceAddressEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Address: string;
   }
 }
 

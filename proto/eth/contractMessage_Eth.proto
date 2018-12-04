@@ -35,7 +35,7 @@ message CreateContractEndpointRequest {
   repeated string results = 14;
 }
 
-message GetContractAddressEndpointRequest {
+message ContractAddressEndpointRequest {
   NetworkAllowingAlias network = 1;
   string query_address = 2;
 }

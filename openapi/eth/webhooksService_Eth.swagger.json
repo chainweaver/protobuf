@@ -113,7 +113,7 @@
         ]
       },
       "delete": {
-        "operationId": "DeleteWebHookEndpoint",
+        "operationId": "WebHookEndpoint",
         "responses": {
           "200": {
             "description": "",

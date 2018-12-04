@@ -94,11 +94,11 @@ func request_WebHooksService_WebHookIDEndpoint_0(ctx context.Context, marshaler 
 }
 
 var (
-	filter_WebHooksService_DeleteWebHookEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"webhookid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_WebHooksService_WebHookEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"webhookid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
-func request_WebHooksService_DeleteWebHookEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DeleteWebHookEndpointRequest
+func request_WebHooksService_WebHookEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq WebHookEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -119,11 +119,11 @@ func request_WebHooksService_DeleteWebHookEndpoint_0(ctx context.Context, marsha
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "webhookid", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_DeleteWebHookEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_WebHookEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.DeleteWebHookEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.WebHookEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -253,7 +253,7 @@ func RegisterWebHooksServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 
 	})
 
-	mux.Handle("DELETE", pattern_WebHooksService_DeleteWebHookEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_WebHooksService_WebHookEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -271,14 +271,14 @@ func RegisterWebHooksServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WebHooksService_DeleteWebHookEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WebHooksService_WebHookEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WebHooksService_DeleteWebHookEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WebHooksService_WebHookEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -292,7 +292,7 @@ var (
 
 	pattern_WebHooksService_WebHookIDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"hooks", "webhookid"}, ""))
 
-	pattern_WebHooksService_DeleteWebHookEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"hooks", "webhookid"}, ""))
+	pattern_WebHooksService_WebHookEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"hooks", "webhookid"}, ""))
 )
 
 var (
@@ -302,5 +302,5 @@ var (
 
 	forward_WebHooksService_WebHookIDEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_WebHooksService_DeleteWebHookEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WebHooksService_WebHookEndpoint_0 = runtime.ForwardResponseMessage
 )

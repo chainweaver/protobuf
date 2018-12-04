@@ -14,8 +14,8 @@ var global = Function('return this')();
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest', null, global);
 
 /**
@@ -865,12 +865,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest.prototype.setW
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest = function(opt_data) {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest';
+  proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest';
 }
 
 
@@ -885,8 +885,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -895,11 +895,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
     webhookid: jspb.Message.getFieldWithDefault(msg, 2, "")
@@ -916,23 +916,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.toObject =
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest;
-  return proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest;
+  return proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -960,9 +960,9 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.deserializ
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -970,11 +970,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNetwork();
   if (f !== 0.0) {
@@ -997,13 +997,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.serializeB
  * optional NetworkAllowingAlias network = 1;
  * @return {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.getNetwork = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.prototype.getNetwork = function() {
   return /** @type {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias} value */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.setNetwork = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.prototype.setNetwork = function(value) {
   jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -1012,13 +1012,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.
  * optional string webhookid = 2;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.getWebhookid = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.prototype.getWebhookid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.setWebhookid = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookEndpointRequest.prototype.setWebhookid = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 
