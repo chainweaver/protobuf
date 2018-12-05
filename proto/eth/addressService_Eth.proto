@@ -15,12 +15,12 @@ service AddressService {
   }
   rpc GetAddressEndpoint (GetAddressEndpointRequest) returns (Address) {
     option (google.api.http) = {
-      get: "/eth/{network}/addr/{address}"
+      get: "/eth/{network}/addrs/{address}"
     };
   }
   rpc PostGenerateAddressEndpoint (PostGenerateAddressEndpointRequest) returns (AddressKeychain) {
     option (google.api.http) = {
-      post: "/eth/{network}/addr"
+      post: "/eth/{network}/addrs"
     };
   }
 }

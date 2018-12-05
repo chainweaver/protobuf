@@ -279,9 +279,9 @@ func RegisterAddressServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 var (
 	pattern_AddressService_GetBalanceAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"eth", "network", "addrs", "address", "balance"}, ""))
 
-	pattern_AddressService_GetAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "addr", "address"}, ""))
+	pattern_AddressService_GetAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "addrs", "address"}, ""))
 
-	pattern_AddressService_PostGenerateAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"eth", "network", "addr"}, ""))
+	pattern_AddressService_PostGenerateAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"eth", "network", "addrs"}, ""))
 )
 
 var (

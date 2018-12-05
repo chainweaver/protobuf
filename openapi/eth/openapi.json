@@ -500,7 +500,7 @@
         ]
       }
     },
-    "/eth/{network}/addr": {
+    "/eth/{network}/addrs": {
       "post": {
         "operationId": "PostGenerateAddressEndpoint",
         "responses": {
@@ -530,7 +530,7 @@
         ]
       }
     },
-    "/eth/{network}/addr/{address}": {
+    "/eth/{network}/addrs/{address}": {
       "get": {
         "operationId": "GetAddressEndpoint",
         "responses": {
