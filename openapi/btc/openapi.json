@@ -646,6 +646,139 @@
         ]
       }
     },
+    "/hooks": {
+      "get": {
+        "operationId": "ListWebHooksEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/btcArrayEvent"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ],
+            "default": "MAINNET"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WebHooksService"
+        ]
+      },
+      "post": {
+        "operationId": "CreateWebHookEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/btcEvent"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/btcCreateWebHookEndpointRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WebHooksService"
+        ]
+      }
+    },
+    "/hooks/{webhookid}": {
+      "get": {
+        "operationId": "WebHookIDEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/btcEvent"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "network",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ],
+            "default": "MAINNET"
+          }
+        ],
+        "tags": [
+          "WebHooksService"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteWebHookEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/btcNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "network",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ],
+            "default": "MAINNET"
+          }
+        ],
+        "tags": [
+          "WebHooksService"
+        ]
+      }
+    },
     "/btc/{network}/wallets": {
       "get": {
         "operationId": "ListWalletsEndpoint",
@@ -2859,6 +2992,124 @@
           "type": "boolean",
           "format": "boolean",
           "description": "If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata."
+        }
+      }
+    },
+    "btcArrayEvent": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcEvent"
+          }
+        }
+      }
+    },
+    "btcCreateWebHookEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "id": {
+          "type": "string",
+          "description": "Identifier of the event; generated when a new request is created."
+        },
+        "event": {
+          "type": "string",
+          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx, tx-confidence."
+        },
+        "hash": {
+          "type": "string",
+          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+        },
+        "wallet_name": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given wallet will be sent; can use a regular or HD wallet name. If used, requires a user token."
+        },
+        "token": {
+          "type": "string",
+          "description": "optional Required if wallet_name is used, though generally we advise users to include it (as they can reach API throttling thresholds rapidly)."
+        },
+        "address": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given address will be sent. A wallet name can also be used instead of an address, which will then match on any address in the wallet."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+        },
+        "confidence": {
+          "type": "number",
+          "format": "float",
+          "description": "optional Used in concert with the tx-confidence event type to set the minimum confidence for which you’ll receive a notification. You’ll receive a TX once this threshold is met. Will accept any float between 0 and 1, exclusive; if not set, defaults to 0.99."
+        },
+        "script": {
+          "type": "string",
+          "description": "optional Only transactions with an output script of the provided type will be sent. The recognized types of scripts are: pay-to-pubkey-hash, pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes called OP_RETURN), empty or unknown."
+        },
+        "url": {
+          "type": "string",
+          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+        },
+        "callback_errors": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        }
+      }
+    },
+    "btcEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the event; generated when a new request is created."
+        },
+        "event": {
+          "type": "string",
+          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx, tx-confidence."
+        },
+        "hash": {
+          "type": "string",
+          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+        },
+        "wallet_name": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given wallet will be sent; can use a regular or HD wallet name. If used, requires a user token."
+        },
+        "token": {
+          "type": "string",
+          "description": "optional Required if wallet_name is used, though generally we advise users to include it (as they can reach API throttling thresholds rapidly)."
+        },
+        "address": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given address will be sent. A wallet name can also be used instead of an address, which will then match on any address in the wallet."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+        },
+        "confidence": {
+          "type": "number",
+          "format": "float",
+          "description": "optional Used in concert with the tx-confidence event type to set the minimum confidence for which you’ll receive a notification. You’ll receive a TX once this threshold is met. Will accept any float between 0 and 1, exclusive; if not set, defaults to 0.99."
+        },
+        "script": {
+          "type": "string",
+          "description": "optional Only transactions with an output script of the provided type will be sent. The recognized types of scripts are: pay-to-pubkey-hash, pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes called OP_RETURN), empty or unknown."
+        },
+        "url": {
+          "type": "string",
+          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+        },
+        "callback_errors": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
         }
       }
     },

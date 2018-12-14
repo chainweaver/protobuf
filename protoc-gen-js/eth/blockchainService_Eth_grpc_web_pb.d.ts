@@ -1,32 +1,32 @@
 import * as grpcWeb from 'grpc-web';
 import {
   Block,
+  BlockHashEndpointRequest,
+  BlockHeightEndpointRequest,
   Blockchain,
-  GetBlockHashEndpointRequest,
-  GetBlockHeightEndpointRequest,
-  GetChainEndpointRequest} from './blockchainService_Eth_pb';
+  ChainEndpointRequest} from './blockchainService_Eth_pb';
 
 export class BlockchainServiceClient {
   constructor (hostname: string,
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  getChainEndpoint(
-    request: GetChainEndpointRequest,
+  chainEndpoint(
+    request: ChainEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Blockchain) => void
   ): grpcWeb.ClientReadableStream<Blockchain>;
 
-  getBlockHashEndpoint(
-    request: GetBlockHashEndpointRequest,
+  blockHashEndpoint(
+    request: BlockHashEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Block) => void
   ): grpcWeb.ClientReadableStream<Block>;
 
-  getBlockHeightEndpoint(
-    request: GetBlockHeightEndpointRequest,
+  blockHeightEndpoint(
+    request: BlockHeightEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Block) => void
@@ -39,18 +39,18 @@ export class BlockchainServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  getChainEndpoint(
-    request: GetChainEndpointRequest,
+  chainEndpoint(
+    request: ChainEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Blockchain>;
 
-  getBlockHashEndpoint(
-    request: GetBlockHashEndpointRequest,
+  blockHashEndpoint(
+    request: BlockHashEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Block>;
 
-  getBlockHeightEndpoint(
-    request: GetBlockHeightEndpointRequest,
+  blockHeightEndpoint(
+    request: BlockHeightEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Block>;
 

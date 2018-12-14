@@ -17,7 +17,7 @@
   "paths": {
     "/eth/{network}": {
       "get": {
-        "operationId": "GetChainEndpoint",
+        "operationId": "ChainEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -47,7 +47,7 @@
     },
     "/eth/{network}/blocks/{block_hash}": {
       "get": {
-        "operationId": "GetBlockHashEndpoint",
+        "operationId": "BlockHashEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -99,7 +99,7 @@
     },
     "/eth/{network}/blocks/{block_height}": {
       "get": {
-        "operationId": "GetBlockHeightEndpoint",
+        "operationId": "BlockHeightEndpoint",
         "responses": {
           "200": {
             "description": "",

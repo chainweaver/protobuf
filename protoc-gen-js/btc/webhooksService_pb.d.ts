@@ -23,10 +23,18 @@ export class CreateWebHookEndpointRequest {
   setEvent(a: string): void;
   getHash(): string;
   setHash(a: string): void;
+  getWalletName(): string;
+  setWalletName(a: string): void;
+  getToken(): string;
+  setToken(a: string): void;
   getAddress(): string;
   setAddress(a: string): void;
   getConfirmations(): number;
   setConfirmations(a: number): void;
+  getConfidence(): number;
+  setConfidence(a: number): void;
+  getScript(): string;
+  setScript(a: string): void;
   getUrl(): string;
   setUrl(a: string): void;
   getCallbackErrors(): number;
@@ -42,8 +50,12 @@ export namespace CreateWebHookEndpointRequest {
     Id: string;
     Event: string;
     Hash: string;
+    WalletName: string;
+    Token: string;
     Address: string;
     Confirmations: number;
+    Confidence: number;
+    Script: string;
     Url: string;
     CallbackErrors: number;
   }
@@ -75,10 +87,18 @@ export class Event {
   setEvent(a: string): void;
   getHash(): string;
   setHash(a: string): void;
+  getWalletName(): string;
+  setWalletName(a: string): void;
+  getToken(): string;
+  setToken(a: string): void;
   getAddress(): string;
   setAddress(a: string): void;
   getConfirmations(): number;
   setConfirmations(a: number): void;
+  getConfidence(): number;
+  setConfidence(a: number): void;
+  getScript(): string;
+  setScript(a: string): void;
   getUrl(): string;
   setUrl(a: string): void;
   getCallbackErrors(): number;
@@ -93,8 +113,12 @@ export namespace Event {
     Id: string;
     Event: string;
     Hash: string;
+    WalletName: string;
+    Token: string;
     Address: string;
     Confirmations: number;
+    Confidence: number;
+    Script: string;
     Url: string;
     CallbackErrors: number;
   }

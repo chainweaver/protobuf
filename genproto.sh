@@ -36,7 +36,9 @@ protoc \
   addressforwardingMessage.proto \
   addressforwardingService.proto \
   confidencefactorMessage.proto \
-  confidencefactorService.proto
+  confidencefactorService.proto \
+  webhooksMessage.proto \
+  webhooksService.proto 
 
 protoc \
   -I./proto/eth \

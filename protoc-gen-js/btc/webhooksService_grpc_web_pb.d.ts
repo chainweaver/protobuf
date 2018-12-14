@@ -6,7 +6,7 @@ import {
   Event,
   ListWebHooksEndpointRequest,
   NullValue,
-  WebHookIDEndpointRequest} from './webhooksService_Eth_pb';
+  WebHookIDEndpointRequest} from './webhooksService_pb';
 
 export class WebHooksServiceClient {
   constructor (hostname: string,

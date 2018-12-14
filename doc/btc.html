@@ -199,6 +199,10 @@
                 </li>
               
                 <li>
+                  <a href="#fairwaycorp.blockchainprotobuf.btc.Event"><span class="badge">M</span>Event</a>
+                </li>
+              
+                <li>
                   <a href="#fairwaycorp.blockchainprotobuf.btc.FirstLocation"><span class="badge">M</span>FirstLocation</a>
                 </li>
               
@@ -812,6 +816,52 @@
             </ul>
           </li>
         
+          
+          <li>
+            <a href="#webhooksMessage.proto">webhooksMessage.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#fairwaycorp.blockchainprotobuf.btc.ArrayEvent"><span class="badge">M</span>ArrayEvent</a>
+                </li>
+              
+                <li>
+                  <a href="#fairwaycorp.blockchainprotobuf.btc.CreateWebHookEndpointRequest"><span class="badge">M</span>CreateWebHookEndpointRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#fairwaycorp.blockchainprotobuf.btc.DeleteWebHookEndpointRequest"><span class="badge">M</span>DeleteWebHookEndpointRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#fairwaycorp.blockchainprotobuf.btc.ListWebHooksEndpointRequest"><span class="badge">M</span>ListWebHooksEndpointRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#fairwaycorp.blockchainprotobuf.btc.WebHookIDEndpointRequest"><span class="badge">M</span>WebHookIDEndpointRequest</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#webhooksService.proto">webhooksService.proto</a>
+            <ul>
+              
+              
+              
+              
+                <li>
+                  <a href="#fairwaycorp.blockchainprotobuf.btc.WebHooksService"><span class="badge">S</span>WebHooksService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
         <li><a href="#scalar-value-types">Scalar Value Types</a></li>
       </ul>
     </div>
@@ -1204,6 +1254,99 @@
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>The timestamp when BlockCypher first received this transaction. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="fairwaycorp.blockchainprotobuf.btc.Event">Event</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier of the event; generated when a new request is created. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>event</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx, tx-confidence. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hash</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>wallet_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Only transactions associated with the given wallet will be sent; can use a regular or HD wallet name. If used, requires a user token. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Required if wallet_name is used, though generally we advise users to include it (as they can reach API throttling thresholds rapidly). </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Only transactions associated with the given address will be sent. A wallet name can also be used instead of an address, which will then match on any address in the wallet. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>confirmations</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>confidence</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>optional Used in concert with the tx-confidence event type to set the minimum confidence for which you’ll receive a notification. You’ll receive a TX once this threshold is met. Will accept any float between 0 and 1, exclusive; if not set, defaults to 0.99. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>script</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Only transactions with an output script of the provided type will be sent. The recognized types of scripts are: pay-to-pubkey-hash, pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes called OP_RETURN), empty or unknown. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>url</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>callback_errors</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage. </p></td>
                 </tr>
               
             </tbody>
@@ -6448,6 +6591,286 @@ Standard address representation. </p></td>
                 <td>TransactionConfidenceEndpoint</td>
                 <td><a href="#fairwaycorp.blockchainprotobuf.btc.TransactionConfidenceEndpointRequest">TransactionConfidenceEndpointRequest</a></td>
                 <td><a href="#fairwaycorp.blockchainprotobuf.btc.TXConfidence">TXConfidence</a></td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="webhooksMessage.proto">webhooksMessage.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="fairwaycorp.blockchainprotobuf.btc.ArrayEvent">ArrayEvent</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>event</td>
+                  <td><a href="#fairwaycorp.blockchainprotobuf.btc.Event">Event</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="fairwaycorp.blockchainprotobuf.btc.CreateWebHookEndpointRequest">CreateWebHookEndpointRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias">NetworkAllowingAlias</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier of the event; generated when a new request is created. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>event</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx, tx-confidence. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hash</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>wallet_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Only transactions associated with the given wallet will be sent; can use a regular or HD wallet name. If used, requires a user token. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Required if wallet_name is used, though generally we advise users to include it (as they can reach API throttling thresholds rapidly). </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Only transactions associated with the given address will be sent. A wallet name can also be used instead of an address, which will then match on any address in the wallet. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>confirmations</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>confidence</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>optional Used in concert with the tx-confidence event type to set the minimum confidence for which you’ll receive a notification. You’ll receive a TX once this threshold is met. Will accept any float between 0 and 1, exclusive; if not set, defaults to 0.99. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>script</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Only transactions with an output script of the provided type will be sent. The recognized types of scripts are: pay-to-pubkey-hash, pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes called OP_RETURN), empty or unknown. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>url</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>callback_errors</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="fairwaycorp.blockchainprotobuf.btc.DeleteWebHookEndpointRequest">DeleteWebHookEndpointRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias">NetworkAllowingAlias</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>webhookid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="fairwaycorp.blockchainprotobuf.btc.ListWebHooksEndpointRequest">ListWebHooksEndpointRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias">NetworkAllowingAlias</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="fairwaycorp.blockchainprotobuf.btc.WebHookIDEndpointRequest">WebHookIDEndpointRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias">NetworkAllowingAlias</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>webhookid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="webhooksService.proto">webhooksService.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+
+      
+
+      
+
+      
+        <h3 id="fairwaycorp.blockchainprotobuf.btc.WebHooksService">WebHooksService</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>CreateWebHookEndpoint</td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.btc.CreateWebHookEndpointRequest">CreateWebHookEndpointRequest</a></td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.btc.Event">Event</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ListWebHooksEndpoint</td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.btc.ListWebHooksEndpointRequest">ListWebHooksEndpointRequest</a></td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.btc.ArrayEvent">ArrayEvent</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>WebHookIDEndpoint</td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.btc.WebHookIDEndpointRequest">WebHookIDEndpointRequest</a></td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.btc.Event">Event</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>DeleteWebHookEndpoint</td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.btc.DeleteWebHookEndpointRequest">DeleteWebHookEndpointRequest</a></td>
+                <td><a href="#fairwaycorp.blockchainprotobuf.btc.NullValue">NullValue</a></td>
                 <td><p></p></td>
               </tr>
             

@@ -83,12 +83,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GetChainEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.ChainEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Blockchain>}
  */
-const methodInfo_BlockchainService_GetChainEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_ChainEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Blockchain,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetChainEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.ChainEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -97,7 +97,7 @@ const methodInfo_BlockchainService_GetChainEndpoint = new grpc.web.AbstractClien
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetChainEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ChainEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -106,29 +106,29 @@ const methodInfo_BlockchainService_GetChainEndpoint = new grpc.web.AbstractClien
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Blockchain>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServiceClient.prototype.getChainEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServiceClient.prototype.chainEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.BlockchainService/GetChainEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.BlockchainService/ChainEndpoint',
       request,
       metadata,
-      methodInfo_BlockchainService_GetChainEndpoint,
+      methodInfo_BlockchainService_ChainEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetChainEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ChainEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Blockchain>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototype.getChainEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototype.chainEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getChainEndpoint(
+    this.delegateClient_.chainEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -139,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototyp
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GetBlockHashEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.BlockHashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Block>}
  */
-const methodInfo_BlockchainService_GetBlockHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_BlockHashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Block,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBlockHashEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHashEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -153,7 +153,7 @@ const methodInfo_BlockchainService_GetBlockHashEndpoint = new grpc.web.AbstractC
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBlockHashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -162,29 +162,29 @@ const methodInfo_BlockchainService_GetBlockHashEndpoint = new grpc.web.AbstractC
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Block>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServiceClient.prototype.getBlockHashEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServiceClient.prototype.blockHashEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.BlockchainService/GetBlockHashEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.BlockchainService/BlockHashEndpoint',
       request,
       metadata,
-      methodInfo_BlockchainService_GetBlockHashEndpoint,
+      methodInfo_BlockchainService_BlockHashEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBlockHashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Block>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototype.getBlockHashEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototype.blockHashEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getBlockHashEndpoint(
+    this.delegateClient_.blockHashEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -195,12 +195,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototyp
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GetBlockHeightEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.BlockHeightEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Block>}
  */
-const methodInfo_BlockchainService_GetBlockHeightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BlockchainService_BlockHeightEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Block,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBlockHeightEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHeightEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -209,7 +209,7 @@ const methodInfo_BlockchainService_GetBlockHeightEndpoint = new grpc.web.Abstrac
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBlockHeightEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHeightEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -218,29 +218,29 @@ const methodInfo_BlockchainService_GetBlockHeightEndpoint = new grpc.web.Abstrac
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Block>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServiceClient.prototype.getBlockHeightEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServiceClient.prototype.blockHeightEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.BlockchainService/GetBlockHeightEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.BlockchainService/BlockHeightEndpoint',
       request,
       metadata,
-      methodInfo_BlockchainService_GetBlockHeightEndpoint,
+      methodInfo_BlockchainService_BlockHeightEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetBlockHeightEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.BlockHeightEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Block>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototype.getBlockHeightEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.BlockchainServicePromiseClient.prototype.blockHeightEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getBlockHeightEndpoint(
+    this.delegateClient_.blockHeightEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

@@ -1,18 +1,18 @@
 import * as grpcWeb from 'grpc-web';
 import {
+  CallContractMethodEndpointRequest,
   Contract,
   ContractArray,
-  GetContractAddressEndpointRequest,
-  PostCallContractMethodEndpointRequest,
-  PostCreateContractEndpointRequest} from './contractService_Eth_pb';
+  CreateContractEndpointRequest,
+  GetContractAddressEndpointRequest} from './contractService_Eth_pb';
 
 export class ContractServiceClient {
   constructor (hostname: string,
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  postCreateContractEndpoint(
-    request: PostCreateContractEndpointRequest,
+  createContractEndpoint(
+    request: CreateContractEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: ContractArray) => void
@@ -25,8 +25,8 @@ export class ContractServiceClient {
                response: Contract) => void
   ): grpcWeb.ClientReadableStream<Contract>;
 
-  postCallContractMethodEndpoint(
-    request: PostCallContractMethodEndpointRequest,
+  callContractMethodEndpoint(
+    request: CallContractMethodEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Contract) => void
@@ -39,8 +39,8 @@ export class ContractServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  postCreateContractEndpoint(
-    request: PostCreateContractEndpointRequest,
+  createContractEndpoint(
+    request: CreateContractEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<ContractArray>;
 
@@ -49,8 +49,8 @@ export class ContractServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<Contract>;
 
-  postCallContractMethodEndpoint(
-    request: PostCallContractMethodEndpointRequest,
+  callContractMethodEndpoint(
+    request: CallContractMethodEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Contract>;
 
