@@ -5,12 +5,12 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/e
 
 import "commonMessage_Eth.proto";
 
-message GetBalanceAddressEndpointRequest {
+message AddressBalanceEndpointRequest {
   NetworkAllowingAlias network = 1;
   string address = 2;
 }
 
-message GetAddressEndpointRequest {
+message AddressEndpointRequest {
   NetworkAllowingAlias network = 1;
   string address = 2;
   // Filters response to only include transactions below before height in the blockchain.
@@ -23,6 +23,6 @@ message GetAddressEndpointRequest {
   int32 confirmations = 6;
 }
 
-message PostGenerateAddressEndpointRequest {
+message GenerateAddressEndpointRequest {
   NetworkAllowingAlias network = 1;
 }

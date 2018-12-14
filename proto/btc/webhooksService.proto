@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package fairwaycorp.blockchainprotobuf.eth;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
+package fairwaycorp.blockchainprotobuf.btc;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
 
 import "google/api/annotations.proto";
-import "webhooksMessage_Eth.proto";
-import "commonMessage_Eth.proto";
+import "webhooksMessage.proto";
+import "commonMessage.proto";
 
 service WebHooksService {
   rpc CreateWebHookEndpoint (CreateWebHookEndpointRequest) returns (Event) {

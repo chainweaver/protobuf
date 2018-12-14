@@ -8,17 +8,17 @@ import "commonMessage_Eth.proto";
 import "blockchainMessage_Eth.proto";
 
 service BlockchainService {
-  rpc GetChainEndpoint (GetChainEndpointRequest) returns (Blockchain) {
+  rpc ChainEndpoint (ChainEndpointRequest) returns (Blockchain) {
     option (google.api.http) = {
       get: "/eth/{network}"
     };
   }
-  rpc GetBlockHashEndpoint (GetBlockHashEndpointRequest) returns (Block) {
+  rpc BlockHashEndpoint (BlockHashEndpointRequest) returns (Block) {
     option (google.api.http) = {
       get: "/eth/{network}/blocks/{block_hash}"
     };
   }
-  rpc GetBlockHeightEndpoint (GetBlockHeightEndpointRequest) returns (Block) {
+  rpc BlockHeightEndpoint (BlockHeightEndpointRequest) returns (Block) {
     option (google.api.http) = {
       get: "/eth/{network}/blocks/{block_height}"
     };

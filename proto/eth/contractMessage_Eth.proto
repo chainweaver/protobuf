@@ -5,7 +5,7 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/e
 
 import "commonMessage_Eth.proto";
 
-message PostCreateContractEndpointRequest {
+message CreateContractEndpointRequest {
   NetworkAllowingAlias network = 1;
   // Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher.
   string solidity = 2;
@@ -40,7 +40,7 @@ message GetContractAddressEndpointRequest {
   string query_address = 2;
 }
 
-message PostCallContractMethodEndpointRequest {
+message CallContractMethodEndpointRequest {
   NetworkAllowingAlias network = 1;
   string query_address = 2;
   string method = 3;
