@@ -1,18 +1,3 @@
-export class ArrayEvent {
-  constructor ();
-  getEventList(): Event[];
-  setEventList(a: Event[]): void;
-  toObject(): ArrayEvent.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ArrayEvent;
-}
-
-export namespace ArrayEvent {
-  export type AsObject = {
-    EventList: Event[];
-  }
-}
-
 export class CreateWebHookEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
@@ -121,6 +106,21 @@ export namespace Event {
     Script: string;
     Url: string;
     CallbackErrors: number;
+  }
+}
+
+export class Events {
+  constructor ();
+  getEventList(): Event[];
+  setEventList(a: Event[]): void;
+  toObject(): Events.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => Events;
+}
+
+export namespace Events {
+  export type AsObject = {
+    EventList: Event[];
   }
 }
 

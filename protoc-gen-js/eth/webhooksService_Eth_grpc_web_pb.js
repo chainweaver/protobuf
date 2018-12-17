@@ -140,15 +140,15 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent>}
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.Events>}
  */
 const methodInfo_WebHooksService_ListWebHooksEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  webhooksMessage_Eth_pb.ArrayEvent,
+  webhooksMessage_Eth_pb.Events,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.ListWebHooksEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  webhooksMessage_Eth_pb.ArrayEvent.deserializeBinary
+  webhooksMessage_Eth_pb.Events.deserializeBinary
 );
 
 
@@ -157,9 +157,9 @@ const methodInfo_WebHooksService_ListWebHooksEndpoint = new grpc.web.AbstractCli
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.eth.Events)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Events>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.listWebHooksEndpoint =
@@ -178,7 +178,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServiceClient.prototype.listWeb
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.ArrayEvent>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Events>}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.eth.WebHooksServicePromiseClient.prototype.listWebHooksEndpoint =

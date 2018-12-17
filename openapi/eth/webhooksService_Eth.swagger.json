@@ -15,30 +15,29 @@
     "application/json"
   ],
   "paths": {
-    "/hooks": {
+    "/eth/{network}/hooks": {
       "get": {
         "operationId": "ListWebHooksEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethArrayEvent"
+              "$ref": "#/definitions/ethEvents"
             }
           }
         },
         "parameters": [
           {
             "name": "network",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ],
-            "default": "MAIN"
+            ]
           },
           {
             "name": "token",
@@ -63,6 +62,18 @@
         },
         "parameters": [
           {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -76,7 +87,7 @@
         ]
       }
     },
-    "/hooks/{webhookid}": {
+    "/eth/{network}/hooks/{webhookid}": {
       "get": {
         "operationId": "WebHookIDEndpoint",
         "responses": {
@@ -89,23 +100,22 @@
         },
         "parameters": [
           {
-            "name": "webhookid",
+            "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "network",
-            "in": "query",
-            "required": false,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ],
-            "default": "MAIN"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -124,23 +134,22 @@
         },
         "parameters": [
           {
-            "name": "webhookid",
+            "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "network",
-            "in": "query",
-            "required": false,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ],
-            "default": "MAIN"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -150,17 +159,6 @@
     }
   },
   "definitions": {
-    "ethArrayEvent": {
-      "type": "object",
-      "properties": {
-        "event": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethEvent"
-          }
-        }
-      }
-    },
     "ethCreateWebHookEndpointRequest": {
       "type": "object",
       "properties": {
@@ -231,6 +229,17 @@
           "type": "string",
           "format": "uint64",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        }
+      }
+    },
+    "ethEvents": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethEvent"
+          }
         }
       }
     },

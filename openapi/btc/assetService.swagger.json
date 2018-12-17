@@ -44,7 +44,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcNullValueRequest"
+              "$ref": "#/definitions/btcGenerateAssetAddressEndpointRequest"
             }
           }
         ],
@@ -82,7 +82,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcOAPIssueRequest"
+              "$ref": "#/definitions/btcIssueAssetEndpointRequest"
             }
           }
         ],
@@ -93,7 +93,7 @@
     },
     "/btc/{network}/oap/{assetid}/addrs/{oapaddr}": {
       "get": {
-        "operationId": "GetAssetAddressEndpoint",
+        "operationId": "AssetAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -209,7 +209,7 @@
     },
     "/btc/{network}/oap/{assetid}/txs/{txhash}": {
       "get": {
-        "operationId": "GetAssetTXEndpoint",
+        "operationId": "AssetTXEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -378,6 +378,14 @@
         }
       }
     },
+    "btcGenerateAssetAddressEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        }
+      }
+    },
     "btcHDAddress": {
       "type": "object",
       "properties": {
@@ -449,25 +457,7 @@
         }
       }
     },
-    "btcNetworkAllowingAlias": {
-      "type": "string",
-      "enum": [
-        "MAINNET",
-        "mainnet",
-        "TEST",
-        "test"
-      ],
-      "default": "MAINNET"
-    },
-    "btcNullValueRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        }
-      }
-    },
-    "btcOAPIssueRequest": {
+    "btcIssueAssetEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -491,6 +481,16 @@
           "description": "Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction."
         }
       }
+    },
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
     },
     "btcOAPTX": {
       "type": "object",

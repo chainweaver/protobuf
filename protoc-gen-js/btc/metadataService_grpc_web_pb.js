@@ -83,12 +83,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>}
  */
-const methodInfo_MetadataService_GetMetadataAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_MetadataAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   metadataMessage_pb.KeyValues,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -97,7 +97,7 @@ const methodInfo_MetadataService_GetMetadataAddressEndpoint = new grpc.web.Abstr
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -106,29 +106,29 @@ const methodInfo_MetadataService_GetMetadataAddressEndpoint = new grpc.web.Abstr
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.getMetadataAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.metadataAddressEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.btc.MetadataService/GetMetadataAddressEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.MetadataService/MetadataAddressEndpoint',
       request,
       metadata,
-      methodInfo_MetadataService_GetMetadataAddressEndpoint,
+      methodInfo_MetadataService_MetadataAddressEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.getMetadataAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.metadataAddressEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getMetadataAddressEndpoint(
+    this.delegateClient_.metadataAddressEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -139,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>}
  */
-const methodInfo_MetadataService_GetMetadataTxhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_MetadataTxhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   metadataMessage_pb.KeyValues,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -153,7 +153,7 @@ const methodInfo_MetadataService_GetMetadataTxhashEndpoint = new grpc.web.Abstra
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -162,29 +162,29 @@ const methodInfo_MetadataService_GetMetadataTxhashEndpoint = new grpc.web.Abstra
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.getMetadataTxhashEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.metadataTxhashEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.btc.MetadataService/GetMetadataTxhashEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.MetadataService/MetadataTxhashEndpoint',
       request,
       metadata,
-      methodInfo_MetadataService_GetMetadataTxhashEndpoint,
+      methodInfo_MetadataService_MetadataTxhashEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.getMetadataTxhashEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.metadataTxhashEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getMetadataTxhashEndpoint(
+    this.delegateClient_.metadataTxhashEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -195,12 +195,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>}
  */
-const methodInfo_MetadataService_GetMetadataBlockhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MetadataService_MetadataBlockhashEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   metadataMessage_pb.KeyValues,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -209,7 +209,7 @@ const methodInfo_MetadataService_GetMetadataBlockhashEndpoint = new grpc.web.Abs
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -218,29 +218,29 @@ const methodInfo_MetadataService_GetMetadataBlockhashEndpoint = new grpc.web.Abs
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.getMetadataBlockhashEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataServiceClient.prototype.metadataBlockhashEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.btc.MetadataService/GetMetadataBlockhashEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.MetadataService/MetadataBlockhashEndpoint',
       request,
       metadata,
-      methodInfo_MetadataService_GetMetadataBlockhashEndpoint,
+      methodInfo_MetadataService_MetadataBlockhashEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.KeyValues>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.getMetadataBlockhashEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataServicePromiseClient.prototype.metadataBlockhashEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getMetadataBlockhashEndpoint(
+    this.delegateClient_.metadataBlockhashEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

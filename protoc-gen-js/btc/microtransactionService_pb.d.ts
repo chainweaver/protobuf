@@ -52,7 +52,7 @@ export namespace MicroTX {
   }
 }
 
-export class MicroTXRequest {
+export class MicrotransactionEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
@@ -84,12 +84,12 @@ export class MicroTXRequest {
   setFees(a: number): void;
   getHash(): string;
   setHash(a: string): void;
-  toObject(): MicroTXRequest.AsObject;
+  toObject(): MicrotransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => MicroTXRequest;
+  static deserializeBinary: (bytes: {}) => MicrotransactionEndpointRequest;
 }
 
-export namespace MicroTXRequest {
+export namespace MicrotransactionEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     FromPubkey: string;

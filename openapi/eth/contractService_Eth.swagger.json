@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethContractArray"
+              "$ref": "#/definitions/ethContracts"
             }
           }
         },
@@ -55,7 +55,7 @@
     },
     "/eth/{network}/contracts/{query_address}": {
       "get": {
-        "operationId": "GetContractAddressEndpoint",
+        "operationId": "ContractAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -286,7 +286,7 @@
         }
       }
     },
-    "ethContractArray": {
+    "ethContracts": {
       "type": "object",
       "properties": {
         "contract": {

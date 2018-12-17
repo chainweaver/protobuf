@@ -62,8 +62,8 @@ func request_WalletService_CreateWalletEndpoint_0(ctx context.Context, marshaler
 
 }
 
-func request_WalletService_CreateWalletHDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CreateWalletHDEndpointRequest
+func request_WalletService_CreateHDWalletEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CreateHDWalletEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -91,7 +91,7 @@ func request_WalletService_CreateWalletHDEndpoint_0(ctx context.Context, marshal
 
 	protoReq.Network = NetworkAllowingAlias(e)
 
-	msg, err := client.CreateWalletHDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.CreateHDWalletEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -126,8 +126,8 @@ func request_WalletService_ListWalletsEndpoint_0(ctx context.Context, marshaler 
 
 }
 
-func request_WalletService_GetWalletEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetWalletEndpointRequest
+func request_WalletService_WalletEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq WalletEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -162,13 +162,13 @@ func request_WalletService_GetWalletEndpoint_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "name", err)
 	}
 
-	msg, err := client.GetWalletEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.WalletEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_WalletService_GetWalletHDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetWalletEndpointRequest
+func request_WalletService_WalletHDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq HDWalletEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -203,7 +203,7 @@ func request_WalletService_GetWalletHDEndpoint_0(ctx context.Context, marshaler 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "name", err)
 	}
 
-	msg, err := client.GetWalletHDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.WalletHDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -254,11 +254,11 @@ func request_WalletService_AddAddressesToWalletEndpoint_0(ctx context.Context, m
 }
 
 var (
-	filter_WalletService_GetWalletAddressesEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+	filter_WalletService_WalletAddressesEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_WalletService_GetWalletAddressesEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetWalletAddressesEndpointRequest
+func request_WalletService_WalletAddressesEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq WalletAddressesEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -293,21 +293,21 @@ func request_WalletService_GetWalletAddressesEndpoint_0(ctx context.Context, mar
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "name", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WalletService_GetWalletAddressesEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WalletService_WalletAddressesEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetWalletAddressesEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.WalletAddressesEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_WalletService_GetWalletAddressesHDEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+	filter_WalletService_HDWalletAddressesEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_WalletService_GetWalletAddressesHDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetWalletAddressesEndpointRequest
+func request_WalletService_HDWalletAddressesEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq HDWalletAddressesEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -342,11 +342,11 @@ func request_WalletService_GetWalletAddressesHDEndpoint_0(ctx context.Context, m
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "name", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WalletService_GetWalletAddressesHDEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WalletService_HDWalletAddressesEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetWalletAddressesHDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.HDWalletAddressesEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -401,7 +401,7 @@ func request_WalletService_RemoveAddressesFromWalletEndpoint_0(ctx context.Conte
 }
 
 func request_WalletService_GenerateAddressInWalletEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GenerateAdressInWalletEndpointRequest
+	var protoReq GenerateAddressInWalletEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -531,8 +531,8 @@ func request_WalletService_DeleteWalletEndpoint_0(ctx context.Context, marshaler
 
 }
 
-func request_WalletService_DeleteWalletHDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DeleteWalletEndpointRequest
+func request_WalletService_DeleteHDWalletHDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WalletServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteHDWalletEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -567,7 +567,7 @@ func request_WalletService_DeleteWalletHDEndpoint_0(ctx context.Context, marshal
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "name", err)
 	}
 
-	msg, err := client.DeleteWalletHDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.DeleteHDWalletHDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -639,7 +639,7 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 
 	})
 
-	mux.Handle("POST", pattern_WalletService_CreateWalletHDEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_WalletService_CreateHDWalletEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -657,14 +657,14 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WalletService_CreateWalletHDEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WalletService_CreateHDWalletEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WalletService_CreateWalletHDEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WalletService_CreateHDWalletEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -697,7 +697,7 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 
 	})
 
-	mux.Handle("GET", pattern_WalletService_GetWalletEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_WalletService_WalletEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -715,18 +715,18 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WalletService_GetWalletEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WalletService_WalletEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WalletService_GetWalletEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WalletService_WalletEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_WalletService_GetWalletHDEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_WalletService_WalletHDEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -744,14 +744,14 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WalletService_GetWalletHDEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WalletService_WalletHDEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WalletService_GetWalletHDEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WalletService_WalletHDEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -784,7 +784,7 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 
 	})
 
-	mux.Handle("GET", pattern_WalletService_GetWalletAddressesEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_WalletService_WalletAddressesEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -802,18 +802,18 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WalletService_GetWalletAddressesEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WalletService_WalletAddressesEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WalletService_GetWalletAddressesEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WalletService_WalletAddressesEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_WalletService_GetWalletAddressesHDEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_WalletService_HDWalletAddressesEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -831,14 +831,14 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WalletService_GetWalletAddressesHDEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WalletService_HDWalletAddressesEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WalletService_GetWalletAddressesHDEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WalletService_HDWalletAddressesEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -958,7 +958,7 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 
 	})
 
-	mux.Handle("DELETE", pattern_WalletService_DeleteWalletHDEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_WalletService_DeleteHDWalletHDEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -976,14 +976,14 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_WalletService_DeleteWalletHDEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_WalletService_DeleteHDWalletHDEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_WalletService_DeleteWalletHDEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_WalletService_DeleteHDWalletHDEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -993,19 +993,19 @@ func RegisterWalletServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 var (
 	pattern_WalletService_CreateWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"btc", "network", "wallets"}, ""))
 
-	pattern_WalletService_CreateWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3}, []string{"btc", "network", "wallets", "hd"}, ""))
+	pattern_WalletService_CreateHDWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3}, []string{"btc", "network", "wallets", "hd"}, ""))
 
 	pattern_WalletService_ListWalletsEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"btc", "network", "wallets"}, ""))
 
-	pattern_WalletService_GetWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"btc", "network", "wallets", "name"}, ""))
+	pattern_WalletService_WalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"btc", "network", "wallets", "name"}, ""))
 
-	pattern_WalletService_GetWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"btc", "network", "wallets", "hd", "name"}, ""))
+	pattern_WalletService_WalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"btc", "network", "wallets", "hd", "name"}, ""))
 
 	pattern_WalletService_AddAddressesToWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "network", "wallets", "name", "addresses"}, ""))
 
-	pattern_WalletService_GetWalletAddressesEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "network", "wallets", "name", "addresses"}, ""))
+	pattern_WalletService_WalletAddressesEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "network", "wallets", "name", "addresses"}, ""))
 
-	pattern_WalletService_GetWalletAddressesHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"btc", "network", "wallets", "hd", "name", "addresses"}, ""))
+	pattern_WalletService_HDWalletAddressesEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"btc", "network", "wallets", "hd", "name", "addresses"}, ""))
 
 	pattern_WalletService_RemoveAddressesFromWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "network", "wallets", "name", "addresses"}, ""))
 
@@ -1015,25 +1015,25 @@ var (
 
 	pattern_WalletService_DeleteWalletEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"btc", "network", "wallets", "name"}, ""))
 
-	pattern_WalletService_DeleteWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"btc", "network", "wallets", "hd", "name"}, ""))
+	pattern_WalletService_DeleteHDWalletHDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"btc", "network", "wallets", "hd", "name"}, ""))
 )
 
 var (
 	forward_WalletService_CreateWalletEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_WalletService_CreateWalletHDEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WalletService_CreateHDWalletEndpoint_0 = runtime.ForwardResponseMessage
 
 	forward_WalletService_ListWalletsEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_WalletService_GetWalletEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WalletService_WalletEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_WalletService_GetWalletHDEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WalletService_WalletHDEndpoint_0 = runtime.ForwardResponseMessage
 
 	forward_WalletService_AddAddressesToWalletEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_WalletService_GetWalletAddressesEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WalletService_WalletAddressesEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_WalletService_GetWalletAddressesHDEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WalletService_HDWalletAddressesEndpoint_0 = runtime.ForwardResponseMessage
 
 	forward_WalletService_RemoveAddressesFromWalletEndpoint_0 = runtime.ForwardResponseMessage
 
@@ -1043,5 +1043,5 @@ var (
 
 	forward_WalletService_DeleteWalletEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_WalletService_DeleteWalletHDEndpoint_0 = runtime.ForwardResponseMessage
+	forward_WalletService_DeleteHDWalletHDEndpoint_0 = runtime.ForwardResponseMessage
 )

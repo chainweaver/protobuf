@@ -15,30 +15,29 @@
     "application/json"
   ],
   "paths": {
-    "/hooks": {
+    "/btc/{network}/hooks": {
       "get": {
         "operationId": "ListWebHooksEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcArrayEvent"
+              "$ref": "#/definitions/btcEvents"
             }
           }
         },
         "parameters": [
           {
             "name": "network",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "type": "string",
             "enum": [
               "MAINNET",
               "mainnet",
               "TEST",
               "test"
-            ],
-            "default": "MAINNET"
+            ]
           },
           {
             "name": "token",
@@ -63,6 +62,18 @@
         },
         "parameters": [
           {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -76,7 +87,7 @@
         ]
       }
     },
-    "/hooks/{webhookid}": {
+    "/btc/{network}/hooks/{webhookid}": {
       "get": {
         "operationId": "WebHookIDEndpoint",
         "responses": {
@@ -89,23 +100,22 @@
         },
         "parameters": [
           {
-            "name": "webhookid",
+            "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "network",
-            "in": "query",
-            "required": false,
             "type": "string",
             "enum": [
               "MAINNET",
               "mainnet",
               "TEST",
               "test"
-            ],
-            "default": "MAINNET"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -124,23 +134,22 @@
         },
         "parameters": [
           {
-            "name": "webhookid",
+            "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "network",
-            "in": "query",
-            "required": false,
             "type": "string",
             "enum": [
               "MAINNET",
               "mainnet",
               "TEST",
               "test"
-            ],
-            "default": "MAINNET"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -150,17 +159,6 @@
     }
   },
   "definitions": {
-    "btcArrayEvent": {
-      "type": "object",
-      "properties": {
-        "event": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/btcEvent"
-          }
-        }
-      }
-    },
     "btcCreateWebHookEndpointRequest": {
       "type": "object",
       "properties": {
@@ -265,6 +263,17 @@
           "type": "integer",
           "format": "int32",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        }
+      }
+    },
+    "btcEvents": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcEvent"
+          }
         }
       }
     },

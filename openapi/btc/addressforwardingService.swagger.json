@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcListForwardsEndpointResponse"
+              "$ref": "#/definitions/btcAddressForwards"
             }
           }
         },
@@ -96,7 +96,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcDeleteForwardEndpointResponse"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
@@ -183,6 +183,17 @@
         }
       }
     },
+    "btcAddressForwards": {
+      "type": "object",
+      "properties": {
+        "forwards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcAddressForward"
+          }
+        }
+      }
+    },
     "btcCreateForwardEndpointRequest": {
       "type": "object",
       "properties": {
@@ -242,20 +253,6 @@
         }
       }
     },
-    "btcDeleteForwardEndpointResponse": {
-      "type": "object"
-    },
-    "btcListForwardsEndpointResponse": {
-      "type": "object",
-      "properties": {
-        "forwards": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/btcAddressForward"
-          }
-        }
-      }
-    },
     "btcNetworkAllowingAlias": {
       "type": "string",
       "enum": [
@@ -265,6 +262,9 @@
         "test"
       ],
       "default": "MAINNET"
+    },
+    "btcNullValue": {
+      "type": "object"
     }
   }
 }

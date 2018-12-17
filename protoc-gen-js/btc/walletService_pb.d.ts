@@ -19,6 +19,39 @@ export namespace AddAddressesToWalletEndpointRequest {
   }
 }
 
+export class CreateHDWalletEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getToken(): string;
+  setToken(a: string): void;
+  getName(): string;
+  setName(a: string): void;
+  getChainsList(): HDChain[];
+  setChainsList(a: HDChain[]): void;
+  getHd(): boolean;
+  setHd(a: boolean): void;
+  getExtendedPublicKey(): string;
+  setExtendedPublicKey(a: string): void;
+  getSubchainIndexesList(): number[];
+  setSubchainIndexesList(a: number[]): void;
+  toObject(): CreateHDWalletEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => CreateHDWalletEndpointRequest;
+}
+
+export namespace CreateHDWalletEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Token: string;
+    Name: string;
+    ChainsList: HDChain[];
+    Hd: boolean;
+    ExtendedPublicKey: string;
+    SubchainIndexesList: number[];
+  }
+}
+
 export class CreateWalletEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
@@ -43,36 +76,21 @@ export namespace CreateWalletEndpointRequest {
   }
 }
 
-export class CreateWalletHDEndpointRequest {
+export class DeleteHDWalletEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
-  getToken(): string;
-  setToken(a: string): void;
   getName(): string;
   setName(a: string): void;
-  getChainsList(): HDChain[];
-  setChainsList(a: HDChain[]): void;
-  getHd(): boolean;
-  setHd(a: boolean): void;
-  getExtendedPublicKey(): string;
-  setExtendedPublicKey(a: string): void;
-  getSubchainIndexesList(): number[];
-  setSubchainIndexesList(a: number[]): void;
-  toObject(): CreateWalletHDEndpointRequest.AsObject;
+  toObject(): DeleteHDWalletEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CreateWalletHDEndpointRequest;
+  static deserializeBinary: (bytes: {}) => DeleteHDWalletEndpointRequest;
 }
 
-export namespace CreateWalletHDEndpointRequest {
+export namespace DeleteHDWalletEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
-    Token: string;
     Name: string;
-    ChainsList: HDChain[];
-    Hd: boolean;
-    ExtendedPublicKey: string;
-    SubchainIndexesList: number[];
   }
 }
 
@@ -118,60 +136,18 @@ export namespace DeriveAddressInWalletEndpointRequest {
   }
 }
 
-export class GenerateAdressInWalletEndpointRequest {
+export class GenerateAddressInWalletEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
   getName(): string;
   setName(a: string): void;
-  toObject(): GenerateAdressInWalletEndpointRequest.AsObject;
+  toObject(): GenerateAddressInWalletEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GenerateAdressInWalletEndpointRequest;
+  static deserializeBinary: (bytes: {}) => GenerateAddressInWalletEndpointRequest;
 }
 
-export namespace GenerateAdressInWalletEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Name: string;
-  }
-}
-
-export class GetWalletAddressesEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getName(): string;
-  setName(a: string): void;
-  getUsed(): boolean;
-  setUsed(a: boolean): void;
-  getZerobalance(): boolean;
-  setZerobalance(a: boolean): void;
-  toObject(): GetWalletAddressesEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetWalletAddressesEndpointRequest;
-}
-
-export namespace GetWalletAddressesEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Name: string;
-    Used: boolean;
-    Zerobalance: boolean;
-  }
-}
-
-export class GetWalletEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getName(): string;
-  setName(a: string): void;
-  toObject(): GetWalletEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetWalletEndpointRequest;
-}
-
-export namespace GetWalletEndpointRequest {
+export namespace GenerateAddressInWalletEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Name: string;
@@ -244,6 +220,48 @@ export namespace HDWallet {
     Hd: boolean;
     ExtendedPublicKey: string;
     SubchainIndexesList: number[];
+  }
+}
+
+export class HDWalletAddressesEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getName(): string;
+  setName(a: string): void;
+  getUsed(): boolean;
+  setUsed(a: boolean): void;
+  getZerobalance(): boolean;
+  setZerobalance(a: boolean): void;
+  toObject(): HDWalletAddressesEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => HDWalletAddressesEndpointRequest;
+}
+
+export namespace HDWalletAddressesEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Name: string;
+    Used: boolean;
+    Zerobalance: boolean;
+  }
+}
+
+export class HDWalletEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getName(): string;
+  setName(a: string): void;
+  toObject(): HDWalletEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => HDWalletEndpointRequest;
+}
+
+export namespace HDWalletEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Name: string;
   }
 }
 
@@ -373,6 +391,48 @@ export namespace WalletAddressKeychain {
     ScriptType: string;
     OriginalAddress: string;
     OapAddress: string;
+  }
+}
+
+export class WalletAddressesEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getName(): string;
+  setName(a: string): void;
+  getUsed(): boolean;
+  setUsed(a: boolean): void;
+  getZerobalance(): boolean;
+  setZerobalance(a: boolean): void;
+  toObject(): WalletAddressesEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => WalletAddressesEndpointRequest;
+}
+
+export namespace WalletAddressesEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Name: string;
+    Used: boolean;
+    Zerobalance: boolean;
+  }
+}
+
+export class WalletEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getName(): string;
+  setName(a: string): void;
+  toObject(): WalletEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => WalletEndpointRequest;
+}
+
+export namespace WalletEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Name: string;
   }
 }
 

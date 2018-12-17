@@ -73,8 +73,8 @@ func request_AnalyticsService_CreateAnalyticsJob_0(ctx context.Context, marshale
 
 }
 
-func request_AnalyticsService_GetAnalyticsJob_0(ctx context.Context, marshaler runtime.Marshaler, client AnalyticsServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetAnalyticsJobRequest
+func request_AnalyticsService_AnalyticsJob_0(ctx context.Context, marshaler runtime.Marshaler, client AnalyticsServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq AnalyticsJobRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -109,17 +109,17 @@ func request_AnalyticsService_GetAnalyticsJob_0(ctx context.Context, marshaler r
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "ticket", err)
 	}
 
-	msg, err := client.GetAnalyticsJob(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.AnalyticsJob(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_AnalyticsService_GetAnalyticsJobResults_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "ticket": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+	filter_AnalyticsService_AnalyticsJobResults_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "ticket": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_AnalyticsService_GetAnalyticsJobResults_0(ctx context.Context, marshaler runtime.Marshaler, client AnalyticsServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetAnalyticsJobResultsRequest
+func request_AnalyticsService_AnalyticsJobResults_0(ctx context.Context, marshaler runtime.Marshaler, client AnalyticsServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq AnalyticsJobResultsRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -154,11 +154,11 @@ func request_AnalyticsService_GetAnalyticsJobResults_0(ctx context.Context, mars
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "ticket", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_AnalyticsService_GetAnalyticsJobResults_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_AnalyticsService_AnalyticsJobResults_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetAnalyticsJobResults(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.AnalyticsJobResults(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -230,7 +230,7 @@ func RegisterAnalyticsServiceHandlerClient(ctx context.Context, mux *runtime.Ser
 
 	})
 
-	mux.Handle("GET", pattern_AnalyticsService_GetAnalyticsJob_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_AnalyticsService_AnalyticsJob_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -248,18 +248,18 @@ func RegisterAnalyticsServiceHandlerClient(ctx context.Context, mux *runtime.Ser
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AnalyticsService_GetAnalyticsJob_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AnalyticsService_AnalyticsJob_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AnalyticsService_GetAnalyticsJob_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AnalyticsService_AnalyticsJob_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_AnalyticsService_GetAnalyticsJobResults_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_AnalyticsService_AnalyticsJobResults_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -277,14 +277,14 @@ func RegisterAnalyticsServiceHandlerClient(ctx context.Context, mux *runtime.Ser
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AnalyticsService_GetAnalyticsJobResults_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AnalyticsService_AnalyticsJobResults_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AnalyticsService_GetAnalyticsJobResults_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AnalyticsService_AnalyticsJobResults_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -294,15 +294,15 @@ func RegisterAnalyticsServiceHandlerClient(ctx context.Context, mux *runtime.Ser
 var (
 	pattern_AnalyticsService_CreateAnalyticsJob_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"btc", "network", "analytics", "enginename"}, ""))
 
-	pattern_AnalyticsService_GetAnalyticsJob_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"btc", "network", "analytics", "job", "ticket"}, ""))
+	pattern_AnalyticsService_AnalyticsJob_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"btc", "network", "analytics", "job", "ticket"}, ""))
 
-	pattern_AnalyticsService_GetAnalyticsJobResults_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"btc", "network", "analytics", "job", "ticket", "results"}, ""))
+	pattern_AnalyticsService_AnalyticsJobResults_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"btc", "network", "analytics", "job", "ticket", "results"}, ""))
 )
 
 var (
 	forward_AnalyticsService_CreateAnalyticsJob_0 = runtime.ForwardResponseMessage
 
-	forward_AnalyticsService_GetAnalyticsJob_0 = runtime.ForwardResponseMessage
+	forward_AnalyticsService_AnalyticsJob_0 = runtime.ForwardResponseMessage
 
-	forward_AnalyticsService_GetAnalyticsJobResults_0 = runtime.ForwardResponseMessage
+	forward_AnalyticsService_AnalyticsJobResults_0 = runtime.ForwardResponseMessage
 )

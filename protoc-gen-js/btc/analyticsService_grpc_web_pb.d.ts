@@ -1,8 +1,8 @@
 import * as grpcWeb from 'grpc-web';
 import {
+  AnalyticsJobRequest,
+  AnalyticsJobResultsRequest,
   CreateAnalyticsJobRequest,
-  GetAnalyticsJobRequest,
-  GetAnalyticsJobResultsRequest,
   Job,
   JobArgs,
   JobResultArr,
@@ -20,15 +20,15 @@ export class AnalyticsServiceClient {
                response: Job) => void
   ): grpcWeb.ClientReadableStream<Job>;
 
-  getAnalyticsJob(
-    request: GetAnalyticsJobRequest,
+  analyticsJob(
+    request: AnalyticsJobRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Job) => void
   ): grpcWeb.ClientReadableStream<Job>;
 
-  getAnalyticsJobResults(
-    request: GetAnalyticsJobResultsRequest,
+  analyticsJobResults(
+    request: AnalyticsJobResultsRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: JobResults) => void
@@ -46,13 +46,13 @@ export class AnalyticsServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<Job>;
 
-  getAnalyticsJob(
-    request: GetAnalyticsJobRequest,
+  analyticsJob(
+    request: AnalyticsJobRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Job>;
 
-  getAnalyticsJobResults(
-    request: GetAnalyticsJobResultsRequest,
+  analyticsJobResults(
+    request: AnalyticsJobResultsRequest,
     metadata: grpcWeb.Metadata
   ): Promise<JobResults>;
 

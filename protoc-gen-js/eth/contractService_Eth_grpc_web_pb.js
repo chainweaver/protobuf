@@ -84,15 +84,15 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.eth.ContractArray>}
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.Contracts>}
  */
 const methodInfo_ContractService_CreateContractEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  contractMessage_Eth_pb.ContractArray,
+  contractMessage_Eth_pb.Contracts,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateContractEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  contractMessage_Eth_pb.ContractArray.deserializeBinary
+  contractMessage_Eth_pb.Contracts.deserializeBinary
 );
 
 
@@ -101,9 +101,9 @@ const methodInfo_ContractService_CreateContractEndpoint = new grpc.web.AbstractC
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.eth.ContractArray)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.eth.Contracts)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.ContractArray>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Contracts>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.createContractEndpoint =
@@ -122,7 +122,7 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.createC
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.ContractArray>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Contracts>}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient.prototype.createContractEndpoint =
@@ -139,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient.prototype.
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.eth.ContractAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.eth.Contract>}
  */
-const methodInfo_ContractService_GetContractAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ContractService_ContractAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_Eth_pb.Contract,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.ContractAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -153,7 +153,7 @@ const methodInfo_ContractService_GetContractAddressEndpoint = new grpc.web.Abstr
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ContractAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -162,29 +162,29 @@ const methodInfo_ContractService_GetContractAddressEndpoint = new grpc.web.Abstr
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.eth.Contract>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.getContractAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.ContractServiceClient.prototype.contractAddressEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.eth.ContractService/GetContractAddressEndpoint',
+      '/fairwaycorp.blockchainprotobuf.eth.ContractService/ContractAddressEndpoint',
       request,
       metadata,
-      methodInfo_ContractService_GetContractAddressEndpoint,
+      methodInfo_ContractService_ContractAddressEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.GetContractAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.ContractAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.eth.Contract>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient.prototype.getContractAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.eth.ContractServicePromiseClient.prototype.contractAddressEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getContractAddressEndpoint(
+    this.delegateClient_.contractAddressEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

@@ -151,12 +151,12 @@
     },
     "/eth/{network}/txs": {
       "get": {
-        "operationId": "UnconfirmedTransactionEndpoint",
+        "operationId": "UnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethTxArray"
+              "$ref": "#/definitions/ethTXs"
             }
           }
         },
@@ -219,7 +219,7 @@
     },
     "/eth/{network}/txs/new": {
       "post": {
-        "operationId": "NewTransactionsEndpoint",
+        "operationId": "CreateTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -246,7 +246,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethNewTransactionEndpointRequest"
+              "$ref": "#/definitions/ethCreateTransactionEndpointRequest"
             }
           }
         ],
@@ -367,30 +367,29 @@
         ]
       }
     },
-    "/hooks": {
+    "/eth/{network}/hooks": {
       "get": {
         "operationId": "ListWebHooksEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethArrayEvent"
+              "$ref": "#/definitions/ethEvents"
             }
           }
         },
         "parameters": [
           {
             "name": "network",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ],
-            "default": "MAIN"
+            ]
           },
           {
             "name": "token",
@@ -415,6 +414,18 @@
         },
         "parameters": [
           {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -428,7 +439,7 @@
         ]
       }
     },
-    "/hooks/{webhookid}": {
+    "/eth/{network}/hooks/{webhookid}": {
       "get": {
         "operationId": "WebHookIDEndpoint",
         "responses": {
@@ -441,23 +452,22 @@
         },
         "parameters": [
           {
-            "name": "webhookid",
+            "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "network",
-            "in": "query",
-            "required": false,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ],
-            "default": "MAIN"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -476,23 +486,22 @@
         },
         "parameters": [
           {
-            "name": "webhookid",
+            "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "network",
-            "in": "query",
-            "required": false,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ],
-            "default": "MAIN"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -500,7 +509,7 @@
         ]
       }
     },
-    "/eth/{network}/addr": {
+    "/eth/{network}/addrs": {
       "post": {
         "operationId": "GenerateAddressEndpoint",
         "responses": {
@@ -538,7 +547,7 @@
         ]
       }
     },
-    "/eth/{network}/addr/{address}": {
+    "/eth/{network}/addrs/{address}": {
       "get": {
         "operationId": "AddressEndpoint",
         "responses": {
@@ -649,7 +658,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethContractArray"
+              "$ref": "#/definitions/ethContracts"
             }
           }
         },
@@ -682,7 +691,7 @@
     },
     "/eth/{network}/contracts/{query_address}": {
       "get": {
-        "operationId": "GetContractAddressEndpoint",
+        "operationId": "ContractAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -955,33 +964,7 @@
       ],
       "default": "MAIN"
     },
-    "ethDecodeRawTransactionEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/ethNetworkAllowingAlias"
-        },
-        "tx": {
-          "type": "string"
-        }
-      }
-    },
-    "ethInputType": {
-      "type": "object",
-      "properties": {
-        "sequence": {
-          "type": "string",
-          "format": "int64"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ethNewTransactionEndpointRequest": {
+    "ethCreateTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -1121,6 +1104,32 @@
         "execution_error": {
           "type": "string",
           "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
+        }
+      }
+    },
+    "ethDecodeRawTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "tx": {
+          "type": "string"
+        }
+      }
+    },
+    "ethInputType": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "type": "string",
+          "format": "int64"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -1356,24 +1365,13 @@
         }
       }
     },
-    "ethTxArray": {
+    "ethTXs": {
       "type": "object",
       "properties": {
         "result": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ethTX"
-          }
-        }
-      }
-    },
-    "ethArrayEvent": {
-      "type": "object",
-      "properties": {
-        "event": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethEvent"
           }
         }
       }
@@ -1448,6 +1446,17 @@
           "type": "string",
           "format": "uint64",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        }
+      }
+    },
+    "ethEvents": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethEvent"
+          }
         }
       }
     },
@@ -1748,7 +1757,7 @@
         }
       }
     },
-    "ethContractArray": {
+    "ethContracts": {
       "type": "object",
       "properties": {
         "contract": {

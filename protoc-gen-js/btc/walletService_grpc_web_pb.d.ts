@@ -1,22 +1,25 @@
 import * as grpcWeb from 'grpc-web';
 import {
   AddAddressesToWalletEndpointRequest,
+  CreateHDWalletEndpointRequest,
   CreateWalletEndpointRequest,
-  CreateWalletHDEndpointRequest,
+  DeleteHDWalletEndpointRequest,
   DeleteWalletEndpointRequest,
   DeriveAddressInWalletEndpointRequest,
-  GenerateAdressInWalletEndpointRequest,
-  GetWalletAddressesEndpointRequest,
-  GetWalletEndpointRequest,
+  GenerateAddressInWalletEndpointRequest,
   HDAddress,
   HDChain,
   HDWallet,
+  HDWalletAddressesEndpointRequest,
+  HDWalletEndpointRequest,
   ListWallets,
   ListWalletsEndpointRequest,
   NullValue,
   RemoveAddressesFromWalletEndpointRequest,
   Wallet,
-  WalletAddressKeychain} from './walletService_pb';
+  WalletAddressKeychain,
+  WalletAddressesEndpointRequest,
+  WalletEndpointRequest} from './walletService_pb';
 
 export class WalletServiceClient {
   constructor (hostname: string,
@@ -30,8 +33,8 @@ export class WalletServiceClient {
                response: Wallet) => void
   ): grpcWeb.ClientReadableStream<Wallet>;
 
-  createWalletHDEndpoint(
-    request: CreateWalletHDEndpointRequest,
+  createHDWalletEndpoint(
+    request: CreateHDWalletEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: HDWallet) => void
@@ -44,15 +47,15 @@ export class WalletServiceClient {
                response: ListWallets) => void
   ): grpcWeb.ClientReadableStream<ListWallets>;
 
-  getWalletEndpoint(
-    request: GetWalletEndpointRequest,
+  walletEndpoint(
+    request: WalletEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Wallet) => void
   ): grpcWeb.ClientReadableStream<Wallet>;
 
-  getWalletHDEndpoint(
-    request: GetWalletEndpointRequest,
+  walletHDEndpoint(
+    request: HDWalletEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: HDWallet) => void
@@ -65,15 +68,15 @@ export class WalletServiceClient {
                response: Wallet) => void
   ): grpcWeb.ClientReadableStream<Wallet>;
 
-  getWalletAddressesEndpoint(
-    request: GetWalletAddressesEndpointRequest,
+  walletAddressesEndpoint(
+    request: WalletAddressesEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Wallet) => void
   ): grpcWeb.ClientReadableStream<Wallet>;
 
-  getWalletAddressesHDEndpoint(
-    request: GetWalletAddressesEndpointRequest,
+  hDWalletAddressesEndpoint(
+    request: HDWalletAddressesEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: HDChain) => void
@@ -87,7 +90,7 @@ export class WalletServiceClient {
   ): grpcWeb.ClientReadableStream<NullValue>;
 
   generateAddressInWalletEndpoint(
-    request: GenerateAdressInWalletEndpointRequest,
+    request: GenerateAddressInWalletEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: WalletAddressKeychain) => void
@@ -107,8 +110,8 @@ export class WalletServiceClient {
                response: NullValue) => void
   ): grpcWeb.ClientReadableStream<NullValue>;
 
-  deleteWalletHDEndpoint(
-    request: DeleteWalletEndpointRequest,
+  deleteHDWalletHDEndpoint(
+    request: DeleteHDWalletEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: NullValue) => void
@@ -126,8 +129,8 @@ export class WalletServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<Wallet>;
 
-  createWalletHDEndpoint(
-    request: CreateWalletHDEndpointRequest,
+  createHDWalletEndpoint(
+    request: CreateHDWalletEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<HDWallet>;
 
@@ -136,13 +139,13 @@ export class WalletServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<ListWallets>;
 
-  getWalletEndpoint(
-    request: GetWalletEndpointRequest,
+  walletEndpoint(
+    request: WalletEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Wallet>;
 
-  getWalletHDEndpoint(
-    request: GetWalletEndpointRequest,
+  walletHDEndpoint(
+    request: HDWalletEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<HDWallet>;
 
@@ -151,13 +154,13 @@ export class WalletServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<Wallet>;
 
-  getWalletAddressesEndpoint(
-    request: GetWalletAddressesEndpointRequest,
+  walletAddressesEndpoint(
+    request: WalletAddressesEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Wallet>;
 
-  getWalletAddressesHDEndpoint(
-    request: GetWalletAddressesEndpointRequest,
+  hDWalletAddressesEndpoint(
+    request: HDWalletAddressesEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<HDChain>;
 
@@ -167,7 +170,7 @@ export class WalletServicePromiseClient {
   ): Promise<NullValue>;
 
   generateAddressInWalletEndpoint(
-    request: GenerateAdressInWalletEndpointRequest,
+    request: GenerateAddressInWalletEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<WalletAddressKeychain>;
 
@@ -181,8 +184,8 @@ export class WalletServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<NullValue>;
 
-  deleteWalletHDEndpoint(
-    request: DeleteWalletEndpointRequest,
+  deleteHDWalletHDEndpoint(
+    request: DeleteHDWalletEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<NullValue>;
 

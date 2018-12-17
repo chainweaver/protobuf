@@ -1,9 +1,9 @@
 import * as grpcWeb from 'grpc-web';
 import {
-  ArrayEvent,
   CreateWebHookEndpointRequest,
   DeleteWebHookEndpointRequest,
   Event,
+  Events,
   ListWebHooksEndpointRequest,
   NullValue,
   WebHookIDEndpointRequest} from './webhooksService_pb';
@@ -24,8 +24,8 @@ export class WebHooksServiceClient {
     request: ListWebHooksEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: ArrayEvent) => void
-  ): grpcWeb.ClientReadableStream<ArrayEvent>;
+               response: Events) => void
+  ): grpcWeb.ClientReadableStream<Events>;
 
   webHookIDEndpoint(
     request: WebHookIDEndpointRequest,
@@ -56,7 +56,7 @@ export class WebHooksServicePromiseClient {
   listWebHooksEndpoint(
     request: ListWebHooksEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<ArrayEvent>;
+  ): Promise<Events>;
 
   webHookIDEndpoint(
     request: WebHookIDEndpointRequest,

@@ -12,12 +12,12 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_Eth_pb = require('./commonMessage_Eth_pb.js');
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.DecodeRawTransactionEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.PushRawTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.SendTransactionEndpointRequest', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.TXs', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.TransactionHashEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.TxArray', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest', null, global);
 
 /**
@@ -30,19 +30,19 @@ goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransacti
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.TxArray.repeatedFields_, null);
+proto.fairwaycorp.blockchainprotobuf.eth.TXs = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.TXs.repeatedFields_, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.TxArray, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.TXs, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.eth.TxArray.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.TxArray';
+  proto.fairwaycorp.blockchainprotobuf.eth.TXs.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.TXs';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.repeatedFields_ = [1];
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.repeatedFields_ = [1];
 
 
 
@@ -57,8 +57,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.eth.TxArray.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.eth.TXs.toObject(opt_includeInstance, this);
 };
 
 
@@ -67,11 +67,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.toObject = function(o
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TXs} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.toObject = function(includeInstance, msg) {
   var f, obj = {
     resultList: jspb.Message.toObjectList(msg.getResultList(),
     commonMessage_Eth_pb.TX.toObject, includeInstance)
@@ -88,23 +88,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.TxArray.toObject = function(includeInst
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TXs}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.TxArray;
-  return proto.fairwaycorp.blockchainprotobuf.eth.TxArray.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.TXs;
+  return proto.fairwaycorp.blockchainprotobuf.eth.TXs.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TXs} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TXs}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -129,9 +129,9 @@ proto.fairwaycorp.blockchainprotobuf.eth.TxArray.deserializeBinaryFromReader = f
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.eth.TxArray.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.eth.TXs.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -139,11 +139,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.serializeBinary = fun
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TxArray} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.TXs} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getResultList();
   if (f.length > 0) {
@@ -160,14 +160,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.TxArray.serializeBinaryToWriter = funct
  * repeated TX result = 1;
  * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.TX>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.getResultList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.prototype.getResultList = function() {
   return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.TX>} */ (
     jspb.Message.getRepeatedWrapperField(this, commonMessage_Eth_pb.TX, 1));
 };
 
 
 /** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.TX>} value */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.setResultList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.prototype.setResultList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -177,12 +177,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.setResultList = funct
  * @param {number=} opt_index
  * @return {!proto.fairwaycorp.blockchainprotobuf.eth.TX}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.addResult = function(opt_value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.prototype.addResult = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.TX, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.eth.TxArray.prototype.clearResultList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.TXs.prototype.clearResultList = function() {
   this.setResultList([]);
 };
 
@@ -509,19 +509,19 @@ proto.fairwaycorp.blockchainprotobuf.eth.UnconfirmedTransactionsEndpointRequest.
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.repeatedFields_, null);
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.repeatedFields_, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest';
+  proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.repeatedFields_ = [4,17,18,19];
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.repeatedFields_ = [4,17,18,19];
 
 
 
@@ -536,8 +536,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -546,11 +546,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
     blockHeight: jspb.Message.getFieldWithDefault(msg, 2, 0),
@@ -595,23 +595,23 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.toObject 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest;
-  return proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest;
+  return proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -745,9 +745,9 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.deseriali
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -755,11 +755,11 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNetwork();
   if (f !== 0.0) {
@@ -966,13 +966,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.serialize
  * optional NetworkAllowingAlias network = 1;
  * @return {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getNetwork = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getNetwork = function() {
   return /** @type {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setNetwork = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setNetwork = function(value) {
   jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -981,13 +981,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional int32 block_height = 2;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getBlockHeight = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getBlockHeight = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setBlockHeight = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setBlockHeight = function(value) {
   jspb.Message.setProto3IntField(this, 2, value);
 };
 
@@ -996,13 +996,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional string hash = 3;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getHash = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getHash = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setHash = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setHash = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
 };
 
@@ -1011,13 +1011,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * repeated string addresses = 4;
  * @return {!Array<string>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getAddressesList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getAddressesList = function() {
   return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 4));
 };
 
 
 /** @param {!Array<string>} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setAddressesList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setAddressesList = function(value) {
   jspb.Message.setField(this, 4, value || []);
 };
 
@@ -1026,12 +1026,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * @param {!string} value
  * @param {number=} opt_index
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.addAddresses = function(value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.addAddresses = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 4, value, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.clearAddressesList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.clearAddressesList = function() {
   this.setAddressesList([]);
 };
 
@@ -1040,13 +1040,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional uint64 total = 5;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getTotal = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getTotal = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setTotal = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setTotal = function(value) {
   jspb.Message.setProto3IntField(this, 5, value);
 };
 
@@ -1055,13 +1055,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional uint64 fees = 6;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getFees = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getFees = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setFees = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setFees = function(value) {
   jspb.Message.setProto3IntField(this, 6, value);
 };
 
@@ -1070,13 +1070,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional uint64 size = 7;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getSize = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getSize = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setSize = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setSize = function(value) {
   jspb.Message.setProto3IntField(this, 7, value);
 };
 
@@ -1085,13 +1085,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional uint64 gas_used = 8;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getGasUsed = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getGasUsed = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setGasUsed = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setGasUsed = function(value) {
   jspb.Message.setProto3IntField(this, 8, value);
 };
 
@@ -1100,13 +1100,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional uint64 gas_price = 9;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getGasPrice = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getGasPrice = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setGasPrice = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setGasPrice = function(value) {
   jspb.Message.setProto3IntField(this, 9, value);
 };
 
@@ -1115,13 +1115,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional string relayed_by = 10;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getRelayedBy = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getRelayedBy = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setRelayedBy = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setRelayedBy = function(value) {
   jspb.Message.setProto3StringField(this, 10, value);
 };
 
@@ -1130,13 +1130,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional string received = 11;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getReceived = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getReceived = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setReceived = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setReceived = function(value) {
   jspb.Message.setProto3StringField(this, 11, value);
 };
 
@@ -1145,13 +1145,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional int32 ver = 12;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getVer = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getVer = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setVer = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setVer = function(value) {
   jspb.Message.setProto3IntField(this, 12, value);
 };
 
@@ -1162,13 +1162,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getDoubleSpend = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getDoubleSpend = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 13, false));
 };
 
 
 /** @param {boolean} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setDoubleSpend = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setDoubleSpend = function(value) {
   jspb.Message.setProto3BooleanField(this, 13, value);
 };
 
@@ -1177,13 +1177,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional int32 vin_sz = 14;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getVinSz = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getVinSz = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 14, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setVinSz = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setVinSz = function(value) {
   jspb.Message.setProto3IntField(this, 14, value);
 };
 
@@ -1192,13 +1192,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional int32 vout_sz = 15;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getVoutSz = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getVoutSz = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 15, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setVoutSz = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setVoutSz = function(value) {
   jspb.Message.setProto3IntField(this, 15, value);
 };
 
@@ -1207,13 +1207,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional int32 confirmations = 16;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getConfirmations = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getConfirmations = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 16, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setConfirmations = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setConfirmations = function(value) {
   jspb.Message.setProto3IntField(this, 16, value);
 };
 
@@ -1222,14 +1222,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * repeated InputType inputs = 17;
  * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.InputType>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getInputsList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getInputsList = function() {
   return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.InputType>} */ (
     jspb.Message.getRepeatedWrapperField(this, commonMessage_Eth_pb.InputType, 17));
 };
 
 
 /** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.InputType>} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setInputsList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setInputsList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 17, value);
 };
 
@@ -1239,12 +1239,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * @param {number=} opt_index
  * @return {!proto.fairwaycorp.blockchainprotobuf.eth.InputType}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.addInputs = function(opt_value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.addInputs = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 17, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.InputType, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.clearInputsList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.clearInputsList = function() {
   this.setInputsList([]);
 };
 
@@ -1253,14 +1253,14 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * repeated OutputType outputs = 18;
  * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.OutputType>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getOutputsList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getOutputsList = function() {
   return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.eth.OutputType>} */ (
     jspb.Message.getRepeatedWrapperField(this, commonMessage_Eth_pb.OutputType, 18));
 };
 
 
 /** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.eth.OutputType>} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setOutputsList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setOutputsList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 18, value);
 };
 
@@ -1270,12 +1270,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * @param {number=} opt_index
  * @return {!proto.fairwaycorp.blockchainprotobuf.eth.OutputType}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.addOutputs = function(opt_value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.addOutputs = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 18, opt_value, proto.fairwaycorp.blockchainprotobuf.eth.OutputType, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.clearOutputsList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.clearOutputsList = function() {
   this.setOutputsList([]);
 };
 
@@ -1284,13 +1284,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * repeated string internal_txids = 19;
  * @return {!Array<string>}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getInternalTxidsList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getInternalTxidsList = function() {
   return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 19));
 };
 
 
 /** @param {!Array<string>} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setInternalTxidsList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setInternalTxidsList = function(value) {
   jspb.Message.setField(this, 19, value || []);
 };
 
@@ -1299,12 +1299,12 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * @param {!string} value
  * @param {number=} opt_index
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.addInternalTxids = function(value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.addInternalTxids = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 19, value, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.clearInternalTxidsList = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.clearInternalTxidsList = function() {
   this.setInternalTxidsList([]);
 };
 
@@ -1313,13 +1313,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional string parent_tx = 20;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getParentTx = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getParentTx = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 20, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setParentTx = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setParentTx = function(value) {
   jspb.Message.setProto3StringField(this, 20, value);
 };
 
@@ -1328,13 +1328,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional string confirmed = 21;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getConfirmed = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getConfirmed = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 21, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setConfirmed = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setConfirmed = function(value) {
   jspb.Message.setProto3StringField(this, 21, value);
 };
 
@@ -1343,13 +1343,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional int32 gas_limit = 22;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getGasLimit = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getGasLimit = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 22, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setGasLimit = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setGasLimit = function(value) {
   jspb.Message.setProto3IntField(this, 22, value);
 };
 
@@ -1360,13 +1360,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getContractCreation = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getContractCreation = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 23, false));
 };
 
 
 /** @param {boolean} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setContractCreation = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setContractCreation = function(value) {
   jspb.Message.setProto3BooleanField(this, 23, value);
 };
 
@@ -1375,13 +1375,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional int32 receive_count = 24;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getReceiveCount = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getReceiveCount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 24, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setReceiveCount = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setReceiveCount = function(value) {
   jspb.Message.setProto3IntField(this, 24, value);
 };
 
@@ -1390,13 +1390,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional string block_hash = 25;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getBlockHash = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getBlockHash = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 25, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setBlockHash = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setBlockHash = function(value) {
   jspb.Message.setProto3StringField(this, 25, value);
 };
 
@@ -1405,13 +1405,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional int32 block_index = 26;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getBlockIndex = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getBlockIndex = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 26, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setBlockIndex = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setBlockIndex = function(value) {
   jspb.Message.setProto3IntField(this, 26, value);
 };
 
@@ -1420,13 +1420,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional string double_of = 27;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getDoubleOf = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getDoubleOf = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 27, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setDoubleOf = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setDoubleOf = function(value) {
   jspb.Message.setProto3StringField(this, 27, value);
 };
 
@@ -1435,13 +1435,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype
  * optional string execution_error = 28;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.getExecutionError = function() {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.getExecutionError = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 28, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.eth.NewTransactionEndpointRequest.prototype.setExecutionError = function(value) {
+proto.fairwaycorp.blockchainprotobuf.eth.CreateTransactionEndpointRequest.prototype.setExecutionError = function(value) {
   jspb.Message.setProto3StringField(this, 28, value);
 };
 

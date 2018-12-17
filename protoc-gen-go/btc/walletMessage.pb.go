@@ -29,7 +29,7 @@ func (m *ListWallets) Reset()         { *m = ListWallets{} }
 func (m *ListWallets) String() string { return proto.CompactTextString(m) }
 func (*ListWallets) ProtoMessage()    {}
 func (*ListWallets) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{0}
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{0}
 }
 func (m *ListWallets) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListWallets.Unmarshal(m, b)
@@ -90,7 +90,7 @@ func (m *WalletAddressKeychain) Reset()         { *m = WalletAddressKeychain{} }
 func (m *WalletAddressKeychain) String() string { return proto.CompactTextString(m) }
 func (*WalletAddressKeychain) ProtoMessage()    {}
 func (*WalletAddressKeychain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{1}
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{1}
 }
 func (m *WalletAddressKeychain) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WalletAddressKeychain.Unmarshal(m, b)
@@ -201,7 +201,7 @@ func (m *CreateWalletEndpointRequest) Reset()         { *m = CreateWalletEndpoin
 func (m *CreateWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateWalletEndpointRequest) ProtoMessage()    {}
 func (*CreateWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{2}
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{2}
 }
 func (m *CreateWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateWalletEndpointRequest.Unmarshal(m, b)
@@ -249,7 +249,7 @@ func (m *CreateWalletEndpointRequest) GetAddresses() []string {
 	return nil
 }
 
-type CreateWalletHDEndpointRequest struct {
+type CreateHDWalletEndpointRequest struct {
 	Network              NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
 	Token                string               `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
 	Name                 string               `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
@@ -262,73 +262,73 @@ type CreateWalletHDEndpointRequest struct {
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CreateWalletHDEndpointRequest) Reset()         { *m = CreateWalletHDEndpointRequest{} }
-func (m *CreateWalletHDEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*CreateWalletHDEndpointRequest) ProtoMessage()    {}
-func (*CreateWalletHDEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{3}
+func (m *CreateHDWalletEndpointRequest) Reset()         { *m = CreateHDWalletEndpointRequest{} }
+func (m *CreateHDWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateHDWalletEndpointRequest) ProtoMessage()    {}
+func (*CreateHDWalletEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{3}
 }
-func (m *CreateWalletHDEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateWalletHDEndpointRequest.Unmarshal(m, b)
+func (m *CreateHDWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateHDWalletEndpointRequest.Unmarshal(m, b)
 }
-func (m *CreateWalletHDEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateWalletHDEndpointRequest.Marshal(b, m, deterministic)
+func (m *CreateHDWalletEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateHDWalletEndpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *CreateWalletHDEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateWalletHDEndpointRequest.Merge(dst, src)
+func (dst *CreateHDWalletEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateHDWalletEndpointRequest.Merge(dst, src)
 }
-func (m *CreateWalletHDEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_CreateWalletHDEndpointRequest.Size(m)
+func (m *CreateHDWalletEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateHDWalletEndpointRequest.Size(m)
 }
-func (m *CreateWalletHDEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreateWalletHDEndpointRequest.DiscardUnknown(m)
+func (m *CreateHDWalletEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateHDWalletEndpointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CreateWalletHDEndpointRequest proto.InternalMessageInfo
+var xxx_messageInfo_CreateHDWalletEndpointRequest proto.InternalMessageInfo
 
-func (m *CreateWalletHDEndpointRequest) GetNetwork() NetworkAllowingAlias {
+func (m *CreateHDWalletEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	if m != nil {
 		return m.Network
 	}
 	return NetworkAllowingAlias_MAINNET
 }
 
-func (m *CreateWalletHDEndpointRequest) GetToken() string {
+func (m *CreateHDWalletEndpointRequest) GetToken() string {
 	if m != nil {
 		return m.Token
 	}
 	return ""
 }
 
-func (m *CreateWalletHDEndpointRequest) GetName() string {
+func (m *CreateHDWalletEndpointRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *CreateWalletHDEndpointRequest) GetChains() []*HDChain {
+func (m *CreateHDWalletEndpointRequest) GetChains() []*HDChain {
 	if m != nil {
 		return m.Chains
 	}
 	return nil
 }
 
-func (m *CreateWalletHDEndpointRequest) GetHd() bool {
+func (m *CreateHDWalletEndpointRequest) GetHd() bool {
 	if m != nil {
 		return m.Hd
 	}
 	return false
 }
 
-func (m *CreateWalletHDEndpointRequest) GetExtendedPublicKey() string {
+func (m *CreateHDWalletEndpointRequest) GetExtendedPublicKey() string {
 	if m != nil {
 		return m.ExtendedPublicKey
 	}
 	return ""
 }
 
-func (m *CreateWalletHDEndpointRequest) GetSubchainIndexes() []int32 {
+func (m *CreateHDWalletEndpointRequest) GetSubchainIndexes() []int32 {
 	if m != nil {
 		return m.SubchainIndexes
 	}
@@ -346,7 +346,7 @@ func (m *ListWalletsEndpointRequest) Reset()         { *m = ListWalletsEndpointR
 func (m *ListWalletsEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ListWalletsEndpointRequest) ProtoMessage()    {}
 func (*ListWalletsEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{4}
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{4}
 }
 func (m *ListWalletsEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListWalletsEndpointRequest.Unmarshal(m, b)
@@ -373,7 +373,7 @@ func (m *ListWalletsEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	return NetworkAllowingAlias_MAINNET
 }
 
-type GetWalletEndpointRequest struct {
+type WalletEndpointRequest struct {
 	Network              NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
 	Name                 string               `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
@@ -381,38 +381,84 @@ type GetWalletEndpointRequest struct {
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *GetWalletEndpointRequest) Reset()         { *m = GetWalletEndpointRequest{} }
-func (m *GetWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*GetWalletEndpointRequest) ProtoMessage()    {}
-func (*GetWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{5}
+func (m *WalletEndpointRequest) Reset()         { *m = WalletEndpointRequest{} }
+func (m *WalletEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*WalletEndpointRequest) ProtoMessage()    {}
+func (*WalletEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{5}
 }
-func (m *GetWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetWalletEndpointRequest.Unmarshal(m, b)
+func (m *WalletEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WalletEndpointRequest.Unmarshal(m, b)
 }
-func (m *GetWalletEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetWalletEndpointRequest.Marshal(b, m, deterministic)
+func (m *WalletEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WalletEndpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetWalletEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetWalletEndpointRequest.Merge(dst, src)
+func (dst *WalletEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WalletEndpointRequest.Merge(dst, src)
 }
-func (m *GetWalletEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_GetWalletEndpointRequest.Size(m)
+func (m *WalletEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_WalletEndpointRequest.Size(m)
 }
-func (m *GetWalletEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetWalletEndpointRequest.DiscardUnknown(m)
+func (m *WalletEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_WalletEndpointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetWalletEndpointRequest proto.InternalMessageInfo
+var xxx_messageInfo_WalletEndpointRequest proto.InternalMessageInfo
 
-func (m *GetWalletEndpointRequest) GetNetwork() NetworkAllowingAlias {
+func (m *WalletEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	if m != nil {
 		return m.Network
 	}
 	return NetworkAllowingAlias_MAINNET
 }
 
-func (m *GetWalletEndpointRequest) GetName() string {
+func (m *WalletEndpointRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+type HDWalletEndpointRequest struct {
+	Network              NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
+	Name                 string               `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *HDWalletEndpointRequest) Reset()         { *m = HDWalletEndpointRequest{} }
+func (m *HDWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*HDWalletEndpointRequest) ProtoMessage()    {}
+func (*HDWalletEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{6}
+}
+func (m *HDWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_HDWalletEndpointRequest.Unmarshal(m, b)
+}
+func (m *HDWalletEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_HDWalletEndpointRequest.Marshal(b, m, deterministic)
+}
+func (dst *HDWalletEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_HDWalletEndpointRequest.Merge(dst, src)
+}
+func (m *HDWalletEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_HDWalletEndpointRequest.Size(m)
+}
+func (m *HDWalletEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_HDWalletEndpointRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_HDWalletEndpointRequest proto.InternalMessageInfo
+
+func (m *HDWalletEndpointRequest) GetNetwork() NetworkAllowingAlias {
+	if m != nil {
+		return m.Network
+	}
+	return NetworkAllowingAlias_MAINNET
+}
+
+func (m *HDWalletEndpointRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
@@ -433,7 +479,7 @@ func (m *AddAddressesToWalletEndpointRequest) Reset()         { *m = AddAddresse
 func (m *AddAddressesToWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddAddressesToWalletEndpointRequest) ProtoMessage()    {}
 func (*AddAddressesToWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{6}
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{7}
 }
 func (m *AddAddressesToWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddAddressesToWalletEndpointRequest.Unmarshal(m, b)
@@ -474,7 +520,7 @@ func (m *AddAddressesToWalletEndpointRequest) GetOmitWalletAddresses() bool {
 	return false
 }
 
-type GetWalletAddressesEndpointRequest struct {
+type WalletAddressesEndpointRequest struct {
 	Network NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
 	Name    string               `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.
@@ -486,52 +532,116 @@ type GetWalletAddressesEndpointRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetWalletAddressesEndpointRequest) Reset()         { *m = GetWalletAddressesEndpointRequest{} }
-func (m *GetWalletAddressesEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*GetWalletAddressesEndpointRequest) ProtoMessage()    {}
-func (*GetWalletAddressesEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{7}
+func (m *WalletAddressesEndpointRequest) Reset()         { *m = WalletAddressesEndpointRequest{} }
+func (m *WalletAddressesEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*WalletAddressesEndpointRequest) ProtoMessage()    {}
+func (*WalletAddressesEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{8}
 }
-func (m *GetWalletAddressesEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetWalletAddressesEndpointRequest.Unmarshal(m, b)
+func (m *WalletAddressesEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WalletAddressesEndpointRequest.Unmarshal(m, b)
 }
-func (m *GetWalletAddressesEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetWalletAddressesEndpointRequest.Marshal(b, m, deterministic)
+func (m *WalletAddressesEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WalletAddressesEndpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetWalletAddressesEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetWalletAddressesEndpointRequest.Merge(dst, src)
+func (dst *WalletAddressesEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WalletAddressesEndpointRequest.Merge(dst, src)
 }
-func (m *GetWalletAddressesEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_GetWalletAddressesEndpointRequest.Size(m)
+func (m *WalletAddressesEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_WalletAddressesEndpointRequest.Size(m)
 }
-func (m *GetWalletAddressesEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetWalletAddressesEndpointRequest.DiscardUnknown(m)
+func (m *WalletAddressesEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_WalletAddressesEndpointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetWalletAddressesEndpointRequest proto.InternalMessageInfo
+var xxx_messageInfo_WalletAddressesEndpointRequest proto.InternalMessageInfo
 
-func (m *GetWalletAddressesEndpointRequest) GetNetwork() NetworkAllowingAlias {
+func (m *WalletAddressesEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	if m != nil {
 		return m.Network
 	}
 	return NetworkAllowingAlias_MAINNET
 }
 
-func (m *GetWalletAddressesEndpointRequest) GetName() string {
+func (m *WalletAddressesEndpointRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *GetWalletAddressesEndpointRequest) GetUsed() bool {
+func (m *WalletAddressesEndpointRequest) GetUsed() bool {
 	if m != nil {
 		return m.Used
 	}
 	return false
 }
 
-func (m *GetWalletAddressesEndpointRequest) GetZerobalance() bool {
+func (m *WalletAddressesEndpointRequest) GetZerobalance() bool {
+	if m != nil {
+		return m.Zerobalance
+	}
+	return false
+}
+
+type HDWalletAddressesEndpointRequest struct {
+	Network NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
+	Name    string               `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.
+	Used bool `protobuf:"varint,3,opt,name=used,proto3" json:"used,omitempty"`
+	// Returns only addresses with zero balance if set to true and only addresses with non-zero balance if false. Only valid on HD wallets.
+	Zerobalance          bool     `protobuf:"varint,4,opt,name=zerobalance,proto3" json:"zerobalance,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *HDWalletAddressesEndpointRequest) Reset()         { *m = HDWalletAddressesEndpointRequest{} }
+func (m *HDWalletAddressesEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*HDWalletAddressesEndpointRequest) ProtoMessage()    {}
+func (*HDWalletAddressesEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{9}
+}
+func (m *HDWalletAddressesEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_HDWalletAddressesEndpointRequest.Unmarshal(m, b)
+}
+func (m *HDWalletAddressesEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_HDWalletAddressesEndpointRequest.Marshal(b, m, deterministic)
+}
+func (dst *HDWalletAddressesEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_HDWalletAddressesEndpointRequest.Merge(dst, src)
+}
+func (m *HDWalletAddressesEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_HDWalletAddressesEndpointRequest.Size(m)
+}
+func (m *HDWalletAddressesEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_HDWalletAddressesEndpointRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_HDWalletAddressesEndpointRequest proto.InternalMessageInfo
+
+func (m *HDWalletAddressesEndpointRequest) GetNetwork() NetworkAllowingAlias {
+	if m != nil {
+		return m.Network
+	}
+	return NetworkAllowingAlias_MAINNET
+}
+
+func (m *HDWalletAddressesEndpointRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *HDWalletAddressesEndpointRequest) GetUsed() bool {
+	if m != nil {
+		return m.Used
+	}
+	return false
+}
+
+func (m *HDWalletAddressesEndpointRequest) GetZerobalance() bool {
 	if m != nil {
 		return m.Zerobalance
 	}
@@ -553,7 +663,7 @@ func (m *RemoveAddressesFromWalletEndpointRequest) Reset() {
 func (m *RemoveAddressesFromWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*RemoveAddressesFromWalletEndpointRequest) ProtoMessage()    {}
 func (*RemoveAddressesFromWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{8}
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{10}
 }
 func (m *RemoveAddressesFromWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoveAddressesFromWalletEndpointRequest.Unmarshal(m, b)
@@ -594,7 +704,7 @@ func (m *RemoveAddressesFromWalletEndpointRequest) GetAddress() string {
 	return ""
 }
 
-type GenerateAdressInWalletEndpointRequest struct {
+type GenerateAddressInWalletEndpointRequest struct {
 	Network              NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
 	Name                 string               `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
@@ -602,38 +712,40 @@ type GenerateAdressInWalletEndpointRequest struct {
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *GenerateAdressInWalletEndpointRequest) Reset()         { *m = GenerateAdressInWalletEndpointRequest{} }
-func (m *GenerateAdressInWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*GenerateAdressInWalletEndpointRequest) ProtoMessage()    {}
-func (*GenerateAdressInWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{9}
+func (m *GenerateAddressInWalletEndpointRequest) Reset() {
+	*m = GenerateAddressInWalletEndpointRequest{}
 }
-func (m *GenerateAdressInWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GenerateAdressInWalletEndpointRequest.Unmarshal(m, b)
+func (m *GenerateAddressInWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*GenerateAddressInWalletEndpointRequest) ProtoMessage()    {}
+func (*GenerateAddressInWalletEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{11}
 }
-func (m *GenerateAdressInWalletEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GenerateAdressInWalletEndpointRequest.Marshal(b, m, deterministic)
+func (m *GenerateAddressInWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GenerateAddressInWalletEndpointRequest.Unmarshal(m, b)
 }
-func (dst *GenerateAdressInWalletEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GenerateAdressInWalletEndpointRequest.Merge(dst, src)
+func (m *GenerateAddressInWalletEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GenerateAddressInWalletEndpointRequest.Marshal(b, m, deterministic)
 }
-func (m *GenerateAdressInWalletEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_GenerateAdressInWalletEndpointRequest.Size(m)
+func (dst *GenerateAddressInWalletEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GenerateAddressInWalletEndpointRequest.Merge(dst, src)
 }
-func (m *GenerateAdressInWalletEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GenerateAdressInWalletEndpointRequest.DiscardUnknown(m)
+func (m *GenerateAddressInWalletEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_GenerateAddressInWalletEndpointRequest.Size(m)
+}
+func (m *GenerateAddressInWalletEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GenerateAddressInWalletEndpointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GenerateAdressInWalletEndpointRequest proto.InternalMessageInfo
+var xxx_messageInfo_GenerateAddressInWalletEndpointRequest proto.InternalMessageInfo
 
-func (m *GenerateAdressInWalletEndpointRequest) GetNetwork() NetworkAllowingAlias {
+func (m *GenerateAddressInWalletEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	if m != nil {
 		return m.Network
 	}
 	return NetworkAllowingAlias_MAINNET
 }
 
-func (m *GenerateAdressInWalletEndpointRequest) GetName() string {
+func (m *GenerateAddressInWalletEndpointRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
@@ -656,7 +768,7 @@ func (m *DeriveAddressInWalletEndpointRequest) Reset()         { *m = DeriveAddr
 func (m *DeriveAddressInWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeriveAddressInWalletEndpointRequest) ProtoMessage()    {}
 func (*DeriveAddressInWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{10}
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{12}
 }
 func (m *DeriveAddressInWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeriveAddressInWalletEndpointRequest.Unmarshal(m, b)
@@ -716,7 +828,7 @@ func (m *DeleteWalletEndpointRequest) Reset()         { *m = DeleteWalletEndpoin
 func (m *DeleteWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteWalletEndpointRequest) ProtoMessage()    {}
 func (*DeleteWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_44e9d63716b6e29e, []int{11}
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{13}
 }
 func (m *DeleteWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteWalletEndpointRequest.Unmarshal(m, b)
@@ -750,67 +862,118 @@ func (m *DeleteWalletEndpointRequest) GetName() string {
 	return ""
 }
 
+type DeleteHDWalletEndpointRequest struct {
+	Network              NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
+	Name                 string               `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *DeleteHDWalletEndpointRequest) Reset()         { *m = DeleteHDWalletEndpointRequest{} }
+func (m *DeleteHDWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteHDWalletEndpointRequest) ProtoMessage()    {}
+func (*DeleteHDWalletEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_walletMessage_d4d97342b198ad0a, []int{14}
+}
+func (m *DeleteHDWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteHDWalletEndpointRequest.Unmarshal(m, b)
+}
+func (m *DeleteHDWalletEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteHDWalletEndpointRequest.Marshal(b, m, deterministic)
+}
+func (dst *DeleteHDWalletEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteHDWalletEndpointRequest.Merge(dst, src)
+}
+func (m *DeleteHDWalletEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteHDWalletEndpointRequest.Size(m)
+}
+func (m *DeleteHDWalletEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteHDWalletEndpointRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteHDWalletEndpointRequest proto.InternalMessageInfo
+
+func (m *DeleteHDWalletEndpointRequest) GetNetwork() NetworkAllowingAlias {
+	if m != nil {
+		return m.Network
+	}
+	return NetworkAllowingAlias_MAINNET
+}
+
+func (m *DeleteHDWalletEndpointRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*ListWallets)(nil), "fairwaycorp.blockchainprotobuf.btc.ListWallets")
 	proto.RegisterType((*WalletAddressKeychain)(nil), "fairwaycorp.blockchainprotobuf.btc.WalletAddressKeychain")
 	proto.RegisterType((*CreateWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.CreateWalletEndpointRequest")
-	proto.RegisterType((*CreateWalletHDEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.CreateWalletHDEndpointRequest")
+	proto.RegisterType((*CreateHDWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.CreateHDWalletEndpointRequest")
 	proto.RegisterType((*ListWalletsEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.ListWalletsEndpointRequest")
-	proto.RegisterType((*GetWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.GetWalletEndpointRequest")
+	proto.RegisterType((*WalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.WalletEndpointRequest")
+	proto.RegisterType((*HDWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.HDWalletEndpointRequest")
 	proto.RegisterType((*AddAddressesToWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.AddAddressesToWalletEndpointRequest")
-	proto.RegisterType((*GetWalletAddressesEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.GetWalletAddressesEndpointRequest")
+	proto.RegisterType((*WalletAddressesEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.WalletAddressesEndpointRequest")
+	proto.RegisterType((*HDWalletAddressesEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.HDWalletAddressesEndpointRequest")
 	proto.RegisterType((*RemoveAddressesFromWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.RemoveAddressesFromWalletEndpointRequest")
-	proto.RegisterType((*GenerateAdressInWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.GenerateAdressInWalletEndpointRequest")
+	proto.RegisterType((*GenerateAddressInWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.GenerateAddressInWalletEndpointRequest")
 	proto.RegisterType((*DeriveAddressInWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.DeriveAddressInWalletEndpointRequest")
 	proto.RegisterType((*DeleteWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.DeleteWalletEndpointRequest")
+	proto.RegisterType((*DeleteHDWalletEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.DeleteHDWalletEndpointRequest")
 }
 
-func init() { proto.RegisterFile("walletMessage.proto", fileDescriptor_walletMessage_44e9d63716b6e29e) }
+func init() { proto.RegisterFile("walletMessage.proto", fileDescriptor_walletMessage_d4d97342b198ad0a) }
 
-var fileDescriptor_walletMessage_44e9d63716b6e29e = []byte{
-	// 696 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x55, 0x4f, 0x6f, 0xd3, 0x4a,
-	0x10, 0x97, 0xf3, 0xb7, 0x99, 0xbc, 0xd7, 0xf6, 0x6d, 0xde, 0x7b, 0xb2, 0x5a, 0x10, 0xa9, 0xa1,
-	0x52, 0x10, 0x4a, 0x52, 0x95, 0x0b, 0x17, 0x84, 0x42, 0x03, 0x6d, 0x55, 0xa8, 0x90, 0x55, 0x09,
-	0x89, 0x4b, 0xb4, 0xb6, 0xa7, 0xc9, 0x2a, 0xce, 0xae, 0xf1, 0xae, 0x9b, 0x9a, 0x23, 0x12, 0x67,
-	0xbe, 0x08, 0x5f, 0x80, 0x13, 0x42, 0xe2, 0x86, 0xf8, 0x4e, 0xc8, 0x6b, 0x3b, 0x4d, 0x50, 0x10,
-	0x9c, 0x1a, 0x6e, 0x33, 0xbf, 0xf9, 0xeb, 0x99, 0x9f, 0x67, 0xa1, 0x31, 0xa5, 0xbe, 0x8f, 0xea,
-	0x39, 0x4a, 0x49, 0x87, 0xd8, 0x09, 0x42, 0xa1, 0x04, 0xb1, 0xce, 0x29, 0x0b, 0xa7, 0x34, 0x76,
-	0x45, 0x18, 0x74, 0x1c, 0x5f, 0xb8, 0x63, 0x77, 0x44, 0x19, 0xd7, 0x46, 0x27, 0x3a, 0xef, 0x38,
-	0xca, 0xdd, 0x6a, 0xb8, 0x62, 0x32, 0x11, 0x7c, 0x21, 0xd0, 0xda, 0x83, 0xfa, 0x33, 0x26, 0xd5,
-	0x4b, 0x9d, 0x53, 0x92, 0x1d, 0xf8, 0x2b, 0x4d, 0x3f, 0xe0, 0x74, 0x82, 0xd2, 0x34, 0x9a, 0xc5,
-	0x56, 0xcd, 0xae, 0xa7, 0xd8, 0x69, 0x02, 0x59, 0x5f, 0x0a, 0xf0, 0x5f, 0xea, 0xde, 0xf3, 0xbc,
-	0x10, 0xa5, 0x3c, 0xc1, 0x58, 0x17, 0x23, 0xff, 0x42, 0x59, 0x89, 0x31, 0x72, 0xd3, 0x68, 0x1a,
-	0xad, 0x9a, 0x9d, 0x2a, 0x84, 0x40, 0x29, 0xc9, 0x65, 0x16, 0x34, 0xa8, 0x65, 0x72, 0x03, 0x6a,
-	0x34, 0x0d, 0x46, 0x69, 0x16, 0x75, 0x8d, 0x2b, 0x80, 0x98, 0x50, 0xcd, 0x14, 0xb3, 0xa4, 0x83,
-	0x72, 0x95, 0xfc, 0x0f, 0x95, 0x20, 0x72, 0x7c, 0xe6, 0x9a, 0x65, 0x6d, 0xc8, 0xb4, 0x24, 0x22,
-	0x08, 0xd9, 0x05, 0x55, 0x68, 0x56, 0xd2, 0x88, 0x4c, 0x25, 0x9b, 0x50, 0x9c, 0xb2, 0x73, 0xb3,
-	0xaa, 0xd1, 0x44, 0xd4, 0xbe, 0x91, 0x33, 0xc6, 0x58, 0x9a, 0x6b, 0xba, 0x72, 0xae, 0x92, 0x5b,
-	0x50, 0x97, 0x6e, 0xc8, 0x02, 0x35, 0x50, 0x71, 0x80, 0x66, 0x4d, 0xc7, 0x40, 0x0a, 0x9d, 0xc5,
-	0x01, 0x92, 0xbb, 0xb0, 0x29, 0x42, 0x36, 0x64, 0x9c, 0xfa, 0x83, 0xbc, 0x43, 0xd0, 0x5e, 0x1b,
-	0x39, 0x9e, 0xcd, 0x24, 0xc9, 0x25, 0x68, 0x30, 0xf3, 0xaa, 0xa7, 0xb9, 0x04, 0x0d, 0x32, 0x07,
-	0xeb, 0xa3, 0x01, 0xdb, 0x07, 0x21, 0x52, 0x85, 0xe9, 0x30, 0x9f, 0x70, 0x2f, 0x10, 0x8c, 0x2b,
-	0x1b, 0x5f, 0x47, 0x28, 0x15, 0xb1, 0xa1, 0xca, 0x51, 0x4d, 0x45, 0x38, 0xd6, 0xe3, 0x5c, 0xdf,
-	0x7f, 0xd0, 0xf9, 0xf5, 0x8e, 0x3b, 0xa7, 0x69, 0x48, 0xcf, 0xf7, 0xc5, 0x94, 0xf1, 0x61, 0xcf,
-	0x67, 0x54, 0xda, 0x79, 0xa2, 0xab, 0x05, 0x15, 0x96, 0x2d, 0xa8, 0xf8, 0xb3, 0x05, 0x95, 0x7e,
-	0x58, 0x90, 0xf5, 0xad, 0x00, 0x37, 0xe7, 0x7b, 0x3f, 0xea, 0xff, 0x59, 0xdd, 0x1f, 0x40, 0x45,
-	0x27, 0x4f, 0x5b, 0xaf, 0xef, 0xdf, 0xfb, 0x9d, 0xe2, 0x47, 0xfd, 0x83, 0x04, 0xb3, 0xb3, 0x50,
-	0xb2, 0x0e, 0x85, 0x91, 0xa7, 0x79, 0xb6, 0x66, 0x17, 0x46, 0x1e, 0xe9, 0x40, 0x03, 0x2f, 0x15,
-	0x72, 0x0f, 0xbd, 0x41, 0x4a, 0xbb, 0xc1, 0x18, 0xe3, 0x8c, 0x6f, 0xff, 0xe4, 0xa6, 0x17, 0xda,
-	0x72, 0x82, 0x71, 0x42, 0x16, 0x19, 0x39, 0x3a, 0xd9, 0x80, 0x71, 0x0f, 0x2f, 0x51, 0x9a, 0xd5,
-	0x66, 0xb1, 0x55, 0xb6, 0x37, 0x72, 0xfc, 0x38, 0x85, 0xad, 0x00, 0xb6, 0xe6, 0x7e, 0xc2, 0x6b,
-	0x98, 0xa5, 0xf5, 0xd6, 0x00, 0xf3, 0x10, 0xd5, 0xf5, 0x51, 0x6f, 0xc9, 0x15, 0xb0, 0x3e, 0x19,
-	0x70, 0xbb, 0xe7, 0x79, 0xbd, 0x9c, 0x57, 0x67, 0x62, 0xa5, 0xfd, 0x90, 0x3d, 0x68, 0x88, 0x09,
-	0x53, 0x0b, 0xc7, 0x4d, 0xdf, 0xa7, 0x84, 0x02, 0xcb, 0x4c, 0xd6, 0x67, 0x03, 0x76, 0x66, 0x63,
-	0x9c, 0xc1, 0xab, 0xea, 0x9f, 0x40, 0x29, 0x92, 0xe8, 0x65, 0x0d, 0x6b, 0x99, 0x34, 0xa1, 0xfe,
-	0x06, 0x43, 0xe1, 0x50, 0x9f, 0x72, 0x17, 0xf5, 0x3d, 0x5d, 0xb3, 0xe7, 0x21, 0xeb, 0x83, 0x01,
-	0x2d, 0x1b, 0x27, 0xe2, 0x02, 0x67, 0x1f, 0xf0, 0x34, 0x14, 0x93, 0xd5, 0xae, 0x62, 0xee, 0x09,
-	0x28, 0x2e, 0x3c, 0x01, 0xd6, 0x7b, 0x03, 0x76, 0x0f, 0x91, 0x63, 0x48, 0x15, 0xf6, 0x34, 0x74,
-	0xcc, 0x57, 0x4b, 0xe3, 0xaf, 0x06, 0xdc, 0xe9, 0x63, 0xc8, 0x66, 0x03, 0x5c, 0x71, 0x43, 0xc9,
-	0xa1, 0x74, 0x45, 0xc4, 0x95, 0x1e, 0x5d, 0xd9, 0x4e, 0x15, 0xb2, 0x0b, 0xeb, 0x8b, 0xf7, 0x48,
-	0x93, 0xa1, 0x68, 0xff, 0xbd, 0x70, 0x8d, 0xac, 0x77, 0x06, 0x6c, 0xf7, 0xd1, 0xc7, 0xeb, 0x7c,
-	0x97, 0x96, 0x7c, 0xc4, 0xe3, 0x47, 0xaf, 0x1e, 0x0e, 0x99, 0x1a, 0x45, 0x4e, 0xc7, 0x15, 0x93,
-	0x6e, 0x56, 0xa2, 0x9d, 0xd4, 0xe8, 0x5e, 0xd5, 0x68, 0xe7, 0x45, 0xba, 0x5a, 0x70, 0xdb, 0x43,
-	0xe4, 0xed, 0xa1, 0xe8, 0x3a, 0xca, 0x75, 0x2a, 0x1a, 0xba, 0xff, 0x3d, 0x00, 0x00, 0xff, 0xff,
-	0x0c, 0x0b, 0xf1, 0x0b, 0x30, 0x09, 0x00, 0x00,
+var fileDescriptor_walletMessage_d4d97342b198ad0a = []byte{
+	// 721 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x55, 0x4b, 0x6f, 0xd3, 0x4a,
+	0x14, 0x96, 0xf3, 0x6c, 0x4e, 0xee, 0x6d, 0x7b, 0x27, 0xf7, 0x61, 0xb5, 0xb7, 0x10, 0xcc, 0x43,
+	0x41, 0x28, 0x49, 0x55, 0x36, 0x6c, 0x10, 0x0a, 0x0d, 0xd0, 0xaa, 0x50, 0x21, 0xab, 0x12, 0x12,
+	0x9b, 0x68, 0x6c, 0x9f, 0x26, 0xa3, 0x38, 0x33, 0xc6, 0x1e, 0x37, 0x0d, 0x1b, 0xc4, 0x02, 0xb1,
+	0xe5, 0x87, 0xf0, 0x07, 0xd8, 0x00, 0x0b, 0x76, 0x88, 0xff, 0x84, 0x3c, 0x63, 0xb7, 0x4d, 0x15,
+	0x04, 0xab, 0xa4, 0xec, 0xe6, 0x7c, 0x73, 0x1e, 0x9f, 0xcf, 0xf9, 0x7c, 0x06, 0x6a, 0x63, 0xea,
+	0xfb, 0x28, 0x9f, 0x60, 0x14, 0xd1, 0x3e, 0xb6, 0x82, 0x50, 0x48, 0x41, 0xac, 0x43, 0xca, 0xc2,
+	0x31, 0x9d, 0xb8, 0x22, 0x0c, 0x5a, 0x8e, 0x2f, 0xdc, 0xa1, 0x3b, 0xa0, 0x8c, 0xab, 0x4b, 0x27,
+	0x3e, 0x6c, 0x39, 0xd2, 0x5d, 0xab, 0xb9, 0x62, 0x34, 0x12, 0x7c, 0x2a, 0xd0, 0xda, 0x84, 0xea,
+	0x63, 0x16, 0xc9, 0x67, 0x2a, 0x67, 0x44, 0xae, 0xc0, 0x1f, 0x3a, 0x7d, 0x8f, 0xd3, 0x11, 0x46,
+	0xa6, 0x51, 0xcf, 0x37, 0x2a, 0x76, 0x55, 0x63, 0xfb, 0x09, 0x64, 0x7d, 0xc9, 0xc1, 0x3f, 0xda,
+	0xbd, 0xe3, 0x79, 0x21, 0x46, 0xd1, 0x1e, 0x4e, 0x54, 0x31, 0xf2, 0x37, 0x14, 0xa5, 0x18, 0x22,
+	0x37, 0x8d, 0xba, 0xd1, 0xa8, 0xd8, 0xda, 0x20, 0x04, 0x0a, 0x49, 0x2e, 0x33, 0xa7, 0x40, 0x75,
+	0x26, 0xff, 0x43, 0x85, 0xea, 0x60, 0x8c, 0xcc, 0xbc, 0xaa, 0x71, 0x0a, 0x10, 0x13, 0xca, 0xa9,
+	0x61, 0x16, 0x54, 0x50, 0x66, 0x92, 0x7f, 0xa1, 0x14, 0xc4, 0x8e, 0xcf, 0x5c, 0xb3, 0xa8, 0x2e,
+	0x52, 0x2b, 0x89, 0x08, 0x42, 0x76, 0x44, 0x25, 0x9a, 0x25, 0x1d, 0x91, 0x9a, 0x64, 0x15, 0xf2,
+	0x63, 0x76, 0x68, 0x96, 0x15, 0x9a, 0x1c, 0x95, 0x6f, 0xec, 0x0c, 0x71, 0x12, 0x99, 0x4b, 0xaa,
+	0x72, 0x66, 0x92, 0xcb, 0x50, 0x8d, 0xdc, 0x90, 0x05, 0xb2, 0x27, 0x27, 0x01, 0x9a, 0x15, 0x15,
+	0x03, 0x1a, 0x3a, 0x98, 0x04, 0x48, 0x6e, 0xc2, 0xaa, 0x08, 0x59, 0x9f, 0x71, 0xea, 0xf7, 0x32,
+	0x86, 0xa0, 0xbc, 0x56, 0x32, 0x3c, 0xed, 0x49, 0x92, 0x4b, 0xd0, 0xe0, 0xc4, 0xab, 0xaa, 0x73,
+	0x09, 0x1a, 0xa4, 0x0e, 0xd6, 0x07, 0x03, 0xd6, 0xb7, 0x43, 0xa4, 0x12, 0x75, 0x33, 0x1f, 0x70,
+	0x2f, 0x10, 0x8c, 0x4b, 0x1b, 0x5f, 0xc4, 0x18, 0x49, 0x62, 0x43, 0x99, 0xa3, 0x1c, 0x8b, 0x70,
+	0xa8, 0xda, 0xb9, 0xbc, 0x75, 0xa7, 0xf5, 0xf3, 0x19, 0xb7, 0xf6, 0x75, 0x48, 0xc7, 0xf7, 0xc5,
+	0x98, 0xf1, 0x7e, 0xc7, 0x67, 0x34, 0xb2, 0xb3, 0x44, 0xa7, 0x03, 0xca, 0xcd, 0x1a, 0x50, 0xfe,
+	0x47, 0x03, 0x2a, 0x9c, 0x1b, 0x90, 0xf5, 0x2d, 0x07, 0x1b, 0x9a, 0xfb, 0x4e, 0xf7, 0x22, 0xb2,
+	0xdf, 0x86, 0x92, 0x4a, 0xae, 0xa9, 0x57, 0xb7, 0x6e, 0xfd, 0x4a, 0xf1, 0x9d, 0xee, 0x76, 0x82,
+	0xd9, 0x69, 0x28, 0x59, 0x86, 0xdc, 0xc0, 0x53, 0x3a, 0x5b, 0xb2, 0x73, 0x03, 0x8f, 0xb4, 0xa0,
+	0x86, 0xc7, 0x12, 0xb9, 0x87, 0x5e, 0x4f, 0xcb, 0xae, 0x37, 0xc4, 0x49, 0xaa, 0xb7, 0xbf, 0xb2,
+	0xab, 0xa7, 0xea, 0x66, 0x0f, 0x27, 0x89, 0x58, 0xa2, 0xd8, 0x51, 0xc9, 0x7a, 0x8c, 0x7b, 0x78,
+	0x8c, 0x91, 0x59, 0xae, 0xe7, 0x1b, 0x45, 0x7b, 0x25, 0xc3, 0x77, 0x35, 0x6c, 0x05, 0xb0, 0x76,
+	0xe6, 0x27, 0x9c, 0x43, 0x2f, 0xad, 0x57, 0xd9, 0x3f, 0x3c, 0x8f, 0xc1, 0xcd, 0xd8, 0x00, 0xd6,
+	0x6b, 0x03, 0xfe, 0x9b, 0xa7, 0x78, 0x66, 0x71, 0xf8, 0x64, 0xc0, 0xd5, 0x8e, 0xe7, 0x75, 0x32,
+	0x5d, 0x1f, 0x88, 0x85, 0xf2, 0x21, 0x9b, 0x50, 0x13, 0x23, 0x26, 0xa7, 0x96, 0xab, 0xda, 0x8f,
+	0x89, 0x04, 0x67, 0x5d, 0x59, 0x1f, 0x0d, 0xb8, 0x74, 0x0e, 0x5b, 0x14, 0x79, 0x02, 0x85, 0x38,
+	0x42, 0x2f, 0x65, 0xab, 0xce, 0xa4, 0x0e, 0xd5, 0x97, 0x18, 0x0a, 0x87, 0xfa, 0x94, 0xbb, 0xa8,
+	0x96, 0xf9, 0x92, 0x7d, 0x16, 0xb2, 0x3e, 0x1b, 0x50, 0xcf, 0x64, 0xf0, 0x9b, 0x7e, 0xc2, 0x7b,
+	0x03, 0x1a, 0x36, 0x8e, 0xc4, 0x11, 0x9e, 0x7c, 0xc0, 0xc3, 0x50, 0x8c, 0x16, 0x2b, 0xa5, 0x33,
+	0x4f, 0x68, 0x7e, 0xea, 0x09, 0xb5, 0xde, 0x19, 0x70, 0xe3, 0x11, 0x72, 0x0c, 0xa9, 0xcc, 0x08,
+	0xef, 0xf2, 0xc5, 0xfe, 0x87, 0x5f, 0x0d, 0xb8, 0xd6, 0xc5, 0x90, 0x1d, 0x5d, 0x10, 0x42, 0xc9,
+	0x4b, 0xe3, 0x8a, 0x98, 0x4b, 0xd5, 0xbb, 0xa2, 0xad, 0x0d, 0x72, 0x1d, 0x96, 0xa7, 0x17, 0xba,
+	0x52, 0x43, 0xde, 0xfe, 0x73, 0x6a, 0x9d, 0x5b, 0x6f, 0x0c, 0x58, 0xef, 0xa2, 0x8f, 0xf3, 0x7c,
+	0xd8, 0x67, 0x75, 0xf5, 0xad, 0x01, 0x1b, 0x9a, 0xc7, 0x82, 0xf7, 0xec, 0xfd, 0x7b, 0xcf, 0xef,
+	0xf6, 0x99, 0x1c, 0xc4, 0x4e, 0xcb, 0x15, 0xa3, 0x76, 0x5a, 0xa2, 0x99, 0xd4, 0x68, 0x9f, 0xd6,
+	0x68, 0x66, 0x45, 0xda, 0xea, 0xe0, 0x36, 0xfb, 0xc8, 0x9b, 0x7d, 0xd1, 0x76, 0xa4, 0xeb, 0x94,
+	0x14, 0x74, 0xfb, 0x7b, 0x00, 0x00, 0x00, 0xff, 0xff, 0xfa, 0xf1, 0xb1, 0xc1, 0xfb, 0x0a, 0x00,
+	0x00,
 }

@@ -36,18 +36,60 @@ func request_WebHooksService_CreateWebHookEndpoint_0(ctx context.Context, marsha
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
+	var (
+		val string
+		e   int32
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["network"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
+	}
+
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
+	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
+
 	msg, err := client.CreateWebHookEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_WebHooksService_ListWebHooksEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_WebHooksService_ListWebHooksEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
 func request_WebHooksService_ListWebHooksEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListWebHooksEndpointRequest
 	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		e   int32
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["network"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
+	}
+
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
+	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_ListWebHooksEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
@@ -58,20 +100,30 @@ func request_WebHooksService_ListWebHooksEndpoint_0(ctx context.Context, marshal
 
 }
 
-var (
-	filter_WebHooksService_WebHookIDEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"webhookid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
 func request_WebHooksService_WebHookIDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq WebHookIDEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["network"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
+	}
+
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
+	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["webhookid"]
 	if !ok {
@@ -82,10 +134,6 @@ func request_WebHooksService_WebHookIDEndpoint_0(ctx context.Context, marshaler 
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "webhookid", err)
-	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_WebHookIDEndpoint_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.WebHookIDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -93,20 +141,30 @@ func request_WebHooksService_WebHookIDEndpoint_0(ctx context.Context, marshaler 
 
 }
 
-var (
-	filter_WebHooksService_DeleteWebHookEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"webhookid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
 func request_WebHooksService_DeleteWebHookEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteWebHookEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
 		val string
+		e   int32
 		ok  bool
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["network"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "network")
+	}
+
+	e, err = runtime.Enum(val, NetworkAllowingAlias_value)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "network", err)
+	}
+
+	protoReq.Network = NetworkAllowingAlias(e)
 
 	val, ok = pathParams["webhookid"]
 	if !ok {
@@ -117,10 +175,6 @@ func request_WebHooksService_DeleteWebHookEndpoint_0(ctx context.Context, marsha
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "webhookid", err)
-	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_DeleteWebHookEndpoint_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.DeleteWebHookEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -286,13 +340,13 @@ func RegisterWebHooksServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 }
 
 var (
-	pattern_WebHooksService_CreateWebHookEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"hooks"}, ""))
+	pattern_WebHooksService_CreateWebHookEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"eth", "network", "hooks"}, ""))
 
-	pattern_WebHooksService_ListWebHooksEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"hooks"}, ""))
+	pattern_WebHooksService_ListWebHooksEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"eth", "network", "hooks"}, ""))
 
-	pattern_WebHooksService_WebHookIDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"hooks", "webhookid"}, ""))
+	pattern_WebHooksService_WebHookIDEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "hooks", "webhookid"}, ""))
 
-	pattern_WebHooksService_DeleteWebHookEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"hooks", "webhookid"}, ""))
+	pattern_WebHooksService_DeleteWebHookEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "hooks", "webhookid"}, ""))
 )
 
 var (

@@ -16,103 +16,7 @@ export namespace AggregatedOrigin {
   }
 }
 
-export class DataEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getData(): string;
-  setData(a: string): void;
-  getToken(): string;
-  setToken(a: string): void;
-  getEncoding(): string;
-  setEncoding(a: string): void;
-  getHash(): string;
-  setHash(a: string): void;
-  toObject(): DataEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DataEndpointRequest;
-}
-
-export namespace DataEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Data: string;
-    Token: string;
-    Encoding: string;
-    Hash: string;
-  }
-}
-
-export class DecodeRawTransactionEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getTx(): string;
-  setTx(a: string): void;
-  toObject(): DecodeRawTransactionEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DecodeRawTransactionEndpointRequest;
-}
-
-export namespace DecodeRawTransactionEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Tx: string;
-  }
-}
-
-export class DescribedBelow {
-  constructor ();
-  getTransaction(): string;
-  setTransaction(a: string): void;
-  getFirstLocation(): FirstLocation;
-  setFirstLocation(a: FirstLocation): void;
-  getFirstCity(): string;
-  setFirstCity(a: string): void;
-  getFirstCountry(): string;
-  setFirstCountry(a: string): void;
-  getAggregatedOrigin(): AggregatedOrigin;
-  setAggregatedOrigin(a: AggregatedOrigin): void;
-  getAggregatedOriginRadius(): number;
-  setAggregatedOriginRadius(a: number): void;
-  getFirstReceived(): string;
-  setFirstReceived(a: string): void;
-  toObject(): DescribedBelow.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DescribedBelow;
-}
-
-export namespace DescribedBelow {
-  export type AsObject = {
-    Transaction: string;
-    FirstLocation: FirstLocation;
-    FirstCity: string;
-    FirstCountry: string;
-    AggregatedOrigin: AggregatedOrigin;
-    AggregatedOriginRadius: number;
-    FirstReceived: string;
-  }
-}
-
-export class FirstLocation {
-  constructor ();
-  getLatitude(): number;
-  setLatitude(a: number): void;
-  getLongitude(): number;
-  setLongitude(a: number): void;
-  toObject(): FirstLocation.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => FirstLocation;
-}
-
-export namespace FirstLocation {
-  export type AsObject = {
-    Latitude: number;
-    Longitude: number;
-  }
-}
-
-export class NewTransactionEndpointRequest {
+export class CreateTransactionEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
@@ -176,12 +80,12 @@ export class NewTransactionEndpointRequest {
   setNextOutputs(a: string): void;
   getIncludetosigntx(): boolean;
   setIncludetosigntx(a: boolean): void;
-  toObject(): NewTransactionEndpointRequest.AsObject;
+  toObject(): CreateTransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => NewTransactionEndpointRequest;
+  static deserializeBinary: (bytes: {}) => CreateTransactionEndpointRequest;
 }
 
-export namespace NewTransactionEndpointRequest {
+export namespace CreateTransactionEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     BlockHeight: number;
@@ -214,6 +118,69 @@ export namespace NewTransactionEndpointRequest {
     NextInputs: string;
     NextOutputs: string;
     Includetosigntx: boolean;
+  }
+}
+
+export class DataEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getData(): string;
+  setData(a: string): void;
+  getToken(): string;
+  setToken(a: string): void;
+  getEncoding(): string;
+  setEncoding(a: string): void;
+  getHash(): string;
+  setHash(a: string): void;
+  toObject(): DataEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => DataEndpointRequest;
+}
+
+export namespace DataEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Data: string;
+    Token: string;
+    Encoding: string;
+    Hash: string;
+  }
+}
+
+export class DecodeRawTransactionEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getTx(): string;
+  setTx(a: string): void;
+  toObject(): DecodeRawTransactionEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => DecodeRawTransactionEndpointRequest;
+}
+
+export namespace DecodeRawTransactionEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Tx: string;
+  }
+}
+
+export class FirstLocation {
+  constructor ();
+  getLatitude(): number;
+  setLatitude(a: number): void;
+  getLongitude(): number;
+  setLongitude(a: number): void;
+  toObject(): FirstLocation.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => FirstLocation;
+}
+
+export namespace FirstLocation {
+  export type AsObject = {
+    Latitude: number;
+    Longitude: number;
   }
 }
 
@@ -466,18 +433,36 @@ export namespace TXOutput {
   }
 }
 
-export class TXS {
+export class TXPropagation {
   constructor ();
-  getTxsList(): TX[];
-  setTxsList(a: TX[]): void;
-  toObject(): TXS.AsObject;
+  getTransaction(): string;
+  setTransaction(a: string): void;
+  getFirstLocation(): FirstLocation;
+  setFirstLocation(a: FirstLocation): void;
+  getFirstCity(): string;
+  setFirstCity(a: string): void;
+  getFirstCountry(): string;
+  setFirstCountry(a: string): void;
+  getAggregatedOrigin(): AggregatedOrigin;
+  setAggregatedOrigin(a: AggregatedOrigin): void;
+  getAggregatedOriginRadius(): number;
+  setAggregatedOriginRadius(a: number): void;
+  getFirstReceived(): string;
+  setFirstReceived(a: string): void;
+  toObject(): TXPropagation.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => TXS;
+  static deserializeBinary: (bytes: {}) => TXPropagation;
 }
 
-export namespace TXS {
+export namespace TXPropagation {
   export type AsObject = {
-    TxsList: TX[];
+    Transaction: string;
+    FirstLocation: FirstLocation;
+    FirstCity: string;
+    FirstCountry: string;
+    AggregatedOrigin: AggregatedOrigin;
+    AggregatedOriginRadius: number;
+    FirstReceived: string;
   }
 }
 
@@ -523,6 +508,21 @@ export class TXerror {
 export namespace TXerror {
   export type AsObject = {
     Error: string;
+  }
+}
+
+export class TXs {
+  constructor ();
+  getTxsList(): TX[];
+  setTxsList(a: TX[]): void;
+  toObject(): TXs.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => TXs;
+}
+
+export namespace TXs {
+  export type AsObject = {
+    TxsList: TX[];
   }
 }
 

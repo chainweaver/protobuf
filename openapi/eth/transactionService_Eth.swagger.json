@@ -17,12 +17,12 @@
   "paths": {
     "/eth/{network}/txs": {
       "get": {
-        "operationId": "UnconfirmedTransactionEndpoint",
+        "operationId": "UnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethTxArray"
+              "$ref": "#/definitions/ethTXs"
             }
           }
         },
@@ -85,7 +85,7 @@
     },
     "/eth/{network}/txs/new": {
       "post": {
-        "operationId": "NewTransactionsEndpoint",
+        "operationId": "CreateTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -112,7 +112,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethNewTransactionEndpointRequest"
+              "$ref": "#/definitions/ethCreateTransactionEndpointRequest"
             }
           }
         ],
@@ -235,43 +235,7 @@
     }
   },
   "definitions": {
-    "ethDecodeRawTransactionEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/ethNetworkAllowingAlias"
-        },
-        "tx": {
-          "type": "string"
-        }
-      }
-    },
-    "ethInputType": {
-      "type": "object",
-      "properties": {
-        "sequence": {
-          "type": "string",
-          "format": "int64"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ethNetworkAllowingAlias": {
-      "type": "string",
-      "enum": [
-        "MAIN",
-        "main",
-        "ROPSTEN",
-        "ropsten"
-      ],
-      "default": "MAIN"
-    },
-    "ethNewTransactionEndpointRequest": {
+    "ethCreateTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -413,6 +377,42 @@
           "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
         }
       }
+    },
+    "ethDecodeRawTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "tx": {
+          "type": "string"
+        }
+      }
+    },
+    "ethInputType": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "type": "string",
+          "format": "int64"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAIN",
+        "main",
+        "ROPSTEN",
+        "ropsten"
+      ],
+      "default": "MAIN"
     },
     "ethOutputType": {
       "type": "object",
@@ -646,7 +646,7 @@
         }
       }
     },
-    "ethTxArray": {
+    "ethTXs": {
       "type": "object",
       "properties": {
         "result": {

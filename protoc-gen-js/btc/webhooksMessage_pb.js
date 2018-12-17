@@ -12,9 +12,9 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_pb = require('./commonMessage_pb.js');
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.CreateWebHookEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DeleteWebHookEndpointRequest', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.Events', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.ListWebHooksEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.WebHookIDEndpointRequest', null, global);
 
@@ -636,19 +636,19 @@ proto.fairwaycorp.blockchainprotobuf.btc.ListWebHooksEndpointRequest.prototype.s
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.repeatedFields_, null);
+proto.fairwaycorp.blockchainprotobuf.btc.Events = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.btc.Events.repeatedFields_, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.Events, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent';
+  proto.fairwaycorp.blockchainprotobuf.btc.Events.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.Events';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.repeatedFields_ = [1];
+proto.fairwaycorp.blockchainprotobuf.btc.Events.repeatedFields_ = [1];
 
 
 
@@ -663,8 +663,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.btc.Events.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.btc.Events.toObject(opt_includeInstance, this);
 };
 
 
@@ -673,11 +673,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.prototype.toObject = functio
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.Events} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.btc.Events.toObject = function(includeInstance, msg) {
   var f, obj = {
     eventList: jspb.Message.toObjectList(msg.getEventList(),
     commonMessage_pb.Event.toObject, includeInstance)
@@ -694,23 +694,23 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.toObject = function(includeI
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.Events}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.btc.Events.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent;
-  return proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.Events;
+  return proto.fairwaycorp.blockchainprotobuf.btc.Events.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.Events} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.Events}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.btc.Events.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -735,9 +735,9 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.deserializeBinaryFromReader 
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.Events.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.btc.Events.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -745,11 +745,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.prototype.serializeBinary = 
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.Events} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.btc.Events.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getEventList();
   if (f.length > 0) {
@@ -766,14 +766,14 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.serializeBinaryToWriter = fu
  * repeated Event event = 1;
  * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.btc.Event>}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.prototype.getEventList = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.Events.prototype.getEventList = function() {
   return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.btc.Event>} */ (
     jspb.Message.getRepeatedWrapperField(this, commonMessage_pb.Event, 1));
 };
 
 
 /** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.btc.Event>} value */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.prototype.setEventList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.Events.prototype.setEventList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -783,12 +783,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.prototype.setEventList = fun
  * @param {number=} opt_index
  * @return {!proto.fairwaycorp.blockchainprotobuf.btc.Event}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.prototype.addEvent = function(opt_value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.btc.Events.prototype.addEvent = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.fairwaycorp.blockchainprotobuf.btc.Event, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.btc.ArrayEvent.prototype.clearEventList = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.Events.prototype.clearEventList = function() {
   this.setEventList([]);
 };
 

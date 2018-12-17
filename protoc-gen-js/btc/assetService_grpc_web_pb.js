@@ -83,12 +83,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValueRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.GenerateAssetAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.AddressKeychain>}
  */
 const methodInfo_AssetService_GenerateAssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.AddressKeychain,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.NullValueRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GenerateAssetAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -97,7 +97,7 @@ const methodInfo_AssetService_GenerateAssetAddressEndpoint = new grpc.web.Abstra
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.NullValueRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GenerateAssetAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -118,7 +118,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.generateAs
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.NullValueRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GenerateAssetAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -139,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.gen
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.OAPIssueRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.IssueAssetEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.OAPTX>}
  */
 const methodInfo_AssetService_IssueAssetEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.OAPTX,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.OAPIssueRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.IssueAssetEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -153,7 +153,7 @@ const methodInfo_AssetService_IssueAssetEndpoint = new grpc.web.AbstractClientBa
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.OAPIssueRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.IssueAssetEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -174,7 +174,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.issueAsset
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.OAPIssueRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.IssueAssetEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -307,12 +307,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.lis
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.GetAssetTXEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.AssetTXEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.OAPTX>}
  */
-const methodInfo_AssetService_GetAssetTXEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AssetService_AssetTXEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.OAPTX,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAssetTXEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.AssetTXEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -321,7 +321,7 @@ const methodInfo_AssetService_GetAssetTXEndpoint = new grpc.web.AbstractClientBa
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAssetTXEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AssetTXEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -330,29 +330,29 @@ const methodInfo_AssetService_GetAssetTXEndpoint = new grpc.web.AbstractClientBa
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.OAPTX>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.getAssetTXEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.assetTXEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.btc.AssetService/GetAssetTXEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.AssetService/AssetTXEndpoint',
       request,
       metadata,
-      methodInfo_AssetService_GetAssetTXEndpoint,
+      methodInfo_AssetService_AssetTXEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAssetTXEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AssetTXEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.OAPTX>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.getAssetTXEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.assetTXEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getAssetTXEndpoint(
+    this.delegateClient_.assetTXEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -363,12 +363,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.get
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.GetAssetAddressEndpointRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.AssetAddressEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Address>}
  */
-const methodInfo_AssetService_GetAssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AssetService_AssetAddressEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Address,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAssetAddressEndpointRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.AssetAddressEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -377,7 +377,7 @@ const methodInfo_AssetService_GetAssetAddressEndpoint = new grpc.web.AbstractCli
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAssetAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AssetAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -386,29 +386,29 @@ const methodInfo_AssetService_GetAssetAddressEndpoint = new grpc.web.AbstractCli
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Address>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.getAssetAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.AssetServiceClient.prototype.assetAddressEndpoint =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.btc.AssetService/GetAssetAddressEndpoint',
+      '/fairwaycorp.blockchainprotobuf.btc.AssetService/AssetAddressEndpoint',
       request,
       metadata,
-      methodInfo_AssetService_GetAssetAddressEndpoint,
+      methodInfo_AssetService_AssetAddressEndpoint,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAssetAddressEndpointRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AssetAddressEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Address>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.getAssetAddressEndpoint =
+proto.fairwaycorp.blockchainprotobuf.btc.AssetServicePromiseClient.prototype.assetAddressEndpoint =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getAssetAddressEndpoint(
+    this.delegateClient_.assetAddressEndpoint(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

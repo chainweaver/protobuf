@@ -12,9 +12,9 @@ var goog = jspb;
 var global = Function('return this')();
 
 var commonMessage_pb = require('./commonMessage_pb.js');
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DataEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DecodeRawTransactionEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.PushRawTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.SendTransactionEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.TransactionHashEndpointRequest', null, global);
@@ -481,19 +481,19 @@ proto.fairwaycorp.blockchainprotobuf.btc.UnconfirmedTransactionsEndpointRequest.
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.repeatedFields_, null);
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.repeatedFields_, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest';
+  proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.repeatedFields_ = [4,17,18];
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.repeatedFields_ = [4,17,18];
 
 
 
@@ -508,8 +508,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -518,11 +518,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
     blockHeight: jspb.Message.getFieldWithDefault(msg, 2, 0),
@@ -570,23 +570,23 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.toObject 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest;
-  return proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest;
+  return proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -732,9 +732,9 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.deseriali
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -742,11 +742,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNetwork();
   if (f !== 0.0) {
@@ -974,13 +974,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.serialize
  * optional NetworkAllowingAlias network = 1;
  * @return {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getNetwork = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getNetwork = function() {
   return /** @type {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setNetwork = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setNetwork = function(value) {
   jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -989,13 +989,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 block_height = 2;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getBlockHeight = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getBlockHeight = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setBlockHeight = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setBlockHeight = function(value) {
   jspb.Message.setProto3IntField(this, 2, value);
 };
 
@@ -1004,13 +1004,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string hash = 3;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getHash = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getHash = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setHash = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setHash = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
 };
 
@@ -1019,13 +1019,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * repeated string addresses = 4;
  * @return {!Array<string>}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getAddressesList = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getAddressesList = function() {
   return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 4));
 };
 
 
 /** @param {!Array<string>} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setAddressesList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setAddressesList = function(value) {
   jspb.Message.setField(this, 4, value || []);
 };
 
@@ -1034,12 +1034,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * @param {!string} value
  * @param {number=} opt_index
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.addAddresses = function(value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.addAddresses = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 4, value, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.clearAddressesList = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.clearAddressesList = function() {
   this.setAddressesList([]);
 };
 
@@ -1048,13 +1048,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 total = 5;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getTotal = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getTotal = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setTotal = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setTotal = function(value) {
   jspb.Message.setProto3IntField(this, 5, value);
 };
 
@@ -1063,13 +1063,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 fees = 6;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getFees = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getFees = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setFees = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setFees = function(value) {
   jspb.Message.setProto3IntField(this, 6, value);
 };
 
@@ -1078,13 +1078,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 size = 7;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getSize = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getSize = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setSize = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setSize = function(value) {
   jspb.Message.setProto3IntField(this, 7, value);
 };
 
@@ -1093,13 +1093,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string preference = 8;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getPreference = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getPreference = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setPreference = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setPreference = function(value) {
   jspb.Message.setProto3StringField(this, 8, value);
 };
 
@@ -1108,13 +1108,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string relayed_by = 9;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getRelayedBy = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getRelayedBy = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setRelayedBy = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setRelayedBy = function(value) {
   jspb.Message.setProto3StringField(this, 9, value);
 };
 
@@ -1123,13 +1123,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string received = 10;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getReceived = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getReceived = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setReceived = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setReceived = function(value) {
   jspb.Message.setProto3StringField(this, 10, value);
 };
 
@@ -1138,13 +1138,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 ver = 11;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getVer = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getVer = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setVer = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setVer = function(value) {
   jspb.Message.setProto3IntField(this, 11, value);
 };
 
@@ -1153,13 +1153,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 lock_time = 12;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getLockTime = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getLockTime = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setLockTime = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setLockTime = function(value) {
   jspb.Message.setProto3IntField(this, 12, value);
 };
 
@@ -1170,13 +1170,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getDoubleSpend = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getDoubleSpend = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 13, false));
 };
 
 
 /** @param {boolean} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setDoubleSpend = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setDoubleSpend = function(value) {
   jspb.Message.setProto3BooleanField(this, 13, value);
 };
 
@@ -1185,13 +1185,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 vin_sz = 14;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getVinSz = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getVinSz = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 14, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setVinSz = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setVinSz = function(value) {
   jspb.Message.setProto3IntField(this, 14, value);
 };
 
@@ -1200,13 +1200,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 vout_sz = 15;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getVoutSz = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getVoutSz = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 15, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setVoutSz = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setVoutSz = function(value) {
   jspb.Message.setProto3IntField(this, 15, value);
 };
 
@@ -1215,13 +1215,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 confirmations = 16;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getConfirmations = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getConfirmations = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 16, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setConfirmations = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setConfirmations = function(value) {
   jspb.Message.setProto3IntField(this, 16, value);
 };
 
@@ -1230,14 +1230,14 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * repeated TXInput inputs = 17;
  * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.btc.TXInput>}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getInputsList = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getInputsList = function() {
   return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.btc.TXInput>} */ (
     jspb.Message.getRepeatedWrapperField(this, commonMessage_pb.TXInput, 17));
 };
 
 
 /** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.btc.TXInput>} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setInputsList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setInputsList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 17, value);
 };
 
@@ -1247,12 +1247,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * @param {number=} opt_index
  * @return {!proto.fairwaycorp.blockchainprotobuf.btc.TXInput}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.addInputs = function(opt_value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.addInputs = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 17, opt_value, proto.fairwaycorp.blockchainprotobuf.btc.TXInput, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.clearInputsList = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.clearInputsList = function() {
   this.setInputsList([]);
 };
 
@@ -1261,14 +1261,14 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * repeated TXOutput outputs = 18;
  * @return {!Array<!proto.fairwaycorp.blockchainprotobuf.btc.TXOutput>}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getOutputsList = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getOutputsList = function() {
   return /** @type{!Array<!proto.fairwaycorp.blockchainprotobuf.btc.TXOutput>} */ (
     jspb.Message.getRepeatedWrapperField(this, commonMessage_pb.TXOutput, 18));
 };
 
 
 /** @param {!Array<!proto.fairwaycorp.blockchainprotobuf.btc.TXOutput>} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setOutputsList = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setOutputsList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 18, value);
 };
 
@@ -1278,12 +1278,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * @param {number=} opt_index
  * @return {!proto.fairwaycorp.blockchainprotobuf.btc.TXOutput}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.addOutputs = function(opt_value, opt_index) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.addOutputs = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 18, opt_value, proto.fairwaycorp.blockchainprotobuf.btc.TXOutput, opt_index);
 };
 
 
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.clearOutputsList = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.clearOutputsList = function() {
   this.setOutputsList([]);
 };
 
@@ -1294,13 +1294,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getOptInRbf = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getOptInRbf = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 19, false));
 };
 
 
 /** @param {boolean} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setOptInRbf = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setOptInRbf = function(value) {
   jspb.Message.setProto3BooleanField(this, 19, value);
 };
 
@@ -1309,13 +1309,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional float confidence = 20;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getConfidence = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getConfidence = function() {
   return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 20, 0.0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setConfidence = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setConfidence = function(value) {
   jspb.Message.setProto3FloatField(this, 20, value);
 };
 
@@ -1324,13 +1324,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string confirmed = 21;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getConfirmed = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getConfirmed = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 21, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setConfirmed = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setConfirmed = function(value) {
   jspb.Message.setProto3StringField(this, 21, value);
 };
 
@@ -1339,13 +1339,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 receive_count = 22;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getReceiveCount = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getReceiveCount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 22, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setReceiveCount = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setReceiveCount = function(value) {
   jspb.Message.setProto3IntField(this, 22, value);
 };
 
@@ -1354,13 +1354,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string change_address = 23;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getChangeAddress = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getChangeAddress = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 23, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setChangeAddress = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setChangeAddress = function(value) {
   jspb.Message.setProto3StringField(this, 23, value);
 };
 
@@ -1369,13 +1369,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string block_hash = 24;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getBlockHash = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getBlockHash = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 24, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setBlockHash = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setBlockHash = function(value) {
   jspb.Message.setProto3StringField(this, 24, value);
 };
 
@@ -1384,13 +1384,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional int32 block_index = 25;
  * @return {number}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getBlockIndex = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getBlockIndex = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 25, 0));
 };
 
 
 /** @param {number} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setBlockIndex = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setBlockIndex = function(value) {
   jspb.Message.setProto3IntField(this, 25, value);
 };
 
@@ -1399,13 +1399,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string double_of = 26;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getDoubleOf = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getDoubleOf = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 26, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setDoubleOf = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setDoubleOf = function(value) {
   jspb.Message.setProto3StringField(this, 26, value);
 };
 
@@ -1414,13 +1414,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string data_protocol = 27;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getDataProtocol = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getDataProtocol = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 27, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setDataProtocol = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setDataProtocol = function(value) {
   jspb.Message.setProto3StringField(this, 27, value);
 };
 
@@ -1429,13 +1429,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string hex = 28;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getHex = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getHex = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 28, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setHex = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setHex = function(value) {
   jspb.Message.setProto3StringField(this, 28, value);
 };
 
@@ -1444,13 +1444,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string next_inputs = 29;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getNextInputs = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getNextInputs = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 29, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setNextInputs = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setNextInputs = function(value) {
   jspb.Message.setProto3StringField(this, 29, value);
 };
 
@@ -1459,13 +1459,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * optional string next_outputs = 30;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getNextOutputs = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getNextOutputs = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 30, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setNextOutputs = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setNextOutputs = function(value) {
   jspb.Message.setProto3StringField(this, 30, value);
 };
 
@@ -1476,13 +1476,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.getIncludetosigntx = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.getIncludetosigntx = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 31, false));
 };
 
 
 /** @param {boolean} value */
-proto.fairwaycorp.blockchainprotobuf.btc.NewTransactionEndpointRequest.prototype.setIncludetosigntx = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.CreateTransactionEndpointRequest.prototype.setIncludetosigntx = function(value) {
   jspb.Message.setProto3BooleanField(this, 31, value);
 };
 

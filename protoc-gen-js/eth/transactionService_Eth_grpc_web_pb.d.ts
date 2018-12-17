@@ -1,15 +1,15 @@
 import * as grpcWeb from 'grpc-web';
 import {
+  CreateTransactionEndpointRequest,
   DecodeRawTransactionEndpointRequest,
   InputType,
-  NewTransactionEndpointRequest,
   OutputType,
   PushRawTransactionEndpointRequest,
   SendTransactionEndpointRequest,
   TX,
   TXSkeleton,
+  TXs,
   TransactionHashEndpointRequest,
-  TxArray,
   UnconfirmedTransactionsEndpointRequest} from './transactionService_Eth_pb';
 
 export class TransactionServiceClient {
@@ -24,15 +24,15 @@ export class TransactionServiceClient {
                response: TX) => void
   ): grpcWeb.ClientReadableStream<TX>;
 
-  unconfirmedTransactionEndpoint(
+  unconfirmedTransactionsEndpoint(
     request: UnconfirmedTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: TxArray) => void
-  ): grpcWeb.ClientReadableStream<TxArray>;
+               response: TXs) => void
+  ): grpcWeb.ClientReadableStream<TXs>;
 
-  newTransactionsEndpoint(
-    request: NewTransactionEndpointRequest,
+  createTransactionEndpoint(
+    request: CreateTransactionEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TXSkeleton) => void
@@ -71,13 +71,13 @@ export class TransactionServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<TX>;
 
-  unconfirmedTransactionEndpoint(
+  unconfirmedTransactionsEndpoint(
     request: UnconfirmedTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<TxArray>;
+  ): Promise<TXs>;
 
-  newTransactionsEndpoint(
-    request: NewTransactionEndpointRequest,
+  createTransactionEndpoint(
+    request: CreateTransactionEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TXSkeleton>;
 

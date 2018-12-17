@@ -3,11 +3,11 @@ import {
   DeleteMetadataAddressEndpointRequest,
   DeleteMetadataBlockheightEndpointRequest,
   DeleteMetadataTxhashEndpointRequest,
-  GetMetadataAddressEndpointRequest,
-  GetMetadataBlockhashEndpointRequest,
-  GetMetadataTxhashEndpointRequest,
   KeyValues,
   KeyPairsEntry,
+  MetadataAddressEndpointRequest,
+  MetadataBlockhashEndpointRequest,
+  MetadataTxhashEndpointRequest,
   NullValue,
   PutMetadataAddressEndpointRequest,
   KeyPairsEntry,
@@ -21,22 +21,22 @@ export class MetadataServiceClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  getMetadataAddressEndpoint(
-    request: GetMetadataAddressEndpointRequest,
+  metadataAddressEndpoint(
+    request: MetadataAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: KeyValues) => void
   ): grpcWeb.ClientReadableStream<KeyValues>;
 
-  getMetadataTxhashEndpoint(
-    request: GetMetadataTxhashEndpointRequest,
+  metadataTxhashEndpoint(
+    request: MetadataTxhashEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: KeyValues) => void
   ): grpcWeb.ClientReadableStream<KeyValues>;
 
-  getMetadataBlockhashEndpoint(
-    request: GetMetadataBlockhashEndpointRequest,
+  metadataBlockhashEndpoint(
+    request: MetadataBlockhashEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: KeyValues) => void
@@ -91,18 +91,18 @@ export class MetadataServicePromiseClient {
                credentials: null | { [index: string]: string; },
                options: null | { [index: string]: string; });
 
-  getMetadataAddressEndpoint(
-    request: GetMetadataAddressEndpointRequest,
+  metadataAddressEndpoint(
+    request: MetadataAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<KeyValues>;
 
-  getMetadataTxhashEndpoint(
-    request: GetMetadataTxhashEndpointRequest,
+  metadataTxhashEndpoint(
+    request: MetadataTxhashEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<KeyValues>;
 
-  getMetadataBlockhashEndpoint(
-    request: GetMetadataBlockhashEndpointRequest,
+  metadataBlockhashEndpoint(
+    request: MetadataBlockhashEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<KeyValues>;
 

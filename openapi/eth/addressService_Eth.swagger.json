@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/eth/{network}/addr": {
+    "/eth/{network}/addrs": {
       "post": {
         "operationId": "GenerateAddressEndpoint",
         "responses": {
@@ -53,7 +53,7 @@
         ]
       }
     },
-    "/eth/{network}/addr/{address}": {
+    "/eth/{network}/addrs/{address}": {
       "get": {
         "operationId": "AddressEndpoint",
         "responses": {

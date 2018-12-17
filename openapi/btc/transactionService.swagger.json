@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcTXS"
+              "$ref": "#/definitions/btcTXs"
             }
           }
         },
@@ -123,7 +123,7 @@
     },
     "/btc/{network}/txs/new": {
       "post": {
-        "operationId": "NewTransactionEndpoint",
+        "operationId": "CreateTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -150,7 +150,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcNewTransactionEndpointRequest"
+              "$ref": "#/definitions/btcCreateTransactionEndpointRequest"
             }
           }
         ],
@@ -318,7 +318,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcDescribedBelow"
+              "$ref": "#/definitions/btcTXPropagation"
             }
           }
         },
@@ -362,99 +362,7 @@
         }
       }
     },
-    "btcDataEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        },
-        "data": {
-          "type": "string",
-          "description": "The string representing the data to embed, can be either hex-encoded or plaintext."
-        },
-        "token": {
-          "type": "string",
-          "description": "Optional Your BlockCypher API token, can either be included here or as a URL Parameter in your request."
-        },
-        "encoding": {
-          "type": "string",
-          "description": "Optional The encoding of your data, can be either string (for plaintext) or hex (for hex-encoded). If not set, defaults to hex."
-        },
-        "hash": {
-          "type": "string",
-          "description": "Optional The hash of the transaction containing your data; only part of return object."
-        }
-      }
-    },
-    "btcDecodeRawTransactionEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        },
-        "tx": {
-          "type": "string"
-        }
-      }
-    },
-    "btcDescribedBelow": {
-      "type": "object",
-      "properties": {
-        "transaction": {
-          "type": "string",
-          "description": "The hash of the transaction you queried."
-        },
-        "first_location": {
-          "$ref": "#/definitions/btcFirstLocation",
-          "description": "An object containing latitude and longitude floats representing the first location to broadcast this transaction to BlockCypher."
-        },
-        "first_city": {
-          "type": "string",
-          "description": "Optional The name of the city closest to the first_location. If no nearby city can be found, this is not returned."
-        },
-        "first_country": {
-          "type": "string",
-          "description": "The name of the country containing the first_location."
-        },
-        "aggregated_origin": {
-          "$ref": "#/definitions/btcAggregatedOrigin",
-          "description": "An object containing latitude and longitude floats representing BlockCypher’s best guess of likely origin of this transaction, based on the radius of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers."
-        },
-        "aggregated_origin_radius": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The radius (in meters) of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers. In a general sense, this represents an approximate confidence interval in our calculated aggregated_origin; the smaller the radius, the more confidence in our aggregated_origin assessment."
-        },
-        "first_received": {
-          "type": "string",
-          "description": "The timestamp when BlockCypher first received this transaction."
-        }
-      }
-    },
-    "btcFirstLocation": {
-      "type": "object",
-      "properties": {
-        "latitude": {
-          "type": "number",
-          "format": "float"
-        },
-        "longitude": {
-          "type": "number",
-          "format": "float"
-        }
-      }
-    },
-    "btcNetworkAllowingAlias": {
-      "type": "string",
-      "enum": [
-        "MAINNET",
-        "mainnet",
-        "TEST",
-        "test"
-      ],
-      "default": "MAINNET"
-    },
-    "btcNewTransactionEndpointRequest": {
+    "btcCreateTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -604,6 +512,64 @@
           "format": "boolean"
         }
       }
+    },
+    "btcDataEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "data": {
+          "type": "string",
+          "description": "The string representing the data to embed, can be either hex-encoded or plaintext."
+        },
+        "token": {
+          "type": "string",
+          "description": "Optional Your BlockCypher API token, can either be included here or as a URL Parameter in your request."
+        },
+        "encoding": {
+          "type": "string",
+          "description": "Optional The encoding of your data, can be either string (for plaintext) or hex (for hex-encoded). If not set, defaults to hex."
+        },
+        "hash": {
+          "type": "string",
+          "description": "Optional The hash of the transaction containing your data; only part of return object."
+        }
+      }
+    },
+    "btcDecodeRawTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "tx": {
+          "type": "string"
+        }
+      }
+    },
+    "btcFirstLocation": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "float"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "btcNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAINNET",
+        "mainnet",
+        "TEST",
+        "test"
+      ],
+      "default": "MAINNET"
     },
     "btcNullData": {
       "type": "object",
@@ -917,14 +883,37 @@
         }
       }
     },
-    "btcTXS": {
+    "btcTXPropagation": {
       "type": "object",
       "properties": {
-        "txs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/btcTX"
-          }
+        "transaction": {
+          "type": "string",
+          "description": "The hash of the transaction you queried."
+        },
+        "first_location": {
+          "$ref": "#/definitions/btcFirstLocation",
+          "description": "An object containing latitude and longitude floats representing the first location to broadcast this transaction to BlockCypher."
+        },
+        "first_city": {
+          "type": "string",
+          "description": "Optional The name of the city closest to the first_location. If no nearby city can be found, this is not returned."
+        },
+        "first_country": {
+          "type": "string",
+          "description": "The name of the country containing the first_location."
+        },
+        "aggregated_origin": {
+          "$ref": "#/definitions/btcAggregatedOrigin",
+          "description": "An object containing latitude and longitude floats representing BlockCypher’s best guess of likely origin of this transaction, based on the radius of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers."
+        },
+        "aggregated_origin_radius": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The radius (in meters) of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers. In a general sense, this represents an approximate confidence interval in our calculated aggregated_origin; the smaller the radius, the more confidence in our aggregated_origin assessment."
+        },
+        "first_received": {
+          "type": "string",
+          "description": "The timestamp when BlockCypher first received this transaction."
         }
       }
     },
@@ -977,6 +966,17 @@
       "properties": {
         "error": {
           "type": "string"
+        }
+      }
+    },
+    "btcTXs": {
+      "type": "object",
+      "properties": {
+        "txs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcTX"
+          }
         }
       }
     }

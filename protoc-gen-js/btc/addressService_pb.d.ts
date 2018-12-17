@@ -209,21 +209,6 @@ export class GenerateAddressEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
-  toObject(): GenerateAddressEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GenerateAddressEndpointRequest;
-}
-
-export namespace GenerateAddressEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-  }
-}
-
-export class GenerateMultisigAddressEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
   getAddress(): string;
   setAddress(a: string): void;
   getPublic(): string;
@@ -240,12 +225,12 @@ export class GenerateMultisigAddressEndpointRequest {
   setOriginalAddress(a: string): void;
   getOapAddress(): string;
   setOapAddress(a: string): void;
-  toObject(): GenerateMultisigAddressEndpointRequest.AsObject;
+  toObject(): GenerateAddressEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GenerateMultisigAddressEndpointRequest;
+  static deserializeBinary: (bytes: {}) => GenerateAddressEndpointRequest;
 }
 
-export namespace GenerateMultisigAddressEndpointRequest {
+export namespace GenerateAddressEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Address: string;
