@@ -64,17 +64,17 @@ message GenerateAddressEndpointRequest {
   // Standard address representation.
   string address = 2;
   // Hex-encoded Public key.
-  string public = 3;  
+  string public = 3;
   // Hex-encoded Private key.
-  string private = 4;   
+  string private = 4;
   // Wallet import format, a common encoding for the private key.
-  string wif = 5; 
+  string wif = 5;
   // Optional Array of public keys to provide to generate a multisig address.
-  repeated string pubkeys  = 6;   
+  repeated string pubkeys  = 6;
   // Optional If generating a multisig address, the type of multisig script; typically “multisig-n-of-m”, where n and m are integers.
-  string script_type = 7;  
+  string script_type = 7;
   // Optional If generating an OAP address, this represents the parent blockchain’s underlying address (the typical address listed above).
-  string original_address = 8;  
+  string original_address = 8;
   // Optional The OAP address, if generated using the Generate Asset Address Endpoint.
-  string oap_address = 9; 
+  string oap_address = 9;
 }
