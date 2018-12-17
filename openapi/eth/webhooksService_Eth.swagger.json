@@ -15,30 +15,29 @@
     "application/json"
   ],
   "paths": {
-    "/hooks": {
+    "/eth/{network}/hooks": {
       "get": {
-        "operationId": "GetListWebHooksEndpoint",
+        "operationId": "ListWebHooksEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethArrayEvent"
+              "$ref": "#/definitions/ethEvents"
             }
           }
         },
         "parameters": [
           {
             "name": "network",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ],
-            "default": "MAIN"
+            ]
           },
           {
             "name": "token",
@@ -52,7 +51,7 @@
         ]
       },
       "post": {
-        "operationId": "PostCreateWebHookEndpoint",
+        "operationId": "CreateWebHookEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -63,11 +62,23 @@
         },
         "parameters": [
           {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethPostCreateWebHookEndpointRequest"
+              "$ref": "#/definitions/ethCreateWebHookEndpointRequest"
             }
           }
         ],
@@ -76,9 +87,9 @@
         ]
       }
     },
-    "/hooks/{webhookid}": {
+    "/eth/{network}/hooks/{webhookid}": {
       "get": {
-        "operationId": "GetWebHookIDEndpoint",
+        "operationId": "WebHookIDEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -89,23 +100,22 @@
         },
         "parameters": [
           {
-            "name": "webhookid",
+            "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "network",
-            "in": "query",
-            "required": false,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ],
-            "default": "MAIN"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -124,23 +134,22 @@
         },
         "parameters": [
           {
-            "name": "webhookid",
+            "name": "network",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "network",
-            "in": "query",
-            "required": false,
             "type": "string",
             "enum": [
               "MAIN",
               "main",
               "ROPSTEN",
               "ropsten"
-            ],
-            "default": "MAIN"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -150,14 +159,41 @@
     }
   },
   "definitions": {
-    "ethArrayEvent": {
+    "ethCreateWebHookEndpointRequest": {
       "type": "object",
       "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "id": {
+          "type": "string",
+          "description": "Identifier of the event; generated when a new request is created."
+        },
         "event": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethEvent"
-          }
+          "type": "string",
+          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
+        },
+        "hash": {
+          "type": "string",
+          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+        },
+        "address": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given address will be sent."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+        },
+        "url": {
+          "type": "string",
+          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+        },
+        "callback_errors": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
         }
       }
     },
@@ -196,6 +232,17 @@
         }
       }
     },
+    "ethEvents": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethEvent"
+          }
+        }
+      }
+    },
     "ethNetworkAllowingAlias": {
       "type": "string",
       "enum": [
@@ -208,44 +255,6 @@
     },
     "ethNullValue": {
       "type": "object"
-    },
-    "ethPostCreateWebHookEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/ethNetworkAllowingAlias"
-        },
-        "id": {
-          "type": "string",
-          "description": "Identifier of the event; generated when a new request is created."
-        },
-        "event": {
-          "type": "string",
-          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
-        },
-        "hash": {
-          "type": "string",
-          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
-        },
-        "address": {
-          "type": "string",
-          "description": "optional Only transactions associated with the given address will be sent."
-        },
-        "confirmations": {
-          "type": "integer",
-          "format": "int32",
-          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
-        },
-        "url": {
-          "type": "string",
-          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
-        },
-        "callback_errors": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
-        }
-      }
     }
   }
 }

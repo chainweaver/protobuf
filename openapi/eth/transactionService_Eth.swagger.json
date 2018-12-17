@@ -17,12 +17,12 @@
   "paths": {
     "/eth/{network}/txs": {
       "get": {
-        "operationId": "GetUnconfirmedTransactionsEndpoint",
+        "operationId": "UnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethTxArray"
+              "$ref": "#/definitions/ethTXs"
             }
           }
         },
@@ -47,7 +47,7 @@
     },
     "/eth/{network}/txs/decode": {
       "post": {
-        "operationId": "PostDecodeRawTransactionEndpoint",
+        "operationId": "DecodeRawTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -74,7 +74,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethPostDecodeRawTransactionEndpointRequest"
+              "$ref": "#/definitions/ethDecodeRawTransactionEndpointRequest"
             }
           }
         ],
@@ -85,7 +85,7 @@
     },
     "/eth/{network}/txs/new": {
       "post": {
-        "operationId": "PostCreateTransactionsEndpoint",
+        "operationId": "CreateTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -112,7 +112,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethPostCreateTransactionsEndpointRequest"
+              "$ref": "#/definitions/ethCreateTransactionEndpointRequest"
             }
           }
         ],
@@ -123,7 +123,7 @@
     },
     "/eth/{network}/txs/push": {
       "put": {
-        "operationId": "PostPushRawTransactionEndpoint",
+        "operationId": "PushRawTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -150,7 +150,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethPostPushRawTransactionEndpointRequest"
+              "$ref": "#/definitions/ethPushRawTransactionEndpointRequest"
             }
           }
         ],
@@ -161,7 +161,7 @@
     },
     "/eth/{network}/txs/send": {
       "post": {
-        "operationId": "PostSendTransactionEndpoint",
+        "operationId": "SendTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -188,7 +188,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethPostSendTransactionEndpointRequest"
+              "$ref": "#/definitions/ethSendTransactionEndpointRequest"
             }
           }
         ],
@@ -199,7 +199,7 @@
     },
     "/eth/{network}/txs/{txhash}": {
       "get": {
-        "operationId": "GetTransactionHashEndpoint",
+        "operationId": "TransactionHashEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -235,50 +235,7 @@
     }
   },
   "definitions": {
-    "ethInputType": {
-      "type": "object",
-      "properties": {
-        "sequence": {
-          "type": "string",
-          "format": "int64"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ethNetworkAllowingAlias": {
-      "type": "string",
-      "enum": [
-        "MAIN",
-        "main",
-        "ROPSTEN",
-        "ropsten"
-      ],
-      "default": "MAIN"
-    },
-    "ethOutputType": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "format": "int64"
-        },
-        "script": {
-          "type": "string"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ethPostCreateTransactionsEndpointRequest": {
+    "ethCreateTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -421,7 +378,7 @@
         }
       }
     },
-    "ethPostDecodeRawTransactionEndpointRequest": {
+    "ethDecodeRawTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -432,7 +389,50 @@
         }
       }
     },
-    "ethPostPushRawTransactionEndpointRequest": {
+    "ethInputType": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "type": "string",
+          "format": "int64"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAIN",
+        "main",
+        "ROPSTEN",
+        "ropsten"
+      ],
+      "default": "MAIN"
+    },
+    "ethOutputType": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "int64"
+        },
+        "script": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethPushRawTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -443,7 +443,7 @@
         }
       }
     },
-    "ethPostSendTransactionEndpointRequest": {
+    "ethSendTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -646,7 +646,7 @@
         }
       }
     },
-    "ethTxArray": {
+    "ethTXs": {
       "type": "object",
       "properties": {
         "result": {

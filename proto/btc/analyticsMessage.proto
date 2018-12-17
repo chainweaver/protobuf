@@ -24,12 +24,12 @@ message CreateAnalyticsJobRequest {
   string source = 9;
 }
 
-message GetAnalyticsJobRequest {
+message AnalyticsJobRequest {
   NetworkAllowingAlias network = 1;
   string ticket = 2;
 }
 
-message GetAnalyticsJobResultsRequest {
+message AnalyticsJobResultsRequest {
   NetworkAllowingAlias network = 1;
   string ticket = 2;
   int32 page = 3;

@@ -8,25 +8,25 @@ import "webhooksMessage_Eth.proto";
 import "commonMessage_Eth.proto";
 
 service WebHooksService {
-  rpc PostCreateWebHookEndpoint (PostCreateWebHookEndpointRequest) returns (Event) {
+  rpc CreateWebHookEndpoint (CreateWebHookEndpointRequest) returns (Event) {
     option (google.api.http) = {
-      post: "/hooks"
+      post: "/eth/{network}/hooks"
       body: "*"
     };
   }
-  rpc GetListWebHooksEndpoint (GetListWebHooksEndpointRequest) returns (ArrayEvent) {
+  rpc ListWebHooksEndpoint (ListWebHooksEndpointRequest) returns (Events) {
     option (google.api.http) = {
-      get: "/hooks"
+      get: "/eth/{network}/hooks"
     };
   }
-  rpc GetWebHookIDEndpoint (GetWebHookIDEndpointRequest) returns (Event) {
+  rpc WebHookIDEndpoint (WebHookIDEndpointRequest) returns (Event) {
     option (google.api.http) = {
-      get: "/hooks/{webhookid}"
+      get: "/eth/{network}/hooks/{webhookid}"
     };
   }
   rpc DeleteWebHookEndpoint (DeleteWebHookEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
-      delete: "/hooks/{webhookid}"
+      delete: "/eth/{network}/hooks/{webhookid}"
     };
   }
 }

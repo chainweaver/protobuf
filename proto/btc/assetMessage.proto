@@ -5,8 +5,20 @@ option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/b
 
 import "commonMessage.proto";
 
+message GenerateAssetAddressEndpointRequest {
+  NetworkAllowingAlias network = 1;
+}
+
 message IssueAssetEndpointRequest {
   NetworkAllowingAlias network = 1;
+  // The private key being used to issue or transfer assets.
+  string from_private = 2;
+  // The target OAP address assets for issue or transfer.
+  string to_address = 3;
+  // The amount of assets being issued or transfered.
+  int32 amount = 4;
+  // Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction.  
+  string metadata = 5;
 }
 
 message TransferAssetEndpointRequest {
@@ -27,13 +39,13 @@ message ListAssetTXsEndpointRequest {
   string assetid = 2;
 }
 
-message GetAssetTXEndpointRequest {
+message AssetTXEndpointRequest {
   NetworkAllowingAlias network = 1;
   string assetid = 2;
   string txhash = 3;
 }
 
-message GetAssetAddressEndpointRequest {
+message AssetAddressEndpointRequest {
   string network = 10;
   string assetid = 1;
   string oapaddr = 2;

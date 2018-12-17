@@ -1,20 +1,20 @@
 import * as grpcWeb from 'grpc-web';
 import {
   AggregatedOrigin,
+  CreateTransactionEndpointRequest,
   DataEndpointRequest,
   DecodeRawTransactionEndpointRequest,
-  DescribedBelow,
   FirstLocation,
-  NewTransactionEndpointRequest,
   NullData,
   PushRawTransactionEndpointRequest,
   SendTransactionEndpointRequest,
   TX,
   TXInput,
   TXOutput,
-  TXS,
+  TXPropagation,
   TXSkeleton,
   TXerror,
+  TXs,
   TransactionHashEndpointRequest,
   TransactionPropagationEndpointRequest,
   UnconfirmedTransactionsEndpointRequest} from './transactionService_pb';
@@ -35,11 +35,11 @@ export class TransactionServiceClient {
     request: UnconfirmedTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: TXS) => void
-  ): grpcWeb.ClientReadableStream<TXS>;
+               response: TXs) => void
+  ): grpcWeb.ClientReadableStream<TXs>;
 
-  newTransactionEndpoint(
-    request: NewTransactionEndpointRequest,
+  createTransactionEndpoint(
+    request: CreateTransactionEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: TXSkeleton) => void
@@ -77,8 +77,8 @@ export class TransactionServiceClient {
     request: TransactionPropagationEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: DescribedBelow) => void
-  ): grpcWeb.ClientReadableStream<DescribedBelow>;
+               response: TXPropagation) => void
+  ): grpcWeb.ClientReadableStream<TXPropagation>;
 
 }
 
@@ -95,10 +95,10 @@ export class TransactionServicePromiseClient {
   unconfirmedTransactionsEndpoint(
     request: UnconfirmedTransactionsEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<TXS>;
+  ): Promise<TXs>;
 
-  newTransactionEndpoint(
-    request: NewTransactionEndpointRequest,
+  createTransactionEndpoint(
+    request: CreateTransactionEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<TXSkeleton>;
 
@@ -125,7 +125,7 @@ export class TransactionServicePromiseClient {
   transactionPropagationEndpoint(
     request: TransactionPropagationEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<DescribedBelow>;
+  ): Promise<TXPropagation>;
 
 }
 

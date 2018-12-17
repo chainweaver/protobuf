@@ -8,17 +8,17 @@ import "metadataMessage.proto";
 import "commonMessage.proto";
 
 service MetadataService {
-  rpc GetMetadataAddressEndpoint (GetMetadataAddressEndpointRequest) returns (KeyValues) {
+  rpc MetadataAddressEndpoint (MetadataAddressEndpointRequest) returns (KeyValues) {
     option (google.api.http) = {
       get: "/btc/{network}/addrs/{address}/meta"
     };
   }
-  rpc GetMetadataTxhashEndpoint (GetMetadataTxhashEndpointRequest) returns (KeyValues) {
+  rpc MetadataTxhashEndpoint (MetadataTxhashEndpointRequest) returns (KeyValues) {
     option (google.api.http) = {
       get: "/btc/{network}/txs/{txhash}/meta"
     };
   }
-  rpc GetMetadataBlockhashEndpoint (GetMetadataBlockhashEndpointRequest) returns (KeyValues) {
+  rpc MetadataBlockhashEndpoint (MetadataBlockhashEndpointRequest) returns (KeyValues) {
     option (google.api.http) = {
       get: "/btc/{network}/blocks/{block_hash}/meta"
     };

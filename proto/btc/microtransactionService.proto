@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 import "microtransactionMessage.proto";
 
 service MicrotransactionService {
-  rpc MicrotransactionEndpoint (MicroTXRequest) returns (MicroTX) {
+  rpc MicrotransactionEndpoint (MicrotransactionEndpointRequest) returns (MicroTX) {
     option (google.api.http) = {
       post: "/btc/{network}/txs/micro"
       body: "*"

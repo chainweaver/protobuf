@@ -17,7 +17,7 @@
   "paths": {
     "/btc/{network}/addrs": {
       "post": {
-        "operationId": "GenerateMultisigAddressEndpoint",
+        "operationId": "GenerateAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -44,7 +44,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcGenerateMultisigAddressEndpointRequest"
+              "$ref": "#/definitions/btcGenerateAddressEndpointRequest"
             }
           }
         ],
@@ -444,14 +444,6 @@
       }
     },
     "btcGenerateAddressEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        }
-      }
-    },
-    "btcGenerateMultisigAddressEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {

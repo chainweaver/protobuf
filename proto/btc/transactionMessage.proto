@@ -24,20 +24,20 @@ message UnconfirmedTransactionsEndpointRequest {
   NetworkAllowingAlias network = 1;
 }
 
-message NewTransactionEndpointRequest {
+message CreateTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   //	Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
-  int32 block_height = 2;  
+  int32 block_height = 2;
   //The hash of the transaction. While reasonably unique, using hashes as identifiers may be unsafe.
-  string hash = 3;  
+  string hash = 3;
   //Array of bitcoin public addresses involved in the transaction.
   repeated string addresses = 4;
   //The total number of satoshis exchanged in this transaction.
   int32 total = 5;
   //The total number of fees—in satoshis—collected by miners in this transaction.
-  int32 fees = 6;  
+  int32 fees = 6;
   //The size of the transaction in bytes.
-  int32 size = 7; 
+  int32 size = 7;
   //The likelihood that this transaction will make it to the next block; reflects the preference level miners have to include this transaction. Can be high, medium or low.
   string preference = 8;
   //Address of the peer that sent Block’s servers this transaction.

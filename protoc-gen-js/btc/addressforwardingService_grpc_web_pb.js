@@ -140,15 +140,15 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServicePromiseClient.p
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.fairwaycorp.blockchainprotobuf.btc.ListForwardsEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.btc.ListForwardsEndpointResponse>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.AddressForwards>}
  */
 const methodInfo_AddressForwardingService_ListForwardsEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  addressforwardingMessage_pb.ListForwardsEndpointResponse,
+  addressforwardingMessage_pb.AddressForwards,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.ListForwardsEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  addressforwardingMessage_pb.ListForwardsEndpointResponse.deserializeBinary
+  addressforwardingMessage_pb.AddressForwards.deserializeBinary
 );
 
 
@@ -157,9 +157,9 @@ const methodInfo_AddressForwardingService_ListForwardsEndpoint = new grpc.web.Ab
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.ListForwardsEndpointResponse)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.AddressForwards)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.ListForwardsEndpointResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.AddressForwards>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient.prototype.listForwardsEndpoint =
@@ -178,7 +178,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient.prototyp
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.ListForwardsEndpointResponse>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.AddressForwards>}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServicePromiseClient.prototype.listForwardsEndpoint =
@@ -196,15 +196,15 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServicePromiseClient.p
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointRequest,
- *   !proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointResponse>}
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  */
 const methodInfo_AddressForwardingService_DeleteForwardEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
-  addressforwardingMessage_pb.DeleteForwardEndpointResponse,
+  commonMessage_pb.NullValue,
   /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  addressforwardingMessage_pb.DeleteForwardEndpointResponse.deserializeBinary
+  commonMessage_pb.NullValue.deserializeBinary
 );
 
 
@@ -213,9 +213,9 @@ const methodInfo_AddressForwardingService_DeleteForwardEndpoint = new grpc.web.A
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointResponse)}
+ * @param {function(?grpc.web.Error, ?proto.fairwaycorp.blockchainprotobuf.btc.NullValue)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.NullValue>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient.prototype.deleteForwardEndpoint =
@@ -234,7 +234,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServiceClient.prototyp
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.DeleteForwardEndpointResponse>}
+ * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.NullValue>}
  *     The XHR Node Readable Stream
  */
 proto.fairwaycorp.blockchainprotobuf.btc.AddressForwardingServicePromiseClient.prototype.deleteForwardEndpoint =

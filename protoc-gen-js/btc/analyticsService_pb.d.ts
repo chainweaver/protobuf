@@ -1,3 +1,42 @@
+export class AnalyticsJobRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getTicket(): string;
+  setTicket(a: string): void;
+  toObject(): AnalyticsJobRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => AnalyticsJobRequest;
+}
+
+export namespace AnalyticsJobRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Ticket: string;
+  }
+}
+
+export class AnalyticsJobResultsRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getTicket(): string;
+  setTicket(a: string): void;
+  getPage(): number;
+  setPage(a: number): void;
+  toObject(): AnalyticsJobResultsRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => AnalyticsJobResultsRequest;
+}
+
+export namespace AnalyticsJobResultsRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Ticket: string;
+    Page: number;
+  }
+}
+
 export class CreateAnalyticsJobRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
@@ -34,45 +73,6 @@ export namespace CreateAnalyticsJobRequest {
     End: string;
     Degree: number;
     Source: string;
-  }
-}
-
-export class GetAnalyticsJobRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getTicket(): string;
-  setTicket(a: string): void;
-  toObject(): GetAnalyticsJobRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetAnalyticsJobRequest;
-}
-
-export namespace GetAnalyticsJobRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Ticket: string;
-  }
-}
-
-export class GetAnalyticsJobResultsRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getTicket(): string;
-  setTicket(a: string): void;
-  getPage(): number;
-  setPage(a: number): void;
-  toObject(): GetAnalyticsJobResultsRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetAnalyticsJobResultsRequest;
-}
-
-export namespace GetAnalyticsJobResultsRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Ticket: string;
-    Page: number;
   }
 }
 

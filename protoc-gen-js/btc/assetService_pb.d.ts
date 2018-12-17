@@ -94,7 +94,7 @@ export namespace AddressKeychain {
   }
 }
 
-export class GetAssetAddressEndpointRequest {
+export class AssetAddressEndpointRequest {
   constructor ();
   getNetwork(): string;
   setNetwork(a: string): void;
@@ -102,12 +102,12 @@ export class GetAssetAddressEndpointRequest {
   setAssetid(a: string): void;
   getOapaddr(): string;
   setOapaddr(a: string): void;
-  toObject(): GetAssetAddressEndpointRequest.AsObject;
+  toObject(): AssetAddressEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetAssetAddressEndpointRequest;
+  static deserializeBinary: (bytes: {}) => AssetAddressEndpointRequest;
 }
 
-export namespace GetAssetAddressEndpointRequest {
+export namespace AssetAddressEndpointRequest {
   export type AsObject = {
     Network: string;
     Assetid: string;
@@ -115,7 +115,7 @@ export namespace GetAssetAddressEndpointRequest {
   }
 }
 
-export class GetAssetTXEndpointRequest {
+export class AssetTXEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
@@ -123,16 +123,31 @@ export class GetAssetTXEndpointRequest {
   setAssetid(a: string): void;
   getTxhash(): string;
   setTxhash(a: string): void;
-  toObject(): GetAssetTXEndpointRequest.AsObject;
+  toObject(): AssetTXEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetAssetTXEndpointRequest;
+  static deserializeBinary: (bytes: {}) => AssetTXEndpointRequest;
 }
 
-export namespace GetAssetTXEndpointRequest {
+export namespace AssetTXEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Assetid: string;
     Txhash: string;
+  }
+}
+
+export class GenerateAssetAddressEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  toObject(): GenerateAssetAddressEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => GenerateAssetAddressEndpointRequest;
+}
+
+export namespace GenerateAssetAddressEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
   }
 }
 
@@ -205,6 +220,33 @@ export namespace HDWallet {
   }
 }
 
+export class IssueAssetEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getFromPrivate(): string;
+  setFromPrivate(a: string): void;
+  getToAddress(): string;
+  setToAddress(a: string): void;
+  getAmount(): number;
+  setAmount(a: number): void;
+  getMetadata(): string;
+  setMetadata(a: string): void;
+  toObject(): IssueAssetEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => IssueAssetEndpointRequest;
+}
+
+export namespace IssueAssetEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    FromPrivate: string;
+    ToAddress: string;
+    Amount: number;
+    Metadata: string;
+  }
+}
+
 export class ListAssetTXsEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
@@ -220,48 +262,6 @@ export namespace ListAssetTXsEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Assetid: string;
-  }
-}
-
-export class NullValueRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  toObject(): NullValueRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => NullValueRequest;
-}
-
-export namespace NullValueRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-  }
-}
-
-export class OAPIssueRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getFromPrivate(): string;
-  setFromPrivate(a: string): void;
-  getToAddress(): string;
-  setToAddress(a: string): void;
-  getAmount(): number;
-  setAmount(a: number): void;
-  getMetadata(): string;
-  setMetadata(a: string): void;
-  toObject(): OAPIssueRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => OAPIssueRequest;
-}
-
-export namespace OAPIssueRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    FromPrivate: string;
-    ToAddress: string;
-    Amount: number;
-    Metadata: string;
   }
 }
 

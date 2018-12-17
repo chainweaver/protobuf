@@ -17,7 +17,7 @@
   "paths": {
     "/btc/{network}/addrs/{address}/meta": {
       "get": {
-        "operationId": "GetMetadataAddressEndpoint",
+        "operationId": "MetadataAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -137,7 +137,7 @@
     },
     "/btc/{network}/blocks/{block_hash}/meta": {
       "get": {
-        "operationId": "GetMetadataBlockhashEndpoint",
+        "operationId": "MetadataBlockhashEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -257,7 +257,7 @@
     },
     "/btc/{network}/txs/{txhash}/meta": {
       "get": {
-        "operationId": "GetMetadataTxhashEndpoint",
+        "operationId": "MetadataTxhashEndpoint",
         "responses": {
           "200": {
             "description": "",

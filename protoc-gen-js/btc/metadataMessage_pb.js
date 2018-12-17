@@ -15,10 +15,10 @@ var commonMessage_pb = require('./commonMessage_pb.js');
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DeleteMetadataAddressEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DeleteMetadataBlockheightEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.DeleteMetadataTxhashEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest', null, global);
-goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.KeyValues', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest', null, global);
+goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.PutMetadataAddressEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.PutMetadataBlockhashEndpointRequest', null, global);
 goog.exportSymbol('proto.fairwaycorp.blockchainprotobuf.btc.PutMetadataTxhashEndpointRequest', null, global);
@@ -177,12 +177,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.KeyValues.prototype.clearKeyPairsMap = 
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest = function(opt_data) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest';
+  proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest';
 }
 
 
@@ -197,8 +197,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -207,11 +207,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.proto
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
     address: jspb.Message.getFieldWithDefault(msg, 2, ""),
@@ -229,23 +229,23 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.toObj
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest;
-  return proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest;
+  return proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -277,9 +277,9 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.deser
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -287,11 +287,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.proto
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNetwork();
   if (f !== 0.0) {
@@ -321,13 +321,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.seria
  * optional NetworkAllowingAlias network = 1;
  * @return {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.prototype.getNetwork = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.prototype.getNetwork = function() {
   return /** @type {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias} value */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.prototype.setNetwork = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.prototype.setNetwork = function(value) {
   jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -336,13 +336,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.proto
  * optional string address = 2;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.prototype.getAddress = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.prototype.getAddress = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.prototype.setAddress = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.prototype.setAddress = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -353,13 +353,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.proto
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.prototype.getPrivate = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.prototype.getPrivate = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, false));
 };
 
 
 /** @param {boolean} value */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.prototype.setPrivate = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataAddressEndpointRequest.prototype.setPrivate = function(value) {
   jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
@@ -375,12 +375,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataAddressEndpointRequest.proto
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest = function(opt_data) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest';
+  proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest';
 }
 
 
@@ -395,8 +395,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -405,11 +405,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.protot
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
     txhash: jspb.Message.getFieldWithDefault(msg, 2, ""),
@@ -427,23 +427,23 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.toObje
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest;
-  return proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest;
+  return proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -475,9 +475,9 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.deseri
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -485,11 +485,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.protot
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNetwork();
   if (f !== 0.0) {
@@ -519,13 +519,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.serial
  * optional NetworkAllowingAlias network = 1;
  * @return {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.prototype.getNetwork = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.prototype.getNetwork = function() {
   return /** @type {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias} value */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.prototype.setNetwork = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.prototype.setNetwork = function(value) {
   jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -534,13 +534,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.protot
  * optional string txhash = 2;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.prototype.getTxhash = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.prototype.getTxhash = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.prototype.setTxhash = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.prototype.setTxhash = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -551,13 +551,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.protot
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.prototype.getPrivate = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.prototype.getPrivate = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, false));
 };
 
 
 /** @param {boolean} value */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.prototype.setPrivate = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataTxhashEndpointRequest.prototype.setPrivate = function(value) {
   jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
@@ -573,12 +573,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataTxhashEndpointRequest.protot
  * @extends {jspb.Message}
  * @constructor
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest = function(opt_data) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest, jspb.Message);
+goog.inherits(proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest';
+  proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.displayName = 'proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest';
 }
 
 
@@ -593,8 +593,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.toObject(opt_includeInstance, this);
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -603,11 +603,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.pro
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest} msg The msg instance to transform.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.toObject = function(includeInstance, msg) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
     blockHash: jspb.Message.getFieldWithDefault(msg, 2, ""),
@@ -625,23 +625,23 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.toO
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.deserializeBinary = function(bytes) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest;
-  return proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest;
+  return proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest} msg The message object to deserialize into.
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest}
+ * @return {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -673,9 +673,9 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.des
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.prototype.serializeBinary = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.serializeBinaryToWriter(this, writer);
+  proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -683,11 +683,11 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.pro
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest} message
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.serializeBinaryToWriter = function(message, writer) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNetwork();
   if (f !== 0.0) {
@@ -717,13 +717,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.ser
  * optional NetworkAllowingAlias network = 1;
  * @return {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.prototype.getNetwork = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.prototype.getNetwork = function() {
   return /** @type {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias} value */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.prototype.setNetwork = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.prototype.setNetwork = function(value) {
   jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -732,13 +732,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.pro
  * optional string block_hash = 2;
  * @return {string}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.prototype.getBlockHash = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.prototype.getBlockHash = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.prototype.setBlockHash = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.prototype.setBlockHash = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -749,13 +749,13 @@ proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.pro
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.prototype.getPrivate = function() {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.prototype.getPrivate = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, false));
 };
 
 
 /** @param {boolean} value */
-proto.fairwaycorp.blockchainprotobuf.btc.GetMetadataBlockhashEndpointRequest.prototype.setPrivate = function(value) {
+proto.fairwaycorp.blockchainprotobuf.btc.MetadataBlockhashEndpointRequest.prototype.setPrivate = function(value) {
   jspb.Message.setProto3BooleanField(this, 3, value);
 };
 

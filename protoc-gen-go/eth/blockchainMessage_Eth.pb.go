@@ -18,45 +18,45 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type GetChainEndpointRequest struct {
+type ChainEndpointRequest struct {
 	Network              NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias" json:"network,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *GetChainEndpointRequest) Reset()         { *m = GetChainEndpointRequest{} }
-func (m *GetChainEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*GetChainEndpointRequest) ProtoMessage()    {}
-func (*GetChainEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_Eth_b2e1637c5014a5a5, []int{0}
+func (m *ChainEndpointRequest) Reset()         { *m = ChainEndpointRequest{} }
+func (m *ChainEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*ChainEndpointRequest) ProtoMessage()    {}
+func (*ChainEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_blockchainMessage_Eth_efde1d4d0592e871, []int{0}
 }
-func (m *GetChainEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetChainEndpointRequest.Unmarshal(m, b)
+func (m *ChainEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ChainEndpointRequest.Unmarshal(m, b)
 }
-func (m *GetChainEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetChainEndpointRequest.Marshal(b, m, deterministic)
+func (m *ChainEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ChainEndpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetChainEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetChainEndpointRequest.Merge(dst, src)
+func (dst *ChainEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChainEndpointRequest.Merge(dst, src)
 }
-func (m *GetChainEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_GetChainEndpointRequest.Size(m)
+func (m *ChainEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_ChainEndpointRequest.Size(m)
 }
-func (m *GetChainEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetChainEndpointRequest.DiscardUnknown(m)
+func (m *ChainEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ChainEndpointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetChainEndpointRequest proto.InternalMessageInfo
+var xxx_messageInfo_ChainEndpointRequest proto.InternalMessageInfo
 
-func (m *GetChainEndpointRequest) GetNetwork() NetworkAllowingAlias {
+func (m *ChainEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	if m != nil {
 		return m.Network
 	}
 	return NetworkAllowingAlias_MAIN
 }
 
-type GetBlockHashEndpointRequest struct {
+type BlockHashEndpointRequest struct {
 	Network   NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias" json:"network,omitempty"`
 	BlockHash string               `protobuf:"bytes,2,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
 	// Filters response to only include transaction hashes after txstart in the block.
@@ -68,59 +68,59 @@ type GetBlockHashEndpointRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetBlockHashEndpointRequest) Reset()         { *m = GetBlockHashEndpointRequest{} }
-func (m *GetBlockHashEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*GetBlockHashEndpointRequest) ProtoMessage()    {}
-func (*GetBlockHashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_Eth_b2e1637c5014a5a5, []int{1}
+func (m *BlockHashEndpointRequest) Reset()         { *m = BlockHashEndpointRequest{} }
+func (m *BlockHashEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*BlockHashEndpointRequest) ProtoMessage()    {}
+func (*BlockHashEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_blockchainMessage_Eth_efde1d4d0592e871, []int{1}
 }
-func (m *GetBlockHashEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetBlockHashEndpointRequest.Unmarshal(m, b)
+func (m *BlockHashEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BlockHashEndpointRequest.Unmarshal(m, b)
 }
-func (m *GetBlockHashEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetBlockHashEndpointRequest.Marshal(b, m, deterministic)
+func (m *BlockHashEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BlockHashEndpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetBlockHashEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetBlockHashEndpointRequest.Merge(dst, src)
+func (dst *BlockHashEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BlockHashEndpointRequest.Merge(dst, src)
 }
-func (m *GetBlockHashEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_GetBlockHashEndpointRequest.Size(m)
+func (m *BlockHashEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_BlockHashEndpointRequest.Size(m)
 }
-func (m *GetBlockHashEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetBlockHashEndpointRequest.DiscardUnknown(m)
+func (m *BlockHashEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_BlockHashEndpointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetBlockHashEndpointRequest proto.InternalMessageInfo
+var xxx_messageInfo_BlockHashEndpointRequest proto.InternalMessageInfo
 
-func (m *GetBlockHashEndpointRequest) GetNetwork() NetworkAllowingAlias {
+func (m *BlockHashEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	if m != nil {
 		return m.Network
 	}
 	return NetworkAllowingAlias_MAIN
 }
 
-func (m *GetBlockHashEndpointRequest) GetBlockHash() string {
+func (m *BlockHashEndpointRequest) GetBlockHash() string {
 	if m != nil {
 		return m.BlockHash
 	}
 	return ""
 }
 
-func (m *GetBlockHashEndpointRequest) GetTxstart() int32 {
+func (m *BlockHashEndpointRequest) GetTxstart() int32 {
 	if m != nil {
 		return m.Txstart
 	}
 	return 0
 }
 
-func (m *GetBlockHashEndpointRequest) GetLimit() int32 {
+func (m *BlockHashEndpointRequest) GetLimit() int32 {
 	if m != nil {
 		return m.Limit
 	}
 	return 0
 }
 
-type GetBlockHeightEndpointRequest struct {
+type BlockHeightEndpointRequest struct {
 	Network     NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias" json:"network,omitempty"`
 	BlockHeight string               `protobuf:"bytes,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
 	// Filters response to only include transaction hashes after txstart in the block.
@@ -132,52 +132,52 @@ type GetBlockHeightEndpointRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetBlockHeightEndpointRequest) Reset()         { *m = GetBlockHeightEndpointRequest{} }
-func (m *GetBlockHeightEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*GetBlockHeightEndpointRequest) ProtoMessage()    {}
-func (*GetBlockHeightEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_Eth_b2e1637c5014a5a5, []int{2}
+func (m *BlockHeightEndpointRequest) Reset()         { *m = BlockHeightEndpointRequest{} }
+func (m *BlockHeightEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*BlockHeightEndpointRequest) ProtoMessage()    {}
+func (*BlockHeightEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_blockchainMessage_Eth_efde1d4d0592e871, []int{2}
 }
-func (m *GetBlockHeightEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetBlockHeightEndpointRequest.Unmarshal(m, b)
+func (m *BlockHeightEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BlockHeightEndpointRequest.Unmarshal(m, b)
 }
-func (m *GetBlockHeightEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetBlockHeightEndpointRequest.Marshal(b, m, deterministic)
+func (m *BlockHeightEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BlockHeightEndpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetBlockHeightEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetBlockHeightEndpointRequest.Merge(dst, src)
+func (dst *BlockHeightEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BlockHeightEndpointRequest.Merge(dst, src)
 }
-func (m *GetBlockHeightEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_GetBlockHeightEndpointRequest.Size(m)
+func (m *BlockHeightEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_BlockHeightEndpointRequest.Size(m)
 }
-func (m *GetBlockHeightEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetBlockHeightEndpointRequest.DiscardUnknown(m)
+func (m *BlockHeightEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_BlockHeightEndpointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetBlockHeightEndpointRequest proto.InternalMessageInfo
+var xxx_messageInfo_BlockHeightEndpointRequest proto.InternalMessageInfo
 
-func (m *GetBlockHeightEndpointRequest) GetNetwork() NetworkAllowingAlias {
+func (m *BlockHeightEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	if m != nil {
 		return m.Network
 	}
 	return NetworkAllowingAlias_MAIN
 }
 
-func (m *GetBlockHeightEndpointRequest) GetBlockHeight() string {
+func (m *BlockHeightEndpointRequest) GetBlockHeight() string {
 	if m != nil {
 		return m.BlockHeight
 	}
 	return ""
 }
 
-func (m *GetBlockHeightEndpointRequest) GetTxstart() int32 {
+func (m *BlockHeightEndpointRequest) GetTxstart() int32 {
 	if m != nil {
 		return m.Txstart
 	}
 	return 0
 }
 
-func (m *GetBlockHeightEndpointRequest) GetLimit() int32 {
+func (m *BlockHeightEndpointRequest) GetLimit() int32 {
 	if m != nil {
 		return m.Limit
 	}
@@ -185,34 +185,34 @@ func (m *GetBlockHeightEndpointRequest) GetLimit() int32 {
 }
 
 func init() {
-	proto.RegisterType((*GetChainEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.eth.GetChainEndpointRequest")
-	proto.RegisterType((*GetBlockHashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.eth.GetBlockHashEndpointRequest")
-	proto.RegisterType((*GetBlockHeightEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.eth.GetBlockHeightEndpointRequest")
+	proto.RegisterType((*ChainEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.eth.ChainEndpointRequest")
+	proto.RegisterType((*BlockHashEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.eth.BlockHashEndpointRequest")
+	proto.RegisterType((*BlockHeightEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.eth.BlockHeightEndpointRequest")
 }
 
 func init() {
-	proto.RegisterFile("blockchainMessage_Eth.proto", fileDescriptor_blockchainMessage_Eth_b2e1637c5014a5a5)
+	proto.RegisterFile("blockchainMessage_Eth.proto", fileDescriptor_blockchainMessage_Eth_efde1d4d0592e871)
 }
 
-var fileDescriptor_blockchainMessage_Eth_b2e1637c5014a5a5 = []byte{
-	// 298 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x8f, 0xb1, 0x4e, 0xeb, 0x30,
-	0x14, 0x86, 0xe5, 0x7b, 0x29, 0x55, 0x0d, 0x62, 0x88, 0x90, 0x1a, 0x51, 0x55, 0x2a, 0x99, 0xba,
-	0xc4, 0x91, 0x60, 0x61, 0x41, 0xa8, 0x45, 0x55, 0x59, 0x60, 0xc8, 0xc8, 0x52, 0xd9, 0xc6, 0xb5,
-	0xad, 0x26, 0x76, 0x88, 0x4f, 0x14, 0x78, 0x3b, 0x26, 0x9e, 0x0b, 0xc5, 0x4d, 0xc8, 0xc0, 0x80,
-	0x58, 0xba, 0xf9, 0x1c, 0xfb, 0xf7, 0xff, 0x7d, 0x78, 0xc2, 0x32, 0xcb, 0x77, 0x5c, 0x51, 0x6d,
-	0x1e, 0x85, 0x73, 0x54, 0x8a, 0xcd, 0x0a, 0x14, 0x29, 0x4a, 0x0b, 0x36, 0x88, 0xb6, 0x54, 0x97,
-	0x35, 0x7d, 0xe7, 0xb6, 0x2c, 0x48, 0xff, 0xd0, 0x5f, 0xb2, 0x6a, 0x4b, 0x04, 0xa8, 0x8b, 0x31,
-	0xb7, 0x79, 0x6e, 0x7f, 0x86, 0xa3, 0x1c, 0x8f, 0xd7, 0x02, 0xee, 0x9b, 0xc0, 0xca, 0xbc, 0x14,
-	0x56, 0x1b, 0x48, 0xc5, 0x6b, 0x25, 0x1c, 0x04, 0x29, 0x1e, 0x1a, 0x01, 0xb5, 0x2d, 0x77, 0x21,
-	0x9a, 0xa1, 0xf9, 0xd9, 0xd5, 0x0d, 0xf9, 0xbd, 0x89, 0x3c, 0xed, 0x23, 0x8b, 0x2c, 0xb3, 0xb5,
-	0x36, 0x72, 0x91, 0x69, 0xea, 0xd2, 0xee, 0xa3, 0xe8, 0x03, 0xe1, 0xc9, 0x5a, 0xc0, 0xb2, 0xc9,
-	0x3e, 0x50, 0xa7, 0x0e, 0xd0, 0x19, 0x4c, 0x31, 0xf6, 0xb9, 0x8d, 0xa2, 0x4e, 0x85, 0xff, 0x66,
-	0x68, 0x3e, 0x4a, 0x47, 0xac, 0x23, 0x08, 0x42, 0x3c, 0x84, 0x37, 0x07, 0xb4, 0x84, 0xf0, 0xff,
-	0x0c, 0xcd, 0x07, 0x69, 0x37, 0x06, 0xe7, 0x78, 0x90, 0xe9, 0x5c, 0x43, 0x78, 0xe4, 0xf7, 0xfb,
-	0x21, 0xfa, 0x44, 0x78, 0xfa, 0xad, 0x20, 0xb4, 0x54, 0x70, 0x08, 0x89, 0x4b, 0x7c, 0xda, 0x4a,
-	0xf8, 0xca, 0x56, 0xe3, 0x84, 0xf5, 0x14, 0x7f, 0x15, 0x59, 0xde, 0x3d, 0xdf, 0x4a, 0x0d, 0xaa,
-	0x62, 0x84, 0xdb, 0x3c, 0x69, 0x09, 0xe3, 0x06, 0x31, 0xe9, 0x11, 0xe3, 0x8e, 0x31, 0xf1, 0x07,
-	0x1e, 0x4b, 0x61, 0x62, 0x69, 0x13, 0x01, 0x8a, 0x1d, 0xfb, 0xd5, 0xf5, 0x57, 0x00, 0x00, 0x00,
-	0xff, 0xff, 0x48, 0x89, 0x39, 0x4f, 0x9e, 0x02, 0x00, 0x00,
+var fileDescriptor_blockchainMessage_Eth_efde1d4d0592e871 = []byte{
+	// 292 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x8f, 0x31, 0x4f, 0xc3, 0x30,
+	0x10, 0x85, 0x65, 0xa0, 0x54, 0x35, 0x88, 0x21, 0xaa, 0x84, 0x55, 0x84, 0x54, 0x32, 0x75, 0x89,
+	0x23, 0xc1, 0xc2, 0x82, 0x50, 0x8b, 0x2a, 0xb1, 0xc0, 0x90, 0x91, 0xa5, 0xb2, 0x8d, 0x6b, 0x9b,
+	0x26, 0x76, 0x89, 0xaf, 0x0a, 0xfc, 0x38, 0x26, 0xfe, 0x18, 0x8a, 0x93, 0x28, 0x03, 0x03, 0x62,
+	0xe9, 0xe6, 0x3b, 0xbf, 0x77, 0xef, 0x7b, 0xf8, 0x82, 0xe7, 0x4e, 0x6c, 0x84, 0x66, 0xc6, 0x3e,
+	0x49, 0xef, 0x99, 0x92, 0xab, 0x25, 0x68, 0xba, 0x2d, 0x1d, 0xb8, 0x28, 0x5e, 0x33, 0x53, 0x56,
+	0xec, 0x53, 0xb8, 0x72, 0x4b, 0x7b, 0x61, 0xf8, 0xe4, 0xbb, 0x35, 0x95, 0xa0, 0x27, 0xe7, 0xc2,
+	0x15, 0x85, 0xfb, 0x6d, 0x8e, 0xdf, 0xf0, 0xf8, 0xa1, 0x56, 0x2f, 0xed, 0xeb, 0xd6, 0x19, 0x0b,
+	0x99, 0x7c, 0xdf, 0x49, 0x0f, 0x51, 0x86, 0x87, 0x56, 0x42, 0xe5, 0xca, 0x0d, 0x41, 0x53, 0x34,
+	0x3b, 0xbb, 0xbe, 0xa5, 0x7f, 0xc7, 0xd0, 0xe7, 0xc6, 0x32, 0xcf, 0x73, 0x57, 0x19, 0xab, 0xe6,
+	0xb9, 0x61, 0x3e, 0xeb, 0x0e, 0xc5, 0x5f, 0x08, 0x93, 0x45, 0x6d, 0x7c, 0x64, 0x5e, 0xef, 0x21,
+	0x30, 0xba, 0xc4, 0x38, 0xf8, 0x56, 0x9a, 0x79, 0x4d, 0x0e, 0xa6, 0x68, 0x36, 0xca, 0x46, 0xbc,
+	0x23, 0x88, 0x08, 0x1e, 0xc2, 0x87, 0x07, 0x56, 0x02, 0x39, 0x9c, 0xa2, 0xd9, 0x20, 0xeb, 0xc6,
+	0x68, 0x8c, 0x07, 0xb9, 0x29, 0x0c, 0x90, 0xa3, 0xb0, 0x6f, 0x86, 0xf8, 0x1b, 0xe1, 0x49, 0xc3,
+	0x2f, 0x8d, 0xd2, 0xb0, 0x8f, 0x06, 0x57, 0xf8, 0xb4, 0x6d, 0x10, 0x22, 0xdb, 0x0e, 0x27, 0xbc,
+	0xa7, 0xf8, 0x6f, 0x8b, 0xc5, 0xfd, 0xcb, 0x9d, 0x32, 0xa0, 0x77, 0x9c, 0x0a, 0x57, 0xa4, 0x2d,
+	0x61, 0x52, 0x23, 0xa6, 0x3d, 0x62, 0xd2, 0x31, 0xa6, 0xe1, 0x21, 0x12, 0x25, 0x6d, 0xa2, 0x5c,
+	0x2a, 0x41, 0xf3, 0xe3, 0xb0, 0xba, 0xf9, 0x09, 0x00, 0x00, 0xff, 0xff, 0x3c, 0x48, 0xc0, 0xe2,
+	0x95, 0x02, 0x00, 0x00,
 }

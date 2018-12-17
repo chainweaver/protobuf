@@ -14,7 +14,7 @@ service WalletService {
       body: "*"
     };
   }
-  rpc CreateWalletHDEndpoint (CreateWalletHDEndpointRequest) returns (HDWallet) {
+  rpc CreateHDWalletEndpoint (CreateHDWalletEndpointRequest) returns (HDWallet) {
     option (google.api.http) = {
       post: "/btc/{network}/wallets/hd"
       body: "*"
@@ -25,12 +25,12 @@ service WalletService {
       get: "/btc/{network}/wallets"
     };
   }
-  rpc GetWalletEndpoint (GetWalletEndpointRequest) returns (Wallet) {
+  rpc WalletEndpoint (WalletEndpointRequest) returns (Wallet) {
     option (google.api.http) = {
       get: "/btc/{network}/wallets/{name}"
     };
   }
-  rpc GetWalletHDEndpoint (GetWalletEndpointRequest) returns (HDWallet) {
+  rpc WalletHDEndpoint (HDWalletEndpointRequest) returns (HDWallet) {
     option (google.api.http) = {
       get: "/btc/{network}/wallets/hd/{name}"
     };
@@ -41,12 +41,12 @@ service WalletService {
       body: "*"
     };
   }
-  rpc GetWalletAddressesEndpoint (GetWalletAddressesEndpointRequest) returns (Wallet) {
+  rpc WalletAddressesEndpoint (WalletAddressesEndpointRequest) returns (Wallet) {
     option (google.api.http) = {
       get: "/btc/{network}/wallets/{name}/addresses"
     };
   }
-  rpc GetWalletAddressesHDEndpoint (GetWalletAddressesEndpointRequest) returns (HDChain) {
+  rpc HDWalletAddressesEndpoint (HDWalletAddressesEndpointRequest) returns (HDChain) {
     option (google.api.http) = {
       get: "/btc/{network}/wallets/hd/{name}/addresses"
     };
@@ -56,7 +56,7 @@ service WalletService {
       delete: "/btc/{network}/wallets/{name}/addresses"
     };
   }
-  rpc GenerateAddressInWalletEndpoint (GenerateAdressInWalletEndpointRequest) returns (WalletAddressKeychain) {
+  rpc GenerateAddressInWalletEndpoint (GenerateAddressInWalletEndpointRequest) returns (WalletAddressKeychain) {
     option (google.api.http) = {
       post: "/btc/{network}/wallets/{name}/addresses/generate"
       body: "*"
@@ -73,7 +73,7 @@ service WalletService {
       delete: "/btc/{network}/wallets/{name}"
     };
   }
-  rpc DeleteWalletHDEndpoint (DeleteWalletEndpointRequest) returns (NullValue) {
+  rpc DeleteHDWalletHDEndpoint (DeleteHDWalletEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
       delete: "/btc/{network}/wallets/hd/{name}"
     };

@@ -44,7 +44,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcMicroTXRequest"
+              "$ref": "#/definitions/btcMicrotransactionEndpointRequest"
             }
           }
         ],
@@ -55,7 +55,7 @@
     },
     "/btc/{network}/analytics/job/{ticket}": {
       "get": {
-        "operationId": "GetAnalyticsJob",
+        "operationId": "AnalyticsJob",
         "responses": {
           "200": {
             "description": "",
@@ -91,7 +91,7 @@
     },
     "/btc/{network}/analytics/job/{ticket}/results": {
       "get": {
-        "operationId": "GetAnalyticsJobResults",
+        "operationId": "AnalyticsJobResults",
         "responses": {
           "200": {
             "description": "",
@@ -183,7 +183,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcListForwardsEndpointResponse"
+              "$ref": "#/definitions/btcAddressForwards"
             }
           }
         },
@@ -257,7 +257,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcDeleteForwardEndpointResponse"
+              "$ref": "#/definitions/btcNullValue"
             }
           }
         },
@@ -288,7 +288,7 @@
     },
     "/btc/{network}/addrs/{address}/meta": {
       "get": {
-        "operationId": "GetMetadataAddressEndpoint",
+        "operationId": "MetadataAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -408,7 +408,7 @@
     },
     "/btc/{network}/blocks/{block_hash}/meta": {
       "get": {
-        "operationId": "GetMetadataBlockhashEndpoint",
+        "operationId": "MetadataBlockhashEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -528,7 +528,7 @@
     },
     "/btc/{network}/txs/{txhash}/meta": {
       "get": {
-        "operationId": "GetMetadataTxhashEndpoint",
+        "operationId": "MetadataTxhashEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -646,6 +646,148 @@
         ]
       }
     },
+    "/btc/{network}/hooks": {
+      "get": {
+        "operationId": "ListWebHooksEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/btcEvents"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WebHooksService"
+        ]
+      },
+      "post": {
+        "operationId": "CreateWebHookEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/btcEvent"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/btcCreateWebHookEndpointRequest"
+            }
+          }
+        ],
+        "tags": [
+          "WebHooksService"
+        ]
+      }
+    },
+    "/btc/{network}/hooks/{webhookid}": {
+      "get": {
+        "operationId": "WebHookIDEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/btcEvent"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WebHooksService"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteWebHookEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/btcNullValue"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAINNET",
+              "mainnet",
+              "TEST",
+              "test"
+            ]
+          },
+          {
+            "name": "webhookid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WebHooksService"
+        ]
+      }
+    },
     "/btc/{network}/wallets": {
       "get": {
         "operationId": "ListWalletsEndpoint",
@@ -714,7 +856,7 @@
     },
     "/btc/{network}/wallets/hd": {
       "post": {
-        "operationId": "CreateWalletHDEndpoint",
+        "operationId": "CreateHDWalletEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -741,7 +883,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcCreateWalletHDEndpointRequest"
+              "$ref": "#/definitions/btcCreateHDWalletEndpointRequest"
             }
           }
         ],
@@ -752,7 +894,7 @@
     },
     "/btc/{network}/wallets/hd/{name}": {
       "get": {
-        "operationId": "GetWalletHDEndpoint",
+        "operationId": "WalletHDEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -786,7 +928,7 @@
         ]
       },
       "delete": {
-        "operationId": "DeleteWalletHDEndpoint",
+        "operationId": "DeleteHDWalletHDEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -822,7 +964,7 @@
     },
     "/btc/{network}/wallets/hd/{name}/addresses": {
       "get": {
-        "operationId": "GetWalletAddressesHDEndpoint",
+        "operationId": "HDWalletAddressesEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -918,7 +1060,7 @@
     },
     "/btc/{network}/wallets/{name}": {
       "get": {
-        "operationId": "GetWalletEndpoint",
+        "operationId": "WalletEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -988,7 +1130,7 @@
     },
     "/btc/{network}/wallets/{name}/addresses": {
       "get": {
-        "operationId": "GetWalletAddressesEndpoint",
+        "operationId": "WalletAddressesEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -1155,7 +1297,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcGenerateAdressInWalletEndpointRequest"
+              "$ref": "#/definitions/btcGenerateAddressInWalletEndpointRequest"
             }
           }
         ],
@@ -1229,7 +1371,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcNullValueRequest"
+              "$ref": "#/definitions/btcGenerateAssetAddressEndpointRequest"
             }
           }
         ],
@@ -1267,7 +1409,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcOAPIssueRequest"
+              "$ref": "#/definitions/btcIssueAssetEndpointRequest"
             }
           }
         ],
@@ -1278,7 +1420,7 @@
     },
     "/btc/{network}/oap/{assetid}/addrs/{oapaddr}": {
       "get": {
-        "operationId": "GetAssetAddressEndpoint",
+        "operationId": "AssetAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -1394,7 +1536,7 @@
     },
     "/btc/{network}/oap/{assetid}/txs/{txhash}": {
       "get": {
-        "operationId": "GetAssetTXEndpoint",
+        "operationId": "AssetTXEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -1441,7 +1583,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcTXS"
+              "$ref": "#/definitions/btcTXs"
             }
           }
         },
@@ -1542,7 +1684,7 @@
     },
     "/btc/{network}/txs/new": {
       "post": {
-        "operationId": "NewTransactionEndpoint",
+        "operationId": "CreateTransactionEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -1569,7 +1711,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcNewTransactionEndpointRequest"
+              "$ref": "#/definitions/btcCreateTransactionEndpointRequest"
             }
           }
         ],
@@ -1737,7 +1879,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/btcDescribedBelow"
+              "$ref": "#/definitions/btcTXPropagation"
             }
           }
         },
@@ -1935,7 +2077,7 @@
     },
     "/btc/{network}/addrs": {
       "post": {
-        "operationId": "GenerateMultisigAddressEndpoint",
+        "operationId": "GenerateAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -1962,7 +2104,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcGenerateMultisigAddressEndpointRequest"
+              "$ref": "#/definitions/btcGenerateAddressEndpointRequest"
             }
           }
         ],
@@ -2310,7 +2452,7 @@
         }
       }
     },
-    "btcMicroTXRequest": {
+    "btcMicrotransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -2709,6 +2851,17 @@
         }
       }
     },
+    "btcAddressForwards": {
+      "type": "object",
+      "properties": {
+        "forwards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcAddressForward"
+          }
+        }
+      }
+    },
     "btcCreateForwardEndpointRequest": {
       "type": "object",
       "properties": {
@@ -2768,19 +2921,8 @@
         }
       }
     },
-    "btcDeleteForwardEndpointResponse": {
+    "btcNullValue": {
       "type": "object"
-    },
-    "btcListForwardsEndpointResponse": {
-      "type": "object",
-      "properties": {
-        "forwards": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/btcAddressForward"
-          }
-        }
-      }
     },
     "btcKeyValues": {
       "type": "object",
@@ -2792,9 +2934,6 @@
           }
         }
       }
-    },
-    "btcNullValue": {
-      "type": "object"
     },
     "btcPutMetadataAddressEndpointRequest": {
       "type": "object",
@@ -2862,6 +3001,124 @@
         }
       }
     },
+    "btcCreateWebHookEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "id": {
+          "type": "string",
+          "description": "Identifier of the event; generated when a new request is created."
+        },
+        "event": {
+          "type": "string",
+          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx, tx-confidence."
+        },
+        "hash": {
+          "type": "string",
+          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+        },
+        "wallet_name": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given wallet will be sent; can use a regular or HD wallet name. If used, requires a user token."
+        },
+        "token": {
+          "type": "string",
+          "description": "optional Required if wallet_name is used, though generally we advise users to include it (as they can reach API throttling thresholds rapidly)."
+        },
+        "address": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given address will be sent. A wallet name can also be used instead of an address, which will then match on any address in the wallet."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+        },
+        "confidence": {
+          "type": "number",
+          "format": "float",
+          "description": "optional Used in concert with the tx-confidence event type to set the minimum confidence for which you’ll receive a notification. You’ll receive a TX once this threshold is met. Will accept any float between 0 and 1, exclusive; if not set, defaults to 0.99."
+        },
+        "script": {
+          "type": "string",
+          "description": "optional Only transactions with an output script of the provided type will be sent. The recognized types of scripts are: pay-to-pubkey-hash, pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes called OP_RETURN), empty or unknown."
+        },
+        "url": {
+          "type": "string",
+          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+        },
+        "callback_errors": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        }
+      }
+    },
+    "btcEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the event; generated when a new request is created."
+        },
+        "event": {
+          "type": "string",
+          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx, tx-confidence."
+        },
+        "hash": {
+          "type": "string",
+          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+        },
+        "wallet_name": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given wallet will be sent; can use a regular or HD wallet name. If used, requires a user token."
+        },
+        "token": {
+          "type": "string",
+          "description": "optional Required if wallet_name is used, though generally we advise users to include it (as they can reach API throttling thresholds rapidly)."
+        },
+        "address": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given address will be sent. A wallet name can also be used instead of an address, which will then match on any address in the wallet."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+        },
+        "confidence": {
+          "type": "number",
+          "format": "float",
+          "description": "optional Used in concert with the tx-confidence event type to set the minimum confidence for which you’ll receive a notification. You’ll receive a TX once this threshold is met. Will accept any float between 0 and 1, exclusive; if not set, defaults to 0.99."
+        },
+        "script": {
+          "type": "string",
+          "description": "optional Only transactions with an output script of the provided type will be sent. The recognized types of scripts are: pay-to-pubkey-hash, pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes called OP_RETURN), empty or unknown."
+        },
+        "url": {
+          "type": "string",
+          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+        },
+        "callback_errors": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        }
+      }
+    },
+    "btcEvents": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcEvent"
+          }
+        }
+      }
+    },
     "btcAddAddressesToWalletEndpointRequest": {
       "type": "object",
       "properties": {
@@ -2878,27 +3135,7 @@
         }
       }
     },
-    "btcCreateWalletEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        },
-        "token": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "btcCreateWalletHDEndpointRequest": {
+    "btcCreateHDWalletEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -2932,6 +3169,26 @@
         }
       }
     },
+    "btcCreateWalletEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "token": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "btcDeriveAddressInWalletEndpointRequest": {
       "type": "object",
       "properties": {
@@ -2953,7 +3210,7 @@
         }
       }
     },
-    "btcGenerateAdressInWalletEndpointRequest": {
+    "btcGenerateAddressInWalletEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -3276,7 +3533,7 @@
         }
       }
     },
-    "btcNullValueRequest": {
+    "btcGenerateAssetAddressEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -3284,7 +3541,7 @@
         }
       }
     },
-    "btcOAPIssueRequest": {
+    "btcIssueAssetEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -3641,89 +3898,7 @@
         }
       }
     },
-    "btcDataEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        },
-        "data": {
-          "type": "string",
-          "description": "The string representing the data to embed, can be either hex-encoded or plaintext."
-        },
-        "token": {
-          "type": "string",
-          "description": "Optional Your BlockCypher API token, can either be included here or as a URL Parameter in your request."
-        },
-        "encoding": {
-          "type": "string",
-          "description": "Optional The encoding of your data, can be either string (for plaintext) or hex (for hex-encoded). If not set, defaults to hex."
-        },
-        "hash": {
-          "type": "string",
-          "description": "Optional The hash of the transaction containing your data; only part of return object."
-        }
-      }
-    },
-    "btcDecodeRawTransactionEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        },
-        "tx": {
-          "type": "string"
-        }
-      }
-    },
-    "btcDescribedBelow": {
-      "type": "object",
-      "properties": {
-        "transaction": {
-          "type": "string",
-          "description": "The hash of the transaction you queried."
-        },
-        "first_location": {
-          "$ref": "#/definitions/btcFirstLocation",
-          "description": "An object containing latitude and longitude floats representing the first location to broadcast this transaction to BlockCypher."
-        },
-        "first_city": {
-          "type": "string",
-          "description": "Optional The name of the city closest to the first_location. If no nearby city can be found, this is not returned."
-        },
-        "first_country": {
-          "type": "string",
-          "description": "The name of the country containing the first_location."
-        },
-        "aggregated_origin": {
-          "$ref": "#/definitions/btcAggregatedOrigin",
-          "description": "An object containing latitude and longitude floats representing BlockCypher’s best guess of likely origin of this transaction, based on the radius of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers."
-        },
-        "aggregated_origin_radius": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The radius (in meters) of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers. In a general sense, this represents an approximate confidence interval in our calculated aggregated_origin; the smaller the radius, the more confidence in our aggregated_origin assessment."
-        },
-        "first_received": {
-          "type": "string",
-          "description": "The timestamp when BlockCypher first received this transaction."
-        }
-      }
-    },
-    "btcFirstLocation": {
-      "type": "object",
-      "properties": {
-        "latitude": {
-          "type": "number",
-          "format": "float"
-        },
-        "longitude": {
-          "type": "number",
-          "format": "float"
-        }
-      }
-    },
-    "btcNewTransactionEndpointRequest": {
+    "btcCreateTransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -3874,6 +4049,54 @@
         }
       }
     },
+    "btcDataEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "data": {
+          "type": "string",
+          "description": "The string representing the data to embed, can be either hex-encoded or plaintext."
+        },
+        "token": {
+          "type": "string",
+          "description": "Optional Your BlockCypher API token, can either be included here or as a URL Parameter in your request."
+        },
+        "encoding": {
+          "type": "string",
+          "description": "Optional The encoding of your data, can be either string (for plaintext) or hex (for hex-encoded). If not set, defaults to hex."
+        },
+        "hash": {
+          "type": "string",
+          "description": "Optional The hash of the transaction containing your data; only part of return object."
+        }
+      }
+    },
+    "btcDecodeRawTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "tx": {
+          "type": "string"
+        }
+      }
+    },
+    "btcFirstLocation": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "float"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
     "btcNullData": {
       "type": "object",
       "properties": {
@@ -3953,14 +4176,37 @@
         }
       }
     },
-    "btcTXS": {
+    "btcTXPropagation": {
       "type": "object",
       "properties": {
-        "txs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/btcTX"
-          }
+        "transaction": {
+          "type": "string",
+          "description": "The hash of the transaction you queried."
+        },
+        "first_location": {
+          "$ref": "#/definitions/btcFirstLocation",
+          "description": "An object containing latitude and longitude floats representing the first location to broadcast this transaction to BlockCypher."
+        },
+        "first_city": {
+          "type": "string",
+          "description": "Optional The name of the city closest to the first_location. If no nearby city can be found, this is not returned."
+        },
+        "first_country": {
+          "type": "string",
+          "description": "The name of the country containing the first_location."
+        },
+        "aggregated_origin": {
+          "$ref": "#/definitions/btcAggregatedOrigin",
+          "description": "An object containing latitude and longitude floats representing BlockCypher’s best guess of likely origin of this transaction, based on the radius of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers."
+        },
+        "aggregated_origin_radius": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The radius (in meters) of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers. In a general sense, this represents an approximate confidence interval in our calculated aggregated_origin; the smaller the radius, the more confidence in our aggregated_origin assessment."
+        },
+        "first_received": {
+          "type": "string",
+          "description": "The timestamp when BlockCypher first received this transaction."
         }
       }
     },
@@ -4013,6 +4259,17 @@
       "properties": {
         "error": {
           "type": "string"
+        }
+      }
+    },
+    "btcTXs": {
+      "type": "object",
+      "properties": {
+        "txs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/btcTX"
+          }
         }
       }
     },
@@ -4203,14 +4460,6 @@
       }
     },
     "btcGenerateAddressEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        }
-      }
-    },
-    "btcGenerateMultisigAddressEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {

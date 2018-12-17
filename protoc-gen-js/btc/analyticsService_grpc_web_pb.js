@@ -139,12 +139,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient.prototype
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsJobRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.Job>}
  */
-const methodInfo_AnalyticsService_GetAnalyticsJob = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AnalyticsService_AnalyticsJob = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.Job,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsJobRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -153,7 +153,7 @@ const methodInfo_AnalyticsService_GetAnalyticsJob = new grpc.web.AbstractClientB
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsJobRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -162,29 +162,29 @@ const methodInfo_AnalyticsService_GetAnalyticsJob = new grpc.web.AbstractClientB
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.Job>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient.prototype.getAnalyticsJob =
+proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient.prototype.analyticsJob =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.btc.AnalyticsService/GetAnalyticsJob',
+      '/fairwaycorp.blockchainprotobuf.btc.AnalyticsService/AnalyticsJob',
       request,
       metadata,
-      methodInfo_AnalyticsService_GetAnalyticsJob,
+      methodInfo_AnalyticsService_AnalyticsJob,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsJobRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.Job>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient.prototype.getAnalyticsJob =
+proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient.prototype.analyticsJob =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getAnalyticsJob(
+    this.delegateClient_.analyticsJob(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -195,12 +195,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient.prototype
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobResultsRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsJobResultsRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.JobResults>}
  */
-const methodInfo_AnalyticsService_GetAnalyticsJobResults = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AnalyticsService_AnalyticsJobResults = new grpc.web.AbstractClientBase.MethodInfo(
   commonMessage_pb.JobResults,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobResultsRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsJobResultsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -209,7 +209,7 @@ const methodInfo_AnalyticsService_GetAnalyticsJobResults = new grpc.web.Abstract
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobResultsRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsJobResultsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -218,29 +218,29 @@ const methodInfo_AnalyticsService_GetAnalyticsJobResults = new grpc.web.Abstract
  * @return {!grpc.web.ClientReadableStream<!proto.fairwaycorp.blockchainprotobuf.btc.JobResults>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient.prototype.getAnalyticsJobResults =
+proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServiceClient.prototype.analyticsJobResults =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/fairwaycorp.blockchainprotobuf.btc.AnalyticsService/GetAnalyticsJobResults',
+      '/fairwaycorp.blockchainprotobuf.btc.AnalyticsService/AnalyticsJobResults',
       request,
       metadata,
-      methodInfo_AnalyticsService_GetAnalyticsJobResults,
+      methodInfo_AnalyticsService_AnalyticsJobResults,
       callback);
 };
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.GetAnalyticsJobResultsRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsJobResultsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.fairwaycorp.blockchainprotobuf.btc.JobResults>}
  *     The XHR Node Readable Stream
  */
-proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient.prototype.getAnalyticsJobResults =
+proto.fairwaycorp.blockchainprotobuf.btc.AnalyticsServicePromiseClient.prototype.analyticsJobResults =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.getAnalyticsJobResults(
+    this.delegateClient_.analyticsJobResults(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

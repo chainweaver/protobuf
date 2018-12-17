@@ -44,7 +44,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcMicroTXRequest"
+              "$ref": "#/definitions/btcMicrotransactionEndpointRequest"
             }
           }
         ],
@@ -131,7 +131,7 @@
         }
       }
     },
-    "btcMicroTXRequest": {
+    "btcMicrotransactionEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {

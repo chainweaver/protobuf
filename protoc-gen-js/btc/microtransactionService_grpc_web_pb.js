@@ -81,12 +81,12 @@ proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest,
+ *   !proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionEndpointRequest,
  *   !proto.fairwaycorp.blockchainprotobuf.btc.MicroTX>}
  */
 const methodInfo_MicrotransactionService_MicrotransactionEndpoint = new grpc.web.AbstractClientBase.MethodInfo(
   microtransactionMessage_pb.MicroTX,
-  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest} request */
+  /** @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionEndpointRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -95,7 +95,7 @@ const methodInfo_MicrotransactionService_MicrotransactionEndpoint = new grpc.web
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -116,7 +116,7 @@ proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionServiceClient.prototype
 
 
 /**
- * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicroTXRequest} request The
+ * @param {!proto.fairwaycorp.blockchainprotobuf.btc.MicrotransactionEndpointRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata

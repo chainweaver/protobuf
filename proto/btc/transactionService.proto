@@ -13,12 +13,12 @@ service TransactionService {
       get: "/btc/{network}/txs/{txhash}"
     };
   }
-  rpc UnconfirmedTransactionsEndpoint (UnconfirmedTransactionsEndpointRequest) returns (TXS) {
+  rpc UnconfirmedTransactionsEndpoint (UnconfirmedTransactionsEndpointRequest) returns (TXs) {
     option (google.api.http) = {
       get: "/btc/{network}/txs"
     };
   }
-  rpc NewTransactionEndpoint (NewTransactionEndpointRequest) returns (TXSkeleton) {
+  rpc CreateTransactionEndpoint (CreateTransactionEndpointRequest) returns (TXSkeleton) {
     option (google.api.http) = {
       post: "/btc/{network}/txs/new"
       body: "*"
@@ -48,7 +48,7 @@ service TransactionService {
       body: "*"
     };
   }
-  rpc TransactionPropagationEndpoint (TransactionPropagationEndpointRequest) returns (DescribedBelow) {
+  rpc TransactionPropagationEndpoint (TransactionPropagationEndpointRequest) returns (TXPropagation) {
     option (google.api.http) = {
       get: "/btc/{network}/txs/{txhash}/propagation"
     };

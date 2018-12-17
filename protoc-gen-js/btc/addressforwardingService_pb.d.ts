@@ -43,6 +43,21 @@ export namespace AddressForward {
   }
 }
 
+export class AddressForwards {
+  constructor ();
+  getForwardsList(): AddressForward[];
+  setForwardsList(a: AddressForward[]): void;
+  toObject(): AddressForwards.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => AddressForwards;
+}
+
+export namespace AddressForwards {
+  export type AsObject = {
+    ForwardsList: AddressForward[];
+  }
+}
+
 export class CreateForwardEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
@@ -109,18 +124,6 @@ export namespace DeleteForwardEndpointRequest {
   }
 }
 
-export class DeleteForwardEndpointResponse {
-  constructor ();
-  toObject(): DeleteForwardEndpointResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DeleteForwardEndpointResponse;
-}
-
-export namespace DeleteForwardEndpointResponse {
-  export type AsObject = {
-  }
-}
-
 export class ListForwardsEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
@@ -139,18 +142,15 @@ export namespace ListForwardsEndpointRequest {
   }
 }
 
-export class ListForwardsEndpointResponse {
+export class NullValue {
   constructor ();
-  getForwardsList(): AddressForward[];
-  setForwardsList(a: AddressForward[]): void;
-  toObject(): ListForwardsEndpointResponse.AsObject;
+  toObject(): NullValue.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ListForwardsEndpointResponse;
+  static deserializeBinary: (bytes: {}) => NullValue;
 }
 
-export namespace ListForwardsEndpointResponse {
+export namespace NullValue {
   export type AsObject = {
-    ForwardsList: AddressForward[];
   }
 }
 

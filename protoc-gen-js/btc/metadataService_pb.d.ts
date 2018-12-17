@@ -52,69 +52,6 @@ export namespace DeleteMetadataTxhashEndpointRequest {
   }
 }
 
-export class GetMetadataAddressEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getAddress(): string;
-  setAddress(a: string): void;
-  getPrivate(): boolean;
-  setPrivate(a: boolean): void;
-  toObject(): GetMetadataAddressEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetMetadataAddressEndpointRequest;
-}
-
-export namespace GetMetadataAddressEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Address: string;
-    Private: boolean;
-  }
-}
-
-export class GetMetadataBlockhashEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getBlockHash(): string;
-  setBlockHash(a: string): void;
-  getPrivate(): boolean;
-  setPrivate(a: boolean): void;
-  toObject(): GetMetadataBlockhashEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetMetadataBlockhashEndpointRequest;
-}
-
-export namespace GetMetadataBlockhashEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    BlockHash: string;
-    Private: boolean;
-  }
-}
-
-export class GetMetadataTxhashEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getTxhash(): string;
-  setTxhash(a: string): void;
-  getPrivate(): boolean;
-  setPrivate(a: boolean): void;
-  toObject(): GetMetadataTxhashEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetMetadataTxhashEndpointRequest;
-}
-
-export namespace GetMetadataTxhashEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    Txhash: string;
-    Private: boolean;
-  }
-}
-
 export class KeyValues {
   constructor ();
   getKeyPairsList(): KeyValues.KeyPairsEntry[];
@@ -164,6 +101,69 @@ export namespace KeyPairsEntry {
   export type AsObject = {
     Key: string;
     Value: string;
+  }
+}
+
+export class MetadataAddressEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getAddress(): string;
+  setAddress(a: string): void;
+  getPrivate(): boolean;
+  setPrivate(a: boolean): void;
+  toObject(): MetadataAddressEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => MetadataAddressEndpointRequest;
+}
+
+export namespace MetadataAddressEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Address: string;
+    Private: boolean;
+  }
+}
+
+export class MetadataBlockhashEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getBlockHash(): string;
+  setBlockHash(a: string): void;
+  getPrivate(): boolean;
+  setPrivate(a: boolean): void;
+  toObject(): MetadataBlockhashEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => MetadataBlockhashEndpointRequest;
+}
+
+export namespace MetadataBlockhashEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    BlockHash: string;
+    Private: boolean;
+  }
+}
+
+export class MetadataTxhashEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getTxhash(): string;
+  setTxhash(a: string): void;
+  getPrivate(): boolean;
+  setPrivate(a: boolean): void;
+  toObject(): MetadataTxhashEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => MetadataTxhashEndpointRequest;
+}
+
+export namespace MetadataTxhashEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    Txhash: string;
+    Private: boolean;
   }
 }
 

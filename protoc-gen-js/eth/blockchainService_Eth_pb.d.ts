@@ -79,6 +79,54 @@ export namespace Block {
   }
 }
 
+export class BlockHashEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getBlockHash(): string;
+  setBlockHash(a: string): void;
+  getTxstart(): number;
+  setTxstart(a: number): void;
+  getLimit(): number;
+  setLimit(a: number): void;
+  toObject(): BlockHashEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => BlockHashEndpointRequest;
+}
+
+export namespace BlockHashEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    BlockHash: string;
+    Txstart: number;
+    Limit: number;
+  }
+}
+
+export class BlockHeightEndpointRequest {
+  constructor ();
+  getNetwork(): NetworkAllowingAlias;
+  setNetwork(a: NetworkAllowingAlias): void;
+  getBlockHeight(): string;
+  setBlockHeight(a: string): void;
+  getTxstart(): number;
+  setTxstart(a: number): void;
+  getLimit(): number;
+  setLimit(a: number): void;
+  toObject(): BlockHeightEndpointRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => BlockHeightEndpointRequest;
+}
+
+export namespace BlockHeightEndpointRequest {
+  export type AsObject = {
+    Network: NetworkAllowingAlias;
+    BlockHeight: string;
+    Txstart: number;
+    Limit: number;
+  }
+}
+
 export class Blockchain {
   constructor ();
   getName(): string;
@@ -130,64 +178,16 @@ export namespace Blockchain {
   }
 }
 
-export class GetBlockHashEndpointRequest {
+export class ChainEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
-  getBlockHash(): string;
-  setBlockHash(a: string): void;
-  getTxstart(): number;
-  setTxstart(a: number): void;
-  getLimit(): number;
-  setLimit(a: number): void;
-  toObject(): GetBlockHashEndpointRequest.AsObject;
+  toObject(): ChainEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetBlockHashEndpointRequest;
+  static deserializeBinary: (bytes: {}) => ChainEndpointRequest;
 }
 
-export namespace GetBlockHashEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    BlockHash: string;
-    Txstart: number;
-    Limit: number;
-  }
-}
-
-export class GetBlockHeightEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  getBlockHeight(): string;
-  setBlockHeight(a: string): void;
-  getTxstart(): number;
-  setTxstart(a: number): void;
-  getLimit(): number;
-  setLimit(a: number): void;
-  toObject(): GetBlockHeightEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetBlockHeightEndpointRequest;
-}
-
-export namespace GetBlockHeightEndpointRequest {
-  export type AsObject = {
-    Network: NetworkAllowingAlias;
-    BlockHeight: string;
-    Txstart: number;
-    Limit: number;
-  }
-}
-
-export class GetChainEndpointRequest {
-  constructor ();
-  getNetwork(): NetworkAllowingAlias;
-  setNetwork(a: NetworkAllowingAlias): void;
-  toObject(): GetChainEndpointRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetChainEndpointRequest;
-}
-
-export namespace GetChainEndpointRequest {
+export namespace ChainEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
   }

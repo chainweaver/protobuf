@@ -29,7 +29,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 func request_AssetService_GenerateAssetAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AssetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq NullValueRequest
+	var protoReq GenerateAssetAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -63,7 +63,7 @@ func request_AssetService_GenerateAssetAddressEndpoint_0(ctx context.Context, ma
 }
 
 func request_AssetService_IssueAssetEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AssetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq OAPIssueRequest
+	var protoReq IssueAssetEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -182,8 +182,8 @@ func request_AssetService_ListAssetTXsEndpoint_0(ctx context.Context, marshaler 
 
 }
 
-func request_AssetService_GetAssetTXEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AssetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetAssetTXEndpointRequest
+func request_AssetService_AssetTXEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AssetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq AssetTXEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -229,13 +229,13 @@ func request_AssetService_GetAssetTXEndpoint_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "txhash", err)
 	}
 
-	msg, err := client.GetAssetTXEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.AssetTXEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_AssetService_GetAssetAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AssetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetAssetAddressEndpointRequest
+func request_AssetService_AssetAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client AssetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq AssetAddressEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -278,7 +278,7 @@ func request_AssetService_GetAssetAddressEndpoint_0(ctx context.Context, marshal
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "oapaddr", err)
 	}
 
-	msg, err := client.GetAssetAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.AssetAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -437,7 +437,7 @@ func RegisterAssetServiceHandlerClient(ctx context.Context, mux *runtime.ServeMu
 
 	})
 
-	mux.Handle("GET", pattern_AssetService_GetAssetTXEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_AssetService_AssetTXEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -455,18 +455,18 @@ func RegisterAssetServiceHandlerClient(ctx context.Context, mux *runtime.ServeMu
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AssetService_GetAssetTXEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AssetService_AssetTXEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AssetService_GetAssetTXEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AssetService_AssetTXEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_AssetService_GetAssetAddressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_AssetService_AssetAddressEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -484,14 +484,14 @@ func RegisterAssetServiceHandlerClient(ctx context.Context, mux *runtime.ServeMu
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_AssetService_GetAssetAddressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_AssetService_AssetAddressEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_AssetService_GetAssetAddressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_AssetService_AssetAddressEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -507,9 +507,9 @@ var (
 
 	pattern_AssetService_ListAssetTXsEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"btc", "network", "oap", "assetid", "txs"}, ""))
 
-	pattern_AssetService_GetAssetTXEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"btc", "network", "oap", "assetid", "txs", "txhash"}, ""))
+	pattern_AssetService_AssetTXEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"btc", "network", "oap", "assetid", "txs", "txhash"}, ""))
 
-	pattern_AssetService_GetAssetAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"btc", "network", "oap", "assetid", "addrs", "oapaddr"}, ""))
+	pattern_AssetService_AssetAddressEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"btc", "network", "oap", "assetid", "addrs", "oapaddr"}, ""))
 )
 
 var (
@@ -521,7 +521,7 @@ var (
 
 	forward_AssetService_ListAssetTXsEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_AssetService_GetAssetTXEndpoint_0 = runtime.ForwardResponseMessage
+	forward_AssetService_AssetTXEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_AssetService_GetAssetAddressEndpoint_0 = runtime.ForwardResponseMessage
+	forward_AssetService_AssetAddressEndpoint_0 = runtime.ForwardResponseMessage
 )

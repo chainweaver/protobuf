@@ -37,18 +37,18 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type WalletServiceClient interface {
 	CreateWalletEndpoint(ctx context.Context, in *CreateWalletEndpointRequest, opts ...grpc.CallOption) (*Wallet, error)
-	CreateWalletHDEndpoint(ctx context.Context, in *CreateWalletHDEndpointRequest, opts ...grpc.CallOption) (*HDWallet, error)
+	CreateHDWalletEndpoint(ctx context.Context, in *CreateHDWalletEndpointRequest, opts ...grpc.CallOption) (*HDWallet, error)
 	ListWalletsEndpoint(ctx context.Context, in *ListWalletsEndpointRequest, opts ...grpc.CallOption) (*ListWallets, error)
-	GetWalletEndpoint(ctx context.Context, in *GetWalletEndpointRequest, opts ...grpc.CallOption) (*Wallet, error)
-	GetWalletHDEndpoint(ctx context.Context, in *GetWalletEndpointRequest, opts ...grpc.CallOption) (*HDWallet, error)
+	WalletEndpoint(ctx context.Context, in *WalletEndpointRequest, opts ...grpc.CallOption) (*Wallet, error)
+	WalletHDEndpoint(ctx context.Context, in *HDWalletEndpointRequest, opts ...grpc.CallOption) (*HDWallet, error)
 	AddAddressesToWalletEndpoint(ctx context.Context, in *AddAddressesToWalletEndpointRequest, opts ...grpc.CallOption) (*Wallet, error)
-	GetWalletAddressesEndpoint(ctx context.Context, in *GetWalletAddressesEndpointRequest, opts ...grpc.CallOption) (*Wallet, error)
-	GetWalletAddressesHDEndpoint(ctx context.Context, in *GetWalletAddressesEndpointRequest, opts ...grpc.CallOption) (*HDChain, error)
+	WalletAddressesEndpoint(ctx context.Context, in *WalletAddressesEndpointRequest, opts ...grpc.CallOption) (*Wallet, error)
+	HDWalletAddressesEndpoint(ctx context.Context, in *HDWalletAddressesEndpointRequest, opts ...grpc.CallOption) (*HDChain, error)
 	RemoveAddressesFromWalletEndpoint(ctx context.Context, in *RemoveAddressesFromWalletEndpointRequest, opts ...grpc.CallOption) (*NullValue, error)
-	GenerateAddressInWalletEndpoint(ctx context.Context, in *GenerateAdressInWalletEndpointRequest, opts ...grpc.CallOption) (*WalletAddressKeychain, error)
+	GenerateAddressInWalletEndpoint(ctx context.Context, in *GenerateAddressInWalletEndpointRequest, opts ...grpc.CallOption) (*WalletAddressKeychain, error)
 	DeriveAddressInWalletEndpoint(ctx context.Context, in *DeriveAddressInWalletEndpointRequest, opts ...grpc.CallOption) (*HDWallet, error)
 	DeleteWalletEndpoint(ctx context.Context, in *DeleteWalletEndpointRequest, opts ...grpc.CallOption) (*NullValue, error)
-	DeleteWalletHDEndpoint(ctx context.Context, in *DeleteWalletEndpointRequest, opts ...grpc.CallOption) (*NullValue, error)
+	DeleteHDWalletHDEndpoint(ctx context.Context, in *DeleteHDWalletEndpointRequest, opts ...grpc.CallOption) (*NullValue, error)
 }
 
 type walletServiceClient struct {
@@ -68,9 +68,9 @@ func (c *walletServiceClient) CreateWalletEndpoint(ctx context.Context, in *Crea
 	return out, nil
 }
 
-func (c *walletServiceClient) CreateWalletHDEndpoint(ctx context.Context, in *CreateWalletHDEndpointRequest, opts ...grpc.CallOption) (*HDWallet, error) {
+func (c *walletServiceClient) CreateHDWalletEndpoint(ctx context.Context, in *CreateHDWalletEndpointRequest, opts ...grpc.CallOption) (*HDWallet, error) {
 	out := new(HDWallet)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/CreateWalletHDEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/CreateHDWalletEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -86,18 +86,18 @@ func (c *walletServiceClient) ListWalletsEndpoint(ctx context.Context, in *ListW
 	return out, nil
 }
 
-func (c *walletServiceClient) GetWalletEndpoint(ctx context.Context, in *GetWalletEndpointRequest, opts ...grpc.CallOption) (*Wallet, error) {
+func (c *walletServiceClient) WalletEndpoint(ctx context.Context, in *WalletEndpointRequest, opts ...grpc.CallOption) (*Wallet, error) {
 	out := new(Wallet)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/WalletEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *walletServiceClient) GetWalletHDEndpoint(ctx context.Context, in *GetWalletEndpointRequest, opts ...grpc.CallOption) (*HDWallet, error) {
+func (c *walletServiceClient) WalletHDEndpoint(ctx context.Context, in *HDWalletEndpointRequest, opts ...grpc.CallOption) (*HDWallet, error) {
 	out := new(HDWallet)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletHDEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/WalletHDEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,18 +113,18 @@ func (c *walletServiceClient) AddAddressesToWalletEndpoint(ctx context.Context, 
 	return out, nil
 }
 
-func (c *walletServiceClient) GetWalletAddressesEndpoint(ctx context.Context, in *GetWalletAddressesEndpointRequest, opts ...grpc.CallOption) (*Wallet, error) {
+func (c *walletServiceClient) WalletAddressesEndpoint(ctx context.Context, in *WalletAddressesEndpointRequest, opts ...grpc.CallOption) (*Wallet, error) {
 	out := new(Wallet)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletAddressesEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/WalletAddressesEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *walletServiceClient) GetWalletAddressesHDEndpoint(ctx context.Context, in *GetWalletAddressesEndpointRequest, opts ...grpc.CallOption) (*HDChain, error) {
+func (c *walletServiceClient) HDWalletAddressesEndpoint(ctx context.Context, in *HDWalletAddressesEndpointRequest, opts ...grpc.CallOption) (*HDChain, error) {
 	out := new(HDChain)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletAddressesHDEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/HDWalletAddressesEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -140,7 +140,7 @@ func (c *walletServiceClient) RemoveAddressesFromWalletEndpoint(ctx context.Cont
 	return out, nil
 }
 
-func (c *walletServiceClient) GenerateAddressInWalletEndpoint(ctx context.Context, in *GenerateAdressInWalletEndpointRequest, opts ...grpc.CallOption) (*WalletAddressKeychain, error) {
+func (c *walletServiceClient) GenerateAddressInWalletEndpoint(ctx context.Context, in *GenerateAddressInWalletEndpointRequest, opts ...grpc.CallOption) (*WalletAddressKeychain, error) {
 	out := new(WalletAddressKeychain)
 	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/GenerateAddressInWalletEndpoint", in, out, opts...)
 	if err != nil {
@@ -167,9 +167,9 @@ func (c *walletServiceClient) DeleteWalletEndpoint(ctx context.Context, in *Dele
 	return out, nil
 }
 
-func (c *walletServiceClient) DeleteWalletHDEndpoint(ctx context.Context, in *DeleteWalletEndpointRequest, opts ...grpc.CallOption) (*NullValue, error) {
+func (c *walletServiceClient) DeleteHDWalletHDEndpoint(ctx context.Context, in *DeleteHDWalletEndpointRequest, opts ...grpc.CallOption) (*NullValue, error) {
 	out := new(NullValue)
-	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/DeleteWalletHDEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/fairwaycorp.blockchainprotobuf.btc.WalletService/DeleteHDWalletHDEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -179,18 +179,18 @@ func (c *walletServiceClient) DeleteWalletHDEndpoint(ctx context.Context, in *De
 // WalletServiceServer is the server API for WalletService service.
 type WalletServiceServer interface {
 	CreateWalletEndpoint(context.Context, *CreateWalletEndpointRequest) (*Wallet, error)
-	CreateWalletHDEndpoint(context.Context, *CreateWalletHDEndpointRequest) (*HDWallet, error)
+	CreateHDWalletEndpoint(context.Context, *CreateHDWalletEndpointRequest) (*HDWallet, error)
 	ListWalletsEndpoint(context.Context, *ListWalletsEndpointRequest) (*ListWallets, error)
-	GetWalletEndpoint(context.Context, *GetWalletEndpointRequest) (*Wallet, error)
-	GetWalletHDEndpoint(context.Context, *GetWalletEndpointRequest) (*HDWallet, error)
+	WalletEndpoint(context.Context, *WalletEndpointRequest) (*Wallet, error)
+	WalletHDEndpoint(context.Context, *HDWalletEndpointRequest) (*HDWallet, error)
 	AddAddressesToWalletEndpoint(context.Context, *AddAddressesToWalletEndpointRequest) (*Wallet, error)
-	GetWalletAddressesEndpoint(context.Context, *GetWalletAddressesEndpointRequest) (*Wallet, error)
-	GetWalletAddressesHDEndpoint(context.Context, *GetWalletAddressesEndpointRequest) (*HDChain, error)
+	WalletAddressesEndpoint(context.Context, *WalletAddressesEndpointRequest) (*Wallet, error)
+	HDWalletAddressesEndpoint(context.Context, *HDWalletAddressesEndpointRequest) (*HDChain, error)
 	RemoveAddressesFromWalletEndpoint(context.Context, *RemoveAddressesFromWalletEndpointRequest) (*NullValue, error)
-	GenerateAddressInWalletEndpoint(context.Context, *GenerateAdressInWalletEndpointRequest) (*WalletAddressKeychain, error)
+	GenerateAddressInWalletEndpoint(context.Context, *GenerateAddressInWalletEndpointRequest) (*WalletAddressKeychain, error)
 	DeriveAddressInWalletEndpoint(context.Context, *DeriveAddressInWalletEndpointRequest) (*HDWallet, error)
 	DeleteWalletEndpoint(context.Context, *DeleteWalletEndpointRequest) (*NullValue, error)
-	DeleteWalletHDEndpoint(context.Context, *DeleteWalletEndpointRequest) (*NullValue, error)
+	DeleteHDWalletHDEndpoint(context.Context, *DeleteHDWalletEndpointRequest) (*NullValue, error)
 }
 
 func RegisterWalletServiceServer(s *grpc.Server, srv WalletServiceServer) {
@@ -215,20 +215,20 @@ func _WalletService_CreateWalletEndpoint_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WalletService_CreateWalletHDEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateWalletHDEndpointRequest)
+func _WalletService_CreateHDWalletEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateHDWalletEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WalletServiceServer).CreateWalletHDEndpoint(ctx, in)
+		return srv.(WalletServiceServer).CreateHDWalletEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/CreateWalletHDEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/CreateHDWalletEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServiceServer).CreateWalletHDEndpoint(ctx, req.(*CreateWalletHDEndpointRequest))
+		return srv.(WalletServiceServer).CreateHDWalletEndpoint(ctx, req.(*CreateHDWalletEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -251,38 +251,38 @@ func _WalletService_ListWalletsEndpoint_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WalletService_GetWalletEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetWalletEndpointRequest)
+func _WalletService_WalletEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WalletEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WalletServiceServer).GetWalletEndpoint(ctx, in)
+		return srv.(WalletServiceServer).WalletEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/WalletEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServiceServer).GetWalletEndpoint(ctx, req.(*GetWalletEndpointRequest))
+		return srv.(WalletServiceServer).WalletEndpoint(ctx, req.(*WalletEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WalletService_GetWalletHDEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetWalletEndpointRequest)
+func _WalletService_WalletHDEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HDWalletEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WalletServiceServer).GetWalletHDEndpoint(ctx, in)
+		return srv.(WalletServiceServer).WalletHDEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletHDEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/WalletHDEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServiceServer).GetWalletHDEndpoint(ctx, req.(*GetWalletEndpointRequest))
+		return srv.(WalletServiceServer).WalletHDEndpoint(ctx, req.(*HDWalletEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -305,38 +305,38 @@ func _WalletService_AddAddressesToWalletEndpoint_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WalletService_GetWalletAddressesEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetWalletAddressesEndpointRequest)
+func _WalletService_WalletAddressesEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WalletAddressesEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WalletServiceServer).GetWalletAddressesEndpoint(ctx, in)
+		return srv.(WalletServiceServer).WalletAddressesEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletAddressesEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/WalletAddressesEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServiceServer).GetWalletAddressesEndpoint(ctx, req.(*GetWalletAddressesEndpointRequest))
+		return srv.(WalletServiceServer).WalletAddressesEndpoint(ctx, req.(*WalletAddressesEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WalletService_GetWalletAddressesHDEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetWalletAddressesEndpointRequest)
+func _WalletService_HDWalletAddressesEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HDWalletAddressesEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WalletServiceServer).GetWalletAddressesHDEndpoint(ctx, in)
+		return srv.(WalletServiceServer).HDWalletAddressesEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/GetWalletAddressesHDEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/HDWalletAddressesEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServiceServer).GetWalletAddressesHDEndpoint(ctx, req.(*GetWalletAddressesEndpointRequest))
+		return srv.(WalletServiceServer).HDWalletAddressesEndpoint(ctx, req.(*HDWalletAddressesEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -360,7 +360,7 @@ func _WalletService_RemoveAddressesFromWalletEndpoint_Handler(srv interface{}, c
 }
 
 func _WalletService_GenerateAddressInWalletEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GenerateAdressInWalletEndpointRequest)
+	in := new(GenerateAddressInWalletEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -372,7 +372,7 @@ func _WalletService_GenerateAddressInWalletEndpoint_Handler(srv interface{}, ctx
 		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/GenerateAddressInWalletEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServiceServer).GenerateAddressInWalletEndpoint(ctx, req.(*GenerateAdressInWalletEndpointRequest))
+		return srv.(WalletServiceServer).GenerateAddressInWalletEndpoint(ctx, req.(*GenerateAddressInWalletEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -413,20 +413,20 @@ func _WalletService_DeleteWalletEndpoint_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WalletService_DeleteWalletHDEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteWalletEndpointRequest)
+func _WalletService_DeleteHDWalletHDEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteHDWalletEndpointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WalletServiceServer).DeleteWalletHDEndpoint(ctx, in)
+		return srv.(WalletServiceServer).DeleteHDWalletHDEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/DeleteWalletHDEndpoint",
+		FullMethod: "/fairwaycorp.blockchainprotobuf.btc.WalletService/DeleteHDWalletHDEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServiceServer).DeleteWalletHDEndpoint(ctx, req.(*DeleteWalletEndpointRequest))
+		return srv.(WalletServiceServer).DeleteHDWalletHDEndpoint(ctx, req.(*DeleteHDWalletEndpointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -440,32 +440,32 @@ var _WalletService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _WalletService_CreateWalletEndpoint_Handler,
 		},
 		{
-			MethodName: "CreateWalletHDEndpoint",
-			Handler:    _WalletService_CreateWalletHDEndpoint_Handler,
+			MethodName: "CreateHDWalletEndpoint",
+			Handler:    _WalletService_CreateHDWalletEndpoint_Handler,
 		},
 		{
 			MethodName: "ListWalletsEndpoint",
 			Handler:    _WalletService_ListWalletsEndpoint_Handler,
 		},
 		{
-			MethodName: "GetWalletEndpoint",
-			Handler:    _WalletService_GetWalletEndpoint_Handler,
+			MethodName: "WalletEndpoint",
+			Handler:    _WalletService_WalletEndpoint_Handler,
 		},
 		{
-			MethodName: "GetWalletHDEndpoint",
-			Handler:    _WalletService_GetWalletHDEndpoint_Handler,
+			MethodName: "WalletHDEndpoint",
+			Handler:    _WalletService_WalletHDEndpoint_Handler,
 		},
 		{
 			MethodName: "AddAddressesToWalletEndpoint",
 			Handler:    _WalletService_AddAddressesToWalletEndpoint_Handler,
 		},
 		{
-			MethodName: "GetWalletAddressesEndpoint",
-			Handler:    _WalletService_GetWalletAddressesEndpoint_Handler,
+			MethodName: "WalletAddressesEndpoint",
+			Handler:    _WalletService_WalletAddressesEndpoint_Handler,
 		},
 		{
-			MethodName: "GetWalletAddressesHDEndpoint",
-			Handler:    _WalletService_GetWalletAddressesHDEndpoint_Handler,
+			MethodName: "HDWalletAddressesEndpoint",
+			Handler:    _WalletService_HDWalletAddressesEndpoint_Handler,
 		},
 		{
 			MethodName: "RemoveAddressesFromWalletEndpoint",
@@ -484,57 +484,57 @@ var _WalletService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _WalletService_DeleteWalletEndpoint_Handler,
 		},
 		{
-			MethodName: "DeleteWalletHDEndpoint",
-			Handler:    _WalletService_DeleteWalletHDEndpoint_Handler,
+			MethodName: "DeleteHDWalletHDEndpoint",
+			Handler:    _WalletService_DeleteHDWalletHDEndpoint_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "walletService.proto",
 }
 
-func init() { proto.RegisterFile("walletService.proto", fileDescriptor_walletService_13df729e1be993c9) }
+func init() { proto.RegisterFile("walletService.proto", fileDescriptor_walletService_7b5d60224210272e) }
 
-var fileDescriptor_walletService_13df729e1be993c9 = []byte{
-	// 642 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x96, 0x4f, 0x6b, 0xd4, 0x40,
-	0x18, 0xc6, 0x19, 0x0f, 0x1e, 0x06, 0x3c, 0x38, 0x5b, 0x8a, 0xae, 0xfd, 0x63, 0x83, 0xa2, 0xc6,
-	0x6e, 0x46, 0x2b, 0x0a, 0x6a, 0xb5, 0xd4, 0x6e, 0x6d, 0x8b, 0xd5, 0x43, 0x15, 0x05, 0x6f, 0x93,
-	0xe4, 0x6d, 0x1a, 0x9a, 0xcc, 0xac, 0xc9, 0x6c, 0x4b, 0x29, 0xbd, 0xf8, 0x15, 0xfc, 0x0a, 0xd2,
-	0x8b, 0x88, 0xe0, 0xc1, 0xb3, 0x27, 0x3d, 0x8b, 0xf8, 0x0d, 0xfa, 0x41, 0x24, 0xb3, 0x99, 0x34,
-	0x6e, 0xf7, 0xcf, 0x6c, 0x14, 0x6f, 0xcb, 0xec, 0xbe, 0xcf, 0xf3, 0x7b, 0xde, 0xf7, 0xdd, 0x4c,
-	0x70, 0x6d, 0x97, 0x45, 0x11, 0xc8, 0xe7, 0x90, 0xec, 0x84, 0x1e, 0x38, 0xad, 0x44, 0x48, 0x41,
-	0xac, 0x4d, 0x16, 0x26, 0xbb, 0x6c, 0xcf, 0x13, 0x49, 0xcb, 0x71, 0x23, 0xe1, 0x6d, 0x7b, 0x5b,
-	0x2c, 0xe4, 0xea, 0x4b, 0xb7, 0xbd, 0xe9, 0xb8, 0xd2, 0xab, 0x4f, 0x04, 0x42, 0x04, 0x11, 0x50,
-	0xd6, 0x0a, 0x29, 0xe3, 0x5c, 0x48, 0x26, 0x43, 0xc1, 0xd3, 0x8e, 0x42, 0x3d, 0x97, 0x7d, 0x0a,
-	0x69, 0xca, 0x02, 0xd0, 0x87, 0x9e, 0x88, 0x63, 0xc1, 0xff, 0x38, 0x9c, 0xfb, 0x52, 0xc3, 0x67,
-	0x5e, 0x95, 0x19, 0xc8, 0x21, 0xc2, 0x63, 0x4b, 0x09, 0x30, 0x09, 0x9d, 0xf3, 0x65, 0xee, 0xb7,
-	0x44, 0xc8, 0x25, 0x59, 0x70, 0x86, 0x73, 0x39, 0xbd, 0x2a, 0x37, 0xe0, 0x4d, 0x1b, 0x52, 0x59,
-	0xb7, 0x4d, 0x04, 0x3a, 0xa5, 0xd6, 0xcc, 0xdb, 0x9f, 0x47, 0xef, 0x4e, 0x5d, 0xb0, 0xc6, 0xa9,
-	0x2b, 0x3d, 0xba, 0xcf, 0x41, 0xee, 0x8a, 0x64, 0xfb, 0x80, 0x76, 0x82, 0xa5, 0xf7, 0x90, 0x4d,
-	0x3e, 0x21, 0x3c, 0x5e, 0xb6, 0x5b, 0x6d, 0x16, 0xa8, 0x8b, 0xa3, 0xa2, 0x1e, 0xd7, 0x6a, 0xd8,
-	0x59, 0x13, 0x89, 0xd5, 0x66, 0x8e, 0x7b, 0x49, 0xe1, 0x4e, 0x59, 0xe7, 0x7b, 0xe3, 0xd2, 0x2d,
-	0x3f, 0x23, 0x3e, 0x44, 0xb8, 0xb6, 0x1e, 0xa6, 0xb2, 0x53, 0x94, 0x16, 0xb8, 0x0f, 0x4d, 0xbc,
-	0x7a, 0x14, 0x6a, 0x56, 0x3a, 0x62, 0xbd, 0x35, 0xa5, 0x70, 0xcf, 0x91, 0x3e, 0xdd, 0x25, 0xef,
-	0x11, 0x3e, 0xbb, 0x02, 0xb2, 0x6b, 0x01, 0xe6, 0x4d, 0x6c, 0x4e, 0x94, 0x55, 0x99, 0xfe, 0x65,
-	0xc5, 0x37, 0x4d, 0x26, 0xfb, 0xb4, 0x73, 0x9f, 0xb3, 0x18, 0x0e, 0xc8, 0x07, 0x84, 0x6b, 0x85,
-	0x5f, 0x69, 0xfc, 0x7f, 0x07, 0x3a, 0xda, 0xe4, 0xaf, 0x2a, 0x54, 0x8b, 0x5c, 0xec, 0x3b, 0x79,
-	0x4d, 0xfb, 0x1d, 0xe1, 0x89, 0x45, 0xdf, 0x5f, 0xf4, 0xfd, 0x04, 0xd2, 0x14, 0xd2, 0x17, 0xa2,
-	0xab, 0xbf, 0x2b, 0x26, 0xc6, 0x83, 0x14, 0xaa, 0xb4, 0x7a, 0x4e, 0xf1, 0xcf, 0x5a, 0x57, 0x06,
-	0xb6, 0x9a, 0x32, 0xed, 0x99, 0xed, 0xf1, 0x57, 0x84, 0xeb, 0x45, 0xfb, 0x0a, 0x9a, 0x22, 0xc7,
-	0xf2, 0x48, 0xed, 0x3f, 0x51, 0x5f, 0x25, 0x05, 0x55, 0x29, 0xae, 0x11, 0xd3, 0x14, 0xe4, 0x1b,
-	0xc2, 0x13, 0x27, 0x11, 0x4a, 0x3b, 0xf4, 0x8f, 0x42, 0x5c, 0x37, 0x5b, 0xa6, 0xa5, 0xec, 0x4c,
-	0xcf, 0x82, 0xd8, 0xc3, 0x76, 0xa9, 0x14, 0xe4, 0x07, 0xc2, 0x33, 0x1b, 0x10, 0x8b, 0x1d, 0x28,
-	0x18, 0x1e, 0x27, 0x22, 0xee, 0x5a, 0xad, 0x75, 0x13, 0x8c, 0xa1, 0x32, 0x3a, 0x54, 0xc3, 0x44,
-	0xed, 0x59, 0x3b, 0x8a, 0x5e, 0xb2, 0xa8, 0x0d, 0x7a, 0x38, 0xb6, 0xf1, 0x70, 0x8e, 0x10, 0x9e,
-	0x5e, 0x01, 0x0e, 0x09, 0x93, 0x1a, 0x67, 0x8d, 0x77, 0x25, 0x5a, 0x33, 0x9b, 0x8f, 0x16, 0xe9,
-	0xa5, 0xa1, 0xe3, 0xdc, 0x35, 0x5f, 0xb4, 0x9c, 0xe6, 0x09, 0xec, 0xa9, 0x5f, 0x58, 0xf7, 0x55,
-	0xb4, 0xdb, 0xd6, 0x0d, 0xc3, 0x68, 0x34, 0xc8, 0x89, 0xb2, 0xbf, 0xd1, 0x2f, 0x84, 0x27, 0x9b,
-	0x90, 0x84, 0x3b, 0x7d, 0x43, 0xae, 0x9a, 0x90, 0x0d, 0x94, 0xa8, 0xf6, 0x50, 0x9b, 0x57, 0xb1,
-	0xee, 0x58, 0x37, 0xcd, 0x17, 0x91, 0xfa, 0x0a, 0x23, 0xcb, 0xf5, 0x11, 0xe1, 0xb1, 0x26, 0x44,
-	0x50, 0xed, 0x0d, 0xa2, 0x57, 0x65, 0xc5, 0xc5, 0xcb, 0xaf, 0x11, 0x7b, 0xc8, 0x35, 0xf2, 0x19,
-	0xe1, 0xf1, 0xb2, 0x6b, 0xe9, 0x29, 0xf0, 0xbf, 0x89, 0xf3, 0xdb, 0xc4, 0x1e, 0x7a, 0x9b, 0x3c,
-	0x5a, 0x78, 0xfd, 0x20, 0x08, 0xe5, 0x56, 0xdb, 0x75, 0x3c, 0x11, 0xd3, 0xdc, 0xa4, 0x91, 0xb9,
-	0xd0, 0x63, 0x97, 0x86, 0xb6, 0xa1, 0xea, 0x83, 0xd7, 0x08, 0x80, 0x37, 0x02, 0x91, 0x89, 0xbb,
-	0xa7, 0xd5, 0xd1, 0xad, 0xdf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xd0, 0x08, 0x58, 0xbc, 0x83, 0x0a,
-	0x00, 0x00,
+var fileDescriptor_walletService_7b5d60224210272e = []byte{
+	// 644 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x96, 0x4f, 0x4f, 0xd4, 0x4e,
+	0x18, 0xc7, 0x33, 0xbf, 0xc3, 0xef, 0x30, 0x89, 0xc6, 0x0c, 0x04, 0x01, 0xf9, 0x23, 0x8d, 0x46,
+	0xad, 0x6c, 0x47, 0x31, 0x9a, 0x20, 0x2a, 0x59, 0x58, 0x05, 0x15, 0x3d, 0xa0, 0xd1, 0xc4, 0xdb,
+	0xb4, 0x7d, 0x28, 0x0d, 0xed, 0xcc, 0xda, 0xce, 0x42, 0x08, 0xe1, 0xe2, 0x5b, 0xf0, 0xee, 0x11,
+	0x4e, 0xc6, 0x9b, 0x07, 0x8f, 0x5e, 0x3c, 0x1b, 0xe3, 0x3b, 0xd0, 0xf7, 0x61, 0x3a, 0xdd, 0x59,
+	0xd7, 0xb2, 0xdd, 0xce, 0x2e, 0x37, 0x32, 0xf0, 0xfd, 0x3e, 0x9f, 0xef, 0xf3, 0x3c, 0xec, 0xb3,
+	0x78, 0x64, 0x8f, 0x45, 0x11, 0xc8, 0x17, 0x90, 0xec, 0x86, 0x1e, 0x38, 0xcd, 0x44, 0x48, 0x41,
+	0xac, 0x2d, 0x16, 0x26, 0x7b, 0x6c, 0xdf, 0x13, 0x49, 0xd3, 0x71, 0x23, 0xe1, 0xed, 0x78, 0xdb,
+	0x2c, 0xe4, 0xea, 0x97, 0x6e, 0x6b, 0xcb, 0x71, 0xa5, 0x37, 0x39, 0x15, 0x08, 0x11, 0x44, 0x40,
+	0x59, 0x33, 0xa4, 0x8c, 0x73, 0x21, 0x99, 0x0c, 0x05, 0x4f, 0x73, 0x87, 0xc9, 0xb6, 0xed, 0x33,
+	0x48, 0x53, 0x16, 0x80, 0x7e, 0xf4, 0x44, 0x1c, 0x0b, 0xfe, 0xcf, 0xe3, 0xc2, 0xf1, 0x08, 0x3e,
+	0xf3, 0xba, 0x9b, 0x81, 0x1c, 0x21, 0x3c, 0xba, 0x9a, 0x00, 0x93, 0x90, 0xbf, 0x3f, 0xe4, 0x7e,
+	0x53, 0x84, 0x5c, 0x92, 0x65, 0xa7, 0x9a, 0xcb, 0xe9, 0xa5, 0xdc, 0x84, 0xb7, 0x2d, 0x48, 0xe5,
+	0xa4, 0x6d, 0x62, 0x90, 0x4b, 0xad, 0xb9, 0x77, 0x3f, 0x7e, 0xbd, 0xff, 0xef, 0x82, 0x35, 0x46,
+	0x5d, 0xe9, 0xd1, 0x03, 0x0e, 0x72, 0x4f, 0x24, 0x3b, 0x87, 0x34, 0x0f, 0x96, 0xde, 0x45, 0x36,
+	0xf9, 0x84, 0xf0, 0x58, 0x5e, 0x6e, 0xbd, 0x51, 0x40, 0xad, 0x9b, 0xa3, 0x16, 0xb5, 0x1a, 0x76,
+	0xde, 0xc4, 0x42, 0x8b, 0xad, 0x4b, 0x0a, 0x77, 0xc6, 0x9a, 0xe8, 0x8d, 0x4b, 0xb7, 0xfd, 0x8c,
+	0xf8, 0x08, 0xe1, 0x91, 0x8d, 0x30, 0x95, 0xb9, 0x28, 0xed, 0xe0, 0x3e, 0x30, 0xa9, 0xd5, 0x43,
+	0xa8, 0x59, 0xe9, 0x80, 0x7a, 0x6b, 0x46, 0xe1, 0x8e, 0x93, 0x92, 0xee, 0x92, 0x0f, 0x08, 0x9f,
+	0x2d, 0xb4, 0x74, 0xd1, 0x7c, 0x78, 0xa7, 0x99, 0xfb, 0x65, 0x45, 0x36, 0x4b, 0xa6, 0x4b, 0x1a,
+	0x79, 0xc0, 0x59, 0x0c, 0x87, 0xe4, 0x18, 0xe1, 0x73, 0xb9, 0x62, 0xbd, 0xd1, 0x41, 0x5c, 0x1a,
+	0x64, 0x64, 0xa7, 0x9b, 0xf7, 0x55, 0x85, 0x69, 0x91, 0x8b, 0xa5, 0xf3, 0xd6, 0xa4, 0xdf, 0x10,
+	0x9e, 0xaa, 0xfb, 0x7e, 0xdd, 0xf7, 0x13, 0x48, 0x53, 0x48, 0x5f, 0x8a, 0x42, 0x63, 0xd7, 0x4c,
+	0x0a, 0xf7, 0x73, 0x18, 0xa6, 0xcd, 0x0b, 0x8a, 0x7f, 0xde, 0xba, 0xd2, 0xb7, 0xcd, 0x94, 0xe9,
+	0x9a, 0xd9, 0xf6, 0x7e, 0x41, 0xf8, 0x7c, 0x2e, 0xef, 0xa0, 0x74, 0x42, 0xac, 0x98, 0xd7, 0x3e,
+	0x21, 0x1e, 0x86, 0x9f, 0x2a, 0xfe, 0x6b, 0xc4, 0x94, 0x9f, 0x7c, 0x45, 0x78, 0x42, 0x4f, 0xef,
+	0x24, 0x7e, 0x63, 0x90, 0xe1, 0x97, 0x06, 0xb8, 0x6e, 0xe6, 0xb2, 0x9a, 0xbd, 0xe9, 0x09, 0x10,
+	0xbb, 0x6a, 0x83, 0xba, 0x42, 0x7c, 0x47, 0x78, 0x6e, 0x13, 0x62, 0xb1, 0x0b, 0x1d, 0x86, 0x47,
+	0x89, 0x88, 0x0b, 0x0b, 0xb5, 0x61, 0x82, 0x51, 0x69, 0xa3, 0x43, 0xd5, 0x4c, 0xdc, 0x9e, 0xb7,
+	0xa2, 0xe8, 0x15, 0x8b, 0x5a, 0xa0, 0x07, 0x63, 0x1b, 0x0f, 0xe6, 0x37, 0xc2, 0xb3, 0x6b, 0xc0,
+	0x21, 0x61, 0x52, 0xe3, 0x3c, 0xe6, 0x85, 0x44, 0x4f, 0x4c, 0x18, 0x2a, 0x4c, 0x74, 0x9e, 0xc5,
+	0x81, 0x37, 0xf5, 0x29, 0xec, 0xab, 0xbf, 0xb0, 0x96, 0x54, 0xb6, 0xdb, 0xd6, 0x0d, 0xc3, 0x6c,
+	0x34, 0x68, 0x23, 0x65, 0xff, 0x3d, 0x3f, 0x11, 0x9e, 0x6e, 0x40, 0x12, 0xee, 0x96, 0xa6, 0x5c,
+	0x37, 0x21, 0xeb, 0x6b, 0x31, 0xdc, 0x67, 0xd9, 0x3d, 0x15, 0xeb, 0x8e, 0x75, 0xd3, 0x7c, 0x13,
+	0xa9, 0xaf, 0x30, 0xb2, 0x5c, 0x1f, 0x11, 0x1e, 0x6d, 0x40, 0x04, 0xc3, 0x7d, 0x5d, 0xe8, 0xa5,
+	0x1c, 0x72, 0xf3, 0xda, 0x97, 0xc3, 0xae, 0xb8, 0x1c, 0x9f, 0x11, 0x1e, 0xcf, 0xab, 0xea, 0x06,
+	0x74, 0x5d, 0x90, 0xba, 0x39, 0x73, 0xd9, 0x1d, 0x19, 0x90, 0xba, 0x7d, 0x48, 0xec, 0xca, 0x43,
+	0xb2, 0xb2, 0xfc, 0xe6, 0x7e, 0x10, 0xca, 0xed, 0x96, 0xeb, 0x78, 0x22, 0xa6, 0xed, 0x22, 0xb5,
+	0xac, 0x0a, 0xfd, 0x5b, 0xa5, 0xa6, 0xcb, 0x50, 0xf5, 0x83, 0x57, 0x0b, 0x80, 0xd7, 0x02, 0x91,
+	0x99, 0xbb, 0xff, 0xab, 0xa7, 0x5b, 0x7f, 0x02, 0x00, 0x00, 0xff, 0xff, 0xda, 0x6f, 0xd8, 0xd4,
+	0x74, 0x0a, 0x00, 0x00,
 }

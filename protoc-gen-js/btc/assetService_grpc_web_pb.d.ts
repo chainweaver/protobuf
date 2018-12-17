@@ -2,14 +2,14 @@ import * as grpcWeb from 'grpc-web';
 import {
   Address,
   AddressKeychain,
-  GetAssetAddressEndpointRequest,
-  GetAssetTXEndpointRequest,
+  AssetAddressEndpointRequest,
+  AssetTXEndpointRequest,
+  GenerateAssetAddressEndpointRequest,
   HDAddress,
   HDChain,
   HDWallet,
+  IssueAssetEndpointRequest,
   ListAssetTXsEndpointRequest,
-  NullValueRequest,
-  OAPIssueRequest,
   OAPTX,
   TX,
   TXInput,
@@ -25,14 +25,14 @@ export class AssetServiceClient {
                options: null | { [index: string]: string; });
 
   generateAssetAddressEndpoint(
-    request: NullValueRequest,
+    request: GenerateAssetAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: AddressKeychain) => void
   ): grpcWeb.ClientReadableStream<AddressKeychain>;
 
   issueAssetEndpoint(
-    request: OAPIssueRequest,
+    request: IssueAssetEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: OAPTX) => void
@@ -52,15 +52,15 @@ export class AssetServiceClient {
                response: TxHashes) => void
   ): grpcWeb.ClientReadableStream<TxHashes>;
 
-  getAssetTXEndpoint(
-    request: GetAssetTXEndpointRequest,
+  assetTXEndpoint(
+    request: AssetTXEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: OAPTX) => void
   ): grpcWeb.ClientReadableStream<OAPTX>;
 
-  getAssetAddressEndpoint(
-    request: GetAssetAddressEndpointRequest,
+  assetAddressEndpoint(
+    request: AssetAddressEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: Address) => void
@@ -74,12 +74,12 @@ export class AssetServicePromiseClient {
                options: null | { [index: string]: string; });
 
   generateAssetAddressEndpoint(
-    request: NullValueRequest,
+    request: GenerateAssetAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<AddressKeychain>;
 
   issueAssetEndpoint(
-    request: OAPIssueRequest,
+    request: IssueAssetEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<OAPTX>;
 
@@ -93,13 +93,13 @@ export class AssetServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<TxHashes>;
 
-  getAssetTXEndpoint(
-    request: GetAssetTXEndpointRequest,
+  assetTXEndpoint(
+    request: AssetTXEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<OAPTX>;
 
-  getAssetAddressEndpoint(
-    request: GetAssetAddressEndpointRequest,
+  assetAddressEndpoint(
+    request: AssetAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<Address>;
 

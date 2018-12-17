@@ -83,7 +83,7 @@
     },
     "/btc/{network}/wallets/hd": {
       "post": {
-        "operationId": "CreateWalletHDEndpoint",
+        "operationId": "CreateHDWalletEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -110,7 +110,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcCreateWalletHDEndpointRequest"
+              "$ref": "#/definitions/btcCreateHDWalletEndpointRequest"
             }
           }
         ],
@@ -121,7 +121,7 @@
     },
     "/btc/{network}/wallets/hd/{name}": {
       "get": {
-        "operationId": "GetWalletHDEndpoint",
+        "operationId": "WalletHDEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -155,7 +155,7 @@
         ]
       },
       "delete": {
-        "operationId": "DeleteWalletHDEndpoint",
+        "operationId": "DeleteHDWalletHDEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -191,7 +191,7 @@
     },
     "/btc/{network}/wallets/hd/{name}/addresses": {
       "get": {
-        "operationId": "GetWalletAddressesHDEndpoint",
+        "operationId": "HDWalletAddressesEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -287,7 +287,7 @@
     },
     "/btc/{network}/wallets/{name}": {
       "get": {
-        "operationId": "GetWalletEndpoint",
+        "operationId": "WalletEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -357,7 +357,7 @@
     },
     "/btc/{network}/wallets/{name}/addresses": {
       "get": {
-        "operationId": "GetWalletAddressesEndpoint",
+        "operationId": "WalletAddressesEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -524,7 +524,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/btcGenerateAdressInWalletEndpointRequest"
+              "$ref": "#/definitions/btcGenerateAddressInWalletEndpointRequest"
             }
           }
         ],
@@ -551,27 +551,7 @@
         }
       }
     },
-    "btcCreateWalletEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/btcNetworkAllowingAlias"
-        },
-        "token": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "addresses": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "btcCreateWalletHDEndpointRequest": {
+    "btcCreateHDWalletEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
@@ -605,6 +585,26 @@
         }
       }
     },
+    "btcCreateWalletEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/btcNetworkAllowingAlias"
+        },
+        "token": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "btcDeriveAddressInWalletEndpointRequest": {
       "type": "object",
       "properties": {
@@ -626,7 +626,7 @@
         }
       }
     },
-    "btcGenerateAdressInWalletEndpointRequest": {
+    "btcGenerateAddressInWalletEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {

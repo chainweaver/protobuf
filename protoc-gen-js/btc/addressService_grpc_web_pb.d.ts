@@ -6,7 +6,6 @@ import {
   AddressFullEndpointRequest,
   AddressKeychain,
   GenerateAddressEndpointRequest,
-  GenerateMultisigAddressEndpointRequest,
   HDAddress,
   HDChain,
   HDWallet,
@@ -49,13 +48,6 @@ export class AddressServiceClient {
                response: AddressKeychain) => void
   ): grpcWeb.ClientReadableStream<AddressKeychain>;
 
-  generateMultisigAddressEndpoint(
-    request: GenerateMultisigAddressEndpointRequest,
-    metadata: grpcWeb.Metadata,
-    callback: (err: grpcWeb.Error,
-               response: AddressKeychain) => void
-  ): grpcWeb.ClientReadableStream<AddressKeychain>;
-
 }
 
 export class AddressServicePromiseClient {
@@ -80,11 +72,6 @@ export class AddressServicePromiseClient {
 
   generateAddressEndpoint(
     request: GenerateAddressEndpointRequest,
-    metadata: grpcWeb.Metadata
-  ): Promise<AddressKeychain>;
-
-  generateMultisigAddressEndpoint(
-    request: GenerateMultisigAddressEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<AddressKeychain>;
 

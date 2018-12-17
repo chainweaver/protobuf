@@ -15,19 +15,19 @@ message NullValue {}
 
 message Blockchain {
   // The name of the blockchain represented, in the form of $COIN.$CHAIN.
-  string name	= 1;  
+  string name	= 1;
   // The current height of the blockchain; i.e., the number of blocks in the blockchain.
-  uint64 height = 2; 
+  uint64 height = 2;
   // The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3.
-  string hash	= 3; 
+  string hash	= 3;
   // The time of the latest update to the blockchain; typically when the latest block was added.
-  string time	= 4; 
+  string time	= 4;
   // The BlockCypher URL to query for more information on the latest confirmed block; returns a Block.
-  string latest_url	= 5; 
+  string latest_url	= 5;
   // The hash of the second-to-latest confirmed block in the blockchain.
-  string previous_hash = 6; 
+  string previous_hash = 6;
   // The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block.
-  string previous_url = 7;  
+  string previous_url = 7;
   // Number of unconfirmed transactions in memory pool (likely to be included in next block).
   uint64 unconfirmed_count = 8;
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks.
@@ -37,9 +37,9 @@ message Blockchain {
   // A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks.
   uint64 low_gas_price = 11;
   // Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
-  uint64 last_fork_height = 13;  
+  uint64 last_fork_height = 13;
   // Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
-  string last_fork_hash = 14; 
+  string last_fork_hash = 14;
 }
 
 message Block {
@@ -193,7 +193,7 @@ message TX {
   string execution_error = 27;
 }
 
-message Address {  
+message Address {
   // The requested address.
   string address = 1;
   // Total amount of confirmed wei received by this address.

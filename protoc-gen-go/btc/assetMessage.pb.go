@@ -18,18 +18,64 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type IssueAssetEndpointRequest struct {
+type GenerateAssetAddressEndpointRequest struct {
 	Network              NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
 }
 
+func (m *GenerateAssetAddressEndpointRequest) Reset()         { *m = GenerateAssetAddressEndpointRequest{} }
+func (m *GenerateAssetAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*GenerateAssetAddressEndpointRequest) ProtoMessage()    {}
+func (*GenerateAssetAddressEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_assetMessage_c5355d3599f2f00a, []int{0}
+}
+func (m *GenerateAssetAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GenerateAssetAddressEndpointRequest.Unmarshal(m, b)
+}
+func (m *GenerateAssetAddressEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GenerateAssetAddressEndpointRequest.Marshal(b, m, deterministic)
+}
+func (dst *GenerateAssetAddressEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GenerateAssetAddressEndpointRequest.Merge(dst, src)
+}
+func (m *GenerateAssetAddressEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_GenerateAssetAddressEndpointRequest.Size(m)
+}
+func (m *GenerateAssetAddressEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GenerateAssetAddressEndpointRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GenerateAssetAddressEndpointRequest proto.InternalMessageInfo
+
+func (m *GenerateAssetAddressEndpointRequest) GetNetwork() NetworkAllowingAlias {
+	if m != nil {
+		return m.Network
+	}
+	return NetworkAllowingAlias_MAINNET
+}
+
+type IssueAssetEndpointRequest struct {
+	Network NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
+	// The private key being used to issue or transfer assets.
+	FromPrivate string `protobuf:"bytes,2,opt,name=from_private,json=fromPrivate,proto3" json:"from_private,omitempty"`
+	// The target OAP address assets for issue or transfer.
+	ToAddress string `protobuf:"bytes,3,opt,name=to_address,json=toAddress,proto3" json:"to_address,omitempty"`
+	// The amount of assets being issued or transfered.
+	Amount int32 `protobuf:"varint,4,opt,name=amount,proto3" json:"amount,omitempty"`
+	// Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction.
+	Metadata             string   `protobuf:"bytes,5,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
 func (m *IssueAssetEndpointRequest) Reset()         { *m = IssueAssetEndpointRequest{} }
 func (m *IssueAssetEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*IssueAssetEndpointRequest) ProtoMessage()    {}
 func (*IssueAssetEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_9f1d34860244ab21, []int{0}
+	return fileDescriptor_assetMessage_c5355d3599f2f00a, []int{1}
 }
 func (m *IssueAssetEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IssueAssetEndpointRequest.Unmarshal(m, b)
@@ -56,6 +102,34 @@ func (m *IssueAssetEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	return NetworkAllowingAlias_MAINNET
 }
 
+func (m *IssueAssetEndpointRequest) GetFromPrivate() string {
+	if m != nil {
+		return m.FromPrivate
+	}
+	return ""
+}
+
+func (m *IssueAssetEndpointRequest) GetToAddress() string {
+	if m != nil {
+		return m.ToAddress
+	}
+	return ""
+}
+
+func (m *IssueAssetEndpointRequest) GetAmount() int32 {
+	if m != nil {
+		return m.Amount
+	}
+	return 0
+}
+
+func (m *IssueAssetEndpointRequest) GetMetadata() string {
+	if m != nil {
+		return m.Metadata
+	}
+	return ""
+}
+
 type TransferAssetEndpointRequest struct {
 	Network NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
 	Assetid string               `protobuf:"bytes,2,opt,name=assetid,proto3" json:"assetid,omitempty"`
@@ -76,7 +150,7 @@ func (m *TransferAssetEndpointRequest) Reset()         { *m = TransferAssetEndpo
 func (m *TransferAssetEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*TransferAssetEndpointRequest) ProtoMessage()    {}
 func (*TransferAssetEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_9f1d34860244ab21, []int{1}
+	return fileDescriptor_assetMessage_c5355d3599f2f00a, []int{2}
 }
 func (m *TransferAssetEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferAssetEndpointRequest.Unmarshal(m, b)
@@ -150,7 +224,7 @@ func (m *ListAssetTXsEndpointRequest) Reset()         { *m = ListAssetTXsEndpoin
 func (m *ListAssetTXsEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ListAssetTXsEndpointRequest) ProtoMessage()    {}
 func (*ListAssetTXsEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_9f1d34860244ab21, []int{2}
+	return fileDescriptor_assetMessage_c5355d3599f2f00a, []int{3}
 }
 func (m *ListAssetTXsEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAssetTXsEndpointRequest.Unmarshal(m, b)
@@ -184,7 +258,7 @@ func (m *ListAssetTXsEndpointRequest) GetAssetid() string {
 	return ""
 }
 
-type GetAssetTXEndpointRequest struct {
+type AssetTXEndpointRequest struct {
 	Network              NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=fairwaycorp.blockchainprotobuf.btc.NetworkAllowingAlias" json:"network,omitempty"`
 	Assetid              string               `protobuf:"bytes,2,opt,name=assetid,proto3" json:"assetid,omitempty"`
 	Txhash               string               `protobuf:"bytes,3,opt,name=txhash,proto3" json:"txhash,omitempty"`
@@ -193,52 +267,52 @@ type GetAssetTXEndpointRequest struct {
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *GetAssetTXEndpointRequest) Reset()         { *m = GetAssetTXEndpointRequest{} }
-func (m *GetAssetTXEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*GetAssetTXEndpointRequest) ProtoMessage()    {}
-func (*GetAssetTXEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_9f1d34860244ab21, []int{3}
+func (m *AssetTXEndpointRequest) Reset()         { *m = AssetTXEndpointRequest{} }
+func (m *AssetTXEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*AssetTXEndpointRequest) ProtoMessage()    {}
+func (*AssetTXEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_assetMessage_c5355d3599f2f00a, []int{4}
 }
-func (m *GetAssetTXEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetAssetTXEndpointRequest.Unmarshal(m, b)
+func (m *AssetTXEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AssetTXEndpointRequest.Unmarshal(m, b)
 }
-func (m *GetAssetTXEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetAssetTXEndpointRequest.Marshal(b, m, deterministic)
+func (m *AssetTXEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AssetTXEndpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetAssetTXEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetAssetTXEndpointRequest.Merge(dst, src)
+func (dst *AssetTXEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AssetTXEndpointRequest.Merge(dst, src)
 }
-func (m *GetAssetTXEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_GetAssetTXEndpointRequest.Size(m)
+func (m *AssetTXEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_AssetTXEndpointRequest.Size(m)
 }
-func (m *GetAssetTXEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetAssetTXEndpointRequest.DiscardUnknown(m)
+func (m *AssetTXEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AssetTXEndpointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetAssetTXEndpointRequest proto.InternalMessageInfo
+var xxx_messageInfo_AssetTXEndpointRequest proto.InternalMessageInfo
 
-func (m *GetAssetTXEndpointRequest) GetNetwork() NetworkAllowingAlias {
+func (m *AssetTXEndpointRequest) GetNetwork() NetworkAllowingAlias {
 	if m != nil {
 		return m.Network
 	}
 	return NetworkAllowingAlias_MAINNET
 }
 
-func (m *GetAssetTXEndpointRequest) GetAssetid() string {
+func (m *AssetTXEndpointRequest) GetAssetid() string {
 	if m != nil {
 		return m.Assetid
 	}
 	return ""
 }
 
-func (m *GetAssetTXEndpointRequest) GetTxhash() string {
+func (m *AssetTXEndpointRequest) GetTxhash() string {
 	if m != nil {
 		return m.Txhash
 	}
 	return ""
 }
 
-type GetAssetAddressEndpointRequest struct {
+type AssetAddressEndpointRequest struct {
 	Network              string   `protobuf:"bytes,10,opt,name=network,proto3" json:"network,omitempty"`
 	Assetid              string   `protobuf:"bytes,1,opt,name=assetid,proto3" json:"assetid,omitempty"`
 	Oapaddr              string   `protobuf:"bytes,2,opt,name=oapaddr,proto3" json:"oapaddr,omitempty"`
@@ -247,45 +321,45 @@ type GetAssetAddressEndpointRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetAssetAddressEndpointRequest) Reset()         { *m = GetAssetAddressEndpointRequest{} }
-func (m *GetAssetAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
-func (*GetAssetAddressEndpointRequest) ProtoMessage()    {}
-func (*GetAssetAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_9f1d34860244ab21, []int{4}
+func (m *AssetAddressEndpointRequest) Reset()         { *m = AssetAddressEndpointRequest{} }
+func (m *AssetAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
+func (*AssetAddressEndpointRequest) ProtoMessage()    {}
+func (*AssetAddressEndpointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_assetMessage_c5355d3599f2f00a, []int{5}
 }
-func (m *GetAssetAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetAssetAddressEndpointRequest.Unmarshal(m, b)
+func (m *AssetAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AssetAddressEndpointRequest.Unmarshal(m, b)
 }
-func (m *GetAssetAddressEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetAssetAddressEndpointRequest.Marshal(b, m, deterministic)
+func (m *AssetAddressEndpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AssetAddressEndpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetAssetAddressEndpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetAssetAddressEndpointRequest.Merge(dst, src)
+func (dst *AssetAddressEndpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AssetAddressEndpointRequest.Merge(dst, src)
 }
-func (m *GetAssetAddressEndpointRequest) XXX_Size() int {
-	return xxx_messageInfo_GetAssetAddressEndpointRequest.Size(m)
+func (m *AssetAddressEndpointRequest) XXX_Size() int {
+	return xxx_messageInfo_AssetAddressEndpointRequest.Size(m)
 }
-func (m *GetAssetAddressEndpointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetAssetAddressEndpointRequest.DiscardUnknown(m)
+func (m *AssetAddressEndpointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AssetAddressEndpointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetAssetAddressEndpointRequest proto.InternalMessageInfo
+var xxx_messageInfo_AssetAddressEndpointRequest proto.InternalMessageInfo
 
-func (m *GetAssetAddressEndpointRequest) GetNetwork() string {
+func (m *AssetAddressEndpointRequest) GetNetwork() string {
 	if m != nil {
 		return m.Network
 	}
 	return ""
 }
 
-func (m *GetAssetAddressEndpointRequest) GetAssetid() string {
+func (m *AssetAddressEndpointRequest) GetAssetid() string {
 	if m != nil {
 		return m.Assetid
 	}
 	return ""
 }
 
-func (m *GetAssetAddressEndpointRequest) GetOapaddr() string {
+func (m *AssetAddressEndpointRequest) GetOapaddr() string {
 	if m != nil {
 		return m.Oapaddr
 	}
@@ -293,39 +367,42 @@ func (m *GetAssetAddressEndpointRequest) GetOapaddr() string {
 }
 
 func init() {
+	proto.RegisterType((*GenerateAssetAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.GenerateAssetAddressEndpointRequest")
 	proto.RegisterType((*IssueAssetEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.IssueAssetEndpointRequest")
 	proto.RegisterType((*TransferAssetEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.TransferAssetEndpointRequest")
 	proto.RegisterType((*ListAssetTXsEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.ListAssetTXsEndpointRequest")
-	proto.RegisterType((*GetAssetTXEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.GetAssetTXEndpointRequest")
-	proto.RegisterType((*GetAssetAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.GetAssetAddressEndpointRequest")
+	proto.RegisterType((*AssetTXEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.AssetTXEndpointRequest")
+	proto.RegisterType((*AssetAddressEndpointRequest)(nil), "fairwaycorp.blockchainprotobuf.btc.AssetAddressEndpointRequest")
 }
 
-func init() { proto.RegisterFile("assetMessage.proto", fileDescriptor_assetMessage_9f1d34860244ab21) }
+func init() { proto.RegisterFile("assetMessage.proto", fileDescriptor_assetMessage_c5355d3599f2f00a) }
 
-var fileDescriptor_assetMessage_9f1d34860244ab21 = []byte{
-	// 376 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x51, 0x4d, 0x8b, 0xd4, 0x40,
-	0x10, 0x25, 0xab, 0x9b, 0x71, 0x4b, 0xf1, 0xd0, 0xc2, 0xd2, 0xbb, 0x7e, 0x30, 0xe6, 0x34, 0x97,
-	0x24, 0xa0, 0x17, 0x2f, 0x22, 0x11, 0x44, 0x04, 0x15, 0x09, 0x7b, 0x10, 0x2f, 0x4b, 0xa7, 0xd3,
-	0x49, 0x9a, 0x49, 0xba, 0x62, 0x77, 0xc5, 0xd1, 0xab, 0x57, 0x7f, 0x85, 0xff, 0x54, 0xd2, 0x49,
-	0x1c, 0x46, 0x04, 0x6f, 0xce, 0x2d, 0xef, 0x75, 0xaa, 0xde, 0x47, 0x01, 0x13, 0xce, 0x29, 0x7a,
-	0xa7, 0x9c, 0x13, 0xb5, 0x4a, 0x7a, 0x8b, 0x84, 0x2c, 0xaa, 0x84, 0xb6, 0x3b, 0xf1, 0x4d, 0xa2,
-	0xed, 0x93, 0xa2, 0x45, 0xb9, 0x95, 0x8d, 0xd0, 0xc6, 0x3f, 0x16, 0x43, 0x95, 0x14, 0x24, 0x2f,
-	0xef, 0x49, 0xec, 0x3a, 0x34, 0x07, 0x83, 0x11, 0xc2, 0xc5, 0x1b, 0xe7, 0x06, 0x95, 0x8d, 0x3b,
-	0x5f, 0x99, 0xb2, 0x47, 0x6d, 0x28, 0x57, 0x9f, 0x07, 0xe5, 0x88, 0xe5, 0xb0, 0x32, 0x8a, 0x76,
-	0x68, 0xb7, 0x3c, 0x58, 0x07, 0x9b, 0xbb, 0x4f, 0x9e, 0x25, 0xff, 0xd6, 0x49, 0xde, 0x4f, 0x23,
-	0x59, 0xdb, 0xe2, 0x4e, 0x9b, 0x3a, 0x6b, 0xb5, 0x70, 0xf9, 0xb2, 0x28, 0xfa, 0x7e, 0x02, 0x0f,
-	0xae, 0xac, 0x30, 0xae, 0x52, 0xf6, 0x7f, 0x89, 0x32, 0x0e, 0x2b, 0x5f, 0x9a, 0x2e, 0xf9, 0xc9,
-	0x3a, 0xd8, 0x9c, 0xe5, 0x0b, 0x64, 0x8f, 0xe1, 0x4e, 0x65, 0xb1, 0xbb, 0xee, 0xad, 0xfe, 0x22,
-	0x48, 0xf1, 0x1b, 0xfe, 0xf9, 0xf6, 0xc8, 0x7d, 0x98, 0x28, 0xf6, 0x10, 0x80, 0xf0, 0x5a, 0x94,
-	0xa5, 0x55, 0xce, 0xf1, 0x9b, 0xfe, 0x87, 0x33, 0xc2, 0x6c, 0x22, 0xd8, 0x39, 0x84, 0xa2, 0xc3,
-	0xc1, 0x10, 0x3f, 0x5d, 0x07, 0x9b, 0xd3, 0x7c, 0x46, 0xec, 0x12, 0x6e, 0x75, 0x8a, 0x44, 0x29,
-	0x48, 0xf0, 0xd0, 0x0f, 0xfd, 0xc6, 0xd1, 0x8f, 0x00, 0xee, 0xbf, 0xd5, 0x8e, 0x7c, 0x01, 0x57,
-	0x1f, 0xdd, 0x51, 0x3b, 0x88, 0x7e, 0x06, 0x70, 0xf1, 0x5a, 0x2d, 0x66, 0x8e, 0x7b, 0x8f, 0x73,
-	0x08, 0xe9, 0x6b, 0x23, 0x5c, 0x33, 0x5f, 0x62, 0x46, 0x91, 0x81, 0x47, 0x8b, 0xc5, 0xb9, 0xf8,
-	0x3f, 0x7d, 0xf2, 0xbd, 0x4f, 0x98, 0x76, 0xfe, 0x45, 0x2d, 0x38, 0x54, 0xe3, 0xb0, 0x42, 0xd1,
-	0x8f, 0xa7, 0x5d, 0x7c, 0xcc, 0xf0, 0xe5, 0x8b, 0x4f, 0xcf, 0x6b, 0x4d, 0xcd, 0x50, 0x24, 0x12,
-	0xbb, 0x74, 0x0e, 0x1c, 0x8f, 0x89, 0xd3, 0x7d, 0xe2, 0x78, 0x89, 0x9c, 0xfa, 0x0f, 0x19, 0xd7,
-	0xca, 0xc4, 0x35, 0xa6, 0x05, 0xc9, 0x22, 0xf4, 0xd4, 0xd3, 0x5f, 0x01, 0x00, 0x00, 0xff, 0xff,
-	0x1f, 0xd0, 0x16, 0x88, 0xae, 0x03, 0x00, 0x00,
+var fileDescriptor_assetMessage_c5355d3599f2f00a = []byte{
+	// 408 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x93, 0xc1, 0x6e, 0xd3, 0x40,
+	0x10, 0x86, 0xb5, 0x6d, 0x93, 0xd0, 0x01, 0x71, 0x30, 0x52, 0xb4, 0xb4, 0x20, 0x05, 0x73, 0xc9,
+	0x25, 0x8e, 0x04, 0x17, 0x2e, 0x08, 0x05, 0x09, 0x21, 0x24, 0x40, 0xc8, 0xea, 0x01, 0x71, 0xa9,
+	0xc6, 0xeb, 0x8d, 0xb3, 0x8a, 0xbd, 0x63, 0x76, 0xc7, 0x84, 0x5e, 0xb9, 0xf2, 0x0e, 0xbc, 0x1d,
+	0xef, 0x81, 0x6c, 0xaf, 0xa9, 0x0a, 0x94, 0xde, 0xda, 0x5b, 0xfe, 0x89, 0x67, 0xfe, 0xf9, 0xbf,
+	0xb1, 0x21, 0x42, 0xef, 0x35, 0xbf, 0xd3, 0xde, 0x63, 0xa1, 0x93, 0xda, 0x11, 0x53, 0x14, 0xaf,
+	0xd1, 0xb8, 0x1d, 0x9e, 0x29, 0x72, 0x75, 0x92, 0x95, 0xa4, 0xb6, 0x6a, 0x83, 0xc6, 0x76, 0x7f,
+	0x66, 0xcd, 0x3a, 0xc9, 0x58, 0x1d, 0xdd, 0x53, 0x54, 0x55, 0x64, 0x2f, 0x34, 0xc6, 0x67, 0xf0,
+	0xf8, 0xb5, 0xb6, 0xda, 0x21, 0xeb, 0x55, 0x3b, 0x76, 0x95, 0xe7, 0x4e, 0x7b, 0xff, 0xca, 0xe6,
+	0x35, 0x19, 0xcb, 0xa9, 0xfe, 0xdc, 0x68, 0xcf, 0x51, 0x0a, 0x13, 0xab, 0x79, 0x47, 0x6e, 0x2b,
+	0xc5, 0x4c, 0xcc, 0xef, 0x3e, 0x79, 0x96, 0x5c, 0xed, 0x98, 0xbc, 0xef, 0x5b, 0x56, 0x65, 0x49,
+	0x3b, 0x63, 0x8b, 0x55, 0x69, 0xd0, 0xa7, 0xc3, 0xa0, 0xf8, 0xa7, 0x80, 0xfb, 0x6f, 0xbc, 0x6f,
+	0x7a, 0xe3, 0x6b, 0x70, 0x8c, 0x1e, 0xc1, 0x9d, 0xb5, 0xa3, 0xea, 0xb4, 0x76, 0xe6, 0x0b, 0xb2,
+	0x96, 0x7b, 0x33, 0x31, 0x3f, 0x4c, 0x6f, 0xb7, 0xb5, 0x0f, 0x7d, 0x29, 0x7a, 0x08, 0xc0, 0x74,
+	0x8a, 0x3d, 0x05, 0xb9, 0xdf, 0x3d, 0x70, 0xc8, 0x14, 0xb0, 0x44, 0x53, 0x18, 0x63, 0x45, 0x8d,
+	0x65, 0x79, 0x30, 0x13, 0xf3, 0x51, 0x1a, 0x54, 0x74, 0x04, 0xb7, 0x2a, 0xcd, 0x98, 0x23, 0xa3,
+	0x1c, 0x75, 0x4d, 0xbf, 0x75, 0xfc, 0x6d, 0x0f, 0x1e, 0x9c, 0x38, 0xb4, 0x7e, 0xad, 0xdd, 0xb5,
+	0x45, 0x95, 0x30, 0xe9, 0x5e, 0x13, 0x93, 0x87, 0x94, 0x83, 0xfc, 0x0b, 0xc2, 0xfe, 0x55, 0x10,
+	0x0e, 0x2e, 0x87, 0x30, 0xba, 0x14, 0xc2, 0xf8, 0x0f, 0x08, 0xdf, 0x05, 0x1c, 0xbf, 0x35, 0x9e,
+	0x3b, 0x00, 0x27, 0x1f, 0xfd, 0x8d, 0x32, 0x88, 0x7f, 0x08, 0x98, 0x86, 0x4d, 0x6e, 0xf6, 0x18,
+	0x53, 0x18, 0xf3, 0xd7, 0x0d, 0xfa, 0x4d, 0x38, 0x43, 0x50, 0xf1, 0x16, 0x8e, 0xff, 0xf7, 0x39,
+	0xca, 0xf3, 0x25, 0xa1, 0x1f, 0xf8, 0x0f, 0x2b, 0x71, 0xd1, 0x4a, 0xc2, 0x84, 0xb0, 0x6e, 0x8f,
+	0x3a, 0x2c, 0x11, 0xe4, 0xcb, 0x17, 0x9f, 0x9e, 0x17, 0x86, 0x37, 0x4d, 0x96, 0x28, 0xaa, 0x96,
+	0x21, 0xed, 0xa2, 0x8d, 0xbb, 0x3c, 0x8f, 0xbb, 0x18, 0xf2, 0x2e, 0xbb, 0x1f, 0x6a, 0x51, 0x68,
+	0xbb, 0x28, 0x68, 0x99, 0xb1, 0xca, 0xc6, 0x5d, 0xe9, 0xe9, 0xaf, 0x00, 0x00, 0x00, 0xff, 0xff,
+	0x7c, 0xa7, 0x80, 0xda, 0x9a, 0x04, 0x00, 0x00,
 }

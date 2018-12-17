@@ -14,12 +14,12 @@ service AnalyticsService {
       body: "*"
     };
   }
-  rpc GetAnalyticsJob (GetAnalyticsJobRequest) returns (Job) {
+  rpc AnalyticsJob (AnalyticsJobRequest) returns (Job) {
     option (google.api.http) = {
       get: "/btc/{network}/analytics/job/{ticket}"
     };
   }
-  rpc GetAnalyticsJobResults (GetAnalyticsJobResultsRequest) returns (JobResults) {
+  rpc AnalyticsJobResults (AnalyticsJobResultsRequest) returns (JobResults) {
     option (google.api.http) = {
       get: "/btc/{network}/analytics/job/{ticket}/results"
     };

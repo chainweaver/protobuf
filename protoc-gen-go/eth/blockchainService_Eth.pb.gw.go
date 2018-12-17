@@ -28,8 +28,8 @@ var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
-func request_BlockchainService_GetChainEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client BlockchainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetChainEndpointRequest
+func request_BlockchainService_ChainEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client BlockchainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ChainEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -53,17 +53,17 @@ func request_BlockchainService_GetChainEndpoint_0(ctx context.Context, marshaler
 
 	protoReq.Network = NetworkAllowingAlias(e)
 
-	msg, err := client.GetChainEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.ChainEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_BlockchainService_GetBlockHashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "block_hash": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+	filter_BlockchainService_BlockHashEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "block_hash": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_BlockchainService_GetBlockHashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client BlockchainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetBlockHashEndpointRequest
+func request_BlockchainService_BlockHashEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client BlockchainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BlockHashEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -98,21 +98,21 @@ func request_BlockchainService_GetBlockHashEndpoint_0(ctx context.Context, marsh
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "block_hash", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_BlockchainService_GetBlockHashEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_BlockchainService_BlockHashEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetBlockHashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.BlockHashEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_BlockchainService_GetBlockHeightEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "block_height": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+	filter_BlockchainService_BlockHeightEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "block_height": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_BlockchainService_GetBlockHeightEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client BlockchainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetBlockHeightEndpointRequest
+func request_BlockchainService_BlockHeightEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client BlockchainServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BlockHeightEndpointRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -147,11 +147,11 @@ func request_BlockchainService_GetBlockHeightEndpoint_0(ctx context.Context, mar
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "block_height", err)
 	}
 
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_BlockchainService_GetBlockHeightEndpoint_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_BlockchainService_BlockHeightEndpoint_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetBlockHeightEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.BlockHeightEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -194,7 +194,7 @@ func RegisterBlockchainServiceHandler(ctx context.Context, mux *runtime.ServeMux
 // "BlockchainServiceClient" to call the correct interceptors.
 func RegisterBlockchainServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client BlockchainServiceClient) error {
 
-	mux.Handle("GET", pattern_BlockchainService_GetChainEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_BlockchainService_ChainEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -212,18 +212,18 @@ func RegisterBlockchainServiceHandlerClient(ctx context.Context, mux *runtime.Se
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_BlockchainService_GetChainEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_BlockchainService_ChainEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_BlockchainService_GetChainEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_BlockchainService_ChainEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_BlockchainService_GetBlockHashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_BlockchainService_BlockHashEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -241,18 +241,18 @@ func RegisterBlockchainServiceHandlerClient(ctx context.Context, mux *runtime.Se
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_BlockchainService_GetBlockHashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_BlockchainService_BlockHashEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_BlockchainService_GetBlockHashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_BlockchainService_BlockHashEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_BlockchainService_GetBlockHeightEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_BlockchainService_BlockHeightEndpoint_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -270,14 +270,14 @@ func RegisterBlockchainServiceHandlerClient(ctx context.Context, mux *runtime.Se
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_BlockchainService_GetBlockHeightEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_BlockchainService_BlockHeightEndpoint_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_BlockchainService_GetBlockHeightEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_BlockchainService_BlockHeightEndpoint_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -285,17 +285,17 @@ func RegisterBlockchainServiceHandlerClient(ctx context.Context, mux *runtime.Se
 }
 
 var (
-	pattern_BlockchainService_GetChainEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"eth", "network"}, ""))
+	pattern_BlockchainService_ChainEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"eth", "network"}, ""))
 
-	pattern_BlockchainService_GetBlockHashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "blocks", "block_hash"}, ""))
+	pattern_BlockchainService_BlockHashEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "blocks", "block_hash"}, ""))
 
-	pattern_BlockchainService_GetBlockHeightEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "blocks", "block_height"}, ""))
+	pattern_BlockchainService_BlockHeightEndpoint_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"eth", "network", "blocks", "block_height"}, ""))
 )
 
 var (
-	forward_BlockchainService_GetChainEndpoint_0 = runtime.ForwardResponseMessage
+	forward_BlockchainService_ChainEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_BlockchainService_GetBlockHashEndpoint_0 = runtime.ForwardResponseMessage
+	forward_BlockchainService_BlockHashEndpoint_0 = runtime.ForwardResponseMessage
 
-	forward_BlockchainService_GetBlockHeightEndpoint_0 = runtime.ForwardResponseMessage
+	forward_BlockchainService_BlockHeightEndpoint_0 = runtime.ForwardResponseMessage
 )

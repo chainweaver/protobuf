@@ -1,7 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 import {
   MicroTX,
-  MicroTXRequest,
+  MicrotransactionEndpointRequest,
   TXInput,
   TXOutput} from './microtransactionService_pb';
 
@@ -11,7 +11,7 @@ export class MicrotransactionServiceClient {
                options: null | { [index: string]: string; });
 
   microtransactionEndpoint(
-    request: MicroTXRequest,
+    request: MicrotransactionEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: MicroTX) => void
@@ -25,7 +25,7 @@ export class MicrotransactionServicePromiseClient {
                options: null | { [index: string]: string; });
 
   microtransactionEndpoint(
-    request: MicroTXRequest,
+    request: MicrotransactionEndpointRequest,
     metadata: grpcWeb.Metadata
   ): Promise<MicroTX>;
 

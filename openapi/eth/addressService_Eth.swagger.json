@@ -17,7 +17,7 @@
   "paths": {
     "/eth/{network}/addrs": {
       "post": {
-        "operationId": "PostGenerateAddressEndpoint",
+        "operationId": "GenerateAddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -38,6 +38,14 @@
               "ROPSTEN",
               "ropsten"
             ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethGenerateAddressEndpointRequest"
+            }
           }
         ],
         "tags": [
@@ -47,7 +55,7 @@
     },
     "/eth/{network}/addrs/{address}": {
       "get": {
-        "operationId": "GetAddressEndpoint",
+        "operationId": "AddressEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -115,7 +123,7 @@
     },
     "/eth/{network}/addrs/{address}/balance": {
       "get": {
-        "operationId": "GetBalanceAddressEndpoint",
+        "operationId": "AddressBalanceEndpoint",
         "responses": {
           "200": {
             "description": "",
@@ -237,6 +245,14 @@
         "private": {
           "type": "string",
           "description": "Hex-encoded Private key."
+        }
+      }
+    },
+    "ethGenerateAddressEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
         }
       }
     },

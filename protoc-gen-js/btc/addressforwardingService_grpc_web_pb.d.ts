@@ -1,11 +1,11 @@
 import * as grpcWeb from 'grpc-web';
 import {
   AddressForward,
+  AddressForwards,
   CreateForwardEndpointRequest,
   DeleteForwardEndpointRequest,
-  DeleteForwardEndpointResponse,
   ListForwardsEndpointRequest,
-  ListForwardsEndpointResponse} from './addressforwardingService_pb';
+  NullValue} from './addressforwardingService_pb';
 
 export class AddressForwardingServiceClient {
   constructor (hostname: string,
@@ -23,15 +23,15 @@ export class AddressForwardingServiceClient {
     request: ListForwardsEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: ListForwardsEndpointResponse) => void
-  ): grpcWeb.ClientReadableStream<ListForwardsEndpointResponse>;
+               response: AddressForwards) => void
+  ): grpcWeb.ClientReadableStream<AddressForwards>;
 
   deleteForwardEndpoint(
     request: DeleteForwardEndpointRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: DeleteForwardEndpointResponse) => void
-  ): grpcWeb.ClientReadableStream<DeleteForwardEndpointResponse>;
+               response: NullValue) => void
+  ): grpcWeb.ClientReadableStream<NullValue>;
 
 }
 
@@ -48,12 +48,12 @@ export class AddressForwardingServicePromiseClient {
   listForwardsEndpoint(
     request: ListForwardsEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<ListForwardsEndpointResponse>;
+  ): Promise<AddressForwards>;
 
   deleteForwardEndpoint(
     request: DeleteForwardEndpointRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<DeleteForwardEndpointResponse>;
+  ): Promise<NullValue>;
 
 }
 
