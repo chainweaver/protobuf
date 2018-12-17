@@ -25,12 +25,12 @@ service WalletService {
       get: "/btc/{network}/wallets"
     };
   }
-  rpc GetWalletEndpoint (GetWalletEndpointRequest) returns (Wallet) {
+  rpc WalletEndpoint (WalletEndpointRequest) returns (Wallet) {
     option (google.api.http) = {
       get: "/btc/{network}/wallets/{name}"
     };
   }
-  rpc GetWalletHDEndpoint (GetHDWalletEndpointRequest) returns (HDWallet) {
+  rpc WalletHDEndpoint (HDWalletEndpointRequest) returns (HDWallet) {
     option (google.api.http) = {
       get: "/btc/{network}/wallets/hd/{name}"
     };
@@ -41,12 +41,12 @@ service WalletService {
       body: "*"
     };
   }
-  rpc GetWalletAddressesEndpoint (GetWalletAddressesEndpointRequest) returns (Wallet) {
+  rpc WalletAddressesEndpoint (WalletAddressesEndpointRequest) returns (Wallet) {
     option (google.api.http) = {
       get: "/btc/{network}/wallets/{name}/addresses"
     };
   }
-  rpc GetHDWalletAddressesEndpoint (GetHDWalletAddressesEndpointRequest) returns (HDChain) {
+  rpc HDWalletAddressesEndpoint (HDWalletAddressesEndpointRequest) returns (HDChain) {
     option (google.api.http) = {
       get: "/btc/{network}/wallets/hd/{name}/addresses"
     };

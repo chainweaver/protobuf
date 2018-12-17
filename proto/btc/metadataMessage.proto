@@ -9,21 +9,21 @@ message KeyValues {
   map<string, string> key_pairs = 1;
 }
 
-message GetMetadataAddressEndpointRequest {
+message MetadataAddressEndpointRequest {
   NetworkAllowingAlias network = 1;
   string address = 2;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
   bool private = 3;
 }
 
-message GetMetadataTxhashEndpointRequest {
+message MetadataTxhashEndpointRequest {
   NetworkAllowingAlias network = 1;
   string txhash = 2;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.
   bool private = 3;
 }
 
-message GetMetadataBlockhashEndpointRequest {
+message MetadataBlockhashEndpointRequest {
   NetworkAllowingAlias network = 1;
   string block_hash = 2;
   // If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.

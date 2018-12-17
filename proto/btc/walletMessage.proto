@@ -58,12 +58,12 @@ message ListWalletsEndpointRequest {
   NetworkAllowingAlias network = 1;
 }
 
-message GetWalletEndpointRequest {
+message WalletEndpointRequest {
   NetworkAllowingAlias network = 1;
   string name = 2;
 }
 
-message GetHDWalletEndpointRequest {
+message HDWalletEndpointRequest {
   NetworkAllowingAlias network = 1;
   string name = 2;
 }
@@ -75,7 +75,7 @@ message AddAddressesToWalletEndpointRequest {
   bool omitWalletAddresses = 3;
 }
 
-message GetWalletAddressesEndpointRequest {
+message WalletAddressesEndpointRequest {
   NetworkAllowingAlias network = 1;
   string name = 2;
   // Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.
@@ -84,7 +84,7 @@ message GetWalletAddressesEndpointRequest {
   bool zerobalance = 4;
 }
 
-message GetHDWalletAddressesEndpointRequest {
+message HDWalletAddressesEndpointRequest {
   NetworkAllowingAlias network = 1;
   string name = 2;
   // Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.

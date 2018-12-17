@@ -39,13 +39,13 @@ message ListAssetTXsEndpointRequest {
   string assetid = 2;
 }
 
-message GetAssetTXEndpointRequest {
+message AssetTXEndpointRequest {
   NetworkAllowingAlias network = 1;
   string assetid = 2;
   string txhash = 3;
 }
 
-message GetAssetAddressEndpointRequest {
+message AssetAddressEndpointRequest {
   string network = 10;
   string assetid = 1;
   string oapaddr = 2;
