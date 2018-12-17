@@ -38,7 +38,7 @@ message ListForwardsEndpointRequest {
 }
 
 
-message ListForwardsEndpointResponse {
+message AddressForwards {
   repeated AddressForward forwards = 1;
 }
 

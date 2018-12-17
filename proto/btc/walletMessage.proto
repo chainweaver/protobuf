@@ -44,7 +44,7 @@ message CreateWalletEndpointRequest {
   repeated string addresses	= 4;
 }
 
-message CreateWalletHDEndpointRequest {
+message CreateHDWalletEndpointRequest {
   NetworkAllowingAlias network = 1;
   string token 	= 2;
   string name = 3;
@@ -59,6 +59,11 @@ message ListWalletsEndpointRequest {
 }
 
 message GetWalletEndpointRequest {
+  NetworkAllowingAlias network = 1;
+  string name = 2;
+}
+
+message GetHDWalletEndpointRequest {
   NetworkAllowingAlias network = 1;
   string name = 2;
 }
@@ -79,13 +84,22 @@ message GetWalletAddressesEndpointRequest {
   bool zerobalance = 4;
 }
 
+message GetHDWalletAddressesEndpointRequest {
+  NetworkAllowingAlias network = 1;
+  string name = 2;
+  // Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.
+  bool used = 3;
+  // Returns only addresses with zero balance if set to true and only addresses with non-zero balance if false. Only valid on HD wallets.
+  bool zerobalance = 4;
+}
+
 message RemoveAddressesFromWalletEndpointRequest {
   NetworkAllowingAlias network = 1;
   string name = 2;
   string address = 3;
 }
 
-message GenerateAdressInWalletEndpointRequest {
+message GenerateAddressInWalletEndpointRequest {
   NetworkAllowingAlias network = 1;
   string name = 2;
 }
@@ -100,6 +114,11 @@ message DeriveAddressInWalletEndpointRequest {
 }
 
 message DeleteWalletEndpointRequest {
+  NetworkAllowingAlias network = 1;
+  string name = 2;
+}
+
+message DeleteHDWalletEndpointRequest {
   NetworkAllowingAlias network = 1;
   string name = 2;
 }

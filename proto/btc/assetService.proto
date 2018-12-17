@@ -8,13 +8,13 @@ import "assetMessage.proto";
 import "commonMessage.proto";
 
 service AssetService {
-  rpc GenerateAssetAddressEndpoint (NullValueRequest) returns (AddressKeychain) {
+  rpc GenerateAssetAddressEndpoint (GenerateAssetAddressEndpointRequest) returns (AddressKeychain) {
     option (google.api.http) = {
       post: "/btc/{network}/oap/addrs"
       body: "*"
     };
   }
-  rpc IssueAssetEndpoint (OAPIssueRequest) returns (OAPTX) {
+  rpc IssueAssetEndpoint (IssueAssetEndpointRequest) returns (OAPTX) {
     option (google.api.http) = {
       post: "/btc/{network}/oap/issue"
       body: "*"

@@ -36,7 +36,7 @@ message MicroTX {
   string hash = 14;
 }
 
-message MicroTXRequest {
+message MicrotransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   // Hex-encoded public key from which you’re sending coins.
   string from_pubkey = 2;

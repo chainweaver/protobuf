@@ -14,12 +14,12 @@ service AddressForwardingService {
       body: "*"
     };
   }
-  rpc ListForwardsEndpoint (ListForwardsEndpointRequest) returns (ListForwardsEndpointResponse) {
+  rpc ListForwardsEndpoint (ListForwardsEndpointRequest) returns (AddressForwards) {
     option (google.api.http) = {
       get: "/btc/{network}/forwards"
     };
   }
-  rpc DeleteForwardEndpoint (DeleteForwardEndpointRequest) returns (DeleteForwardEndpointResponse) {
+  rpc DeleteForwardEndpoint (DeleteForwardEndpointRequest) returns (NullValue) {
     option (google.api.http) = {
       get: "/btc/{network}/forwards/{payid}"
     };

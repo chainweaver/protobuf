@@ -61,10 +61,6 @@ message AddressFullEndpointRequest {
 
 message GenerateAddressEndpointRequest {
   NetworkAllowingAlias network = 1;
-}
-
-message GenerateMultisigAddressEndpointRequest {
-  NetworkAllowingAlias network = 1;
   // Standard address representation.
   string address = 2;
   // Hex-encoded Public key.

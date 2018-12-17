@@ -29,10 +29,4 @@ service AddressService {
       body: "*"
     };
   }
-  rpc GenerateMultisigAddressEndpoint (GenerateMultisigAddressEndpointRequest) returns (AddressKeychain) {
-    option (google.api.http) = {
-      post: "/btc/{network}/addrs"
-      body: "*"
-    };
-  }
 }

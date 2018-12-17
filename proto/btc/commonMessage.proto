@@ -13,10 +13,6 @@ enum NetworkAllowingAlias {
 
 message NullValue {}
 
-message NullValueRequest {
-  NetworkAllowingAlias network = 1;
-}
-
 message TxHashes {
   repeated string hash = 1;
 }
@@ -266,18 +262,6 @@ message OAPIssue {
   string metadata = 4;  
 }
 
-message OAPIssueRequest {
-  NetworkAllowingAlias network = 1;
-  // The private key being used to issue or transfer assets.
-  string from_private = 2; 
-  // The target OAP address assets for issue or transfer.
-  string to_address = 3; 
-  // The amount of assets being issued or transfered.
-  int32 amount = 4;
-  // Optional Hex-encoded metadata that can optionally be encoded into the issue or transfer transaction.  
-  string metadata = 5;  
-}
-
 message OAPTX {
   // Version of Open Assets Protocol transaction. Typically 1.
   int32 ver = 1; 
@@ -331,7 +315,7 @@ message NullData {
 }
 
 
-message DescribedBelow {
+message TXPropagation {
   //The hash of the transaction you queried.
   string transaction = 1;
   //An object containing latitude and longitude floats representing the first location to broadcast this transaction to BlockCypher.
@@ -414,7 +398,7 @@ message JobResultArr {
   int32 Value = 4;
 }
 
-message TXS {
+message TXs {
   repeated TX txs = 1;
 }
 
