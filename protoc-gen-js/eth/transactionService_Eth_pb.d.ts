@@ -56,6 +56,8 @@ export class CreateTransactionEndpointRequest {
   setDoubleOf(a: string): void;
   getExecutionError(): string;
   setExecutionError(a: string): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): CreateTransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => CreateTransactionEndpointRequest;
@@ -91,6 +93,7 @@ export namespace CreateTransactionEndpointRequest {
     BlockIndex: number;
     DoubleOf: string;
     ExecutionError: string;
+    Token: string;
   }
 }
 
@@ -100,6 +103,8 @@ export class DecodeRawTransactionEndpointRequest {
   setNetwork(a: NetworkAllowingAlias): void;
   getTx(): string;
   setTx(a: string): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): DecodeRawTransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => DecodeRawTransactionEndpointRequest;
@@ -109,6 +114,7 @@ export namespace DecodeRawTransactionEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Tx: string;
+    Token: string;
   }
 }
 
@@ -157,6 +163,8 @@ export class PushRawTransactionEndpointRequest {
   setNetwork(a: NetworkAllowingAlias): void;
   getTx(): string;
   setTx(a: string): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): PushRawTransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => PushRawTransactionEndpointRequest;
@@ -166,6 +174,7 @@ export namespace PushRawTransactionEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Tx: string;
+    Token: string;
   }
 }
 
@@ -181,6 +190,8 @@ export class SendTransactionEndpointRequest {
   setSignaturesList(a: string[]): void;
   getErrorsList(): string[];
   setErrorsList(a: string[]): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): SendTransactionEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => SendTransactionEndpointRequest;
@@ -193,6 +204,7 @@ export namespace SendTransactionEndpointRequest {
     TosignList: string[];
     SignaturesList: string[];
     ErrorsList: string[];
+    Token: string;
   }
 }
 

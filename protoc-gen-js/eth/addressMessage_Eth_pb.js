@@ -508,7 +508,8 @@ proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest.prototyp
  */
 proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    network: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    network: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    token: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -549,6 +550,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest.deserial
       var value = /** @type {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias} */ (reader.readEnum());
       msg.setNetwork(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setToken(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -585,6 +590,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest.serializ
       f
     );
   }
+  f = message.getToken();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -600,6 +612,21 @@ proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest.prototyp
 /** @param {!proto.fairwaycorp.blockchainprotobuf.eth.NetworkAllowingAlias} value */
 proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest.prototype.setNetwork = function(value) {
   jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+/**
+ * optional string token = 2;
+ * @return {string}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest.prototype.getToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.fairwaycorp.blockchainprotobuf.eth.GenerateAddressEndpointRequest.prototype.setToken = function(value) {
+  jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

@@ -375,6 +375,10 @@
         "execution_error": {
           "type": "string",
           "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     },
@@ -385,6 +389,9 @@
           "$ref": "#/definitions/ethNetworkAllowingAlias"
         },
         "tx": {
+          "type": "string"
+        },
+        "token": {
           "type": "string"
         }
       }
@@ -440,6 +447,9 @@
         },
         "tx": {
           "type": "string"
+        },
+        "token": {
+          "type": "string"
         }
       }
     },
@@ -473,6 +483,10 @@
             "type": "string"
           },
           "description": "Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     },

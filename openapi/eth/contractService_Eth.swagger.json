@@ -82,6 +82,12 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -215,6 +221,10 @@
             "type": "string"
           },
           "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     },
@@ -365,6 +375,10 @@
             "type": "string"
           },
           "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     },

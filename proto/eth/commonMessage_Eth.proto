@@ -275,4 +275,6 @@ message Event {
   string url = 6;
   // Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage.
   uint64 callback_errors = 7;
+  // filter
+  string filter = 8;
 }

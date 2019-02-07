@@ -122,6 +122,8 @@ export class GenerateAddressEndpointRequest {
   constructor ();
   getNetwork(): NetworkAllowingAlias;
   setNetwork(a: NetworkAllowingAlias): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): GenerateAddressEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => GenerateAddressEndpointRequest;
@@ -130,6 +132,7 @@ export class GenerateAddressEndpointRequest {
 export namespace GenerateAddressEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
+    Token: string;
   }
 }
 

@@ -100,6 +100,10 @@ func request_WebHooksService_ListWebHooksEndpoint_0(ctx context.Context, marshal
 
 }
 
+var (
+	filter_WebHooksService_WebHookIDEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "webhookid": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+)
+
 func request_WebHooksService_WebHookIDEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq WebHookIDEndpointRequest
 	var metadata runtime.ServerMetadata
@@ -136,10 +140,18 @@ func request_WebHooksService_WebHookIDEndpoint_0(ctx context.Context, marshaler 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "webhookid", err)
 	}
 
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_WebHookIDEndpoint_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
 	msg, err := client.WebHookIDEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
+
+var (
+	filter_WebHooksService_DeleteWebHookEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "webhookid": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+)
 
 func request_WebHooksService_DeleteWebHookEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client WebHooksServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteWebHookEndpointRequest
@@ -175,6 +187,10 @@ func request_WebHooksService_DeleteWebHookEndpoint_0(ctx context.Context, marsha
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "webhookid", err)
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_WebHooksService_DeleteWebHookEndpoint_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.DeleteWebHookEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
