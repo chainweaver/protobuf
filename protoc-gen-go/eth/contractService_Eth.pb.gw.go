@@ -62,6 +62,10 @@ func request_ContractService_CreateContractEndpoint_0(ctx context.Context, marsh
 
 }
 
+var (
+	filter_ContractService_ContractAddressEndpoint_0 = &utilities.DoubleArray{Encoding: map[string]int{"network": 0, "query_address": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+)
+
 func request_ContractService_ContractAddressEndpoint_0(ctx context.Context, marshaler runtime.Marshaler, client ContractServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ContractAddressEndpointRequest
 	var metadata runtime.ServerMetadata
@@ -96,6 +100,10 @@ func request_ContractService_ContractAddressEndpoint_0(ctx context.Context, mars
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "query_address", err)
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_ContractService_ContractAddressEndpoint_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.ContractAddressEndpoint(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))

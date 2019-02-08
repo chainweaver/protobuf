@@ -16,6 +16,8 @@ export class CreateWebHookEndpointRequest {
   setUrl(a: string): void;
   getCallbackErrors(): number;
   setCallbackErrors(a: number): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): CreateWebHookEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => CreateWebHookEndpointRequest;
@@ -31,6 +33,7 @@ export namespace CreateWebHookEndpointRequest {
     Confirmations: number;
     Url: string;
     CallbackErrors: number;
+    Token: string;
   }
 }
 
@@ -40,6 +43,8 @@ export class DeleteWebHookEndpointRequest {
   setNetwork(a: NetworkAllowingAlias): void;
   getWebhookid(): string;
   setWebhookid(a: string): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): DeleteWebHookEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => DeleteWebHookEndpointRequest;
@@ -49,6 +54,7 @@ export namespace DeleteWebHookEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Webhookid: string;
+    Token: string;
   }
 }
 
@@ -68,6 +74,8 @@ export class Event {
   setUrl(a: string): void;
   getCallbackErrors(): number;
   setCallbackErrors(a: number): void;
+  getFilter(): string;
+  setFilter(a: string): void;
   toObject(): Event.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => Event;
@@ -82,6 +90,7 @@ export namespace Event {
     Confirmations: number;
     Url: string;
     CallbackErrors: number;
+    Filter: string;
   }
 }
 
@@ -136,6 +145,8 @@ export class WebHookIDEndpointRequest {
   setNetwork(a: NetworkAllowingAlias): void;
   getWebhookid(): string;
   setWebhookid(a: string): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): WebHookIDEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => WebHookIDEndpointRequest;
@@ -145,6 +156,7 @@ export namespace WebHookIDEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     Webhookid: string;
+    Token: string;
   }
 }
 

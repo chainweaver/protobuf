@@ -4672,7 +4672,8 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.toObject = function(includeInstan
     address: jspb.Message.getFieldWithDefault(msg, 4, ""),
     confirmations: jspb.Message.getFieldWithDefault(msg, 5, 0),
     url: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    callbackErrors: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    callbackErrors: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    filter: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -4736,6 +4737,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.deserializeBinaryFromReader = fun
     case 7:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setCallbackErrors(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setFilter(value);
       break;
     default:
       reader.skipField();
@@ -4812,6 +4817,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.serializeBinaryToWriter = functio
   if (f !== 0) {
     writer.writeUint64(
       7,
+      f
+    );
+  }
+  f = message.getFilter();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -4920,6 +4932,21 @@ proto.fairwaycorp.blockchainprotobuf.eth.Event.prototype.getCallbackErrors = fun
 /** @param {number} value */
 proto.fairwaycorp.blockchainprotobuf.eth.Event.prototype.setCallbackErrors = function(value) {
   jspb.Message.setProto3IntField(this, 7, value);
+};
+
+
+/**
+ * optional string filter = 8;
+ * @return {string}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.Event.prototype.getFilter = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/** @param {string} value */
+proto.fairwaycorp.blockchainprotobuf.eth.Event.prototype.setFilter = function(value) {
+  jspb.Message.setProto3StringField(this, 8, value);
 };
 
 

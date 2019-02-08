@@ -116,6 +116,12 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -149,6 +155,12 @@
             "name": "webhookid",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
             "type": "string"
           }
         ],
@@ -194,6 +206,10 @@
           "type": "integer",
           "format": "int32",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     },
@@ -229,6 +245,10 @@
           "type": "string",
           "format": "uint64",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        },
+        "filter": {
+          "type": "string",
+          "title": "filter"
         }
       }
     },

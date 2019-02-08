@@ -32,6 +32,8 @@ export class CallContractMethodEndpointRequest {
   setCreationTxHash(a: string): void;
   getResultsList(): string[];
   setResultsList(a: string[]): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): CallContractMethodEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => CallContractMethodEndpointRequest;
@@ -55,6 +57,7 @@ export namespace CallContractMethodEndpointRequest {
     Created: string;
     CreationTxHash: string;
     ResultsList: string[];
+    Token: string;
   }
 }
 
@@ -115,6 +118,8 @@ export class ContractAddressEndpointRequest {
   setNetwork(a: NetworkAllowingAlias): void;
   getQueryAddress(): string;
   setQueryAddress(a: string): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): ContractAddressEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => ContractAddressEndpointRequest;
@@ -124,6 +129,7 @@ export namespace ContractAddressEndpointRequest {
   export type AsObject = {
     Network: NetworkAllowingAlias;
     QueryAddress: string;
+    Token: string;
   }
 }
 
@@ -172,6 +178,8 @@ export class CreateContractEndpointRequest {
   setCreationTxHash(a: string): void;
   getResultsList(): string[];
   setResultsList(a: string[]): void;
+  getToken(): string;
+  setToken(a: string): void;
   toObject(): CreateContractEndpointRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => CreateContractEndpointRequest;
@@ -193,6 +201,7 @@ export namespace CreateContractEndpointRequest {
     Created: string;
     CreationTxHash: string;
     ResultsList: string[];
+    Token: string;
   }
 }
 

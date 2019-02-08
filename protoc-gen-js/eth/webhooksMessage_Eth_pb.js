@@ -71,7 +71,8 @@ proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest.toObject =
     address: jspb.Message.getFieldWithDefault(msg, 5, ""),
     confirmations: jspb.Message.getFieldWithDefault(msg, 6, 0),
     url: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    callbackErrors: jspb.Message.getFieldWithDefault(msg, 8, 0)
+    callbackErrors: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    token: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -139,6 +140,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest.deserializ
     case 8:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setCallbackErrors(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setToken(value);
       break;
     default:
       reader.skipField();
@@ -222,6 +227,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest.serializeB
   if (f !== 0) {
     writer.writeInt32(
       8,
+      f
+    );
+  }
+  f = message.getToken();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
       f
     );
   }
@@ -345,6 +357,21 @@ proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest.prototype.
 /** @param {number} value */
 proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest.prototype.setCallbackErrors = function(value) {
   jspb.Message.setProto3IntField(this, 8, value);
+};
+
+
+/**
+ * optional string token = 9;
+ * @return {string}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest.prototype.getToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/** @param {string} value */
+proto.fairwaycorp.blockchainprotobuf.eth.CreateWebHookEndpointRequest.prototype.setToken = function(value) {
+  jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -733,7 +760,8 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest.prototype.toOb
 proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    webhookid: jspb.Message.getFieldWithDefault(msg, 2, "")
+    webhookid: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    token: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -778,6 +806,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest.deserializeBin
       var value = /** @type {string} */ (reader.readString());
       msg.setWebhookid(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setToken(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -821,6 +853,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest.serializeBinar
       f
     );
   }
+  f = message.getToken();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -851,6 +890,21 @@ proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest.prototype.getW
 /** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest.prototype.setWebhookid = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string token = 3;
+ * @return {string}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest.prototype.getToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.fairwaycorp.blockchainprotobuf.eth.WebHookIDEndpointRequest.prototype.setToken = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -902,7 +956,8 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.
 proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    webhookid: jspb.Message.getFieldWithDefault(msg, 2, "")
+    webhookid: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    token: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -947,6 +1002,10 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.deserializ
       var value = /** @type {string} */ (reader.readString());
       msg.setWebhookid(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setToken(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -990,6 +1049,13 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.serializeB
       f
     );
   }
+  f = message.getToken();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -1020,6 +1086,21 @@ proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.
 /** @param {string} value */
 proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.setWebhookid = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string token = 3;
+ * @return {string}
+ */
+proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.getToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.fairwaycorp.blockchainprotobuf.eth.DeleteWebHookEndpointRequest.prototype.setToken = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 

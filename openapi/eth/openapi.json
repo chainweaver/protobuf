@@ -468,6 +468,12 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -501,6 +507,12 @@
             "name": "webhookid",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
             "type": "string"
           }
         ],
@@ -717,6 +729,12 @@
             "name": "query_address",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
             "type": "string"
           }
         ],
@@ -1104,6 +1122,10 @@
         "execution_error": {
           "type": "string",
           "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     },
@@ -1114,6 +1136,9 @@
           "$ref": "#/definitions/ethNetworkAllowingAlias"
         },
         "tx": {
+          "type": "string"
+        },
+        "token": {
           "type": "string"
         }
       }
@@ -1159,6 +1184,9 @@
         },
         "tx": {
           "type": "string"
+        },
+        "token": {
+          "type": "string"
         }
       }
     },
@@ -1192,6 +1220,10 @@
             "type": "string"
           },
           "description": "Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     },
@@ -1411,6 +1443,10 @@
           "type": "integer",
           "format": "int32",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     },
@@ -1446,6 +1482,10 @@
           "type": "string",
           "format": "uint64",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        },
+        "filter": {
+          "type": "string",
+          "title": "filter"
         }
       }
     },
@@ -1557,6 +1597,9 @@
       "properties": {
         "network": {
           "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "token": {
+          "type": "string"
         }
       }
     },
@@ -1686,6 +1729,10 @@
             "type": "string"
           },
           "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     },
@@ -1836,6 +1883,10 @@
             "type": "string"
           },
           "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
         }
       }
     }

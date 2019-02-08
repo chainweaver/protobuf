@@ -253,6 +253,9 @@
       "properties": {
         "network": {
           "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "token": {
+          "type": "string"
         }
       }
     },
