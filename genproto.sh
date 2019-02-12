@@ -81,3 +81,7 @@ jq -s `echo $ethJqParam` `find ./openapi/eth/work -name "*Service*.json"` > ./op
 if [ -e ./openapi/eth/work ]; then
   rm -rf ./openapi/eth/work
 fi
+
+# Generate openapi.yaml
+yq -y '.' openapi/btc/openapi.json > openapi/btc/openapi.yaml
+yq -y '.' openapi/eth/openapi.json > openapi/eth/openapi.yaml
