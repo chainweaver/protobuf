@@ -4,8 +4,9 @@
 
 | lib | version |
 |----|---|
-| protobuf | 3.6.1.1 |
+| libprotoc | 3.6.1.1 |
 | jq | 1.6 |
+| yq | 2.2.1 |
 | protoc-gen-go | 1.2.0 |
 | protoc-gen-grpc-gateway | 1.5.1 |
 | protoc-gen-swagger | 1.5.1 |
@@ -14,11 +15,13 @@
 
 ## Install Protocol Buffers compiler
 
+### libprotoc
+
 Install the latest version at that time. (because it can not be installed by version specification)
 
 ```
+# For macOS
 brew install protobuf (or brew upgrade protobuf)
-brew install jq (or brew upgrade jq)
 ```
 
 ### for golang, grpc-gateway and swagger
@@ -43,15 +46,6 @@ cd ../protoc-gen-swagger
 go install
 ```
 
-### for grpc-web (Javascript & Typescript)
-
-```
-git clone git@github.com:grpc/grpc-web.git
-cd grpc-web
-git checkout -b 1.0.3 refs/tags/1.0.3
-sudo make install-plugin
-```
-
 ### for protobuf doc
 
 It is necessary to install [dep](https://github.com/golang/dep) in advance
@@ -64,6 +58,17 @@ cd protoc-gen-doc/cmd/protoc-gen-doc
 git checkout -b v1.1.0 refs/tags/v1.1.0
 dep ensure
 go install
+```
+
+## Install various tools for OpenAPI document
+
+### Install jq and yq
+Install the latest version at that time. (because it can not be installed by version specification)
+
+```
+# For macOS
+brew install jq (or brew upgrade jq)
+brew install python-yq (or brew upgrade python-yq) # Not yq!
 ```
 
 ## Compile Protocol Buffers of Blockchain API
