@@ -2,8 +2,6 @@
 
 rm -f ./protoc-gen-go/eth/*
 rm -f ./protoc-gen-go/btc/*
-rm -f ./protoc-gen-js/eth/*
-rm -f ./protoc-gen-js/btc/*
 rm -f ./openapi/btc/*
 rm -f ./openapi/eth/*
 
@@ -13,8 +11,6 @@ protoc \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/btc/ \
-  --js_out=import_style=commonjs,binary:./protoc-gen-js/btc/ \
-  --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:./protoc-gen-js/btc/ \
   --doc_out=./doc --doc_opt=html,btc.html \
   commonMessage.proto \
   assetMessage.proto \
@@ -46,8 +42,6 @@ protoc \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/eth/ \
-  --js_out=import_style=commonjs,binary:./protoc-gen-js/eth/ \
-  --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:./protoc-gen-js/eth/ \
   --doc_out=./doc --doc_opt=html,eth.html \
   commonMessage_Eth.proto \
   blockchainMessage_Eth.proto \
