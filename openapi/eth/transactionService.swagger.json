@@ -1,0 +1,675 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "transactionService.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/eth/{network}/txs": {
+      "get": {
+        "operationId": "UnconfirmedTransactionsEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethTXs"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          }
+        ],
+        "tags": [
+          "TransactionService"
+        ]
+      }
+    },
+    "/eth/{network}/txs/decode": {
+      "post": {
+        "operationId": "DecodeRawTransactionEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethTX"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethDecodeRawTransactionEndpointRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TransactionService"
+        ]
+      }
+    },
+    "/eth/{network}/txs/new": {
+      "post": {
+        "operationId": "CreateTransactionEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethTXSkeleton"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethCreateTransactionEndpointRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TransactionService"
+        ]
+      }
+    },
+    "/eth/{network}/txs/push": {
+      "put": {
+        "operationId": "PushRawTransactionEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethTX"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethPushRawTransactionEndpointRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TransactionService"
+        ]
+      }
+    },
+    "/eth/{network}/txs/send": {
+      "post": {
+        "operationId": "SendTransactionEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethTXSkeleton"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethSendTransactionEndpointRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TransactionService"
+        ]
+      }
+    },
+    "/eth/{network}/txs/{txhash}": {
+      "get": {
+        "operationId": "TransactionHashEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethTX"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "txhash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TransactionService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ethCreateTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "block_height": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1."
+        },
+        "hash": {
+          "type": "string",
+          "description": "The hash of the transaction."
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of Ethereum addresses involved in the transaction."
+        },
+        "total": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The total number of wei exchanged in this transaction."
+        },
+        "fees": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used."
+        },
+        "size": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The size of the transaction in bytes."
+        },
+        "gas_used": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The amount of gas used by this transaction."
+        },
+        "gas_price": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The price of gas—in wei—in this transaction."
+        },
+        "relayed_by": {
+          "type": "string",
+          "description": "Address of the peer that sent BlockCypher’s servers this transaction. May be empty."
+        },
+        "received": {
+          "type": "string",
+          "description": "Time this transaction was received by BlockCypher’s servers."
+        },
+        "ver": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Version number of this transaction."
+        },
+        "double_spend": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "true if this is an attempted double spend; false otherwise."
+        },
+        "vin_sz": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total number of inputs in the transaction."
+        },
+        "vout_sz": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total number of outputs in the transaction."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethInputType"
+          },
+          "description": "An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API."
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethOutputType"
+          },
+          "description": "An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API."
+        },
+        "internal_txids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions."
+        },
+        "parent_tx": {
+          "type": "string",
+          "description": "Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash)."
+        },
+        "confirmed": {
+          "type": "string",
+          "description": "Optional Time at which transaction was included in a block; only present for confirmed transactions."
+        },
+        "gas_limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts."
+        },
+        "contract_creation": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed."
+        },
+        "receive_count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions."
+        },
+        "block_hash": {
+          "type": "string",
+          "description": "Optional Hash of the block that contains this transaction; only present for confirmed transactions."
+        },
+        "block_index": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions."
+        },
+        "double_of": {
+          "type": "string",
+          "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
+        },
+        "execution_error": {
+          "type": "string",
+          "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
+        }
+      }
+    },
+    "ethDecodeRawTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "tx": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "ethInputType": {
+      "type": "object",
+      "properties": {
+        "sequence": {
+          "type": "string",
+          "format": "int64"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAIN",
+        "main",
+        "ROPSTEN",
+        "ropsten"
+      ],
+      "default": "MAIN"
+    },
+    "ethOutputType": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "int64"
+        },
+        "script": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ethPushRawTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "tx": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "ethSendTransactionEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "tx": {
+          "$ref": "#/definitions/ethTX",
+          "description": "A temporary TX, usually returned fully filled."
+        },
+        "tosign": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of hex-encoded data for you to sign, containing one element for you to sign. Still an array to maintain parity with the Bitcoin API."
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of signatures corresponding to all the data in tosign, typically provided by you. Only one signature is required."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code."
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
+        }
+      }
+    },
+    "ethTX": {
+      "type": "object",
+      "properties": {
+        "block_height": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1."
+        },
+        "hash": {
+          "type": "string",
+          "description": "The hash of the transaction."
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of Ethereum addresses involved in the transaction."
+        },
+        "total": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The total number of wei exchanged in this transaction."
+        },
+        "fees": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used."
+        },
+        "size": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The size of the transaction in bytes."
+        },
+        "gas_used": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The amount of gas used by this transaction."
+        },
+        "gas_price": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The price of gas—in wei—in this transaction."
+        },
+        "relayed_by": {
+          "type": "string",
+          "description": "Address of the peer that sent BlockCypher’s servers this transaction. May be empty."
+        },
+        "received": {
+          "type": "string",
+          "description": "Time this transaction was received by BlockCypher’s servers."
+        },
+        "ver": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Version number of this transaction."
+        },
+        "double_spend": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "true if this is an attempted double spend; false otherwise."
+        },
+        "vin_sz": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Total number of inputs in the transaction."
+        },
+        "vout_sz": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Total number of outputs in the transaction."
+        },
+        "confirmations": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethInputType"
+          },
+          "description": "An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API."
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethOutputType"
+          },
+          "description": "An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API."
+        },
+        "internal_txids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions."
+        },
+        "parent_tx": {
+          "type": "string",
+          "description": "Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash)."
+        },
+        "confirmed": {
+          "type": "string",
+          "description": "Optional Time at which transaction was included in a block; only present for confirmed transactions."
+        },
+        "gas_limit": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts."
+        },
+        "contract_creation": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed."
+        },
+        "receive_count": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions."
+        },
+        "block_hash": {
+          "type": "string",
+          "description": "Optional Hash of the block that contains this transaction; only present for confirmed transactions."
+        },
+        "block_index": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions."
+        },
+        "double_of": {
+          "type": "string",
+          "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
+        },
+        "execution_error": {
+          "type": "string",
+          "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
+        }
+      }
+    },
+    "ethTXSkeleton": {
+      "type": "object",
+      "properties": {
+        "tx": {
+          "$ref": "#/definitions/ethTX",
+          "description": "A temporary TX, usually returned fully filled."
+        },
+        "tosign": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of hex-encoded data for you to sign, containing one element for you to sign. Still an array to maintain parity with the Bitcoin API."
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of signatures corresponding to all the data in tosign, typically provided by you. Only one signature is required."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code."
+        }
+      }
+    },
+    "ethTXs": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethTX"
+          }
+        }
+      }
+    }
+  }
+}

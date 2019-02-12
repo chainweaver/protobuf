@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.eth;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
+
+import "google/api/annotations.proto";
+import "contractMessage.proto";
+import "commonMessage.proto";
+
+service ContractService {
+  rpc CreateContractEndpoint (CreateContractEndpointRequest) returns (Contracts) {
+    option (google.api.http) = {
+      post: "/eth/{network}/contracts"
+      body: "*"
+    };
+  }
+  rpc ContractAddressEndpoint (ContractAddressEndpointRequest) returns (Contract) {
+    option (google.api.http) = {
+      get: "/eth/{network}/contracts/{query_address}"
+    };
+  }
+  rpc CallContractMethodEndpoint (CallContractMethodEndpointRequest) returns (Contract) {
+    option (google.api.http) = {
+      post: "/eth/{network}/contracts/{query_address}/{method}"
+      body: "*"
+    };
+  }
+}

@@ -34,7 +34,7 @@ protoc \
   confidencefactorMessage.proto \
   confidencefactorService.proto \
   webhooksMessage.proto \
-  webhooksService.proto 
+  webhooksService.proto
 
 protoc \
   -I./proto/eth \
@@ -43,17 +43,17 @@ protoc \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/eth/ \
   --doc_out=./doc --doc_opt=html,eth.html \
-  commonMessage_Eth.proto \
-  blockchainMessage_Eth.proto \
-  blockchainService_Eth.proto \
-  addressMessage_Eth.proto \
-  addressService_Eth.proto \
-  transactionMessage_Eth.proto \
-  transactionService_Eth.proto \
-  webhooksMessage_Eth.proto \
-  webhooksService_Eth.proto \
-  contractMessage_Eth.proto \
-  contractService_Eth.proto 
+  commonMessage.proto \
+  blockchainMessage.proto \
+  blockchainService.proto \
+  addressMessage.proto \
+  addressService.proto \
+  transactionMessage.proto \
+  transactionService.proto \
+  webhooksMessage.proto \
+  webhooksService.proto \
+  contractMessage.proto \
+  contractService.proto
 
 btcFileCount=`find ./openapi/btc -name "*Service*.json" | wc -l`
 btcJqParam=".[0]"

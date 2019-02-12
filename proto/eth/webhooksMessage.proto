@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package fairwaycorp.blockchainprotobuf.eth;
+option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
+
+import "commonMessage.proto";
+
+message CreateWebHookEndpointRequest {
+  NetworkAllowingAlias network = 1;
+  // Identifier of the event; generated when a new request is created.
+  string id = 2;
+  // Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx.
+  string event = 3;
+  // optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction.
+  string	hash = 4;
+  // optional Only transactions associated with the given address will be sent.
+  string address = 5;
+  // optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6.
+  int32 confirmations = 6;
+  // optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage.
+  string url = 7;
+  // Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage.
+  int32 callback_errors = 8;
+  // Token
+  string token = 9;
+}
+
+message ListWebHooksEndpointRequest {
+  NetworkAllowingAlias network = 1;
+  string token = 2;
+}
+
+message Events {
+  repeated Event event = 1;
+}
+
+message WebHookIDEndpointRequest {
+  NetworkAllowingAlias network = 1;
+  string webhookid = 2;
+  string token = 3;
+}
+
+message DeleteWebHookEndpointRequest {
+  NetworkAllowingAlias network = 1;
+  string webhookid = 2;
+  string token = 3;
+}
