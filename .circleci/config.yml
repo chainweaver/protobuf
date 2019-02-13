@@ -36,16 +36,11 @@ jobs:
           command: |
             make render-protobuf-document
       - store_artifacts:
-          path: protoc-gen-doc/btc
-          destination: protobuf
-      - store_artifacts:
-          path: protoc-gen-doc/eth
-          destination: protobuf
+          path: protoc-gen-doc
       - run:
           name: Notify artifacts url to slack
           command: |
-            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq '.[].url')
-            echo $ARTIFACTS_URL
+            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
             curl -X POST --data-urlencode \
               "payload={\
                 \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
@@ -66,20 +61,13 @@ jobs:
           command: |
             make render-openapi-document
       - store_artifacts:
-          path: openapi/btc
+          path: openapi/btc.html
       - store_artifacts:
-          path: openapi/eth
-      # - store_artifacts:
-      #     path: openapi/btc/openapi.html
-      #     destination: openapi
-      # - store_artifacts:
-      #     path: openapi/eth/openapi.html
-      #     destination: openapi
+          path: openapi/eth.html
       - run:
           name: Notify artifacts url to slack
           command: |
-            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq '.[].url')
-            echo $ARTIFACTS_URL
+            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
             curl -X POST --data-urlencode \
               "payload={\
                 \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
