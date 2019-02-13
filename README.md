@@ -4,13 +4,12 @@
 
 | lib | version |
 |----|---|
-| libprotoc | 3.6.1.1 |
-| jq | 1.6 |
-| yq | 2.2.1 |
+| libprotoc | 3.6.1.1 (latest) |
+| jq | 1.6 (latest) |
+| yq | 2.2.1 (latest) |
 | protoc-gen-go | 1.2.0 |
 | protoc-gen-grpc-gateway | 1.5.1 |
 | protoc-gen-swagger | 1.5.1 |
-| grpc-web | 1.0.2 |
 | protoc-gen-doc | 1.1.0 |
 
 ## Install Protocol Buffers compiler
@@ -86,6 +85,5 @@ cd blockchain-protobuf
 * [https://grpc.io/](https://grpc.io/)
 * [https://developers.google.com/protocol-buffers/](https://developers.google.com/protocol-buffers/)
 * [https://github.com/grpc-ecosystem/grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway)
-* [https://github.com/grpc/grpc-web](https://github.com/grpc/grpc-web)
 * [https://github.com/golang/protobuf](https://github.com/golang/protobuf)
 * [https://github.com/pseudomuto/protoc-gen-doc](https://github.com/pseudomuto/protoc-gen-doc)
