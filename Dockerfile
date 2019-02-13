@@ -55,5 +55,5 @@ COPY --from=build /go/bin/protoc-gen-doc /usr/bin/
 COPY --from=build /go/src/github.com/grpc-ecosystem/grpc-gateway /src/github.com/grpc-ecosystem/grpc-gateway
 COPY --from=build /go/src/github.com/golang/protobuf /src/github.com/golang/protobuf
 
-WORKDIR /go/src/github.com/fairway-corp/blockchain-protobuf
+WORKDIR /go/src/github.com/chainweaver/protobuf
 ENTRYPOINT [ "/bin/bash", "genproto.sh" ]
