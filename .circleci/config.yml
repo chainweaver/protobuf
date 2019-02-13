@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Building protobuf
           command: |
-            docker run -v ${PWD}:/go/src/github.com/chainweaver/protobuf quay.io/chainweaver/protobuf-builder
+            make build
       - run:
           name: Git commit and push
           command: |
@@ -25,11 +25,71 @@ jobs:
               git push upstream $CIRCLE_BRANCH
             fi
 
+  render-protobuf-document:
+    machine:
+      image: circleci/classic:edge
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Rendering protobuf document
+          command: |
+            make render-protobuf-document
+
+  render-openapi-document:
+    machine:
+      image: circleci/classic:edge
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Rendering OpenAPI document
+          command: |
+            make render-openapi-document
+
+  notify-slack:
+    docker:
+      - image: circleci/node:8.15
+    steps:
+      - checkout
+      - run:
+          name: Setting heroku
+          command: |
+            export HEROKU_APP_ID=$(.circleci/setHerokuAppId.sh chainweaver-io)
+
+            curl -X POST --data-urlencode \
+              "payload={\
+                \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
+                \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
+                \"text\": \"Please check the test site!\nhttps://$HEROKU_APP_ID.herokuapp.com\n\nPlease approve it, if there is no problem\nhttps://circleci.com/workflow-run/$CIRCLE_WORKFLOW_ID\",\
+                \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
+              }" \
+              $NOTIFICATION_SLACK_WEBHOOK_URL
+
 workflows:
   version: 2
   chainweaver-protobuf:
     jobs:
       - build:
+          filters:
+            tags:
+              only: /.*/
+      - render-protobuf-document:
+          requires:
+           - build
+          filters:
+            tags:
+              only: /.*/
+      - render-openapi-document:
+          requires:
+           - build
+          filters:
+            tags:
+              only: /.*/
+      - notify-slack:
+          requires:
+           - render-protobuf-document
+           - render-openapi-document
           filters:
             tags:
               only: /.*/
