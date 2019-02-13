@@ -31,22 +31,21 @@ jobs:
       docker_layer_caching: true
     steps:
       - checkout
-      # - setup_remote_docker:
-      #     docker_layer_caching: true
       - run:
           name: Rendering protobuf document
           command: |
             make render-protobuf-document
       - store_artifacts:
-          path: protoc-gen-doc/btc/doc.html
+          path: protoc-gen-doc/btc
           destination: protobuf
       - store_artifacts:
-          path: protoc-gen-doc/eth/doc.html
+          path: protoc-gen-doc/eth
           destination: protobuf
       - run:
           name: Notify artifacts url to slack
           command: |
             export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq '.[].url')
+            echo $ARTIFACTS_URL
             curl -X POST --data-urlencode \
               "payload={\
                 \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
@@ -57,12 +56,11 @@ jobs:
               $NOTIFICATION_SLACK_WEBHOOK_URL
 
   render-openapi-document:
-    docker:
-      - image: circleci/buildpack-deps
+    machine:
+      image: circleci/classic:edge
+      docker_layer_caching: true
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run:
           name: Rendering OpenAPI document
           command: |
@@ -81,6 +79,7 @@ jobs:
           name: Notify artifacts url to slack
           command: |
             export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq '.[].url')
+            echo $ARTIFACTS_URL
             curl -X POST --data-urlencode \
               "payload={\
                 \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
