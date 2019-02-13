@@ -26,8 +26,8 @@ jobs:
             fi
 
   render-protobuf-document:
-    machine:
-      image: circleci/node:8.15
+    docker:
+      - image: circleci/node:8.15
     steps:
       - checkout
       - run:
@@ -54,8 +54,8 @@ jobs:
               $NOTIFICATION_SLACK_WEBHOOK_URL
 
   render-openapi-document:
-    machine:
-      image: circleci/node:8.15
+    docker:
+      - image: circleci/node:8.15
     steps:
       - checkout
       - run:
