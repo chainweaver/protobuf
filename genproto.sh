@@ -1,9 +1,12 @@
 #!/bin/bash
 
+echo "Build start!"
+
 rm -f ./protoc-gen-go/eth/*
 rm -f ./protoc-gen-go/btc/*
 rm -f ./openapi/btc/*
 rm -f ./openapi/eth/*
+
 if [ ! -e ./openapi/btc/work ]; then
   mkdir ./openapi/btc/work
 fi
@@ -11,6 +14,7 @@ if [ ! -e ./openapi/eth/work ]; then
   mkdir ./openapi/eth/work
 fi
 
+echo "Build btc"
 protoc \
   -I./proto/btc \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
@@ -42,6 +46,7 @@ protoc \
   webhooksMessage.proto \
   webhooksService.proto
 
+echo "Build eth"
 protoc \
   -I./proto/eth \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
@@ -61,7 +66,7 @@ protoc \
   contractMessage.proto \
   contractService.proto
 
-# Generate openapi.json
+echo "Generate btc openapi.json"
 btcFileCount=`find ./openapi/btc/work -name "*Service*.json" | wc -l`
 btcJqParam=".[0]"
 for ((i=1; i < $btcFileCount; i++)); do
@@ -69,9 +74,11 @@ for ((i=1; i < $btcFileCount; i++)); do
 done
 jq -s `echo $btcJqParam` `find ./openapi/btc/work -name "*Service*.json"` > ./openapi/btc/openapi.json
 if [ -e ./openapi/btc/work ]; then
+  rm -f ./openapi/btc/work/*
   rm -rf ./openapi/btc/work
 fi
 
+echo "Generate eth openapi.json"
 ethFileCount=`find ./openapi/eth/work -name "*Service*.json" | wc -l`
 ethJqParam=".[0]"
 for ((i=1; i < $ethFileCount; i++)); do
@@ -79,9 +86,13 @@ for ((i=1; i < $ethFileCount; i++)); do
 done
 jq -s `echo $ethJqParam` `find ./openapi/eth/work -name "*Service*.json"` > ./openapi/eth/openapi.json
 if [ -e ./openapi/eth/work ]; then
+  rm -f ./openapi/eth/work/*
   rm -rf ./openapi/eth/work
 fi
 
-# Generate openapi.yaml
+echo "Generate btc openapi.yaml"
 yq -y '.' openapi/btc/openapi.json > openapi/btc/openapi.yaml
+echo "Generate eth openapi.yaml"
 yq -y '.' openapi/eth/openapi.json > openapi/eth/openapi.yaml
+
+echo "Build finish!"
