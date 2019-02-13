@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: addressService.proto
+  title: metadataService.proto
   version: version not set
 schemes:
 - http
@@ -10,14 +10,64 @@ consumes:
 produces:
 - application/json
 paths:
-  /btc/{network}/txs/micro:
-    post:
-      operationId: MicrotransactionEndpoint
+  /btc/{network}/txs/{txhash}/confidence:
+    get:
+      operationId: TransactionConfidenceEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcMicroTX'
+            $ref: '#/definitions/btcTXConfidence'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: txhash
+        in: path
+        required: true
+        type: string
+      tags:
+      - ConfidenceFactorService
+  /btc/{network}/forwards:
+    get:
+      operationId: ListForwardsEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcAddressForwards'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: start
+        description: Returns list of address forwards starting at the start index;
+          useful for paging beyond the limit of 200 address forwards.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      tags:
+      - AddressForwardingService
+    post:
+      operationId: CreateForwardEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcAddressForward'
       parameters:
       - name: network
         in: path
@@ -32,9 +82,433 @@ paths:
         in: body
         required: true
         schema:
-          $ref: '#/definitions/btcMicrotransactionEndpointRequest'
+          $ref: '#/definitions/btcCreateForwardEndpointRequest'
       tags:
-      - MicrotransactionService
+      - AddressForwardingService
+  /btc/{network}/forwards/{payid}:
+    get:
+      operationId: DeleteForwardEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcNullValue'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: payid
+        in: path
+        required: true
+        type: string
+      tags:
+      - AddressForwardingService
+  /btc/{network}/addrs:
+    post:
+      operationId: GenerateAddressEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcAddressKeychain'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcGenerateAddressEndpointRequest'
+      tags:
+      - AddressService
+  /btc/{network}/addrs/{address}:
+    get:
+      operationId: AddressEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcAddress'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: address
+        in: path
+        required: true
+        type: string
+      - name: unspentOnly
+        description: If unspentOnly is true, filters response to only include unspent
+          transaction outputs (UTXOs).
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      - name: includeScript
+        description: If includeScript is true, includes raw script of input or output
+          within returned TXRefs.
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      - name: includeConfidence
+        description: If true, includes the confidence attribute (useful for unconfirmed
+          transactions) within returned TXRefs. For more info about this figure, check
+          the Confidence Factor documentation.
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      - name: before
+        description: Filters response to only include transactions below before height
+          in the blockchain.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: after
+        description: Filters response to only include transactions above after height
+          in the blockchain.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: limit
+        description: limit sets the minimum number of returned TXRefs; there can be
+          less if there are less than limit TXRefs associated with this address, but
+          there can be more in the rare case of more TXRefs in the block at the bottom
+          of your call. This ensures paging by block height never misses TXRefs. Defaults
+          to 200, maximum is 2000.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: confirmations
+        description: If set, only returns the balance and TXRefs that have at least
+          this number of confirmations.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: confidence
+        description: Filters response to only include TXRefs above confidence in percent;
+          e.g., if this is set to 99, will only return TXRefs with 99% confidence
+          or above (including all confirmed TXRefs). For more detail on confidence,
+          check the Confidence Factor documentation.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: omitWalletAddresses
+        description: If omitWalletAddresses is true and you’re querying a Wallet or
+          HDWallet, the response will omit address information (useful to speed up
+          the API call for larger wallets).
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      tags:
+      - AddressService
+  /btc/{network}/addrs/{address}/balance:
+    get:
+      operationId: AddressBalanceEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcAddress'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: address
+        in: path
+        required: true
+        type: string
+      - name: omitWalletAddresses
+        description: If omitWalletAddresses is true and you’re querying a Wallet or
+          HDWallet, the response will omit address information (useful to speed up
+          the API call for larger wallets).
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      tags:
+      - AddressService
+  /btc/{network}/addrs/{address}/full:
+    get:
+      operationId: AddressFullEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcAddress'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: address
+        description: address
+        in: path
+        required: true
+        type: string
+      - name: before
+        description: Filters response to only include transactions below before height
+          in the blockchain.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: after
+        description: Filters response to only include transactions above after height
+          in the blockchain.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: limit
+        description: limit sets the minimum number of returned TXs; there can be less
+          if there are less than limit TXs associated with this address, but there
+          can also be more in the rare case of more TXs in the block at the bottom
+          of your call. This ensures paging by block height never misses TXs. Defaults
+          to 10, maximum is 50.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: txlimit
+        description: This filters the TXInputs/TXOutputs within the returned TXs to
+          include a maximum of txlimit items.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: confirmations
+        description: If set, only returns the balance and TXs that have at least this
+          number of confirmations.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: confidence
+        description: Filters response to only include TXs above confidence in percent;
+          e.g., if this is set to 99, will only return TXs with 99% confidence or
+          above (including all confirmed TXs). For more detail on confidence, check
+          the Confidence Factor documentation.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: includeHex
+        description: If true, includes hex-encoded raw transaction for each TX; false
+          by default.
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      - name: includeConfidence
+        description: If true, includes the confidence attribute (useful for unconfirmed
+          transactions) within returned TXs. For more info about this figure, check
+          the Confidence Factor documentation.
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      - name: omitWalletAddresses
+        description: If omitWalletAddresses is true and you’re querying a Wallet or
+          HDWallet, the response will omit address information (useful to speed up
+          the API call for larger wallets).
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      tags:
+      - AddressService
+  /btc/{network}/oap/addrs:
+    post:
+      operationId: GenerateAssetAddressEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcAddressKeychain'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcGenerateAssetAddressEndpointRequest'
+      tags:
+      - AssetService
+  /btc/{network}/oap/issue:
+    post:
+      operationId: IssueAssetEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcOAPTX'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcIssueAssetEndpointRequest'
+      tags:
+      - AssetService
+  /btc/{network}/oap/{assetid}/addrs/{oapaddr}:
+    get:
+      operationId: AssetAddressEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcAddress'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+      - name: assetid
+        in: path
+        required: true
+        type: string
+      - name: oapaddr
+        in: path
+        required: true
+        type: string
+      tags:
+      - AssetService
+  /btc/{network}/oap/{assetid}/transfer:
+    post:
+      operationId: TransferAssetEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcOAPTX'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: assetid
+        in: path
+        required: true
+        type: string
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcTransferAssetEndpointRequest'
+      tags:
+      - AssetService
+  /btc/{network}/oap/{assetid}/txs:
+    get:
+      operationId: ListAssetTXsEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcTxHashes'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: assetid
+        in: path
+        required: true
+        type: string
+      tags:
+      - AssetService
+  /btc/{network}/oap/{assetid}/txs/{txhash}:
+    get:
+      operationId: AssetTXEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcOAPTX'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: assetid
+        in: path
+        required: true
+        type: string
+      - name: txhash
+        in: path
+        required: true
+        type: string
+      tags:
+      - AssetService
   /btc/{network}/analytics/job/{ticket}:
     get:
       operationId: AnalyticsJob
@@ -117,14 +591,14 @@ paths:
           $ref: '#/definitions/btcCreateAnalyticsJobRequest'
       tags:
       - AnalyticsService
-  /btc/{network}/forwards:
-    get:
-      operationId: ListForwardsEndpoint
+  /btc/{network}/txs/micro:
+    post:
+      operationId: MicrotransactionEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcAddressForwards'
+            $ref: '#/definitions/btcMicroTX'
       parameters:
       - name: network
         in: path
@@ -135,47 +609,302 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: start
-        description: Returns list of address forwards starting at the start index;
-          useful for paging beyond the limit of 200 address forwards.
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcMicrotransactionEndpointRequest'
+      tags:
+      - MicrotransactionService
+  /btc/{network}/txs:
+    get:
+      operationId: UnconfirmedTransactionsEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcTXs'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      tags:
+      - TransactionService
+  /btc/{network}/txs/data:
+    post:
+      operationId: DataEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcNullData'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcDataEndpointRequest'
+      tags:
+      - TransactionService
+  /btc/{network}/txs/decode:
+    post:
+      operationId: DecodeRawTransactionEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcTX'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcDecodeRawTransactionEndpointRequest'
+      tags:
+      - TransactionService
+  /btc/{network}/txs/new:
+    post:
+      operationId: CreateTransactionEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcTXSkeleton'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcCreateTransactionEndpointRequest'
+      tags:
+      - TransactionService
+  /btc/{network}/txs/push:
+    post:
+      operationId: PushRawTransactionEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcTX'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcPushRawTransactionEndpointRequest'
+      tags:
+      - TransactionService
+  /btc/{network}/txs/send:
+    post:
+      operationId: SendTransactionEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcTXSkeleton'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcSendTransactionEndpointRequest'
+      tags:
+      - TransactionService
+  /btc/{network}/txs/{txhash}:
+    get:
+      operationId: TransactionHashEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcTX'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: txhash
+        in: path
+        required: true
+        type: string
+      - name: limit
+        description: Filters TXInputs/TXOutputs, if unset, default is 20.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: instart
+        description: Filters TX to only include TXInputs from this input index and
+          above.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: outstart
+        description: Filters TX to only include TXOutputs from this output index and
+          above.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: includeHex
+        description: If true, includes hex-encoded raw transaction; false by default.
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      - name: includeConfidence
+        description: If true, includes the confidence attribute (useful for unconfirmed
+          transactions). For more info about this figure, check the Confidence Factor
+          documentation.
+        in: query
+        required: false
+        type: boolean
+        format: boolean
+      tags:
+      - TransactionService
+  /btc/{network}/txs/{txhash}/propagation:
+    get:
+      operationId: TransactionPropagationEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcTXPropagation'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: txhash
+        in: path
+        required: true
+        type: string
+      tags:
+      - TransactionService
+  /btc/{network}/*:
+    get:
+      operationId: ChainEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcBlockchain'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      tags:
+      - BlockchainService
+  /btc/{network}/blocks/{block_hash}:
+    get:
+      operationId: BlockHashEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcBlock'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: block_hash
+        in: path
+        required: true
+        type: string
+      - name: txstart
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: limit
         in: query
         required: false
         type: integer
         format: int32
       tags:
-      - AddressForwardingService
-    post:
-      operationId: CreateForwardEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcAddressForward'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcCreateForwardEndpointRequest'
-      tags:
-      - AddressForwardingService
-  /btc/{network}/forwards/{payid}:
+      - BlockchainService
+  /btc/{network}/blocks/{block_height}:
     get:
-      operationId: DeleteForwardEndpoint
+      operationId: BlockHeightEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcNullValue'
+            $ref: '#/definitions/btcBlock'
       parameters:
       - name: network
         in: path
@@ -186,186 +915,31 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: payid
+      - name: block_height
         in: path
         required: true
-        type: string
-      tags:
-      - AddressForwardingService
-  /btc/{network}/addrs/{address}/meta:
-    get:
-      operationId: MetadataAddressEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcKeyValues'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: address
-        in: path
-        required: true
-        type: string
-      - name: private
-        description: If private is true, it will return privately stored metadata
-          under your token. Otherwise, returns public metadata. If not set, it defaults
-          to false, returning public data.
+        type: integer
+        format: int32
+      - name: txstart
         in: query
         required: false
-        type: boolean
-        format: boolean
-      tags:
-      - MetadataService
-    delete:
-      operationId: DeleteMetadataAddressEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcNullValue'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: address
-        in: path
-        required: true
-        type: string
-      tags:
-      - MetadataService
-    put:
-      operationId: PutMetadataAddressEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcNullValue'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: address
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcPutMetadataAddressEndpointRequest'
-      tags:
-      - MetadataService
-  /btc/{network}/blocks/{block_hash}/meta:
-    get:
-      operationId: MetadataBlockhashEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcKeyValues'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: block_hash
-        in: path
-        required: true
-        type: string
-      - name: private
-        description: If private is true, it will return privately stored metadata
-          under your token. Otherwise, returns public metadata. If not set, it defaults
-          to false, returning public data.
+        type: integer
+        format: int32
+      - name: limit
         in: query
         required: false
-        type: boolean
-        format: boolean
+        type: integer
+        format: int32
       tags:
-      - MetadataService
-    delete:
-      operationId: DeleteMetadataBlockheightEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcNullValue'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: block_hash
-        in: path
-        required: true
-        type: string
-      tags:
-      - MetadataService
-    put:
-      operationId: PutMetadataBlockhashEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcNullValue'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: block_hash
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcPutMetadataBlockhashEndpointRequest'
-      tags:
-      - MetadataService
-  /btc/{network}/txs/{txhash}/meta:
+      - BlockchainService
+  /btc/{network}/feature/{name}:
     get:
-      operationId: MetadataTxhashEndpoint
+      operationId: FeatureEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcKeyValues'
+            $ref: '#/definitions/btcFeature'
       parameters:
       - name: network
         in: path
@@ -376,166 +950,12 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: txhash
-        in: path
-        required: true
-        type: string
-      - name: private
-        description: If private is true, it will return privately stored metadata
-          under your token. Otherwise, returns public metadata. If not set, it defaults
-          to false, returning public data.
-        in: query
-        required: false
-        type: boolean
-        format: boolean
-      tags:
-      - MetadataService
-    delete:
-      operationId: DeleteMetadataTxhashEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcNullValue'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: txhash
+      - name: name
         in: path
         required: true
         type: string
       tags:
-      - MetadataService
-    put:
-      operationId: PutMetadataTxhashEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcNullValue'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: txhash
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcPutMetadataTxhashEndpointRequest'
-      tags:
-      - MetadataService
-  /btc/{network}/hooks:
-    get:
-      operationId: ListWebHooksEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcEvents'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: token
-        in: query
-        required: false
-        type: string
-      tags:
-      - WebHooksService
-    post:
-      operationId: CreateWebHookEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcEvent'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcCreateWebHookEndpointRequest'
-      tags:
-      - WebHooksService
-  /btc/{network}/hooks/{webhookid}:
-    get:
-      operationId: WebHookIDEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcEvent'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: webhookid
-        in: path
-        required: true
-        type: string
-      tags:
-      - WebHooksService
-    delete:
-      operationId: DeleteWebHookEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcNullValue'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: webhookid
-        in: path
-        required: true
-        type: string
-      tags:
-      - WebHooksService
+      - BlockchainService
   /btc/{network}/wallets:
     get:
       operationId: ListWalletsEndpoint
@@ -888,14 +1308,14 @@ paths:
           $ref: '#/definitions/btcGenerateAddressInWalletEndpointRequest'
       tags:
       - WalletService
-  /btc/{network}/txs/{txhash}/confidence:
+  /btc/{network}/hooks:
     get:
-      operationId: TransactionConfidenceEndpoint
+      operationId: ListWebHooksEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcTXConfidence'
+            $ref: '#/definitions/btcEvents'
       parameters:
       - name: network
         in: path
@@ -906,377 +1326,122 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: txhash
-        in: path
-        required: true
-        type: string
-      tags:
-      - ConfidenceFactorService
-  /btc/{network}/oap/addrs:
-    post:
-      operationId: GenerateAssetAddressEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcAddressKeychain'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcGenerateAssetAddressEndpointRequest'
-      tags:
-      - AssetService
-  /btc/{network}/oap/issue:
-    post:
-      operationId: IssueAssetEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcOAPTX'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcIssueAssetEndpointRequest'
-      tags:
-      - AssetService
-  /btc/{network}/oap/{assetid}/addrs/{oapaddr}:
-    get:
-      operationId: AssetAddressEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcAddress'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-      - name: assetid
-        in: path
-        required: true
-        type: string
-      - name: oapaddr
-        in: path
-        required: true
-        type: string
-      tags:
-      - AssetService
-  /btc/{network}/oap/{assetid}/transfer:
-    post:
-      operationId: TransferAssetEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcOAPTX'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: assetid
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcTransferAssetEndpointRequest'
-      tags:
-      - AssetService
-  /btc/{network}/oap/{assetid}/txs:
-    get:
-      operationId: ListAssetTXsEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcTxHashes'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: assetid
-        in: path
-        required: true
-        type: string
-      tags:
-      - AssetService
-  /btc/{network}/oap/{assetid}/txs/{txhash}:
-    get:
-      operationId: AssetTXEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcOAPTX'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: assetid
-        in: path
-        required: true
-        type: string
-      - name: txhash
-        in: path
-        required: true
-        type: string
-      tags:
-      - AssetService
-  /btc/{network}/txs:
-    get:
-      operationId: UnconfirmedTransactionsEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcTXs'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      tags:
-      - TransactionService
-  /btc/{network}/txs/data:
-    post:
-      operationId: DataEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcNullData'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcDataEndpointRequest'
-      tags:
-      - TransactionService
-  /btc/{network}/txs/decode:
-    post:
-      operationId: DecodeRawTransactionEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcTX'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcDecodeRawTransactionEndpointRequest'
-      tags:
-      - TransactionService
-  /btc/{network}/txs/new:
-    post:
-      operationId: CreateTransactionEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcTXSkeleton'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcCreateTransactionEndpointRequest'
-      tags:
-      - TransactionService
-  /btc/{network}/txs/push:
-    post:
-      operationId: PushRawTransactionEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcTX'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcPushRawTransactionEndpointRequest'
-      tags:
-      - TransactionService
-  /btc/{network}/txs/send:
-    post:
-      operationId: SendTransactionEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcTXSkeleton'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/btcSendTransactionEndpointRequest'
-      tags:
-      - TransactionService
-  /btc/{network}/txs/{txhash}:
-    get:
-      operationId: TransactionHashEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcTX'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
-      - name: txhash
-        in: path
-        required: true
-        type: string
-      - name: limit
-        description: Filters TXInputs/TXOutputs, if unset, default is 20.
+      - name: token
         in: query
         required: false
-        type: integer
-        format: int32
-      - name: instart
-        description: Filters TX to only include TXInputs from this input index and
-          above.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: outstart
-        description: Filters TX to only include TXOutputs from this output index and
-          above.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: includeHex
-        description: If true, includes hex-encoded raw transaction; false by default.
-        in: query
-        required: false
-        type: boolean
-        format: boolean
-      - name: includeConfidence
-        description: If true, includes the confidence attribute (useful for unconfirmed
-          transactions). For more info about this figure, check the Confidence Factor
-          documentation.
+        type: string
+      tags:
+      - WebHooksService
+    post:
+      operationId: CreateWebHookEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcEvent'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcCreateWebHookEndpointRequest'
+      tags:
+      - WebHooksService
+  /btc/{network}/hooks/{webhookid}:
+    get:
+      operationId: WebHookIDEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcEvent'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: webhookid
+        in: path
+        required: true
+        type: string
+      tags:
+      - WebHooksService
+    delete:
+      operationId: DeleteWebHookEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcNullValue'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: webhookid
+        in: path
+        required: true
+        type: string
+      tags:
+      - WebHooksService
+  /btc/{network}/addrs/{address}/meta:
+    get:
+      operationId: MetadataAddressEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/btcKeyValues'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAINNET
+        - mainnet
+        - TEST
+        - test
+      - name: address
+        in: path
+        required: true
+        type: string
+      - name: private
+        description: If private is true, it will return privately stored metadata
+          under your token. Otherwise, returns public metadata. If not set, it defaults
+          to false, returning public data.
         in: query
         required: false
         type: boolean
         format: boolean
       tags:
-      - TransactionService
-  /btc/{network}/txs/{txhash}/propagation:
-    get:
-      operationId: TransactionPropagationEndpoint
+      - MetadataService
+    delete:
+      operationId: DeleteMetadataAddressEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcTXPropagation'
+            $ref: '#/definitions/btcNullValue'
       parameters:
       - name: network
         in: path
@@ -1287,20 +1452,19 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: txhash
+      - name: address
         in: path
         required: true
         type: string
       tags:
-      - TransactionService
-  /btc/{network}/*:
-    get:
-      operationId: ChainEndpoint
+      - MetadataService
+    put:
+      operationId: PutMetadataAddressEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcBlockchain'
+            $ref: '#/definitions/btcNullValue'
       parameters:
       - name: network
         in: path
@@ -1311,16 +1475,25 @@ paths:
         - mainnet
         - TEST
         - test
+      - name: address
+        in: path
+        required: true
+        type: string
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcPutMetadataAddressEndpointRequest'
       tags:
-      - BlockchainService
-  /btc/{network}/blocks/{block_hash}:
+      - MetadataService
+  /btc/{network}/blocks/{block_hash}/meta:
     get:
-      operationId: BlockHashEndpoint
+      operationId: MetadataBlockhashEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcBlock'
+            $ref: '#/definitions/btcKeyValues'
       parameters:
       - name: network
         in: path
@@ -1335,26 +1508,23 @@ paths:
         in: path
         required: true
         type: string
-      - name: txstart
+      - name: private
+        description: If private is true, it will return privately stored metadata
+          under your token. Otherwise, returns public metadata. If not set, it defaults
+          to false, returning public data.
         in: query
         required: false
-        type: integer
-        format: int32
-      - name: limit
-        in: query
-        required: false
-        type: integer
-        format: int32
+        type: boolean
+        format: boolean
       tags:
-      - BlockchainService
-  /btc/{network}/blocks/{block_height}:
-    get:
-      operationId: BlockHeightEndpoint
+      - MetadataService
+    delete:
+      operationId: DeleteMetadataBlockheightEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcBlock'
+            $ref: '#/definitions/btcNullValue'
       parameters:
       - name: network
         in: path
@@ -1365,31 +1535,19 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: block_height
+      - name: block_hash
         in: path
         required: true
-        type: integer
-        format: int32
-      - name: txstart
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: limit
-        in: query
-        required: false
-        type: integer
-        format: int32
+        type: string
       tags:
-      - BlockchainService
-  /btc/{network}/feature/{name}:
-    get:
-      operationId: FeatureEndpoint
+      - MetadataService
+    put:
+      operationId: PutMetadataBlockhashEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcFeature'
+            $ref: '#/definitions/btcNullValue'
       parameters:
       - name: network
         in: path
@@ -1400,45 +1558,25 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: name
+      - name: block_hash
         in: path
         required: true
         type: string
-      tags:
-      - BlockchainService
-  /btc/{network}/addrs:
-    post:
-      operationId: GenerateAddressEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/btcAddressKeychain'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAINNET
-        - mainnet
-        - TEST
-        - test
       - name: body
         in: body
         required: true
         schema:
-          $ref: '#/definitions/btcGenerateAddressEndpointRequest'
+          $ref: '#/definitions/btcPutMetadataBlockhashEndpointRequest'
       tags:
-      - AddressService
-  /btc/{network}/addrs/{address}:
+      - MetadataService
+  /btc/{network}/txs/{txhash}/meta:
     get:
-      operationId: AddressEndpoint
+      operationId: MetadataTxhashEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcAddress'
+            $ref: '#/definitions/btcKeyValues'
       parameters:
       - name: network
         in: path
@@ -1449,90 +1587,27 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: address
+      - name: txhash
         in: path
         required: true
         type: string
-      - name: unspentOnly
-        description: If unspentOnly is true, filters response to only include unspent
-          transaction outputs (UTXOs).
-        in: query
-        required: false
-        type: boolean
-        format: boolean
-      - name: includeScript
-        description: If includeScript is true, includes raw script of input or output
-          within returned TXRefs.
-        in: query
-        required: false
-        type: boolean
-        format: boolean
-      - name: includeConfidence
-        description: If true, includes the confidence attribute (useful for unconfirmed
-          transactions) within returned TXRefs. For more info about this figure, check
-          the Confidence Factor documentation.
-        in: query
-        required: false
-        type: boolean
-        format: boolean
-      - name: before
-        description: Filters response to only include transactions below before height
-          in the blockchain.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: after
-        description: Filters response to only include transactions above after height
-          in the blockchain.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: limit
-        description: limit sets the minimum number of returned TXRefs; there can be
-          less if there are less than limit TXRefs associated with this address, but
-          there can be more in the rare case of more TXRefs in the block at the bottom
-          of your call. This ensures paging by block height never misses TXRefs. Defaults
-          to 200, maximum is 2000.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: confirmations
-        description: If set, only returns the balance and TXRefs that have at least
-          this number of confirmations.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: confidence
-        description: Filters response to only include TXRefs above confidence in percent;
-          e.g., if this is set to 99, will only return TXRefs with 99% confidence
-          or above (including all confirmed TXRefs). For more detail on confidence,
-          check the Confidence Factor documentation.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: omitWalletAddresses
-        description: If omitWalletAddresses is true and you’re querying a Wallet or
-          HDWallet, the response will omit address information (useful to speed up
-          the API call for larger wallets).
+      - name: private
+        description: If private is true, it will return privately stored metadata
+          under your token. Otherwise, returns public metadata. If not set, it defaults
+          to false, returning public data.
         in: query
         required: false
         type: boolean
         format: boolean
       tags:
-      - AddressService
-  /btc/{network}/addrs/{address}/balance:
-    get:
-      operationId: AddressBalanceEndpoint
+      - MetadataService
+    delete:
+      operationId: DeleteMetadataTxhashEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcAddress'
+            $ref: '#/definitions/btcNullValue'
       parameters:
       - name: network
         in: path
@@ -1543,28 +1618,19 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: address
+      - name: txhash
         in: path
         required: true
         type: string
-      - name: omitWalletAddresses
-        description: If omitWalletAddresses is true and you’re querying a Wallet or
-          HDWallet, the response will omit address information (useful to speed up
-          the API call for larger wallets).
-        in: query
-        required: false
-        type: boolean
-        format: boolean
       tags:
-      - AddressService
-  /btc/{network}/addrs/{address}/full:
-    get:
-      operationId: AddressFullEndpoint
+      - MetadataService
+    put:
+      operationId: PutMetadataTxhashEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/btcAddress'
+            $ref: '#/definitions/btcNullValue'
       parameters:
       - name: network
         in: path
@@ -1575,84 +1641,916 @@ paths:
         - mainnet
         - TEST
         - test
-      - name: address
-        description: address
+      - name: txhash
         in: path
         required: true
         type: string
-      - name: before
-        description: Filters response to only include transactions below before height
-          in the blockchain.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: after
-        description: Filters response to only include transactions above after height
-          in the blockchain.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: limit
-        description: limit sets the minimum number of returned TXs; there can be less
-          if there are less than limit TXs associated with this address, but there
-          can also be more in the rare case of more TXs in the block at the bottom
-          of your call. This ensures paging by block height never misses TXs. Defaults
-          to 10, maximum is 50.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: txlimit
-        description: This filters the TXInputs/TXOutputs within the returned TXs to
-          include a maximum of txlimit items.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: confirmations
-        description: If set, only returns the balance and TXs that have at least this
-          number of confirmations.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: confidence
-        description: Filters response to only include TXs above confidence in percent;
-          e.g., if this is set to 99, will only return TXs with 99% confidence or
-          above (including all confirmed TXs). For more detail on confidence, check
-          the Confidence Factor documentation.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: includeHex
-        description: If true, includes hex-encoded raw transaction for each TX; false
-          by default.
-        in: query
-        required: false
-        type: boolean
-        format: boolean
-      - name: includeConfidence
-        description: If true, includes the confidence attribute (useful for unconfirmed
-          transactions) within returned TXs. For more info about this figure, check
-          the Confidence Factor documentation.
-        in: query
-        required: false
-        type: boolean
-        format: boolean
-      - name: omitWalletAddresses
-        description: If omitWalletAddresses is true and you’re querying a Wallet or
-          HDWallet, the response will omit address information (useful to speed up
-          the API call for larger wallets).
-        in: query
-        required: false
-        type: boolean
-        format: boolean
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/btcPutMetadataTxhashEndpointRequest'
       tags:
-      - AddressService
+      - MetadataService
 definitions:
+  btcNetworkAllowingAlias:
+    type: string
+    enum:
+    - MAINNET
+    - mainnet
+    - TEST
+    - test
+    default: MAINNET
+  btcTXConfidence:
+    type: object
+    properties:
+      age_millis:
+        type: integer
+        format: int32
+        description: The age of the transaction in milliseconds, based on the earliest
+          time BlockCypher saw it relayed in the network.
+      receive_count:
+        type: integer
+        format: int32
+        description: Number of peers that have sent this transaction to BlockCypher;
+          only positive for unconfirmed transactions. -1 for confirmed transactions.
+      confidence:
+        type: number
+        format: float
+        description: A number from 0 to 1 representing BlockCypher’s confidence that
+          the transaction won’t be double-spent against.
+      txhash:
+        type: string
+        description: The hash of the transaction. While reasonably unique, using hashes
+          as identifiers may be unsafe.
+      txurl:
+        type: string
+        description: The BlockCypher URL one can use to query more detailed information
+          about this transaction.
+  btcAddressForward:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Identifier of the address forwarding request; generated when
+          a new request is created.
+      token:
+        type: string
+        description: The mandatory user token.
+      destination:
+        type: string
+        description: The required destination address for address forwarding.
+      input_address:
+        type: string
+        description: The address which will automatically forward to destination;
+          generated when a new request is created.
+      process_fees_address:
+        type: string
+        description: Optional Address to forward processing fees, if specified. Allows
+          you to receive a fee for your own services.
+      process_fees_satoshis:
+        type: integer
+        format: int32
+        description: Optional Fixed processing fee amount to be sent to the fee address.
+          A fixed satoshi amount or a percentage is required if a process_fees_address
+          has been specified.
+      process_fees_percent:
+        type: number
+        format: float
+        description: Optional Percentage of the transaction to be sent to the fee
+          address. A fixed satoshi amount or a percentage is required if a process_fees_address
+          has been specified.
+      callback_url:
+        type: string
+        description: Optional The URL to call anytime a new is forwarded.
+      enable_confirmations:
+        type: boolean
+        format: boolean
+        description: Optional Whether to also call the callback_url with subsequent
+          confirmations of the forwarding transactions. Automatically sets up a WebHook.
+      mining_fees_satoshis:
+        type: integer
+        format: int32
+        description: Optional Mining fee amount to include in the forwarding transaction,
+          in satoshis. If not set, defaults to 10,000.
+      txs:
+        type: array
+        items:
+          type: string
+        description: Optional History of forwarding transaction hashes for this address
+          forward; not present if this request has yet to forward any transactions.
+  btcAddressForwards:
+    type: object
+    properties:
+      forwards:
+        type: array
+        items:
+          $ref: '#/definitions/btcAddressForward'
+  btcCreateForwardEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      id:
+        type: string
+        description: Identifier of the address forwarding request; generated when
+          a new request is created.
+      token:
+        type: string
+        description: The mandatory user token.
+      destination:
+        type: string
+        description: The required destination address for address forwarding.
+      input_address:
+        type: string
+        description: The address which will automatically forward to destination;
+          generated when a new request is created.
+      process_fees_address:
+        type: string
+        description: Optional Address to forward processing fees, if specified. Allows
+          you to receive a fee for your own services.
+      process_fees_satoshis:
+        type: integer
+        format: int32
+        description: Optional Fixed processing fee amount to be sent to the fee address.
+          A fixed satoshi amount or a percentage is required if a process_fees_address
+          has been specified.
+      process_fees_percent:
+        type: number
+        format: float
+        description: Optional Percentage of the transaction to be sent to the fee
+          address. A fixed satoshi amount or a percentage is required if a process_fees_address
+          has been specified.
+      callback_url:
+        type: string
+        description: Optional The URL to call anytime a new is forwarded.
+      enable_confirmations:
+        type: boolean
+        format: boolean
+        description: Optional Whether to also call the callback_url with subsequent
+          confirmations of the forwarding transactions. Automatically sets up a WebHook.
+      mining_fees_satoshis:
+        type: integer
+        format: int32
+        description: Optional Mining fee amount to include in the forwarding transaction,
+          in satoshis. If not set, defaults to 10,000.
+      txs:
+        type: array
+        items:
+          type: string
+        description: Optional History of forwarding transaction hashes for this address
+          forward; not present if this request has yet to forward any transactions.
+  btcNullValue:
+    type: object
+  btcAddress:
+    type: object
+    properties:
+      address:
+        type: string
+        description: Optional The requested address. Not returned if querying a wallet/HD
+          wallet.
+      wallet:
+        $ref: '#/definitions/btcWallet'
+        description: Optional The requested wallet object. Only returned if querying
+          by wallet name instead of public address.
+      hd_wallet:
+        $ref: '#/definitions/btcHDWallet'
+        description: Optional The requested HD wallet object. Only returned if querying
+          by HD wallet name instead of public address.
+      total_received:
+        type: integer
+        format: int32
+        description: Total amount of confirmed satoshis received by this address.
+      total_sent:
+        type: integer
+        format: int32
+        description: Total amount of confirmed satoshis sent by this address.
+      balance:
+        type: integer
+        format: int32
+        description: Balance of confirmed satoshis on this address. This is the difference
+          between outputs and inputs on this address, but only for transactions that
+          have been included into a block (i.e., for transactions whose confirmations
+          > 0).
+      unconfirmed_balance:
+        type: integer
+        format: int32
+        description: Balance of unconfirmed satoshis on this address. Can be negative
+          (if unconfirmed transactions are just spending outputs). Only unconfirmed
+          transactions (haven’t made it into a block) are included.
+      final_balance:
+        type: integer
+        format: int32
+        description: Total balance of satoshis, including confirmed and unconfirmed
+          transactions, for this address.
+      n_tx:
+        type: integer
+        format: int32
+        description: Number of confirmed transactions on this address. Only transactions
+          that have made it into a block (confirmations > 0) are counted.
+      unconfirmed_n_tx:
+        type: integer
+        format: int32
+        description: Number of unconfirmed transactions for this address. Only unconfirmed
+          transactions (confirmations == 0) are counted.
+      final_n_tx:
+        type: integer
+        format: int32
+        description: Final number of transactions, including confirmed and unconfirmed
+          transactions, for this address.
+      tx_url:
+        type: string
+        description: Optional To retrieve base URL transactions. To get the full URL,
+          concatenate this URL with a transaction’s hash.
+      txs:
+        type: array
+        items:
+          $ref: '#/definitions/btcTX'
+        description: Array of full transaction details associated with this address.
+          Usually only returned from the Address Full Endpoint.
+      txrefs:
+        type: array
+        items:
+          $ref: '#/definitions/btcTXRef'
+        description: Optional Array of transaction inputs and outputs for this address.
+          Usually only returned from the standard Address Endpoint.
+      unconfirmed_txrefs:
+        type: array
+        items:
+          $ref: '#/definitions/btcTXRef'
+        description: Optional All unconfirmed transaction inputs and outputs for this
+          address. Usually only returned from the standard Address Endpoint.
+      hasMore:
+        type: boolean
+        format: boolean
+        description: Optional If true, then the Address object contains more transactions
+          than shown. Useful for determining whether to poll the API for more transaction
+          information.
+  btcAddressKeychain:
+    type: object
+    properties:
+      address:
+        type: string
+        description: Standard address representation.
+      public:
+        type: string
+        description: Hex-encoded Public key.
+      private:
+        type: string
+        description: Hex-encoded Private key.
+      wif:
+        type: string
+        description: Wallet import format, a common encoding for the private key.
+      pubkeys:
+        type: array
+        items:
+          type: string
+        description: Optional Array of public keys to provide to generate a multisig
+          address.
+      script_type:
+        type: string
+        description: Optional If generating a multisig address, the type of multisig
+          script; typically “multisig-n-of-m”, where n and m are integers.
+      original_address:
+        type: string
+        description: Optional If generating an OAP address, this represents the parent
+          blockchain’s underlying address (the typical address listed above).
+      oap_address:
+        type: string
+        description: Optional The OAP address, if generated using the Generate Asset
+          Address Endpoint.
+  btcGenerateAddressEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      address:
+        type: string
+        description: Standard address representation.
+      public:
+        type: string
+        description: Hex-encoded Public key.
+      private:
+        type: string
+        description: Hex-encoded Private key.
+      wif:
+        type: string
+        description: Wallet import format, a common encoding for the private key.
+      pubkeys:
+        type: array
+        items:
+          type: string
+        description: Optional Array of public keys to provide to generate a multisig
+          address.
+      script_type:
+        type: string
+        description: Optional If generating a multisig address, the type of multisig
+          script; typically “multisig-n-of-m”, where n and m are integers.
+      original_address:
+        type: string
+        description: Optional If generating an OAP address, this represents the parent
+          blockchain’s underlying address (the typical address listed above).
+      oap_address:
+        type: string
+        description: Optional The OAP address, if generated using the Generate Asset
+          Address Endpoint.
+  btcHDAddress:
+    type: object
+    properties:
+      address:
+        type: string
+        description: Standard address representation.
+      path:
+        type: string
+        description: The BIP32 path of the HD address.
+      public:
+        type: string
+        description: optional Contains the hex-encoded public key if returned by Derive
+          Address in Wallet endpoint.
+  btcHDChain:
+    type: object
+    properties:
+      chain_addresses:
+        type: array
+        items:
+          $ref: '#/definitions/btcHDAddress'
+        description: Array of HDAddresses associated with this subchain.
+      index:
+        type: string
+        format: int64
+        description: optional Index of the subchain, returned if the wallet has subchains.
+  btcHDWallet:
+    type: object
+    properties:
+      token:
+        type: string
+        description: User token associated with this HD wallet.
+      name:
+        type: string
+        description: Name of the HD wallet.
+      chains:
+        type: array
+        items:
+          $ref: '#/definitions/btcHDChain'
+        description: List of HD chains associated with this wallet, each containing
+          HDAddresses. A single chain is returned if the wallet has no subchains.
+      hd:
+        type: boolean
+        format: boolean
+        description: true for HD wallets, not present for normal wallets.
+      extended_public_key:
+        type: string
+        title: The extended public key all addresses in the HD wallet are derived
+          from. It’s encoded in BIP32 format
+      subchain_indexes:
+        type: array
+        items:
+          type: integer
+          format: int32
+        description: optional returned for HD wallets created with subchains.
+  btcTX:
+    type: object
+    properties:
+      block_height:
+        type: integer
+        format: int32
+        description: Height of the block that contains this transaction. If this is
+          an unconfirmed transaction, it will equal -1.
+      hash:
+        type: string
+        description: The hash of the transaction. While reasonably unique, using hashes
+          as identifiers may be unsafe.
+      addresses:
+        type: array
+        items:
+          type: string
+        description: Array of bitcoin public addresses involved in the transaction.
+      total:
+        type: integer
+        format: int32
+        description: The total number of satoshis exchanged in this transaction.
+      fees:
+        type: integer
+        format: int32
+        description: The total number of fees—in satoshis—collected by miners in this
+          transaction.
+      size:
+        type: integer
+        format: int32
+        description: The size of the transaction in bytes.
+      preference:
+        type: string
+        description: The likelihood that this transaction will make it to the next
+          block; reflects the preference level miners have to include this transaction.
+          Can be high, medium or low.
+      relayed_by:
+        type: string
+        description: Address of the peer that sent Block’s servers this transaction.
+      received:
+        type: string
+        description: Time this transaction was received by Block’s servers.
+      ver:
+        type: integer
+        format: int32
+        description: Version number, typically 1 for Bitcoin transactions.
+      lock_time:
+        type: integer
+        format: int32
+        description: 'Time when transaction can be valid. Can be interpreted in two
+          ways: if less than 500 million, refers to block height. If more, refers
+          to Unix epoch time.'
+      double_spend:
+        type: boolean
+        format: boolean
+        description: true if this is an attempted double spend; false otherwise.
+      vin_sz:
+        type: integer
+        format: int32
+        description: Total number of inputs in the transaction.
+      vout_sz:
+        type: integer
+        format: int32
+        description: Total number of outputs in the transaction.
+      confirmations:
+        type: integer
+        format: int32
+        description: Number of subsequent blocks, including the block the transaction
+          is in. Unconfirmed transactions have 0 confirmations.
+      inputs:
+        type: array
+        items:
+          $ref: '#/definitions/btcTXInput'
+        description: TXInput Array, limited to 20 by default.
+      outputs:
+        type: array
+        items:
+          $ref: '#/definitions/btcTXOutput'
+        description: TXOutput Array, limited to 20 by default.
+      opt_in_rbf:
+        type: boolean
+        format: boolean
+        description: Optional Returns true if this transaction has opted in to Replace-By-Fee
+          (RBF), either true or not present. You can read more about Opt-In RBF here.
+      confidence:
+        type: number
+        format: float
+        description: Optional The percentage chance this transaction will not be double-spent
+          against, if unconfirmed. For more information, check the section on Confidence
+          Factor.
+      confirmed:
+        type: string
+        description: Optional Time at which transaction was included in a block; only
+          present for confirmed transactions.
+      receive_count:
+        type: integer
+        format: int32
+        description: Optional Number of peers that have sent this transaction to Block;
+          only present for unconfirmed transactions.
+      change_address:
+        type: string
+        description: Optional Address Block will use to send back your change, if
+          you constructed this transaction. If not set, defaults to the address from
+          which the coins were originally sent.
+      block_hash:
+        type: string
+        description: Optional Hash of the block that contains this transaction; only
+          present for confirmed transactions.
+      block_index:
+        type: integer
+        format: int32
+        description: Optional Canonical, zero-indexed location of this transaction
+          in a block; only present for confirmed transactions.
+      double_of:
+        type: string
+        description: Optional If this transaction is a double-spend (i.e. double_spend
+          == true) then this is the hash of the transaction it’s double-spending.
+      data_protocol:
+        type: string
+        title: 'Optional Returned if this transaction contains an OP_RETURN associated
+          with a known data protocol. Data protocols currently detected: blockchainid
+          ; openassets ; factom ; colu ; coinspark ; omni'
+      hex:
+        type: string
+        description: Optional Hex-encoded bytes of the transaction, as sent over the
+          network.
+      next_inputs:
+        type: string
+        description: Optional If there are more transaction inptus that couldn’t fit
+          into the TXInput array, this is the Block URL to query the next set of TXInputs
+          (within a TX object).
+      next_outputs:
+        type: string
+        description: Optional If there are more transaction outputs that couldn’t
+          fit into the TXOutput array, this is the Block URL to query the next set
+          of TXOutputs(within a TX object).
+  btcTXInput:
+    type: object
+    properties:
+      prev_hash:
+        type: string
+        description: The previous transaction hash where this input was an output.
+          Not present for coinbase transactions.
+      output_index:
+        type: integer
+        format: int32
+        description: The index of the output being spent within the previous transaction.
+          Not present for coinbase transactions.
+      output_value:
+        type: integer
+        format: int32
+        description: The value of the output being spent within the previous transaction.
+          Not present for coinbase transactions.
+      script_type:
+        type: string
+        description: The type of script that encumbers the output corresponding to
+          this input.
+      script:
+        type: string
+        description: Raw hexadecimal encoding of the script.
+      addresses:
+        type: array
+        items:
+          type: string
+        description: An array of public addresses associated with the output of the
+          previous transaction.
+      sequence:
+        type: integer
+        format: int32
+        description: Legacy 4-byte sequence number, not usually relevant unless dealing
+          with locktime encumbrances.
+      age:
+        type: integer
+        format: int32
+        description: Optional Number of confirmations of the previous transaction
+          for which this input was an output. Currently, only returned in unconfirmed
+          transactions.
+      wallet_name:
+        type: string
+        description: Optional Name of Wallet or HDWallet from which to derive inputs.
+          Only used when constructing transactions via the Creating Transactions process.
+      wallet_token:
+        type: string
+        description: Optional Token associated with Wallet or HDWallet used to derive
+          inputs. Only used when constructing transactions via the Creating Transactions
+          process.
+  btcTXOutput:
+    type: object
+    properties:
+      value:
+        type: integer
+        format: int32
+        description: Value in this transaction output, in satoshis.
+      script:
+        type: string
+        description: Raw hexadecimal encoding of the encumbrance script for this output.
+      addresses:
+        type: array
+        items:
+          type: string
+        description: Addresses that correspond to this output; typically this will
+          only have a single address, and you can think of this output as having “sent”
+          value to the address contained herein.
+      script_type:
+        type: string
+        description: The type of encumbrance script used for this output.
+      spent_by:
+        type: string
+        description: Optional The transaction hash that spent this output. Only returned
+          for outputs that have been spent. The spending transaction may be unconfirmed.
+      data_hex:
+        type: string
+        description: Optional A hex-encoded representation of an OP_RETURN data output,
+          without any other script instructions. Only returned for outputs whose script_type
+          is null-data.
+      data_string:
+        type: string
+        description: Optional An ASCII representation of an OP_RETURN data output,
+          without any other script instructions. Only returned for outputs whose script_type
+          is null-data and if its data falls into the visible ASCII range.
+  btcTXRef:
+    type: object
+    properties:
+      address:
+        type: string
+        description: Optional The address associated with this transaction input/output.
+          Only returned when querying an address endpoint via a wallet/HD wallet name.
+      block_height:
+        type: integer
+        format: int32
+        description: Height of the block that contains this transaction input/output.
+          If it’s unconfirmed, this will equal -1.
+      tx_hash:
+        type: string
+        description: The hash of the transaction containing this input/output. While
+          reasonably unique, using hashes as identifiers may be unsafe.
+      tx_input_n:
+        type: integer
+        format: int32
+        description: Index of this input in the enclosing transaction. It’s a negative
+          number for an output.
+      tx_output_n:
+        type: integer
+        format: int32
+        description: Index of this output in the enclosing transaction. It’s a negative
+          number for an input.
+      value:
+        type: integer
+        format: int32
+        description: The value transfered by this input/output in satoshis exchanged
+          in the enclosing transaction.
+      preference:
+        type: string
+        description: The likelihood that the enclosing transaction will make it to
+          the next block; reflects the preference level miners have to include the
+          enclosing transaction. Can be high, medium or low.
+      spent:
+        type: boolean
+        format: boolean
+        description: true if this is an output and was spent. If it’s an input, or
+          an unspent output, it will be false.
+      double_spend:
+        type: boolean
+        format: boolean
+        description: true if this is an attempted double spend; false otherwise.
+      confirmations:
+        type: integer
+        format: int32
+        description: Number of subsequent blocks, including the block the transaction
+          is in. Unconfirmed transactions have 0 confirmations.
+      script:
+        type: string
+        description: Optional Raw, hex-encoded script of this input/output.
+      ref_balance:
+        type: integer
+        format: int32
+        description: Optional The past balance of the parent address the moment this
+          transaction was confirmed. Not present for unconfirmed transactions.
+      confidence:
+        type: number
+        format: float
+        description: Optional The percentage chance this transaction will not be double-spent
+          against, if unconfirmed. For more information, check the section on Confidence
+          Factor.
+      confirmed:
+        type: string
+        description: Optional Time at which transaction was included in a block; only
+          present for confirmed transactions.
+      spent_by:
+        type: string
+        description: Optional The transaction hash that spent this output. Only returned
+          for outputs that have been spent. The spending transaction may be unconfirmed.
+      received:
+        type: string
+        description: Optional Time this transaction was received by Block’s servers;
+          only present for unconfirmed transactions.
+      receive_count:
+        type: integer
+        format: int32
+        description: Optional Number of peers that have sent this transaction to Block;
+          only present for unconfirmed transactions.
+      double_of:
+        type: string
+        description: Optional If this transaction is a double-spend (i.e. double_spend
+          == true) then this is the hash of the transaction it’s double-spending.
+  btcWallet:
+    type: object
+    properties:
+      token:
+        type: string
+        description: User token associated with this wallet.
+      name:
+        type: string
+        description: Name of the wallet.
+      addresses:
+        type: array
+        items:
+          type: string
+        description: List of addresses associated with this wallet.
+  btcGenerateAssetAddressEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+  btcIssueAssetEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      from_private:
+        type: string
+        description: The private key being used to issue or transfer assets.
+      to_address:
+        type: string
+        description: The target OAP address assets for issue or transfer.
+      amount:
+        type: integer
+        format: int32
+        description: The amount of assets being issued or transfered.
+      metadata:
+        type: string
+        description: Optional Hex-encoded metadata that can optionally be encoded
+          into the issue or transfer transaction.
+  btcOAPTX:
+    type: object
+    properties:
+      ver:
+        type: integer
+        format: int32
+        description: Version of Open Assets Protocol transaction. Typically 1.
+      assetid:
+        type: string
+        description: Unique indentifier associated with this asset; can be used to
+          query other transactions associated with this asset.
+      hash:
+        type: string
+        description: This transaction’s unique hash; same as the underlying transaction
+          on the asset’s parent blockchain.
+      confirmed:
+        type: string
+        description: Optional Time this transaction was confirmed; only returned for
+          confirmed transactions.
+      received:
+        type: string
+        description: Time this transaction was received.
+      oap_meta:
+        type: string
+        description: Optional Associated hex-encoded metadata with this transaction,
+          if it exists.
+      double_spend:
+        type: boolean
+        format: boolean
+        description: true if this is an attempted double spend; false otherwise.
+      inputs:
+        type: array
+        items:
+          type: string
+        description: Array of input data, which can be seen explicitly in the cURL
+          example. Very similar to array of TXInputs, but with values related to assets
+          instead of satoshis.
+      outputs:
+        type: array
+        items:
+          type: string
+        description: Array of output data, which can be seen explicitly in the cURL
+          example. Very similar to array of TXOutputs, but with values related to
+          assets instead of satoshis.
+  btcTransferAssetEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      assetid:
+        type: string
+      from_private:
+        type: string
+        description: The private key being used to issue or transfer assets.
+      to_address:
+        type: string
+        description: The target OAP address assets for issue or transfer.
+      amount:
+        type: integer
+        format: int32
+        description: The amount of assets being issued or transfered.
+      metadata:
+        type: string
+        description: Optional Hex-encoded metadata that can optionally be encoded
+          into the issue or transfer transaction.
+  btcTxHashes:
+    type: object
+    properties:
+      hash:
+        type: array
+        items:
+          type: string
+  btcCreateAnalyticsJobRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      enginename:
+        type: string
+      address:
+        type: string
+        description: Address hash this job is querying.
+      value_threshold:
+        type: integer
+        format: int32
+        description: Minimal/threshold value (in satoshis) to query.
+      limit:
+        type: integer
+        format: int32
+        description: Limit of results to return.
+      start:
+        type: string
+        description: Beginning of time range to query.
+      end:
+        type: string
+        description: End of time range to query.
+      degree:
+        type: integer
+        format: int32
+        description: Degree of connectiveness to query.
+      source:
+        type: string
+        title: IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port
+          combination found from another API lookup (for example, relayed_by from
+          the Transaction Hash Endpoint)
+  btcJob:
+    type: object
+    properties:
+      token:
+        type: string
+        description: The token that created this job.
+      analytics_engine:
+        type: string
+        description: The engine used for the job query.
+      created_at:
+        type: string
+        description: The time this job was created.
+      completed_at:
+        type: string
+        description: Optional When this job was completed; only present on complete
+          jobs.
+      finished:
+        type: boolean
+        format: boolean
+        description: true if this job is finished processing, false otherwise.
+      started:
+        type: boolean
+        format: boolean
+        description: true if this job has begun processing, false otherwise.
+      ticket:
+        type: string
+        description: Unique identifier for this job, used to get job status and results.
+      result_path:
+        type: string
+        description: ptional URL to query job results; only present on complete jobs.
+      args:
+        $ref: '#/definitions/btcJobArgs'
+        description: Query arguments for this job.
+  btcJobArgs:
+    type: object
+    properties:
+      address:
+        type: string
+        description: Address hash this job is querying.
+      value_threshold:
+        type: integer
+        format: int32
+        description: Minimal/threshold value (in satoshis) to query.
+      limit:
+        type: integer
+        format: int32
+        description: Limit of results to return.
+      start:
+        type: string
+        description: Beginning of time range to query.
+      end:
+        type: string
+        description: End of time range to query.
+      degree:
+        type: integer
+        format: int32
+        description: Degree of connectiveness to query.
+      source:
+        type: string
+        title: IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port
+          combination found from another API lookup (for example, relayed_by from
+          the Transaction Hash Endpoint)
+  btcJobResultArr:
+    type: object
+    properties:
+      DstAddr:
+        type: string
+      SrcAddr:
+        type: string
+      TxHash:
+        type: string
+      Value:
+        type: integer
+        format: int32
+  btcJobResults:
+    type: object
+    properties:
+      page:
+        type: integer
+        format: int32
+        description: Current page of results.
+      more:
+        type: boolean
+        format: boolean
+        description: true if there are more results in a separate page; false otherwise.
+      next_page:
+        type: string
+        description: Optional URL to get the next page of results; only present if
+          there are more results to show.
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/btcJobResultArr'
+        description: Results of analytics job; structure of results are dependent
+          on engine-type of query, but are generally either strings of address hashes
+          or JSON objects.
   btcMicroTX:
     type: object
     properties:
@@ -1799,1176 +2697,6 @@ definitions:
       hash:
         type: string
         description: Optional The hash of the finalized transaction, once sent.
-  btcNetworkAllowingAlias:
-    type: string
-    enum:
-    - MAINNET
-    - mainnet
-    - TEST
-    - test
-    default: MAINNET
-  btcTXInput:
-    type: object
-    properties:
-      prev_hash:
-        type: string
-        description: The previous transaction hash where this input was an output.
-          Not present for coinbase transactions.
-      output_index:
-        type: integer
-        format: int32
-        description: The index of the output being spent within the previous transaction.
-          Not present for coinbase transactions.
-      output_value:
-        type: integer
-        format: int32
-        description: The value of the output being spent within the previous transaction.
-          Not present for coinbase transactions.
-      script_type:
-        type: string
-        description: The type of script that encumbers the output corresponding to
-          this input.
-      script:
-        type: string
-        description: Raw hexadecimal encoding of the script.
-      addresses:
-        type: array
-        items:
-          type: string
-        description: An array of public addresses associated with the output of the
-          previous transaction.
-      sequence:
-        type: integer
-        format: int32
-        description: Legacy 4-byte sequence number, not usually relevant unless dealing
-          with locktime encumbrances.
-      age:
-        type: integer
-        format: int32
-        description: Optional Number of confirmations of the previous transaction
-          for which this input was an output. Currently, only returned in unconfirmed
-          transactions.
-      wallet_name:
-        type: string
-        description: Optional Name of Wallet or HDWallet from which to derive inputs.
-          Only used when constructing transactions via the Creating Transactions process.
-      wallet_token:
-        type: string
-        description: Optional Token associated with Wallet or HDWallet used to derive
-          inputs. Only used when constructing transactions via the Creating Transactions
-          process.
-  btcTXOutput:
-    type: object
-    properties:
-      value:
-        type: integer
-        format: int32
-        description: Value in this transaction output, in satoshis.
-      script:
-        type: string
-        description: Raw hexadecimal encoding of the encumbrance script for this output.
-      addresses:
-        type: array
-        items:
-          type: string
-        description: Addresses that correspond to this output; typically this will
-          only have a single address, and you can think of this output as having “sent”
-          value to the address contained herein.
-      script_type:
-        type: string
-        description: The type of encumbrance script used for this output.
-      spent_by:
-        type: string
-        description: Optional The transaction hash that spent this output. Only returned
-          for outputs that have been spent. The spending transaction may be unconfirmed.
-      data_hex:
-        type: string
-        description: Optional A hex-encoded representation of an OP_RETURN data output,
-          without any other script instructions. Only returned for outputs whose script_type
-          is null-data.
-      data_string:
-        type: string
-        description: Optional An ASCII representation of an OP_RETURN data output,
-          without any other script instructions. Only returned for outputs whose script_type
-          is null-data and if its data falls into the visible ASCII range.
-  btcCreateAnalyticsJobRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      enginename:
-        type: string
-      address:
-        type: string
-        description: Address hash this job is querying.
-      value_threshold:
-        type: integer
-        format: int32
-        description: Minimal/threshold value (in satoshis) to query.
-      limit:
-        type: integer
-        format: int32
-        description: Limit of results to return.
-      start:
-        type: string
-        description: Beginning of time range to query.
-      end:
-        type: string
-        description: End of time range to query.
-      degree:
-        type: integer
-        format: int32
-        description: Degree of connectiveness to query.
-      source:
-        type: string
-        title: IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port
-          combination found from another API lookup (for example, relayed_by from
-          the Transaction Hash Endpoint)
-  btcJob:
-    type: object
-    properties:
-      token:
-        type: string
-        description: The token that created this job.
-      analytics_engine:
-        type: string
-        description: The engine used for the job query.
-      created_at:
-        type: string
-        description: The time this job was created.
-      completed_at:
-        type: string
-        description: Optional When this job was completed; only present on complete
-          jobs.
-      finished:
-        type: boolean
-        format: boolean
-        description: true if this job is finished processing, false otherwise.
-      started:
-        type: boolean
-        format: boolean
-        description: true if this job has begun processing, false otherwise.
-      ticket:
-        type: string
-        description: Unique identifier for this job, used to get job status and results.
-      result_path:
-        type: string
-        description: ptional URL to query job results; only present on complete jobs.
-      args:
-        $ref: '#/definitions/btcJobArgs'
-        description: Query arguments for this job.
-  btcJobArgs:
-    type: object
-    properties:
-      address:
-        type: string
-        description: Address hash this job is querying.
-      value_threshold:
-        type: integer
-        format: int32
-        description: Minimal/threshold value (in satoshis) to query.
-      limit:
-        type: integer
-        format: int32
-        description: Limit of results to return.
-      start:
-        type: string
-        description: Beginning of time range to query.
-      end:
-        type: string
-        description: End of time range to query.
-      degree:
-        type: integer
-        format: int32
-        description: Degree of connectiveness to query.
-      source:
-        type: string
-        title: IP address and port, of the form “0.0.0.0:80”. Ideally an IP and port
-          combination found from another API lookup (for example, relayed_by from
-          the Transaction Hash Endpoint)
-  btcJobResultArr:
-    type: object
-    properties:
-      DstAddr:
-        type: string
-      SrcAddr:
-        type: string
-      TxHash:
-        type: string
-      Value:
-        type: integer
-        format: int32
-  btcJobResults:
-    type: object
-    properties:
-      page:
-        type: integer
-        format: int32
-        description: Current page of results.
-      more:
-        type: boolean
-        format: boolean
-        description: true if there are more results in a separate page; false otherwise.
-      next_page:
-        type: string
-        description: Optional URL to get the next page of results; only present if
-          there are more results to show.
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/btcJobResultArr'
-        description: Results of analytics job; structure of results are dependent
-          on engine-type of query, but are generally either strings of address hashes
-          or JSON objects.
-  btcAddressForward:
-    type: object
-    properties:
-      id:
-        type: string
-        description: Identifier of the address forwarding request; generated when
-          a new request is created.
-      token:
-        type: string
-        description: The mandatory user token.
-      destination:
-        type: string
-        description: The required destination address for address forwarding.
-      input_address:
-        type: string
-        description: The address which will automatically forward to destination;
-          generated when a new request is created.
-      process_fees_address:
-        type: string
-        description: Optional Address to forward processing fees, if specified. Allows
-          you to receive a fee for your own services.
-      process_fees_satoshis:
-        type: integer
-        format: int32
-        description: Optional Fixed processing fee amount to be sent to the fee address.
-          A fixed satoshi amount or a percentage is required if a process_fees_address
-          has been specified.
-      process_fees_percent:
-        type: number
-        format: float
-        description: Optional Percentage of the transaction to be sent to the fee
-          address. A fixed satoshi amount or a percentage is required if a process_fees_address
-          has been specified.
-      callback_url:
-        type: string
-        description: Optional The URL to call anytime a new is forwarded.
-      enable_confirmations:
-        type: boolean
-        format: boolean
-        description: Optional Whether to also call the callback_url with subsequent
-          confirmations of the forwarding transactions. Automatically sets up a WebHook.
-      mining_fees_satoshis:
-        type: integer
-        format: int32
-        description: Optional Mining fee amount to include in the forwarding transaction,
-          in satoshis. If not set, defaults to 10,000.
-      txs:
-        type: array
-        items:
-          type: string
-        description: Optional History of forwarding transaction hashes for this address
-          forward; not present if this request has yet to forward any transactions.
-  btcAddressForwards:
-    type: object
-    properties:
-      forwards:
-        type: array
-        items:
-          $ref: '#/definitions/btcAddressForward'
-  btcCreateForwardEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      id:
-        type: string
-        description: Identifier of the address forwarding request; generated when
-          a new request is created.
-      token:
-        type: string
-        description: The mandatory user token.
-      destination:
-        type: string
-        description: The required destination address for address forwarding.
-      input_address:
-        type: string
-        description: The address which will automatically forward to destination;
-          generated when a new request is created.
-      process_fees_address:
-        type: string
-        description: Optional Address to forward processing fees, if specified. Allows
-          you to receive a fee for your own services.
-      process_fees_satoshis:
-        type: integer
-        format: int32
-        description: Optional Fixed processing fee amount to be sent to the fee address.
-          A fixed satoshi amount or a percentage is required if a process_fees_address
-          has been specified.
-      process_fees_percent:
-        type: number
-        format: float
-        description: Optional Percentage of the transaction to be sent to the fee
-          address. A fixed satoshi amount or a percentage is required if a process_fees_address
-          has been specified.
-      callback_url:
-        type: string
-        description: Optional The URL to call anytime a new is forwarded.
-      enable_confirmations:
-        type: boolean
-        format: boolean
-        description: Optional Whether to also call the callback_url with subsequent
-          confirmations of the forwarding transactions. Automatically sets up a WebHook.
-      mining_fees_satoshis:
-        type: integer
-        format: int32
-        description: Optional Mining fee amount to include in the forwarding transaction,
-          in satoshis. If not set, defaults to 10,000.
-      txs:
-        type: array
-        items:
-          type: string
-        description: Optional History of forwarding transaction hashes for this address
-          forward; not present if this request has yet to forward any transactions.
-  btcNullValue:
-    type: object
-  btcKeyValues:
-    type: object
-    properties:
-      key_pairs:
-        type: object
-        additionalProperties:
-          type: string
-  btcPutMetadataAddressEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      key_pairs:
-        type: object
-        additionalProperties:
-          type: string
-      address:
-        type: string
-      private:
-        type: boolean
-        format: boolean
-        description: If private is true, it will set/update privately stored metadata
-          under your token. Otherwise, sets public metadata. If not set, it defaults
-          to false, setting public metadata.
-  btcPutMetadataBlockhashEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      key_pairs:
-        type: object
-        additionalProperties:
-          type: string
-      block_hash:
-        type: string
-      private:
-        type: boolean
-        format: boolean
-        description: If private is true, it will set/update privately stored metadata
-          under your token. Otherwise, sets public metadata. If not set, it defaults
-          to false, setting public metadata.
-  btcPutMetadataTxhashEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      key_pairs:
-        type: object
-        additionalProperties:
-          type: string
-      txhash:
-        type: string
-      private:
-        type: boolean
-        format: boolean
-        description: If private is true, it will set/update privately stored metadata
-          under your token. Otherwise, sets public metadata. If not set, it defaults
-          to false, setting public metadata.
-  btcCreateWebHookEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      id:
-        type: string
-        description: Identifier of the event; generated when a new request is created.
-      event:
-        type: string
-        description: Type of event; can be unconfirmed-tx, new-block, confirmed-tx,
-          tx-confirmation, double-spend-tx, tx-confidence.
-      hash:
-        type: string
-        description: optional Only objects with a matching hash will be sent. The
-          hash can either be for a block or a transaction.
-      wallet_name:
-        type: string
-        description: optional Only transactions associated with the given wallet will
-          be sent; can use a regular or HD wallet name. If used, requires a user token.
-      token:
-        type: string
-        description: optional Required if wallet_name is used, though generally we
-          advise users to include it (as they can reach API throttling thresholds
-          rapidly).
-      address:
-        type: string
-        description: optional Only transactions associated with the given address
-          will be sent. A wallet name can also be used instead of an address, which
-          will then match on any address in the wallet.
-      confirmations:
-        type: integer
-        format: int32
-        description: optional Used in concert with the tx-confirmation event type
-          to set the number of confirmations desired for which to receive an update.
-          You’ll receive an updated TX for every confirmation up to this amount. The
-          maximum allowed is 10; if not set, it will default to 6.
-      confidence:
-        type: number
-        format: float
-        description: optional Used in concert with the tx-confidence event type to
-          set the minimum confidence for which you’ll receive a notification. You’ll
-          receive a TX once this threshold is met. Will accept any float between 0
-          and 1, exclusive; if not set, defaults to 0.99.
-      script:
-        type: string
-        description: 'optional Only transactions with an output script of the provided
-          type will be sent. The recognized types of scripts are: pay-to-pubkey-hash,
-          pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes
-          called OP_RETURN), empty or unknown.'
-      url:
-        type: string
-        description: optional Callback URL for this Event’s WebHook; not applicable
-          for WebSockets usage.
-      callback_errors:
-        type: integer
-        format: int32
-        description: Number of errors when attempting to POST to callback URL; not
-          applicable for WebSockets usage.
-  btcEvent:
-    type: object
-    properties:
-      id:
-        type: string
-        description: Identifier of the event; generated when a new request is created.
-      event:
-        type: string
-        description: Type of event; can be unconfirmed-tx, new-block, confirmed-tx,
-          tx-confirmation, double-spend-tx, tx-confidence.
-      hash:
-        type: string
-        description: optional Only objects with a matching hash will be sent. The
-          hash can either be for a block or a transaction.
-      wallet_name:
-        type: string
-        description: optional Only transactions associated with the given wallet will
-          be sent; can use a regular or HD wallet name. If used, requires a user token.
-      token:
-        type: string
-        description: optional Required if wallet_name is used, though generally we
-          advise users to include it (as they can reach API throttling thresholds
-          rapidly).
-      address:
-        type: string
-        description: optional Only transactions associated with the given address
-          will be sent. A wallet name can also be used instead of an address, which
-          will then match on any address in the wallet.
-      confirmations:
-        type: integer
-        format: int32
-        description: optional Used in concert with the tx-confirmation event type
-          to set the number of confirmations desired for which to receive an update.
-          You’ll receive an updated TX for every confirmation up to this amount. The
-          maximum allowed is 10; if not set, it will default to 6.
-      confidence:
-        type: number
-        format: float
-        description: optional Used in concert with the tx-confidence event type to
-          set the minimum confidence for which you’ll receive a notification. You’ll
-          receive a TX once this threshold is met. Will accept any float between 0
-          and 1, exclusive; if not set, defaults to 0.99.
-      script:
-        type: string
-        description: 'optional Only transactions with an output script of the provided
-          type will be sent. The recognized types of scripts are: pay-to-pubkey-hash,
-          pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes
-          called OP_RETURN), empty or unknown.'
-      url:
-        type: string
-        description: optional Callback URL for this Event’s WebHook; not applicable
-          for WebSockets usage.
-      callback_errors:
-        type: integer
-        format: int32
-        description: Number of errors when attempting to POST to callback URL; not
-          applicable for WebSockets usage.
-  btcEvents:
-    type: object
-    properties:
-      event:
-        type: array
-        items:
-          $ref: '#/definitions/btcEvent'
-  btcAddAddressesToWalletEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      name:
-        type: string
-      omitWalletAddresses:
-        type: boolean
-        format: boolean
-        description: If omitWalletAddresses is true, the response will omit address
-          information (useful to speed up the API call for larger wallets).
-  btcCreateHDWalletEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      token:
-        type: string
-      name:
-        type: string
-      chains:
-        type: array
-        items:
-          $ref: '#/definitions/btcHDChain'
-      hd:
-        type: boolean
-        format: boolean
-      extended_public_key:
-        type: string
-      subchain_indexes:
-        type: array
-        items:
-          type: integer
-          format: int32
-  btcCreateWalletEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      token:
-        type: string
-      name:
-        type: string
-      addresses:
-        type: array
-        items:
-          type: string
-  btcDeriveAddressInWalletEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      name:
-        type: string
-      count:
-        type: integer
-        format: int32
-        description: Number of addresses to derive. If not set, default is one address.
-      subchain_index:
-        type: string
-        format: int64
-        description: Derives address(es) on this specific subchain. If not set, address
-          will be generated on the first chain in the HD wallet.
-  btcGenerateAddressInWalletEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      name:
-        type: string
-  btcHDAddress:
-    type: object
-    properties:
-      address:
-        type: string
-        description: Standard address representation.
-      path:
-        type: string
-        description: The BIP32 path of the HD address.
-      public:
-        type: string
-        description: optional Contains the hex-encoded public key if returned by Derive
-          Address in Wallet endpoint.
-  btcHDChain:
-    type: object
-    properties:
-      chain_addresses:
-        type: array
-        items:
-          $ref: '#/definitions/btcHDAddress'
-        description: Array of HDAddresses associated with this subchain.
-      index:
-        type: string
-        format: int64
-        description: optional Index of the subchain, returned if the wallet has subchains.
-  btcHDWallet:
-    type: object
-    properties:
-      token:
-        type: string
-        description: User token associated with this HD wallet.
-      name:
-        type: string
-        description: Name of the HD wallet.
-      chains:
-        type: array
-        items:
-          $ref: '#/definitions/btcHDChain'
-        description: List of HD chains associated with this wallet, each containing
-          HDAddresses. A single chain is returned if the wallet has no subchains.
-      hd:
-        type: boolean
-        format: boolean
-        description: true for HD wallets, not present for normal wallets.
-      extended_public_key:
-        type: string
-        title: The extended public key all addresses in the HD wallet are derived
-          from. It’s encoded in BIP32 format
-      subchain_indexes:
-        type: array
-        items:
-          type: integer
-          format: int32
-        description: optional returned for HD wallets created with subchains.
-  btcListWallets:
-    type: object
-    properties:
-      wallet_names:
-        type: array
-        items:
-          type: string
-  btcWallet:
-    type: object
-    properties:
-      token:
-        type: string
-        description: User token associated with this wallet.
-      name:
-        type: string
-        description: Name of the wallet.
-      addresses:
-        type: array
-        items:
-          type: string
-        description: List of addresses associated with this wallet.
-  btcWalletAddressKeychain:
-    type: object
-    properties:
-      token:
-        type: string
-        description: '--- Wallet ---
-
-          User token associated with this wallet.'
-      name:
-        type: string
-        description: Name of the wallet.
-      addresses:
-        type: array
-        items:
-          type: string
-        description: List of addresses associated with this wallet.
-      address:
-        type: string
-        description: '--- AddressKeychain ---
-
-          Standard address representation.'
-      public:
-        type: string
-        description: Hex-encoded Public key.
-      private:
-        type: string
-        description: Hex-encoded Private key.
-      wif:
-        type: string
-        description: Wallet import format, a common encoding for the private key.
-      pubkeys:
-        type: array
-        items:
-          type: string
-        description: Optional Array of public keys to provide to generate a multisig
-          address.
-      script_type:
-        type: string
-        description: Optional If generating a multisig address, the type of multisig
-          script;typically “multisig-n-of-m”, where n and m are integers.
-      original_address:
-        type: string
-        description: Optional If generating an OAP address, this represents the parent
-          blockchain’s underlying address (the typical address listed above).
-      oap_address:
-        type: string
-        description: Optional The OAP address, if generated using the Generate Asset
-          Address Endpoint.
-  btcTXConfidence:
-    type: object
-    properties:
-      age_millis:
-        type: integer
-        format: int32
-        description: The age of the transaction in milliseconds, based on the earliest
-          time BlockCypher saw it relayed in the network.
-      receive_count:
-        type: integer
-        format: int32
-        description: Number of peers that have sent this transaction to BlockCypher;
-          only positive for unconfirmed transactions. -1 for confirmed transactions.
-      confidence:
-        type: number
-        format: float
-        description: A number from 0 to 1 representing BlockCypher’s confidence that
-          the transaction won’t be double-spent against.
-      txhash:
-        type: string
-        description: The hash of the transaction. While reasonably unique, using hashes
-          as identifiers may be unsafe.
-      txurl:
-        type: string
-        description: The BlockCypher URL one can use to query more detailed information
-          about this transaction.
-  btcAddress:
-    type: object
-    properties:
-      address:
-        type: string
-        description: Optional The requested address. Not returned if querying a wallet/HD
-          wallet.
-      wallet:
-        $ref: '#/definitions/btcWallet'
-        description: Optional The requested wallet object. Only returned if querying
-          by wallet name instead of public address.
-      hd_wallet:
-        $ref: '#/definitions/btcHDWallet'
-        description: Optional The requested HD wallet object. Only returned if querying
-          by HD wallet name instead of public address.
-      total_received:
-        type: integer
-        format: int32
-        description: Total amount of confirmed satoshis received by this address.
-      total_sent:
-        type: integer
-        format: int32
-        description: Total amount of confirmed satoshis sent by this address.
-      balance:
-        type: integer
-        format: int32
-        description: Balance of confirmed satoshis on this address. This is the difference
-          between outputs and inputs on this address, but only for transactions that
-          have been included into a block (i.e., for transactions whose confirmations
-          > 0).
-      unconfirmed_balance:
-        type: integer
-        format: int32
-        description: Balance of unconfirmed satoshis on this address. Can be negative
-          (if unconfirmed transactions are just spending outputs). Only unconfirmed
-          transactions (haven’t made it into a block) are included.
-      final_balance:
-        type: integer
-        format: int32
-        description: Total balance of satoshis, including confirmed and unconfirmed
-          transactions, for this address.
-      n_tx:
-        type: integer
-        format: int32
-        description: Number of confirmed transactions on this address. Only transactions
-          that have made it into a block (confirmations > 0) are counted.
-      unconfirmed_n_tx:
-        type: integer
-        format: int32
-        description: Number of unconfirmed transactions for this address. Only unconfirmed
-          transactions (confirmations == 0) are counted.
-      final_n_tx:
-        type: integer
-        format: int32
-        description: Final number of transactions, including confirmed and unconfirmed
-          transactions, for this address.
-      tx_url:
-        type: string
-        description: Optional To retrieve base URL transactions. To get the full URL,
-          concatenate this URL with a transaction’s hash.
-      txs:
-        type: array
-        items:
-          $ref: '#/definitions/btcTX'
-        description: Array of full transaction details associated with this address.
-          Usually only returned from the Address Full Endpoint.
-      txrefs:
-        type: array
-        items:
-          $ref: '#/definitions/btcTXRef'
-        description: Optional Array of transaction inputs and outputs for this address.
-          Usually only returned from the standard Address Endpoint.
-      unconfirmed_txrefs:
-        type: array
-        items:
-          $ref: '#/definitions/btcTXRef'
-        description: Optional All unconfirmed transaction inputs and outputs for this
-          address. Usually only returned from the standard Address Endpoint.
-      hasMore:
-        type: boolean
-        format: boolean
-        description: Optional If true, then the Address object contains more transactions
-          than shown. Useful for determining whether to poll the API for more transaction
-          information.
-  btcAddressKeychain:
-    type: object
-    properties:
-      address:
-        type: string
-        description: Standard address representation.
-      public:
-        type: string
-        description: Hex-encoded Public key.
-      private:
-        type: string
-        description: Hex-encoded Private key.
-      wif:
-        type: string
-        description: Wallet import format, a common encoding for the private key.
-      pubkeys:
-        type: array
-        items:
-          type: string
-        description: Optional Array of public keys to provide to generate a multisig
-          address.
-      script_type:
-        type: string
-        description: Optional If generating a multisig address, the type of multisig
-          script; typically “multisig-n-of-m”, where n and m are integers.
-      original_address:
-        type: string
-        description: Optional If generating an OAP address, this represents the parent
-          blockchain’s underlying address (the typical address listed above).
-      oap_address:
-        type: string
-        description: Optional The OAP address, if generated using the Generate Asset
-          Address Endpoint.
-  btcGenerateAssetAddressEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-  btcIssueAssetEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      from_private:
-        type: string
-        description: The private key being used to issue or transfer assets.
-      to_address:
-        type: string
-        description: The target OAP address assets for issue or transfer.
-      amount:
-        type: integer
-        format: int32
-        description: The amount of assets being issued or transfered.
-      metadata:
-        type: string
-        description: Optional Hex-encoded metadata that can optionally be encoded
-          into the issue or transfer transaction.
-  btcOAPTX:
-    type: object
-    properties:
-      ver:
-        type: integer
-        format: int32
-        description: Version of Open Assets Protocol transaction. Typically 1.
-      assetid:
-        type: string
-        description: Unique indentifier associated with this asset; can be used to
-          query other transactions associated with this asset.
-      hash:
-        type: string
-        description: This transaction’s unique hash; same as the underlying transaction
-          on the asset’s parent blockchain.
-      confirmed:
-        type: string
-        description: Optional Time this transaction was confirmed; only returned for
-          confirmed transactions.
-      received:
-        type: string
-        description: Time this transaction was received.
-      oap_meta:
-        type: string
-        description: Optional Associated hex-encoded metadata with this transaction,
-          if it exists.
-      double_spend:
-        type: boolean
-        format: boolean
-        description: true if this is an attempted double spend; false otherwise.
-      inputs:
-        type: array
-        items:
-          type: string
-        description: Array of input data, which can be seen explicitly in the cURL
-          example. Very similar to array of TXInputs, but with values related to assets
-          instead of satoshis.
-      outputs:
-        type: array
-        items:
-          type: string
-        description: Array of output data, which can be seen explicitly in the cURL
-          example. Very similar to array of TXOutputs, but with values related to
-          assets instead of satoshis.
-  btcTX:
-    type: object
-    properties:
-      block_height:
-        type: integer
-        format: int32
-        description: Height of the block that contains this transaction. If this is
-          an unconfirmed transaction, it will equal -1.
-      hash:
-        type: string
-        description: The hash of the transaction. While reasonably unique, using hashes
-          as identifiers may be unsafe.
-      addresses:
-        type: array
-        items:
-          type: string
-        description: Array of bitcoin public addresses involved in the transaction.
-      total:
-        type: integer
-        format: int32
-        description: The total number of satoshis exchanged in this transaction.
-      fees:
-        type: integer
-        format: int32
-        description: The total number of fees—in satoshis—collected by miners in this
-          transaction.
-      size:
-        type: integer
-        format: int32
-        description: The size of the transaction in bytes.
-      preference:
-        type: string
-        description: The likelihood that this transaction will make it to the next
-          block; reflects the preference level miners have to include this transaction.
-          Can be high, medium or low.
-      relayed_by:
-        type: string
-        description: Address of the peer that sent Block’s servers this transaction.
-      received:
-        type: string
-        description: Time this transaction was received by Block’s servers.
-      ver:
-        type: integer
-        format: int32
-        description: Version number, typically 1 for Bitcoin transactions.
-      lock_time:
-        type: integer
-        format: int32
-        description: 'Time when transaction can be valid. Can be interpreted in two
-          ways: if less than 500 million, refers to block height. If more, refers
-          to Unix epoch time.'
-      double_spend:
-        type: boolean
-        format: boolean
-        description: true if this is an attempted double spend; false otherwise.
-      vin_sz:
-        type: integer
-        format: int32
-        description: Total number of inputs in the transaction.
-      vout_sz:
-        type: integer
-        format: int32
-        description: Total number of outputs in the transaction.
-      confirmations:
-        type: integer
-        format: int32
-        description: Number of subsequent blocks, including the block the transaction
-          is in. Unconfirmed transactions have 0 confirmations.
-      inputs:
-        type: array
-        items:
-          $ref: '#/definitions/btcTXInput'
-        description: TXInput Array, limited to 20 by default.
-      outputs:
-        type: array
-        items:
-          $ref: '#/definitions/btcTXOutput'
-        description: TXOutput Array, limited to 20 by default.
-      opt_in_rbf:
-        type: boolean
-        format: boolean
-        description: Optional Returns true if this transaction has opted in to Replace-By-Fee
-          (RBF), either true or not present. You can read more about Opt-In RBF here.
-      confidence:
-        type: number
-        format: float
-        description: Optional The percentage chance this transaction will not be double-spent
-          against, if unconfirmed. For more information, check the section on Confidence
-          Factor.
-      confirmed:
-        type: string
-        description: Optional Time at which transaction was included in a block; only
-          present for confirmed transactions.
-      receive_count:
-        type: integer
-        format: int32
-        description: Optional Number of peers that have sent this transaction to Block;
-          only present for unconfirmed transactions.
-      change_address:
-        type: string
-        description: Optional Address Block will use to send back your change, if
-          you constructed this transaction. If not set, defaults to the address from
-          which the coins were originally sent.
-      block_hash:
-        type: string
-        description: Optional Hash of the block that contains this transaction; only
-          present for confirmed transactions.
-      block_index:
-        type: integer
-        format: int32
-        description: Optional Canonical, zero-indexed location of this transaction
-          in a block; only present for confirmed transactions.
-      double_of:
-        type: string
-        description: Optional If this transaction is a double-spend (i.e. double_spend
-          == true) then this is the hash of the transaction it’s double-spending.
-      data_protocol:
-        type: string
-        title: 'Optional Returned if this transaction contains an OP_RETURN associated
-          with a known data protocol. Data protocols currently detected: blockchainid
-          ; openassets ; factom ; colu ; coinspark ; omni'
-      hex:
-        type: string
-        description: Optional Hex-encoded bytes of the transaction, as sent over the
-          network.
-      next_inputs:
-        type: string
-        description: Optional If there are more transaction inptus that couldn’t fit
-          into the TXInput array, this is the Block URL to query the next set of TXInputs
-          (within a TX object).
-      next_outputs:
-        type: string
-        description: Optional If there are more transaction outputs that couldn’t
-          fit into the TXOutput array, this is the Block URL to query the next set
-          of TXOutputs(within a TX object).
-  btcTXRef:
-    type: object
-    properties:
-      address:
-        type: string
-        description: Optional The address associated with this transaction input/output.
-          Only returned when querying an address endpoint via a wallet/HD wallet name.
-      block_height:
-        type: integer
-        format: int32
-        description: Height of the block that contains this transaction input/output.
-          If it’s unconfirmed, this will equal -1.
-      tx_hash:
-        type: string
-        description: The hash of the transaction containing this input/output. While
-          reasonably unique, using hashes as identifiers may be unsafe.
-      tx_input_n:
-        type: integer
-        format: int32
-        description: Index of this input in the enclosing transaction. It’s a negative
-          number for an output.
-      tx_output_n:
-        type: integer
-        format: int32
-        description: Index of this output in the enclosing transaction. It’s a negative
-          number for an input.
-      value:
-        type: integer
-        format: int32
-        description: The value transfered by this input/output in satoshis exchanged
-          in the enclosing transaction.
-      preference:
-        type: string
-        description: The likelihood that the enclosing transaction will make it to
-          the next block; reflects the preference level miners have to include the
-          enclosing transaction. Can be high, medium or low.
-      spent:
-        type: boolean
-        format: boolean
-        description: true if this is an output and was spent. If it’s an input, or
-          an unspent output, it will be false.
-      double_spend:
-        type: boolean
-        format: boolean
-        description: true if this is an attempted double spend; false otherwise.
-      confirmations:
-        type: integer
-        format: int32
-        description: Number of subsequent blocks, including the block the transaction
-          is in. Unconfirmed transactions have 0 confirmations.
-      script:
-        type: string
-        description: Optional Raw, hex-encoded script of this input/output.
-      ref_balance:
-        type: integer
-        format: int32
-        description: Optional The past balance of the parent address the moment this
-          transaction was confirmed. Not present for unconfirmed transactions.
-      confidence:
-        type: number
-        format: float
-        description: Optional The percentage chance this transaction will not be double-spent
-          against, if unconfirmed. For more information, check the section on Confidence
-          Factor.
-      confirmed:
-        type: string
-        description: Optional Time at which transaction was included in a block; only
-          present for confirmed transactions.
-      spent_by:
-        type: string
-        description: Optional The transaction hash that spent this output. Only returned
-          for outputs that have been spent. The spending transaction may be unconfirmed.
-      received:
-        type: string
-        description: Optional Time this transaction was received by Block’s servers;
-          only present for unconfirmed transactions.
-      receive_count:
-        type: integer
-        format: int32
-        description: Optional Number of peers that have sent this transaction to Block;
-          only present for unconfirmed transactions.
-      double_of:
-        type: string
-        description: Optional If this transaction is a double-spend (i.e. double_spend
-          == true) then this is the hash of the transaction it’s double-spending.
-  btcTransferAssetEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/btcNetworkAllowingAlias'
-      assetid:
-        type: string
-      from_private:
-        type: string
-        description: The private key being used to issue or transfer assets.
-      to_address:
-        type: string
-        description: The target OAP address assets for issue or transfer.
-      amount:
-        type: integer
-        format: int32
-        description: The amount of assets being issued or transfered.
-      metadata:
-        type: string
-        description: Optional Hex-encoded metadata that can optionally be encoded
-          into the issue or transfer transaction.
-  btcTxHashes:
-    type: object
-    properties:
-      hash:
-        type: array
-        items:
-          type: string
   btcAggregatedOrigin:
     type: object
     properties:
@@ -3468,14 +3196,105 @@ definitions:
         format: int64
       last_transition_hash:
         type: string
-  btcGenerateAddressEndpointRequest:
+  btcAddAddressesToWalletEndpointRequest:
     type: object
     properties:
       network:
         $ref: '#/definitions/btcNetworkAllowingAlias'
+      name:
+        type: string
+      omitWalletAddresses:
+        type: boolean
+        format: boolean
+        description: If omitWalletAddresses is true, the response will omit address
+          information (useful to speed up the API call for larger wallets).
+  btcCreateHDWalletEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      token:
+        type: string
+      name:
+        type: string
+      chains:
+        type: array
+        items:
+          $ref: '#/definitions/btcHDChain'
+      hd:
+        type: boolean
+        format: boolean
+      extended_public_key:
+        type: string
+      subchain_indexes:
+        type: array
+        items:
+          type: integer
+          format: int32
+  btcCreateWalletEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      token:
+        type: string
+      name:
+        type: string
+      addresses:
+        type: array
+        items:
+          type: string
+  btcDeriveAddressInWalletEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      name:
+        type: string
+      count:
+        type: integer
+        format: int32
+        description: Number of addresses to derive. If not set, default is one address.
+      subchain_index:
+        type: string
+        format: int64
+        description: Derives address(es) on this specific subchain. If not set, address
+          will be generated on the first chain in the HD wallet.
+  btcGenerateAddressInWalletEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      name:
+        type: string
+  btcListWallets:
+    type: object
+    properties:
+      wallet_names:
+        type: array
+        items:
+          type: string
+  btcWalletAddressKeychain:
+    type: object
+    properties:
+      token:
+        type: string
+        description: '--- Wallet ---
+
+          User token associated with this wallet.'
+      name:
+        type: string
+        description: Name of the wallet.
+      addresses:
+        type: array
+        items:
+          type: string
+        description: List of addresses associated with this wallet.
       address:
         type: string
-        description: Standard address representation.
+        description: '--- AddressKeychain ---
+
+          Standard address representation.'
       public:
         type: string
         description: Hex-encoded Public key.
@@ -3494,7 +3313,7 @@ definitions:
       script_type:
         type: string
         description: Optional If generating a multisig address, the type of multisig
-          script; typically “multisig-n-of-m”, where n and m are integers.
+          script;typically “multisig-n-of-m”, where n and m are integers.
       original_address:
         type: string
         description: Optional If generating an OAP address, this represents the parent
@@ -3503,3 +3322,184 @@ definitions:
         type: string
         description: Optional The OAP address, if generated using the Generate Asset
           Address Endpoint.
+  btcCreateWebHookEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      id:
+        type: string
+        description: Identifier of the event; generated when a new request is created.
+      event:
+        type: string
+        description: Type of event; can be unconfirmed-tx, new-block, confirmed-tx,
+          tx-confirmation, double-spend-tx, tx-confidence.
+      hash:
+        type: string
+        description: optional Only objects with a matching hash will be sent. The
+          hash can either be for a block or a transaction.
+      wallet_name:
+        type: string
+        description: optional Only transactions associated with the given wallet will
+          be sent; can use a regular or HD wallet name. If used, requires a user token.
+      token:
+        type: string
+        description: optional Required if wallet_name is used, though generally we
+          advise users to include it (as they can reach API throttling thresholds
+          rapidly).
+      address:
+        type: string
+        description: optional Only transactions associated with the given address
+          will be sent. A wallet name can also be used instead of an address, which
+          will then match on any address in the wallet.
+      confirmations:
+        type: integer
+        format: int32
+        description: optional Used in concert with the tx-confirmation event type
+          to set the number of confirmations desired for which to receive an update.
+          You’ll receive an updated TX for every confirmation up to this amount. The
+          maximum allowed is 10; if not set, it will default to 6.
+      confidence:
+        type: number
+        format: float
+        description: optional Used in concert with the tx-confidence event type to
+          set the minimum confidence for which you’ll receive a notification. You’ll
+          receive a TX once this threshold is met. Will accept any float between 0
+          and 1, exclusive; if not set, defaults to 0.99.
+      script:
+        type: string
+        description: 'optional Only transactions with an output script of the provided
+          type will be sent. The recognized types of scripts are: pay-to-pubkey-hash,
+          pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes
+          called OP_RETURN), empty or unknown.'
+      url:
+        type: string
+        description: optional Callback URL for this Event’s WebHook; not applicable
+          for WebSockets usage.
+      callback_errors:
+        type: integer
+        format: int32
+        description: Number of errors when attempting to POST to callback URL; not
+          applicable for WebSockets usage.
+  btcEvent:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Identifier of the event; generated when a new request is created.
+      event:
+        type: string
+        description: Type of event; can be unconfirmed-tx, new-block, confirmed-tx,
+          tx-confirmation, double-spend-tx, tx-confidence.
+      hash:
+        type: string
+        description: optional Only objects with a matching hash will be sent. The
+          hash can either be for a block or a transaction.
+      wallet_name:
+        type: string
+        description: optional Only transactions associated with the given wallet will
+          be sent; can use a regular or HD wallet name. If used, requires a user token.
+      token:
+        type: string
+        description: optional Required if wallet_name is used, though generally we
+          advise users to include it (as they can reach API throttling thresholds
+          rapidly).
+      address:
+        type: string
+        description: optional Only transactions associated with the given address
+          will be sent. A wallet name can also be used instead of an address, which
+          will then match on any address in the wallet.
+      confirmations:
+        type: integer
+        format: int32
+        description: optional Used in concert with the tx-confirmation event type
+          to set the number of confirmations desired for which to receive an update.
+          You’ll receive an updated TX for every confirmation up to this amount. The
+          maximum allowed is 10; if not set, it will default to 6.
+      confidence:
+        type: number
+        format: float
+        description: optional Used in concert with the tx-confidence event type to
+          set the minimum confidence for which you’ll receive a notification. You’ll
+          receive a TX once this threshold is met. Will accept any float between 0
+          and 1, exclusive; if not set, defaults to 0.99.
+      script:
+        type: string
+        description: 'optional Only transactions with an output script of the provided
+          type will be sent. The recognized types of scripts are: pay-to-pubkey-hash,
+          pay-to-multi-pubkey-hash, pay-to-pubkey, pay-to-script-hash, null-data (sometimes
+          called OP_RETURN), empty or unknown.'
+      url:
+        type: string
+        description: optional Callback URL for this Event’s WebHook; not applicable
+          for WebSockets usage.
+      callback_errors:
+        type: integer
+        format: int32
+        description: Number of errors when attempting to POST to callback URL; not
+          applicable for WebSockets usage.
+  btcEvents:
+    type: object
+    properties:
+      event:
+        type: array
+        items:
+          $ref: '#/definitions/btcEvent'
+  btcKeyValues:
+    type: object
+    properties:
+      key_pairs:
+        type: object
+        additionalProperties:
+          type: string
+  btcPutMetadataAddressEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      key_pairs:
+        type: object
+        additionalProperties:
+          type: string
+      address:
+        type: string
+      private:
+        type: boolean
+        format: boolean
+        description: If private is true, it will set/update privately stored metadata
+          under your token. Otherwise, sets public metadata. If not set, it defaults
+          to false, setting public metadata.
+  btcPutMetadataBlockhashEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      key_pairs:
+        type: object
+        additionalProperties:
+          type: string
+      block_hash:
+        type: string
+      private:
+        type: boolean
+        format: boolean
+        description: If private is true, it will set/update privately stored metadata
+          under your token. Otherwise, sets public metadata. If not set, it defaults
+          to false, setting public metadata.
+  btcPutMetadataTxhashEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/btcNetworkAllowingAlias'
+      key_pairs:
+        type: object
+        additionalProperties:
+          type: string
+      txhash:
+        type: string
+      private:
+        type: boolean
+        format: boolean
+        description: If private is true, it will set/update privately stored metadata
+          under your token. Otherwise, sets public metadata. If not set, it defaults
+          to false, setting public metadata.

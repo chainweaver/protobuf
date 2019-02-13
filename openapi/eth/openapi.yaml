@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: addressService.proto
+  title: contractService.proto
   version: version not set
 schemes:
 - http
@@ -10,14 +10,14 @@ consumes:
 produces:
 - application/json
 paths:
-  /eth/{network}/contracts:
+  /eth/{network}/addrs:
     post:
-      operationId: CreateContractEndpoint
+      operationId: GenerateAddressEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ethContracts'
+            $ref: '#/definitions/ethAddressKeychain'
       parameters:
       - name: network
         in: path
@@ -32,17 +32,17 @@ paths:
         in: body
         required: true
         schema:
-          $ref: '#/definitions/ethCreateContractEndpointRequest'
+          $ref: '#/definitions/ethGenerateAddressEndpointRequest'
       tags:
-      - ContractService
-  /eth/{network}/contracts/{query_address}:
+      - AddressService
+  /eth/{network}/addrs/{address}:
     get:
-      operationId: ContractAddressEndpoint
+      operationId: AddressEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ethContract'
+            $ref: '#/definitions/ethAddress'
       parameters:
       - name: network
         in: path
@@ -53,57 +53,51 @@ paths:
         - main
         - ROPSTEN
         - ropsten
-      - name: query_address
+      - name: address
         in: path
         required: true
         type: string
-      - name: token
+      - name: before
+        description: Filters response to only include transactions below before height
+          in the blockchain.
         in: query
         required: false
-        type: string
+        type: integer
+        format: int32
+      - name: after
+        description: Filters response to only include transactions above after height
+          in the blockchain.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: limit
+        description: limit sets the minimum number of returned TXRefs; there can be
+          less if there are less than limit TXRefs associated with this address, but
+          there can be more in the rare case of more TXRefs in the block at the bottom
+          of your call. This ensures paging by block height never misses TXRefs. Defaults
+          to 200, maximum is 2000.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: confirmations
+        description: If set, only returns the balance and TXRefs that have at least
+          this number of confirmations.
+        in: query
+        required: false
+        type: integer
+        format: int32
       tags:
-      - ContractService
-  /eth/{network}/contracts/{query_address}/{method}:
-    post:
-      operationId: CallContractMethodEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ethContract'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAIN
-        - main
-        - ROPSTEN
-        - ropsten
-      - name: query_address
-        in: path
-        required: true
-        type: string
-      - name: method
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/ethCallContractMethodEndpointRequest'
-      tags:
-      - ContractService
-  /eth/{network}/hooks:
+      - AddressService
+  /eth/{network}/addrs/{address}/balance:
     get:
-      operationId: ListWebHooksEndpoint
+      operationId: AddressBalanceEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ethEvents'
+            $ref: '#/definitions/ethAddress'
       parameters:
       - name: network
         in: path
@@ -114,91 +108,12 @@ paths:
         - main
         - ROPSTEN
         - ropsten
-      - name: token
-        in: query
-        required: false
+      - name: address
+        in: path
+        required: true
         type: string
       tags:
-      - WebHooksService
-    post:
-      operationId: CreateWebHookEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ethEvent'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAIN
-        - main
-        - ROPSTEN
-        - ropsten
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/ethCreateWebHookEndpointRequest'
-      tags:
-      - WebHooksService
-  /eth/{network}/hooks/{webhookid}:
-    get:
-      operationId: WebHookIDEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ethEvent'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAIN
-        - main
-        - ROPSTEN
-        - ropsten
-      - name: webhookid
-        in: path
-        required: true
-        type: string
-      - name: token
-        in: query
-        required: false
-        type: string
-      tags:
-      - WebHooksService
-    delete:
-      operationId: DeleteWebHookEndpoint
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ethNullValue'
-      parameters:
-      - name: network
-        in: path
-        required: true
-        type: string
-        enum:
-        - MAIN
-        - main
-        - ROPSTEN
-        - ropsten
-      - name: webhookid
-        in: path
-        required: true
-        type: string
-      - name: token
-        in: query
-        required: false
-        type: string
-      tags:
-      - WebHooksService
+      - AddressService
   /eth/{network}/txs:
     get:
       operationId: UnconfirmedTransactionsEndpoint
@@ -439,14 +354,37 @@ paths:
         format: int32
       tags:
       - BlockchainService
-  /eth/{network}/addrs:
-    post:
-      operationId: GenerateAddressEndpoint
+  /eth/{network}/hooks:
+    get:
+      operationId: ListWebHooksEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ethAddressKeychain'
+            $ref: '#/definitions/ethEvents'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAIN
+        - main
+        - ROPSTEN
+        - ropsten
+      - name: token
+        in: query
+        required: false
+        type: string
+      tags:
+      - WebHooksService
+    post:
+      operationId: CreateWebHookEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ethEvent'
       parameters:
       - name: network
         in: path
@@ -461,17 +399,17 @@ paths:
         in: body
         required: true
         schema:
-          $ref: '#/definitions/ethGenerateAddressEndpointRequest'
+          $ref: '#/definitions/ethCreateWebHookEndpointRequest'
       tags:
-      - AddressService
-  /eth/{network}/addrs/{address}:
+      - WebHooksService
+  /eth/{network}/hooks/{webhookid}:
     get:
-      operationId: AddressEndpoint
+      operationId: WebHookIDEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ethAddress'
+            $ref: '#/definitions/ethEvent'
       parameters:
       - name: network
         in: path
@@ -482,51 +420,23 @@ paths:
         - main
         - ROPSTEN
         - ropsten
-      - name: address
+      - name: webhookid
         in: path
         required: true
         type: string
-      - name: before
-        description: Filters response to only include transactions below before height
-          in the blockchain.
+      - name: token
         in: query
         required: false
-        type: integer
-        format: int32
-      - name: after
-        description: Filters response to only include transactions above after height
-          in the blockchain.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: limit
-        description: limit sets the minimum number of returned TXRefs; there can be
-          less if there are less than limit TXRefs associated with this address, but
-          there can be more in the rare case of more TXRefs in the block at the bottom
-          of your call. This ensures paging by block height never misses TXRefs. Defaults
-          to 200, maximum is 2000.
-        in: query
-        required: false
-        type: integer
-        format: int32
-      - name: confirmations
-        description: If set, only returns the balance and TXRefs that have at least
-          this number of confirmations.
-        in: query
-        required: false
-        type: integer
-        format: int32
+        type: string
       tags:
-      - AddressService
-  /eth/{network}/addrs/{address}/balance:
-    get:
-      operationId: AddressBalanceEndpoint
+      - WebHooksService
+    delete:
+      operationId: DeleteWebHookEndpoint
       responses:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ethAddress'
+            $ref: '#/definitions/ethNullValue'
       parameters:
       - name: network
         in: path
@@ -537,202 +447,190 @@ paths:
         - main
         - ROPSTEN
         - ropsten
-      - name: address
+      - name: webhookid
         in: path
         required: true
         type: string
+      - name: token
+        in: query
+        required: false
+        type: string
       tags:
-      - AddressService
+      - WebHooksService
+  /eth/{network}/contracts:
+    post:
+      operationId: CreateContractEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ethContracts'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAIN
+        - main
+        - ROPSTEN
+        - ropsten
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ethCreateContractEndpointRequest'
+      tags:
+      - ContractService
+  /eth/{network}/contracts/{query_address}:
+    get:
+      operationId: ContractAddressEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ethContract'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAIN
+        - main
+        - ROPSTEN
+        - ropsten
+      - name: query_address
+        in: path
+        required: true
+        type: string
+      - name: token
+        in: query
+        required: false
+        type: string
+      tags:
+      - ContractService
+  /eth/{network}/contracts/{query_address}/{method}:
+    post:
+      operationId: CallContractMethodEndpoint
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ethContract'
+      parameters:
+      - name: network
+        in: path
+        required: true
+        type: string
+        enum:
+        - MAIN
+        - main
+        - ROPSTEN
+        - ropsten
+      - name: query_address
+        in: path
+        required: true
+        type: string
+      - name: method
+        in: path
+        required: true
+        type: string
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ethCallContractMethodEndpointRequest'
+      tags:
+      - ContractService
 definitions:
-  ethCallContractMethodEndpointRequest:
+  ethAddress:
+    type: object
+    properties:
+      address:
+        type: string
+        description: The requested address.
+      total_received:
+        type: string
+        format: uint64
+        description: Total amount of confirmed wei received by this address.
+      total_sent:
+        type: string
+        format: uint64
+        description: Total amount of confirmed wei sent by this address.
+      balance:
+        type: string
+        format: uint64
+        description: Balance of confirmed wei on this address. (i.e., for transactions
+          whose confirmations > 0).
+      unconfirmed_balance:
+        type: string
+        format: uint64
+        description: Balance of unconfirmed wei on this address. Can be negative (if
+          unconfirmed transactions are just spending part of an address balance).
+          Only unconfirmed transactions (haven’t made it into a block) are included
+          in this calculation.
+      final_balance:
+        type: string
+        format: uint64
+        description: Total balance of wei, including confirmed and unconfirmed transactions,
+          for this address.
+      n_tx:
+        type: string
+        format: uint64
+        description: Number of confirmed transactions on this address. Only transactions
+          that have made it into a block (confirmations > 0) are counted.
+      unconfirmed_n_tx:
+        type: string
+        format: uint64
+        description: Number of unconfirmed transactions for this address. Only unconfirmed
+          transactions (confirmations == 0) are counted.
+      final_n_tx:
+        type: string
+        format: uint64
+        description: Final number of transactions, including confirmed and unconfirmed
+          transactions, for this address.
+      tx_url:
+        type: string
+        description: Optional To retrieve base URL transactions. To get the full URL,
+          concatenate this URL with a transaction’s hash.
+      txrefs:
+        type: array
+        items:
+          $ref: '#/definitions/ethTXRef'
+        description: Optional Array of transaction summaries for this address. Usually
+          only returned from the standard Address Endpoint.
+      unconfirmed_txrefs:
+        type: array
+        items:
+          $ref: '#/definitions/ethTXRef'
+        description: Optional All unconfirmed transaction summaries for this address.
+          Usually only returned from the standard Address Endpoint.
+      hasMore:
+        type: boolean
+        format: boolean
+        description: Optional If true, then the Address object contains more transactions
+          than shown. Useful for determining whether to poll the API for more transaction
+          information.
+  ethAddressKeychain:
+    type: object
+    properties:
+      address:
+        type: string
+        description: Standard address representation.
+      public:
+        type: string
+        description: Hex-encoded Public key.
+      private:
+        type: string
+        description: Hex-encoded Private key.
+  ethGenerateAddressEndpointRequest:
     type: object
     properties:
       network:
         $ref: '#/definitions/ethNetworkAllowingAlias'
-      query_address:
-        type: string
-      method:
-        type: string
-      solidity:
-        type: string
-        description: Solidity code of this contract; required when creating a contract.
-          In responses, only returned with contracts initially compiled by BlockCypher.
-      params:
-        type: array
-        items:
-          type: string
-        description: Parameters for either contract creation or method execution.
-      publish:
-        type: array
-        items:
-          type: string
-        description: Named contract(s) to publish; necessary to specify when first
-          creating a contract.
-      private:
-        type: string
-        description: Private key associated with a funded Ethereum external account
-          used to publish a contract or execute a method.
-      gas_limit:
-        type: integer
-        format: int32
-        description: Maximum amount of gas to use in contract creation or method execution.
-      value:
-        type: integer
-        format: int32
-        description: Amount (in wei) to transfer; can be used when creating a contract
-          or calling a method.
-      name:
-        type: string
-        description: Name of contract as published.
-      bin:
-        type: string
-        description: Hex-encoded binary compilation of this contract.
-      abi:
-        type: string
-        description: JSON-encoded ABI. Only returned with contracts initially compiled
-          by BlockCypher.
-      address:
-        type: string
-        description: Hex-encoded address of this contract.
-      created:
-        type: string
-        description: Timestamp when this contract was confirmed in the Ethereum blockchain.
-      creation_tx_hash:
-        type: string
-        description: Hex-encoded transaction hash that created this contract.
-      results:
-        type: array
-        items:
-          type: string
-        description: If this is a response from a calling a contract method, this
-          array of results may appear if the method returns any.
       token:
         type: string
-        title: Token
-  ethContract:
-    type: object
-    properties:
-      solidity:
-        type: string
-        description: Solidity code of this contract; required when creating a contract.
-          In responses, only returned with contracts initially compiled by BlockCypher.
-      params:
-        type: array
-        items:
-          type: string
-        description: Parameters for either contract creation or method execution.
-      publish:
-        type: array
-        items:
-          type: string
-        description: Named contract(s) to publish; necessary to specify when first
-          creating a contract.
-      private:
-        type: string
-        description: Private key associated with a funded Ethereum external account
-          used to publish a contract or execute a method.
-      gas_limit:
-        type: string
-        format: uint64
-        description: Maximum amount of gas to use in contract creation or method execution.
-      value:
-        type: string
-        format: uint64
-        description: Amount (in wei) to transfer; can be used when creating a contract
-          or calling a method.
-      name:
-        type: string
-        description: Name of contract as published.
-      bin:
-        type: string
-        description: Hex-encoded binary compilation of this contract.
-      abi:
-        type: string
-        description: JSON-encoded ABI. Only returned with contracts initially compiled
-          by BlockCypher.
-      address:
-        type: string
-        description: Hex-encoded address of this contract.
-      created:
-        type: string
-        description: Timestamp when this contract was confirmed in the Ethereum blockchain.
-      creation_tx_hash:
-        type: string
-        description: Hex-encoded transaction hash that created this contract.
-      results:
-        type: array
-        items:
-          type: string
-        description: If this is a response from a calling a contract method, this
-          array of results may appear if the method returns any.
-  ethContracts:
-    type: object
-    properties:
-      contract:
-        type: array
-        items:
-          $ref: '#/definitions/ethContract'
-  ethCreateContractEndpointRequest:
-    type: object
-    properties:
-      network:
-        $ref: '#/definitions/ethNetworkAllowingAlias'
-      solidity:
-        type: string
-        description: Solidity code of this contract; required when creating a contract.
-          In responses, only returned with contracts initially compiled by BlockCypher.
-      params:
-        type: array
-        items:
-          type: string
-        description: Parameters for either contract creation or method execution.
-      publish:
-        type: array
-        items:
-          type: string
-        description: Named contract(s) to publish; necessary to specify when first
-          creating a contract.
-      private:
-        type: string
-        description: Private key associated with a funded Ethereum external account
-          used to publish a contract or execute a method.
-      gas_limit:
-        type: integer
-        format: int32
-        description: Maximum amount of gas to use in contract creation or method execution.
-      value:
-        type: integer
-        format: int32
-        description: Amount (in wei) to transfer; can be used when creating a contract
-          or calling a method.
-      name:
-        type: string
-        description: Name of contract as published.
-      bin:
-        type: string
-        description: Hex-encoded binary compilation of this contract.
-      abi:
-        type: string
-        description: JSON-encoded ABI. Only returned with contracts initially compiled
-          by BlockCypher.
-      address:
-        type: string
-        description: Hex-encoded address of this contract.
-      created:
-        type: string
-        description: Timestamp when this contract was confirmed in the Ethereum blockchain.
-      creation_tx_hash:
-        type: string
-        description: Hex-encoded transaction hash that created this contract.
-      results:
-        type: array
-        items:
-          type: string
-        description: If this is a response from a calling a contract method, this
-          array of results may appear if the method returns any.
-      token:
-        type: string
-        title: Token
   ethNetworkAllowingAlias:
     type: string
     enum:
@@ -741,91 +639,54 @@ definitions:
     - ROPSTEN
     - ropsten
     default: MAIN
-  ethCreateWebHookEndpointRequest:
+  ethTXRef:
     type: object
     properties:
-      network:
-        $ref: '#/definitions/ethNetworkAllowingAlias'
-      id:
-        type: string
-        description: Identifier of the event; generated when a new request is created.
-      event:
-        type: string
-        description: Type of event; can be unconfirmed-tx, new-block, confirmed-tx,
-          tx-confirmation, double-spend-tx.
-      hash:
-        type: string
-        description: optional Only objects with a matching hash will be sent. The
-          hash can either be for a block or a transaction.
-      address:
-        type: string
-        description: optional Only transactions associated with the given address
-          will be sent.
-      confirmations:
+      block_height:
         type: integer
         format: int32
-        description: optional Used in concert with the tx-confirmation event type
-          to set the number of confirmations desired for which to receive an update.
-          You’ll receive an updated TX for every confirmation up to this amount. The
-          maximum allowed is 10; if not set, it will default to 6.
-      url:
+        description: Height of the block that contains this transaction input/output.
+          If it’s unconfirmed, this will equal -1.
+      tx_hash:
         type: string
-        description: optional Callback URL for this Event’s WebHook; not applicable
-          for WebSockets usage.
-      callback_errors:
-        type: integer
-        format: int32
-        description: Number of errors when attempting to POST to callback URL; not
-          applicable for WebSockets usage.
-      token:
+        description: The hash of the transaction containing this input/output.
+      tx_input_n:
         type: string
-        title: Token
-  ethEvent:
-    type: object
-    properties:
-      id:
+        format: uint64
+        description: Index of this input in the enclosing transaction. 0 if it’s an
+          input, -1 if it’s an output.
+      tx_output_n:
         type: string
-        description: Identifier of the event; generated when a new request is created.
-      event:
+        format: int64
+        description: Index of this output in the enclosing transaction. -1 if it’s
+          an input, 0 if it’s an output.
+      value:
         type: string
-        description: Type of event; can be unconfirmed-tx, new-block, confirmed-tx,
-          tx-confirmation, double-spend-tx.
-      hash:
-        type: string
-        description: optional Only objects with a matching hash will be sent. The
-          hash can either be for a block or a transaction.
-      address:
-        type: string
-        description: optional Only transactions associated with the given address
-          will be sent.
+        format: uint64
+        description: The value transfered by this input/output in wei exchanged in
+          the enclosing transaction.
+      double_spend:
+        type: boolean
+        format: boolean
+        description: true if this is an attempted double spend; false otherwise.
       confirmations:
         type: string
         format: uint64
-        description: optional Used in concert with the tx-confirmation event type
-          to set the number of confirmations desired for which to receive an update.
-          You’ll receive an updated TX for every confirmation up to this amount. The
-          maximum allowed is 10; if not set, it will default to 6.
-      url:
-        type: string
-        description: optional Callback URL for this Event’s WebHook; not applicable
-          for WebSockets usage.
-      callback_errors:
+        description: Number of subsequent blocks, including the block the transaction
+          is in. Unconfirmed transactions have 0 confirmations.
+      ref_balance:
         type: string
         format: uint64
-        description: Number of errors when attempting to POST to callback URL; not
-          applicable for WebSockets usage.
-      filter:
+        description: Optional The past balance of the parent address the moment this
+          transaction was confirmed. Not present for unconfirmed transactions.
+      confirmed:
         type: string
-        title: filter
-  ethEvents:
-    type: object
-    properties:
-      event:
-        type: array
-        items:
-          $ref: '#/definitions/ethEvent'
-  ethNullValue:
-    type: object
+        description: Optional Time at which transaction was included in a block; only
+          present for confirmed transactions.
+      double_of:
+        type: string
+        description: Optional If this transaction is a double-spend (i.e. double_spend
+          == true) then this is the hash of the transaction it’s double-spending.
   ethCreateTransactionEndpointRequest:
     type: object
     properties:
@@ -1356,138 +1217,277 @@ definitions:
         description: Optional The hash of the latest confirmed block in the latest
           fork of the blockchain; when no competing blockchain fork present, not returned
           with endpoints that return Blockchains.
-  ethAddress:
-    type: object
-    properties:
-      address:
-        type: string
-        description: The requested address.
-      total_received:
-        type: string
-        format: uint64
-        description: Total amount of confirmed wei received by this address.
-      total_sent:
-        type: string
-        format: uint64
-        description: Total amount of confirmed wei sent by this address.
-      balance:
-        type: string
-        format: uint64
-        description: Balance of confirmed wei on this address. (i.e., for transactions
-          whose confirmations > 0).
-      unconfirmed_balance:
-        type: string
-        format: uint64
-        description: Balance of unconfirmed wei on this address. Can be negative (if
-          unconfirmed transactions are just spending part of an address balance).
-          Only unconfirmed transactions (haven’t made it into a block) are included
-          in this calculation.
-      final_balance:
-        type: string
-        format: uint64
-        description: Total balance of wei, including confirmed and unconfirmed transactions,
-          for this address.
-      n_tx:
-        type: string
-        format: uint64
-        description: Number of confirmed transactions on this address. Only transactions
-          that have made it into a block (confirmations > 0) are counted.
-      unconfirmed_n_tx:
-        type: string
-        format: uint64
-        description: Number of unconfirmed transactions for this address. Only unconfirmed
-          transactions (confirmations == 0) are counted.
-      final_n_tx:
-        type: string
-        format: uint64
-        description: Final number of transactions, including confirmed and unconfirmed
-          transactions, for this address.
-      tx_url:
-        type: string
-        description: Optional To retrieve base URL transactions. To get the full URL,
-          concatenate this URL with a transaction’s hash.
-      txrefs:
-        type: array
-        items:
-          $ref: '#/definitions/ethTXRef'
-        description: Optional Array of transaction summaries for this address. Usually
-          only returned from the standard Address Endpoint.
-      unconfirmed_txrefs:
-        type: array
-        items:
-          $ref: '#/definitions/ethTXRef'
-        description: Optional All unconfirmed transaction summaries for this address.
-          Usually only returned from the standard Address Endpoint.
-      hasMore:
-        type: boolean
-        format: boolean
-        description: Optional If true, then the Address object contains more transactions
-          than shown. Useful for determining whether to poll the API for more transaction
-          information.
-  ethAddressKeychain:
-    type: object
-    properties:
-      address:
-        type: string
-        description: Standard address representation.
-      public:
-        type: string
-        description: Hex-encoded Public key.
-      private:
-        type: string
-        description: Hex-encoded Private key.
-  ethGenerateAddressEndpointRequest:
+  ethCreateWebHookEndpointRequest:
     type: object
     properties:
       network:
         $ref: '#/definitions/ethNetworkAllowingAlias'
-      token:
+      id:
         type: string
-  ethTXRef:
-    type: object
-    properties:
-      block_height:
+        description: Identifier of the event; generated when a new request is created.
+      event:
+        type: string
+        description: Type of event; can be unconfirmed-tx, new-block, confirmed-tx,
+          tx-confirmation, double-spend-tx.
+      hash:
+        type: string
+        description: optional Only objects with a matching hash will be sent. The
+          hash can either be for a block or a transaction.
+      address:
+        type: string
+        description: optional Only transactions associated with the given address
+          will be sent.
+      confirmations:
         type: integer
         format: int32
-        description: Height of the block that contains this transaction input/output.
-          If it’s unconfirmed, this will equal -1.
-      tx_hash:
+        description: optional Used in concert with the tx-confirmation event type
+          to set the number of confirmations desired for which to receive an update.
+          You’ll receive an updated TX for every confirmation up to this amount. The
+          maximum allowed is 10; if not set, it will default to 6.
+      url:
         type: string
-        description: The hash of the transaction containing this input/output.
-      tx_input_n:
+        description: optional Callback URL for this Event’s WebHook; not applicable
+          for WebSockets usage.
+      callback_errors:
+        type: integer
+        format: int32
+        description: Number of errors when attempting to POST to callback URL; not
+          applicable for WebSockets usage.
+      token:
         type: string
-        format: uint64
-        description: Index of this input in the enclosing transaction. 0 if it’s an
-          input, -1 if it’s an output.
-      tx_output_n:
+        title: Token
+  ethEvent:
+    type: object
+    properties:
+      id:
         type: string
-        format: int64
-        description: Index of this output in the enclosing transaction. -1 if it’s
-          an input, 0 if it’s an output.
-      value:
+        description: Identifier of the event; generated when a new request is created.
+      event:
         type: string
-        format: uint64
-        description: The value transfered by this input/output in wei exchanged in
-          the enclosing transaction.
-      double_spend:
-        type: boolean
-        format: boolean
-        description: true if this is an attempted double spend; false otherwise.
+        description: Type of event; can be unconfirmed-tx, new-block, confirmed-tx,
+          tx-confirmation, double-spend-tx.
+      hash:
+        type: string
+        description: optional Only objects with a matching hash will be sent. The
+          hash can either be for a block or a transaction.
+      address:
+        type: string
+        description: optional Only transactions associated with the given address
+          will be sent.
       confirmations:
         type: string
         format: uint64
-        description: Number of subsequent blocks, including the block the transaction
-          is in. Unconfirmed transactions have 0 confirmations.
-      ref_balance:
+        description: optional Used in concert with the tx-confirmation event type
+          to set the number of confirmations desired for which to receive an update.
+          You’ll receive an updated TX for every confirmation up to this amount. The
+          maximum allowed is 10; if not set, it will default to 6.
+      url:
+        type: string
+        description: optional Callback URL for this Event’s WebHook; not applicable
+          for WebSockets usage.
+      callback_errors:
         type: string
         format: uint64
-        description: Optional The past balance of the parent address the moment this
-          transaction was confirmed. Not present for unconfirmed transactions.
-      confirmed:
+        description: Number of errors when attempting to POST to callback URL; not
+          applicable for WebSockets usage.
+      filter:
         type: string
-        description: Optional Time at which transaction was included in a block; only
-          present for confirmed transactions.
-      double_of:
+        title: filter
+  ethEvents:
+    type: object
+    properties:
+      event:
+        type: array
+        items:
+          $ref: '#/definitions/ethEvent'
+  ethNullValue:
+    type: object
+  ethCallContractMethodEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/ethNetworkAllowingAlias'
+      query_address:
         type: string
-        description: Optional If this transaction is a double-spend (i.e. double_spend
-          == true) then this is the hash of the transaction it’s double-spending.
+      method:
+        type: string
+      solidity:
+        type: string
+        description: Solidity code of this contract; required when creating a contract.
+          In responses, only returned with contracts initially compiled by BlockCypher.
+      params:
+        type: array
+        items:
+          type: string
+        description: Parameters for either contract creation or method execution.
+      publish:
+        type: array
+        items:
+          type: string
+        description: Named contract(s) to publish; necessary to specify when first
+          creating a contract.
+      private:
+        type: string
+        description: Private key associated with a funded Ethereum external account
+          used to publish a contract or execute a method.
+      gas_limit:
+        type: integer
+        format: int32
+        description: Maximum amount of gas to use in contract creation or method execution.
+      value:
+        type: integer
+        format: int32
+        description: Amount (in wei) to transfer; can be used when creating a contract
+          or calling a method.
+      name:
+        type: string
+        description: Name of contract as published.
+      bin:
+        type: string
+        description: Hex-encoded binary compilation of this contract.
+      abi:
+        type: string
+        description: JSON-encoded ABI. Only returned with contracts initially compiled
+          by BlockCypher.
+      address:
+        type: string
+        description: Hex-encoded address of this contract.
+      created:
+        type: string
+        description: Timestamp when this contract was confirmed in the Ethereum blockchain.
+      creation_tx_hash:
+        type: string
+        description: Hex-encoded transaction hash that created this contract.
+      results:
+        type: array
+        items:
+          type: string
+        description: If this is a response from a calling a contract method, this
+          array of results may appear if the method returns any.
+      token:
+        type: string
+        title: Token
+  ethContract:
+    type: object
+    properties:
+      solidity:
+        type: string
+        description: Solidity code of this contract; required when creating a contract.
+          In responses, only returned with contracts initially compiled by BlockCypher.
+      params:
+        type: array
+        items:
+          type: string
+        description: Parameters for either contract creation or method execution.
+      publish:
+        type: array
+        items:
+          type: string
+        description: Named contract(s) to publish; necessary to specify when first
+          creating a contract.
+      private:
+        type: string
+        description: Private key associated with a funded Ethereum external account
+          used to publish a contract or execute a method.
+      gas_limit:
+        type: string
+        format: uint64
+        description: Maximum amount of gas to use in contract creation or method execution.
+      value:
+        type: string
+        format: uint64
+        description: Amount (in wei) to transfer; can be used when creating a contract
+          or calling a method.
+      name:
+        type: string
+        description: Name of contract as published.
+      bin:
+        type: string
+        description: Hex-encoded binary compilation of this contract.
+      abi:
+        type: string
+        description: JSON-encoded ABI. Only returned with contracts initially compiled
+          by BlockCypher.
+      address:
+        type: string
+        description: Hex-encoded address of this contract.
+      created:
+        type: string
+        description: Timestamp when this contract was confirmed in the Ethereum blockchain.
+      creation_tx_hash:
+        type: string
+        description: Hex-encoded transaction hash that created this contract.
+      results:
+        type: array
+        items:
+          type: string
+        description: If this is a response from a calling a contract method, this
+          array of results may appear if the method returns any.
+  ethContracts:
+    type: object
+    properties:
+      contract:
+        type: array
+        items:
+          $ref: '#/definitions/ethContract'
+  ethCreateContractEndpointRequest:
+    type: object
+    properties:
+      network:
+        $ref: '#/definitions/ethNetworkAllowingAlias'
+      solidity:
+        type: string
+        description: Solidity code of this contract; required when creating a contract.
+          In responses, only returned with contracts initially compiled by BlockCypher.
+      params:
+        type: array
+        items:
+          type: string
+        description: Parameters for either contract creation or method execution.
+      publish:
+        type: array
+        items:
+          type: string
+        description: Named contract(s) to publish; necessary to specify when first
+          creating a contract.
+      private:
+        type: string
+        description: Private key associated with a funded Ethereum external account
+          used to publish a contract or execute a method.
+      gas_limit:
+        type: integer
+        format: int32
+        description: Maximum amount of gas to use in contract creation or method execution.
+      value:
+        type: integer
+        format: int32
+        description: Amount (in wei) to transfer; can be used when creating a contract
+          or calling a method.
+      name:
+        type: string
+        description: Name of contract as published.
+      bin:
+        type: string
+        description: Hex-encoded binary compilation of this contract.
+      abi:
+        type: string
+        description: JSON-encoded ABI. Only returned with contracts initially compiled
+          by BlockCypher.
+      address:
+        type: string
+        description: Hex-encoded address of this contract.
+      created:
+        type: string
+        description: Timestamp when this contract was confirmed in the Ethereum blockchain.
+      creation_tx_hash:
+        type: string
+        description: Hex-encoded transaction hash that created this contract.
+      results:
+        type: array
+        items:
+          type: string
+        description: If this is a response from a calling a contract method, this
+          array of results may appear if the method returns any.
+      token:
+        type: string
+        title: Token
