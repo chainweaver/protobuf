@@ -27,7 +27,7 @@ jobs:
 
   render-protobuf-document:
     docker:
-      - image: circleci/node:8.15
+      - image: circleci/buildpack-deps
     steps:
       - checkout
       - run:
@@ -55,7 +55,7 @@ jobs:
 
   render-openapi-document:
     docker:
-      - image: circleci/node:8.15
+      - image: circleci/buildpack-deps
     steps:
       - checkout
       - run:
