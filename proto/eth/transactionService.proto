@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package fairwaycorp.blockchainprotobuf.eth;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/eth";
+package chainweaver.protobuf.eth;
+option go_package = "github.com/chainweaver/protobuf/protoc-gen-go/eth";
 
 import "google/api/annotations.proto";
 import "transactionMessage.proto";

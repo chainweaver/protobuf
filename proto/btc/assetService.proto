@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package fairwaycorp.blockchainprotobuf.btc;
-option go_package = "github.com/fairway-corp/blockchain-protobuf/protoc-gen-go/btc";
+package chainweaver.protobuf.btc;
+option go_package = "github.com/chainweaver/protobuf/protoc-gen-go/btc";
 
 import "google/api/annotations.proto";
 import "assetMessage.proto";
