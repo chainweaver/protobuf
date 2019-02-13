@@ -2,52 +2,31 @@
 
 echo "Rendering protobuf document start!"
 
-if [ ! -e ./protoc-gen-doc ]; then
-  mkdir ./protoc-gen-doc
+if [ ! -e ./protoc-gen-doc/btc ]; then
+  mkdir ./protoc-gen-doc/btc
+fi
+if [ ! -e ./protoc-gen-doc/eth ]; then
+  mkdir ./protoc-gen-doc/eth
 fi
 
+btcProtoFiles=""
+for file in `\find ./proto/btc -maxdepth 1 -type f`; do
+  btcProtoFiles+="$file "
+done
 protoc \
   -I./proto/btc \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --doc_out=./protoc-gen-doc --doc_opt=html,btc.html \
-  commonMessage.proto \
-  assetMessage.proto \
-  assetService.proto \
-  blockchainMessage.proto \
-  blockchainService.proto \
-  microtransactionMessage.proto \
-  microtransactionService.proto \
-  walletMessage.proto \
-  walletService.proto \
-  metadataMessage.proto \
-  metadataService.proto \
-  addressMessage.proto \
-  addressService.proto \
-  analyticsMessage.proto \
-  analyticsService.proto \
-  transactionMessage.proto \
-  transactionService.proto \
-  addressforwardingMessage.proto \
-  addressforwardingService.proto \
-  confidencefactorMessage.proto \
-  confidencefactorService.proto \
-  webhooksMessage.proto \
-  webhooksService.proto
+  --doc_out=./protoc-gen-doc/btc --doc_opt=html,doc.html \
+  `echo $btcProtoFiles`
 
+ethProtoFiles=""
+for file in `\find ./proto/eth -maxdepth 1 -type f`; do
+  ethProtoFiles+="$file "
+done
 protoc \
   -I./proto/eth \
   -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --doc_out=./protoc-gen-doc --doc_opt=html,eth.html \
-  commonMessage.proto \
-  blockchainMessage.proto \
-  blockchainService.proto \
-  addressMessage.proto \
-  addressService.proto \
-  transactionMessage.proto \
-  transactionService.proto \
-  webhooksMessage.proto \
-  webhooksService.proto \
-  contractMessage.proto \
-  contractService.proto
+  --doc_out=./protoc-gen-doc/eth --doc_opt=html,doc.html \
+  `echo $ethProtoFiles`
 
 echo "Rendering protobuf document start!"
