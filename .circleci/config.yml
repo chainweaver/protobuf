@@ -27,8 +27,7 @@ jobs:
 
   render-protobuf-document:
     machine:
-      image: circleci/classic:edge
-      docker_layer_caching: true
+      image: circleci/node:8.15
     steps:
       - checkout
       - run:
@@ -41,11 +40,22 @@ jobs:
       - store_artifacts:
           path: protoc-gen-doc/eth/doc.html
           destination: protobuf
+      - run:
+          name: Notify artifacts url to slack
+          command: |
+            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq '.[].url')
+            curl -X POST --data-urlencode \
+              "payload={\
+                \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
+                \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
+                \"text\": \"Please check the protobuf document\n$ARTIFACTS_URL\",\
+                \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
+              }" \
+              $NOTIFICATION_SLACK_WEBHOOK_URL
 
   render-openapi-document:
     machine:
-      image: circleci/classic:edge
-      docker_layer_caching: true
+      image: circleci/node:8.15
     steps:
       - checkout
       - run:
@@ -53,25 +63,24 @@ jobs:
           command: |
             make render-openapi-document
       - store_artifacts:
-          path: openapi/btc/openapi.html
-          destination: openapi
+          path: openapi/btc
       - store_artifacts:
-          path: openapi/eth/openapi.html
-          destination: openapi
-
-  notify-slack:
-    docker:
-      - image: circleci/node:8.15
-    steps:
-      - checkout
+          path: openapi/eth
+      # - store_artifacts:
+      #     path: openapi/btc/openapi.html
+      #     destination: openapi
+      # - store_artifacts:
+      #     path: openapi/eth/openapi.html
+      #     destination: openapi
       - run:
-          name: Setting heroku
+          name: Notify artifacts url to slack
           command: |
+            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq '.[].url')
             curl -X POST --data-urlencode \
               "payload={\
                 \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
                 \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
-                \"text\": \"Please check the document\n[OpenAPI] https://example.com\n[protobuf] https://example.com\",\
+                \"text\": \"Please check the OpenAPI document\n$ARTIFACTS_URL\",\
                 \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
               }" \
               $NOTIFICATION_SLACK_WEBHOOK_URL
@@ -93,13 +102,6 @@ workflows:
       - render-openapi-document:
           requires:
            - build
-          filters:
-            tags:
-              only: /.*/
-      - notify-slack:
-          requires:
-           - render-protobuf-document
-           - render-openapi-document
           filters:
             tags:
               only: /.*/
