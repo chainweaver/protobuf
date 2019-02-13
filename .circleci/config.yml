@@ -24,7 +24,7 @@ jobs:
 
 workflows:
   version: 2
-  chainweaver-website:
+  chainweaver-protobuf:
     jobs:
       - build:
           filters:
