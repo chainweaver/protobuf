@@ -27,7 +27,7 @@ jobs:
 
   render-protobuf-document:
     machine:
-      image: circleci/buildpack-deps
+      image: circleci/classic:edge
       docker_layer_caching: true
     steps:
       - checkout
