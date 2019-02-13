@@ -36,7 +36,7 @@ jobs:
           command: |
             make render-protobuf-document
       - store_artifacts:
-          path: /project/protobuf/protoc-gen-doc
+          path: project/protoc-gen-doc
 
   render-openapi-document:
     machine:
@@ -49,7 +49,7 @@ jobs:
           command: |
             make render-openapi-document
       - store_artifacts:
-          path: /project/protobuf/openapi
+          path: project/openapi
 
   notify-slack:
     docker:
