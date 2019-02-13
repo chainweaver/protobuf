@@ -37,6 +37,7 @@ jobs:
             make render-protobuf-document
       - store_artifacts:
           path: project/protoc-gen-doc
+          destination: protoc-gen-doc
 
   render-openapi-document:
     machine:
@@ -50,6 +51,7 @@ jobs:
             make render-openapi-document
       - store_artifacts:
           path: project/openapi
+          destination: openapi
 
   notify-slack:
     docker:
@@ -59,13 +61,11 @@ jobs:
       - run:
           name: Setting heroku
           command: |
-            export HEROKU_APP_ID=$(.circleci/setHerokuAppId.sh chainweaver-io)
-
             curl -X POST --data-urlencode \
               "payload={\
                 \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
                 \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
-                \"text\": \"Please check the test site!\nhttps://$HEROKU_APP_ID.herokuapp.com\n\nPlease approve it, if there is no problem\nhttps://circleci.com/workflow-run/$CIRCLE_WORKFLOW_ID\",\
+                \"text\": \"Please check the document\n[OpenAPI] https://example.com\n[protobuf] https://example.com\",\
                 \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
               }" \
               $NOTIFICATION_SLACK_WEBHOOK_URL
