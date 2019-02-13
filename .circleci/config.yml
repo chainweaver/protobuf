@@ -1,0 +1,99 @@
+version: 2
+jobs:
+  build:
+    machine:
+      image: circleci/classic:edge
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Building protobuf
+          command: |
+            make build
+      - run:
+          name: Git commit and push
+          command: |
+            if [ ! -z "$(git status --porcelain)" ]; then
+              # if working directory not clean
+              git config --global user.email "$GIT_USER_EMAIL"
+              git config --global user.name "$GIT_USER"
+
+              git add .
+              git commit -m "[ci skip] Auto build"
+
+              git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
+              git push upstream $CIRCLE_BRANCH
+            fi
+
+  render-protobuf-document:
+    machine:
+      image: circleci/classic:edge
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Rendering protobuf document
+          command: |
+            make render-protobuf-document
+      - store_artifacts:
+          path: protoc-gen-doc
+      - run:
+          name: Notify artifacts url to slack
+          command: |
+            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
+            curl -X POST --data-urlencode \
+              "payload={\
+                \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
+                \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
+                \"text\": \"Please check the protobuf document\n$ARTIFACTS_URL\",\
+                \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
+              }" \
+              $NOTIFICATION_SLACK_WEBHOOK_URL
+
+  render-openapi-document:
+    machine:
+      image: circleci/classic:edge
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Rendering OpenAPI document
+          command: |
+            make render-openapi-document
+      - store_artifacts:
+          path: openapi/btc.html
+      - store_artifacts:
+          path: openapi/eth.html
+      - run:
+          name: Notify artifacts url to slack
+          command: |
+            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
+            curl -X POST --data-urlencode \
+              "payload={\
+                \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
+                \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
+                \"text\": \"Please check the OpenAPI document\n$ARTIFACTS_URL\",\
+                \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
+              }" \
+              $NOTIFICATION_SLACK_WEBHOOK_URL
+
+workflows:
+  version: 2
+  chainweaver-protobuf:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+      - render-protobuf-document:
+          requires:
+           - build
+          filters:
+            tags:
+              only: /.*/
+      - render-openapi-document:
+          requires:
+           - build
+          filters:
+            tags:
+              only: /.*/

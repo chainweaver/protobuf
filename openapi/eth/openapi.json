@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "addressService.proto",
+    "title": "webhooksService.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,6 +15,282 @@
     "application/json"
   ],
   "paths": {
+    "/eth/{network}/addrs": {
+      "post": {
+        "operationId": "GenerateAddressEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethAddressKeychain"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ethGenerateAddressEndpointRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AddressService"
+        ]
+      }
+    },
+    "/eth/{network}/addrs/{address}": {
+      "get": {
+        "operationId": "AddressEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethAddress"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "before",
+            "description": "Filters response to only include transactions below before height in the blockchain.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "after",
+            "description": "Filters response to only include transactions above after height in the blockchain.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "description": "limit sets the minimum number of returned TXRefs; there can be less if there are less than limit TXRefs associated with this address, but there can be more in the rare case of more TXRefs in the block at the bottom of your call. This ensures paging by block height never misses TXRefs. Defaults to 200, maximum is 2000.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "confirmations",
+            "description": "If set, only returns the balance and TXRefs that have at least this number of confirmations.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "AddressService"
+        ]
+      }
+    },
+    "/eth/{network}/addrs/{address}/balance": {
+      "get": {
+        "operationId": "AddressBalanceEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethAddress"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "address",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AddressService"
+        ]
+      }
+    },
+    "/eth/{network}": {
+      "get": {
+        "operationId": "ChainEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethBlockchain"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          }
+        ],
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    },
+    "/eth/{network}/blocks/{block_hash}": {
+      "get": {
+        "operationId": "BlockHashEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethBlock"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "block_hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "txstart",
+            "description": "Filters response to only include transaction hashes after txstart in the block.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    },
+    "/eth/{network}/blocks/{block_height}": {
+      "get": {
+        "operationId": "BlockHeightEndpoint",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ethBlock"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "network",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "main",
+              "ROPSTEN",
+              "ropsten"
+            ]
+          },
+          {
+            "name": "block_height",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "txstart",
+            "description": "Filters response to only include transaction hashes after txstart in the block.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "BlockchainService"
+        ]
+      }
+    },
     "/eth/{network}/contracts": {
       "post": {
         "operationId": "CreateContractEndpoint",
@@ -142,160 +418,6 @@
         ],
         "tags": [
           "ContractService"
-        ]
-      }
-    },
-    "/eth/{network}/hooks": {
-      "get": {
-        "operationId": "ListWebHooksEndpoint",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ethEvents"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
-            ]
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "WebHooksService"
-        ]
-      },
-      "post": {
-        "operationId": "CreateWebHookEndpoint",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ethEvent"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
-            ]
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ethCreateWebHookEndpointRequest"
-            }
-          }
-        ],
-        "tags": [
-          "WebHooksService"
-        ]
-      }
-    },
-    "/eth/{network}/hooks/{webhookid}": {
-      "get": {
-        "operationId": "WebHookIDEndpoint",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ethEvent"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
-            ]
-          },
-          {
-            "name": "webhookid",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "WebHooksService"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteWebHookEndpoint",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ethNullValue"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
-            ]
-          },
-          {
-            "name": "webhookid",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "WebHooksService"
         ]
       }
     },
@@ -517,44 +639,14 @@
         ]
       }
     },
-    "/eth/{network}": {
+    "/eth/{network}/hooks": {
       "get": {
-        "operationId": "ChainEndpoint",
+        "operationId": "ListWebHooksEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethBlockchain"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
-            ]
-          }
-        ],
-        "tags": [
-          "BlockchainService"
-        ]
-      }
-    },
-    "/eth/{network}/blocks/{block_hash}": {
-      "get": {
-        "operationId": "BlockHashEndpoint",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ethBlock"
+              "$ref": "#/definitions/ethEvents"
             }
           }
         },
@@ -572,93 +664,23 @@
             ]
           },
           {
-            "name": "block_hash",
-            "in": "path",
-            "required": true,
+            "name": "token",
+            "in": "query",
+            "required": false,
             "type": "string"
-          },
-          {
-            "name": "txstart",
-            "description": "Filters response to only include transaction hashes after txstart in the block.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "limit",
-            "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
           }
         ],
         "tags": [
-          "BlockchainService"
+          "WebHooksService"
         ]
-      }
-    },
-    "/eth/{network}/blocks/{block_height}": {
-      "get": {
-        "operationId": "BlockHeightEndpoint",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ethBlock"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "network",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "MAIN",
-              "main",
-              "ROPSTEN",
-              "ropsten"
-            ]
-          },
-          {
-            "name": "block_height",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "txstart",
-            "description": "Filters response to only include transaction hashes after txstart in the block.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "limit",
-            "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
-        "tags": [
-          "BlockchainService"
-        ]
-      }
-    },
-    "/eth/{network}/addrs": {
+      },
       "post": {
-        "operationId": "GenerateAddressEndpoint",
+        "operationId": "CreateWebHookEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethAddressKeychain"
+              "$ref": "#/definitions/ethEvent"
             }
           }
         },
@@ -680,23 +702,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ethGenerateAddressEndpointRequest"
+              "$ref": "#/definitions/ethCreateWebHookEndpointRequest"
             }
           }
         ],
         "tags": [
-          "AddressService"
+          "WebHooksService"
         ]
       }
     },
-    "/eth/{network}/addrs/{address}": {
+    "/eth/{network}/hooks/{webhookid}": {
       "get": {
-        "operationId": "AddressEndpoint",
+        "operationId": "WebHookIDEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethAddress"
+              "$ref": "#/definitions/ethEvent"
             }
           }
         },
@@ -714,57 +736,29 @@
             ]
           },
           {
-            "name": "address",
+            "name": "webhookid",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "before",
-            "description": "Filters response to only include transactions below before height in the blockchain.",
+            "name": "token",
             "in": "query",
             "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "after",
-            "description": "Filters response to only include transactions above after height in the blockchain.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "limit",
-            "description": "limit sets the minimum number of returned TXRefs; there can be less if there are less than limit TXRefs associated with this address, but there can be more in the rare case of more TXRefs in the block at the bottom of your call. This ensures paging by block height never misses TXRefs. Defaults to 200, maximum is 2000.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "confirmations",
-            "description": "If set, only returns the balance and TXRefs that have at least this number of confirmations.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           }
         ],
         "tags": [
-          "AddressService"
+          "WebHooksService"
         ]
-      }
-    },
-    "/eth/{network}/addrs/{address}/balance": {
-      "get": {
-        "operationId": "AddressBalanceEndpoint",
+      },
+      "delete": {
+        "operationId": "DeleteWebHookEndpoint",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ethAddress"
+              "$ref": "#/definitions/ethNullValue"
             }
           }
         },
@@ -782,19 +776,364 @@
             ]
           },
           {
-            "name": "address",
+            "name": "webhookid",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
             "type": "string"
           }
         ],
         "tags": [
-          "AddressService"
+          "WebHooksService"
         ]
       }
     }
   },
   "definitions": {
+    "ethAddress": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "The requested address."
+        },
+        "total_received": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Total amount of confirmed wei received by this address."
+        },
+        "total_sent": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Total amount of confirmed wei sent by this address."
+        },
+        "balance": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0)."
+        },
+        "unconfirmed_balance": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation."
+        },
+        "final_balance": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Total balance of wei, including confirmed and unconfirmed transactions, for this address."
+        },
+        "n_tx": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted."
+        },
+        "unconfirmed_n_tx": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted."
+        },
+        "final_n_tx": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Final number of transactions, including confirmed and unconfirmed transactions, for this address."
+        },
+        "tx_url": {
+          "type": "string",
+          "description": "Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash."
+        },
+        "txrefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethTXRef"
+          },
+          "description": "Optional Array of transaction summaries for this address. Usually only returned from the standard Address Endpoint."
+        },
+        "unconfirmed_txrefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethTXRef"
+          },
+          "description": "Optional All unconfirmed transaction summaries for this address. Usually only returned from the standard Address Endpoint."
+        },
+        "hasMore": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Optional If true, then the Address object contains more transactions than shown. Useful for determining whether to poll the API for more transaction information."
+        }
+      }
+    },
+    "ethAddressKeychain": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "Standard address representation."
+        },
+        "public": {
+          "type": "string",
+          "description": "Hex-encoded Public key."
+        },
+        "private": {
+          "type": "string",
+          "description": "Hex-encoded Private key."
+        }
+      }
+    },
+    "ethGenerateAddressEndpointRequest": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/ethNetworkAllowingAlias"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "ethNetworkAllowingAlias": {
+      "type": "string",
+      "enum": [
+        "MAIN",
+        "main",
+        "ROPSTEN",
+        "ropsten"
+      ],
+      "default": "MAIN"
+    },
+    "ethTXRef": {
+      "type": "object",
+      "properties": {
+        "block_height": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1."
+        },
+        "tx_hash": {
+          "type": "string",
+          "description": "The hash of the transaction containing this input/output."
+        },
+        "tx_input_n": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Index of this input in the enclosing transaction. 0 if it’s an input, -1 if it’s an output."
+        },
+        "tx_output_n": {
+          "type": "string",
+          "format": "int64",
+          "description": "Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output."
+        },
+        "value": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The value transfered by this input/output in wei exchanged in the enclosing transaction."
+        },
+        "double_spend": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "true if this is an attempted double spend; false otherwise."
+        },
+        "confirmations": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
+        },
+        "ref_balance": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions."
+        },
+        "confirmed": {
+          "type": "string",
+          "description": "Optional Time at which transaction was included in a block; only present for confirmed transactions."
+        },
+        "double_of": {
+          "type": "string",
+          "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
+        }
+      }
+    },
+    "ethBlock": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string",
+          "title": "The hash of the block; in Ethereum, the hashing function is Keccak/SHA3"
+        },
+        "height": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain."
+        },
+        "depth": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain."
+        },
+        "chain": {
+          "type": "string",
+          "title": "The name of the blockchain represented, in the form of $COIN.$CHAIN"
+        },
+        "total": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The total number of wei transacted in this block."
+        },
+        "fees": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The total number of fees—in wei—collected by miners in this block."
+        },
+        "size": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Raw size of block (including header and all transactions) in bytes."
+        },
+        "ver": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Block version."
+        },
+        "time": {
+          "type": "string",
+          "description": "Recorded time at which block was built."
+        },
+        "received_time": {
+          "type": "string",
+          "description": "The time BlockCypher’s servers receive the block."
+        },
+        "coinbase_addr": {
+          "type": "string",
+          "description": "The Ethereum address of the miner that received the coinbase and fee reward."
+        },
+        "relayed_by": {
+          "type": "string",
+          "description": "Address of the peer that sent BlockCypher’s servers this block."
+        },
+        "nonce": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The number used by a miner to generate this block."
+        },
+        "n_tx": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Number of transactions in this block."
+        },
+        "prev_block": {
+          "type": "string",
+          "description": "The hash of the previous block in the blockchain."
+        },
+        "prev_block_url": {
+          "type": "string",
+          "description": "The BlockCypher URL to query for more information on the previous block."
+        },
+        "tx_url": {
+          "type": "string",
+          "description": "The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es)."
+        },
+        "mrkl_root": {
+          "type": "string",
+          "description": "The Merkle root of this block."
+        },
+        "txids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of transaction hashes in this block (initiated by externally controlled accounts). By default, only 20 are included."
+        },
+        "internal_txids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of internal transaction hashes (initiated by internal contracts) in this block. By default, only 20 are included."
+        },
+        "next_txids": {
+          "type": "string",
+          "description": "Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
+        },
+        "next_internal_txids": {
+          "type": "string",
+          "description": "Optional If there are more internal transactions that couldn’t fit in the internal_txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
+        },
+        "uncles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of uncle blocks by hash included by the miner of this block. You can read more about uncles here."
+        }
+      }
+    },
+    "ethBlockchain": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the blockchain represented, in the form of $COIN.$CHAIN."
+        },
+        "height": {
+          "type": "string",
+          "format": "uint64",
+          "description": "The current height of the blockchain; i.e., the number of blocks in the blockchain."
+        },
+        "hash": {
+          "type": "string",
+          "description": "The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3."
+        },
+        "time": {
+          "type": "string",
+          "description": "The time of the latest update to the blockchain; typically when the latest block was added."
+        },
+        "latest_url": {
+          "type": "string",
+          "description": "The BlockCypher URL to query for more information on the latest confirmed block; returns a Block."
+        },
+        "previous_hash": {
+          "type": "string",
+          "description": "The hash of the second-to-latest confirmed block in the blockchain."
+        },
+        "previous_url": {
+          "type": "string",
+          "description": "The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block."
+        },
+        "unconfirmed_count": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Number of unconfirmed transactions in memory pool (likely to be included in next block)."
+        },
+        "high_gas_price": {
+          "type": "string",
+          "format": "uint64",
+          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks."
+        },
+        "medium_gas_price": {
+          "type": "string",
+          "format": "uint64",
+          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks."
+        },
+        "low_gas_price": {
+          "type": "string",
+          "format": "uint64",
+          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks."
+        },
+        "last_fork_height": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
+        },
+        "last_fork_hash": {
+          "type": "string",
+          "description": "Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
+        }
+      }
+    },
     "ethCallContractMethodEndpointRequest": {
       "type": "object",
       "properties": {
@@ -1029,111 +1368,6 @@
           "title": "Token"
         }
       }
-    },
-    "ethNetworkAllowingAlias": {
-      "type": "string",
-      "enum": [
-        "MAIN",
-        "main",
-        "ROPSTEN",
-        "ropsten"
-      ],
-      "default": "MAIN"
-    },
-    "ethCreateWebHookEndpointRequest": {
-      "type": "object",
-      "properties": {
-        "network": {
-          "$ref": "#/definitions/ethNetworkAllowingAlias"
-        },
-        "id": {
-          "type": "string",
-          "description": "Identifier of the event; generated when a new request is created."
-        },
-        "event": {
-          "type": "string",
-          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
-        },
-        "hash": {
-          "type": "string",
-          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
-        },
-        "address": {
-          "type": "string",
-          "description": "optional Only transactions associated with the given address will be sent."
-        },
-        "confirmations": {
-          "type": "integer",
-          "format": "int32",
-          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
-        },
-        "url": {
-          "type": "string",
-          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
-        },
-        "callback_errors": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
-        },
-        "token": {
-          "type": "string",
-          "title": "Token"
-        }
-      }
-    },
-    "ethEvent": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the event; generated when a new request is created."
-        },
-        "event": {
-          "type": "string",
-          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
-        },
-        "hash": {
-          "type": "string",
-          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
-        },
-        "address": {
-          "type": "string",
-          "description": "optional Only transactions associated with the given address will be sent."
-        },
-        "confirmations": {
-          "type": "string",
-          "format": "uint64",
-          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
-        },
-        "url": {
-          "type": "string",
-          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
-        },
-        "callback_errors": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
-        },
-        "filter": {
-          "type": "string",
-          "title": "filter"
-        }
-      }
-    },
-    "ethEvents": {
-      "type": "object",
-      "properties": {
-        "event": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethEvent"
-          }
-        }
-      }
-    },
-    "ethNullValue": {
-      "type": "object"
     },
     "ethCreateTransactionEndpointRequest": {
       "type": "object",
@@ -1561,334 +1795,100 @@
         }
       }
     },
-    "ethBlock": {
-      "type": "object",
-      "properties": {
-        "hash": {
-          "type": "string",
-          "title": "The hash of the block; in Ethereum, the hashing function is Keccak/SHA3"
-        },
-        "height": {
-          "type": "string",
-          "format": "uint64",
-          "description": "The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain."
-        },
-        "depth": {
-          "type": "string",
-          "format": "uint64",
-          "description": "The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain."
-        },
-        "chain": {
-          "type": "string",
-          "title": "The name of the blockchain represented, in the form of $COIN.$CHAIN"
-        },
-        "total": {
-          "type": "string",
-          "format": "uint64",
-          "description": "The total number of wei transacted in this block."
-        },
-        "fees": {
-          "type": "string",
-          "format": "uint64",
-          "description": "The total number of fees—in wei—collected by miners in this block."
-        },
-        "size": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Raw size of block (including header and all transactions) in bytes."
-        },
-        "ver": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Block version."
-        },
-        "time": {
-          "type": "string",
-          "description": "Recorded time at which block was built."
-        },
-        "received_time": {
-          "type": "string",
-          "description": "The time BlockCypher’s servers receive the block."
-        },
-        "coinbase_addr": {
-          "type": "string",
-          "description": "The Ethereum address of the miner that received the coinbase and fee reward."
-        },
-        "relayed_by": {
-          "type": "string",
-          "description": "Address of the peer that sent BlockCypher’s servers this block."
-        },
-        "nonce": {
-          "type": "string",
-          "format": "uint64",
-          "description": "The number used by a miner to generate this block."
-        },
-        "n_tx": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Number of transactions in this block."
-        },
-        "prev_block": {
-          "type": "string",
-          "description": "The hash of the previous block in the blockchain."
-        },
-        "prev_block_url": {
-          "type": "string",
-          "description": "The BlockCypher URL to query for more information on the previous block."
-        },
-        "tx_url": {
-          "type": "string",
-          "description": "The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es)."
-        },
-        "mrkl_root": {
-          "type": "string",
-          "description": "The Merkle root of this block."
-        },
-        "txids": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of transaction hashes in this block (initiated by externally controlled accounts). By default, only 20 are included."
-        },
-        "internal_txids": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of internal transaction hashes (initiated by internal contracts) in this block. By default, only 20 are included."
-        },
-        "next_txids": {
-          "type": "string",
-          "description": "Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
-        },
-        "next_internal_txids": {
-          "type": "string",
-          "description": "Optional If there are more internal transactions that couldn’t fit in the internal_txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
-        },
-        "uncles": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "List of uncle blocks by hash included by the miner of this block. You can read more about uncles here."
-        }
-      }
-    },
-    "ethBlockchain": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name of the blockchain represented, in the form of $COIN.$CHAIN."
-        },
-        "height": {
-          "type": "string",
-          "format": "uint64",
-          "description": "The current height of the blockchain; i.e., the number of blocks in the blockchain."
-        },
-        "hash": {
-          "type": "string",
-          "description": "The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3."
-        },
-        "time": {
-          "type": "string",
-          "description": "The time of the latest update to the blockchain; typically when the latest block was added."
-        },
-        "latest_url": {
-          "type": "string",
-          "description": "The BlockCypher URL to query for more information on the latest confirmed block; returns a Block."
-        },
-        "previous_hash": {
-          "type": "string",
-          "description": "The hash of the second-to-latest confirmed block in the blockchain."
-        },
-        "previous_url": {
-          "type": "string",
-          "description": "The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block."
-        },
-        "unconfirmed_count": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Number of unconfirmed transactions in memory pool (likely to be included in next block)."
-        },
-        "high_gas_price": {
-          "type": "string",
-          "format": "uint64",
-          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks."
-        },
-        "medium_gas_price": {
-          "type": "string",
-          "format": "uint64",
-          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks."
-        },
-        "low_gas_price": {
-          "type": "string",
-          "format": "uint64",
-          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks."
-        },
-        "last_fork_height": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
-        },
-        "last_fork_hash": {
-          "type": "string",
-          "description": "Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
-        }
-      }
-    },
-    "ethAddress": {
-      "type": "object",
-      "properties": {
-        "address": {
-          "type": "string",
-          "description": "The requested address."
-        },
-        "total_received": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Total amount of confirmed wei received by this address."
-        },
-        "total_sent": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Total amount of confirmed wei sent by this address."
-        },
-        "balance": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0)."
-        },
-        "unconfirmed_balance": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation."
-        },
-        "final_balance": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Total balance of wei, including confirmed and unconfirmed transactions, for this address."
-        },
-        "n_tx": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted."
-        },
-        "unconfirmed_n_tx": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted."
-        },
-        "final_n_tx": {
-          "type": "string",
-          "format": "uint64",
-          "description": "Final number of transactions, including confirmed and unconfirmed transactions, for this address."
-        },
-        "tx_url": {
-          "type": "string",
-          "description": "Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash."
-        },
-        "txrefs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethTXRef"
-          },
-          "description": "Optional Array of transaction summaries for this address. Usually only returned from the standard Address Endpoint."
-        },
-        "unconfirmed_txrefs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ethTXRef"
-          },
-          "description": "Optional All unconfirmed transaction summaries for this address. Usually only returned from the standard Address Endpoint."
-        },
-        "hasMore": {
-          "type": "boolean",
-          "format": "boolean",
-          "description": "Optional If true, then the Address object contains more transactions than shown. Useful for determining whether to poll the API for more transaction information."
-        }
-      }
-    },
-    "ethAddressKeychain": {
-      "type": "object",
-      "properties": {
-        "address": {
-          "type": "string",
-          "description": "Standard address representation."
-        },
-        "public": {
-          "type": "string",
-          "description": "Hex-encoded Public key."
-        },
-        "private": {
-          "type": "string",
-          "description": "Hex-encoded Private key."
-        }
-      }
-    },
-    "ethGenerateAddressEndpointRequest": {
+    "ethCreateWebHookEndpointRequest": {
       "type": "object",
       "properties": {
         "network": {
           "$ref": "#/definitions/ethNetworkAllowingAlias"
         },
+        "id": {
+          "type": "string",
+          "description": "Identifier of the event; generated when a new request is created."
+        },
+        "event": {
+          "type": "string",
+          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
+        },
+        "hash": {
+          "type": "string",
+          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+        },
+        "address": {
+          "type": "string",
+          "description": "optional Only transactions associated with the given address will be sent."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+        },
+        "url": {
+          "type": "string",
+          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+        },
+        "callback_errors": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+        },
         "token": {
-          "type": "string"
+          "type": "string",
+          "title": "Token"
         }
       }
     },
-    "ethTXRef": {
+    "ethEvent": {
       "type": "object",
       "properties": {
-        "block_height": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1."
-        },
-        "tx_hash": {
+        "id": {
           "type": "string",
-          "description": "The hash of the transaction containing this input/output."
+          "description": "Identifier of the event; generated when a new request is created."
         },
-        "tx_input_n": {
+        "event": {
           "type": "string",
-          "format": "uint64",
-          "description": "Index of this input in the enclosing transaction. 0 if it’s an input, -1 if it’s an output."
+          "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
         },
-        "tx_output_n": {
+        "hash": {
           "type": "string",
-          "format": "int64",
-          "description": "Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output."
+          "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
         },
-        "value": {
+        "address": {
           "type": "string",
-          "format": "uint64",
-          "description": "The value transfered by this input/output in wei exchanged in the enclosing transaction."
-        },
-        "double_spend": {
-          "type": "boolean",
-          "format": "boolean",
-          "description": "true if this is an attempted double spend; false otherwise."
+          "description": "optional Only transactions associated with the given address will be sent."
         },
         "confirmations": {
           "type": "string",
           "format": "uint64",
-          "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
+          "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
         },
-        "ref_balance": {
+        "url": {
+          "type": "string",
+          "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+        },
+        "callback_errors": {
           "type": "string",
           "format": "uint64",
-          "description": "Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions."
+          "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
         },
-        "confirmed": {
+        "filter": {
           "type": "string",
-          "description": "Optional Time at which transaction was included in a block; only present for confirmed transactions."
-        },
-        "double_of": {
-          "type": "string",
-          "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
+          "title": "filter"
         }
       }
+    },
+    "ethEvents": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ethEvent"
+          }
+        }
+      }
+    },
+    "ethNullValue": {
+      "type": "object"
     }
   }
 }

@@ -1,3 +1,5 @@
 .DS_Store
 Thumbs.db
-
+protoc-gen-doc
+openapi/btc.html
+openapi/eth.html
