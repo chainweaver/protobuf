@@ -15,6 +15,9 @@ jobs:
           command: |
             if [ ! -z "$(git status --porcelain)" ]; then
               # if working directory not clean
+              git config --global user.email "$GIT_USER_EMAIL"
+              git config --global user.name "$GIT_USER"
+
               git add .
               git commit -m "[ci skip] Auto build"
 
