@@ -21,7 +21,7 @@ jobs:
               git add .
               git commit -m "[ci skip] Auto build"
 
-              git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/chainweaver.github.io.git
+              git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
               git push upstream $CIRCLE_BRANCH
             fi
 
