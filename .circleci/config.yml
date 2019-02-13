@@ -36,10 +36,10 @@ jobs:
           command: |
             make render-protobuf-document
       - store_artifacts:
-          path: project/protoc-gen-doc/btc/doc.html
+          path: protoc-gen-doc/btc/doc.html
           destination: protobuf
       - store_artifacts:
-          path: project/protoc-gen-doc/eth/doc.html
+          path: protoc-gen-doc/eth/doc.html
           destination: protobuf
 
   render-openapi-document:
@@ -53,10 +53,10 @@ jobs:
           command: |
             make render-openapi-document
       - store_artifacts:
-          path: project/openapi/btc/openapi.html
+          path: openapi/btc/openapi.html
           destination: openapi
       - store_artifacts:
-          path: project/openapi/eth/openapi.html
+          path: openapi/eth/openapi.html
           destination: openapi
 
   notify-slack:

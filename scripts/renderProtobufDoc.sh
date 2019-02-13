@@ -3,10 +3,10 @@
 echo "Rendering protobuf document start!"
 
 if [ ! -e ./protoc-gen-doc/btc ]; then
-  mkdir ./protoc-gen-doc/btc
+  mkdir -p ./protoc-gen-doc/btc
 fi
 if [ ! -e ./protoc-gen-doc/eth ]; then
-  mkdir ./protoc-gen-doc/eth
+  mkdir -p ./protoc-gen-doc/eth
 fi
 
 btcProtoFiles=""
