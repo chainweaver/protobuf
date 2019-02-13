@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  build:
+    machine:
+      image: circleci/classic:edge
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Building protobuf
+          command: |
+            docker run -v ${PWD}:/go/src/github.com/chainweaver/protobuf quay.io/chainweaver/protobuf-builder
+      - run:
+          name: Git commit and push
+          command: |
+            if [ ! -z "$(git status --porcelain)" ]; then
+              # if working directory not clean
+              git add .
+              git commit -m "[ci skip] Auto build"
+
+              git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/chainweaver.github.io.git
+              git push upstream $CIRCLE_BRANCH
+            fi
+
+workflows:
+  version: 2
+  chainweaver-website:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
