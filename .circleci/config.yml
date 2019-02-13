@@ -26,12 +26,13 @@ jobs:
             fi
 
   render-protobuf-document:
-    docker:
-      - image: circleci/buildpack-deps
+    machine:
+      image: circleci/buildpack-deps
+      docker_layer_caching: true
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      # - setup_remote_docker:
+      #     docker_layer_caching: true
       - run:
           name: Rendering protobuf document
           command: |
