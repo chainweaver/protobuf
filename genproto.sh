@@ -21,7 +21,6 @@ protoc \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/btc/work/ \
-  --doc_out=./protoc-gen-doc --doc_opt=html,btc.html \
   commonMessage.proto \
   assetMessage.proto \
   assetService.proto \
@@ -53,7 +52,6 @@ protoc \
   --go_out=plugins=grpc:../../../ \
   --grpc-gateway_out=logtostderr=true:../../../ \
   --swagger_out=logtostderr=true:./openapi/eth/work/ \
-  --doc_out=./protoc-gen-doc --doc_opt=html,eth.html \
   commonMessage.proto \
   blockchainMessage.proto \
   blockchainService.proto \
