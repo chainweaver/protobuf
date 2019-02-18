@@ -35,12 +35,12 @@ jobs:
           name: Rendering protobuf document
           command: |
             make render-protobuf-document
-            mkdir /workspace
-            cp -r protoc-gen-doc /workspace/
+            mkdir -p /tmp/assets
+            cp -r protoc-gen-doc /tmp/assets/
       - store_artifacts:
-          path: /workspace/protoc-gen-doc
+          path: /tmp/assets/protoc-gen-doc
       - persist_to_workspace:
-          root: /workspace/protoc-gen-doc
+          root: /tmp/assets/protoc-gen-doc
       - run:
           name: Notify artifacts url to slack
           command: |
@@ -66,12 +66,12 @@ jobs:
           name: Rendering OpenAPI document
           command: |
             make render-openapi-document
-            mkdir -p /workspace/openapi
-            cp -r openapi/*.html /workspace/openapi/
+            mkdir -p /tmp/assets/openapi
+            cp -r openapi/*.html /tmp/assets/openapi/
       - store_artifacts:
-          path: /workspace/openapi
+          path: /tmp/assets/openapi
       - persist_to_workspace:
-          root: /workspace/openapi
+          root: /tmp/assets/openapi
       - run:
           name: Notify artifacts url to slack
           command: |
@@ -93,9 +93,7 @@ jobs:
       docker_layer_caching: true
     steps:
       - attach_workspace:
-          at: /workspace/protoc-gen-doc
-      - attach_workspace:
-          at: /workspace/openapi
+          at: /tmp/assets
       - run:
           name: Git commit and push
           command: |
@@ -108,8 +106,8 @@ jobs:
             majorVersion = echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#"
             docPath = docusaurus/website/static/v$majorVersion
             mkdir -p $docPath
-            cp /workspace/protoc-gen-doc/* $docPath/
-            cp /workspace/openapi/* $docPath/
+            cp /tmp/assets/protoc-gen-doc/* $docPath/
+            cp /tmp/assets/openapi/* $docPath/
 
             git config --global user.email "$GIT_USER_EMAIL"
             git config --global user.name "$GIT_USER"
