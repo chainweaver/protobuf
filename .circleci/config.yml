@@ -35,10 +35,12 @@ jobs:
           name: Rendering protobuf document
           command: |
             make render-protobuf-document
+            mkdir /workspace
+            cp -r protoc-gen-doc /workspace/
       - store_artifacts:
-          path: protoc-gen-doc
+          path: /workspace/protoc-gen-doc
       - persist_to_workspace:
-          root: protoc-gen-doc
+          root: /workspace/protoc-gen-doc
       - run:
           name: Notify artifacts url to slack
           command: |
@@ -64,18 +66,12 @@ jobs:
           name: Rendering OpenAPI document
           command: |
             make render-openapi-document
+            mkdir -p /workspace/openapi
+            cp -r openapi/*.html /workspace/openapi/
       - store_artifacts:
-          path: openapi/btc.html
-      - store_artifacts:
-          path: openapi/eth.html
+          path: /workspace/openapi
       - persist_to_workspace:
-          root: /openapi
-          paths:
-            - openapi/btc.html
-      - persist_to_workspace:
-          root: /openapi
-          paths:
-            - openapi/eth.html
+          root: /workspace/openapi
       - run:
           name: Notify artifacts url to slack
           command: |
