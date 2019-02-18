@@ -40,9 +40,9 @@ jobs:
       - store_artifacts:
           path: /tmp/protoc-gen-doc
       - persist_to_workspace:
-          root: /tmp/protoc-gen-doc
+          root: /tmp
           paths:
-            - "*"
+            - protoc-gen-doc
       - run:
           name: Notify artifacts url to slack
           command: |
@@ -73,9 +73,9 @@ jobs:
       - store_artifacts:
           path: /tmp/openapi
       - persist_to_workspace:
-          root: /tmp/openapi
+          root: /tmp
           paths:
-            - "*"
+            - openapi
       - run:
           name: Notify artifacts url to slack
           command: |
@@ -97,9 +97,7 @@ jobs:
       docker_layer_caching: true
     steps:
       - attach_workspace:
-          at: /tmp/protoc-gen-doc
-      - attach_workspace:
-          at: /tmp/openapi
+          at: /tmp
       - run:
           name: Git commit and push
           command: |
@@ -113,7 +111,7 @@ jobs:
 
             protobufDocPath = docusaurus/website/static/protobuf/v$majorVersion
             mkdir -p $protobufDocPath
-            cp /tmp/protobuf/* $protobufDocPath/
+            cp /tmp/protoc-gen-doc/* $protobufDocPath/
 
             openApiDocPath = docusaurus/website/static/openapi/v$majorVersion
             mkdir -p $openApiDocPath
