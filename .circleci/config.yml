@@ -40,12 +40,12 @@ jobs:
       - run:
           name: Notify artifacts url to slack
           command: |
-            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
+            artifactsUrl=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
             curl -X POST --data-urlencode \
               "payload={\
                 \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
                 \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
-                \"text\": \"Please check the protobuf document\n$ARTIFACTS_URL\",\
+                \"text\": \"Please check the protobuf document\n$artifactsUrl\",\
                 \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
               }" \
               $NOTIFICATION_SLACK_WEBHOOK_URL
@@ -67,12 +67,12 @@ jobs:
       - run:
           name: Notify artifacts url to slack
           command: |
-            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
+            artifactsUrl=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
             curl -X POST --data-urlencode \
               "payload={\
                 \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
                 \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
-                \"text\": \"Please check the OpenAPI document\n$ARTIFACTS_URL\",\
+                \"text\": \"Please check the OpenAPI document\n$artifactsUrl\",\
                 \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
               }" \
               $NOTIFICATION_SLACK_WEBHOOK_URL
