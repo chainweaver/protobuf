@@ -107,7 +107,7 @@ jobs:
             git checkout -b $branchName
 
             semVerRegex='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
-            majorVersion=echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#"
+            majorVersion=echo "$CIRCLE_TAG" | sed -e "s#$semVerRegex#\1#"
 
             protobufDocPath=docusaurus/website/static/protobuf/v$majorVersion
             mkdir -p $protobufDocPath
