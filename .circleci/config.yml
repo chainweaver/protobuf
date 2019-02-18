@@ -38,9 +38,7 @@ jobs:
       - store_artifacts:
           path: protoc-gen-doc
       - persist_to_workspace:
-          root: /workspace/protoc-gen-doc
-          paths:
-            - protoc-gen-doc
+          root: protoc-gen-doc
       - run:
           name: Notify artifacts url to slack
           command: |
@@ -71,9 +69,13 @@ jobs:
       - store_artifacts:
           path: openapi/eth.html
       - persist_to_workspace:
-          root: /workspace/openapi
+          root: /openapi
           paths:
-            - openapi
+            - openapi/btc.html
+      - persist_to_workspace:
+          root: /openapi
+          paths:
+            - openapi/eth.html
       - run:
           name: Notify artifacts url to slack
           command: |
