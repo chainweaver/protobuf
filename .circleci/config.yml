@@ -103,17 +103,17 @@ jobs:
           command: |
             git clone https://github.com/chainweaver/chainweaver.github.io.git
             cd chainweaver.github.io
-            branchName = doc-$CIRCLE_TAG
+            branchName=doc-$CIRCLE_TAG
             git checkout -b $branchName
 
             semVerRegex='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
-            majorVersion = echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#"
+            majorVersion=echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#"
 
-            protobufDocPath = docusaurus/website/static/protobuf/v$majorVersion
+            protobufDocPath=docusaurus/website/static/protobuf/v$majorVersion
             mkdir -p $protobufDocPath
             cp /tmp/protoc-gen-doc/* $protobufDocPath/
 
-            openApiDocPath = docusaurus/website/static/openapi/v$majorVersion
+            openApiDocPath=docusaurus/website/static/openapi/v$majorVersion
             mkdir -p $openApiDocPath
             cp /tmp/openapi/* $openApiDocPath/
 
