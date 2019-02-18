@@ -35,12 +35,12 @@ jobs:
           name: Rendering protobuf document
           command: |
             make render-protobuf-document
-            mkdir -p /tmp/assets
-            cp -r protoc-gen-doc /tmp/assets/
+            mkdir -p /tmp/protoc-gen-doc
+            cp -r protoc-gen-doc/* /tmp/protoc-gen-doc/
       - store_artifacts:
-          path: /tmp/assets/protoc-gen-doc
+          path: /tmp/protoc-gen-doc
       - persist_to_workspace:
-          root: /tmp/assets/protoc-gen-doc
+          root: /tmp/protoc-gen-doc
           paths:
             - "*"
       - run:
@@ -68,12 +68,12 @@ jobs:
           name: Rendering OpenAPI document
           command: |
             make render-openapi-document
-            mkdir -p /tmp/assets/openapi
-            cp -r openapi/*.html /tmp/assets/openapi/
+            mkdir -p /tmp/openapi
+            cp -r openapi/*.html /tmp/openapi/
       - store_artifacts:
-          path: /tmp/assets/openapi
+          path: /tmp/openapi
       - persist_to_workspace:
-          root: /tmp/assets/openapi
+          root: /tmp/openapi
           paths:
             - "*"
       - run:
@@ -97,14 +97,12 @@ jobs:
       docker_layer_caching: true
     steps:
       - attach_workspace:
-          at: /tmp/assets/protoc-gen-doc
+          at: /tmp/protoc-gen-doc
       - attach_workspace:
-          at: /tmp/assets/openapi
+          at: /tmp/openapi
       - run:
           name: Git commit and push
           command: |
-            find /tmp/assets
-
             git clone https://github.com/chainweaver/chainweaver.github.io.git
             cd chainweaver.github.io
             branchName = doc-$CIRCLE_TAG
@@ -112,10 +110,14 @@ jobs:
 
             semVerRegex='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
             majorVersion = echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#"
-            docPath = docusaurus/website/static/v$majorVersion
-            mkdir -p $docPath
-            cp /tmp/assets/protoc-gen-doc/* $docPath/
-            cp /tmp/assets/openapi/* $docPath/
+
+            protobufDocPath = docusaurus/website/static/protobuf/v$majorVersion
+            mkdir -p $protobufDocPath
+            cp /tmp/protobuf/* $protobufDocPath/
+
+            openApiDocPath = docusaurus/website/static/openapi/v$majorVersion
+            mkdir -p $openApiDocPath
+            cp /tmp/openapi/* $openApiDocPath/
 
             git config --global user.email "$GIT_USER_EMAIL"
             git config --global user.name "$GIT_USER"
