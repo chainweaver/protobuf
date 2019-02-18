@@ -41,6 +41,8 @@ jobs:
           path: /tmp/assets/protoc-gen-doc
       - persist_to_workspace:
           root: /tmp/assets/protoc-gen-doc
+          paths:
+            - "*"
       - run:
           name: Notify artifacts url to slack
           command: |
@@ -72,6 +74,8 @@ jobs:
           path: /tmp/assets/openapi
       - persist_to_workspace:
           root: /tmp/assets/openapi
+          paths:
+            - "*"
       - run:
           name: Notify artifacts url to slack
           command: |
