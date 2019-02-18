@@ -96,11 +96,13 @@ jobs:
       image: circleci/classic:edge
       docker_layer_caching: true
     steps:
-      - attach_workspace:
-          at: /tmp/assets
+      # - attach_workspace:
+      #     at: /tmp/assets
       - run:
           name: Git commit and push
           command: |
+            find /tmp/assets
+
             git clone https://github.com/chainweaver/chainweaver.github.io.git
             cd chainweaver.github.io
             branchName = doc-$CIRCLE_TAG
