@@ -8,8 +8,8 @@ docker-build-openapi-document-renderer:
 	docker build -t quay.io/chainweaver/openapi-document-renderer -f Dockerfile-OpenApiDocumentRenderer .
 
 build:
-	docker run -v ${PWD}:/go/src/github.com/chainweaver/protobuf quay.io/chainweaver/protobuf-builder:1.0.0
+	docker run -v ${PWD}:/go/src/github.com/chainweaver/protobuf quay.io/chainweaver/protobuf-builder
 render-protobuf-document:
 	docker run -v ${PWD}:/go/src/github.com/chainweaver/protobuf quay.io/chainweaver/protobuf-document-renderer
 render-openapi-document:
-	docker run -v ${PWD}:/go/src/github.com/chainweaver/protobuf quay.io/chainweaver/openapi-document-renderer:1.0.0
+	docker run -v ${PWD}:/go/src/github.com/chainweaver/protobuf quay.io/chainweaver/openapi-document-renderer

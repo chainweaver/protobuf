@@ -3,13 +3,12 @@ FROM node:8.15.0-alpine
 ENV API2HTML_VERSION 0.2.1
 
 RUN apk add --update \
-  && apk --no-cache add git
+  && apk --no-cache add git curl
 
 RUN git clone https://github.com/tobilg/api2html.git
 WORKDIR api2html
 RUN git checkout -b $API2HTML_VERSION refs/tags/$API2HTML_VERSION
 RUN yarn install
 
-ADD scripts/renderOpenApiDoc.sh /api2html/bin/renderOpenApiDoc.sh
 WORKDIR /go/src/github.com/chainweaver/protobuf
-ENTRYPOINT [ "sh", "/api2html/bin/renderOpenApiDoc.sh" ]
+ENTRYPOINT [ "sh", "scripts/renderOpenApiDoc.sh" ]
