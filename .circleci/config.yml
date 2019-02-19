@@ -25,11 +25,10 @@ jobs:
               git add .
               git commit -m "[ci skip] Auto build"
 
-              git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
               if [ -n "$CIRCLE_TAG" ]; then
-                git push upstream $CIRCLE_TAG
+                git push origin $CIRCLE_TAG
               else
-                git push upstream $CIRCLE_BRANCH
+                git push origin $CIRCLE_BRANCH
               fi
             fi
 
@@ -43,9 +42,9 @@ jobs:
           name: Rendering protobuf document
           command: |
             if [ -n "$CIRCLE_TAG" ]; then
-              git pull upstream $CIRCLE_TAG
+              git pull origin $CIRCLE_TAG
             else
-              git pull upstream $CIRCLE_BRANCH
+              git pull origin $CIRCLE_BRANCH
             fi
 
             make render-protobuf-document
@@ -83,9 +82,9 @@ jobs:
           name: Rendering OpenAPI document
           command: |
             if [ -n "$CIRCLE_TAG" ]; then
-              git pull upstream $CIRCLE_TAG
+              git pull origin $CIRCLE_TAG
             else
-              git pull upstream $CIRCLE_BRANCH
+              git pull origin $CIRCLE_BRANCH
             fi
 
             make render-openapi-document
