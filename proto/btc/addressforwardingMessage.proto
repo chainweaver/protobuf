@@ -26,7 +26,7 @@ message CreateForwardEndpointRequest {
   //Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook.
   bool enable_confirmations = 10;
   //Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000.
-  int32 mining_fees_satoshis_update_test = 11;
+  int32 mining_fees_satoshis = 11;
   //Optional History of forwarding transaction hashes for this address forward; not present if this request has yet to forward any transactions.
   repeated string txs = 12;
 }
