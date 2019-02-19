@@ -3,7 +3,7 @@
   "info": {
     "title": "Chainweaver API for Ethereum",
     "description": "Welcome to Chainweaver's API documentation!",
-    "version": "0a210759a07ff00d17162fe29ec72eef2e45f9c1"
+    "version": "27ec89dbcf1fa9b0285846295b78dab697c394ee"
   },
   "schemes": [
     "http",
@@ -109,7 +109,7 @@
             "format": "int32"
           },
           {
-            "name": "confirmations_update_test",
+            "name": "confirmations",
             "description": "If set, only returns the balance and TXRefs that have at least this number of confirmations.",
             "in": "query",
             "required": false,
