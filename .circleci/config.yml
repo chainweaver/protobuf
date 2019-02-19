@@ -126,28 +126,32 @@ jobs:
       - run:
           name: Git commit and push
           command: |
+            # Clone github page repo and create new branch
             git clone https://github.com/chainweaver/chainweaver.github.io.git
             cd chainweaver.github.io
             branchName=doc-${CIRCLE_TAG//./-}
+            git checkout $GITHUB_PAGE_DEFAULT_BRANCH
             git checkout -b $branchName
 
+            # Extract major version
             semVerRegex='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
             majorVersion=$(echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#")
 
+            # Store resources in static directory (protobuf)
             protobufDocPath=docusaurus/website/static/protobuf/v$majorVersion
             mkdir -p $protobufDocPath
             cp /tmp/protoc-gen-doc/* $protobufDocPath/
 
+            # Store resources in static directory (OpenAPI)
             openApiDocPath=docusaurus/website/static/openapi/v$majorVersion
             mkdir -p $openApiDocPath
             cp /tmp/openapi/* $openApiDocPath/
 
+            # Commit and push
             git config --global user.email "$GIT_USER_EMAIL"
             git config --global user.name "$GIT_USER"
-
             git add .
             git commit -m "Update API Documents"
-
             git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/chainweaver.github.io.git
             git push upstream $branchName
 
