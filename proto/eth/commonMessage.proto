@@ -3,6 +3,8 @@ syntax = "proto3";
 package chainweaver.protobuf.eth;
 option go_package = "github.com/chainweaver/protobuf/protoc-gen-go/eth";
 
+import "protoc-gen-swagger/options/annotations.proto";
+
 enum NetworkAllowingAlias {
   option allow_alias = true;
   MAIN = 0;
@@ -14,6 +16,12 @@ enum NetworkAllowingAlias {
 message NullValue {}
 
 message Blockchain {
+  option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+    json_schema: {
+      required: ["name", "height", "hash", "time", "latest_url", "previous_hash", "previous_url", "unconfirmed_count", "high_gas_price", "medium_gas_price", "low_gas_price"]
+    }
+  };
+
   // The name of the blockchain represented, in the form of $COIN.$CHAIN.
   string name	= 1;
   // The current height of the blockchain; i.e., the number of blocks in the blockchain.
