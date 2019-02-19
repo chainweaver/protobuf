@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Chainweaver API for Ethereum
   description: Welcome to Chainweaver's API documentation!
-  version: 569c75ed8ff2e318116dbf73b904c5b05ecbd5fc
+  version: 4e3854e1f160c577de1405866a69ab93bb942459
 schemes:
 - http
 - https
