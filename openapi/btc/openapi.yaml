@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Chainweaver API for Bitcoin
   description: Welcome to Chainweaver's API documentation!
-  version: 4e3854e1f160c577de1405866a69ab93bb942459
+  version: 94d752ff7fd83feb11e1156ad9e409dc93166f70
 schemes:
 - http
 - https
