@@ -1,7 +1,8 @@
 swagger: '2.0'
 info:
-  title: webhooksService.proto
-  version: version not set
+  title: Chainweaver API for Bitcoin
+  description: Welcome to Chainweaver's API documentation!
+  version: 46419ccaa426e40f49c1c83011eaeade96bf6fbd
 schemes:
 - http
 - https
