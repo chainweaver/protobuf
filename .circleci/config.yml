@@ -26,7 +26,11 @@ jobs:
               git commit -m "[ci skip] Auto build"
 
               git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
-              git push upstream $CIRCLE_BRANCH
+              if [ -n "$CIRCLE_TAG" ]; then
+                git push upstream $CIRCLE_TAG
+              else
+                git push upstream $CIRCLE_BRANCH
+              fi
             fi
 
   render-protobuf-document:
@@ -38,8 +42,14 @@ jobs:
       - run:
           name: Rendering protobuf document
           command: |
-            git pull origin $CIRCLE_BRANCH
+            if [ -n "$CIRCLE_TAG" ]; then
+              git pull upstream $CIRCLE_TAG
+            else
+              git pull upstream $CIRCLE_BRANCH
+            fi
+
             make render-protobuf-document
+
             mkdir -p /tmp/protoc-gen-doc
             cp -r protoc-gen-doc/* /tmp/protoc-gen-doc/
       - store_artifacts:
@@ -72,8 +82,14 @@ jobs:
       - run:
           name: Rendering OpenAPI document
           command: |
-            git pull origin $CIRCLE_BRANCH
+            if [ -n "$CIRCLE_TAG" ]; then
+              git pull upstream $CIRCLE_TAG
+            else
+              git pull upstream $CIRCLE_BRANCH
+            fi
+
             make render-openapi-document
+
             mkdir -p /tmp/openapi
             cp -r openapi/*.html /tmp/openapi/
       - store_artifacts:
