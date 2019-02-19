@@ -2,6 +2,8 @@
 
 echo "Build start!"
 
+prevVer=$(jq -r '.info.version' ./openapi/btc/openapi.json)
+
 rm -f ./protoc-gen-go/eth/*
 rm -f ./protoc-gen-go/btc/*
 rm -f ./openapi/btc/*
@@ -64,7 +66,10 @@ if [ -e ./openapi/eth/work ]; then
   rm -rf ./openapi/eth/work
 fi
 
-if [ -z "$CIRCLE_TAG" ]; then
+if [ $CIRCLE_BRANCH = "master" ]; then
+  # In the case of the master, in order not to make a difference depending on the value of the version
+  version=.info.version=\"${prevVer}\"
+elif [ -z "$CIRCLE_TAG" ]; then
   version=.info.version=\"${CIRCLE_SHA1}\"
 else
   version=.info.version=\"${CIRCLE_TAG}\"
