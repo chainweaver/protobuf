@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Rendering protobuf document
           command: |
-            git pull
+            git pull origin $CIRCLE_BRANCH
             make render-protobuf-document
             mkdir -p /tmp/protoc-gen-doc
             cp -r protoc-gen-doc/* /tmp/protoc-gen-doc/
@@ -72,7 +72,7 @@ jobs:
       - run:
           name: Rendering OpenAPI document
           command: |
-            git pull
+            git pull origin $CIRCLE_BRANCH
             make render-openapi-document
             mkdir -p /tmp/openapi
             cp -r openapi/*.html /tmp/openapi/
