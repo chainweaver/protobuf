@@ -14,7 +14,11 @@ jobs:
           name: Git commit and push
           command: |
             if [ ! -z "$(git status --porcelain)" ]; then
-              # if working directory not clean
+              if [ $CIRCLE_BRANCH = "master"]; then
+                # In the case of the master, if the repository is not clean, it is judged as an error
+                exit 1
+              fi
+
               git config --global user.email "$GIT_USER_EMAIL"
               git config --global user.name "$GIT_USER"
 
