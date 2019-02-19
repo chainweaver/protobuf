@@ -3,7 +3,7 @@
   "info": {
     "title": "Chainweaver API for Bitcoin",
     "description": "Welcome to Chainweaver's API documentation!",
-    "version": "46419ccaa426e40f49c1c83011eaeade96bf6fbd"
+    "version": "0a210759a07ff00d17162fe29ec72eef2e45f9c1"
   },
   "schemes": [
     "http",
@@ -3080,7 +3080,7 @@
           "format": "boolean",
           "description": "Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook."
         },
-        "mining_fees_satoshis": {
+        "mining_fees_satoshis_update_test": {
           "type": "integer",
           "format": "int32",
           "description": "Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000."
