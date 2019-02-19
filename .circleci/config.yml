@@ -25,10 +25,11 @@ jobs:
               git add .
               git commit -m "[ci skip] Auto build"
 
+              git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
               if [ -n "$CIRCLE_TAG" ]; then
-                git push origin $CIRCLE_TAG
+                git push upstream $CIRCLE_TAG
               else
-                git push origin $CIRCLE_BRANCH
+                git push upstream $CIRCLE_BRANCH
               fi
             fi
 
