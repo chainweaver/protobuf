@@ -64,6 +64,22 @@ if [ -e ./openapi/eth/work ]; then
   rm -rf ./openapi/eth/work
 fi
 
+if [ -z "$CIRCLE_TAG" ]; then
+  version=.info.version=\"${CIRCLE_SHA1}\"
+else
+  version=.info.version=\"${CIRCLE_TAG}\"
+fi
+
+echo "Update btc openapi.json"
+jq -s add openapi/btc/openapi.json scripts/btcDesc.json > openapi/btc/tmp.json
+jq $version openapi/btc/tmp.json > openapi/btc/openapi.json
+rm -f openapi/btc/tmp.json
+
+echo "Update eth openapi.json"
+jq -s add openapi/eth/openapi.json scripts/ethDesc.json > openapi/eth/tmp.json
+jq $version openapi/eth/tmp.json > openapi/eth/openapi.json
+rm -f openapi/eth/tmp.json
+
 echo "Generate btc openapi.yaml"
 yq -y '.' openapi/btc/openapi.json > openapi/btc/openapi.yaml
 echo "Generate eth openapi.yaml"

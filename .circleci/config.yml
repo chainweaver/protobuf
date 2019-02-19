@@ -34,21 +34,30 @@ jobs:
       - run:
           name: Rendering protobuf document
           command: |
+            git pull
             make render-protobuf-document
+            mkdir -p /tmp/protoc-gen-doc
+            cp -r protoc-gen-doc/* /tmp/protoc-gen-doc/
       - store_artifacts:
-          path: protoc-gen-doc
+          path: /tmp/protoc-gen-doc
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - protoc-gen-doc
       - run:
           name: Notify artifacts url to slack
           command: |
-            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
-            curl -X POST --data-urlencode \
-              "payload={\
-                \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
-                \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
-                \"text\": \"Please check the protobuf document\n$ARTIFACTS_URL\",\
-                \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
-              }" \
-              $NOTIFICATION_SLACK_WEBHOOK_URL
+            if [ -z "$CIRCLE_TAG" ]; then
+              artifactsUrl=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
+              curl -X POST --data-urlencode \
+                "payload={\
+                  \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
+                  \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
+                  \"text\": \"Please check the protobuf document\n$artifactsUrl\",\
+                  \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
+                }" \
+                $NOTIFICATION_SLACK_WEBHOOK_URL
+            fi
 
   render-openapi-document:
     machine:
@@ -59,23 +68,65 @@ jobs:
       - run:
           name: Rendering OpenAPI document
           command: |
+            git pull
             make render-openapi-document
+            mkdir -p /tmp/openapi
+            cp -r openapi/*.html /tmp/openapi/
       - store_artifacts:
-          path: openapi/btc.html
-      - store_artifacts:
-          path: openapi/eth.html
+          path: /tmp/openapi
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - openapi
       - run:
           name: Notify artifacts url to slack
           command: |
-            export ARTIFACTS_URL=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
-            curl -X POST --data-urlencode \
-              "payload={\
-                \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
-                \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
-                \"text\": \"Please check the OpenAPI document\n$ARTIFACTS_URL\",\
-                \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
-              }" \
-              $NOTIFICATION_SLACK_WEBHOOK_URL
+            if [ -z "$CIRCLE_TAG" ]; then
+              artifactsUrl=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
+              curl -X POST --data-urlencode \
+                "payload={\
+                  \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
+                  \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
+                  \"text\": \"Please check the OpenAPI document\n$artifactsUrl\",\
+                  \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
+                }" \
+                $NOTIFICATION_SLACK_WEBHOOK_URL
+            fi
+
+  update-document:
+    machine:
+      image: circleci/classic:edge
+      docker_layer_caching: true
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - run:
+          name: Git commit and push
+          command: |
+            git clone https://github.com/chainweaver/chainweaver.github.io.git
+            cd chainweaver.github.io
+            branchName=doc-${CIRCLE_TAG//./-}
+            git checkout -b $branchName
+
+            semVerRegex='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
+            majorVersion=$(echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#")
+
+            protobufDocPath=docusaurus/website/static/protobuf/v$majorVersion
+            mkdir -p $protobufDocPath
+            cp /tmp/protoc-gen-doc/* $protobufDocPath/
+
+            openApiDocPath=docusaurus/website/static/openapi/v$majorVersion
+            mkdir -p $openApiDocPath
+            cp /tmp/openapi/* $openApiDocPath/
+
+            git config --global user.email "$GIT_USER_EMAIL"
+            git config --global user.name "$GIT_USER"
+
+            git add .
+            git commit -m "Update API Documents"
+
+            git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/chainweaver.github.io.git
+            git push upstream $branchName
 
 workflows:
   version: 2
@@ -97,3 +148,12 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - update-document:
+          requires:
+            - render-protobuf-document
+            - render-openapi-document
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/

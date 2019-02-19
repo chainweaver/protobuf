@@ -1,4 +1,6 @@
-# Protocol Buffers V3 for Blockchain API
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fchainweaver%2Fprotobuf.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fchainweaver%2Fprotobuf?ref=badge_shield)
+
+# Protocol Buffers V3 for Chainweaver API
 
 ## Libraries to use for this project
 
@@ -87,3 +89,6 @@ cd blockchain-protobuf
 * [https://github.com/grpc-ecosystem/grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway)
 * [https://github.com/golang/protobuf](https://github.com/golang/protobuf)
 * [https://github.com/pseudomuto/protoc-gen-doc](https://github.com/pseudomuto/protoc-gen-doc)
+
+## License Scan
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fchainweaver%2Fprotobuf.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fchainweaver%2Fprotobuf?ref=badge_large)

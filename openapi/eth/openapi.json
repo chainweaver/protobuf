@@ -1,8 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "webhooksService.proto",
-    "version": "version not set"
+    "title": "Chainweaver API for Ethereum",
+    "description": "Welcome to Chainweaver's API documentation!",
+    "version": "27ec89dbcf1fa9b0285846295b78dab697c394ee"
   },
   "schemes": [
     "http",

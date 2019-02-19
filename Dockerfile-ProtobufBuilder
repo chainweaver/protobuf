@@ -44,4 +44,4 @@ COPY --from=build /go/src/github.com/golang/protobuf /src/github.com/golang/prot
 COPY --from=build /go/src/github.com/grpc-ecosystem/grpc-gateway /src/github.com/grpc-ecosystem/grpc-gateway
 
 WORKDIR /go/src/github.com/chainweaver/protobuf
-ENTRYPOINT [ "/bin/bash", "scripts/genproto.sh" ]
+ENTRYPOINT [ "/bin/bash", "scripts/build.sh" ]
