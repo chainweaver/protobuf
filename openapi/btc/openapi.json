@@ -3,7 +3,7 @@
   "info": {
     "title": "Chainweaver API for Bitcoin",
     "description": "Welcome to Chainweaver's API documentation!",
-    "version": "949502177f5768473fa170e92beb5d661adce55f"
+    "version": "569c75ed8ff2e318116dbf73b904c5b05ecbd5fc"
   },
   "schemes": [
     "http",
