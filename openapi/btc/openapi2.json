@@ -1,14 +1,34 @@
 {
-  "swagger": "2.0",
   "info": {
     "title": "Chainweaver API for Bitcoin",
-    "description": "Welcome to Chainweaver's API documentation!",
-    "version": "83790a00d22d530bf7a7a406a085de37fc65b032"
+    "description": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",
+    "version": "5ad5a8ce3e8ef8c84d7c70b966cf5084bde8bc02"
   },
+  "host": "api.chainweaver.io",
   "schemes": [
-    "http",
     "https"
   ],
+  "securityDefinitions": {
+    "ApiKeyAuthInHeader": {
+      "type": "apiKey",
+      "name": "x-chainweaver-token",
+      "in": "header"
+    },
+    "ApiKeyAuthInQuery": {
+      "type": "apiKey",
+      "name": "token",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuthInHeader": []
+    },
+    {
+      "ApiKeyAuthInQuery": []
+    }
+  ],
+  "swagger": "2.0",
   "consumes": [
     "application/json"
   ],
@@ -4503,5 +4523,6 @@
         }
       }
     }
-  }
+  },
+  "basePath": "/5ad5a8ce3e8ef8c84d7c70b966cf5084bde8bc02"
 }

@@ -29,13 +29,22 @@ RUN go install
 WORKDIR $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 RUN go install
 
-FROM alpine:3.8
+FROM node:8.15.0-alpine
 
 RUN apk add --update \
-  && apk --no-cache add protobuf protobuf-dev jq py-pip bash
+  && apk --no-cache add protobuf protobuf-dev jq py-pip bash git
 
 # Install yq
 RUN pip install --upgrade pip yq
+
+# Install yq
+RUN npm install -g swagger2openapi
+
+# Install openapi-to-postman
+WORKDIR /
+RUN git clone https://github.com/postmanlabs/openapi-to-postman.git
+WORKDIR /openapi-to-postman
+RUN yarn install
 
 COPY --from=build /go/bin/protoc-gen-go /usr/bin/
 COPY --from=build /go/bin/protoc-gen-grpc-gateway /usr/bin/
@@ -44,4 +53,4 @@ COPY --from=build /go/src/github.com/golang/protobuf /src/github.com/golang/prot
 COPY --from=build /go/src/github.com/grpc-ecosystem/grpc-gateway /src/github.com/grpc-ecosystem/grpc-gateway
 
 WORKDIR /go/src/github.com/chainweaver/protobuf
-ENTRYPOINT [ "/bin/bash", "scripts/build.sh" ]
+CMD [ "/bin/bash", "scripts/build.sh" ]

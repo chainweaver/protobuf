@@ -38,9 +38,12 @@ FROM alpine:3.8
 RUN apk add --update \
   && apk --no-cache add protobuf protobuf-dev bash
 
+RUN mkdir /go
+ENV GOPATH /go
+
 COPY --from=build /go/bin/protoc-gen-doc /usr/bin/
-COPY --from=build /go/src/github.com/golang/protobuf /src/github.com/golang/protobuf
-COPY --from=build /go/src/github.com/grpc-ecosystem/grpc-gateway /src/github.com/grpc-ecosystem/grpc-gateway
+COPY --from=build /go/src/github.com/golang/protobuf $GOPATH/src/github.com/golang/protobuf
+COPY --from=build /go/src/github.com/grpc-ecosystem/grpc-gateway $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway
 
 WORKDIR /go/src/github.com/chainweaver/protobuf
-ENTRYPOINT [ "/bin/bash", "scripts/renderProtobufDoc.sh" ]
+CMD [ "/bin/bash", "scripts/renderProtobufDoc.sh" ]

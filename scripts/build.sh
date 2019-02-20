@@ -1,93 +1,119 @@
 #!/bin/bash
 
+mergeOpenApiJson() {
+  coin=$1
+  fileCount=`find ./openapi/$coin/work -name "*Service*.json" | wc -l`
+  jqParam=".[0]"
+  for ((i=1; i < $fileCount; i++)); do
+    jqParam+="*.[$i]"
+  done
+  jq -s `echo $jqParam` `find ./openapi/$coin/work -name "*Service*.json" | sort` > ./openapi/$coin/work/tmp.json
+  jq 'del(.info, .schemes)' ./openapi/$coin/work/tmp.json > ./openapi/$coin/work/openapi2.json
+  jq -s '.[0] * .[1]' ./scripts/${coin}OpenApi.json ./openapi/$coin/work/openapi2.json > ./openapi/$coin/openapi2.json
+}
+
+compileProto() {
+  coin=$1
+  protoFiles=""
+  for file in `\find ./proto/$coin -maxdepth 1 -type f`; do
+    protoFiles+="$file "
+  done
+  protoc \
+    -I./proto/$coin \
+    -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+    -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway \
+    --go_out=plugins=grpc:../../../ \
+    --grpc-gateway_out=logtostderr=true:../../../ \
+    --swagger_out=logtostderr=true:./openapi/$coin/work/ \
+    `echo $protoFiles`
+  rm -f protoc-gen-go/$coin/openapi.pb.go
+}
+
+run() {
+  coin=$1
+  rm -f ./openapi/$coin/*
+  if [ ! -e ./openapi/$coin/work ]; then
+    mkdir ./openapi/$coin/work
+  fi
+  rm -f ./postman/$coin/*
+  rm -f ./protoc-gen-go/$coin/*
+
+  echo "--------------------------"
+  echo " Compile protocol buffers "
+  echo "--------------------------"
+  compileProto $coin
+  echo "Generate protoc-gen-go/$coin/*.pb.go"
+  echo "Generate openapi/$coin/*.json"
+
+  echo "--------------------------"
+  echo " Merge OpenAPIv2 json files "
+  echo "--------------------------"
+  mergeOpenApiJson $coin
+  echo "Create openapi/$coin/openapi2.json"
+
+  echo "------------------------------"
+  echo " Set API Version to OpenAPIv2 "
+  echo "------------------------------"
+  jq $version openapi/$coin/openapi2.json > openapi/$coin/work/openapi2.json
+  jq $basePath openapi/$coin/work/openapi2.json > openapi/$coin/openapi2.json
+  echo "Set openapi/$coin/openapi2.json"
+
+  echo "--------------------------------"
+  echo " Convert OpenAPIv2 to OpenAPIv3 "
+  echo "--------------------------------"
+  swagger2openapi openapi/$coin/openapi2.json -o openapi/$coin/openapi3.json
+  echo "Create openapi/$coin/openapi3.json"
+
+  echo "-------------------------------------"
+  echo " Convert format OpenAPI json to yaml "
+  echo "-------------------------------------"
+  yq -y '.' openapi/$coin/openapi2.json > openapi/$coin/openapi2.yaml
+  echo "Create openapi/$coin/openapi2.yaml"
+  yq -y '.' openapi/$coin/openapi3.json > openapi/$coin/openapi3.yaml
+  echo "Create openapi/$coin/openapi3.yaml"
+
+  echo "-------------------------------------------------"
+  echo " Generate postman collection file from OpenAPIv3 "
+  echo "-------------------------------------------------"
+  /openapi-to-postman/bin/openapi2postmanv2.js -s openapi/$coin/openapi3.yaml -o postman/$coin/collection.json -p
+  echo "Create postman/$coin/collection.json"
+
+  if [ -e ./openapi/$coin/work ]; then
+    rm -f ./openapi/$coin/work/*
+    rm -rf ./openapi/$coin/work
+  fi
+}
+
 echo "Build start!"
 
 prevVer=$(jq -r '.info.version' ./openapi/btc/openapi.json)
 
-rm -f ./protoc-gen-go/eth/*
-rm -f ./protoc-gen-go/btc/*
-rm -f ./openapi/btc/*
-rm -f ./openapi/eth/*
-
-if [ ! -e ./openapi/btc/work ]; then
-  mkdir ./openapi/btc/work
-fi
-if [ ! -e ./openapi/eth/work ]; then
-  mkdir ./openapi/eth/work
-fi
-
-echo "Build btc"
-btcProtoFiles=""
-for file in `\find ./proto/btc -maxdepth 1 -type f`; do
-  btcProtoFiles+="$file "
-done
-protoc \
-  -I./proto/btc \
-  -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --go_out=plugins=grpc:../../../ \
-  --grpc-gateway_out=logtostderr=true:../../../ \
-  --swagger_out=logtostderr=true:./openapi/btc/work/ \
-  `echo $btcProtoFiles`
-
-echo "Build eth"
-ethProtoFiles=""
-for file in `\find ./proto/eth -maxdepth 1 -type f`; do
-  ethProtoFiles+="$file "
-done
-protoc \
-  -I./proto/eth \
-  -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --go_out=plugins=grpc:../../../ \
-  --grpc-gateway_out=logtostderr=true:../../../ \
-  --swagger_out=logtostderr=true:./openapi/eth/work/ \
-  `echo $ethProtoFiles`
-
-echo "Generate btc openapi.json"
-btcFileCount=`find ./openapi/btc/work -name "*Service*.json" | wc -l`
-btcJqParam=".[0]"
-for ((i=1; i < $btcFileCount; i++)); do
-  btcJqParam+="*.[$i]"
-done
-jq -s `echo $btcJqParam` `find ./openapi/btc/work -name "*Service*.json" | sort` > ./openapi/btc/openapi.json
-if [ -e ./openapi/btc/work ]; then
-  rm -f ./openapi/btc/work/*
-  rm -rf ./openapi/btc/work
-fi
-
-echo "Generate eth openapi.json"
-ethFileCount=`find ./openapi/eth/work -name "*Service*.json" | wc -l`
-ethJqParam=".[0]"
-for ((i=1; i < $ethFileCount; i++)); do
-  ethJqParam+="*.[$i]"
-done
-jq -s `echo $ethJqParam` `find ./openapi/eth/work -name "*Service*.json" | sort` > ./openapi/eth/openapi.json
-if [ -e ./openapi/eth/work ]; then
-  rm -f ./openapi/eth/work/*
-  rm -rf ./openapi/eth/work
-fi
-
 if [ $CIRCLE_BRANCH = "master" ]; then
   # In the case of the master, in order not to make a difference depending on the value of the version
-  version=.info.version=\"${prevVer}\"
+  v=$prevVer
+  bp=$prevVer
 elif [ -z "$CIRCLE_TAG" ]; then
-  version=.info.version=\"${CIRCLE_SHA1}\"
+  v=$CIRCLE_SHA1
+  bp=$CIRCLE_SHA1
 else
-  version=.info.version=\"${CIRCLE_TAG}\"
+  v=$CIRCLE_TAG
+
+  # Extract major version
+  semVerRegex='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
+  majorVersion=$(echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#")
+  bp="v${majorVersion}"
 fi
+version=.info.version=\"${v}\"
+basePath=.basePath=\"/${bp}\"
 
-echo "Update btc openapi.json"
-jq -s add openapi/btc/openapi.json scripts/btcDesc.json > openapi/btc/tmp.json
-jq $version openapi/btc/tmp.json > openapi/btc/openapi.json
-rm -f openapi/btc/tmp.json
+echo "[Environment Variables]"
+echo "CIRCLE_BRANCH=$CIRCLE_BRANCH"
+echo "CIRCLE_TAG=$CIRCLE_TAG"
+echo "CIRCLE_SHA1=$CIRCLE_SHA1"
+echo "[API Version]"
+echo "$v"
 
-echo "Update eth openapi.json"
-jq -s add openapi/eth/openapi.json scripts/ethDesc.json > openapi/eth/tmp.json
-jq $version openapi/eth/tmp.json > openapi/eth/openapi.json
-rm -f openapi/eth/tmp.json
-
-echo "Generate btc openapi.yaml"
-yq -y '.' openapi/btc/openapi.json > openapi/btc/openapi.yaml
-echo "Generate eth openapi.yaml"
-yq -y '.' openapi/eth/openapi.json > openapi/eth/openapi.yaml
+run btc
+run eth
 
 echo "Build finish!"

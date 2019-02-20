@@ -1,30 +1,26 @@
 #!/bin/bash
 
+run() {
+  coin=$1
+  protoFiles=""
+  for file in `\find ./proto/$coin -maxdepth 1 -type f`; do
+    protoFiles+="$file "
+  done
+  protoc \
+    -I./proto/$coin \
+    -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+    -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway \
+    --doc_out=./protoc-gen-doc --doc_opt=html,$coin.html \
+    `echo $protoFiles`
+}
+
 echo "Rendering protobuf document start!"
 
 if [ ! -e ./protoc-gen-doc ]; then
   mkdir -p ./protoc-gen-doc
 fi
 
-
-btcProtoFiles=""
-for file in `\find ./proto/btc -maxdepth 1 -type f`; do
-  btcProtoFiles+="$file "
-done
-protoc \
-  -I./proto/btc \
-  -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --doc_out=./protoc-gen-doc --doc_opt=html,btc.html \
-  `echo $btcProtoFiles`
-
-ethProtoFiles=""
-for file in `\find ./proto/eth -maxdepth 1 -type f`; do
-  ethProtoFiles+="$file "
-done
-protoc \
-  -I./proto/eth \
-  -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --doc_out=./protoc-gen-doc --doc_opt=html,eth.html \
-  `echo $ethProtoFiles`
+run btc
+run eth
 
 echo "Rendering protobuf document start!"
