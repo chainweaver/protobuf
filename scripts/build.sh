@@ -86,7 +86,7 @@ run() {
 
 echo "Build start!"
 
-prevVer=$(jq -r '.info.version' ./openapi/btc/openapi.json)
+prevVer=$(jq -r '.info.version' ./openapi/btc/openapi3.json)
 
 if [ $CIRCLE_BRANCH = "master" ]; then
   # In the case of the master, in order not to make a difference depending on the value of the version
