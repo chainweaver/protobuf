@@ -2,7 +2,7 @@
   "info": {
     "title": "Chainweaver API for Ethereum",
     "description": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",
-    "version": "e3133ba53858cf2e0c0578955d99771cfdb22cd5"
+    "version": "c4719f8d074e70448f6158086c2a958f4699a1fd"
   },
   "host": "api.chainweaver.io",
   "schemes": [
@@ -1925,5 +1925,5 @@
       "type": "object"
     }
   },
-  "basePath": "/e3133ba53858cf2e0c0578955d99771cfdb22cd5"
+  "basePath": "/c4719f8d074e70448f6158086c2a958f4699a1fd"
 }
