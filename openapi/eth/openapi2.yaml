@@ -4,7 +4,7 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: c4719f8d074e70448f6158086c2a958f4699a1fd
+  version: 5ad5a8ce3e8ef8c84d7c70b966cf5084bde8bc02
 host: api.chainweaver.io
 schemes:
 - https
@@ -1519,4 +1519,4 @@ definitions:
           $ref: '#/definitions/ethEvent'
   ethNullValue:
     type: object
-basePath: /c4719f8d074e70448f6158086c2a958f4699a1fd
+basePath: /5ad5a8ce3e8ef8c84d7c70b966cf5084bde8bc02
