@@ -3,10 +3,10 @@
   "info": {
     "title": "Chainweaver API for Bitcoin",
     "description": "Welcome to Chainweaver's API documentation!",
-    "version": "83790a00d22d530bf7a7a406a085de37fc65b032"
+    "version": "b1e4a9b3bd60404b765e07aa5fe58562cb6c56fa"
   },
+  "host": "api.chainweaver.io",
   "schemes": [
-    "http",
     "https"
   ],
   "consumes": [
@@ -4503,5 +4503,24 @@
         }
       }
     }
-  }
+  },
+  "securityDefinitions": {
+    "ApiKeyAuthInHeader": {
+      "type": "apiKey",
+      "name": "x-chainweaver-token",
+      "in": "header"
+    },
+    "ApiKeyAuthInQuery": {
+      "type": "apiKey",
+      "name": "token",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuthInHeader": [],
+      "ApiKeyAuthInQuery": []
+    }
+  ],
+  "basePath": "/b1e4a9b3bd60404b765e07aa5fe58562cb6c56fa"
 }

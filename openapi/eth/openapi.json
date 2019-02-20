@@ -1,12 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Chainweaver API for Ethereum",
+    "title": "Chainweaver API for Bitcoin",
     "description": "Welcome to Chainweaver's API documentation!",
-    "version": "83790a00d22d530bf7a7a406a085de37fc65b032"
+    "version": "b1e4a9b3bd60404b765e07aa5fe58562cb6c56fa"
   },
+  "host": "api.chainweaver.io",
   "schemes": [
-    "http",
     "https"
   ],
   "consumes": [
@@ -1133,7 +1133,20 @@
           "type": "string",
           "description": "Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
         }
-      }
+      },
+      "required": [
+        "name",
+        "height",
+        "hash",
+        "time",
+        "latest_url",
+        "previous_hash",
+        "previous_url",
+        "unconfirmed_count",
+        "high_gas_price",
+        "medium_gas_price",
+        "low_gas_price"
+      ]
     },
     "ethCallContractMethodEndpointRequest": {
       "type": "object",
@@ -1891,5 +1904,24 @@
     "ethNullValue": {
       "type": "object"
     }
-  }
+  },
+  "securityDefinitions": {
+    "ApiKeyAuthInHeader": {
+      "type": "apiKey",
+      "name": "x-chainweaver-token",
+      "in": "header"
+    },
+    "ApiKeyAuthInQuery": {
+      "type": "apiKey",
+      "name": "token",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuthInHeader": [],
+      "ApiKeyAuthInQuery": []
+    }
+  ],
+  "basePath": "/b1e4a9b3bd60404b765e07aa5fe58562cb6c56fa"
 }
