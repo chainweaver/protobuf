@@ -1,0 +1,30 @@
+{
+  "info": {
+    "title": "Chainweaver API for Bitcoin",
+    "description": "Welcome to Chainweaver's API documentation!"
+  },
+  "host": "api.chainweaver.io",
+  "schemes": ["https"],
+  "securityDefinitions": {
+    "security": {
+      "ApiKeyAuthInHeader": {
+        "type": "apiKey",
+        "name": "x-chainweaver-token",
+        "in": "header"
+      },
+      "ApiKeyAuthInQuery": {
+        "type": "apiKey",
+        "name": "token",
+        "in": "query"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuthInHeader": []
+    },
+    {
+      "ApiKeyAuthInQuery": []
+    }
+  ]
+}
