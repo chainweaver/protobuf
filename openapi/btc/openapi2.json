@@ -2,7 +2,7 @@
   "info": {
     "title": "Chainweaver API for Bitcoin",
     "description": "Welcome to Chainweaver's API documentation!",
-    "version": "45bb2fb1f56d2bd6d3e07d684755388b2356b1c4"
+    "version": "e3133ba53858cf2e0c0578955d99771cfdb22cd5"
   },
   "host": "api.chainweaver.io",
   "schemes": [
@@ -4526,5 +4526,5 @@
       }
     }
   },
-  "basePath": "/45bb2fb1f56d2bd6d3e07d684755388b2356b1c4"
+  "basePath": "/e3133ba53858cf2e0c0578955d99771cfdb22cd5"
 }
