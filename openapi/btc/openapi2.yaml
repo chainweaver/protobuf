@@ -1,11 +1,24 @@
-swagger: '2.0'
 info:
   title: Chainweaver API for Bitcoin
   description: Welcome to Chainweaver's API documentation!
-  version: b1e4a9b3bd60404b765e07aa5fe58562cb6c56fa
+  version: 45bb2fb1f56d2bd6d3e07d684755388b2356b1c4
 host: api.chainweaver.io
 schemes:
 - https
+securityDefinitions:
+  security:
+    ApiKeyAuthInHeader:
+      type: apiKey
+      name: x-chainweaver-token
+      in: header
+    ApiKeyAuthInQuery:
+      type: apiKey
+      name: token
+      in: query
+security:
+- ApiKeyAuthInHeader: []
+- ApiKeyAuthInQuery: []
+swagger: '2.0'
 consumes:
 - application/json
 produces:
@@ -3504,16 +3517,4 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/btcEvent'
-securityDefinitions:
-  ApiKeyAuthInHeader:
-    type: apiKey
-    name: x-chainweaver-token
-    in: header
-  ApiKeyAuthInQuery:
-    type: apiKey
-    name: token
-    in: query
-security:
-- ApiKeyAuthInHeader: []
-  ApiKeyAuthInQuery: []
-basePath: /b1e4a9b3bd60404b765e07aa5fe58562cb6c56fa
+basePath: /45bb2fb1f56d2bd6d3e07d684755388b2356b1c4
