@@ -169,7 +169,7 @@ fi
 updatePostmanId=.info._postman_id=\"${postmanId}\"
 
 # OpenAPI Version determination
-if [ -n $CIRCLE_BRANCH ]; then
+if [ $CIRCLE_BRANCH != "" ]; then
   version=$CIRCLE_BRANCH
   basePath=$CIRCLE_BRANCH
 else
