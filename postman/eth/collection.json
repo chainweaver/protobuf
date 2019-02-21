@@ -1864,7 +1864,7 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://api.chainweaver.io/fix-ci"
+      "value": "https://api.chainweaver.io/master"
     }
   ],
   "info": {
