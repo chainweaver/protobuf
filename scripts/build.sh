@@ -9,10 +9,12 @@ trap onSignalInterrupt 2
 
 compileProto() {
   coin=$1
+
   protoFiles=""
   for file in `\find ./proto/$coin -maxdepth 1 -type f`; do
     protoFiles+="$file "
   done
+
   protoc \
     -I./proto/$coin \
     -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
@@ -26,26 +28,31 @@ compileProto() {
 
 mergeOpenApiJson() {
   coin=$1
+
   fileCount=`find ./openapi/$coin/work -name "*Service*.json" | wc -l`
   jqParam=".[0]"
   for ((i=1; i < $fileCount; i++)); do
     jqParam+="*.[$i]"
   done
   jq -s `echo $jqParam` `find ./openapi/$coin/work -name "*Service*.json" | sort` > ./openapi/$coin/work/tmp.json
+
   jq 'del(.info, .schemes)' ./openapi/$coin/work/tmp.json > ./openapi/$coin/work/openapi2.json
   jq -s '.[0] * .[1]' ./scripts/${coin}OpenApi.json ./openapi/$coin/work/openapi2.json > ./openapi/$coin/openapi2.json
 }
 
 generatePostmanCollection() {
   coin=$1
-  /openapi-to-postman/bin/openapi2postmanv2.js -s openapi/$coin/openapi3.yaml -o postman/$coin/tmpCollection.json -p
+  /openapi-to-postman/bin/openapi2postmanv2.js -s ./openapi/$coin/openapi3.yaml -o ./postman/$coin/tmpCollection.json -p
+
   # In order to prevent a difference from occurring every time, delete id
-  jq 'del(.. | .id?)' postman/$coin/tmpCollection.json > postman/$coin/collection.json
-  rm -f postman/$coin/tmpCollection.json
+  jq 'del(.. | .id?)' ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
+  jq $updatePostmanId ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
 }
 
 run() {
   coin=$1
+
   rm -f ./openapi/$coin/*
   if [ ! -e ./openapi/$coin/work ]; then
     mkdir ./openapi/$coin/work
@@ -69,8 +76,8 @@ run() {
   echo "------------------------------"
   echo " Set API Version to OpenAPIv2 "
   echo "------------------------------"
-  jq $version openapi/$coin/openapi2.json > openapi/$coin/work/openapi2.json
-  jq $basePath openapi/$coin/work/openapi2.json > openapi/$coin/openapi2.json
+  jq $updateVersion openapi/$coin/openapi2.json > openapi/$coin/work/openapi2.json
+  jq $updateBasePath openapi/$coin/work/openapi2.json > openapi/$coin/openapi2.json
   echo "Set openapi/$coin/openapi2.json"
 
   echo "--------------------------------"
@@ -101,25 +108,29 @@ run() {
 
 echo "Build start!"
 
-prevVer=$(jq -r '.info.version' ./openapi/btc/openapi3.json)
+# Postman ID is fixed
+postmanId=$(jq -r '.info._postman_id' ./postman/$coin/collection.json)
+updatePostmanId=.info._postman_id=\"${postmanId}\"
 
+# OpenAPI Version determination
+prevVer=$(jq -r '.info.version' ./openapi/btc/openapi3.json)
 if [ $CIRCLE_BRANCH = "master" ]; then
   # In the case of the master, in order not to make a difference depending on the value of the version
-  v=$prevVer
-  bp=$prevVer
+  version=$prevVer
+  basePath=$prevVer
 elif [ -z "$CIRCLE_TAG" ]; then
-  v=$CIRCLE_SHA1
-  bp=$CIRCLE_SHA1
+  version=$CIRCLE_SHA1
+  basePath=$CIRCLE_SHA1
 else
-  v=$CIRCLE_TAG
+  version=$CIRCLE_TAG
 
   # Extract major version
   semVerRegex='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
   majorVersion=$(echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#")
-  bp="v${majorVersion}"
+  basePath="${majorVersion}"
 fi
-version=.info.version=\"${v}\"
-basePath=.basePath=\"/${bp}\"
+updateVersion=.info.version=\"${version}\"
+updateBasePath=.basePath=\"/${basePath}\"
 
 echo "[Environment Variables]"
 echo "CIRCLE_BRANCH=$CIRCLE_BRANCH"
