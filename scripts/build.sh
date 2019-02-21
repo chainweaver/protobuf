@@ -173,21 +173,17 @@ if [ $CIRCLE_BRANCH != "" ]; then
   version=$CIRCLE_BRANCH
   basePath=$CIRCLE_BRANCH
 else
-  version=$CIRCLE_TAG
-
-  # Extract major version
-  semVerRegex='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
-  majorVersion=$(echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#")
+  # Extract version
+  version=$(./scripts/semVer.sh vvv)
+  majorVersion=$(./scripts/semVer.sh v)
   basePath="${majorVersion}"
 fi
 updateVersion=.info.version=\"${version}\"
 updateBasePath=.basePath=\"/${basePath}\"
 
-echo "[Environment Variables]"
-echo "CIRCLE_BRANCH=$CIRCLE_BRANCH"
-echo "CIRCLE_TAG=$CIRCLE_TAG"
-echo "[API Version]"
-echo "$version"
+echo "[Environment Variables]CIRCLE_BRANCH=$CIRCLE_BRANCH CIRCLE_TAG=$CIRCLE_TAG"
+echo "[API Version]$version"
+echo "[API Major Version]$majorVersion"
 
 run btc
 if [ $? -gt 0 ]; then

@@ -21,16 +21,23 @@ jobs:
 
               git config --global user.email "$GIT_USER_EMAIL"
               git config --global user.name "$GIT_USER"
+              git remote add protobuf https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
 
               git add .
               git commit -m "[ci skip] Auto build"
 
-              git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
               if [ -n "$CIRCLE_TAG" ]; then
-                git tag $CIRCLE_TAG
-                git push upstream $CIRCLE_TAG
+                version=$(./scripts/semVer.sh vvv)
+
+                git checkout -b vup-$version
+                git checkout master
+                git merge vup-$version
+                git push protobuf master
+
+                git tag $version
+                git push protobuf $version
               else
-                git push upstream $CIRCLE_BRANCH
+                git push protobuf $CIRCLE_BRANCH
               fi
             fi
 
@@ -44,7 +51,8 @@ jobs:
           name: Rendering protobuf document
           command: |
             if [ -n "$CIRCLE_TAG" ]; then
-              git pull origin $CIRCLE_TAG
+              version=$(./scripts/semVer.sh vvv)
+              git pull origin $version
             else
               git pull origin $CIRCLE_BRANCH
             fi
@@ -82,7 +90,8 @@ jobs:
           name: Rendering OpenAPI document
           command: |
             if [ -n "$CIRCLE_TAG" ]; then
-              git pull origin $CIRCLE_TAG
+              version=$(./scripts/semVer.sh vvv)
+              git pull origin $version
             else
               git pull origin $CIRCLE_BRANCH
             fi
@@ -115,21 +124,22 @@ jobs:
       image: circleci/classic:edge
       docker_layer_caching: true
     steps:
+      - checkout
       - attach_workspace:
           at: /tmp
       - run:
           name: Git commit and push
           command: |
             # Clone github page repo and create new branch
+            cd ~
             git clone https://github.com/chainweaver/chainweaver.github.io.git
             cd chainweaver.github.io
-            branchName=doc-${CIRCLE_TAG//./-}
+            version=$(~/project/scripts/semVer.sh vvv)
+            branchName=doc-${version//./-}
             git checkout $GITHUB_PAGE_DEFAULT_BRANCH
             git checkout -b $branchName
 
-            # Extract major version
-            semVerRegex='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
-            majorVersion=$(echo $CIRCLE_TAG | sed -e "s#$semVerRegex#\1#")
+            majorVersion=$(~/project/scripts/semVer.sh v)
 
             # Store resources in static directory (protobuf)
             protobufDocPath=docusaurus/website/static/protobuf/v$majorVersion
@@ -144,11 +154,15 @@ jobs:
             # Commit and push
             git config --global user.email "$GIT_USER_EMAIL"
             git config --global user.name "$GIT_USER"
+            git remote add github-io https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/chainweaver.github.io.git
+
             git add .
             git commit -m "Update API Documents"
-            git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/chainweaver.github.io.git
-            git push upstream :$branchName || true
-            git push upstream $branchName
+            git push github-io :$branchName || true
+            git push github-io $branchName
+
+            git remote add protobuf https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
+            git push protobuf :$CIRCLE_TAG || true
 
 workflows:
   version: 2
@@ -157,7 +171,7 @@ workflows:
       - build:
           filters:
             tags:
-              only: /.*/
+              ignore: /[0-9]+\.[0-9]+\.[0-9]+/
       - render-protobuf-document:
           requires:
            - build
@@ -178,4 +192,4 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^\d+\.\d+\.\d+$/
+              only: /^release-\d+\.\d+\.\d+$/
