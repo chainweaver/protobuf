@@ -153,7 +153,7 @@ jobs:
             git add .
             git commit -m "Update API Documents"
             git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/chainweaver.github.io.git
-            git push upstream :$branchName
+            git push upstream :$branchName || true
             git push upstream $branchName
 
 workflows:
