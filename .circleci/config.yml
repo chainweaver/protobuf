@@ -27,8 +27,6 @@ jobs:
 
               git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
               if [ -n "$CIRCLE_TAG" ]; then
-                git tag -d $CIRCLE_TAG
-                git push upstream :$CIRCLE_TAG
                 git tag $CIRCLE_TAG
                 git push upstream $CIRCLE_TAG
               else
@@ -64,17 +62,15 @@ jobs:
       - run:
           name: Notify artifacts url to slack
           command: |
-            if [ -z "$CIRCLE_TAG" ]; then
-              artifactsUrl=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
-              curl -X POST --data-urlencode \
-                "payload={\
-                  \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
-                  \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
-                  \"text\": \"Please check the protobuf document\n$artifactsUrl\",\
-                  \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
-                }" \
-                $NOTIFICATION_SLACK_WEBHOOK_URL
-            fi
+            artifactsUrl=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
+            curl -X POST --data-urlencode \
+              "payload={\
+                \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
+                \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
+                \"text\": \"Please check the protobuf document\n$artifactsUrl\",\
+                \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
+              }" \
+              $NOTIFICATION_SLACK_WEBHOOK_URL
 
   render-openapi-document:
     machine:
@@ -104,17 +100,15 @@ jobs:
       - run:
           name: Notify artifacts url to slack
           command: |
-            if [ -z "$CIRCLE_TAG" ]; then
-              artifactsUrl=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
-              curl -X POST --data-urlencode \
-                "payload={\
-                  \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
-                  \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
-                  \"text\": \"Please check the OpenAPI document\n$artifactsUrl\",\
-                  \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
-                }" \
-                $NOTIFICATION_SLACK_WEBHOOK_URL
-            fi
+            artifactsUrl=$(curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=CIRCLE_TOKEN | jq -r '.[].url')
+            curl -X POST --data-urlencode \
+              "payload={\
+                \"channel\": \"#$NOTIFICATION_SLACK_CHANNEL\",\
+                \"username\": \"$NOTIFICATION_SLACK_USERNAME\",\
+                \"text\": \"Please check the OpenAPI document\n$artifactsUrl\",\
+                \"icon_emoji\": \":$NOTIFICATION_SLACK_ICON_EMOJI:\"\
+              }" \
+              $NOTIFICATION_SLACK_WEBHOOK_URL
 
   update-document:
     machine:
@@ -153,6 +147,7 @@ jobs:
             git add .
             git commit -m "Update API Documents"
             git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/chainweaver.github.io.git
+            git push upstream :$branchName || true
             git push upstream $branchName
 
 workflows:
