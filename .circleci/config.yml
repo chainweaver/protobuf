@@ -27,8 +27,6 @@ jobs:
 
               git remote add upstream https://$GITHUB_ACCESS_TOKEN@github.com/chainweaver/protobuf.git
               if [ -n "$CIRCLE_TAG" ]; then
-                git tag -d $CIRCLE_TAG
-                git push upstream :$CIRCLE_TAG
                 git tag $CIRCLE_TAG
                 git push upstream $CIRCLE_TAG
               else
