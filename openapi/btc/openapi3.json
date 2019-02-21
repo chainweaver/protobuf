@@ -2912,11 +2912,7 @@
     },
     "servers": [
         {
-<<<<<<< HEAD
             "url": "https://api.chainweaver.io/ac99986e0bd4d1fd69f15945d4d09722a0bbc5ab"
-=======
-            "url": "https://api.chainweaver.io/6fa361b9abe17b9deace940eda1265cac6401f6b"
->>>>>>> ce6da7ac4fef423df07c63a037091838062da167
         }
     ],
     "components": {
