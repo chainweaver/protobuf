@@ -113,14 +113,9 @@ postmanId=$(jq -r '.info._postman_id' ./postman/$coin/collection.json)
 updatePostmanId=.info._postman_id=\"${postmanId}\"
 
 # OpenAPI Version determination
-prevVer=$(jq -r '.info.version' ./openapi/btc/openapi3.json)
-if [ $CIRCLE_BRANCH = "master" ]; then
-  # In the case of the master, in order not to make a difference depending on the value of the version
-  version=$prevVer
-  basePath=$prevVer
-elif [ -z "$CIRCLE_TAG" ]; then
-  version=$CIRCLE_SHA1
-  basePath=$CIRCLE_SHA1
+if [ -n $CIRCLE_BRANCH ]; then
+  version=$CIRCLE_BRANCH
+  basePath=$CIRCLE_BRANCH
 else
   version=$CIRCLE_TAG
 
@@ -135,9 +130,8 @@ updateBasePath=.basePath=\"/${basePath}\"
 echo "[Environment Variables]"
 echo "CIRCLE_BRANCH=$CIRCLE_BRANCH"
 echo "CIRCLE_TAG=$CIRCLE_TAG"
-echo "CIRCLE_SHA1=$CIRCLE_SHA1"
 echo "[API Version]"
-echo "$v"
+echo "$version"
 
 run btc
 run eth
