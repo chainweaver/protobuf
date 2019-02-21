@@ -5609,7 +5609,7 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://api.chainweaver.io/fix-build"
+      "value": "https://api.chainweaver.io/master"
     }
   ],
   "info": {
