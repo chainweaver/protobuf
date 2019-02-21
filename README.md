@@ -1,4 +1,5 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fchainweaver%2Fprotobuf.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fchainweaver%2Fprotobuf?ref=badge_shield)
+[![CircleCI](https://circleci.com/gh/chainweaver/protobuf/tree/master.svg?style=svg)](https://circleci.com/gh/chainweaver/protobuf/tree/master)
 
 # Protocol Buffers V3 for Chainweaver API
 
