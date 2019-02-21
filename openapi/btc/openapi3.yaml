@@ -5,7 +5,7 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: 4dac80932d8e68482d5495b7c605c9507b16d79d
+  version: 2919dc459b8ac6d24cefdf9700cb2d0e2c65bb7b
 security:
 - ApiKeyAuthInHeader: []
 - ApiKeyAuthInQuery: []
@@ -1921,7 +1921,7 @@ paths:
       tags:
       - WebHooksService
 servers:
-- url: https://api.chainweaver.io/ac99986e0bd4d1fd69f15945d4d09722a0bbc5ab
+- url: https://api.chainweaver.io/2919dc459b8ac6d24cefdf9700cb2d0e2c65bb7b
 components:
   securitySchemes:
     ApiKeyAuthInHeader:
