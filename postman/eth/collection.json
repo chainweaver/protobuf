@@ -7,13 +7,10 @@
           "name": "{network}",
           "item": [
             {
-              "name": "General information about the Ethereum blockchain is available by GET-ing the base resource.",
+              "name": "Chain Endpoint",
               "request": {
-                "name": "General information about the Ethereum blockchain is available by GET-ing the base resource.",
-                "description": {
-                  "content": "The returned object contains a litany of information, including its height, the time/hash of the latest block, and more. For Ethereum, the object includes information on gas_price, denoted in wei. Unlike Bitcoin, fees are determined by the computational execution cost of the transaction via gas; in order to prevent runaway contract execution, each operation in Ethereum’s Virtual Machine requires a fixed/known amount of gas. While the amount of gas is fixed for a given EVM operation, the price of gas fluctuates based on market demand on the Ethereum blockchain (similar to Bitcoin fees). For more detail, check this very helpful Stack Exchange explanation.\n\nFor more detailed information about the data returned, check the Blockchain object.",
-                  "type": "text/plain"
-                },
+                "name": "Chain Endpoint",
+                "description": {},
                 "url": {
                   "path": [
                     "eth",
@@ -89,10 +86,7 @@
                   "name": "Generate Address Endpoint",
                   "request": {
                     "name": "Generate Address Endpoint",
-                    "description": {
-                      "content": "The Generate Address endpoint allows you to generate private-public key-pairs along with an associated public address. No information is required with this POST request. <aside class=\"success\">The private key returned is immediately discarded by our servers, but we advise that these keys should not be used for any high-value—or long-term storage—addresses.</aside> <aside class=\"success\">The private key returned is immediately discarded by our servers, but we advise that these keys should not be used for any high-value—or long-term storage—addresses.</aside>The returned object contains a private key, a public key, and a public address, all hex-encoded.",
-                      "type": "text/plain"
-                    },
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -189,10 +183,7 @@
                       "name": "Address Endpoint",
                       "request": {
                         "name": "Address Endpoint",
-                        "description": {
-                          "content": "The Address Endpoint returns more information about an address’ transactions than the Address Balance Endpoint, but sacrifices some response speed in the process. ADDRESS is a string representing the public address (or wallet/HD wallet name) you’re interested in querying, for example: `738d145faabb1e00cf5a017588a9c0f998318012` The returned object contains information about the address, including its balance in wei, the number of transactions associated with it, and transaction summaries in descending order by block height.",
-                          "type": "text/plain"
-                        },
+                        "description": {},
                         "url": {
                           "path": [
                             "eth",
@@ -314,10 +305,7 @@
                       "name": "Address Balance Endpoint",
                       "request": {
                         "name": "Address Balance Endpoint",
-                        "description": {
-                          "content": "The Address Balance Endpoint is the simplest—and fastest—method to get a subset of information on a public address. ADDRESS is a string representing the public address you’re interested in querying, for example: `738d145faabb1e00cf5a017588a9c0f998318012` The returned object contains information about the address, including its balance in wei and the number of transactions associated with it. The endpoint omits any detailed transaction information, but if that isn’t required by your application, then it’s the fastest and preferred way to get public address information.",
-                          "type": "text/plain"
-                        },
+                        "description": {},
                         "url": {
                           "path": [
                             "eth",
@@ -397,43 +385,6 @@
                           "body": "{\n \"address\": \"<string>\",\n \"total_received\": \"<string>\",\n \"total_sent\": \"<string>\",\n \"balance\": \"<string>\",\n \"unconfirmed_balance\": \"<string>\",\n \"final_balance\": \"<string>\",\n \"n_tx\": \"<string>\",\n \"unconfirmed_n_tx\": \"<string>\",\n \"final_n_tx\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"hasMore\": \"<boolean>\"\n}",
                           "cookie": [],
                           "_postman_previewlanguage": "json"
-                        },
-                        {
-                          "name": "指定した条件に当てはまる ajiting がなかった場合に返すレスポンスです。",
-                          "originalRequest": {
-                            "url": {
-                              "path": [
-                                "eth",
-                                "<string>",
-                                "addrs",
-                                "<string>",
-                                "balance"
-                              ],
-                              "host": [
-                                "{{baseUrl}}"
-                              ],
-                              "query": [
-                                {
-                                  "key": "token",
-                                  "value": ""
-                                }
-                              ],
-                              "variable": []
-                            },
-                            "method": "GET",
-                            "body": {}
-                          },
-                          "status": "Not Found",
-                          "code": 404,
-                          "header": [
-                            {
-                              "key": "Content-Type",
-                              "value": "application/json"
-                            }
-                          ],
-                          "body": "\"schema type not provided\"",
-                          "cookie": [],
-                          "_postman_previewlanguage": "json"
                         }
                       ],
                       "event": []
@@ -448,13 +399,10 @@
               "name": "blocks",
               "item": [
                 {
-                  "name": "If you want more data on a particular block, you can use the Block Hash endpoint.",
+                  "name": "Block Hash Endpoint",
                   "request": {
-                    "name": "If you want more data on a particular block, you can use the Block Hash endpoint.",
-                    "description": {
-                      "content": "$BLOCK_HASH is a string representing the hash of the block you’re interested in querying, for example:\n\n0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412\n\nThe returned object contains information about the block, including its height, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object.",
-                      "type": "text/plain"
-                    },
+                    "name": "Block Hash Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -555,13 +503,10 @@
                   "event": []
                 },
                 {
-                  "name": "You can also query for information on a block using its height, using the same resource but with a different variable type.",
+                  "name": "Block Height Endpoint",
                   "request": {
-                    "name": "You can also query for information on a block using its height, using the same resource but with a different variable type.",
-                    "description": {
-                      "content": "BLOCK_HEIGHT is an integer representing the height of the block you’re interested in querying, for example:\n\n1500000\n\nAs above, the returned object contains information about the block, including its hash, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object.",
-                      "type": "text/plain"
-                    },
+                    "name": "Block Height Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -668,13 +613,10 @@
               "name": "contracts",
               "item": [
                 {
-                  "name": "The Create Contract Endpoint allows you to submit your solidity code and params to check raw serialized binary compilation and ABI. It’s an easy to validate your contract compiles before pushing it to the Ethereum blockchain.",
+                  "name": "Create Contract Endpoint",
                   "request": {
-                    "name": "The Create Contract Endpoint allows you to submit your solidity code and params to check raw serialized binary compilation and ABI. It’s an easy to validate your contract compiles before pushing it to the Ethereum blockchain.",
-                    "description": {
-                      "content": "If you include a private key (associated with a funded Ethereum external account), gas_limit, and contract(s) to publish, BlockCypher will embed the contract into the blockchain and return the transaction hash that created the contract and the contract address. Find both of those properties under the returned contract object as address and creation_tx_hash.\n\nThe params property lets you provide arguments to the contract constructor. If your contract has no constructor or the constructor takes no arguments, this property can be omitted.\n\nYou can optionally include value in wei to transfer to the contract on creation.\n\nNote that for now both the contract solidity source and the ABI are made publicly available for anyone with the contract hash. We will support making the source private to your token in the future. However note that all contracts on the public Ethereum blockchain can be seen in binary form and it’s only a matter of time before good decompilers surface.",
-                      "type": "text/plain"
-                    },
+                    "name": "Create Contract Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -768,13 +710,10 @@
                   "name": "{query address}",
                   "item": [
                     {
-                      "name": "ADDRESS is a string representing the contract address you’re interested in querying, for example:",
+                      "name": "Contract Address Endpoint",
                       "request": {
-                        "name": "ADDRESS is a string representing the contract address you’re interested in querying, for example:",
-                        "description": {
-                          "content": "0eb688e79698d645df015cf2e9db5a6fe16357f1\n\nThe returned object contains information about the contract; if you deployed the contract with BlockCypher, it will return solidity and abi as well.",
-                          "type": "text/plain"
-                        },
+                        "name": "Contract Address Endpoint",
+                        "description": {},
                         "url": {
                           "path": [
                             "eth",
@@ -865,13 +804,10 @@
                       "event": []
                     },
                     {
-                      "name": "The Call Contract Method endpoint makes every method in your contracts callable simply via an HTTP request. It’s a binding that translates a published contract into a set of endpoints (one for each method) and a provided JSON array into a set of arguments to invoke a given method.",
+                      "name": "Call Contract Method Endpoint",
                       "request": {
-                        "name": "The Call Contract Method endpoint makes every method in your contracts callable simply via an HTTP request. It’s a binding that translates a published contract into a set of endpoints (one for each method) and a provided JSON array into a set of arguments to invoke a given method.",
-                        "description": {
-                          "content": "To call a method on a given contract, you must include a private key associated with a funded external account and a specified gas_limit in your request object. params are optionally accepted if the contract method allows them. Make sure the JSON types your provide match your contract signature (string, number, etc.). You can optionally include value in wei to transfer to this contract method.\n\nThe Call Contract endpoint will check the contract ABI to determine whether the method has been declared “constant”. If so, no transaction will be created and no gas will be consumed. The method is just called locally on our servers and won’t be registered on the blockchain. Otherwise, we will build the call transaction to invoke the method on the Ethereum blockchain and propagate it on the network. Keep in mind that in that case, you will need to wait for the call transaction to be included in a block to see its effects.\nADDRESS is a string representing the contract address you’re interested in querying, for example:\n\n0eb688e79698d645df015cf2e9db5a6fe16357f1\n\nMETHOD is a string representing a declared method from the above contract; in the above example, the options are:\n\ngreet\n\nor\n\nkill",
-                          "type": "text/plain"
-                        },
+                        "name": "Call Contract Method Endpoint",
+                        "description": {},
                         "url": {
                           "path": [
                             "eth",
@@ -993,13 +929,10 @@
               "name": "txs",
               "item": [
                 {
-                  "name": "The Unconfirmed Transactions Endpoint returns an array of the latest transactions that haven’t been included in any blocks.",
+                  "name": "Unconfirmed Transactions Endpoint",
                   "request": {
-                    "name": "The Unconfirmed Transactions Endpoint returns an array of the latest transactions that haven’t been included in any blocks.",
-                    "description": {
-                      "content": "The returned object is an array of transactions that haven’t been included in blocks, arranged in reverse chronological order (latest is first, then older transactions follow).",
-                      "type": "text/plain"
-                    },
+                    "name": "Unconfirmed Transactions Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -1071,13 +1004,10 @@
                   "event": []
                 },
                 {
-                  "name": "We also offer the ability to decode raw transactions without sending propagating them to the network; perhaps you want to double-check another client library or confirm that another service is sending proper transactions.",
+                  "name": "Decode Raw Transaction Endpoint",
                   "request": {
-                    "name": "We also offer the ability to decode raw transactions without sending propagating them to the network; perhaps you want to double-check another client library or confirm that another service is sending proper transactions.",
-                    "description": {
-                      "content": "$TXHEX is a hex-encoded raw representation of your transaction, for example:\n\nf86b808504e3b2920082520894add42af7dd58b27e1e6ca5c4fdc01214b52d382f870bdccd84e7b000801ba0b86360f1c2d2b38421a80e71bf4cf54371bc9aa62f81c925484c6557b44b13f1a07b5690150c10a3947225fb612162c90ccfaefde99f7d363a8013e3eead0e55dd\n\nIf it succeeds, you’ll receive your decoded TX object.",
-                      "type": "text/plain"
-                    },
+                    "name": "Decode Raw Transaction Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -1170,13 +1100,10 @@
                   "event": []
                 },
                 {
-                  "name": "Using BlockCypher’s API, you can push transactions to Ethereum in one of two ways:",
+                  "name": "Create Transaction Endpoint",
                   "request": {
-                    "name": "Using BlockCypher’s API, you can push transactions to Ethereum in one of two ways:",
-                    "description": {
-                      "content": "* Use another Ethereum library to create your transactions, then push them using our raw-transaction-endpoint\n\n* Use our two-endpoint process outlined below, wherein we generate a TXSkeleton based on your input address, output address, and value to transfer.\n\nIn either case, for security reasons, we never take possession of your private keys.\n\nNew Transaction Endpoint\n\nTo use BlockCypher’s two-endpoint transaction creation tool, first you need to provide the input address, output address, and value to transfer (in wei). Provide this in a partially-filled out TX request object.\n\nAs you can see from the code example, you only need to provide a single public address within the addresses array of both the input and output of your TX request object. You also need to fill in the value with the amount you’d like to transfer from one address to another. Note that we only accept a single input and output address per Ethereum’s transaction model, and tosign only returns a single element in its array; we use arrays for parity with our Bitcoin API.\n\nBy default, creating a transaction that sends to an external account sets the gas_limit to 21000. For contract account recepients, that limit is raised to 80000. If you’d like to set a custom limit, add gas_limit to your request object.\nAs a return object, you’ll receive a TXSkeleton containing a slightly-more complete TX alongside data you need to sign in the tosign array. You’ll need this object for the next steps of the transaction creation process.\n\n<aside class=\"notice\">\n  The TXSkeleton returned by this endpoint may contain some data that’s temporary or incomplete, like the hash, and the gas used fields. This is by design, as the final TX can only be computed once signed data has been added. Do not rely on these fields until they are returned and sent to the network via the Send Transaction Endpoint outlined below.\n  next, you sign the data returned in the tosign array locally\n  here we're using our signer tool (https://github.com/blockcypher/btcutils/tree/master/signer), but any ECDSA secp256k1 signing tool should work (Ethereum uses the same ECDSA curve as Bitcoin for transaction signatures)\n  $PRIVATEKEY here is a hex-encoded private key corresponding to the input from address add42af7dd58b27e1e6ca5c4fdc01214b52d382f\n</aside>\n\n./signer a83f5bea598e0d217a03a2646d6c49edb2e99daf4537b2c09b008df76b77acec $PRIVATEKEY\n3045022100bc04ce017622f9830f955dbd8fafb65c5a72306a674711e507200f5f198954c90220581bc05e2658c258a985d914a158f89f44144a2e082837955b218d12a43a6a38\nLocally Sign Your Transaction\nWith your TXSkeleton returned from the New Transaction Endpoint, you now need to use your private key to sign the data provided in the tosign array.\n\nDigital signing can be a difficult process, and is where the majority of issues arise when dealing with cryptocurrency transactions. Ethereum uses the same elliptic curve as Bitcoin (secp256k1), so any Bitcoin signing library that fits with your workflow should suffice. If you want to experiment with client-side signing, consider using our signer tool.\n\n One of the most common errors in the signing process is a data format mismatch. We always return and expect hex-encoded data, but oftentimes, standard signing libraries require byte arrays. Remember to convert your data, and always send hex-encoded signatures to BlockCypher.",
-                      "type": "text/plain"
-                    },
+                    "name": "Create Transaction Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -1269,13 +1196,10 @@
                   "event": []
                 },
                 {
-                  "name": "If you’d prefer to use your own transaction library instead of the recommended path of our two-endpoint transaction generation we’re still happy to help you propagate your raw transactions. Simply send your raw hex-encoded transaction to this endpoint and we’ll leverage our well-connected network to propagate your transaction faster than anywhere else.",
+                  "name": "Push Raw Transaction Endpoint",
                   "request": {
-                    "name": "If you’d prefer to use your own transaction library instead of the recommended path of our two-endpoint transaction generation we’re still happy to help you propagate your raw transactions. Simply send your raw hex-encoded transaction to this endpoint and we’ll leverage our well-connected network to propagate your transaction faster than anywhere else.",
-                    "description": {
-                      "content": "$TXHEX is a hex-encoded raw representation of your transaction, for example:\n\nf86b808504e3b2920082520894add42af7dd58b27e1e6ca5c4fdc01214b52d382f870bdccd84e7b000801ba0b86360f1c2d2b38421a80e71bf4cf54371bc9aa62f81c925484c6557b44b13f1a07b5690150c10a3947225fb612162c90ccfaefde99f7d363a8013e3eead0e55dd\n\nIf it succeeds, you’ll receive a decoded TX object and an HTTP Status Code 201. You can then use the hash to track its progress on the network.",
-                      "type": "text/plain"
-                    },
+                    "name": "Push Raw Transaction Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -1368,13 +1292,10 @@
                   "event": []
                 },
                 {
-                  "name": "Once you’ve finished signing the tosign data locally, put that (hex-encoded) data into the signatures array of the TXSkeleton. Unlike Bitcoin, you don’t need to include the signing accounts public key, as on Ethereum this is derived using the tosign data and signature data. But you must include the tosign data in addition to the signatures array for that derivation to work.",
+                  "name": "Send Transaction Endpoint",
                   "request": {
-                    "name": "Once you’ve finished signing the tosign data locally, put that (hex-encoded) data into the signatures array of the TXSkeleton. Unlike Bitcoin, you don’t need to include the signing accounts public key, as on Ethereum this is derived using the tosign data and signature data. But you must include the tosign data in addition to the signatures array for that derivation to work.",
-                    "description": {
-                      "content": "If the transaction was successful, you’ll receive a TXSkeleton with the completed TX (which contains its final hash) and an HTTP Status Code 201.",
-                      "type": "text/plain"
-                    },
+                    "name": "Send Transaction Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -1467,13 +1388,10 @@
                   "event": []
                 },
                 {
-                  "name": "The Transaction Hash Endpoint returns detailed information about a given transaction based on its hash.",
+                  "name": "Transaction Hash Endpoint",
                   "request": {
-                    "name": "The Transaction Hash Endpoint returns detailed information about a given transaction based on its hash.",
-                    "description": {
-                      "content": "TXHASH is a string representing the hex-encoded transaction hash you’re interested in querying, for example:\n\n8f39fb4940c084460da00a876a521ef2ba84ad6ea8d2f5628c9f1f8aeb395342\n\nThe returned object contains detailed information about the transaction, including the value transfered, fees collected, date received, any scripts associated with an output, and more.",
-                      "type": "text/plain"
-                    },
+                    "name": "Transaction Hash Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -1562,9 +1480,9 @@
               "name": "hooks",
               "item": [
                 {
-                  "name": "This resource lists your currently active events, according to the base resource and $YOURTOKEN.",
+                  "name": "List Web Hooks Endpoint",
                   "request": {
-                    "name": "This resource lists your currently active events, according to the base resource and $YOURTOKEN.",
+                    "name": "List Web Hooks Endpoint",
                     "description": {},
                     "url": {
                       "path": [
@@ -1645,13 +1563,10 @@
                   "event": []
                 },
                 {
-                  "name": "Using a partially filled out Event, you can create a WebHook using this resource. Check the Event object description and types of events to understand the available options.",
+                  "name": "Create Web Hook Endpoint",
                   "request": {
-                    "name": "Using a partially filled out Event, you can create a WebHook using this resource. Check the Event object description and types of events to understand the available options.",
-                    "description": {
-                      "content": "If successful, it will return the Event with a newly generated id.",
-                      "type": "text/plain"
-                    },
+                    "name": "Create Web Hook Endpoint",
+                    "description": {},
                     "url": {
                       "path": [
                         "eth",
@@ -1745,13 +1660,10 @@
                   "name": "{webhookid}",
                   "item": [
                     {
-                      "name": "This resource returns an Event based on its generated id.",
+                      "name": "Web Hook ID Endpoint",
                       "request": {
-                        "name": "This resource returns an Event based on its generated id.",
-                        "description": {
-                          "content": "WEBHOOKID is a string representing the event’s generated id, for example:\n\nce83d08f-7b86-4a6a-9b41-85507648f9c7",
-                          "type": "text/plain"
-                        },
+                        "name": "Web Hook ID Endpoint",
+                        "description": {},
                         "url": {
                           "path": [
                             "eth",
@@ -1842,13 +1754,10 @@
                       "event": []
                     },
                     {
-                      "name": "This resource deletes an active Event based on its id. Remember to include your token, or the request will fail.\nWEBHOOKID is a string representing the event’s generated id, for example:",
+                      "name": "Delete Web Hook Endpoint",
                       "request": {
-                        "name": "This resource deletes an active Event based on its id. Remember to include your token, or the request will fail.\nWEBHOOKID is a string representing the event’s generated id, for example:",
-                        "description": {
-                          "content": "ce83d08f-7b86-4a6a-9b41-85507648f9c7\n\nIf successful, it won’t return any objects, but will respond with an HTTP Status Code 204.",
-                          "type": "text/plain"
-                        },
+                        "name": "Delete Web Hook Endpoint",
+                        "description": {},
                         "url": {
                           "path": [
                             "eth",
@@ -1955,12 +1864,13 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://api.chainweaver.io/"
+      "value": "https://api.chainweaver.io/ac99986e0bd4d1fd69f15945d4d09722a0bbc5ab"
     }
   ],
   "info": {
     "_postman_id": "",
     "name": "Chainweaver API for Ethereum",
+    "version": {},
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",
