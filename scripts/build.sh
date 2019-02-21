@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function onSignalInterrupt( ){
+function onSignalInterrupt() {
   echo "Interrupted!"
   exit 0
 }
