@@ -1,16 +1,11 @@
 #!/bin/bash
 
-mergeOpenApiJson() {
-  coin=$1
-  fileCount=`find ./openapi/$coin/work -name "*Service*.json" | wc -l`
-  jqParam=".[0]"
-  for ((i=1; i < $fileCount; i++)); do
-    jqParam+="*.[$i]"
-  done
-  jq -s `echo $jqParam` `find ./openapi/$coin/work -name "*Service*.json" | sort` > ./openapi/$coin/work/tmp.json
-  jq 'del(.info, .schemes)' ./openapi/$coin/work/tmp.json > ./openapi/$coin/work/openapi2.json
-  jq -s '.[0] * .[1]' ./scripts/${coin}OpenApi.json ./openapi/$coin/work/openapi2.json > ./openapi/$coin/openapi2.json
+function onSignalInterrupt( ){
+  echo "Interrupted!"
+  exit 0
 }
+
+trap onSignalInterrupt 2
 
 compileProto() {
   coin=$1
@@ -27,6 +22,26 @@ compileProto() {
     --swagger_out=logtostderr=true:./openapi/$coin/work/ \
     `echo $protoFiles`
   rm -f protoc-gen-go/$coin/openapi.pb.go
+}
+
+mergeOpenApiJson() {
+  coin=$1
+  fileCount=`find ./openapi/$coin/work -name "*Service*.json" | wc -l`
+  jqParam=".[0]"
+  for ((i=1; i < $fileCount; i++)); do
+    jqParam+="*.[$i]"
+  done
+  jq -s `echo $jqParam` `find ./openapi/$coin/work -name "*Service*.json" | sort` > ./openapi/$coin/work/tmp.json
+  jq 'del(.info, .schemes)' ./openapi/$coin/work/tmp.json > ./openapi/$coin/work/openapi2.json
+  jq -s '.[0] * .[1]' ./scripts/${coin}OpenApi.json ./openapi/$coin/work/openapi2.json > ./openapi/$coin/openapi2.json
+}
+
+generatePostmanCollection() {
+  coin=$1
+  /openapi-to-postman/bin/openapi2postmanv2.js -s openapi/$coin/openapi3.yaml -o postman/$coin/tmpCollection.json -p
+  # In order to prevent a difference from occurring every time, delete id
+  jq 'del(.. | .id?)' postman/$coin/tmpCollection.json > postman/$coin/collection.json
+  rm -f postman/$coin/tmpCollection.json
 }
 
 run() {
@@ -75,7 +90,7 @@ run() {
   echo "-------------------------------------------------"
   echo " Generate postman collection file from OpenAPIv3 "
   echo "-------------------------------------------------"
-  /openapi-to-postman/bin/openapi2postmanv2.js -s openapi/$coin/openapi3.yaml -o postman/$coin/collection.json -p
+  generatePostmanCollection $coin
   echo "Create postman/$coin/collection.json"
 
   if [ -e ./openapi/$coin/work ]; then
