@@ -66,15 +66,31 @@ generatePostmanCollection() {
     return 1
   fi
 
-  jq $updatePostmanId ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  jq 'del(.variable[0])' ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
 
-  mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
+  jq $updatePostmanId ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
+
+  baseUrl=$(jq -r '.servers[0].url' ./openapi/$coin/openapi3.json)
+  updateVariableBaseUrl=.variable[0]={\"key\":\"baseUrl\",\"type\":\"string\",\"value\":\"$baseUrl\"}
+  jq $updateVariableBaseUrl ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  network=main
+  updateVariableNetwork=.variable[1]={\"key\":\"network\",\"type\":\"string\",\"value\":\"$network\"}
+  jq $updateVariableNetwork ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  rm -f ./postman/$coin/tmpCollection.json
 }
 
 run() {
@@ -97,18 +113,18 @@ run() {
   echo "Generate protoc-gen-go/$coin/*.pb.go"
   echo "Generate openapi/$coin/*.json"
 
-  echo "--------------------------"
+  echo "----------------------------"
   echo " Merge OpenAPIv2 json files "
-  echo "--------------------------"
+  echo "----------------------------"
   mergeOpenApiJson $coin
   if [ $? -gt 0 ]; then
     return 1
   fi
   echo "Create openapi/$coin/openapi2.json"
 
-  echo "------------------------------"
-  echo " Set API Version to OpenAPIv2 "
-  echo "------------------------------"
+  echo "------------------"
+  echo " Update OpenAPIv2 "
+  echo "------------------"
   jq $updateVersion openapi/$coin/openapi2.json > openapi/$coin/work/openapi2.json
   if [ $? -gt 0 ]; then
     return 1
@@ -117,7 +133,7 @@ run() {
   if [ $? -gt 0 ]; then
     return 1
   fi
-  echo "Set openapi/$coin/openapi2.json"
+  echo "Update openapi/$coin/openapi2.json"
 
   echo "--------------------------------"
   echo " Convert OpenAPIv2 to OpenAPIv3 "
@@ -160,6 +176,7 @@ run() {
 echo "Build start!"
 
 # Postman ID is fixed
+git checkout postman
 postmanId=$(jq -r '.info._postman_id' ./postman/btc/collection.json)
 if [ $? -gt 0 ]; then
   echo "Build error"
@@ -176,7 +193,7 @@ else
   # Extract version
   version=$(./scripts/semVer.sh vvv)
   majorVersion=$(./scripts/semVer.sh v)
-  basePath="${majorVersion}"
+  basePath="v${majorVersion}"
 fi
 updateVersion=.info.version=\"${version}\"
 updateBasePath=.basePath=\"/${basePath}\"
