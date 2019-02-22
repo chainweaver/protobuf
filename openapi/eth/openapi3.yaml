@@ -5,7 +5,7 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: 0.1.2
+  version: feature-blockchain
 security:
 - ApiKeyAuthInHeader: []
 - ApiKeyAuthInQuery: []
@@ -132,10 +132,21 @@ paths:
       - AddressService
   /eth/{network}:
     get:
+      summary: Chain Endpoint
+      description: General information about the Ethereum blockchain is available
+        by GET-ing the base resource. The returned object contains a litany of information,
+        including its height, the time/hash of the latest block, and more. For Ethereum,
+        the object includes information on gas_price, denoted in wei. Unlike Bitcoin,
+        fees are determined by the computational execution cost of the transaction
+        via gas; in order to prevent runaway contract execution, each operation in
+        Ethereum’s Virtual Machine requires a fixed/known amount of gas. While the
+        amount of gas is fixed for a given EVM operation, the price of gas fluctuates
+        based on market demand on the Ethereum blockchain (similar to Bitcoin fees).
+        For more detail, check this very helpful Stack Exchange explanation.
       operationId: ChainEndpoint
       responses:
         '200':
-          description: ''
+          description: Success OK
           content:
             application/json:
               schema:
@@ -152,13 +163,22 @@ paths:
           - ROPSTEN
           - ropsten
       tags:
-      - BlockchainService
+      - Blockchain API
   /eth/{network}/blocks/{block_hash}:
     get:
+      summary: Block Hash Endpoint
+      description: If you want more data on a particular block, you can use the Block
+        Hash endpoint. $BLOCK_HASH is a string representing the hash of the block
+        you’re interested in querying, for example:`0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412`
+        The returned object contains information about the block, including its height,
+        the total amount of wei transacted within it, the number of transactions in
+        it, transaction hashes listed in the canonical order in which they appear
+        in the block, and more. For more detail on the data returned, check the Block
+        object.
       operationId: BlockHashEndpoint
       responses:
         '200':
-          description: ''
+          description: Success OK
           content:
             application/json:
               schema:
@@ -196,13 +216,26 @@ paths:
           type: integer
           format: int32
       tags:
-      - BlockchainService
+      - Blockchain API
   /eth/{network}/blocks/{block_height}:
     get:
+      summary: Block Height Endpoint
+      description: 'You can also query for information on a block using its height,
+        using the same resource but with a different variable type. BLOCK_HEIGHT is
+        an integer representing the height of the block you’re interested in querying,
+        for example: `1500000` As above, the returned object contains information
+        about the block, including its hash, the total amount of wei transacted within
+        it, the number of transactions in it, transaction hashes listed in the canonical
+        order in which they appear in the block, and more. For more detail on the
+        data returned, check the Block object. <aside class="notice">With recent blocks,
+        $BLOCK_HEIGHT is not always a unique identifier, due to the possibility of
+        soft forks/orphans and the nature of the consensus model with blockchains.
+        If you’re querying blocks with depth above 10 (i.e., there are more than 10
+        blocks ahead of your target) the height should be a safe identifier.</aside>'
       operationId: BlockHeightEndpoint
       responses:
         '200':
-          description: ''
+          description: Success OK
           content:
             application/json:
               schema:
@@ -240,7 +273,7 @@ paths:
           type: integer
           format: int32
       tags:
-      - BlockchainService
+      - Blockchain API
   /eth/{network}/contracts:
     post:
       operationId: CreateContractEndpoint
@@ -631,7 +664,7 @@ paths:
       tags:
       - WebHooksService
 servers:
-- url: https://api.chainweaver.io/0
+- url: https://api.chainweaver.io/feature-blockchain
 components:
   securitySchemes:
     ApiKeyAuthInHeader:
@@ -887,6 +920,27 @@ components:
             type: string
           description: List of uncle blocks by hash included by the miner of this
             block. You can read more about uncles here.
+      required:
+      - hash
+      - height
+      - depth
+      - chain
+      - total
+      - fees
+      - size
+      - ver
+      - time
+      - received_time
+      - coinbase_addr
+      - relayed_by
+      - nonce
+      - n_tx
+      - prev_block
+      - tx_url
+      - mrkl_root
+      - txids
+      - internal_txids
+      - uncles
     ethBlockchain:
       type: object
       properties:
