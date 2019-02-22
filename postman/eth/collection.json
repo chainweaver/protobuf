@@ -25,17 +25,17 @@
                   "query": [
                     {
                       "key": "token",
-                      "value": ""
+                      "value": "{{token}}"
                     }
                   ],
                   "variable": [
                     {
                       "description": {
-                        "content": "",
+                        "content": "network",
                         "type": "text/plain"
                       },
                       "type": "any",
-                      "value": "<string>",
+                      "value": "{{network}}",
                       "key": "network"
                     }
                   ]
@@ -52,7 +52,7 @@
                     "url": {
                       "path": [
                         "eth",
-                        "<string>"
+                        "{{network}}"
                       ],
                       "host": [
                         "{{baseUrl}}"
@@ -60,7 +60,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": []
@@ -103,7 +103,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -113,7 +113,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -139,7 +139,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "addrs"
                           ],
                           "host": [
@@ -148,7 +148,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -201,27 +201,27 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "description": "Filters response to only include transactions below before height in the blockchain.",
                               "key": "before",
-                              "value": "<integer>"
+                              "value": "{{before}}"
                             },
                             {
                               "description": "Filters response to only include transactions above after height in the blockchain.",
                               "key": "after",
-                              "value": "<integer>"
+                              "value": "{{after}}"
                             },
                             {
                               "description": "limit sets the minimum number of returned TXRefs; there can be less if there are less than limit TXRefs associated with this address, but there can be more in the rare case of more TXRefs in the block at the bottom of your call. This ensures paging by block height never misses TXRefs. Defaults to 200, maximum is 2000.",
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             },
                             {
                               "description": "If set, only returns the balance and TXRefs that have at least this number of confirmations.",
                               "key": "confirmations",
-                              "value": "<integer>"
+                              "value": "{{confirmations}}"
                             }
                           ],
                           "variable": [
@@ -231,7 +231,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -240,7 +240,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{address}}",
                               "key": "address"
                             }
                           ]
@@ -256,9 +256,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "addrs",
-                                "<string>"
+                                "{{address}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -266,23 +266,23 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "before",
-                                  "value": "<integer>"
+                                  "value": "{{before}}"
                                 },
                                 {
                                   "key": "after",
-                                  "value": "<integer>"
+                                  "value": "{{after}}"
                                 },
                                 {
                                   "key": "limit",
-                                  "value": "<integer>"
+                                  "value": "{{limit}}"
                                 },
                                 {
                                   "key": "confirmations",
-                                  "value": "<integer>"
+                                  "value": "{{confirmations}}"
                                 }
                               ],
                               "variable": []
@@ -324,7 +324,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -334,7 +334,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -343,7 +343,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{address}}",
                               "key": "address"
                             }
                           ]
@@ -359,9 +359,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "addrs",
-                                "<string>",
+                                "{{address}}",
                                 "balance"
                               ],
                               "host": [
@@ -370,7 +370,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -407,7 +407,7 @@
                   "request": {
                     "name": "Block Hash Endpoint",
                     "description": {
-                      "content": "If you want more data on a particular block, you can use the Block Hash endpoint. $BLOCK_HASH is a string representing the hash of the block you’re interested in querying, for example:`0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412` The returned object contains information about the block, including its height, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object.",
+                      "content": "If you want more data on a particular block, you can use the Block Hash endpoint. The returned object contains information about the block, including its height, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object.",
                       "type": "text/plain"
                     },
                     "url": {
@@ -423,36 +423,36 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         },
                         {
                           "description": "Filters response to only include transaction hashes after txstart in the block.",
                           "key": "txstart",
-                          "value": "<integer>"
+                          "value": "{{txstart}}"
                         },
                         {
                           "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
                           "key": "limit",
-                          "value": "<integer>"
+                          "value": "{{limit}}"
                         }
                       ],
                       "variable": [
                         {
                           "description": {
-                            "content": "",
+                            "content": "network",
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         },
                         {
                           "description": {
-                            "content": "",
+                            "content": "String representing the hash of the block you’re interested in querying, for example: `0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412`",
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{block_hash}}",
                           "key": "block_hash"
                         }
                       ]
@@ -469,9 +469,9 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "blocks",
-                            "<string>"
+                            "{{block_hash}}"
                           ],
                           "host": [
                             "{{baseUrl}}"
@@ -479,15 +479,15 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "txstart",
-                              "value": "<integer>"
+                              "value": "{{txstart}}"
                             },
                             {
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             }
                           ],
                           "variable": []
@@ -515,7 +515,7 @@
                   "request": {
                     "name": "Block Height Endpoint",
                     "description": {
-                      "content": "You can also query for information on a block using its height, using the same resource but with a different variable type. BLOCK_HEIGHT is an integer representing the height of the block you’re interested in querying, for example: `1500000` As above, the returned object contains information about the block, including its hash, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object. <aside class=\"notice\">With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the possibility of soft forks/orphans and the nature of the consensus model with blockchains. If you’re querying blocks with depth above 10 (i.e., there are more than 10 blocks ahead of your target) the height should be a safe identifier.</aside>",
+                      "content": "You can also query for information on a block using its height, using the same resource but with a different variable type. As above, the returned object contains information about the block, including its hash, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object. <aside class=\"notice\">With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the possibility of soft forks/orphans and the nature of the consensus model with blockchains. If you’re querying blocks with depth above 10 (i.e., there are more than 10 blocks ahead of your target) the height should be a safe identifier.</aside>",
                       "type": "text/plain"
                     },
                     "url": {
@@ -531,36 +531,36 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         },
                         {
                           "description": "Filters response to only include transaction hashes after txstart in the block.",
                           "key": "txstart",
-                          "value": "<integer>"
+                          "value": "{{txstart}}"
                         },
                         {
                           "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
                           "key": "limit",
-                          "value": "<integer>"
+                          "value": "{{limit}}"
                         }
                       ],
                       "variable": [
                         {
                           "description": {
-                            "content": "",
+                            "content": "network",
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         },
                         {
                           "description": {
-                            "content": "",
+                            "content": "Integer representing the height of the block you’re interested in querying, for example: `1500000`",
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{block_height}}",
                           "key": "block_height"
                         }
                       ]
@@ -577,9 +577,9 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "blocks",
-                            "<string>"
+                            "{{block_height}}"
                           ],
                           "host": [
                             "{{baseUrl}}"
@@ -587,15 +587,15 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "txstart",
-                              "value": "<integer>"
+                              "value": "{{txstart}}"
                             },
                             {
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             }
                           ],
                           "variable": []
@@ -641,7 +641,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -651,7 +651,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -677,7 +677,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "contracts"
                           ],
                           "host": [
@@ -686,7 +686,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -739,11 +739,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "token",
-                              "value": "<string>"
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -753,7 +753,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -762,7 +762,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{query_address}}",
                               "key": "query_address"
                             }
                           ]
@@ -778,9 +778,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "contracts",
-                                "<string>"
+                                "{{query_address}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -788,11 +788,11 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "token",
-                                  "value": "<string>"
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -834,7 +834,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -844,7 +844,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -853,7 +853,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{query_address}}",
                               "key": "query_address"
                             },
                             {
@@ -862,7 +862,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{method}}",
                               "key": "method"
                             }
                           ]
@@ -888,10 +888,10 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "contracts",
-                                "<string>",
-                                "<string>"
+                                "{{query_address}}",
+                                "{{method}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -899,7 +899,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -957,7 +957,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -967,7 +967,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -983,7 +983,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs"
                           ],
                           "host": [
@@ -992,7 +992,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1033,7 +1033,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1043,7 +1043,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1069,7 +1069,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "decode"
                           ],
@@ -1079,7 +1079,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1129,7 +1129,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1139,7 +1139,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1165,7 +1165,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "new"
                           ],
@@ -1175,7 +1175,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1225,7 +1225,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1235,7 +1235,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1261,7 +1261,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "push"
                           ],
@@ -1271,7 +1271,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1321,7 +1321,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1331,7 +1331,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1357,7 +1357,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "send"
                           ],
@@ -1367,7 +1367,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1417,7 +1417,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1427,7 +1427,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         },
                         {
@@ -1436,7 +1436,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{txhash}}",
                           "key": "txhash"
                         }
                       ]
@@ -1452,9 +1452,9 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
-                            "<string>"
+                            "{{txhash}}"
                           ],
                           "host": [
                             "{{baseUrl}}"
@@ -1462,7 +1462,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1508,11 +1508,11 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         },
                         {
                           "key": "token",
-                          "value": "<string>"
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1522,7 +1522,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1538,7 +1538,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "hooks"
                           ],
                           "host": [
@@ -1547,11 +1547,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "token",
-                              "value": "<string>"
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1591,7 +1591,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1601,7 +1601,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1627,7 +1627,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "hooks"
                           ],
                           "host": [
@@ -1636,7 +1636,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1689,11 +1689,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "token",
-                              "value": "<string>"
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -1703,7 +1703,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -1712,7 +1712,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{webhookid}}",
                               "key": "webhookid"
                             }
                           ]
@@ -1728,9 +1728,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "hooks",
-                                "<string>"
+                                "{{webhookid}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -1738,11 +1738,11 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "token",
-                                  "value": "<string>"
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -1783,11 +1783,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "token",
-                              "value": "<string>"
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -1797,7 +1797,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -1806,7 +1806,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{webhookid}}",
                               "key": "webhookid"
                             }
                           ]
@@ -1822,9 +1822,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "hooks",
-                                "<string>"
+                                "{{webhookid}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -1832,11 +1832,11 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "token",
-                                  "value": "<string>"
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -1875,8 +1875,14 @@
   "event": [],
   "variable": [
     {
+      "key": "baseUrl",
       "type": "string",
       "value": "https://api.chainweaver.io/feature-blockchain"
+    },
+    {
+      "key": "network",
+      "type": "string",
+      "value": "main"
     }
   ],
   "info": {

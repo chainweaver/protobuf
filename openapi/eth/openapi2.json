@@ -187,13 +187,14 @@
           "200": {
             "description": "Success OK",
             "schema": {
-              "$ref": "#/components/schemas/ethBlockchain"
+              "$ref": "#/definitions/ethBlockchain"
             }
           }
         },
         "parameters": [
           {
             "name": "network",
+            "description": "network",
             "in": "path",
             "required": true,
             "type": "string",
@@ -213,19 +214,20 @@
     "/eth/{network}/blocks/{block_hash}": {
       "get": {
         "summary": "Block Hash Endpoint",
-        "description": "If you want more data on a particular block, you can use the Block Hash endpoint. $BLOCK_HASH is a string representing the hash of the block you’re interested in querying, for example:`0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412` The returned object contains information about the block, including its height, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object.",
+        "description": "If you want more data on a particular block, you can use the Block Hash endpoint. The returned object contains information about the block, including its height, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object.",
         "operationId": "BlockHashEndpoint",
         "responses": {
           "200": {
             "description": "Success OK",
             "schema": {
-              "$ref": "#/components/schemas/ethBlock"
+              "$ref": "#/definitions/ethBlock"
             }
           }
         },
         "parameters": [
           {
             "name": "network",
+            "description": "network",
             "in": "path",
             "required": true,
             "type": "string",
@@ -238,6 +240,7 @@
           },
           {
             "name": "block_hash",
+            "description": "String representing the hash of the block you’re interested in querying, for example: `0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412`",
             "in": "path",
             "required": true,
             "type": "string"
@@ -267,19 +270,20 @@
     "/eth/{network}/blocks/{block_height}": {
       "get": {
         "summary": "Block Height Endpoint",
-        "description": "You can also query for information on a block using its height, using the same resource but with a different variable type. BLOCK_HEIGHT is an integer representing the height of the block you’re interested in querying, for example: `1500000` As above, the returned object contains information about the block, including its hash, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object. <aside class=\"notice\">With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the possibility of soft forks/orphans and the nature of the consensus model with blockchains. If you’re querying blocks with depth above 10 (i.e., there are more than 10 blocks ahead of your target) the height should be a safe identifier.</aside>",
+        "description": "You can also query for information on a block using its height, using the same resource but with a different variable type. As above, the returned object contains information about the block, including its hash, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object. <aside class=\"notice\">With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the possibility of soft forks/orphans and the nature of the consensus model with blockchains. If you’re querying blocks with depth above 10 (i.e., there are more than 10 blocks ahead of your target) the height should be a safe identifier.</aside>",
         "operationId": "BlockHeightEndpoint",
         "responses": {
           "200": {
             "description": "Success OK",
             "schema": {
-              "$ref": "#/components/schemas/ethBlock"
+              "$ref": "#/definitions/ethBlock"
             }
           }
         },
         "parameters": [
           {
             "name": "network",
+            "description": "network",
             "in": "path",
             "required": true,
             "type": "string",
@@ -292,6 +296,7 @@
           },
           {
             "name": "block_height",
+            "description": "Integer representing the height of the block you’re interested in querying, for example: `1500000`",
             "in": "path",
             "required": true,
             "type": "string"

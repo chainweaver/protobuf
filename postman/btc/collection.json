@@ -26,7 +26,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -36,7 +36,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -62,7 +62,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "addrs"
                           ],
                           "host": [
@@ -71,7 +71,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -124,48 +124,52 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "description": "If unspentOnly is true, filters response to only include unspent transaction outputs (UTXOs).",
-                              "key": "unspentOnly"
+                              "key": "unspentOnly",
+                              "value": "{{unspentOnly}}"
                             },
                             {
                               "description": "If includeScript is true, includes raw script of input or output within returned TXRefs.",
-                              "key": "includeScript"
+                              "key": "includeScript",
+                              "value": "{{includeScript}}"
                             },
                             {
                               "description": "If true, includes the confidence attribute (useful for unconfirmed transactions) within returned TXRefs. For more info about this figure, check the Confidence Factor documentation.",
-                              "key": "includeConfidence"
+                              "key": "includeConfidence",
+                              "value": "{{includeConfidence}}"
                             },
                             {
                               "description": "Filters response to only include transactions below before height in the blockchain.",
                               "key": "before",
-                              "value": "<integer>"
+                              "value": "{{before}}"
                             },
                             {
                               "description": "Filters response to only include transactions above after height in the blockchain.",
                               "key": "after",
-                              "value": "<integer>"
+                              "value": "{{after}}"
                             },
                             {
                               "description": "limit sets the minimum number of returned TXRefs; there can be less if there are less than limit TXRefs associated with this address, but there can be more in the rare case of more TXRefs in the block at the bottom of your call. This ensures paging by block height never misses TXRefs. Defaults to 200, maximum is 2000.",
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             },
                             {
                               "description": "If set, only returns the balance and TXRefs that have at least this number of confirmations.",
                               "key": "confirmations",
-                              "value": "<integer>"
+                              "value": "{{confirmations}}"
                             },
                             {
                               "description": "Filters response to only include TXRefs above confidence in percent; e.g., if this is set to 99, will only return TXRefs with 99% confidence or above (including all confirmed TXRefs). For more detail on confidence, check the Confidence Factor documentation.",
                               "key": "confidence",
-                              "value": "<integer>"
+                              "value": "{{confidence}}"
                             },
                             {
                               "description": "If omitWalletAddresses is true and you’re querying a Wallet or HDWallet, the response will omit address information (useful to speed up the API call for larger wallets).",
-                              "key": "omitWalletAddresses"
+                              "key": "omitWalletAddresses",
+                              "value": "{{omitWalletAddresses}}"
                             }
                           ],
                           "variable": [
@@ -175,7 +179,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -184,7 +188,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{address}}",
                               "key": "address"
                             }
                           ]
@@ -200,9 +204,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "addrs",
-                                "<string>"
+                                "{{address}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -210,43 +214,43 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
-                                  "key": null,
-                                  "value": null
+                                  "key": "unspentOnly",
+                                  "value": "{{unspentOnly}}"
                                 },
                                 {
-                                  "key": null,
-                                  "value": null
+                                  "key": "includeScript",
+                                  "value": "{{includeScript}}"
                                 },
                                 {
-                                  "key": null,
-                                  "value": null
+                                  "key": "includeConfidence",
+                                  "value": "{{includeConfidence}}"
                                 },
                                 {
                                   "key": "before",
-                                  "value": "<integer>"
+                                  "value": "{{before}}"
                                 },
                                 {
                                   "key": "after",
-                                  "value": "<integer>"
+                                  "value": "{{after}}"
                                 },
                                 {
                                   "key": "limit",
-                                  "value": "<integer>"
+                                  "value": "{{limit}}"
                                 },
                                 {
                                   "key": "confirmations",
-                                  "value": "<integer>"
+                                  "value": "{{confirmations}}"
                                 },
                                 {
                                   "key": "confidence",
-                                  "value": "<integer>"
+                                  "value": "{{confidence}}"
                                 },
                                 {
-                                  "key": "",
-                                  "value": null
+                                  "key": "omitWalletAddresses",
+                                  "value": "{{omitWalletAddresses}}"
                                 }
                               ],
                               "variable": []
@@ -288,11 +292,12 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "description": "If omitWalletAddresses is true and you’re querying a Wallet or HDWallet, the response will omit address information (useful to speed up the API call for larger wallets).",
-                              "key": "omitWalletAddresses"
+                              "key": "omitWalletAddresses",
+                              "value": "{{omitWalletAddresses}}"
                             }
                           ],
                           "variable": [
@@ -302,7 +307,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -311,7 +316,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{address}}",
                               "key": "address"
                             }
                           ]
@@ -327,9 +332,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "addrs",
-                                "<string>",
+                                "{{address}}",
                                 "balance"
                               ],
                               "host": [
@@ -338,11 +343,11 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
-                                  "key": "",
-                                  "value": null
+                                  "key": "omitWalletAddresses",
+                                  "value": "{{omitWalletAddresses}}"
                                 }
                               ],
                               "variable": []
@@ -384,49 +389,52 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "description": "Filters response to only include transactions below before height in the blockchain.",
                               "key": "before",
-                              "value": "<integer>"
+                              "value": "{{before}}"
                             },
                             {
                               "description": "Filters response to only include transactions above after height in the blockchain.",
                               "key": "after",
-                              "value": "<integer>"
+                              "value": "{{after}}"
                             },
                             {
                               "description": "limit sets the minimum number of returned TXs; there can be less if there are less than limit TXs associated with this address, but there can also be more in the rare case of more TXs in the block at the bottom of your call. This ensures paging by block height never misses TXs. Defaults to 10, maximum is 50.",
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             },
                             {
                               "description": "This filters the TXInputs/TXOutputs within the returned TXs to include a maximum of txlimit items.",
                               "key": "txlimit",
-                              "value": "<integer>"
+                              "value": "{{txlimit}}"
                             },
                             {
                               "description": "If set, only returns the balance and TXs that have at least this number of confirmations.",
                               "key": "confirmations",
-                              "value": "<integer>"
+                              "value": "{{confirmations}}"
                             },
                             {
                               "description": "Filters response to only include TXs above confidence in percent; e.g., if this is set to 99, will only return TXs with 99% confidence or above (including all confirmed TXs). For more detail on confidence, check the Confidence Factor documentation.",
                               "key": "confidence",
-                              "value": "<integer>"
+                              "value": "{{confidence}}"
                             },
                             {
                               "description": "If true, includes hex-encoded raw transaction for each TX; false by default.",
-                              "key": "includeHex"
+                              "key": "includeHex",
+                              "value": "{{includeHex}}"
                             },
                             {
                               "description": "If true, includes the confidence attribute (useful for unconfirmed transactions) within returned TXs. For more info about this figure, check the Confidence Factor documentation.",
-                              "key": "includeConfidence"
+                              "key": "includeConfidence",
+                              "value": "{{includeConfidence}}"
                             },
                             {
                               "description": "If omitWalletAddresses is true and you’re querying a Wallet or HDWallet, the response will omit address information (useful to speed up the API call for larger wallets).",
-                              "key": "omitWalletAddresses"
+                              "key": "omitWalletAddresses",
+                              "value": "{{omitWalletAddresses}}"
                             }
                           ],
                           "variable": [
@@ -436,7 +444,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -445,7 +453,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{address}}",
                               "key": "address"
                             }
                           ]
@@ -461,9 +469,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "addrs",
-                                "<string>",
+                                "{{address}}",
                                 "full"
                               ],
                               "host": [
@@ -472,43 +480,43 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "before",
-                                  "value": "<integer>"
+                                  "value": "{{before}}"
                                 },
                                 {
                                   "key": "after",
-                                  "value": "<integer>"
+                                  "value": "{{after}}"
                                 },
                                 {
                                   "key": "limit",
-                                  "value": "<integer>"
+                                  "value": "{{limit}}"
                                 },
                                 {
                                   "key": "txlimit",
-                                  "value": "<integer>"
+                                  "value": "{{txlimit}}"
                                 },
                                 {
                                   "key": "confirmations",
-                                  "value": "<integer>"
+                                  "value": "{{confirmations}}"
                                 },
                                 {
                                   "key": "confidence",
-                                  "value": "<integer>"
+                                  "value": "{{confidence}}"
                                 },
                                 {
-                                  "key": null,
-                                  "value": null
+                                  "key": "includeHex",
+                                  "value": "{{includeHex}}"
                                 },
                                 {
-                                  "key": null,
-                                  "value": null
+                                  "key": "includeConfidence",
+                                  "value": "{{includeConfidence}}"
                                 },
                                 {
-                                  "key": "",
-                                  "value": null
+                                  "key": "omitWalletAddresses",
+                                  "value": "{{omitWalletAddresses}}"
                                 }
                               ],
                               "variable": []
@@ -553,11 +561,12 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "description": "If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.",
-                                  "key": "private"
+                                  "key": "private",
+                                  "value": "{{private}}"
                                 }
                               ],
                               "variable": [
@@ -567,7 +576,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -576,7 +585,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{address}}",
                                   "key": "address"
                                 }
                               ]
@@ -592,9 +601,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "addrs",
-                                    "<string>",
+                                    "{{address}}",
                                     "meta"
                                   ],
                                   "host": [
@@ -603,11 +612,11 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     },
                                     {
-                                      "key": "",
-                                      "value": null
+                                      "key": "private",
+                                      "value": "{{private}}"
                                     }
                                   ],
                                   "variable": []
@@ -649,7 +658,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -659,7 +668,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -668,7 +677,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{address}}",
                                   "key": "address"
                                 }
                               ]
@@ -684,9 +693,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "addrs",
-                                    "<string>",
+                                    "{{address}}",
                                     "meta"
                                   ],
                                   "host": [
@@ -695,7 +704,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -737,7 +746,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -747,7 +756,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -756,7 +765,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{address}}",
                                   "key": "address"
                                 }
                               ]
@@ -782,9 +791,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "addrs",
-                                    "<string>",
+                                    "{{address}}",
                                     "meta"
                                   ],
                                   "host": [
@@ -793,7 +802,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -854,12 +863,12 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         },
                         {
                           "description": "Returns list of address forwards starting at the start index; useful for paging beyond the limit of 200 address forwards.",
                           "key": "start",
-                          "value": "<integer>"
+                          "value": "{{start}}"
                         }
                       ],
                       "variable": [
@@ -869,7 +878,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -885,7 +894,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "forwards"
                           ],
                           "host": [
@@ -894,11 +903,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "start",
-                              "value": "<integer>"
+                              "value": "{{start}}"
                             }
                           ],
                           "variable": []
@@ -938,7 +947,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -948,7 +957,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -974,7 +983,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "forwards"
                           ],
                           "host": [
@@ -983,7 +992,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1033,7 +1042,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1043,7 +1052,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         },
                         {
@@ -1052,7 +1061,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{payid}}",
                           "key": "payid"
                         }
                       ]
@@ -1068,9 +1077,9 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "forwards",
-                            "<string>"
+                            "{{payid}}"
                           ],
                           "host": [
                             "{{baseUrl}}"
@@ -1078,7 +1087,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1132,7 +1141,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -1142,7 +1151,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -1151,7 +1160,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{ticket}}",
                                   "key": "ticket"
                                 }
                               ]
@@ -1167,10 +1176,10 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "analytics",
                                     "job",
-                                    "<string>"
+                                    "{{ticket}}"
                                   ],
                                   "host": [
                                     "{{baseUrl}}"
@@ -1178,7 +1187,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -1221,11 +1230,11 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "page",
-                                  "value": "<integer>"
+                                  "value": "{{page}}"
                                 }
                               ],
                               "variable": [
@@ -1235,7 +1244,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -1244,7 +1253,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{ticket}}",
                                   "key": "ticket"
                                 }
                               ]
@@ -1260,10 +1269,10 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "analytics",
                                     "job",
-                                    "<string>",
+                                    "{{ticket}}",
                                     "results"
                                   ],
                                   "host": [
@@ -1272,11 +1281,11 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     },
                                     {
                                       "key": "page",
-                                      "value": "<integer>"
+                                      "value": "{{page}}"
                                     }
                                   ],
                                   "variable": []
@@ -1323,7 +1332,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1333,7 +1342,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         },
                         {
@@ -1342,7 +1351,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{enginename}}",
                           "key": "enginename"
                         }
                       ]
@@ -1368,9 +1377,9 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "analytics",
-                            "<string>"
+                            "{{enginename}}"
                           ],
                           "host": [
                             "{{baseUrl}}"
@@ -1378,7 +1387,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1434,7 +1443,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1444,7 +1453,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1470,7 +1479,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "oap",
                             "addrs"
                           ],
@@ -1480,7 +1489,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1530,7 +1539,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1540,7 +1549,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1566,7 +1575,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "oap",
                             "issue"
                           ],
@@ -1576,7 +1585,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1631,7 +1640,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -1641,7 +1650,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -1650,7 +1659,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{assetid}}",
                               "key": "assetid"
                             },
                             {
@@ -1659,7 +1668,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{oapaddr}}",
                               "key": "oapaddr"
                             }
                           ]
@@ -1675,11 +1684,11 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "oap",
-                                "<string>",
+                                "{{assetid}}",
                                 "addrs",
-                                "<string>"
+                                "{{oapaddr}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -1687,7 +1696,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -1729,7 +1738,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -1739,7 +1748,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -1748,7 +1757,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{assetid}}",
                               "key": "assetid"
                             }
                           ]
@@ -1774,9 +1783,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "oap",
-                                "<string>",
+                                "{{assetid}}",
                                 "transfer"
                               ],
                               "host": [
@@ -1785,7 +1794,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -1839,7 +1848,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -1849,7 +1858,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -1858,7 +1867,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{assetid}}",
                                   "key": "assetid"
                                 }
                               ]
@@ -1874,9 +1883,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "oap",
-                                    "<string>",
+                                    "{{assetid}}",
                                     "txs"
                                   ],
                                   "host": [
@@ -1885,7 +1894,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -1928,7 +1937,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -1938,7 +1947,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -1947,7 +1956,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{assetid}}",
                                   "key": "assetid"
                                 },
                                 {
@@ -1956,7 +1965,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{txhash}}",
                                   "key": "txhash"
                                 }
                               ]
@@ -1972,11 +1981,11 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "oap",
-                                    "<string>",
+                                    "{{assetid}}",
                                     "txs",
-                                    "<string>"
+                                    "{{txhash}}"
                                   ],
                                   "host": [
                                     "{{baseUrl}}"
@@ -1984,7 +1993,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -2033,7 +2042,7 @@
                   "query": [
                     {
                       "key": "token",
-                      "value": ""
+                      "value": "{{token}}"
                     }
                   ],
                   "variable": [
@@ -2043,7 +2052,7 @@
                         "type": "text/plain"
                       },
                       "type": "any",
-                      "value": "<string>",
+                      "value": "{{network}}",
                       "key": "network"
                     }
                   ]
@@ -2059,7 +2068,7 @@
                     "url": {
                       "path": [
                         "btc",
-                        "<string>",
+                        "{{network}}",
                         "*"
                       ],
                       "host": [
@@ -2068,7 +2077,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": []
@@ -2115,15 +2124,15 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "txstart",
-                              "value": "<integer>"
+                              "value": "{{txstart}}"
                             },
                             {
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             }
                           ],
                           "variable": [
@@ -2133,7 +2142,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -2142,7 +2151,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{block_hash}}",
                               "key": "block_hash"
                             }
                           ]
@@ -2158,9 +2167,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "blocks",
-                                "<string>"
+                                "{{block_hash}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -2168,15 +2177,15 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "txstart",
-                                  "value": "<integer>"
+                                  "value": "{{txstart}}"
                                 },
                                 {
                                   "key": "limit",
-                                  "value": "<integer>"
+                                  "value": "{{limit}}"
                                 }
                               ],
                               "variable": []
@@ -2221,11 +2230,12 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "description": "If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.",
-                                  "key": "private"
+                                  "key": "private",
+                                  "value": "{{private}}"
                                 }
                               ],
                               "variable": [
@@ -2235,7 +2245,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -2244,7 +2254,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{block_hash}}",
                                   "key": "block_hash"
                                 }
                               ]
@@ -2260,9 +2270,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "blocks",
-                                    "<string>",
+                                    "{{block_hash}}",
                                     "meta"
                                   ],
                                   "host": [
@@ -2271,11 +2281,11 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     },
                                     {
-                                      "key": "",
-                                      "value": null
+                                      "key": "private",
+                                      "value": "{{private}}"
                                     }
                                   ],
                                   "variable": []
@@ -2317,7 +2327,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -2327,7 +2337,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -2336,7 +2346,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{block_hash}}",
                                   "key": "block_hash"
                                 }
                               ]
@@ -2352,9 +2362,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "blocks",
-                                    "<string>",
+                                    "{{block_hash}}",
                                     "meta"
                                   ],
                                   "host": [
@@ -2363,7 +2373,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -2405,7 +2415,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -2415,7 +2425,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -2424,7 +2434,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{block_hash}}",
                                   "key": "block_hash"
                                 }
                               ]
@@ -2450,9 +2460,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "blocks",
-                                    "<string>",
+                                    "{{block_hash}}",
                                     "meta"
                                   ],
                                   "host": [
@@ -2461,7 +2471,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -2517,15 +2527,15 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         },
                         {
                           "key": "txstart",
-                          "value": "<integer>"
+                          "value": "{{txstart}}"
                         },
                         {
                           "key": "limit",
-                          "value": "<integer>"
+                          "value": "{{limit}}"
                         }
                       ],
                       "variable": [
@@ -2535,7 +2545,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         },
                         {
@@ -2544,7 +2554,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<integer>",
+                          "value": "{{block_height}}",
                           "key": "block_height"
                         }
                       ]
@@ -2560,9 +2570,9 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "blocks",
-                            "<integer>"
+                            "{{block_height}}"
                           ],
                           "host": [
                             "{{baseUrl}}"
@@ -2570,15 +2580,15 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "txstart",
-                              "value": "<integer>"
+                              "value": "{{txstart}}"
                             },
                             {
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             }
                           ],
                           "variable": []
@@ -2622,7 +2632,7 @@
                   "query": [
                     {
                       "key": "token",
-                      "value": ""
+                      "value": "{{token}}"
                     }
                   ],
                   "variable": [
@@ -2632,7 +2642,7 @@
                         "type": "text/plain"
                       },
                       "type": "any",
-                      "value": "<string>",
+                      "value": "{{network}}",
                       "key": "network"
                     },
                     {
@@ -2641,7 +2651,7 @@
                         "type": "text/plain"
                       },
                       "type": "any",
-                      "value": "<string>",
+                      "value": "{{name}}",
                       "key": "name"
                     }
                   ]
@@ -2657,9 +2667,9 @@
                     "url": {
                       "path": [
                         "btc",
-                        "<string>",
+                        "{{network}}",
                         "feature",
-                        "<string>"
+                        "{{name}}"
                       ],
                       "host": [
                         "{{baseUrl}}"
@@ -2667,7 +2677,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": []
@@ -2710,7 +2720,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -2720,7 +2730,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -2736,7 +2746,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "txs"
                           ],
                           "host": [
@@ -2745,7 +2755,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -2789,30 +2799,32 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "description": "Filters TXInputs/TXOutputs, if unset, default is 20.",
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             },
                             {
                               "description": "Filters TX to only include TXInputs from this input index and above.",
                               "key": "instart",
-                              "value": "<integer>"
+                              "value": "{{instart}}"
                             },
                             {
                               "description": "Filters TX to only include TXOutputs from this output index and above.",
                               "key": "outstart",
-                              "value": "<integer>"
+                              "value": "{{outstart}}"
                             },
                             {
                               "description": "If true, includes hex-encoded raw transaction; false by default.",
-                              "key": "includeHex"
+                              "key": "includeHex",
+                              "value": "{{includeHex}}"
                             },
                             {
                               "description": "If true, includes the confidence attribute (useful for unconfirmed transactions). For more info about this figure, check the Confidence Factor documentation.",
-                              "key": "includeConfidence"
+                              "key": "includeConfidence",
+                              "value": "{{includeConfidence}}"
                             }
                           ],
                           "variable": [
@@ -2822,7 +2834,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -2831,7 +2843,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{txhash}}",
                               "key": "txhash"
                             }
                           ]
@@ -2847,9 +2859,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "txs",
-                                "<string>"
+                                "{{txhash}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -2857,27 +2869,27 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "limit",
-                                  "value": "<integer>"
+                                  "value": "{{limit}}"
                                 },
                                 {
                                   "key": "instart",
-                                  "value": "<integer>"
+                                  "value": "{{instart}}"
                                 },
                                 {
                                   "key": "outstart",
-                                  "value": "<integer>"
+                                  "value": "{{outstart}}"
                                 },
                                 {
-                                  "key": null,
-                                  "value": null
+                                  "key": "includeHex",
+                                  "value": "{{includeHex}}"
                                 },
                                 {
-                                  "key": "",
-                                  "value": null
+                                  "key": "includeConfidence",
+                                  "value": "{{includeConfidence}}"
                                 }
                               ],
                               "variable": []
@@ -2919,7 +2931,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -2929,7 +2941,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -2938,7 +2950,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{txhash}}",
                               "key": "txhash"
                             }
                           ]
@@ -2954,9 +2966,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "txs",
-                                "<string>",
+                                "{{txhash}}",
                                 "confidence"
                               ],
                               "host": [
@@ -2965,7 +2977,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -3010,11 +3022,12 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "description": "If private is true, it will return privately stored metadata under your token. Otherwise, returns public metadata. If not set, it defaults to false, returning public data.",
-                                  "key": "private"
+                                  "key": "private",
+                                  "value": "{{private}}"
                                 }
                               ],
                               "variable": [
@@ -3024,7 +3037,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -3033,7 +3046,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{txhash}}",
                                   "key": "txhash"
                                 }
                               ]
@@ -3049,9 +3062,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "txs",
-                                    "<string>",
+                                    "{{txhash}}",
                                     "meta"
                                   ],
                                   "host": [
@@ -3060,11 +3073,11 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     },
                                     {
-                                      "key": "",
-                                      "value": null
+                                      "key": "private",
+                                      "value": "{{private}}"
                                     }
                                   ],
                                   "variable": []
@@ -3106,7 +3119,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -3116,7 +3129,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -3125,7 +3138,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{txhash}}",
                                   "key": "txhash"
                                 }
                               ]
@@ -3141,9 +3154,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "txs",
-                                    "<string>",
+                                    "{{txhash}}",
                                     "meta"
                                   ],
                                   "host": [
@@ -3152,7 +3165,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -3194,7 +3207,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -3204,7 +3217,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -3213,7 +3226,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{txhash}}",
                                   "key": "txhash"
                                 }
                               ]
@@ -3239,9 +3252,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "txs",
-                                    "<string>",
+                                    "{{txhash}}",
                                     "meta"
                                   ],
                                   "host": [
@@ -3250,7 +3263,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -3304,7 +3317,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -3314,7 +3327,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -3323,7 +3336,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{txhash}}",
                               "key": "txhash"
                             }
                           ]
@@ -3339,9 +3352,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "txs",
-                                "<string>",
+                                "{{txhash}}",
                                 "propagation"
                               ],
                               "host": [
@@ -3350,7 +3363,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -3394,7 +3407,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -3404,7 +3417,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -3430,7 +3443,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "micro"
                           ],
@@ -3440,7 +3453,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -3490,7 +3503,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -3500,7 +3513,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -3526,7 +3539,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "data"
                           ],
@@ -3536,7 +3549,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -3586,7 +3599,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -3596,7 +3609,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -3622,7 +3635,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "decode"
                           ],
@@ -3632,7 +3645,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -3682,7 +3695,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -3692,7 +3705,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -3718,7 +3731,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "new"
                           ],
@@ -3728,7 +3741,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -3778,7 +3791,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -3788,7 +3801,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -3814,7 +3827,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "push"
                           ],
@@ -3824,7 +3837,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -3874,7 +3887,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -3884,7 +3897,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -3910,7 +3923,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "send"
                           ],
@@ -3920,7 +3933,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -3975,7 +3988,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -3985,7 +3998,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -4001,7 +4014,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "wallets"
                           ],
                           "host": [
@@ -4010,7 +4023,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -4050,7 +4063,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -4060,7 +4073,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -4086,7 +4099,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "wallets"
                           ],
                           "host": [
@@ -4095,7 +4108,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -4148,7 +4161,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -4158,7 +4171,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             }
                           ]
@@ -4184,7 +4197,7 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "wallets",
                                 "hd"
                               ],
@@ -4194,7 +4207,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -4248,7 +4261,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -4258,7 +4271,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -4267,7 +4280,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{name}}",
                                   "key": "name"
                                 }
                               ]
@@ -4283,10 +4296,10 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "wallets",
                                     "hd",
-                                    "<string>"
+                                    "{{name}}"
                                   ],
                                   "host": [
                                     "{{baseUrl}}"
@@ -4294,7 +4307,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -4336,7 +4349,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -4346,7 +4359,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -4355,7 +4368,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{name}}",
                                   "key": "name"
                                 }
                               ]
@@ -4371,10 +4384,10 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "wallets",
                                     "hd",
-                                    "<string>"
+                                    "{{name}}"
                                   ],
                                   "host": [
                                     "{{baseUrl}}"
@@ -4382,7 +4395,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -4428,15 +4441,17 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     },
                                     {
                                       "description": "Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.",
-                                      "key": "used"
+                                      "key": "used",
+                                      "value": "{{used}}"
                                     },
                                     {
                                       "description": "Returns only addresses with zero balance if set to true and only addresses with non-zero balance if false. Only valid on HD wallets.",
-                                      "key": "zerobalance"
+                                      "key": "zerobalance",
+                                      "value": "{{zerobalance}}"
                                     }
                                   ],
                                   "variable": [
@@ -4446,7 +4461,7 @@
                                         "type": "text/plain"
                                       },
                                       "type": "any",
-                                      "value": "<string>",
+                                      "value": "{{network}}",
                                       "key": "network"
                                     },
                                     {
@@ -4455,7 +4470,7 @@
                                         "type": "text/plain"
                                       },
                                       "type": "any",
-                                      "value": "<string>",
+                                      "value": "{{name}}",
                                       "key": "name"
                                     }
                                   ]
@@ -4471,10 +4486,10 @@
                                     "url": {
                                       "path": [
                                         "btc",
-                                        "<string>",
+                                        "{{network}}",
                                         "wallets",
                                         "hd",
-                                        "<string>",
+                                        "{{name}}",
                                         "addresses"
                                       ],
                                       "host": [
@@ -4483,15 +4498,15 @@
                                       "query": [
                                         {
                                           "key": "token",
-                                          "value": ""
+                                          "value": "{{token}}"
                                         },
                                         {
-                                          "key": null,
-                                          "value": null
+                                          "key": "used",
+                                          "value": "{{used}}"
                                         },
                                         {
-                                          "key": "",
-                                          "value": null
+                                          "key": "zerobalance",
+                                          "value": "{{zerobalance}}"
                                         }
                                       ],
                                       "variable": []
@@ -4535,7 +4550,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": [
@@ -4545,7 +4560,7 @@
                                         "type": "text/plain"
                                       },
                                       "type": "any",
-                                      "value": "<string>",
+                                      "value": "{{network}}",
                                       "key": "network"
                                     },
                                     {
@@ -4554,7 +4569,7 @@
                                         "type": "text/plain"
                                       },
                                       "type": "any",
-                                      "value": "<string>",
+                                      "value": "{{name}}",
                                       "key": "name"
                                     }
                                   ]
@@ -4580,10 +4595,10 @@
                                     "url": {
                                       "path": [
                                         "btc",
-                                        "<string>",
+                                        "{{network}}",
                                         "wallets",
                                         "hd",
-                                        "<string>",
+                                        "{{name}}",
                                         "addresses",
                                         "derive"
                                       ],
@@ -4593,7 +4608,7 @@
                                       "query": [
                                         {
                                           "key": "token",
-                                          "value": ""
+                                          "value": "{{token}}"
                                         }
                                       ],
                                       "variable": []
@@ -4655,7 +4670,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -4665,7 +4680,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -4674,7 +4689,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{name}}",
                               "key": "name"
                             }
                           ]
@@ -4690,9 +4705,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "wallets",
-                                "<string>"
+                                "{{name}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -4700,7 +4715,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -4741,7 +4756,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -4751,7 +4766,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -4760,7 +4775,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{name}}",
                               "key": "name"
                             }
                           ]
@@ -4776,9 +4791,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "wallets",
-                                "<string>"
+                                "{{name}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -4786,7 +4801,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -4831,15 +4846,17 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "description": "Returns only used addresses if set to true and only unused if false. Only valid on HD wallets.",
-                                  "key": "used"
+                                  "key": "used",
+                                  "value": "{{used}}"
                                 },
                                 {
                                   "description": "Returns only addresses with zero balance if set to true and only addresses with non-zero balance if false. Only valid on HD wallets.",
-                                  "key": "zerobalance"
+                                  "key": "zerobalance",
+                                  "value": "{{zerobalance}}"
                                 }
                               ],
                               "variable": [
@@ -4849,7 +4866,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -4858,7 +4875,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{name}}",
                                   "key": "name"
                                 }
                               ]
@@ -4874,9 +4891,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "wallets",
-                                    "<string>",
+                                    "{{name}}",
                                     "addresses"
                                   ],
                                   "host": [
@@ -4885,15 +4902,15 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     },
                                     {
-                                      "key": null,
-                                      "value": null
+                                      "key": "used",
+                                      "value": "{{used}}"
                                     },
                                     {
-                                      "key": "",
-                                      "value": null
+                                      "key": "zerobalance",
+                                      "value": "{{zerobalance}}"
                                     }
                                   ],
                                   "variable": []
@@ -4935,11 +4952,11 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "address",
-                                  "value": "<string>"
+                                  "value": "{{address}}"
                                 }
                               ],
                               "variable": [
@@ -4949,7 +4966,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -4958,7 +4975,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{name}}",
                                   "key": "name"
                                 }
                               ]
@@ -4974,9 +4991,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "wallets",
-                                    "<string>",
+                                    "{{name}}",
                                     "addresses"
                                   ],
                                   "host": [
@@ -4985,11 +5002,11 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     },
                                     {
                                       "key": "address",
-                                      "value": "<string>"
+                                      "value": "{{address}}"
                                     }
                                   ],
                                   "variable": []
@@ -5031,7 +5048,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -5041,7 +5058,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -5050,7 +5067,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{name}}",
                                   "key": "name"
                                 }
                               ]
@@ -5076,9 +5093,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "wallets",
-                                    "<string>",
+                                    "{{name}}",
                                     "addresses"
                                   ],
                                   "host": [
@@ -5087,7 +5104,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -5139,7 +5156,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": [
@@ -5149,7 +5166,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{network}}",
                                   "key": "network"
                                 },
                                 {
@@ -5158,7 +5175,7 @@
                                     "type": "text/plain"
                                   },
                                   "type": "any",
-                                  "value": "<string>",
+                                  "value": "{{name}}",
                                   "key": "name"
                                 }
                               ]
@@ -5184,9 +5201,9 @@
                                 "url": {
                                   "path": [
                                     "btc",
-                                    "<string>",
+                                    "{{network}}",
                                     "wallets",
-                                    "<string>",
+                                    "{{name}}",
                                     "addresses",
                                     "generate"
                                   ],
@@ -5196,7 +5213,7 @@
                                   "query": [
                                     {
                                       "key": "token",
-                                      "value": ""
+                                      "value": "{{token}}"
                                     }
                                   ],
                                   "variable": []
@@ -5257,11 +5274,11 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         },
                         {
                           "key": "token",
-                          "value": "<string>"
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -5271,7 +5288,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -5287,7 +5304,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "hooks"
                           ],
                           "host": [
@@ -5296,11 +5313,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "token",
-                              "value": "<string>"
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -5340,7 +5357,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -5350,7 +5367,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -5376,7 +5393,7 @@
                         "url": {
                           "path": [
                             "btc",
-                            "<string>",
+                            "{{network}}",
                             "hooks"
                           ],
                           "host": [
@@ -5385,7 +5402,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -5438,7 +5455,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -5448,7 +5465,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -5457,7 +5474,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{webhookid}}",
                               "key": "webhookid"
                             }
                           ]
@@ -5473,9 +5490,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "hooks",
-                                "<string>"
+                                "{{webhookid}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -5483,7 +5500,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -5524,7 +5541,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -5534,7 +5551,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -5543,7 +5560,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{webhookid}}",
                               "key": "webhookid"
                             }
                           ]
@@ -5559,9 +5576,9 @@
                             "url": {
                               "path": [
                                 "btc",
-                                "<string>",
+                                "{{network}}",
                                 "hooks",
-                                "<string>"
+                                "{{webhookid}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -5569,7 +5586,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -5608,8 +5625,14 @@
   "event": [],
   "variable": [
     {
+      "key": "baseUrl",
       "type": "string",
       "value": "https://api.chainweaver.io/feature-blockchain"
+    },
+    {
+      "key": "network",
+      "type": "string",
+      "value": "main"
     }
   ],
   "info": {
