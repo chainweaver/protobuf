@@ -53,7 +53,7 @@ message Blockchain {
 message Block {
   option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
     json_schema: {
-      required: ["hash", "height", "depth", "chain", "total", "fees", "size", "ver", "time", "received_time", "coinbase_addr", "relayed_by", "nonce", "n_tx", "prev_block", "tx_url", "mrkl_root", "txids", "internal_txids", "uncles"]
+      required: ["hash", "height", "depth", "chain", "total", "fees", "size", "ver", "time", "received_time", "coinbase_addr", "relayed_by", "nonce", "n_tx", "prev_block", "tx_url", "mrkl_root", "txids", "internal_txids"]
     }
   };
 
