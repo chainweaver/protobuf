@@ -47,7 +47,7 @@ mergeOpenApiJson() {
     return 1
   fi
 
-  jq -s '.[0] * .[1]' ./scripts/${coin}OpenApi.json ./openapi/$coin/work/openapi2.json > ./openapi/$coin/openapi2.json
+  jq -s '.[0] * .[1]' ./scripts/openapi/${coin}OpenApi.json ./openapi/$coin/work/openapi2.json > ./openapi/$coin/openapi2.json
   if [ $? -gt 0 ]; then
     return 1
   fi
@@ -76,16 +76,35 @@ generatePostmanCollection() {
     return 1
   fi
 
+  jq '.components.schemas | to_entries[] | .key=.key | .type="object"' ./openapi/$coin/openapi3.json | jq -s > ./postman/$coin/variable.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  echo "{\"variable\":" > ./postman/$coin/tmpVariable.json && cat ./postman/$coin/variable.json >> ./postman/$coin/tmpVariable.json && echo "}" >> ./postman/$coin/tmpVariable.json
+  mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
+
+  jq -s '.[0] * .[1]' ./postman/$coin/collection.json ./postman/$coin/variable.json > ./postman/$coin/tmpCollection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+  rm -f ./postman/$coin/variable.json
+
   baseUrl=$(jq -r '.servers[0].url' ./openapi/$coin/openapi3.json)
-  updateVariableBaseUrl=.variable[0]={\"key\":\"baseUrl\",\"type\":\"string\",\"value\":\"$baseUrl\"}
-  jq $updateVariableBaseUrl ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  updateVariableBaseUrl=.variable[.variable\|length]={\"key\":\"baseUrl\",\"type\":\"string\",\"value\":\"$baseUrl\"}
+  jq $updateVariableBaseUrl ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
 
   network=main
-  updateVariableNetwork=.variable[1]={\"key\":\"network\",\"type\":\"string\",\"value\":\"$network\"}
-  jq $updateVariableNetwork ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
+  updateVariableNetwork=.variable[.variable\|length]={\"key\":\"network\",\"type\":\"string\",\"value\":\"$network\"}
+  jq $updateVariableNetwork ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  jq -s '.[0] * .[1]' ./postman/$coin/tmpCollection.json ./scripts/postman/event.json > ./postman/$coin/collection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
@@ -130,6 +149,16 @@ run() {
     return 1
   fi
   jq $updateBasePath openapi/$coin/work/openapi2.json > openapi/$coin/openapi2.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  # Update of models that could not be properly converted by protoc-gen-swagger
+  jq '(.. | select(.format? == "uint64")).type="integer"' openapi/$coin/openapi2.json  > openapi/$coin/work/openapi2.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+  jq '(.. | select(.format? == "uint64")).format="int64"' openapi/$coin/work/openapi2.json  > openapi/$coin/openapi2.json
   if [ $? -gt 0 ]; then
     return 1
   fi
