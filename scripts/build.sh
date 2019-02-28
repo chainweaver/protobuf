@@ -177,14 +177,22 @@ run() {
   fi
 
   # Update of models that could not be properly converted by protoc-gen-swagger
-  jq '(.. | select(.format? == "uint64")).type="integer"' openapi/$coin/openapi2.json  > openapi/$coin/work/openapi2.json
+  jq '(.. | select(.format? == "uint64")).type="integer"' ./openapi/$coin/openapi2.json  > ./openapi/$coin/work/openapi2.json
   if [ $? -gt 0 ]; then
     return 1
   fi
-  jq '(.. | select(.format? == "uint64")).format="int64"' openapi/$coin/work/openapi2.json  > openapi/$coin/openapi2.json
+  jq '(.. | select(.format? == "uint64")).format="int64"' ./openapi/$coin/work/openapi2.json  > ./openapi/$coin/openapi2.json
   if [ $? -gt 0 ]; then
     return 1
   fi
+
+  # Add error definition
+  jq -s '.[0] * .[1]' ./openapi/$coin/openapi2.json ./scripts/openapi/errorDefinition.json > ./openapi/$coin/work/openapi2.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+  mv ./openapi/$coin/work/openapi2.json ./openapi/$coin/openapi2.json
+
   echo "Update openapi/$coin/openapi2.json"
 
   echo "--------------------------------"

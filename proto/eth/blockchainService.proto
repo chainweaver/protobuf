@@ -49,7 +49,18 @@ service BlockchainService {
           }
         }
 			}
-		};
+			responses: {
+				key: "404";
+        value: {
+          description: "Not Found";
+          schema: {
+            json_schema: {
+              ref: "#/definitions/error";
+            }
+          }
+        }
+			}
+    };
   }
   rpc BlockHeightEndpoint (BlockHeightEndpointRequest) returns (Block) {
     option (google.api.http) = {
@@ -70,6 +81,17 @@ service BlockchainService {
           }
         }
 			}
-		};
+			responses: {
+				key: "404";
+        value: {
+          description: "Not Found";
+          schema: {
+            json_schema: {
+              ref: "#/definitions/error";
+            }
+          }
+        }
+			}
+    };
   }
 }
