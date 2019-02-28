@@ -66,12 +66,14 @@ generatePostmanCollection() {
     return 1
   fi
 
-  jq 'del(.variable[0])' ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  # PostmanId
+  jq $updatePostmanId ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
 
-  jq $updatePostmanId ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
+  # Variable
+  jq 'del(.variable[0])' ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
@@ -104,10 +106,31 @@ generatePostmanCollection() {
     return 1
   fi
 
-  jq -s '.[0] * .[1]' ./postman/$coin/tmpCollection.json ./scripts/postman/event.json > ./postman/$coin/collection.json
+  # Global Event
+  jq -s '.[0] * .[1]' ./postman/$coin/tmpCollection.json ./scripts/postman/globalEvent.json > ./postman/$coin/collection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
+
+  # Item Event
+  updateEventFragment1='map_values((..|select(.name?=="'
+  updateEventFragment2='")|.event)|=[{"listen":"test","script":{"exec":["'
+  updateEventFragment3='"],"type":"text/javascript"}}])'
+
+  for file in `\find ./scripts/postman/itemTest/$coin -maxdepth 1 -type f`; do
+    filename=$(basename $file .js)
+    splitFilename=${filename//_/ };
+    itemName=""
+    for str in ${splitFilename[@]}; do
+      itemName="$itemName${str^} "
+    done
+    itemName=${itemName% }
+    testScript=$(sed 's/"/\\"/g' $file)
+
+    updateEvent=$updateEventFragment1$itemName$updateEventFragment2$testScript$updateEventFragment3
+    jq "$updateEvent" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+    mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
+  done
 
   rm -f ./postman/$coin/tmpCollection.json
 }
