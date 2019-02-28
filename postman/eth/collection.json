@@ -10,7 +10,10 @@
               "name": "Chain Endpoint",
               "request": {
                 "name": "Chain Endpoint",
-                "description": {},
+                "description": {
+                  "content": "General information about the Ethereum blockchain is available by GET-ing the base resource. The returned object contains a litany of information, including its height, the time/hash of the latest block, and more. For Ethereum, the object includes information on gas_price, denoted in wei. Unlike Bitcoin, fees are determined by the computational execution cost of the transaction via gas; in order to prevent runaway contract execution, each operation in Ethereum’s Virtual Machine requires a fixed/known amount of gas. While the amount of gas is fixed for a given EVM operation, the price of gas fluctuates based on market demand on the Ethereum blockchain (similar to Bitcoin fees). For more detail, check this very helpful Stack Exchange explanation.",
+                  "type": "text/plain"
+                },
                 "url": {
                   "path": [
                     "eth",
@@ -22,17 +25,17 @@
                   "query": [
                     {
                       "key": "token",
-                      "value": ""
+                      "value": "{{token}}"
                     }
                   ],
                   "variable": [
                     {
                       "description": {
-                        "content": "",
+                        "content": "network",
                         "type": "text/plain"
                       },
                       "type": "any",
-                      "value": "<string>",
+                      "value": "{{network}}",
                       "key": "network"
                     }
                   ]
@@ -40,15 +43,27 @@
                 "method": "GET",
                 "auth": {
                   "type": "noauth"
-                }
+                },
+                "event": [
+                  {
+                    "listen": "test",
+                    "script": {
+                      "exec": [
+                        "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlockchain\");"
+                      ],
+                      "type": "text/javascript"
+                    }
+                  }
+                ]
               },
               "response": [
                 {
+                  "name": "Success OK",
                   "originalRequest": {
                     "url": {
                       "path": [
                         "eth",
-                        "<string>"
+                        "{{network}}"
                       ],
                       "host": [
                         "{{baseUrl}}"
@@ -56,7 +71,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": []
@@ -72,12 +87,22 @@
                       "value": "application/json"
                     }
                   ],
-                  "body": "{\n \"name\": \"<string>\",\n \"hash\": \"<string>\",\n \"time\": \"<string>\",\n \"latest_url\": \"<string>\",\n \"previous_hash\": \"<string>\",\n \"previous_url\": \"<string>\",\n \"last_fork_hash\": \"<string>\"\n}",
+                  "body": "{\n \"name\": \"<string>\",\n \"height\": \"<long>\",\n \"hash\": \"<string>\",\n \"time\": \"<string>\",\n \"latest_url\": \"<string>\",\n \"previous_hash\": \"<string>\",\n \"previous_url\": \"<string>\",\n \"unconfirmed_count\": \"<long>\",\n \"high_gas_price\": \"<long>\",\n \"medium_gas_price\": \"<long>\",\n \"low_gas_price\": \"<long>\",\n \"last_fork_height\": \"<long>\",\n \"last_fork_hash\": \"<string>\"\n}",
                   "cookie": [],
                   "_postman_previewlanguage": "json"
                 }
               ],
-              "event": []
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlockchain\");"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ]
             },
             {
               "name": "addrs",
@@ -99,7 +124,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -109,7 +134,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -135,7 +160,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "addrs"
                           ],
                           "host": [
@@ -144,7 +169,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -197,27 +222,27 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "description": "Filters response to only include transactions below before height in the blockchain.",
                               "key": "before",
-                              "value": "<integer>"
+                              "value": "{{before}}"
                             },
                             {
                               "description": "Filters response to only include transactions above after height in the blockchain.",
                               "key": "after",
-                              "value": "<integer>"
+                              "value": "{{after}}"
                             },
                             {
                               "description": "limit sets the minimum number of returned TXRefs; there can be less if there are less than limit TXRefs associated with this address, but there can be more in the rare case of more TXRefs in the block at the bottom of your call. This ensures paging by block height never misses TXRefs. Defaults to 200, maximum is 2000.",
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             },
                             {
                               "description": "If set, only returns the balance and TXRefs that have at least this number of confirmations.",
                               "key": "confirmations",
-                              "value": "<integer>"
+                              "value": "{{confirmations}}"
                             }
                           ],
                           "variable": [
@@ -227,7 +252,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -236,7 +261,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{address}}",
                               "key": "address"
                             }
                           ]
@@ -252,9 +277,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "addrs",
-                                "<string>"
+                                "{{address}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -262,23 +287,23 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "before",
-                                  "value": "<integer>"
+                                  "value": "{{before}}"
                                 },
                                 {
                                   "key": "after",
-                                  "value": "<integer>"
+                                  "value": "{{after}}"
                                 },
                                 {
                                   "key": "limit",
-                                  "value": "<integer>"
+                                  "value": "{{limit}}"
                                 },
                                 {
                                   "key": "confirmations",
-                                  "value": "<integer>"
+                                  "value": "{{confirmations}}"
                                 }
                               ],
                               "variable": []
@@ -294,7 +319,7 @@
                               "value": "application/json"
                             }
                           ],
-                          "body": "{\n \"address\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ]\n}",
+                          "body": "{\n \"address\": \"<string>\",\n \"total_received\": \"<long>\",\n \"total_sent\": \"<long>\",\n \"balance\": \"<long>\",\n \"unconfirmed_balance\": \"<long>\",\n \"final_balance\": \"<long>\",\n \"n_tx\": \"<long>\",\n \"unconfirmed_n_tx\": \"<long>\",\n \"final_n_tx\": \"<long>\",\n \"tx_url\": \"<string>\",\n \"txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<long>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<long>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<long>\",\n   \"ref_balance\": \"<long>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<long>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<long>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<long>\",\n   \"ref_balance\": \"<long>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<long>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<long>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<long>\",\n   \"ref_balance\": \"<long>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<long>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<long>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<long>\",\n   \"ref_balance\": \"<long>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ]\n}",
                           "cookie": [],
                           "_postman_previewlanguage": "json"
                         }
@@ -320,7 +345,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -330,7 +355,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -339,7 +364,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{address}}",
                               "key": "address"
                             }
                           ]
@@ -355,9 +380,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "addrs",
-                                "<string>",
+                                "{{address}}",
                                 "balance"
                               ],
                               "host": [
@@ -366,7 +391,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -382,7 +407,7 @@
                               "value": "application/json"
                             }
                           ],
-                          "body": "{\n \"address\": \"<string>\",\n \"total_received\": \"<string>\",\n \"total_sent\": \"<string>\",\n \"balance\": \"<string>\",\n \"unconfirmed_balance\": \"<string>\",\n \"final_balance\": \"<string>\",\n \"n_tx\": \"<string>\",\n \"unconfirmed_n_tx\": \"<string>\",\n \"final_n_tx\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<string>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<string>\",\n   \"ref_balance\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"hasMore\": \"<boolean>\"\n}",
+                          "body": "{\n \"address\": \"<string>\",\n \"total_received\": \"<long>\",\n \"total_sent\": \"<long>\",\n \"balance\": \"<long>\",\n \"unconfirmed_balance\": \"<long>\",\n \"final_balance\": \"<long>\",\n \"n_tx\": \"<long>\",\n \"unconfirmed_n_tx\": \"<long>\",\n \"final_n_tx\": \"<long>\",\n \"tx_url\": \"<string>\",\n \"txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<long>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<long>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<long>\",\n   \"ref_balance\": \"<long>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<long>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<long>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<long>\",\n   \"ref_balance\": \"<long>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<long>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<long>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<long>\",\n   \"ref_balance\": \"<long>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<long>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<long>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<long>\",\n   \"ref_balance\": \"<long>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"hasMore\": \"<boolean>\"\n}",
                           "cookie": [],
                           "_postman_previewlanguage": "json"
                         }
@@ -402,7 +427,10 @@
                   "name": "Block Hash Endpoint",
                   "request": {
                     "name": "Block Hash Endpoint",
-                    "description": {},
+                    "description": {
+                      "content": "If you want more data on a particular block, you can use the Block Hash endpoint. The returned object contains information about the block, including its height, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object.",
+                      "type": "text/plain"
+                    },
                     "url": {
                       "path": [
                         "eth",
@@ -416,36 +444,36 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         },
                         {
                           "description": "Filters response to only include transaction hashes after txstart in the block.",
                           "key": "txstart",
-                          "value": "<integer>"
+                          "value": "{{txstart}}"
                         },
                         {
                           "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
                           "key": "limit",
-                          "value": "<integer>"
+                          "value": "{{limit}}"
                         }
                       ],
                       "variable": [
                         {
                           "description": {
-                            "content": "",
+                            "content": "network",
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         },
                         {
                           "description": {
-                            "content": "",
+                            "content": "String representing the hash of the block you’re interested in querying, for example: `0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412`",
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{block_hash}}",
                           "key": "block_hash"
                         }
                       ]
@@ -453,17 +481,29 @@
                     "method": "GET",
                     "auth": {
                       "type": "noauth"
-                    }
+                    },
+                    "event": [
+                      {
+                        "listen": "test",
+                        "script": {
+                          "exec": [
+                            "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlock\");"
+                          ],
+                          "type": "text/javascript"
+                        }
+                      }
+                    ]
                   },
                   "response": [
                     {
+                      "name": "Success OK",
                       "originalRequest": {
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "blocks",
-                            "<string>"
+                            "{{block_hash}}"
                           ],
                           "host": [
                             "{{baseUrl}}"
@@ -471,15 +511,15 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "txstart",
-                              "value": "<integer>"
+                              "value": "{{txstart}}"
                             },
                             {
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             }
                           ],
                           "variable": []
@@ -495,18 +535,75 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"hash\": \"<string>\",\n \"chain\": \"<string>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"prev_block\": \"<string>\",\n \"prev_block_url\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "body": "{\n \"hash\": \"<string>\",\n \"height\": \"<long>\",\n \"depth\": \"<long>\",\n \"chain\": \"<string>\",\n \"total\": \"<long>\",\n \"fees\": \"<long>\",\n \"size\": \"<long>\",\n \"ver\": \"<long>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"nonce\": \"<long>\",\n \"n_tx\": \"<long>\",\n \"prev_block\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"prev_block_url\": \"<string>\",\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "eth",
+                            "{{network}}",
+                            "blocks",
+                            "{{block_hash}}"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}"
+                            },
+                            {
+                              "key": "txstart",
+                              "value": "{{txstart}}"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "{{limit}}"
+                            }
+                          ],
+                          "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n \"error\": \"<string>\"\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
                   ],
-                  "event": []
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlock\");"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ]
                 },
                 {
                   "name": "Block Height Endpoint",
                   "request": {
                     "name": "Block Height Endpoint",
-                    "description": {},
+                    "description": {
+                      "content": "You can also query for information on a block using its height, using the same resource but with a different variable type. As above, the returned object contains information about the block, including its hash, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object. <aside class=\"notice\">With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the possibility of soft forks/orphans and the nature of the consensus model with blockchains. If you’re querying blocks with depth above 10 (i.e., there are more than 10 blocks ahead of your target) the height should be a safe identifier.</aside>",
+                      "type": "text/plain"
+                    },
                     "url": {
                       "path": [
                         "eth",
@@ -520,36 +617,36 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         },
                         {
                           "description": "Filters response to only include transaction hashes after txstart in the block.",
                           "key": "txstart",
-                          "value": "<integer>"
+                          "value": "{{txstart}}"
                         },
                         {
                           "description": "Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.",
                           "key": "limit",
-                          "value": "<integer>"
+                          "value": "{{limit}}"
                         }
                       ],
                       "variable": [
                         {
                           "description": {
-                            "content": "",
+                            "content": "network",
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         },
                         {
                           "description": {
-                            "content": "",
+                            "content": "Integer representing the height of the block you’re interested in querying, for example: `1500000`",
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{block_height}}",
                           "key": "block_height"
                         }
                       ]
@@ -557,17 +654,29 @@
                     "method": "GET",
                     "auth": {
                       "type": "noauth"
-                    }
+                    },
+                    "event": [
+                      {
+                        "listen": "test",
+                        "script": {
+                          "exec": [
+                            "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlock\");"
+                          ],
+                          "type": "text/javascript"
+                        }
+                      }
+                    ]
                   },
                   "response": [
                     {
+                      "name": "Success OK",
                       "originalRequest": {
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "blocks",
-                            "<string>"
+                            "{{block_height}}"
                           ],
                           "host": [
                             "{{baseUrl}}"
@@ -575,15 +684,15 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "txstart",
-                              "value": "<integer>"
+                              "value": "{{txstart}}"
                             },
                             {
                               "key": "limit",
-                              "value": "<integer>"
+                              "value": "{{limit}}"
                             }
                           ],
                           "variable": []
@@ -599,12 +708,66 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"hash\": \"<string>\",\n \"height\": \"<string>\",\n \"depth\": \"<string>\",\n \"chain\": \"<string>\",\n \"total\": \"<string>\",\n \"fees\": \"<string>\",\n \"size\": \"<string>\",\n \"ver\": \"<string>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"nonce\": \"<string>\",\n \"n_tx\": \"<string>\",\n \"prev_block\": \"<string>\",\n \"prev_block_url\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "body": "{\n \"hash\": \"<string>\",\n \"height\": \"<long>\",\n \"depth\": \"<long>\",\n \"chain\": \"<string>\",\n \"total\": \"<long>\",\n \"fees\": \"<long>\",\n \"size\": \"<long>\",\n \"ver\": \"<long>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"nonce\": \"<long>\",\n \"n_tx\": \"<long>\",\n \"prev_block\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"prev_block_url\": \"<string>\",\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "eth",
+                            "{{network}}",
+                            "blocks",
+                            "{{block_height}}"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}"
+                            },
+                            {
+                              "key": "txstart",
+                              "value": "{{txstart}}"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "{{limit}}"
+                            }
+                          ],
+                          "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n \"error\": \"<string>\"\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
                   ],
-                  "event": []
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlock\");"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ]
                 }
               ],
               "event": []
@@ -629,7 +792,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -639,7 +802,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -665,7 +828,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "contracts"
                           ],
                           "host": [
@@ -674,7 +837,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -699,7 +862,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"contract\": [\n  {\n   \"solidity\": \"<string>\",\n   \"params\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"publish\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"private\": \"<string>\",\n   \"name\": \"<string>\",\n   \"bin\": \"<string>\",\n   \"abi\": \"<string>\",\n   \"address\": \"<string>\",\n   \"created\": \"<string>\",\n   \"creation_tx_hash\": \"<string>\",\n   \"results\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"solidity\": \"<string>\",\n   \"params\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"publish\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"private\": \"<string>\",\n   \"name\": \"<string>\",\n   \"bin\": \"<string>\",\n   \"abi\": \"<string>\",\n   \"address\": \"<string>\",\n   \"created\": \"<string>\",\n   \"creation_tx_hash\": \"<string>\",\n   \"results\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ]\n}",
+                      "body": "{\n \"contract\": [\n  {\n   \"solidity\": \"<string>\",\n   \"params\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"publish\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"private\": \"<string>\",\n   \"gas_limit\": \"<long>\",\n   \"value\": \"<long>\",\n   \"name\": \"<string>\",\n   \"bin\": \"<string>\",\n   \"abi\": \"<string>\",\n   \"address\": \"<string>\",\n   \"created\": \"<string>\",\n   \"creation_tx_hash\": \"<string>\",\n   \"results\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"solidity\": \"<string>\",\n   \"params\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"publish\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"private\": \"<string>\",\n   \"gas_limit\": \"<long>\",\n   \"value\": \"<long>\",\n   \"name\": \"<string>\",\n   \"bin\": \"<string>\",\n   \"abi\": \"<string>\",\n   \"address\": \"<string>\",\n   \"created\": \"<string>\",\n   \"creation_tx_hash\": \"<string>\",\n   \"results\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -727,11 +890,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "token",
-                              "value": "<string>"
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -741,7 +904,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -750,7 +913,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{query_address}}",
                               "key": "query_address"
                             }
                           ]
@@ -766,9 +929,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "contracts",
-                                "<string>"
+                                "{{query_address}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -776,11 +939,11 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "token",
-                                  "value": "<string>"
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -796,7 +959,7 @@
                               "value": "application/json"
                             }
                           ],
-                          "body": "{\n \"solidity\": \"<string>\",\n \"params\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"publish\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"private\": \"<string>\",\n \"gas_limit\": \"<string>\",\n \"value\": \"<string>\",\n \"name\": \"<string>\",\n \"bin\": \"<string>\",\n \"abi\": \"<string>\",\n \"address\": \"<string>\",\n \"created\": \"<string>\",\n \"creation_tx_hash\": \"<string>\",\n \"results\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                          "body": "{\n \"solidity\": \"<string>\",\n \"params\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"publish\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"private\": \"<string>\",\n \"gas_limit\": \"<long>\",\n \"value\": \"<long>\",\n \"name\": \"<string>\",\n \"bin\": \"<string>\",\n \"abi\": \"<string>\",\n \"address\": \"<string>\",\n \"created\": \"<string>\",\n \"creation_tx_hash\": \"<string>\",\n \"results\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
                           "cookie": [],
                           "_postman_previewlanguage": "json"
                         }
@@ -822,7 +985,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -832,7 +995,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -841,7 +1004,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{query_address}}",
                               "key": "query_address"
                             },
                             {
@@ -850,7 +1013,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{method}}",
                               "key": "method"
                             }
                           ]
@@ -876,10 +1039,10 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "contracts",
-                                "<string>",
-                                "<string>"
+                                "{{query_address}}",
+                                "{{method}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -887,7 +1050,7 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -912,7 +1075,7 @@
                               "value": "application/json"
                             }
                           ],
-                          "body": "{\n \"solidity\": \"<string>\",\n \"params\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"publish\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"private\": \"<string>\",\n \"gas_limit\": \"<string>\",\n \"value\": \"<string>\",\n \"name\": \"<string>\",\n \"bin\": \"<string>\",\n \"abi\": \"<string>\",\n \"address\": \"<string>\",\n \"created\": \"<string>\",\n \"creation_tx_hash\": \"<string>\",\n \"results\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                          "body": "{\n \"solidity\": \"<string>\",\n \"params\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"publish\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"private\": \"<string>\",\n \"gas_limit\": \"<long>\",\n \"value\": \"<long>\",\n \"name\": \"<string>\",\n \"bin\": \"<string>\",\n \"abi\": \"<string>\",\n \"address\": \"<string>\",\n \"created\": \"<string>\",\n \"creation_tx_hash\": \"<string>\",\n \"results\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
                           "cookie": [],
                           "_postman_previewlanguage": "json"
                         }
@@ -945,7 +1108,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -955,7 +1118,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -971,7 +1134,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs"
                           ],
                           "host": [
@@ -980,7 +1143,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -996,7 +1159,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"result\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"hash\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"relayed_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"inputs\": [\n    {\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    },\n    {\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    }\n   ],\n   \"outputs\": [\n    {\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    },\n    {\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    }\n   ],\n   \"internal_txids\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"parent_tx\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"block_hash\": \"<string>\",\n   \"double_of\": \"<string>\",\n   \"execution_error\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"hash\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"relayed_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"inputs\": [\n    {\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    },\n    {\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    }\n   ],\n   \"outputs\": [\n    {\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    },\n    {\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    }\n   ],\n   \"internal_txids\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"parent_tx\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"block_hash\": \"<string>\",\n   \"double_of\": \"<string>\",\n   \"execution_error\": \"<string>\"\n  }\n ]\n}",
+                      "body": "{\n \"result\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"hash\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"total\": \"<long>\",\n   \"fees\": \"<long>\",\n   \"size\": \"<long>\",\n   \"gas_used\": \"<long>\",\n   \"gas_price\": \"<long>\",\n   \"relayed_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"ver\": \"<long>\",\n   \"vin_sz\": \"<long>\",\n   \"vout_sz\": \"<long>\",\n   \"confirmations\": \"<long>\",\n   \"inputs\": [\n    {\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    },\n    {\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    }\n   ],\n   \"outputs\": [\n    {\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    },\n    {\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    }\n   ],\n   \"internal_txids\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"parent_tx\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"gas_limit\": \"<long>\",\n   \"receive_count\": \"<long>\",\n   \"block_hash\": \"<string>\",\n   \"block_index\": \"<long>\",\n   \"double_of\": \"<string>\",\n   \"execution_error\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"hash\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"total\": \"<long>\",\n   \"fees\": \"<long>\",\n   \"size\": \"<long>\",\n   \"gas_used\": \"<long>\",\n   \"gas_price\": \"<long>\",\n   \"relayed_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"ver\": \"<long>\",\n   \"vin_sz\": \"<long>\",\n   \"vout_sz\": \"<long>\",\n   \"confirmations\": \"<long>\",\n   \"inputs\": [\n    {\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    },\n    {\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    }\n   ],\n   \"outputs\": [\n    {\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    },\n    {\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ]\n    }\n   ],\n   \"internal_txids\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"parent_tx\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"gas_limit\": \"<long>\",\n   \"receive_count\": \"<long>\",\n   \"block_hash\": \"<string>\",\n   \"block_index\": \"<long>\",\n   \"double_of\": \"<string>\",\n   \"execution_error\": \"<string>\"\n  }\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -1021,7 +1184,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1031,7 +1194,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1057,7 +1220,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "decode"
                           ],
@@ -1067,7 +1230,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1092,7 +1255,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"block_height\": \"<integer>\",\n \"hash\": \"<string>\",\n \"addresses\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"total\": \"<string>\",\n \"fees\": \"<string>\",\n \"size\": \"<string>\",\n \"gas_used\": \"<string>\",\n \"gas_price\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"received\": \"<string>\",\n \"ver\": \"<string>\",\n \"double_spend\": \"<boolean>\",\n \"vin_sz\": \"<string>\",\n \"vout_sz\": \"<string>\",\n \"confirmations\": \"<string>\",\n \"inputs\": [\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"outputs\": [\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"parent_tx\": \"<string>\",\n \"confirmed\": \"<string>\",\n \"gas_limit\": \"<string>\",\n \"contract_creation\": \"<boolean>\",\n \"receive_count\": \"<string>\",\n \"block_hash\": \"<string>\",\n \"block_index\": \"<string>\",\n \"double_of\": \"<string>\",\n \"execution_error\": \"<string>\"\n}",
+                      "body": "{\n \"block_height\": \"<integer>\",\n \"hash\": \"<string>\",\n \"addresses\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"total\": \"<long>\",\n \"fees\": \"<long>\",\n \"size\": \"<long>\",\n \"gas_used\": \"<long>\",\n \"gas_price\": \"<long>\",\n \"relayed_by\": \"<string>\",\n \"received\": \"<string>\",\n \"ver\": \"<long>\",\n \"double_spend\": \"<boolean>\",\n \"vin_sz\": \"<long>\",\n \"vout_sz\": \"<long>\",\n \"confirmations\": \"<long>\",\n \"inputs\": [\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"outputs\": [\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"parent_tx\": \"<string>\",\n \"confirmed\": \"<string>\",\n \"gas_limit\": \"<long>\",\n \"contract_creation\": \"<boolean>\",\n \"receive_count\": \"<long>\",\n \"block_hash\": \"<string>\",\n \"block_index\": \"<long>\",\n \"double_of\": \"<string>\",\n \"execution_error\": \"<string>\"\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -1117,7 +1280,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1127,7 +1290,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1144,7 +1307,7 @@
                     },
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"network\": \"MAIN\",\n    \"block_height\": \"<integer>\",\n    \"hash\": \"<string>\",\n    \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"relayed_by\": \"<string>\",\n    \"received\": \"<string>\",\n    \"ver\": \"<integer>\",\n    \"vin_sz\": \"<integer>\",\n    \"vout_sz\": \"<integer>\",\n    \"confirmations\": \"<integer>\",\n    \"inputs\": [\n        {\n            \"sequence\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        },\n        {\n            \"sequence\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        },\n        {\n            \"value\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        }\n    ],\n    \"internal_txids\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"parent_tx\": \"<string>\",\n    \"confirmed\": \"<string>\",\n    \"gas_limit\": \"<integer>\",\n    \"receive_count\": \"<integer>\",\n    \"block_hash\": \"<string>\",\n    \"block_index\": \"<integer>\",\n    \"double_of\": \"<string>\",\n    \"execution_error\": \"<string>\",\n    \"token\": \"<string>\"\n}"
+                      "raw": "{\n    \"network\": \"MAIN\",\n    \"block_height\": \"<integer>\",\n    \"hash\": \"<string>\",\n    \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"total\": \"<long>\",\n    \"fees\": \"<long>\",\n    \"size\": \"<long>\",\n    \"gas_used\": \"<long>\",\n    \"gas_price\": \"<long>\",\n    \"relayed_by\": \"<string>\",\n    \"received\": \"<string>\",\n    \"ver\": \"<integer>\",\n    \"vin_sz\": \"<integer>\",\n    \"vout_sz\": \"<integer>\",\n    \"confirmations\": \"<integer>\",\n    \"inputs\": [\n        {\n            \"sequence\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        },\n        {\n            \"sequence\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        },\n        {\n            \"value\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        }\n    ],\n    \"internal_txids\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"parent_tx\": \"<string>\",\n    \"confirmed\": \"<string>\",\n    \"gas_limit\": \"<integer>\",\n    \"receive_count\": \"<integer>\",\n    \"block_hash\": \"<string>\",\n    \"block_index\": \"<integer>\",\n    \"double_of\": \"<string>\",\n    \"execution_error\": \"<string>\",\n    \"token\": \"<string>\"\n}"
                     }
                   },
                   "response": [
@@ -1153,7 +1316,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "new"
                           ],
@@ -1163,7 +1326,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1177,7 +1340,7 @@
                         "method": "POST",
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n    \"network\": \"MAIN\",\n    \"block_height\": \"<integer>\",\n    \"hash\": \"<string>\",\n    \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"relayed_by\": \"<string>\",\n    \"received\": \"<string>\",\n    \"ver\": \"<integer>\",\n    \"vin_sz\": \"<integer>\",\n    \"vout_sz\": \"<integer>\",\n    \"confirmations\": \"<integer>\",\n    \"inputs\": [\n        {\n            \"sequence\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        },\n        {\n            \"sequence\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        },\n        {\n            \"value\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        }\n    ],\n    \"internal_txids\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"parent_tx\": \"<string>\",\n    \"confirmed\": \"<string>\",\n    \"gas_limit\": \"<integer>\",\n    \"receive_count\": \"<integer>\",\n    \"block_hash\": \"<string>\",\n    \"block_index\": \"<integer>\",\n    \"double_of\": \"<string>\",\n    \"execution_error\": \"<string>\",\n    \"token\": \"<string>\"\n}"
+                          "raw": "{\n    \"network\": \"MAIN\",\n    \"block_height\": \"<integer>\",\n    \"hash\": \"<string>\",\n    \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"total\": \"<long>\",\n    \"fees\": \"<long>\",\n    \"size\": \"<long>\",\n    \"gas_used\": \"<long>\",\n    \"gas_price\": \"<long>\",\n    \"relayed_by\": \"<string>\",\n    \"received\": \"<string>\",\n    \"ver\": \"<integer>\",\n    \"vin_sz\": \"<integer>\",\n    \"vout_sz\": \"<integer>\",\n    \"confirmations\": \"<integer>\",\n    \"inputs\": [\n        {\n            \"sequence\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        },\n        {\n            \"sequence\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        },\n        {\n            \"value\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ]\n        }\n    ],\n    \"internal_txids\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"parent_tx\": \"<string>\",\n    \"confirmed\": \"<string>\",\n    \"gas_limit\": \"<integer>\",\n    \"receive_count\": \"<integer>\",\n    \"block_hash\": \"<string>\",\n    \"block_index\": \"<integer>\",\n    \"double_of\": \"<string>\",\n    \"execution_error\": \"<string>\",\n    \"token\": \"<string>\"\n}"
                         }
                       },
                       "status": "OK",
@@ -1188,7 +1351,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"tx\": {\n  \"block_height\": \"<integer>\",\n  \"hash\": \"<string>\",\n  \"addresses\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"total\": \"<string>\",\n  \"fees\": \"<string>\",\n  \"size\": \"<string>\",\n  \"gas_used\": \"<string>\",\n  \"gas_price\": \"<string>\",\n  \"relayed_by\": \"<string>\",\n  \"received\": \"<string>\",\n  \"ver\": \"<string>\",\n  \"double_spend\": \"<boolean>\",\n  \"vin_sz\": \"<string>\",\n  \"vout_sz\": \"<string>\",\n  \"confirmations\": \"<string>\",\n  \"inputs\": [\n   {\n    \"sequence\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   },\n   {\n    \"sequence\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   }\n  ],\n  \"outputs\": [\n   {\n    \"value\": \"<string>\",\n    \"script\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   },\n   {\n    \"value\": \"<string>\",\n    \"script\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   }\n  ],\n  \"internal_txids\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"parent_tx\": \"<string>\",\n  \"confirmed\": \"<string>\",\n  \"gas_limit\": \"<string>\",\n  \"contract_creation\": \"<boolean>\",\n  \"receive_count\": \"<string>\",\n  \"block_hash\": \"<string>\",\n  \"block_index\": \"<string>\",\n  \"double_of\": \"<string>\",\n  \"execution_error\": \"<string>\"\n },\n \"tosign\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"signatures\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"errors\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "body": "{\n \"tx\": {\n  \"block_height\": \"<integer>\",\n  \"hash\": \"<string>\",\n  \"addresses\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"total\": \"<long>\",\n  \"fees\": \"<long>\",\n  \"size\": \"<long>\",\n  \"gas_used\": \"<long>\",\n  \"gas_price\": \"<long>\",\n  \"relayed_by\": \"<string>\",\n  \"received\": \"<string>\",\n  \"ver\": \"<long>\",\n  \"double_spend\": \"<boolean>\",\n  \"vin_sz\": \"<long>\",\n  \"vout_sz\": \"<long>\",\n  \"confirmations\": \"<long>\",\n  \"inputs\": [\n   {\n    \"sequence\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   },\n   {\n    \"sequence\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   }\n  ],\n  \"outputs\": [\n   {\n    \"value\": \"<string>\",\n    \"script\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   },\n   {\n    \"value\": \"<string>\",\n    \"script\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   }\n  ],\n  \"internal_txids\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"parent_tx\": \"<string>\",\n  \"confirmed\": \"<string>\",\n  \"gas_limit\": \"<long>\",\n  \"contract_creation\": \"<boolean>\",\n  \"receive_count\": \"<long>\",\n  \"block_hash\": \"<string>\",\n  \"block_index\": \"<long>\",\n  \"double_of\": \"<string>\",\n  \"execution_error\": \"<string>\"\n },\n \"tosign\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"signatures\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"errors\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -1213,7 +1376,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1223,7 +1386,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1249,7 +1412,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "push"
                           ],
@@ -1259,7 +1422,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1284,7 +1447,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"block_height\": \"<integer>\",\n \"hash\": \"<string>\",\n \"addresses\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"total\": \"<string>\",\n \"fees\": \"<string>\",\n \"size\": \"<string>\",\n \"gas_used\": \"<string>\",\n \"gas_price\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"received\": \"<string>\",\n \"ver\": \"<string>\",\n \"double_spend\": \"<boolean>\",\n \"vin_sz\": \"<string>\",\n \"vout_sz\": \"<string>\",\n \"confirmations\": \"<string>\",\n \"inputs\": [\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"outputs\": [\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"parent_tx\": \"<string>\",\n \"confirmed\": \"<string>\",\n \"gas_limit\": \"<string>\",\n \"contract_creation\": \"<boolean>\",\n \"receive_count\": \"<string>\",\n \"block_hash\": \"<string>\",\n \"block_index\": \"<string>\",\n \"double_of\": \"<string>\",\n \"execution_error\": \"<string>\"\n}",
+                      "body": "{\n \"block_height\": \"<integer>\",\n \"hash\": \"<string>\",\n \"addresses\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"total\": \"<long>\",\n \"fees\": \"<long>\",\n \"size\": \"<long>\",\n \"gas_used\": \"<long>\",\n \"gas_price\": \"<long>\",\n \"relayed_by\": \"<string>\",\n \"received\": \"<string>\",\n \"ver\": \"<long>\",\n \"double_spend\": \"<boolean>\",\n \"vin_sz\": \"<long>\",\n \"vout_sz\": \"<long>\",\n \"confirmations\": \"<long>\",\n \"inputs\": [\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"outputs\": [\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"parent_tx\": \"<string>\",\n \"confirmed\": \"<string>\",\n \"gas_limit\": \"<long>\",\n \"contract_creation\": \"<boolean>\",\n \"receive_count\": \"<long>\",\n \"block_hash\": \"<string>\",\n \"block_index\": \"<long>\",\n \"double_of\": \"<string>\",\n \"execution_error\": \"<string>\"\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -1309,7 +1472,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1319,7 +1482,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1336,7 +1499,7 @@
                     },
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"network\": \"MAIN\",\n    \"tx\": {\n        \"block_height\": \"<integer>\",\n        \"hash\": \"<string>\",\n        \"addresses\": [\n            \"<string>\",\n            \"<string>\"\n        ],\n        \"total\": \"<string>\",\n        \"fees\": \"<string>\",\n        \"size\": \"<string>\",\n        \"gas_used\": \"<string>\",\n        \"gas_price\": \"<string>\",\n        \"relayed_by\": \"<string>\",\n        \"received\": \"<string>\",\n        \"ver\": \"<string>\",\n        \"double_spend\": \"<boolean>\",\n        \"vin_sz\": \"<string>\",\n        \"vout_sz\": \"<string>\",\n        \"confirmations\": \"<string>\",\n        \"inputs\": [\n            {\n                \"sequence\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            },\n            {\n                \"sequence\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            }\n        ],\n        \"outputs\": [\n            {\n                \"value\": \"<string>\",\n                \"script\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            },\n            {\n                \"value\": \"<string>\",\n                \"script\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            }\n        ],\n        \"internal_txids\": [\n            \"<string>\",\n            \"<string>\"\n        ],\n        \"parent_tx\": \"<string>\",\n        \"confirmed\": \"<string>\",\n        \"gas_limit\": \"<string>\",\n        \"contract_creation\": \"<boolean>\",\n        \"receive_count\": \"<string>\",\n        \"block_hash\": \"<string>\",\n        \"block_index\": \"<string>\",\n        \"double_of\": \"<string>\",\n        \"execution_error\": \"<string>\"\n    },\n    \"tosign\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"signatures\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"errors\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"token\": \"<string>\"\n}"
+                      "raw": "{\n    \"network\": \"MAIN\",\n    \"tx\": {\n        \"block_height\": \"<integer>\",\n        \"hash\": \"<string>\",\n        \"addresses\": [\n            \"<string>\",\n            \"<string>\"\n        ],\n        \"total\": \"<long>\",\n        \"fees\": \"<long>\",\n        \"size\": \"<long>\",\n        \"gas_used\": \"<long>\",\n        \"gas_price\": \"<long>\",\n        \"relayed_by\": \"<string>\",\n        \"received\": \"<string>\",\n        \"ver\": \"<long>\",\n        \"double_spend\": \"<boolean>\",\n        \"vin_sz\": \"<long>\",\n        \"vout_sz\": \"<long>\",\n        \"confirmations\": \"<long>\",\n        \"inputs\": [\n            {\n                \"sequence\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            },\n            {\n                \"sequence\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            }\n        ],\n        \"outputs\": [\n            {\n                \"value\": \"<string>\",\n                \"script\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            },\n            {\n                \"value\": \"<string>\",\n                \"script\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            }\n        ],\n        \"internal_txids\": [\n            \"<string>\",\n            \"<string>\"\n        ],\n        \"parent_tx\": \"<string>\",\n        \"confirmed\": \"<string>\",\n        \"gas_limit\": \"<long>\",\n        \"contract_creation\": \"<boolean>\",\n        \"receive_count\": \"<long>\",\n        \"block_hash\": \"<string>\",\n        \"block_index\": \"<long>\",\n        \"double_of\": \"<string>\",\n        \"execution_error\": \"<string>\"\n    },\n    \"tosign\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"signatures\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"errors\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"token\": \"<string>\"\n}"
                     }
                   },
                   "response": [
@@ -1345,7 +1508,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
                             "send"
                           ],
@@ -1355,7 +1518,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1369,7 +1532,7 @@
                         "method": "POST",
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n    \"network\": \"MAIN\",\n    \"tx\": {\n        \"block_height\": \"<integer>\",\n        \"hash\": \"<string>\",\n        \"addresses\": [\n            \"<string>\",\n            \"<string>\"\n        ],\n        \"total\": \"<string>\",\n        \"fees\": \"<string>\",\n        \"size\": \"<string>\",\n        \"gas_used\": \"<string>\",\n        \"gas_price\": \"<string>\",\n        \"relayed_by\": \"<string>\",\n        \"received\": \"<string>\",\n        \"ver\": \"<string>\",\n        \"double_spend\": \"<boolean>\",\n        \"vin_sz\": \"<string>\",\n        \"vout_sz\": \"<string>\",\n        \"confirmations\": \"<string>\",\n        \"inputs\": [\n            {\n                \"sequence\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            },\n            {\n                \"sequence\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            }\n        ],\n        \"outputs\": [\n            {\n                \"value\": \"<string>\",\n                \"script\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            },\n            {\n                \"value\": \"<string>\",\n                \"script\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            }\n        ],\n        \"internal_txids\": [\n            \"<string>\",\n            \"<string>\"\n        ],\n        \"parent_tx\": \"<string>\",\n        \"confirmed\": \"<string>\",\n        \"gas_limit\": \"<string>\",\n        \"contract_creation\": \"<boolean>\",\n        \"receive_count\": \"<string>\",\n        \"block_hash\": \"<string>\",\n        \"block_index\": \"<string>\",\n        \"double_of\": \"<string>\",\n        \"execution_error\": \"<string>\"\n    },\n    \"tosign\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"signatures\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"errors\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"token\": \"<string>\"\n}"
+                          "raw": "{\n    \"network\": \"MAIN\",\n    \"tx\": {\n        \"block_height\": \"<integer>\",\n        \"hash\": \"<string>\",\n        \"addresses\": [\n            \"<string>\",\n            \"<string>\"\n        ],\n        \"total\": \"<long>\",\n        \"fees\": \"<long>\",\n        \"size\": \"<long>\",\n        \"gas_used\": \"<long>\",\n        \"gas_price\": \"<long>\",\n        \"relayed_by\": \"<string>\",\n        \"received\": \"<string>\",\n        \"ver\": \"<long>\",\n        \"double_spend\": \"<boolean>\",\n        \"vin_sz\": \"<long>\",\n        \"vout_sz\": \"<long>\",\n        \"confirmations\": \"<long>\",\n        \"inputs\": [\n            {\n                \"sequence\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            },\n            {\n                \"sequence\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            }\n        ],\n        \"outputs\": [\n            {\n                \"value\": \"<string>\",\n                \"script\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            },\n            {\n                \"value\": \"<string>\",\n                \"script\": \"<string>\",\n                \"addresses\": [\n                    \"<string>\",\n                    \"<string>\"\n                ]\n            }\n        ],\n        \"internal_txids\": [\n            \"<string>\",\n            \"<string>\"\n        ],\n        \"parent_tx\": \"<string>\",\n        \"confirmed\": \"<string>\",\n        \"gas_limit\": \"<long>\",\n        \"contract_creation\": \"<boolean>\",\n        \"receive_count\": \"<long>\",\n        \"block_hash\": \"<string>\",\n        \"block_index\": \"<long>\",\n        \"double_of\": \"<string>\",\n        \"execution_error\": \"<string>\"\n    },\n    \"tosign\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"signatures\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"errors\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"token\": \"<string>\"\n}"
                         }
                       },
                       "status": "OK",
@@ -1380,7 +1543,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"tx\": {\n  \"block_height\": \"<integer>\",\n  \"hash\": \"<string>\",\n  \"addresses\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"total\": \"<string>\",\n  \"fees\": \"<string>\",\n  \"size\": \"<string>\",\n  \"gas_used\": \"<string>\",\n  \"gas_price\": \"<string>\",\n  \"relayed_by\": \"<string>\",\n  \"received\": \"<string>\",\n  \"ver\": \"<string>\",\n  \"double_spend\": \"<boolean>\",\n  \"vin_sz\": \"<string>\",\n  \"vout_sz\": \"<string>\",\n  \"confirmations\": \"<string>\",\n  \"inputs\": [\n   {\n    \"sequence\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   },\n   {\n    \"sequence\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   }\n  ],\n  \"outputs\": [\n   {\n    \"value\": \"<string>\",\n    \"script\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   },\n   {\n    \"value\": \"<string>\",\n    \"script\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   }\n  ],\n  \"internal_txids\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"parent_tx\": \"<string>\",\n  \"confirmed\": \"<string>\",\n  \"gas_limit\": \"<string>\",\n  \"contract_creation\": \"<boolean>\",\n  \"receive_count\": \"<string>\",\n  \"block_hash\": \"<string>\",\n  \"block_index\": \"<string>\",\n  \"double_of\": \"<string>\",\n  \"execution_error\": \"<string>\"\n },\n \"tosign\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"signatures\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"errors\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "body": "{\n \"tx\": {\n  \"block_height\": \"<integer>\",\n  \"hash\": \"<string>\",\n  \"addresses\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"total\": \"<long>\",\n  \"fees\": \"<long>\",\n  \"size\": \"<long>\",\n  \"gas_used\": \"<long>\",\n  \"gas_price\": \"<long>\",\n  \"relayed_by\": \"<string>\",\n  \"received\": \"<string>\",\n  \"ver\": \"<long>\",\n  \"double_spend\": \"<boolean>\",\n  \"vin_sz\": \"<long>\",\n  \"vout_sz\": \"<long>\",\n  \"confirmations\": \"<long>\",\n  \"inputs\": [\n   {\n    \"sequence\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   },\n   {\n    \"sequence\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   }\n  ],\n  \"outputs\": [\n   {\n    \"value\": \"<string>\",\n    \"script\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   },\n   {\n    \"value\": \"<string>\",\n    \"script\": \"<string>\",\n    \"addresses\": [\n     \"<string>\",\n     \"<string>\"\n    ]\n   }\n  ],\n  \"internal_txids\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"parent_tx\": \"<string>\",\n  \"confirmed\": \"<string>\",\n  \"gas_limit\": \"<long>\",\n  \"contract_creation\": \"<boolean>\",\n  \"receive_count\": \"<long>\",\n  \"block_hash\": \"<string>\",\n  \"block_index\": \"<long>\",\n  \"double_of\": \"<string>\",\n  \"execution_error\": \"<string>\"\n },\n \"tosign\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"signatures\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"errors\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -1405,7 +1568,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1415,7 +1578,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         },
                         {
@@ -1424,7 +1587,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{txhash}}",
                           "key": "txhash"
                         }
                       ]
@@ -1440,9 +1603,9 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "txs",
-                            "<string>"
+                            "{{txhash}}"
                           ],
                           "host": [
                             "{{baseUrl}}"
@@ -1450,7 +1613,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1466,7 +1629,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"block_height\": \"<integer>\",\n \"hash\": \"<string>\",\n \"addresses\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"total\": \"<string>\",\n \"fees\": \"<string>\",\n \"size\": \"<string>\",\n \"gas_used\": \"<string>\",\n \"gas_price\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"received\": \"<string>\",\n \"ver\": \"<string>\",\n \"double_spend\": \"<boolean>\",\n \"vin_sz\": \"<string>\",\n \"vout_sz\": \"<string>\",\n \"confirmations\": \"<string>\",\n \"inputs\": [\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"outputs\": [\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"parent_tx\": \"<string>\",\n \"confirmed\": \"<string>\",\n \"gas_limit\": \"<string>\",\n \"contract_creation\": \"<boolean>\",\n \"receive_count\": \"<string>\",\n \"block_hash\": \"<string>\",\n \"block_index\": \"<string>\",\n \"double_of\": \"<string>\",\n \"execution_error\": \"<string>\"\n}",
+                      "body": "{\n \"block_height\": \"<integer>\",\n \"hash\": \"<string>\",\n \"addresses\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"total\": \"<long>\",\n \"fees\": \"<long>\",\n \"size\": \"<long>\",\n \"gas_used\": \"<long>\",\n \"gas_price\": \"<long>\",\n \"relayed_by\": \"<string>\",\n \"received\": \"<string>\",\n \"ver\": \"<long>\",\n \"double_spend\": \"<boolean>\",\n \"vin_sz\": \"<long>\",\n \"vout_sz\": \"<long>\",\n \"confirmations\": \"<long>\",\n \"inputs\": [\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"sequence\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"outputs\": [\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"value\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"parent_tx\": \"<string>\",\n \"confirmed\": \"<string>\",\n \"gas_limit\": \"<long>\",\n \"contract_creation\": \"<boolean>\",\n \"receive_count\": \"<long>\",\n \"block_hash\": \"<string>\",\n \"block_index\": \"<long>\",\n \"double_of\": \"<string>\",\n \"execution_error\": \"<string>\"\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -1496,11 +1659,11 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         },
                         {
                           "key": "token",
-                          "value": "<string>"
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1510,7 +1673,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1526,7 +1689,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "hooks"
                           ],
                           "host": [
@@ -1535,11 +1698,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "token",
-                              "value": "<string>"
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1555,7 +1718,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"event\": [\n  {\n   \"id\": \"<string>\",\n   \"event\": \"<string>\",\n   \"hash\": \"<string>\",\n   \"address\": \"<string>\",\n   \"url\": \"<string>\",\n   \"filter\": \"<string>\"\n  },\n  {\n   \"id\": \"<string>\",\n   \"event\": \"<string>\",\n   \"hash\": \"<string>\",\n   \"address\": \"<string>\",\n   \"url\": \"<string>\",\n   \"filter\": \"<string>\"\n  }\n ]\n}",
+                      "body": "{\n \"event\": [\n  {\n   \"id\": \"<string>\",\n   \"event\": \"<string>\",\n   \"hash\": \"<string>\",\n   \"address\": \"<string>\",\n   \"confirmations\": \"<long>\",\n   \"url\": \"<string>\",\n   \"callback_errors\": \"<long>\",\n   \"filter\": \"<string>\"\n  },\n  {\n   \"id\": \"<string>\",\n   \"event\": \"<string>\",\n   \"hash\": \"<string>\",\n   \"address\": \"<string>\",\n   \"confirmations\": \"<long>\",\n   \"url\": \"<string>\",\n   \"callback_errors\": \"<long>\",\n   \"filter\": \"<string>\"\n  }\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -1579,7 +1742,7 @@
                       "query": [
                         {
                           "key": "token",
-                          "value": ""
+                          "value": "{{token}}"
                         }
                       ],
                       "variable": [
@@ -1589,7 +1752,7 @@
                             "type": "text/plain"
                           },
                           "type": "any",
-                          "value": "<string>",
+                          "value": "{{network}}",
                           "key": "network"
                         }
                       ]
@@ -1615,7 +1778,7 @@
                         "url": {
                           "path": [
                             "eth",
-                            "<string>",
+                            "{{network}}",
                             "hooks"
                           ],
                           "host": [
@@ -1624,7 +1787,7 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": []
@@ -1649,7 +1812,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"id\": \"<string>\",\n \"event\": \"<string>\",\n \"hash\": \"<string>\",\n \"address\": \"<string>\",\n \"confirmations\": \"<string>\",\n \"url\": \"<string>\",\n \"callback_errors\": \"<string>\",\n \"filter\": \"<string>\"\n}",
+                      "body": "{\n \"id\": \"<string>\",\n \"event\": \"<string>\",\n \"hash\": \"<string>\",\n \"address\": \"<string>\",\n \"confirmations\": \"<long>\",\n \"url\": \"<string>\",\n \"callback_errors\": \"<long>\",\n \"filter\": \"<string>\"\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -1677,11 +1840,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "token",
-                              "value": "<string>"
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -1691,7 +1854,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -1700,7 +1863,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{webhookid}}",
                               "key": "webhookid"
                             }
                           ]
@@ -1716,9 +1879,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "hooks",
-                                "<string>"
+                                "{{webhookid}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -1726,11 +1889,11 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "token",
-                                  "value": "<string>"
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -1746,7 +1909,7 @@
                               "value": "application/json"
                             }
                           ],
-                          "body": "{\n \"id\": \"<string>\",\n \"event\": \"<string>\",\n \"hash\": \"<string>\",\n \"address\": \"<string>\",\n \"confirmations\": \"<string>\",\n \"url\": \"<string>\",\n \"callback_errors\": \"<string>\",\n \"filter\": \"<string>\"\n}",
+                          "body": "{\n \"id\": \"<string>\",\n \"event\": \"<string>\",\n \"hash\": \"<string>\",\n \"address\": \"<string>\",\n \"confirmations\": \"<long>\",\n \"url\": \"<string>\",\n \"callback_errors\": \"<long>\",\n \"filter\": \"<string>\"\n}",
                           "cookie": [],
                           "_postman_previewlanguage": "json"
                         }
@@ -1771,11 +1934,11 @@
                           "query": [
                             {
                               "key": "token",
-                              "value": ""
+                              "value": "{{token}}"
                             },
                             {
                               "key": "token",
-                              "value": "<string>"
+                              "value": "{{token}}"
                             }
                           ],
                           "variable": [
@@ -1785,7 +1948,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{network}}",
                               "key": "network"
                             },
                             {
@@ -1794,7 +1957,7 @@
                                 "type": "text/plain"
                               },
                               "type": "any",
-                              "value": "<string>",
+                              "value": "{{webhookid}}",
                               "key": "webhookid"
                             }
                           ]
@@ -1810,9 +1973,9 @@
                             "url": {
                               "path": [
                                 "eth",
-                                "<string>",
+                                "{{network}}",
                                 "hooks",
-                                "<string>"
+                                "{{webhookid}}"
                               ],
                               "host": [
                                 "{{baseUrl}}"
@@ -1820,11 +1983,11 @@
                               "query": [
                                 {
                                   "key": "token",
-                                  "value": ""
+                                  "value": "{{token}}"
                                 },
                                 {
                                   "key": "token",
-                                  "value": "<string>"
+                                  "value": "{{token}}"
                                 }
                               ],
                               "variable": []
@@ -1860,25 +2023,1277 @@
       "event": []
     }
   ],
-  "event": [],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "postman.setGlobalVariable(\"commonTests\", (schemeName) => {",
+          "    tests[\"Content-Type header is application/json\"] = postman.getResponseHeader(\"Content-Type\").match(/application\\/json/);",
+          "    ",
+          "    var res = JSON.parse(responseBody);",
+          "    const schema = pm.variables.get(schemeName);",
+          "    console.log(schema);",
+          "    tests[\"Schema is valid\"] = tv4.validate(res, schema);",
+          "});",
+          ""
+        ]
+      }
+    }
+  ],
   "variable": [
     {
+      "key": "ethAddress",
+      "value": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "description": "The requested address."
+          },
+          "total_received": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total amount of confirmed wei received by this address."
+          },
+          "total_sent": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total amount of confirmed wei sent by this address."
+          },
+          "balance": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0)."
+          },
+          "unconfirmed_balance": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation."
+          },
+          "final_balance": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total balance of wei, including confirmed and unconfirmed transactions, for this address."
+          },
+          "n_tx": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted."
+          },
+          "unconfirmed_n_tx": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted."
+          },
+          "final_n_tx": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Final number of transactions, including confirmed and unconfirmed transactions, for this address."
+          },
+          "tx_url": {
+            "type": "string",
+            "description": "Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash."
+          },
+          "txrefs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ethTXRef"
+            },
+            "description": "Optional Array of transaction summaries for this address. Usually only returned from the standard Address Endpoint."
+          },
+          "unconfirmed_txrefs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ethTXRef"
+            },
+            "description": "Optional All unconfirmed transaction summaries for this address. Usually only returned from the standard Address Endpoint."
+          },
+          "hasMore": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Optional If true, then the Address object contains more transactions than shown. Useful for determining whether to poll the API for more transaction information."
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethAddressKeychain",
+      "value": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "description": "Standard address representation."
+          },
+          "public": {
+            "type": "string",
+            "description": "Hex-encoded Public key."
+          },
+          "private": {
+            "type": "string",
+            "description": "Hex-encoded Private key."
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethGenerateAddressEndpointRequest",
+      "value": {
+        "type": "object",
+        "properties": {
+          "network": {
+            "$ref": "#/components/schemas/ethNetworkAllowingAlias"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethNetworkAllowingAlias",
+      "value": {
+        "type": "string",
+        "enum": [
+          "MAIN",
+          "main",
+          "ROPSTEN",
+          "ropsten"
+        ],
+        "default": "MAIN"
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethTXRef",
+      "value": {
+        "type": "object",
+        "properties": {
+          "block_height": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1."
+          },
+          "tx_hash": {
+            "type": "string",
+            "description": "The hash of the transaction containing this input/output."
+          },
+          "tx_input_n": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Index of this input in the enclosing transaction. 0 if it’s an input, -1 if it’s an output."
+          },
+          "tx_output_n": {
+            "type": "string",
+            "format": "int64",
+            "description": "Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output."
+          },
+          "value": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The value transfered by this input/output in wei exchanged in the enclosing transaction."
+          },
+          "double_spend": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "true if this is an attempted double spend; false otherwise."
+          },
+          "confirmations": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
+          },
+          "ref_balance": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions."
+          },
+          "confirmed": {
+            "type": "string",
+            "description": "Optional Time at which transaction was included in a block; only present for confirmed transactions."
+          },
+          "double_of": {
+            "type": "string",
+            "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethBlock",
+      "value": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string",
+            "title": "The hash of the block; in Ethereum, the hashing function is Keccak/SHA3"
+          },
+          "height": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain."
+          },
+          "depth": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain."
+          },
+          "chain": {
+            "type": "string",
+            "title": "The name of the blockchain represented, in the form of $COIN.$CHAIN"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The total number of wei transacted in this block."
+          },
+          "fees": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The total number of fees—in wei—collected by miners in this block."
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Raw size of block (including header and all transactions) in bytes."
+          },
+          "ver": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Block version."
+          },
+          "time": {
+            "type": "string",
+            "description": "Recorded time at which block was built."
+          },
+          "received_time": {
+            "type": "string",
+            "description": "The time BlockCypher’s servers receive the block."
+          },
+          "coinbase_addr": {
+            "type": "string",
+            "description": "The Ethereum address of the miner that received the coinbase and fee reward."
+          },
+          "relayed_by": {
+            "type": "string",
+            "description": "Address of the peer that sent BlockCypher’s servers this block."
+          },
+          "nonce": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The number used by a miner to generate this block."
+          },
+          "n_tx": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of transactions in this block."
+          },
+          "prev_block": {
+            "type": "string",
+            "description": "The hash of the previous block in the blockchain."
+          },
+          "prev_block_url": {
+            "type": "string",
+            "description": "The BlockCypher URL to query for more information on the previous block."
+          },
+          "tx_url": {
+            "type": "string",
+            "description": "The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es)."
+          },
+          "mrkl_root": {
+            "type": "string",
+            "description": "The Merkle root of this block."
+          },
+          "txids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of transaction hashes in this block (initiated by externally controlled accounts). By default, only 20 are included."
+          },
+          "internal_txids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of internal transaction hashes (initiated by internal contracts) in this block. By default, only 20 are included."
+          },
+          "next_txids": {
+            "type": "string",
+            "description": "Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
+          },
+          "next_internal_txids": {
+            "type": "string",
+            "description": "Optional If there are more internal transactions that couldn’t fit in the internal_txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
+          },
+          "uncles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of uncle blocks by hash included by the miner of this block. You can read more about uncles here."
+          }
+        },
+        "required": [
+          "hash",
+          "height",
+          "depth",
+          "chain",
+          "total",
+          "fees",
+          "size",
+          "ver",
+          "time",
+          "received_time",
+          "coinbase_addr",
+          "relayed_by",
+          "nonce",
+          "n_tx",
+          "prev_block",
+          "tx_url",
+          "mrkl_root",
+          "txids",
+          "internal_txids"
+        ]
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethBlockchain",
+      "value": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the blockchain represented, in the form of $COIN.$CHAIN."
+          },
+          "height": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The current height of the blockchain; i.e., the number of blocks in the blockchain."
+          },
+          "hash": {
+            "type": "string",
+            "description": "The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time of the latest update to the blockchain; typically when the latest block was added."
+          },
+          "latest_url": {
+            "type": "string",
+            "description": "The BlockCypher URL to query for more information on the latest confirmed block; returns a Block."
+          },
+          "previous_hash": {
+            "type": "string",
+            "description": "The hash of the second-to-latest confirmed block in the blockchain."
+          },
+          "previous_url": {
+            "type": "string",
+            "description": "The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block."
+          },
+          "unconfirmed_count": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of unconfirmed transactions in memory pool (likely to be included in next block)."
+          },
+          "high_gas_price": {
+            "type": "integer",
+            "format": "int64",
+            "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks."
+          },
+          "medium_gas_price": {
+            "type": "integer",
+            "format": "int64",
+            "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks."
+          },
+          "low_gas_price": {
+            "type": "integer",
+            "format": "int64",
+            "description": "A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks."
+          },
+          "last_fork_height": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
+          },
+          "last_fork_hash": {
+            "type": "string",
+            "description": "Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
+          }
+        },
+        "required": [
+          "name",
+          "height",
+          "hash",
+          "time",
+          "latest_url",
+          "previous_hash",
+          "previous_url",
+          "unconfirmed_count",
+          "high_gas_price",
+          "medium_gas_price",
+          "low_gas_price"
+        ]
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethCallContractMethodEndpointRequest",
+      "value": {
+        "type": "object",
+        "properties": {
+          "network": {
+            "$ref": "#/components/schemas/ethNetworkAllowingAlias"
+          },
+          "query_address": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "solidity": {
+            "type": "string",
+            "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
+          },
+          "params": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Parameters for either contract creation or method execution."
+          },
+          "publish": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
+          },
+          "private": {
+            "type": "string",
+            "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
+          },
+          "gas_limit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum amount of gas to use in contract creation or method execution."
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of contract as published."
+          },
+          "bin": {
+            "type": "string",
+            "description": "Hex-encoded binary compilation of this contract."
+          },
+          "abi": {
+            "type": "string",
+            "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
+          },
+          "address": {
+            "type": "string",
+            "description": "Hex-encoded address of this contract."
+          },
+          "created": {
+            "type": "string",
+            "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
+          },
+          "creation_tx_hash": {
+            "type": "string",
+            "description": "Hex-encoded transaction hash that created this contract."
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+          },
+          "token": {
+            "type": "string",
+            "title": "Token"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethContract",
+      "value": {
+        "type": "object",
+        "properties": {
+          "solidity": {
+            "type": "string",
+            "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
+          },
+          "params": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Parameters for either contract creation or method execution."
+          },
+          "publish": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
+          },
+          "private": {
+            "type": "string",
+            "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
+          },
+          "gas_limit": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Maximum amount of gas to use in contract creation or method execution."
+          },
+          "value": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of contract as published."
+          },
+          "bin": {
+            "type": "string",
+            "description": "Hex-encoded binary compilation of this contract."
+          },
+          "abi": {
+            "type": "string",
+            "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
+          },
+          "address": {
+            "type": "string",
+            "description": "Hex-encoded address of this contract."
+          },
+          "created": {
+            "type": "string",
+            "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
+          },
+          "creation_tx_hash": {
+            "type": "string",
+            "description": "Hex-encoded transaction hash that created this contract."
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethContracts",
+      "value": {
+        "type": "object",
+        "properties": {
+          "contract": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ethContract"
+            }
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethCreateContractEndpointRequest",
+      "value": {
+        "type": "object",
+        "properties": {
+          "network": {
+            "$ref": "#/components/schemas/ethNetworkAllowingAlias"
+          },
+          "solidity": {
+            "type": "string",
+            "description": "Solidity code of this contract; required when creating a contract. In responses, only returned with contracts initially compiled by BlockCypher."
+          },
+          "params": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Parameters for either contract creation or method execution."
+          },
+          "publish": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Named contract(s) to publish; necessary to specify when first creating a contract."
+          },
+          "private": {
+            "type": "string",
+            "description": "Private key associated with a funded Ethereum external account used to publish a contract or execute a method."
+          },
+          "gas_limit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum amount of gas to use in contract creation or method execution."
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of contract as published."
+          },
+          "bin": {
+            "type": "string",
+            "description": "Hex-encoded binary compilation of this contract."
+          },
+          "abi": {
+            "type": "string",
+            "description": "JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher."
+          },
+          "address": {
+            "type": "string",
+            "description": "Hex-encoded address of this contract."
+          },
+          "created": {
+            "type": "string",
+            "description": "Timestamp when this contract was confirmed in the Ethereum blockchain."
+          },
+          "creation_tx_hash": {
+            "type": "string",
+            "description": "Hex-encoded transaction hash that created this contract."
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
+          },
+          "token": {
+            "type": "string",
+            "title": "Token"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethCreateTransactionEndpointRequest",
+      "value": {
+        "type": "object",
+        "properties": {
+          "network": {
+            "$ref": "#/components/schemas/ethNetworkAllowingAlias"
+          },
+          "block_height": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1."
+          },
+          "hash": {
+            "type": "string",
+            "description": "The hash of the transaction."
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of Ethereum addresses involved in the transaction."
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The total number of wei exchanged in this transaction."
+          },
+          "fees": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used."
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The size of the transaction in bytes."
+          },
+          "gas_used": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The amount of gas used by this transaction."
+          },
+          "gas_price": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The price of gas—in wei—in this transaction."
+          },
+          "relayed_by": {
+            "type": "string",
+            "description": "Address of the peer that sent BlockCypher’s servers this transaction. May be empty."
+          },
+          "received": {
+            "type": "string",
+            "description": "Time this transaction was received by BlockCypher’s servers."
+          },
+          "ver": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Version number of this transaction."
+          },
+          "double_spend": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "true if this is an attempted double spend; false otherwise."
+          },
+          "vin_sz": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of inputs in the transaction."
+          },
+          "vout_sz": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of outputs in the transaction."
+          },
+          "confirmations": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ethInputType"
+            },
+            "description": "An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API."
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ethOutputType"
+            },
+            "description": "An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API."
+          },
+          "internal_txids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions."
+          },
+          "parent_tx": {
+            "type": "string",
+            "description": "Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash)."
+          },
+          "confirmed": {
+            "type": "string",
+            "description": "Optional Time at which transaction was included in a block; only present for confirmed transactions."
+          },
+          "gas_limit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts."
+          },
+          "contract_creation": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed."
+          },
+          "receive_count": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions."
+          },
+          "block_hash": {
+            "type": "string",
+            "description": "Optional Hash of the block that contains this transaction; only present for confirmed transactions."
+          },
+          "block_index": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions."
+          },
+          "double_of": {
+            "type": "string",
+            "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
+          },
+          "execution_error": {
+            "type": "string",
+            "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
+          },
+          "token": {
+            "type": "string",
+            "title": "Token"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethDecodeRawTransactionEndpointRequest",
+      "value": {
+        "type": "object",
+        "properties": {
+          "network": {
+            "$ref": "#/components/schemas/ethNetworkAllowingAlias"
+          },
+          "tx": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethInputType",
+      "value": {
+        "type": "object",
+        "properties": {
+          "sequence": {
+            "type": "string",
+            "format": "int64"
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethOutputType",
+      "value": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "format": "int64"
+          },
+          "script": {
+            "type": "string"
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethPushRawTransactionEndpointRequest",
+      "value": {
+        "type": "object",
+        "properties": {
+          "network": {
+            "$ref": "#/components/schemas/ethNetworkAllowingAlias"
+          },
+          "tx": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethSendTransactionEndpointRequest",
+      "value": {
+        "type": "object",
+        "properties": {
+          "network": {
+            "$ref": "#/components/schemas/ethNetworkAllowingAlias"
+          },
+          "tx": {
+            "$ref": "#/components/schemas/ethTX"
+          },
+          "tosign": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of hex-encoded data for you to sign, containing one element for you to sign. Still an array to maintain parity with the Bitcoin API."
+          },
+          "signatures": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of signatures corresponding to all the data in tosign, typically provided by you. Only one signature is required."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code."
+          },
+          "token": {
+            "type": "string",
+            "title": "Token"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethTX",
+      "value": {
+        "type": "object",
+        "properties": {
+          "block_height": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1."
+          },
+          "hash": {
+            "type": "string",
+            "description": "The hash of the transaction."
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of Ethereum addresses involved in the transaction."
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The total number of wei exchanged in this transaction."
+          },
+          "fees": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used."
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The size of the transaction in bytes."
+          },
+          "gas_used": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The amount of gas used by this transaction."
+          },
+          "gas_price": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The price of gas—in wei—in this transaction."
+          },
+          "relayed_by": {
+            "type": "string",
+            "description": "Address of the peer that sent BlockCypher’s servers this transaction. May be empty."
+          },
+          "received": {
+            "type": "string",
+            "description": "Time this transaction was received by BlockCypher’s servers."
+          },
+          "ver": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Version number of this transaction."
+          },
+          "double_spend": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "true if this is an attempted double spend; false otherwise."
+          },
+          "vin_sz": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total number of inputs in the transaction."
+          },
+          "vout_sz": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total number of outputs in the transaction."
+          },
+          "confirmations": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ethInputType"
+            },
+            "description": "An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API."
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ethOutputType"
+            },
+            "description": "An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API."
+          },
+          "internal_txids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions."
+          },
+          "parent_tx": {
+            "type": "string",
+            "description": "Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash)."
+          },
+          "confirmed": {
+            "type": "string",
+            "description": "Optional Time at which transaction was included in a block; only present for confirmed transactions."
+          },
+          "gas_limit": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts."
+          },
+          "contract_creation": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed."
+          },
+          "receive_count": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions."
+          },
+          "block_hash": {
+            "type": "string",
+            "description": "Optional Hash of the block that contains this transaction; only present for confirmed transactions."
+          },
+          "block_index": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions."
+          },
+          "double_of": {
+            "type": "string",
+            "description": "Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending."
+          },
+          "execution_error": {
+            "type": "string",
+            "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethTXSkeleton",
+      "value": {
+        "type": "object",
+        "properties": {
+          "tx": {
+            "$ref": "#/components/schemas/ethTX"
+          },
+          "tosign": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of hex-encoded data for you to sign, containing one element for you to sign. Still an array to maintain parity with the Bitcoin API."
+          },
+          "signatures": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of signatures corresponding to all the data in tosign, typically provided by you. Only one signature is required."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code."
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethTXs",
+      "value": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ethTX"
+            }
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethCreateWebHookEndpointRequest",
+      "value": {
+        "type": "object",
+        "properties": {
+          "network": {
+            "$ref": "#/components/schemas/ethNetworkAllowingAlias"
+          },
+          "id": {
+            "type": "string",
+            "description": "Identifier of the event; generated when a new request is created."
+          },
+          "event": {
+            "type": "string",
+            "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
+          },
+          "hash": {
+            "type": "string",
+            "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+          },
+          "address": {
+            "type": "string",
+            "description": "optional Only transactions associated with the given address will be sent."
+          },
+          "confirmations": {
+            "type": "integer",
+            "format": "int32",
+            "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+          },
+          "url": {
+            "type": "string",
+            "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+          },
+          "callback_errors": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+          },
+          "token": {
+            "type": "string",
+            "title": "Token"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethEvent",
+      "value": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the event; generated when a new request is created."
+          },
+          "event": {
+            "type": "string",
+            "description": "Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx."
+          },
+          "hash": {
+            "type": "string",
+            "description": "optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction."
+          },
+          "address": {
+            "type": "string",
+            "description": "optional Only transactions associated with the given address will be sent."
+          },
+          "confirmations": {
+            "type": "integer",
+            "format": "int64",
+            "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
+          },
+          "url": {
+            "type": "string",
+            "description": "optional Callback URL for this Event’s WebHook; not applicable for WebSockets usage."
+          },
+          "callback_errors": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
+          },
+          "filter": {
+            "type": "string",
+            "title": "filter"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethEvents",
+      "value": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ethEvent"
+            }
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "ethNullValue",
+      "value": {
+        "type": "object"
+      },
+      "type": "object"
+    },
+    {
+      "key": "error",
+      "value": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
+      "key": "baseUrl",
       "type": "string",
-      "value": "https://api.chainweaver.io/0"
+      "value": "https://api.chainweaver.io/feature-blockchain"
+    },
+    {
+      "key": "network",
+      "type": "string",
+      "value": "main"
     }
   ],
   "info": {
     "_postman_id": "",
     "name": "Chainweaver API for Ethereum",
-    "version": {
-      "raw": "0.1.2",
-      "major": 0,
-      "minor": 1,
-      "patch": 2,
-      "prerelease": [],
-      "build": [],
-      "string": "0.1.2"
-    },
+    "version": {},
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",

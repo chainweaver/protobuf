@@ -47,7 +47,7 @@ mergeOpenApiJson() {
     return 1
   fi
 
-  jq -s '.[0] * .[1]' ./scripts/${coin}OpenApi.json ./openapi/$coin/work/openapi2.json > ./openapi/$coin/openapi2.json
+  jq -s '.[0] * .[1]' ./scripts/openapi/${coin}OpenApi.json ./openapi/$coin/work/openapi2.json > ./openapi/$coin/openapi2.json
   if [ $? -gt 0 ]; then
     return 1
   fi
@@ -66,15 +66,73 @@ generatePostmanCollection() {
     return 1
   fi
 
+  # PostmanId
   jq $updatePostmanId ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
 
-  mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
+  # Variable
+  jq 'del(.variable[0])' ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
+
+  jq '.components.schemas | to_entries[] | .key=.key | .type="object"' ./openapi/$coin/openapi3.json | jq -s > ./postman/$coin/variable.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  echo "{\"variable\":" > ./postman/$coin/tmpVariable.json && cat ./postman/$coin/variable.json >> ./postman/$coin/tmpVariable.json && echo "}" >> ./postman/$coin/tmpVariable.json
+  mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
+
+  jq -s '.[0] * .[1]' ./postman/$coin/collection.json ./postman/$coin/variable.json > ./postman/$coin/tmpCollection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+  rm -f ./postman/$coin/variable.json
+
+  baseUrl=$(jq -r '.servers[0].url' ./openapi/$coin/openapi3.json)
+  updateVariableBaseUrl=.variable[.variable\|length]={\"key\":\"baseUrl\",\"type\":\"string\",\"value\":\"$baseUrl\"}
+  jq $updateVariableBaseUrl ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  network=main
+  updateVariableNetwork=.variable[.variable\|length]={\"key\":\"network\",\"type\":\"string\",\"value\":\"$network\"}
+  jq $updateVariableNetwork ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  # Global Event
+  jq -s '.[0] * .[1]' ./postman/$coin/tmpCollection.json ./scripts/postman/globalEvent.json > ./postman/$coin/collection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  # Item Event
+  updateEventFragment1='map_values((..|select(.name?=="'
+  updateEventFragment2='")|.event)|=[{"listen":"test","script":{"exec":["'
+  updateEventFragment3='"],"type":"text/javascript"}}])'
+
+  for file in `\find ./scripts/postman/itemTest/$coin -maxdepth 1 -type f`; do
+    filename=$(basename $file .js)
+    splitFilename=${filename//_/ };
+    itemName=""
+    for str in ${splitFilename[@]}; do
+      itemName="$itemName${str^} "
+    done
+    itemName=${itemName% }
+    testScript=$(sed 's/"/\\"/g' $file)
+
+    updateEvent=$updateEventFragment1$itemName$updateEventFragment2$testScript$updateEventFragment3
+    jq "$updateEvent" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+    mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
+  done
+
+  rm -f ./postman/$coin/tmpCollection.json
 }
 
 run() {
@@ -97,18 +155,18 @@ run() {
   echo "Generate protoc-gen-go/$coin/*.pb.go"
   echo "Generate openapi/$coin/*.json"
 
-  echo "--------------------------"
+  echo "----------------------------"
   echo " Merge OpenAPIv2 json files "
-  echo "--------------------------"
+  echo "----------------------------"
   mergeOpenApiJson $coin
   if [ $? -gt 0 ]; then
     return 1
   fi
   echo "Create openapi/$coin/openapi2.json"
 
-  echo "------------------------------"
-  echo " Set API Version to OpenAPIv2 "
-  echo "------------------------------"
+  echo "------------------"
+  echo " Update OpenAPIv2 "
+  echo "------------------"
   jq $updateVersion openapi/$coin/openapi2.json > openapi/$coin/work/openapi2.json
   if [ $? -gt 0 ]; then
     return 1
@@ -117,7 +175,25 @@ run() {
   if [ $? -gt 0 ]; then
     return 1
   fi
-  echo "Set openapi/$coin/openapi2.json"
+
+  # Update of models that could not be properly converted by protoc-gen-swagger
+  jq '(.. | select(.format? == "uint64")).type="integer"' ./openapi/$coin/openapi2.json  > ./openapi/$coin/work/openapi2.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+  jq '(.. | select(.format? == "uint64")).format="int64"' ./openapi/$coin/work/openapi2.json  > ./openapi/$coin/openapi2.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  # Add error definition
+  jq -s '.[0] * .[1]' ./openapi/$coin/openapi2.json ./scripts/openapi/errorDefinition.json > ./openapi/$coin/work/openapi2.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+  mv ./openapi/$coin/work/openapi2.json ./openapi/$coin/openapi2.json
+
+  echo "Update openapi/$coin/openapi2.json"
 
   echo "--------------------------------"
   echo " Convert OpenAPIv2 to OpenAPIv3 "
@@ -160,6 +236,7 @@ run() {
 echo "Build start!"
 
 # Postman ID is fixed
+git checkout postman
 postmanId=$(jq -r '.info._postman_id' ./postman/btc/collection.json)
 if [ $? -gt 0 ]; then
   echo "Build error"
@@ -176,7 +253,7 @@ else
   # Extract version
   version=$(./scripts/semVer.sh vvv)
   majorVersion=$(./scripts/semVer.sh v)
-  basePath="${majorVersion}"
+  basePath="v${majorVersion}"
 fi
 updateVersion=.info.version=\"${version}\"
 updateBasePath=.basePath=\"/${basePath}\"

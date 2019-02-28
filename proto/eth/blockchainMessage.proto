@@ -3,14 +3,18 @@ syntax = "proto3";
 package chainweaver.protobuf.eth;
 option go_package = "github.com/chainweaver/protobuf/protoc-gen-go/eth";
 
+import "protoc-gen-swagger/options/annotations.proto";
 import "commonMessage.proto";
 
 message ChainEndpointRequest {
-  NetworkAllowingAlias network = 1;
+  // network
+  NetworkAllowingAlias network = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {description: "chain", default: "main", required: ['network']}];
 }
 
 message BlockHashEndpointRequest {
+  // network
   NetworkAllowingAlias network = 1;
+  // String representing the hash of the block you’re interested in querying, for example: `0000000000000000189bba3564a63772107b5673c940c16f12662b3e8546b412`
   string block_hash = 2;
   // Filters response to only include transaction hashes after txstart in the block.
   int32 txstart = 3;
@@ -19,7 +23,9 @@ message BlockHashEndpointRequest {
 }
 
 message BlockHeightEndpointRequest {
+  // network
   NetworkAllowingAlias network = 1;
+  // Integer representing the height of the block you’re interested in querying, for example: `1500000`
   string block_height = 2;
   // Filters response to only include transaction hashes after txstart in the block.
   int32 txstart = 3;

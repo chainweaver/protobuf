@@ -42,8 +42,9 @@ RUN npm install -g swagger2openapi
 
 # Install openapi-to-postman
 WORKDIR /
-RUN git clone https://github.com/postmanlabs/openapi-to-postman.git
+RUN git clone https://github.com/chainweaver/openapi-to-postman.git
 WORKDIR /openapi-to-postman
+RUN git checkout feature-param
 RUN yarn install
 
 COPY --from=build /go/bin/protoc-gen-go /usr/bin/
