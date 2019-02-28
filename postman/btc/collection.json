@@ -8009,7 +8009,7 @@
     {
       "key": "baseUrl",
       "type": "string",
-      "value": "https://api.chainweaver.io/feature-blockchain"
+      "value": "https://api.chainweaver.io/master"
     },
     {
       "key": "network",
