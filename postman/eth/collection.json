@@ -43,7 +43,18 @@
                 "method": "GET",
                 "auth": {
                   "type": "noauth"
-                }
+                },
+                "event": [
+                  {
+                    "listen": "test",
+                    "script": {
+                      "exec": [
+                        "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlockchain\");"
+                      ],
+                      "type": "text/javascript"
+                    }
+                  }
+                ]
               },
               "response": [
                 {
@@ -81,7 +92,17 @@
                   "_postman_previewlanguage": "json"
                 }
               ],
-              "event": []
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlockchain\");"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ]
             },
             {
               "name": "addrs",
@@ -460,7 +481,18 @@
                     "method": "GET",
                     "auth": {
                       "type": "noauth"
-                    }
+                    },
+                    "event": [
+                      {
+                        "listen": "test",
+                        "script": {
+                          "exec": [
+                            "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlock\");"
+                          ],
+                          "type": "text/javascript"
+                        }
+                      }
+                    ]
                   },
                   "response": [
                     {
@@ -508,7 +540,17 @@
                       "_postman_previewlanguage": "json"
                     }
                   ],
-                  "event": []
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlock\");"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ]
                 },
                 {
                   "name": "Block Height Endpoint",
@@ -568,7 +610,18 @@
                     "method": "GET",
                     "auth": {
                       "type": "noauth"
-                    }
+                    },
+                    "event": [
+                      {
+                        "listen": "test",
+                        "script": {
+                          "exec": [
+                            "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlock\");"
+                          ],
+                          "type": "text/javascript"
+                        }
+                      }
+                    ]
                   },
                   "response": [
                     {
@@ -616,7 +669,17 @@
                       "_postman_previewlanguage": "json"
                     }
                   ],
-                  "event": []
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "tests[\"Status code is 200\"] = responseCode.code === 200;\neval(globals.commonTests)(\"ethBlock\");"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ]
                 }
               ],
               "event": []
