@@ -222,6 +222,12 @@
             "schema": {
               "$ref": "#/definitions/ethBlock"
             }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
           }
         },
         "parameters": [
@@ -277,6 +283,12 @@
             "description": "Success OK",
             "schema": {
               "$ref": "#/definitions/ethBlock"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/error"
             }
           }
         },
@@ -1955,6 +1967,15 @@
     },
     "ethNullValue": {
       "type": "object"
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "description": "Error message"
+        }
+      }
     }
   },
   "basePath": "/feature-blockchain"

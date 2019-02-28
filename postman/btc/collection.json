@@ -7994,6 +7994,19 @@
       "type": "object"
     },
     {
+      "key": "error",
+      "value": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      },
+      "type": "object"
+    },
+    {
       "key": "baseUrl",
       "type": "string",
       "value": "https://api.chainweaver.io/feature-blockchain"

@@ -538,6 +538,50 @@
                       "body": "{\n \"hash\": \"<string>\",\n \"height\": \"<long>\",\n \"depth\": \"<long>\",\n \"chain\": \"<string>\",\n \"total\": \"<long>\",\n \"fees\": \"<long>\",\n \"size\": \"<long>\",\n \"ver\": \"<long>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"nonce\": \"<long>\",\n \"n_tx\": \"<long>\",\n \"prev_block\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"prev_block_url\": \"<string>\",\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "eth",
+                            "{{network}}",
+                            "blocks",
+                            "{{block_hash}}"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}"
+                            },
+                            {
+                              "key": "txstart",
+                              "value": "{{txstart}}"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "{{limit}}"
+                            }
+                          ],
+                          "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n \"error\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
                     }
                   ],
                   "event": [
@@ -665,6 +709,50 @@
                         }
                       ],
                       "body": "{\n \"hash\": \"<string>\",\n \"height\": \"<long>\",\n \"depth\": \"<long>\",\n \"chain\": \"<string>\",\n \"total\": \"<long>\",\n \"fees\": \"<long>\",\n \"size\": \"<long>\",\n \"ver\": \"<long>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"nonce\": \"<long>\",\n \"n_tx\": \"<long>\",\n \"prev_block\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"prev_block_url\": \"<string>\",\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "eth",
+                            "{{network}}",
+                            "blocks",
+                            "{{block_height}}"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}"
+                            },
+                            {
+                              "key": "txstart",
+                              "value": "{{txstart}}"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "{{limit}}"
+                            }
+                          ],
+                          "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n \"error\": \"<string>\"\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -3175,6 +3263,19 @@
       "key": "ethNullValue",
       "value": {
         "type": "object"
+      },
+      "type": "object"
+    },
+    {
+      "key": "error",
+      "value": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
       },
       "type": "object"
     },

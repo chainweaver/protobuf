@@ -3519,4 +3519,10 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/btcEvent'
+  error:
+    type: object
+    properties:
+      error:
+        type: string
+        description: Error message
 basePath: /feature-blockchain

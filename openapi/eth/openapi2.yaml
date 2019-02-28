@@ -177,6 +177,10 @@ paths:
           description: Success OK
           schema:
             $ref: '#/definitions/ethBlock'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/error'
       parameters:
       - name: network
         description: network
@@ -230,6 +234,10 @@ paths:
           description: Success OK
           schema:
             $ref: '#/definitions/ethBlock'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/error'
       parameters:
       - name: network
         description: network
@@ -1576,4 +1584,10 @@ definitions:
           $ref: '#/definitions/ethEvent'
   ethNullValue:
     type: object
+  error:
+    type: object
+    properties:
+      error:
+        type: string
+        description: Error message
 basePath: /feature-blockchain

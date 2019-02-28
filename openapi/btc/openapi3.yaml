@@ -3783,3 +3783,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/btcEvent'
+    error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message

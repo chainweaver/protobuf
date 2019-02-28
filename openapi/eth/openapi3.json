@@ -242,6 +242,16 @@
                                 }
                             }
                         }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
                     }
                 },
                 "parameters": [
@@ -307,6 +317,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/ethBlock"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
                                 }
                             }
                         }
@@ -2123,6 +2143,15 @@
             },
             "ethNullValue": {
                 "type": "object"
+            },
+            "error": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "description": "Error message"
+                    }
+                }
             }
         }
     }

@@ -5047,6 +5047,15 @@
                         }
                     }
                 }
+            },
+            "error": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "description": "Error message"
+                    }
+                }
             }
         }
     }
