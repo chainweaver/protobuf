@@ -1,0 +1,9 @@
+FROM node:8.15.0-alpine
+
+RUN apk add --update \
+  && apk --no-cache add jq bash
+
+RUN npm install -g newman
+
+WORKDIR /go/src/github.com/chainweaver/protobuf
+CMD [ "/bin/bash", "scripts/test.sh" ]

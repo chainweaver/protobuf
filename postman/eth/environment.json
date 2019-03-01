@@ -1,0 +1,30 @@
+{
+	"name": "Chainweaver REST API",
+	"values": [
+		{
+			"key": "baseUrl",
+			"value": "BASE_URL",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "YOUR_TOKEN",
+			"enabled": true
+		},
+		{
+			"key": "network",
+			"value": "main",
+			"enabled": true
+		},
+		{
+			"key": "block_hash",
+			"value": "3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846",
+			"enabled": true
+		},
+		{
+			"key": "block_height",
+			"value": "6878409",
+			"enabled": true
+		}
+	]
+}

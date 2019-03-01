@@ -86,6 +86,22 @@ generatePostmanCollection() {
   echo "{\"variable\":" > ./postman/$coin/tmpVariable.json && cat ./postman/$coin/variable.json >> ./postman/$coin/tmpVariable.json && echo "}" >> ./postman/$coin/tmpVariable.json
   mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
 
+  # The postman's json schema validator uses tv4, and this only supports json-schema draft v4, so "date-time" can not be used.
+  # ref) https://geraintluff.github.io/tv4/
+  rfc3339Regex='^([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])[Tt]([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\\.[0-9]+)?(([Zz])|([\\+|\\-]([01][0-9]|2[0-3]):[0-5][0-9]))$'
+  updateDateTime1='map_values((..|select(.pattern?=="date-time")|.pattern)|="'
+  updateDateTime2='")'
+  updateDateTime="$updateDateTime1$rfc3339Regex$updateDateTime2"
+  jq $updateDateTime ./postman/$coin/variable.json > ./postman/$coin/tmpVariable.json
+  mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
+
+  uriRegex='^(http[s]?:\/\/){1}([0-9A-Za-z-.@:%_+~#=]+)+((.[a-zA-Z]{2,3})+)(\/(.)*)?'
+  updateUri1='map_values((..|select(.pattern?=="uri")|.pattern)|="'
+  updateUri2='")'
+  updateUri="$updateUri1$uriRegex$updateUri2"
+  jq $updateUri ./postman/$coin/variable.json > ./postman/$coin/tmpVariable.json
+  mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
+
   jq -s '.[0] * .[1]' ./postman/$coin/collection.json ./postman/$coin/variable.json > ./postman/$coin/tmpCollection.json
   if [ $? -gt 0 ]; then
     return 1
@@ -105,9 +121,18 @@ generatePostmanCollection() {
   if [ $? -gt 0 ]; then
     return 1
   fi
+  mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
 
-  # Global Event
-  jq -s '.[0] * .[1]' ./postman/$coin/tmpCollection.json ./scripts/postman/globalEvent.json > ./postman/$coin/collection.json
+  # Global Prerequest
+  jq '.event[0]|=.+{"listen":"prerequest","script":{"type":"text/javascript","exec":[]}}' ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+  globalPrerequest=$(sed 's/"/\\"/g' ./postman/$coin/testScript/globalPrerequest.js)
+  updateGlobalPrerequest1='.event[0].script.exec[0]|=.+"'
+  updateGlobalPrerequest2='"'
+  updateGlobalPrerequest=$updateGlobalPrerequest1$globalPrerequest$updateGlobalPrerequest2
+  jq "$updateGlobalPrerequest" ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
@@ -117,7 +142,7 @@ generatePostmanCollection() {
   updateEventFragment2='")|.event)|=[{"listen":"test","script":{"exec":["'
   updateEventFragment3='"],"type":"text/javascript"}}])'
 
-  for file in `\find ./scripts/postman/itemTest/$coin -maxdepth 1 -type f`; do
+  for file in `\find ./postman/$coin/testScript/$coin -maxdepth 1 -type f`; do
     filename=$(basename $file .js)
     splitFilename=${filename//_/ };
     itemName=""
@@ -142,7 +167,7 @@ run() {
   if [ ! -e ./openapi/$coin/work ]; then
     mkdir ./openapi/$coin/work
   fi
-  rm -f ./postman/$coin/*
+  rm -f ./postman/$coin/collection.json
   rm -f ./protoc-gen-go/$coin/*
 
   echo "--------------------------"
