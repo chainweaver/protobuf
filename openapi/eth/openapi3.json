@@ -1184,7 +1184,8 @@
                 "properties": {
                     "hash": {
                         "type": "string",
-                        "title": "The hash of the block; in Ethereum, the hashing function is Keccak/SHA3"
+                        "title": "The hash of the block; in Ethereum, the hashing function is Keccak/SHA3",
+                        "pattern": "^([a-z0-9]{64})$"
                     },
                     "height": {
                         "type": "integer",
@@ -1222,19 +1223,23 @@
                     },
                     "time": {
                         "type": "string",
-                        "description": "Recorded time at which block was built."
+                        "description": "Recorded time at which block was built.",
+                        "pattern": "date-time"
                     },
                     "received_time": {
                         "type": "string",
-                        "description": "The time BlockCypher’s servers receive the block."
+                        "description": "The time BlockCypher’s servers receive the block.",
+                        "pattern": "date-time"
                     },
                     "coinbase_addr": {
                         "type": "string",
-                        "description": "The Ethereum address of the miner that received the coinbase and fee reward."
+                        "description": "The Ethereum address of the miner that received the coinbase and fee reward.",
+                        "pattern": "^([a-z0-9]{40})$"
                     },
                     "relayed_by": {
                         "type": "string",
-                        "description": "Address of the peer that sent BlockCypher’s servers this block."
+                        "description": "Address of the peer that sent BlockCypher’s servers this block.",
+                        "pattern": "^(|[a-z0-9]{40})$"
                     },
                     "nonce": {
                         "type": "integer",
@@ -1248,19 +1253,23 @@
                     },
                     "prev_block": {
                         "type": "string",
-                        "description": "The hash of the previous block in the blockchain."
+                        "description": "The hash of the previous block in the blockchain.",
+                        "pattern": "^([a-z0-9]{64})$"
                     },
                     "prev_block_url": {
                         "type": "string",
-                        "description": "The BlockCypher URL to query for more information on the previous block."
+                        "description": "The BlockCypher URL to query for more information on the previous block.",
+                        "pattern": "uri"
                     },
                     "tx_url": {
                         "type": "string",
-                        "description": "The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es)."
+                        "description": "The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es).",
+                        "pattern": "uri"
                     },
                     "mrkl_root": {
                         "type": "string",
-                        "description": "The Merkle root of this block."
+                        "description": "The Merkle root of this block.",
+                        "pattern": "^([a-z0-9]{64})$"
                     },
                     "txids": {
                         "type": "array",
@@ -1278,11 +1287,13 @@
                     },
                     "next_txids": {
                         "type": "string",
-                        "description": "Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
+                        "description": "Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).",
+                        "pattern": "uri"
                     },
                     "next_internal_txids": {
                         "type": "string",
-                        "description": "Optional If there are more internal transactions that couldn’t fit in the internal_txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object)."
+                        "description": "Optional If there are more internal transactions that couldn’t fit in the internal_txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).",
+                        "pattern": "uri"
                     },
                     "uncles": {
                         "type": "array",
@@ -1328,23 +1339,28 @@
                     },
                     "hash": {
                         "type": "string",
-                        "description": "The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3."
+                        "description": "The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3.",
+                        "pattern": "^([a-z0-9]{64})$"
                     },
                     "time": {
                         "type": "string",
-                        "description": "The time of the latest update to the blockchain; typically when the latest block was added."
+                        "description": "The time of the latest update to the blockchain; typically when the latest block was added.",
+                        "pattern": "date-time"
                     },
                     "latest_url": {
                         "type": "string",
-                        "description": "The BlockCypher URL to query for more information on the latest confirmed block; returns a Block."
+                        "description": "The BlockCypher URL to query for more information on the latest confirmed block; returns a Block.",
+                        "pattern": "uri"
                     },
                     "previous_hash": {
                         "type": "string",
-                        "description": "The hash of the second-to-latest confirmed block in the blockchain."
+                        "description": "The hash of the second-to-latest confirmed block in the blockchain.",
+                        "pattern": "^([a-z0-9]{64})$"
                     },
                     "previous_url": {
                         "type": "string",
-                        "description": "The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block."
+                        "description": "The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block.",
+                        "pattern": "uri"
                     },
                     "unconfirmed_count": {
                         "type": "integer",
@@ -1373,7 +1389,8 @@
                     },
                     "last_fork_hash": {
                         "type": "string",
-                        "description": "Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
+                        "description": "Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.",
+                        "pattern": "^(|[a-z0-9]{64})$"
                     }
                 },
                 "required": [
