@@ -128,7 +128,7 @@ generatePostmanCollection() {
   if [ $? -gt 0 ]; then
     return 1
   fi
-  globalPrerequest=$(sed 's/"/\\"/g' ./scripts/postman/itemTest/globalPrerequest.js)
+  globalPrerequest=$(sed 's/"/\\"/g' ./postman/$coin/testScript/globalPrerequest.js)
   updateGlobalPrerequest1='.event[0].script.exec[0]|=.+"'
   updateGlobalPrerequest2='"'
   updateGlobalPrerequest=$updateGlobalPrerequest1$globalPrerequest$updateGlobalPrerequest2
@@ -142,7 +142,7 @@ generatePostmanCollection() {
   updateEventFragment2='")|.event)|=[{"listen":"test","script":{"exec":["'
   updateEventFragment3='"],"type":"text/javascript"}}])'
 
-  for file in `\find ./scripts/postman/itemTest/$coin -maxdepth 1 -type f`; do
+  for file in `\find ./postman/$coin/testScript/$coin -maxdepth 1 -type f`; do
     filename=$(basename $file .js)
     splitFilename=${filename//_/ };
     itemName=""
@@ -167,7 +167,7 @@ run() {
   if [ ! -e ./openapi/$coin/work ]; then
     mkdir ./openapi/$coin/work
   fi
-  rm -f ./postman/$coin/*
+  rm -f ./postman/$coin/collection.json
   rm -f ./protoc-gen-go/$coin/*
 
   echo "--------------------------"

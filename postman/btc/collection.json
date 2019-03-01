@@ -5684,7 +5684,7 @@
       "script": {
         "type": "text/javascript",
         "exec": [
-          "postman.setGlobalVariable(\"commonTests\", (schemeName) => {\n    tests[\"Content-Type header is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";\n\n    let res = pm.response.json();\n    const schema = pm.variables.get(schemeName);\n    tests[\"Schema is valid\"] = tv4.validate(res, schema);\n});"
+          ""
         ]
       }
     }
@@ -8057,7 +8057,7 @@
     {
       "key": "baseUrl",
       "type": "string",
-      "value": "https://api.chainweaver.io/feature-blockchain"
+      "value": "https://api.chainweaver.io/v"
     },
     {
       "key": "network",
@@ -8068,7 +8068,6 @@
   "info": {
     "_postman_id": "",
     "name": "Chainweaver API for Bitcoin",
-    "version": {},
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",

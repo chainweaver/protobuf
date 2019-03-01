@@ -15,4 +15,4 @@ render-openapi-document:
 	docker run -v ${PWD}:/go/src/github.com/chainweaver/protobuf quay.io/chainweaver/openapi-document-renderer:1.1.0
 
 test:
-	docker run -v ${PWD}:/etc/newman -t postman/newman_alpine33:4.4.0 run postman/eth/collection.json -e scripts/postman/env/env.json -d scripts/postman/testData/blocks.csv --folder "blocks"
+	docker run -v ${PWD}:/etc/newman -t postman/newman_alpine33:4.4.0 run postman/eth/collection.json -e postman/environment.json -d postman/eth/testData/blocks.csv --folder "blocks"
