@@ -31,7 +31,7 @@ paths:
       operationId: GenerateAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcAddressKeychain'
       parameters:
@@ -56,7 +56,7 @@ paths:
       operationId: AddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcAddress'
       parameters:
@@ -150,7 +150,7 @@ paths:
       operationId: AddressBalanceEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcAddress'
       parameters:
@@ -182,7 +182,7 @@ paths:
       operationId: AddressFullEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcAddress'
       parameters:
@@ -277,7 +277,7 @@ paths:
       operationId: ListForwardsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcAddressForwards'
       parameters:
@@ -303,7 +303,7 @@ paths:
       operationId: CreateForwardEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcAddressForward'
       parameters:
@@ -328,7 +328,7 @@ paths:
       operationId: DeleteForwardEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -352,7 +352,7 @@ paths:
       operationId: AnalyticsJob
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcJob'
       parameters:
@@ -376,7 +376,7 @@ paths:
       operationId: AnalyticsJobResults
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcJobResults'
       parameters:
@@ -405,7 +405,7 @@ paths:
       operationId: CreateAnalyticsJob
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcJob'
       parameters:
@@ -434,7 +434,7 @@ paths:
       operationId: GenerateAssetAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcAddressKeychain'
       parameters:
@@ -459,7 +459,7 @@ paths:
       operationId: IssueAssetEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcOAPTX'
       parameters:
@@ -484,7 +484,7 @@ paths:
       operationId: AssetAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcAddress'
       parameters:
@@ -507,7 +507,7 @@ paths:
       operationId: TransferAssetEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcOAPTX'
       parameters:
@@ -536,7 +536,7 @@ paths:
       operationId: ListAssetTXsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcTxHashes'
       parameters:
@@ -560,7 +560,7 @@ paths:
       operationId: AssetTXEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcOAPTX'
       parameters:
@@ -588,7 +588,7 @@ paths:
       operationId: ChainEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcBlockchain'
       parameters:
@@ -608,7 +608,7 @@ paths:
       operationId: BlockHashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcBlock'
       parameters:
@@ -642,7 +642,7 @@ paths:
       operationId: BlockHeightEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcBlock'
       parameters:
@@ -677,7 +677,7 @@ paths:
       operationId: FeatureEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcFeature'
       parameters:
@@ -701,7 +701,7 @@ paths:
       operationId: TransactionConfidenceEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcTXConfidence'
       parameters:
@@ -725,7 +725,7 @@ paths:
       operationId: MetadataAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcKeyValues'
       parameters:
@@ -756,7 +756,7 @@ paths:
       operationId: DeleteMetadataAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -779,7 +779,7 @@ paths:
       operationId: PutMetadataAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -808,7 +808,7 @@ paths:
       operationId: MetadataBlockhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcKeyValues'
       parameters:
@@ -839,7 +839,7 @@ paths:
       operationId: DeleteMetadataBlockheightEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -862,7 +862,7 @@ paths:
       operationId: PutMetadataBlockhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -891,7 +891,7 @@ paths:
       operationId: MetadataTxhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcKeyValues'
       parameters:
@@ -922,7 +922,7 @@ paths:
       operationId: DeleteMetadataTxhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -945,7 +945,7 @@ paths:
       operationId: PutMetadataTxhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -974,7 +974,7 @@ paths:
       operationId: MicrotransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcMicroTX'
       parameters:
@@ -999,7 +999,7 @@ paths:
       operationId: UnconfirmedTransactionsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcTXs'
       parameters:
@@ -1019,7 +1019,7 @@ paths:
       operationId: DataEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullData'
       parameters:
@@ -1044,7 +1044,7 @@ paths:
       operationId: DecodeRawTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcTX'
       parameters:
@@ -1069,7 +1069,7 @@ paths:
       operationId: CreateTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcTXSkeleton'
       parameters:
@@ -1094,7 +1094,7 @@ paths:
       operationId: PushRawTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcTX'
       parameters:
@@ -1119,7 +1119,7 @@ paths:
       operationId: SendTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcTXSkeleton'
       parameters:
@@ -1144,7 +1144,7 @@ paths:
       operationId: TransactionHashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcTX'
       parameters:
@@ -1202,7 +1202,7 @@ paths:
       operationId: TransactionPropagationEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcTXPropagation'
       parameters:
@@ -1226,7 +1226,7 @@ paths:
       operationId: ListWalletsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcListWallets'
       parameters:
@@ -1245,7 +1245,7 @@ paths:
       operationId: CreateWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcWallet'
       parameters:
@@ -1270,7 +1270,7 @@ paths:
       operationId: CreateHDWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcHDWallet'
       parameters:
@@ -1295,7 +1295,7 @@ paths:
       operationId: WalletHDEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcHDWallet'
       parameters:
@@ -1318,7 +1318,7 @@ paths:
       operationId: DeleteHDWalletHDEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -1342,7 +1342,7 @@ paths:
       operationId: HDWalletAddressesEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcHDChain'
       parameters:
@@ -1380,7 +1380,7 @@ paths:
       operationId: DeriveAddressInWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcHDWallet'
       parameters:
@@ -1409,7 +1409,7 @@ paths:
       operationId: WalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcWallet'
       parameters:
@@ -1432,7 +1432,7 @@ paths:
       operationId: DeleteWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -1456,7 +1456,7 @@ paths:
       operationId: WalletAddressesEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcWallet'
       parameters:
@@ -1493,7 +1493,7 @@ paths:
       operationId: RemoveAddressesFromWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:
@@ -1520,7 +1520,7 @@ paths:
       operationId: AddAddressesToWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcWallet'
       parameters:
@@ -1549,7 +1549,7 @@ paths:
       operationId: GenerateAddressInWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcWalletAddressKeychain'
       parameters:
@@ -1578,7 +1578,7 @@ paths:
       operationId: ListWebHooksEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcEvents'
       parameters:
@@ -1601,7 +1601,7 @@ paths:
       operationId: CreateWebHookEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcEvent'
       parameters:
@@ -1626,7 +1626,7 @@ paths:
       operationId: WebHookIDEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcEvent'
       parameters:
@@ -1649,7 +1649,7 @@ paths:
       operationId: DeleteWebHookEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/btcNullValue'
       parameters:

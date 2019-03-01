@@ -15,7 +15,7 @@ paths:
       operationId: GenerateAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -44,7 +44,7 @@ paths:
       operationId: AddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -107,7 +107,7 @@ paths:
       operationId: AddressBalanceEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -295,7 +295,7 @@ paths:
       operationId: CreateContractEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -324,7 +324,7 @@ paths:
       operationId: ContractAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -357,7 +357,7 @@ paths:
       operationId: CallContractMethodEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -396,7 +396,7 @@ paths:
       operationId: UnconfirmedTransactionsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -419,7 +419,7 @@ paths:
       operationId: DecodeRawTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -448,7 +448,7 @@ paths:
       operationId: CreateTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -477,7 +477,7 @@ paths:
       operationId: PushRawTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -506,7 +506,7 @@ paths:
       operationId: SendTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -535,7 +535,7 @@ paths:
       operationId: TransactionHashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -563,7 +563,7 @@ paths:
       operationId: ListWebHooksEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -590,7 +590,7 @@ paths:
       operationId: CreateWebHookEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -619,7 +619,7 @@ paths:
       operationId: WebHookIDEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -651,7 +651,7 @@ paths:
       operationId: DeleteWebHookEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:

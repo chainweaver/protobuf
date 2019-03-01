@@ -31,7 +31,7 @@ paths:
       operationId: GenerateAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethAddressKeychain'
       parameters:
@@ -56,7 +56,7 @@ paths:
       operationId: AddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethAddress'
       parameters:
@@ -111,7 +111,7 @@ paths:
       operationId: AddressBalanceEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethAddress'
       parameters:
@@ -276,7 +276,7 @@ paths:
       operationId: CreateContractEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethContracts'
       parameters:
@@ -301,7 +301,7 @@ paths:
       operationId: ContractAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethContract'
       parameters:
@@ -329,7 +329,7 @@ paths:
       operationId: CallContractMethodEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethContract'
       parameters:
@@ -362,7 +362,7 @@ paths:
       operationId: UnconfirmedTransactionsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethTXs'
       parameters:
@@ -382,7 +382,7 @@ paths:
       operationId: DecodeRawTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethTX'
       parameters:
@@ -407,7 +407,7 @@ paths:
       operationId: CreateTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethTXSkeleton'
       parameters:
@@ -432,7 +432,7 @@ paths:
       operationId: PushRawTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethTX'
       parameters:
@@ -457,7 +457,7 @@ paths:
       operationId: SendTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethTXSkeleton'
       parameters:
@@ -482,7 +482,7 @@ paths:
       operationId: TransactionHashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethTX'
       parameters:
@@ -506,7 +506,7 @@ paths:
       operationId: ListWebHooksEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethEvents'
       parameters:
@@ -529,7 +529,7 @@ paths:
       operationId: CreateWebHookEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethEvent'
       parameters:
@@ -554,7 +554,7 @@ paths:
       operationId: WebHookIDEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethEvent'
       parameters:
@@ -581,7 +581,7 @@ paths:
       operationId: DeleteWebHookEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           schema:
             $ref: '#/definitions/ethNullValue'
       parameters:
