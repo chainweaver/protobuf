@@ -121,9 +121,18 @@ generatePostmanCollection() {
   if [ $? -gt 0 ]; then
     return 1
   fi
+  mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
 
-  # Global Event
-  jq -s '.[0] * .[1]' ./postman/$coin/tmpCollection.json ./scripts/postman/globalEvent.json > ./postman/$coin/collection.json
+  # Global Prerequest
+  jq '.event[0]|=.+{"listen":"prerequest","script":{"type":"text/javascript","exec":[]}}' ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+  globalPrerequest=$(sed 's/"/\\"/g' ./scripts/postman/itemTest/globalPrerequest.js)
+  updateGlobalPrerequest1='.event[0].script.exec[0]|=.+"'
+  updateGlobalPrerequest2='"'
+  updateGlobalPrerequest=$updateGlobalPrerequest1$globalPrerequest$updateGlobalPrerequest2
+  jq "$updateGlobalPrerequest" ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
