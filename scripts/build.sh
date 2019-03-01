@@ -142,7 +142,7 @@ generatePostmanCollection() {
   updateEventFragment2='")|.event)|=[{"listen":"test","script":{"exec":["'
   updateEventFragment3='"],"type":"text/javascript"}}])'
 
-  for file in `\find ./postman/$coin/testScript/$coin -maxdepth 1 -type f`; do
+  for file in `\find ./postman/$coin/testScript/ -maxdepth 1 -type f`; do
     filename=$(basename $file .js)
     splitFilename=${filename//_/ };
     itemName=""
