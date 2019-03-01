@@ -15,7 +15,7 @@ paths:
       operationId: GenerateAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -44,7 +44,7 @@ paths:
       operationId: AddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -151,7 +151,7 @@ paths:
       operationId: AddressBalanceEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -188,7 +188,7 @@ paths:
       operationId: AddressFullEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -296,7 +296,7 @@ paths:
       operationId: ListForwardsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -326,7 +326,7 @@ paths:
       operationId: CreateForwardEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -355,7 +355,7 @@ paths:
       operationId: DeleteForwardEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -383,7 +383,7 @@ paths:
       operationId: AnalyticsJob
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -411,7 +411,7 @@ paths:
       operationId: AnalyticsJobResults
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -445,7 +445,7 @@ paths:
       operationId: CreateAnalyticsJob
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -479,7 +479,7 @@ paths:
       operationId: GenerateAssetAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -508,7 +508,7 @@ paths:
       operationId: IssueAssetEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -537,7 +537,7 @@ paths:
       operationId: AssetAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -565,7 +565,7 @@ paths:
       operationId: TransferAssetEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -599,7 +599,7 @@ paths:
       operationId: ListAssetTXsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -627,7 +627,7 @@ paths:
       operationId: AssetTXEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -660,7 +660,7 @@ paths:
       operationId: ChainEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -683,7 +683,7 @@ paths:
       operationId: BlockHashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -723,7 +723,7 @@ paths:
       operationId: BlockHeightEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -764,7 +764,7 @@ paths:
       operationId: FeatureEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -792,7 +792,7 @@ paths:
       operationId: TransactionConfidenceEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -820,7 +820,7 @@ paths:
       operationId: MetadataAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -856,7 +856,7 @@ paths:
       operationId: DeleteMetadataAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -883,7 +883,7 @@ paths:
       operationId: PutMetadataAddressEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -917,7 +917,7 @@ paths:
       operationId: MetadataBlockhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -953,7 +953,7 @@ paths:
       operationId: DeleteMetadataBlockheightEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -980,7 +980,7 @@ paths:
       operationId: PutMetadataBlockhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1014,7 +1014,7 @@ paths:
       operationId: MetadataTxhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1050,7 +1050,7 @@ paths:
       operationId: DeleteMetadataTxhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1077,7 +1077,7 @@ paths:
       operationId: PutMetadataTxhashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1111,7 +1111,7 @@ paths:
       operationId: MicrotransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1140,7 +1140,7 @@ paths:
       operationId: UnconfirmedTransactionsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1163,7 +1163,7 @@ paths:
       operationId: DataEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1192,7 +1192,7 @@ paths:
       operationId: DecodeRawTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1221,7 +1221,7 @@ paths:
       operationId: CreateTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1250,7 +1250,7 @@ paths:
       operationId: PushRawTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1279,7 +1279,7 @@ paths:
       operationId: SendTransactionEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1308,7 +1308,7 @@ paths:
       operationId: TransactionHashEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1375,7 +1375,7 @@ paths:
       operationId: TransactionPropagationEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1403,7 +1403,7 @@ paths:
       operationId: ListWalletsEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1425,7 +1425,7 @@ paths:
       operationId: CreateWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1454,7 +1454,7 @@ paths:
       operationId: CreateHDWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1483,7 +1483,7 @@ paths:
       operationId: WalletHDEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1510,7 +1510,7 @@ paths:
       operationId: DeleteHDWalletHDEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1538,7 +1538,7 @@ paths:
       operationId: HDWalletAddressesEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1582,7 +1582,7 @@ paths:
       operationId: DeriveAddressInWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1616,7 +1616,7 @@ paths:
       operationId: WalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1643,7 +1643,7 @@ paths:
       operationId: DeleteWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1671,7 +1671,7 @@ paths:
       operationId: WalletAddressesEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1714,7 +1714,7 @@ paths:
       operationId: RemoveAddressesFromWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1746,7 +1746,7 @@ paths:
       operationId: AddAddressesToWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1780,7 +1780,7 @@ paths:
       operationId: GenerateAddressInWalletEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1814,7 +1814,7 @@ paths:
       operationId: ListWebHooksEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1841,7 +1841,7 @@ paths:
       operationId: CreateWebHookEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1870,7 +1870,7 @@ paths:
       operationId: WebHookIDEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:
@@ -1897,7 +1897,7 @@ paths:
       operationId: DeleteWebHookEndpoint
       responses:
         '200':
-          description: ''
+          description: A successful response.
           content:
             application/json:
               schema:

@@ -41,7 +41,7 @@
         "operationId": "GenerateAddressEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethAddressKeychain"
             }
@@ -79,7 +79,7 @@
         "operationId": "AddressEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethAddress"
             }
@@ -147,7 +147,7 @@
         "operationId": "AddressBalanceEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethAddress"
             }
@@ -340,7 +340,7 @@
         "operationId": "CreateContractEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethContracts"
             }
@@ -378,7 +378,7 @@
         "operationId": "ContractAddressEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethContract"
             }
@@ -420,7 +420,7 @@
         "operationId": "CallContractMethodEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethContract"
             }
@@ -470,7 +470,7 @@
         "operationId": "UnconfirmedTransactionsEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethTXs"
             }
@@ -500,7 +500,7 @@
         "operationId": "DecodeRawTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethTX"
             }
@@ -538,7 +538,7 @@
         "operationId": "CreateTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethTXSkeleton"
             }
@@ -576,7 +576,7 @@
         "operationId": "PushRawTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethTX"
             }
@@ -614,7 +614,7 @@
         "operationId": "SendTransactionEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethTXSkeleton"
             }
@@ -652,7 +652,7 @@
         "operationId": "TransactionHashEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethTX"
             }
@@ -688,7 +688,7 @@
         "operationId": "ListWebHooksEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethEvents"
             }
@@ -722,7 +722,7 @@
         "operationId": "CreateWebHookEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethEvent"
             }
@@ -760,7 +760,7 @@
         "operationId": "WebHookIDEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethEvent"
             }
@@ -800,7 +800,7 @@
         "operationId": "DeleteWebHookEndpoint",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/ethNullValue"
             }

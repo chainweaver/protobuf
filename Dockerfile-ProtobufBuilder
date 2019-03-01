@@ -1,7 +1,7 @@
 FROM golang:1.11.5-alpine3.8 AS Build
 
 ENV GOLANG_PROTOBUF_VERSION v1.2.0
-ENV GRPC_GATEWAY_VERSION v1.5.1
+ENV GRPC_GATEWAY_VERSION v1.7.0
 
 RUN apk add --update \
   && apk --no-cache add git
