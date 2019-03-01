@@ -86,6 +86,22 @@ generatePostmanCollection() {
   echo "{\"variable\":" > ./postman/$coin/tmpVariable.json && cat ./postman/$coin/variable.json >> ./postman/$coin/tmpVariable.json && echo "}" >> ./postman/$coin/tmpVariable.json
   mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
 
+  # The postman's json schema validator uses tv4, and this only supports json-schema draft v4, so "date-time" can not be used.
+  # ref) https://geraintluff.github.io/tv4/
+  rfc3339Regex='^([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])[Tt]([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\\.[0-9]+)?(([Zz])|([\\+|\\-]([01][0-9]|2[0-3]):[0-5][0-9]))$'
+  updateDateTime1='map_values((..|select(.pattern?=="date-time")|.pattern)|="'
+  updateDateTime2='")'
+  updateDateTime="$updateDateTime1$rfc3339Regex$updateDateTime2"
+  jq $updateDateTime ./postman/$coin/variable.json > ./postman/$coin/tmpVariable.json
+  mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
+
+  uriRegex='^(http[s]?:\/\/){1}([0-9A-Za-z-.@:%_+~#=]+)+((.[a-zA-Z]{2,3})+)(\/(.)*)?'
+  updateUri1='map_values((..|select(.pattern?=="uri")|.pattern)|="'
+  updateUri2='")'
+  updateUri="$updateUri1$uriRegex$updateUri2"
+  jq $updateUri ./postman/$coin/variable.json > ./postman/$coin/tmpVariable.json
+  mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
+
   jq -s '.[0] * .[1]' ./postman/$coin/collection.json ./postman/$coin/variable.json > ./postman/$coin/tmpCollection.json
   if [ $? -gt 0 ]; then
     return 1
