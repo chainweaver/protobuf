@@ -32,7 +32,7 @@ func (m *AddressBalanceEndpointRequest) Reset()         { *m = AddressBalanceEnd
 func (m *AddressBalanceEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddressBalanceEndpointRequest) ProtoMessage()    {}
 func (*AddressBalanceEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_6577751fe0f8228b, []int{0}
+	return fileDescriptor_addressMessage_ac8f12d666d95813, []int{0}
 }
 func (m *AddressBalanceEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressBalanceEndpointRequest.Unmarshal(m, b)
@@ -103,7 +103,7 @@ func (m *AddressEndpointRequest) Reset()         { *m = AddressEndpointRequest{}
 func (m *AddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddressEndpointRequest) ProtoMessage()    {}
 func (*AddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_6577751fe0f8228b, []int{1}
+	return fileDescriptor_addressMessage_ac8f12d666d95813, []int{1}
 }
 func (m *AddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressEndpointRequest.Unmarshal(m, b)
@@ -231,7 +231,7 @@ func (m *AddressFullEndpointRequest) Reset()         { *m = AddressFullEndpointR
 func (m *AddressFullEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddressFullEndpointRequest) ProtoMessage()    {}
 func (*AddressFullEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_6577751fe0f8228b, []int{2}
+	return fileDescriptor_addressMessage_ac8f12d666d95813, []int{2}
 }
 func (m *AddressFullEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressFullEndpointRequest.Unmarshal(m, b)
@@ -355,7 +355,7 @@ func (m *GenerateAddressEndpointRequest) Reset()         { *m = GenerateAddressE
 func (m *GenerateAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GenerateAddressEndpointRequest) ProtoMessage()    {}
 func (*GenerateAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_6577751fe0f8228b, []int{3}
+	return fileDescriptor_addressMessage_ac8f12d666d95813, []int{3}
 }
 func (m *GenerateAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateAddressEndpointRequest.Unmarshal(m, b)
@@ -446,10 +446,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("addressMessage.proto", fileDescriptor_addressMessage_6577751fe0f8228b)
+	proto.RegisterFile("addressMessage.proto", fileDescriptor_addressMessage_ac8f12d666d95813)
 }
 
-var fileDescriptor_addressMessage_6577751fe0f8228b = []byte{
+var fileDescriptor_addressMessage_ac8f12d666d95813 = []byte{
 	// 538 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x54, 0xdf, 0x6e, 0xd3, 0x3e,
 	0x18, 0x55, 0x96, 0xf5, 0x4f, 0xbe, 0xea, 0xf7, 0x63, 0x78, 0x53, 0x65, 0x4d, 0xa2, 0x44, 0x13,

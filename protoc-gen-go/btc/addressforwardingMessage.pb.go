@@ -51,7 +51,7 @@ func (m *CreateForwardEndpointRequest) Reset()         { *m = CreateForwardEndpo
 func (m *CreateForwardEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateForwardEndpointRequest) ProtoMessage()    {}
 func (*CreateForwardEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressforwardingMessage_f54b8c19ac4e95a0, []int{0}
+	return fileDescriptor_addressforwardingMessage_729c7579a8ace1b3, []int{0}
 }
 func (m *CreateForwardEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateForwardEndpointRequest.Unmarshal(m, b)
@@ -168,7 +168,7 @@ func (m *ListForwardsEndpointRequest) Reset()         { *m = ListForwardsEndpoin
 func (m *ListForwardsEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ListForwardsEndpointRequest) ProtoMessage()    {}
 func (*ListForwardsEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressforwardingMessage_f54b8c19ac4e95a0, []int{1}
+	return fileDescriptor_addressforwardingMessage_729c7579a8ace1b3, []int{1}
 }
 func (m *ListForwardsEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListForwardsEndpointRequest.Unmarshal(m, b)
@@ -213,7 +213,7 @@ func (m *AddressForwards) Reset()         { *m = AddressForwards{} }
 func (m *AddressForwards) String() string { return proto.CompactTextString(m) }
 func (*AddressForwards) ProtoMessage()    {}
 func (*AddressForwards) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressforwardingMessage_f54b8c19ac4e95a0, []int{2}
+	return fileDescriptor_addressforwardingMessage_729c7579a8ace1b3, []int{2}
 }
 func (m *AddressForwards) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressForwards.Unmarshal(m, b)
@@ -252,7 +252,7 @@ func (m *DeleteForwardEndpointRequest) Reset()         { *m = DeleteForwardEndpo
 func (m *DeleteForwardEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteForwardEndpointRequest) ProtoMessage()    {}
 func (*DeleteForwardEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressforwardingMessage_f54b8c19ac4e95a0, []int{3}
+	return fileDescriptor_addressforwardingMessage_729c7579a8ace1b3, []int{3}
 }
 func (m *DeleteForwardEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteForwardEndpointRequest.Unmarshal(m, b)
@@ -296,7 +296,7 @@ func (m *DeleteForwardEndpointResponse) Reset()         { *m = DeleteForwardEndp
 func (m *DeleteForwardEndpointResponse) String() string { return proto.CompactTextString(m) }
 func (*DeleteForwardEndpointResponse) ProtoMessage()    {}
 func (*DeleteForwardEndpointResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressforwardingMessage_f54b8c19ac4e95a0, []int{4}
+	return fileDescriptor_addressforwardingMessage_729c7579a8ace1b3, []int{4}
 }
 func (m *DeleteForwardEndpointResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteForwardEndpointResponse.Unmarshal(m, b)
@@ -325,10 +325,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("addressforwardingMessage.proto", fileDescriptor_addressforwardingMessage_f54b8c19ac4e95a0)
+	proto.RegisterFile("addressforwardingMessage.proto", fileDescriptor_addressforwardingMessage_729c7579a8ace1b3)
 }
 
-var fileDescriptor_addressforwardingMessage_f54b8c19ac4e95a0 = []byte{
+var fileDescriptor_addressforwardingMessage_729c7579a8ace1b3 = []byte{
 	// 479 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x52, 0x41, 0x6f, 0xd3, 0x30,
 	0x18, 0x55, 0xda, 0x65, 0x6b, 0xdd, 0x32, 0x90, 0x5b, 0x24, 0x0b, 0x06, 0x84, 0x72, 0xc9, 0x65,

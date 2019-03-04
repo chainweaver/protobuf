@@ -8,8 +8,6 @@ node /api2html/bin/api2html.js \
   --customLogo logo-white.png \
   openapi/btc/openapi3.yaml
 
-mkdir -p pub/css
-touch pub/css/theme_override.css
 node /api2html/bin/api2html.js \
   --out openapi/eth.html \
   --languages shell,go,javascript,javascript--nodejs,ruby,python,java \

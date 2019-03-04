@@ -44,7 +44,7 @@ func (x NetworkAllowingAlias) String() string {
 	return proto.EnumName(NetworkAllowingAlias_name, int32(x))
 }
 func (NetworkAllowingAlias) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{0}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{0}
 }
 
 type NullValue struct {
@@ -57,7 +57,7 @@ func (m *NullValue) Reset()         { *m = NullValue{} }
 func (m *NullValue) String() string { return proto.CompactTextString(m) }
 func (*NullValue) ProtoMessage()    {}
 func (*NullValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{0}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{0}
 }
 func (m *NullValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NullValue.Unmarshal(m, b)
@@ -88,7 +88,7 @@ func (m *TxHashes) Reset()         { *m = TxHashes{} }
 func (m *TxHashes) String() string { return proto.CompactTextString(m) }
 func (*TxHashes) ProtoMessage()    {}
 func (*TxHashes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{1}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{1}
 }
 func (m *TxHashes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TxHashes.Unmarshal(m, b)
@@ -145,7 +145,7 @@ func (m *TXInput) Reset()         { *m = TXInput{} }
 func (m *TXInput) String() string { return proto.CompactTextString(m) }
 func (*TXInput) ProtoMessage()    {}
 func (*TXInput) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{2}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{2}
 }
 func (m *TXInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXInput.Unmarshal(m, b)
@@ -259,7 +259,7 @@ func (m *TXOutput) Reset()         { *m = TXOutput{} }
 func (m *TXOutput) String() string { return proto.CompactTextString(m) }
 func (*TXOutput) ProtoMessage()    {}
 func (*TXOutput) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{3}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{3}
 }
 func (m *TXOutput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXOutput.Unmarshal(m, b)
@@ -396,7 +396,7 @@ func (m *TX) Reset()         { *m = TX{} }
 func (m *TX) String() string { return proto.CompactTextString(m) }
 func (*TX) ProtoMessage()    {}
 func (*TX) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{4}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{4}
 }
 func (m *TX) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TX.Unmarshal(m, b)
@@ -635,7 +635,7 @@ func (m *Wallet) Reset()         { *m = Wallet{} }
 func (m *Wallet) String() string { return proto.CompactTextString(m) }
 func (*Wallet) ProtoMessage()    {}
 func (*Wallet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{5}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{5}
 }
 func (m *Wallet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Wallet.Unmarshal(m, b)
@@ -698,7 +698,7 @@ func (m *HDWallet) Reset()         { *m = HDWallet{} }
 func (m *HDWallet) String() string { return proto.CompactTextString(m) }
 func (*HDWallet) ProtoMessage()    {}
 func (*HDWallet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{6}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{6}
 }
 func (m *HDWallet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HDWallet.Unmarshal(m, b)
@@ -774,7 +774,7 @@ func (m *HDChain) Reset()         { *m = HDChain{} }
 func (m *HDChain) String() string { return proto.CompactTextString(m) }
 func (*HDChain) ProtoMessage()    {}
 func (*HDChain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{7}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{7}
 }
 func (m *HDChain) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HDChain.Unmarshal(m, b)
@@ -850,7 +850,7 @@ func (m *Address) Reset()         { *m = Address{} }
 func (m *Address) String() string { return proto.CompactTextString(m) }
 func (*Address) ProtoMessage()    {}
 func (*Address) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{8}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{8}
 }
 func (m *Address) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Address.Unmarshal(m, b)
@@ -998,7 +998,7 @@ func (m *HDAddress) Reset()         { *m = HDAddress{} }
 func (m *HDAddress) String() string { return proto.CompactTextString(m) }
 func (*HDAddress) ProtoMessage()    {}
 func (*HDAddress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{9}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{9}
 }
 func (m *HDAddress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HDAddress.Unmarshal(m, b)
@@ -1065,7 +1065,7 @@ func (m *AddressKeychain) Reset()         { *m = AddressKeychain{} }
 func (m *AddressKeychain) String() string { return proto.CompactTextString(m) }
 func (*AddressKeychain) ProtoMessage()    {}
 func (*AddressKeychain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{10}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{10}
 }
 func (m *AddressKeychain) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressKeychain.Unmarshal(m, b)
@@ -1187,7 +1187,7 @@ func (m *TXRef) Reset()         { *m = TXRef{} }
 func (m *TXRef) String() string { return proto.CompactTextString(m) }
 func (*TXRef) ProtoMessage()    {}
 func (*TXRef) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{11}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{11}
 }
 func (m *TXRef) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXRef.Unmarshal(m, b)
@@ -1351,7 +1351,7 @@ func (m *OAPIssue) Reset()         { *m = OAPIssue{} }
 func (m *OAPIssue) String() string { return proto.CompactTextString(m) }
 func (*OAPIssue) ProtoMessage()    {}
 func (*OAPIssue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{12}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{12}
 }
 func (m *OAPIssue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OAPIssue.Unmarshal(m, b)
@@ -1427,7 +1427,7 @@ func (m *OAPTX) Reset()         { *m = OAPTX{} }
 func (m *OAPTX) String() string { return proto.CompactTextString(m) }
 func (*OAPTX) ProtoMessage()    {}
 func (*OAPTX) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{13}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{13}
 }
 func (m *OAPTX) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OAPTX.Unmarshal(m, b)
@@ -1532,7 +1532,7 @@ func (m *TXSkeleton) Reset()         { *m = TXSkeleton{} }
 func (m *TXSkeleton) String() string { return proto.CompactTextString(m) }
 func (*TXSkeleton) ProtoMessage()    {}
 func (*TXSkeleton) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{14}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{14}
 }
 func (m *TXSkeleton) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXSkeleton.Unmarshal(m, b)
@@ -1605,7 +1605,7 @@ func (m *TXerror) Reset()         { *m = TXerror{} }
 func (m *TXerror) String() string { return proto.CompactTextString(m) }
 func (*TXerror) ProtoMessage()    {}
 func (*TXerror) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{15}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{15}
 }
 func (m *TXerror) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXerror.Unmarshal(m, b)
@@ -1650,7 +1650,7 @@ func (m *NullData) Reset()         { *m = NullData{} }
 func (m *NullData) String() string { return proto.CompactTextString(m) }
 func (*NullData) ProtoMessage()    {}
 func (*NullData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{16}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{16}
 }
 func (m *NullData) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NullData.Unmarshal(m, b)
@@ -1722,7 +1722,7 @@ func (m *TXPropagation) Reset()         { *m = TXPropagation{} }
 func (m *TXPropagation) String() string { return proto.CompactTextString(m) }
 func (*TXPropagation) ProtoMessage()    {}
 func (*TXPropagation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{17}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{17}
 }
 func (m *TXPropagation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXPropagation.Unmarshal(m, b)
@@ -1803,7 +1803,7 @@ func (m *FirstLocation) Reset()         { *m = FirstLocation{} }
 func (m *FirstLocation) String() string { return proto.CompactTextString(m) }
 func (*FirstLocation) ProtoMessage()    {}
 func (*FirstLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{18}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{18}
 }
 func (m *FirstLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FirstLocation.Unmarshal(m, b)
@@ -1849,7 +1849,7 @@ func (m *AggregatedOrigin) Reset()         { *m = AggregatedOrigin{} }
 func (m *AggregatedOrigin) String() string { return proto.CompactTextString(m) }
 func (*AggregatedOrigin) ProtoMessage()    {}
 func (*AggregatedOrigin) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{19}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{19}
 }
 func (m *AggregatedOrigin) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AggregatedOrigin.Unmarshal(m, b)
@@ -1907,7 +1907,7 @@ func (m *JobArgs) Reset()         { *m = JobArgs{} }
 func (m *JobArgs) String() string { return proto.CompactTextString(m) }
 func (*JobArgs) ProtoMessage()    {}
 func (*JobArgs) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{20}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{20}
 }
 func (m *JobArgs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobArgs.Unmarshal(m, b)
@@ -2004,7 +2004,7 @@ func (m *Job) Reset()         { *m = Job{} }
 func (m *Job) String() string { return proto.CompactTextString(m) }
 func (*Job) ProtoMessage()    {}
 func (*Job) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{21}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{21}
 }
 func (m *Job) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Job.Unmarshal(m, b)
@@ -2105,7 +2105,7 @@ func (m *JobResults) Reset()         { *m = JobResults{} }
 func (m *JobResults) String() string { return proto.CompactTextString(m) }
 func (*JobResults) ProtoMessage()    {}
 func (*JobResults) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{22}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{22}
 }
 func (m *JobResults) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobResults.Unmarshal(m, b)
@@ -2167,7 +2167,7 @@ func (m *JobResultArr) Reset()         { *m = JobResultArr{} }
 func (m *JobResultArr) String() string { return proto.CompactTextString(m) }
 func (*JobResultArr) ProtoMessage()    {}
 func (*JobResultArr) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{23}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{23}
 }
 func (m *JobResultArr) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobResultArr.Unmarshal(m, b)
@@ -2226,7 +2226,7 @@ func (m *TXs) Reset()         { *m = TXs{} }
 func (m *TXs) String() string { return proto.CompactTextString(m) }
 func (*TXs) ProtoMessage()    {}
 func (*TXs) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{24}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{24}
 }
 func (m *TXs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXs.Unmarshal(m, b)
@@ -2273,7 +2273,7 @@ func (m *TXConfidence) Reset()         { *m = TXConfidence{} }
 func (m *TXConfidence) String() string { return proto.CompactTextString(m) }
 func (*TXConfidence) ProtoMessage()    {}
 func (*TXConfidence) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{25}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{25}
 }
 func (m *TXConfidence) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXConfidence.Unmarshal(m, b)
@@ -2360,7 +2360,7 @@ func (m *AddressForward) Reset()         { *m = AddressForward{} }
 func (m *AddressForward) String() string { return proto.CompactTextString(m) }
 func (*AddressForward) ProtoMessage()    {}
 func (*AddressForward) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{26}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{26}
 }
 func (m *AddressForward) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressForward.Unmarshal(m, b)
@@ -2489,7 +2489,7 @@ func (m *Event) Reset()         { *m = Event{} }
 func (m *Event) String() string { return proto.CompactTextString(m) }
 func (*Event) ProtoMessage()    {}
 func (*Event) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_76175d293f109044, []int{27}
+	return fileDescriptor_commonMessage_a3abc49b28aedcb8, []int{27}
 }
 func (m *Event) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Event.Unmarshal(m, b)
@@ -2618,9 +2618,9 @@ func init() {
 	proto.RegisterEnum("chainweaver.protobuf.btc.NetworkAllowingAlias", NetworkAllowingAlias_name, NetworkAllowingAlias_value)
 }
 
-func init() { proto.RegisterFile("commonMessage.proto", fileDescriptor_commonMessage_76175d293f109044) }
+func init() { proto.RegisterFile("commonMessage.proto", fileDescriptor_commonMessage_a3abc49b28aedcb8) }
 
-var fileDescriptor_commonMessage_76175d293f109044 = []byte{
+var fileDescriptor_commonMessage_a3abc49b28aedcb8 = []byte{
 	// 2592 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x58, 0xcd, 0x72, 0xe3, 0xc6,
 	0x11, 0x36, 0x49, 0x91, 0x04, 0x9b, 0xfa, 0xe1, 0x62, 0xb5, 0x6b, 0x78, 0x7f, 0xbc, 0x32, 0x1c,

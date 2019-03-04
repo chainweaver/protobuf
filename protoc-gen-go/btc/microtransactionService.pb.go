@@ -97,10 +97,10 @@ var _MicrotransactionService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("microtransactionService.proto", fileDescriptor_microtransactionService_8e1587c729af3a9f)
+	proto.RegisterFile("microtransactionService.proto", fileDescriptor_microtransactionService_378dba520b67f771)
 }
 
-var fileDescriptor_microtransactionService_8e1587c729af3a9f = []byte{
+var fileDescriptor_microtransactionService_378dba520b67f771 = []byte{
 	// 230 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0xcd, 0xcd, 0x4c, 0x2e,
 	0xca, 0x2f, 0x29, 0x4a, 0xcc, 0x2b, 0x4e, 0x4c, 0x2e, 0xc9, 0xcc, 0xcf, 0x0b, 0x4e, 0x2d, 0x2a,

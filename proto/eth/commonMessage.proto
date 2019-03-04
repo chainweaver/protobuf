@@ -208,8 +208,14 @@ message TX {
 }
 
 message Address {
+  option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+    json_schema: {
+      required: ["address", "total_received", "total_sent", "balance", "unconfirmed_balance", "final_balance", "n_tx", "unconfirmed_n_tx", "final_n_tx"]
+    }
+  };
+
   // The requested address.
-  string address = 1;
+  string address = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{40})$"}];
   // Total amount of confirmed wei received by this address.
   uint64 total_received = 2;
   // Total amount of confirmed wei sent by this address.
@@ -227,7 +233,7 @@ message Address {
   // Final number of transactions, including confirmed and unconfirmed transactions, for this address.
   uint64 final_n_tx = 9;
   // Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.
-  string tx_url = 10;
+  string tx_url = 10 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
   // Optional Array of transaction summaries for this address. Usually only returned from the standard Address Endpoint.
   repeated TXRef txrefs = 11;
   // Optional All unconfirmed transaction summaries for this address. Usually only returned from the standard Address Endpoint.
@@ -237,12 +243,18 @@ message Address {
 }
 
 message AddressKeychain {
+  option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+    json_schema: {
+      required: ["address", "public", "private"]
+    }
+  };
+
   // Standard address representation.
-  string	address = 1;
+  string address = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{40})$"}];
   // Hex-encoded Public key.
-  string public = 2;
+  string public = 2 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{130})$"}];
   // Hex-encoded Private key.
-  string private = 3;
+  string private = 3 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{64})$"}];
 }
 
 message Contract {

@@ -5,17 +5,30 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: 0.1.0
+  version: feature-address
 security:
 - ApiKeyAuthInHeader: []
 - ApiKeyAuthInQuery: []
 paths:
   /eth/{network}/addrs:
     post:
+      summary: Generate Address Endpoint
+      description: The Generate Address endpoint allows you to generate private-public
+        key-pairs along with an associated public address. No information is required
+        with this POST request. The returned object contains a private key, a public
+        key, and a public address, all hex-encoded.<aside class="notice">The private
+        key returned is immediately discarded by our servers, but we advise that these
+        keys should not be used for any high-value—or long-term storage—addresses.</aside>
       operationId: GenerateAddressEndpoint
       responses:
         '200':
           description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ethAddressKeychain'
+        '201':
+          description: Created
           content:
             application/json:
               schema:
@@ -38,13 +51,19 @@ paths:
               $ref: '#/components/schemas/ethGenerateAddressEndpointRequest'
         required: true
       tags:
-      - AddressService
+      - Address API
   /eth/{network}/addrs/{address}:
     get:
+      summary: Address Endpoint
+      description: The Address Endpoint returns more information about an address’
+        transactions than the Address Balance Endpoint, but sacrifices some response
+        speed in the process. The returned object contains information about the address,
+        including its balance in wei, the number of transactions associated with it,
+        and transaction summaries in descending order by block height.
       operationId: AddressEndpoint
       responses:
         '200':
-          description: A successful response.
+          description: Success OK
           content:
             application/json:
               schema:
@@ -101,13 +120,20 @@ paths:
           type: integer
           format: int32
       tags:
-      - AddressService
+      - Address API
   /eth/{network}/addrs/{address}/balance:
     get:
+      summary: Address Balance Endpoint
+      description: The Address Balance Endpoint is the simplest—and fastest—method
+        to get a subset of information on a public address. The returned object contains
+        information about the address, including its balance in wei and the number
+        of transactions associated with it. The endpoint omits any detailed transaction
+        information, but if that isn’t required by your application, then it’s the
+        fastest and preferred way to get public address information.
       operationId: AddressBalanceEndpoint
       responses:
         '200':
-          description: A successful response.
+          description: Success OK
           content:
             application/json:
               schema:
@@ -129,7 +155,7 @@ paths:
         schema:
           type: string
       tags:
-      - AddressService
+      - Address API
   /eth/{network}:
     get:
       summary: Chain Endpoint
@@ -680,7 +706,7 @@ paths:
       tags:
       - WebHooksService
 servers:
-- url: https://api.chainweaver.io/v0
+- url: https://api.chainweaver.io/feature-address
 components:
   securitySchemes:
     ApiKeyAuthInHeader:
@@ -698,6 +724,7 @@ components:
         address:
           type: string
           description: The requested address.
+          pattern: ^([a-z0-9]{40})$
         total_received:
           type: integer
           format: int64
@@ -742,6 +769,7 @@ components:
           type: string
           description: Optional To retrieve base URL transactions. To get the full
             URL, concatenate this URL with a transaction’s hash.
+          pattern: uri
         txrefs:
           type: array
           items:
@@ -760,18 +788,35 @@ components:
           description: Optional If true, then the Address object contains more transactions
             than shown. Useful for determining whether to poll the API for more transaction
             information.
+      required:
+      - address
+      - total_received
+      - total_sent
+      - balance
+      - unconfirmed_balance
+      - final_balance
+      - n_tx
+      - unconfirmed_n_tx
+      - final_n_tx
     ethAddressKeychain:
       type: object
       properties:
         address:
           type: string
           description: Standard address representation.
+          pattern: ^([a-z0-9]{40})$
         public:
           type: string
           description: Hex-encoded Public key.
+          pattern: ^([a-z0-9]{130})$
         private:
           type: string
           description: Hex-encoded Private key.
+          pattern: ^([a-z0-9]{64})$
+      required:
+      - address
+      - public
+      - private
     ethGenerateAddressEndpointRequest:
       type: object
       properties:

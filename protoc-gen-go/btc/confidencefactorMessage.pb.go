@@ -30,7 +30,7 @@ func (m *TransactionConfidenceEndpointRequest) Reset()         { *m = Transactio
 func (m *TransactionConfidenceEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*TransactionConfidenceEndpointRequest) ProtoMessage()    {}
 func (*TransactionConfidenceEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_confidencefactorMessage_399e2dc495dbb5b8, []int{0}
+	return fileDescriptor_confidencefactorMessage_ccf90d333ba3b927, []int{0}
 }
 func (m *TransactionConfidenceEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionConfidenceEndpointRequest.Unmarshal(m, b)
@@ -69,10 +69,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("confidencefactorMessage.proto", fileDescriptor_confidencefactorMessage_399e2dc495dbb5b8)
+	proto.RegisterFile("confidencefactorMessage.proto", fileDescriptor_confidencefactorMessage_ccf90d333ba3b927)
 }
 
-var fileDescriptor_confidencefactorMessage_399e2dc495dbb5b8 = []byte{
+var fileDescriptor_confidencefactorMessage_ccf90d333ba3b927 = []byte{
 	// 216 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x8d, 0xb1, 0x4a, 0xc4, 0x40,
 	0x10, 0x40, 0x89, 0xc5, 0x89, 0x5b, 0x58, 0x44, 0x90, 0x20, 0x08, 0x87, 0x58, 0x5c, 0x73, 0x1b,

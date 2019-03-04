@@ -29,7 +29,7 @@ func (m *GenerateAssetAddressEndpointRequest) Reset()         { *m = GenerateAss
 func (m *GenerateAssetAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GenerateAssetAddressEndpointRequest) ProtoMessage()    {}
 func (*GenerateAssetAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_dd8e031f77e57b41, []int{0}
+	return fileDescriptor_assetMessage_7a4047e484b669d0, []int{0}
 }
 func (m *GenerateAssetAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateAssetAddressEndpointRequest.Unmarshal(m, b)
@@ -75,7 +75,7 @@ func (m *IssueAssetEndpointRequest) Reset()         { *m = IssueAssetEndpointReq
 func (m *IssueAssetEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*IssueAssetEndpointRequest) ProtoMessage()    {}
 func (*IssueAssetEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_dd8e031f77e57b41, []int{1}
+	return fileDescriptor_assetMessage_7a4047e484b669d0, []int{1}
 }
 func (m *IssueAssetEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IssueAssetEndpointRequest.Unmarshal(m, b)
@@ -150,7 +150,7 @@ func (m *TransferAssetEndpointRequest) Reset()         { *m = TransferAssetEndpo
 func (m *TransferAssetEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*TransferAssetEndpointRequest) ProtoMessage()    {}
 func (*TransferAssetEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_dd8e031f77e57b41, []int{2}
+	return fileDescriptor_assetMessage_7a4047e484b669d0, []int{2}
 }
 func (m *TransferAssetEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferAssetEndpointRequest.Unmarshal(m, b)
@@ -224,7 +224,7 @@ func (m *ListAssetTXsEndpointRequest) Reset()         { *m = ListAssetTXsEndpoin
 func (m *ListAssetTXsEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ListAssetTXsEndpointRequest) ProtoMessage()    {}
 func (*ListAssetTXsEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_dd8e031f77e57b41, []int{3}
+	return fileDescriptor_assetMessage_7a4047e484b669d0, []int{3}
 }
 func (m *ListAssetTXsEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAssetTXsEndpointRequest.Unmarshal(m, b)
@@ -271,7 +271,7 @@ func (m *AssetTXEndpointRequest) Reset()         { *m = AssetTXEndpointRequest{}
 func (m *AssetTXEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AssetTXEndpointRequest) ProtoMessage()    {}
 func (*AssetTXEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_dd8e031f77e57b41, []int{4}
+	return fileDescriptor_assetMessage_7a4047e484b669d0, []int{4}
 }
 func (m *AssetTXEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssetTXEndpointRequest.Unmarshal(m, b)
@@ -325,7 +325,7 @@ func (m *AssetAddressEndpointRequest) Reset()         { *m = AssetAddressEndpoin
 func (m *AssetAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AssetAddressEndpointRequest) ProtoMessage()    {}
 func (*AssetAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assetMessage_dd8e031f77e57b41, []int{5}
+	return fileDescriptor_assetMessage_7a4047e484b669d0, []int{5}
 }
 func (m *AssetAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssetAddressEndpointRequest.Unmarshal(m, b)
@@ -375,9 +375,9 @@ func init() {
 	proto.RegisterType((*AssetAddressEndpointRequest)(nil), "chainweaver.protobuf.btc.AssetAddressEndpointRequest")
 }
 
-func init() { proto.RegisterFile("assetMessage.proto", fileDescriptor_assetMessage_dd8e031f77e57b41) }
+func init() { proto.RegisterFile("assetMessage.proto", fileDescriptor_assetMessage_7a4047e484b669d0) }
 
-var fileDescriptor_assetMessage_dd8e031f77e57b41 = []byte{
+var fileDescriptor_assetMessage_7a4047e484b669d0 = []byte{
 	// 386 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x93, 0xcf, 0xae, 0xd2, 0x40,
 	0x14, 0xc6, 0x33, 0x02, 0x45, 0x8e, 0xc6, 0x45, 0x4d, 0xc8, 0x08, 0x9a, 0x60, 0xdd, 0xb0, 0xa1,

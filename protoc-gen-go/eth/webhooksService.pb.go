@@ -196,10 +196,10 @@ var _WebHooksService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("webhooksService.proto", fileDescriptor_webhooksService_f1885de74a4e38ff)
+	proto.RegisterFile("webhooksService.proto", fileDescriptor_webhooksService_f51502de83f6a8a2)
 }
 
-var fileDescriptor_webhooksService_f1885de74a4e38ff = []byte{
+var fileDescriptor_webhooksService_f51502de83f6a8a2 = []byte{
 	// 339 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x91, 0x31, 0x4b, 0xc3, 0x40,
 	0x14, 0xc7, 0x89, 0x88, 0x43, 0x16, 0xf1, 0x6c, 0x45, 0x43, 0xa1, 0x25, 0x2e, 0x52, 0x68, 0x0e,
