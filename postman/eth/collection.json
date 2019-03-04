@@ -111,7 +111,10 @@
                   "name": "Generate Address Endpoint",
                   "request": {
                     "name": "Generate Address Endpoint",
-                    "description": {},
+                    "description": {
+                      "content": "The Generate Address endpoint allows you to generate private-public key-pairs along with an associated public address. No information is required with this POST request. The returned object contains a private key, a public key, and a public address, all hex-encoded.<aside class=\"notice\">The private key returned is immediately discarded by our servers, but we advise that these keys should not be used for any high-value—or long-term storage—addresses.</aside>",
+                      "type": "text/plain"
+                    },
                     "url": {
                       "path": [
                         "eth",
@@ -198,6 +201,50 @@
                       "body": "{\n \"address\": \"<string>\",\n \"public\": \"<string>\",\n \"private\": \"<string>\"\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "name": "Created",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "eth",
+                            "{{network}}",
+                            "addrs"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}"
+                            }
+                          ],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "POST",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"network\": \"MAIN\",\n    \"token\": \"<string>\"\n}"
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n \"address\": \"<string>\",\n \"public\": \"<string>\",\n \"private\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
                     }
                   ],
                   "event": []
@@ -209,7 +256,10 @@
                       "name": "Address Endpoint",
                       "request": {
                         "name": "Address Endpoint",
-                        "description": {},
+                        "description": {
+                          "content": "The Address Endpoint returns more information about an address’ transactions than the Address Balance Endpoint, but sacrifices some response speed in the process. The returned object contains information about the address, including its balance in wei, the number of transactions associated with it, and transaction summaries in descending order by block height.",
+                          "type": "text/plain"
+                        },
                         "url": {
                           "path": [
                             "eth",
@@ -270,11 +320,22 @@
                         "method": "GET",
                         "auth": {
                           "type": "noauth"
-                        }
+                        },
+                        "event": [
+                          {
+                            "listen": "test",
+                            "script": {
+                              "exec": [
+                                "let testCaseNo = pm.variables.get(\"test_case_no\");\nlet res = pm.response.json();\nswitch (testCaseNo) {\n  case \"test-address-0001\":\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n    break;\n  case \"test-address-0002\":\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n    break;\n  case \"test-address-0003\":\n    tests[\"Status code is 404\"] = responseCode.code === 404;\n    eval(globals.commonTests)(\"error\");\n    tests[\"Error message is expected\"] = res.error === \"Error: wallet not found\";\n    break;\n  default:\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n}"
+                              ],
+                              "type": "text/javascript"
+                            }
+                          }
+                        ]
                       },
                       "response": [
                         {
-                          "name": "A successful response.",
+                          "name": "Success OK",
                           "originalRequest": {
                             "url": {
                               "path": [
@@ -326,13 +387,26 @@
                           "_postman_previewlanguage": "json"
                         }
                       ],
-                      "event": []
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "exec": [
+                              "let testCaseNo = pm.variables.get(\"test_case_no\");\nlet res = pm.response.json();\nswitch (testCaseNo) {\n  case \"test-address-0001\":\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n    break;\n  case \"test-address-0002\":\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n    break;\n  case \"test-address-0003\":\n    tests[\"Status code is 404\"] = responseCode.code === 404;\n    eval(globals.commonTests)(\"error\");\n    tests[\"Error message is expected\"] = res.error === \"Error: wallet not found\";\n    break;\n  default:\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n}"
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ]
                     },
                     {
                       "name": "Address Balance Endpoint",
                       "request": {
                         "name": "Address Balance Endpoint",
-                        "description": {},
+                        "description": {
+                          "content": "The Address Balance Endpoint is the simplest—and fastest—method to get a subset of information on a public address. The returned object contains information about the address, including its balance in wei and the number of transactions associated with it. The endpoint omits any detailed transaction information, but if that isn’t required by your application, then it’s the fastest and preferred way to get public address information.",
+                          "type": "text/plain"
+                        },
                         "url": {
                           "path": [
                             "eth",
@@ -374,11 +448,22 @@
                         "method": "GET",
                         "auth": {
                           "type": "noauth"
-                        }
+                        },
+                        "event": [
+                          {
+                            "listen": "test",
+                            "script": {
+                              "exec": [
+                                "let testCaseNo = pm.variables.get(\"test_case_no\");\nlet res = pm.response.json();\nswitch (testCaseNo) {\n  case \"test-address-0001\":\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n    break;\n  case \"test-address-0002\":\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n    break;\n  case \"test-address-0003\":\n    tests[\"Status code is 404\"] = responseCode.code === 404;\n    eval(globals.commonTests)(\"error\");\n    tests[\"Error message is expected\"] = res.error === \"Wallet not-exist-address not found\";\n    break;\n  default:\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n}"
+                              ],
+                              "type": "text/javascript"
+                            }
+                          }
+                        ]
                       },
                       "response": [
                         {
-                          "name": "A successful response.",
+                          "name": "Success OK",
                           "originalRequest": {
                             "url": {
                               "path": [
@@ -415,7 +500,17 @@
                           "_postman_previewlanguage": "json"
                         }
                       ],
-                      "event": []
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "exec": [
+                              "let testCaseNo = pm.variables.get(\"test_case_no\");\nlet res = pm.response.json();\nswitch (testCaseNo) {\n  case \"test-address-0001\":\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n    break;\n  case \"test-address-0002\":\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n    break;\n  case \"test-address-0003\":\n    tests[\"Status code is 404\"] = responseCode.code === 404;\n    eval(globals.commonTests)(\"error\");\n    tests[\"Error message is expected\"] = res.error === \"Wallet not-exist-address not found\";\n    break;\n  default:\n    tests[\"Status code is 200\"] = responseCode.code === 200;\n    eval(globals.commonTests)(\"ethAddress\");\n}"
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ]
                     }
                   ],
                   "event": []
@@ -2058,7 +2153,8 @@
         "properties": {
           "address": {
             "type": "string",
-            "description": "The requested address."
+            "description": "The requested address.",
+            "pattern": "^([a-z0-9]{40})$"
           },
           "total_received": {
             "type": "integer",
@@ -2102,7 +2198,8 @@
           },
           "tx_url": {
             "type": "string",
-            "description": "Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash."
+            "description": "Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.",
+            "pattern": "^(http[s]?://){1}([0-9A-Za-z-.@:%_+~#=]+)+((.[a-zA-Z]{2,3})+)(/(.)*)?"
           },
           "txrefs": {
             "type": "array",
@@ -2123,7 +2220,18 @@
             "format": "boolean",
             "description": "Optional If true, then the Address object contains more transactions than shown. Useful for determining whether to poll the API for more transaction information."
           }
-        }
+        },
+        "required": [
+          "address",
+          "total_received",
+          "total_sent",
+          "balance",
+          "unconfirmed_balance",
+          "final_balance",
+          "n_tx",
+          "unconfirmed_n_tx",
+          "final_n_tx"
+        ]
       },
       "type": "object"
     },
@@ -2134,17 +2242,25 @@
         "properties": {
           "address": {
             "type": "string",
-            "description": "Standard address representation."
+            "description": "Standard address representation.",
+            "pattern": "^([a-z0-9]{40})$"
           },
           "public": {
             "type": "string",
-            "description": "Hex-encoded Public key."
+            "description": "Hex-encoded Public key.",
+            "pattern": "^([a-z0-9]{130})$"
           },
           "private": {
             "type": "string",
-            "description": "Hex-encoded Private key."
+            "description": "Hex-encoded Private key.",
+            "pattern": "^([a-z0-9]{64})$"
           }
-        }
+        },
+        "required": [
+          "address",
+          "public",
+          "private"
+        ]
       },
       "type": "object"
     },
