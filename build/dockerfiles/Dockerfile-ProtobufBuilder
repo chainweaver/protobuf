@@ -47,6 +47,8 @@ WORKDIR /openapi-to-postman
 RUN git checkout feature-param
 RUN yarn install
 
+RUN apk del git
+
 COPY --from=build /go/bin/protoc-gen-go /usr/bin/
 COPY --from=build /go/bin/protoc-gen-grpc-gateway /usr/bin/
 COPY --from=build /go/bin/protoc-gen-swagger /usr/bin/

@@ -10,5 +10,7 @@ WORKDIR api2html
 RUN git checkout -b $API2HTML_VERSION refs/tags/$API2HTML_VERSION
 RUN yarn install
 
+RUN apk del git
+
 WORKDIR /go/src/github.com/chainweaver/protobuf
 ENTRYPOINT [ "sh", "scripts/renderOpenApiDoc.sh" ]
