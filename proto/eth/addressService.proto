@@ -4,6 +4,7 @@ package chainweaver.protobuf.eth;
 option go_package = "github.com/chainweaver/protobuf/protoc-gen-go/eth";
 
 import "google/api/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
 import "addressMessage.proto";
 import "commonMessage.proto";
 
@@ -12,16 +13,64 @@ service AddressService {
     option (google.api.http) = {
       get: "/eth/{network}/addrs/{address}/balance"
     };
+		option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+			summary: "Address Balance Endpoint";
+      description: "The Address Balance Endpoint is the simplest—and fastest—method to get a subset of information on a public address. The returned object contains information about the address, including its balance in wei and the number of transactions associated with it. The endpoint omits any detailed transaction information, but if that isn’t required by your application, then it’s the fastest and preferred way to get public address information.";
+			tags: "Address API";
+			responses: {
+				key: "200";
+        value: {
+          description: "Success OK";
+          schema: {
+            json_schema: {
+              ref: "#/definitions/ethAddress";
+            }
+          }
+        }
+			}
+		};
   }
   rpc AddressEndpoint (AddressEndpointRequest) returns (Address) {
     option (google.api.http) = {
       get: "/eth/{network}/addrs/{address}"
     };
+		option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+			summary: "Address Endpoint";
+      description: "The Address Endpoint returns more information about an address’ transactions than the Address Balance Endpoint, but sacrifices some response speed in the process. The returned object contains information about the address, including its balance in wei, the number of transactions associated with it, and transaction summaries in descending order by block height.";
+			tags: "Address API";
+			responses: {
+				key: "200";
+        value: {
+          description: "Success OK";
+          schema: {
+            json_schema: {
+              ref: "#/definitions/ethAddress";
+            }
+          }
+        }
+			}
+		};
   }
   rpc GenerateAddressEndpoint (GenerateAddressEndpointRequest) returns (AddressKeychain) {
     option (google.api.http) = {
       post: "/eth/{network}/addrs"
       body: "*"
     };
+		option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+			summary: "Generate Address Endpoint";
+      description: "The Generate Address endpoint allows you to generate private-public key-pairs along with an associated public address. No information is required with this POST request. The returned object contains a private key, a public key, and a public address, all hex-encoded.<aside class=\"notice\">The private key returned is immediately discarded by our servers, but we advise that these keys should not be used for any high-value—or long-term storage—addresses.</aside>";
+			tags: "Address API";
+			responses: {
+				key: "201";
+        value: {
+          description: "Created";
+          schema: {
+            json_schema: {
+              ref: "#/definitions/ethAddressKeychain";
+            }
+          }
+        }
+			}
+		};
   }
 }
