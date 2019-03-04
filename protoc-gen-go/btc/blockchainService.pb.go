@@ -196,10 +196,10 @@ var _BlockchainService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("blockchainService.proto", fileDescriptor_blockchainService_9cd27b439dca4125)
+	proto.RegisterFile("blockchainService.proto", fileDescriptor_blockchainService_4c8416652bab91f2)
 }
 
-var fileDescriptor_blockchainService_9cd27b439dca4125 = []byte{
+var fileDescriptor_blockchainService_4c8416652bab91f2 = []byte{
 	// 332 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x90, 0xb1, 0x4a, 0x03, 0x31,
 	0x18, 0xc7, 0xa9, 0x88, 0xc3, 0x81, 0xa8, 0x71, 0xb0, 0x14, 0xa5, 0x78, 0x54, 0x87, 0x62, 0x13,

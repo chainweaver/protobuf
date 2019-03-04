@@ -97,10 +97,10 @@ var _ConfidenceFactorService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("confidencefactorService.proto", fileDescriptor_confidencefactorService_5b68bc58ae4b8ae2)
+	proto.RegisterFile("confidencefactorService.proto", fileDescriptor_confidencefactorService_0cf6839f91cacde1)
 }
 
-var fileDescriptor_confidencefactorService_5b68bc58ae4b8ae2 = []byte{
+var fileDescriptor_confidencefactorService_0cf6839f91cacde1 = []byte{
 	// 255 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x8f, 0x31, 0x4e, 0xc3, 0x40,
 	0x10, 0x45, 0x15, 0x0a, 0x8a, 0x94, 0xa6, 0x00, 0x59, 0xa4, 0xa1, 0x88, 0x68, 0xb2, 0x2b, 0x48,

@@ -44,7 +44,7 @@ func (m *CreateAnalyticsJobRequest) Reset()         { *m = CreateAnalyticsJobReq
 func (m *CreateAnalyticsJobRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAnalyticsJobRequest) ProtoMessage()    {}
 func (*CreateAnalyticsJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_analyticsMessage_a65ac115c748173a, []int{0}
+	return fileDescriptor_analyticsMessage_129b4bd604c94bd8, []int{0}
 }
 func (m *CreateAnalyticsJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAnalyticsJobRequest.Unmarshal(m, b)
@@ -139,7 +139,7 @@ func (m *AnalyticsJobRequest) Reset()         { *m = AnalyticsJobRequest{} }
 func (m *AnalyticsJobRequest) String() string { return proto.CompactTextString(m) }
 func (*AnalyticsJobRequest) ProtoMessage()    {}
 func (*AnalyticsJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_analyticsMessage_a65ac115c748173a, []int{1}
+	return fileDescriptor_analyticsMessage_129b4bd604c94bd8, []int{1}
 }
 func (m *AnalyticsJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnalyticsJobRequest.Unmarshal(m, b)
@@ -186,7 +186,7 @@ func (m *AnalyticsJobResultsRequest) Reset()         { *m = AnalyticsJobResultsR
 func (m *AnalyticsJobResultsRequest) String() string { return proto.CompactTextString(m) }
 func (*AnalyticsJobResultsRequest) ProtoMessage()    {}
 func (*AnalyticsJobResultsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_analyticsMessage_a65ac115c748173a, []int{2}
+	return fileDescriptor_analyticsMessage_129b4bd604c94bd8, []int{2}
 }
 func (m *AnalyticsJobResultsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnalyticsJobResultsRequest.Unmarshal(m, b)
@@ -234,10 +234,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("analyticsMessage.proto", fileDescriptor_analyticsMessage_a65ac115c748173a)
+	proto.RegisterFile("analyticsMessage.proto", fileDescriptor_analyticsMessage_129b4bd604c94bd8)
 }
 
-var fileDescriptor_analyticsMessage_a65ac115c748173a = []byte{
+var fileDescriptor_analyticsMessage_129b4bd604c94bd8 = []byte{
 	// 345 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x91, 0xbd, 0x6e, 0xdb, 0x30,
 	0x10, 0x80, 0x21, 0xdb, 0x92, 0x6b, 0x0e, 0x6e, 0x41, 0x17, 0x06, 0xeb, 0xa1, 0x30, 0xbc, 0xd4,

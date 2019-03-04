@@ -492,9 +492,9 @@ var _WalletService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "walletService.proto",
 }
 
-func init() { proto.RegisterFile("walletService.proto", fileDescriptor_walletService_14d62b54347db17c) }
+func init() { proto.RegisterFile("walletService.proto", fileDescriptor_walletService_16d840365f8d6e6d) }
 
-var fileDescriptor_walletService_14d62b54347db17c = []byte{
+var fileDescriptor_walletService_16d840365f8d6e6d = []byte{
 	// 622 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x95, 0xbb, 0x6e, 0x13, 0x4d,
 	0x14, 0xc7, 0x35, 0x5f, 0xf1, 0x15, 0x23, 0x81, 0x60, 0x12, 0x05, 0xc7, 0xe4, 0xe6, 0x85, 0x08,

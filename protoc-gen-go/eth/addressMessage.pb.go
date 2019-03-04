@@ -30,7 +30,7 @@ func (m *AddressBalanceEndpointRequest) Reset()         { *m = AddressBalanceEnd
 func (m *AddressBalanceEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddressBalanceEndpointRequest) ProtoMessage()    {}
 func (*AddressBalanceEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_255a3bafce139ad4, []int{0}
+	return fileDescriptor_addressMessage_018389a67bda473e, []int{0}
 }
 func (m *AddressBalanceEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressBalanceEndpointRequest.Unmarshal(m, b)
@@ -84,7 +84,7 @@ func (m *AddressEndpointRequest) Reset()         { *m = AddressEndpointRequest{}
 func (m *AddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddressEndpointRequest) ProtoMessage()    {}
 func (*AddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_255a3bafce139ad4, []int{1}
+	return fileDescriptor_addressMessage_018389a67bda473e, []int{1}
 }
 func (m *AddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressEndpointRequest.Unmarshal(m, b)
@@ -158,7 +158,7 @@ func (m *GenerateAddressEndpointRequest) Reset()         { *m = GenerateAddressE
 func (m *GenerateAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GenerateAddressEndpointRequest) ProtoMessage()    {}
 func (*GenerateAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_255a3bafce139ad4, []int{2}
+	return fileDescriptor_addressMessage_018389a67bda473e, []int{2}
 }
 func (m *GenerateAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateAddressEndpointRequest.Unmarshal(m, b)
@@ -199,10 +199,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("addressMessage.proto", fileDescriptor_addressMessage_255a3bafce139ad4)
+	proto.RegisterFile("addressMessage.proto", fileDescriptor_addressMessage_018389a67bda473e)
 }
 
-var fileDescriptor_addressMessage_255a3bafce139ad4 = []byte{
+var fileDescriptor_addressMessage_018389a67bda473e = []byte{
 	// 292 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x8f, 0xc1, 0x4a, 0x03, 0x31,
 	0x10, 0x86, 0x89, 0xba, 0x2d, 0x06, 0xf4, 0xb0, 0x96, 0x12, 0x04, 0xa5, 0x14, 0x0f, 0xbd, 0x34,

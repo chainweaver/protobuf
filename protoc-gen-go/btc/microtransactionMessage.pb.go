@@ -56,7 +56,7 @@ func (m *MicroTX) Reset()         { *m = MicroTX{} }
 func (m *MicroTX) String() string { return proto.CompactTextString(m) }
 func (*MicroTX) ProtoMessage()    {}
 func (*MicroTX) Descriptor() ([]byte, []int) {
-	return fileDescriptor_microtransactionMessage_0d87416ea5e414a7, []int{0}
+	return fileDescriptor_microtransactionMessage_a143c09766f2b77d, []int{0}
 }
 func (m *MicroTX) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MicroTX.Unmarshal(m, b)
@@ -213,7 +213,7 @@ func (m *MicrotransactionEndpointRequest) Reset()         { *m = Microtransactio
 func (m *MicrotransactionEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*MicrotransactionEndpointRequest) ProtoMessage()    {}
 func (*MicrotransactionEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_microtransactionMessage_0d87416ea5e414a7, []int{1}
+	return fileDescriptor_microtransactionMessage_a143c09766f2b77d, []int{1}
 }
 func (m *MicrotransactionEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MicrotransactionEndpointRequest.Unmarshal(m, b)
@@ -344,10 +344,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("microtransactionMessage.proto", fileDescriptor_microtransactionMessage_0d87416ea5e414a7)
+	proto.RegisterFile("microtransactionMessage.proto", fileDescriptor_microtransactionMessage_a143c09766f2b77d)
 }
 
-var fileDescriptor_microtransactionMessage_0d87416ea5e414a7 = []byte{
+var fileDescriptor_microtransactionMessage_a143c09766f2b77d = []byte{
 	// 499 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x92, 0x4f, 0x8b, 0xd3, 0x40,
 	0x18, 0xc6, 0xe9, 0xa6, 0x6d, 0xda, 0xb7, 0x7f, 0x84, 0x51, 0x64, 0x14, 0xd6, 0xcd, 0x16, 0x84,

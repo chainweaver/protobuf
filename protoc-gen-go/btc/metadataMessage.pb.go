@@ -29,7 +29,7 @@ func (m *KeyValues) Reset()         { *m = KeyValues{} }
 func (m *KeyValues) String() string { return proto.CompactTextString(m) }
 func (*KeyValues) ProtoMessage()    {}
 func (*KeyValues) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{0}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{0}
 }
 func (m *KeyValues) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeyValues.Unmarshal(m, b)
@@ -70,7 +70,7 @@ func (m *MetadataAddressEndpointRequest) Reset()         { *m = MetadataAddressE
 func (m *MetadataAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*MetadataAddressEndpointRequest) ProtoMessage()    {}
 func (*MetadataAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{1}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{1}
 }
 func (m *MetadataAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MetadataAddressEndpointRequest.Unmarshal(m, b)
@@ -125,7 +125,7 @@ func (m *MetadataTxhashEndpointRequest) Reset()         { *m = MetadataTxhashEnd
 func (m *MetadataTxhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*MetadataTxhashEndpointRequest) ProtoMessage()    {}
 func (*MetadataTxhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{2}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{2}
 }
 func (m *MetadataTxhashEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MetadataTxhashEndpointRequest.Unmarshal(m, b)
@@ -180,7 +180,7 @@ func (m *MetadataBlockhashEndpointRequest) Reset()         { *m = MetadataBlockh
 func (m *MetadataBlockhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*MetadataBlockhashEndpointRequest) ProtoMessage()    {}
 func (*MetadataBlockhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{3}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{3}
 }
 func (m *MetadataBlockhashEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MetadataBlockhashEndpointRequest.Unmarshal(m, b)
@@ -236,7 +236,7 @@ func (m *PutMetadataAddressEndpointRequest) Reset()         { *m = PutMetadataAd
 func (m *PutMetadataAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*PutMetadataAddressEndpointRequest) ProtoMessage()    {}
 func (*PutMetadataAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{4}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{4}
 }
 func (m *PutMetadataAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PutMetadataAddressEndpointRequest.Unmarshal(m, b)
@@ -299,7 +299,7 @@ func (m *PutMetadataTxhashEndpointRequest) Reset()         { *m = PutMetadataTxh
 func (m *PutMetadataTxhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*PutMetadataTxhashEndpointRequest) ProtoMessage()    {}
 func (*PutMetadataTxhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{5}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{5}
 }
 func (m *PutMetadataTxhashEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PutMetadataTxhashEndpointRequest.Unmarshal(m, b)
@@ -362,7 +362,7 @@ func (m *PutMetadataBlockhashEndpointRequest) Reset()         { *m = PutMetadata
 func (m *PutMetadataBlockhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*PutMetadataBlockhashEndpointRequest) ProtoMessage()    {}
 func (*PutMetadataBlockhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{6}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{6}
 }
 func (m *PutMetadataBlockhashEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PutMetadataBlockhashEndpointRequest.Unmarshal(m, b)
@@ -422,7 +422,7 @@ func (m *DeleteMetadataAddressEndpointRequest) Reset()         { *m = DeleteMeta
 func (m *DeleteMetadataAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteMetadataAddressEndpointRequest) ProtoMessage()    {}
 func (*DeleteMetadataAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{7}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{7}
 }
 func (m *DeleteMetadataAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteMetadataAddressEndpointRequest.Unmarshal(m, b)
@@ -468,7 +468,7 @@ func (m *DeleteMetadataTxhashEndpointRequest) Reset()         { *m = DeleteMetad
 func (m *DeleteMetadataTxhashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteMetadataTxhashEndpointRequest) ProtoMessage()    {}
 func (*DeleteMetadataTxhashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{8}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{8}
 }
 func (m *DeleteMetadataTxhashEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteMetadataTxhashEndpointRequest.Unmarshal(m, b)
@@ -516,7 +516,7 @@ func (m *DeleteMetadataBlockheightEndpointRequest) Reset() {
 func (m *DeleteMetadataBlockheightEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteMetadataBlockheightEndpointRequest) ProtoMessage()    {}
 func (*DeleteMetadataBlockheightEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metadataMessage_a64c089d8433a59f, []int{9}
+	return fileDescriptor_metadataMessage_4a3db483ccced65d, []int{9}
 }
 func (m *DeleteMetadataBlockheightEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteMetadataBlockheightEndpointRequest.Unmarshal(m, b)
@@ -568,10 +568,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("metadataMessage.proto", fileDescriptor_metadataMessage_a64c089d8433a59f)
+	proto.RegisterFile("metadataMessage.proto", fileDescriptor_metadataMessage_4a3db483ccced65d)
 }
 
-var fileDescriptor_metadataMessage_a64c089d8433a59f = []byte{
+var fileDescriptor_metadataMessage_4a3db483ccced65d = []byte{
 	// 499 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x94, 0xcf, 0x6b, 0xd4, 0x40,
 	0x14, 0xc7, 0x99, 0x44, 0xdb, 0xee, 0x13, 0x45, 0xe2, 0x0f, 0x42, 0xa1, 0x12, 0x53, 0x0f, 0x7b,

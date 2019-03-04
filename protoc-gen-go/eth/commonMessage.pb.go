@@ -45,7 +45,7 @@ func (x NetworkAllowingAlias) String() string {
 	return proto.EnumName(NetworkAllowingAlias_name, int32(x))
 }
 func (NetworkAllowingAlias) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{0}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{0}
 }
 
 type NullValue struct {
@@ -58,7 +58,7 @@ func (m *NullValue) Reset()         { *m = NullValue{} }
 func (m *NullValue) String() string { return proto.CompactTextString(m) }
 func (*NullValue) ProtoMessage()    {}
 func (*NullValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{0}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{0}
 }
 func (m *NullValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NullValue.Unmarshal(m, b)
@@ -114,7 +114,7 @@ func (m *Blockchain) Reset()         { *m = Blockchain{} }
 func (m *Blockchain) String() string { return proto.CompactTextString(m) }
 func (*Blockchain) ProtoMessage()    {}
 func (*Blockchain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{1}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{1}
 }
 func (m *Blockchain) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Blockchain.Unmarshal(m, b)
@@ -281,7 +281,7 @@ func (m *Block) Reset()         { *m = Block{} }
 func (m *Block) String() string { return proto.CompactTextString(m) }
 func (*Block) ProtoMessage()    {}
 func (*Block) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{2}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{2}
 }
 func (m *Block) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Block.Unmarshal(m, b)
@@ -492,7 +492,7 @@ func (m *TXRef) Reset()         { *m = TXRef{} }
 func (m *TXRef) String() string { return proto.CompactTextString(m) }
 func (*TXRef) ProtoMessage()    {}
 func (*TXRef) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{3}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{3}
 }
 func (m *TXRef) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXRef.Unmarshal(m, b)
@@ -600,7 +600,7 @@ func (m *TXSkeleton) Reset()         { *m = TXSkeleton{} }
 func (m *TXSkeleton) String() string { return proto.CompactTextString(m) }
 func (*TXSkeleton) ProtoMessage()    {}
 func (*TXSkeleton) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{4}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{4}
 }
 func (m *TXSkeleton) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXSkeleton.Unmarshal(m, b)
@@ -660,7 +660,7 @@ func (m *InputType) Reset()         { *m = InputType{} }
 func (m *InputType) String() string { return proto.CompactTextString(m) }
 func (*InputType) ProtoMessage()    {}
 func (*InputType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{5}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{5}
 }
 func (m *InputType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputType.Unmarshal(m, b)
@@ -707,7 +707,7 @@ func (m *OutputType) Reset()         { *m = OutputType{} }
 func (m *OutputType) String() string { return proto.CompactTextString(m) }
 func (*OutputType) ProtoMessage()    {}
 func (*OutputType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{6}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{6}
 }
 func (m *OutputType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputType.Unmarshal(m, b)
@@ -812,7 +812,7 @@ func (m *TX) Reset()         { *m = TX{} }
 func (m *TX) String() string { return proto.CompactTextString(m) }
 func (*TX) ProtoMessage()    {}
 func (*TX) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{7}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{7}
 }
 func (m *TX) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TX.Unmarshal(m, b)
@@ -1057,7 +1057,7 @@ func (m *Address) Reset()         { *m = Address{} }
 func (m *Address) String() string { return proto.CompactTextString(m) }
 func (*Address) ProtoMessage()    {}
 func (*Address) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{8}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{8}
 }
 func (m *Address) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Address.Unmarshal(m, b)
@@ -1184,7 +1184,7 @@ func (m *AddressKeychain) Reset()         { *m = AddressKeychain{} }
 func (m *AddressKeychain) String() string { return proto.CompactTextString(m) }
 func (*AddressKeychain) ProtoMessage()    {}
 func (*AddressKeychain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{9}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{9}
 }
 func (m *AddressKeychain) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressKeychain.Unmarshal(m, b)
@@ -1261,7 +1261,7 @@ func (m *Contract) Reset()         { *m = Contract{} }
 func (m *Contract) String() string { return proto.CompactTextString(m) }
 func (*Contract) ProtoMessage()    {}
 func (*Contract) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{10}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{10}
 }
 func (m *Contract) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Contract.Unmarshal(m, b)
@@ -1398,7 +1398,7 @@ func (m *Event) Reset()         { *m = Event{} }
 func (m *Event) String() string { return proto.CompactTextString(m) }
 func (*Event) ProtoMessage()    {}
 func (*Event) Descriptor() ([]byte, []int) {
-	return fileDescriptor_commonMessage_d0db17f09237769b, []int{11}
+	return fileDescriptor_commonMessage_3d1bd732791ae8a9, []int{11}
 }
 func (m *Event) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Event.Unmarshal(m, b)
@@ -1490,9 +1490,9 @@ func init() {
 	proto.RegisterEnum("chainweaver.protobuf.eth.NetworkAllowingAlias", NetworkAllowingAlias_name, NetworkAllowingAlias_value)
 }
 
-func init() { proto.RegisterFile("commonMessage.proto", fileDescriptor_commonMessage_d0db17f09237769b) }
+func init() { proto.RegisterFile("commonMessage.proto", fileDescriptor_commonMessage_3d1bd732791ae8a9) }
 
-var fileDescriptor_commonMessage_d0db17f09237769b = []byte{
+var fileDescriptor_commonMessage_3d1bd732791ae8a9 = []byte{
 	// 2038 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x58, 0x5f, 0x6f, 0x1b, 0x59,
 	0x15, 0xdf, 0xeb, 0xff, 0x3e, 0x76, 0x5c, 0x67, 0xd2, 0x6d, 0x67, 0xfb, 0x67, 0x5b, 0xdc, 0x22,

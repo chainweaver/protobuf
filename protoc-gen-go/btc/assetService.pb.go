@@ -261,9 +261,9 @@ var _AssetService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "assetService.proto",
 }
 
-func init() { proto.RegisterFile("assetService.proto", fileDescriptor_assetService_197fc4598840a013) }
+func init() { proto.RegisterFile("assetService.proto", fileDescriptor_assetService_9c24f112fa7778ac) }
 
-var fileDescriptor_assetService_197fc4598840a013 = []byte{
+var fileDescriptor_assetService_9c24f112fa7778ac = []byte{
 	// 439 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0xcd, 0xaa, 0xd3, 0x40,
 	0x14, 0xc7, 0x89, 0x0b, 0x85, 0x41, 0x10, 0xc6, 0x2b, 0x5c, 0xc2, 0x15, 0x35, 0x22, 0x78, 0xaf,

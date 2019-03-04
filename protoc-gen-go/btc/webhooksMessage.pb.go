@@ -51,7 +51,7 @@ func (m *CreateWebHookEndpointRequest) Reset()         { *m = CreateWebHookEndpo
 func (m *CreateWebHookEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateWebHookEndpointRequest) ProtoMessage()    {}
 func (*CreateWebHookEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webhooksMessage_24e5fd76531850b1, []int{0}
+	return fileDescriptor_webhooksMessage_bb41a613a455e85f, []int{0}
 }
 func (m *CreateWebHookEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateWebHookEndpointRequest.Unmarshal(m, b)
@@ -167,7 +167,7 @@ func (m *ListWebHooksEndpointRequest) Reset()         { *m = ListWebHooksEndpoin
 func (m *ListWebHooksEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ListWebHooksEndpointRequest) ProtoMessage()    {}
 func (*ListWebHooksEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webhooksMessage_24e5fd76531850b1, []int{1}
+	return fileDescriptor_webhooksMessage_bb41a613a455e85f, []int{1}
 }
 func (m *ListWebHooksEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListWebHooksEndpointRequest.Unmarshal(m, b)
@@ -212,7 +212,7 @@ func (m *Events) Reset()         { *m = Events{} }
 func (m *Events) String() string { return proto.CompactTextString(m) }
 func (*Events) ProtoMessage()    {}
 func (*Events) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webhooksMessage_24e5fd76531850b1, []int{2}
+	return fileDescriptor_webhooksMessage_bb41a613a455e85f, []int{2}
 }
 func (m *Events) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Events.Unmarshal(m, b)
@@ -251,7 +251,7 @@ func (m *WebHookIDEndpointRequest) Reset()         { *m = WebHookIDEndpointReque
 func (m *WebHookIDEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*WebHookIDEndpointRequest) ProtoMessage()    {}
 func (*WebHookIDEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webhooksMessage_24e5fd76531850b1, []int{3}
+	return fileDescriptor_webhooksMessage_bb41a613a455e85f, []int{3}
 }
 func (m *WebHookIDEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebHookIDEndpointRequest.Unmarshal(m, b)
@@ -297,7 +297,7 @@ func (m *DeleteWebHookEndpointRequest) Reset()         { *m = DeleteWebHookEndpo
 func (m *DeleteWebHookEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteWebHookEndpointRequest) ProtoMessage()    {}
 func (*DeleteWebHookEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webhooksMessage_24e5fd76531850b1, []int{4}
+	return fileDescriptor_webhooksMessage_bb41a613a455e85f, []int{4}
 }
 func (m *DeleteWebHookEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteWebHookEndpointRequest.Unmarshal(m, b)
@@ -340,10 +340,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("webhooksMessage.proto", fileDescriptor_webhooksMessage_24e5fd76531850b1)
+	proto.RegisterFile("webhooksMessage.proto", fileDescriptor_webhooksMessage_bb41a613a455e85f)
 }
 
-var fileDescriptor_webhooksMessage_24e5fd76531850b1 = []byte{
+var fileDescriptor_webhooksMessage_bb41a613a455e85f = []byte{
 	// 439 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x92, 0xcf, 0x6f, 0xd4, 0x3e,
 	0x10, 0xc5, 0x95, 0x6c, 0x77, 0xf7, 0xbb, 0xb3, 0x5f, 0x16, 0x64, 0x7e, 0xc8, 0x82, 0x15, 0x8d,

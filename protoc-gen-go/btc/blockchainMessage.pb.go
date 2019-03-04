@@ -56,7 +56,7 @@ func (m *Blockchain) Reset()         { *m = Blockchain{} }
 func (m *Blockchain) String() string { return proto.CompactTextString(m) }
 func (*Blockchain) ProtoMessage()    {}
 func (*Blockchain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_627fc73cef27b948, []int{0}
+	return fileDescriptor_blockchainMessage_cf27ae40601cccce, []int{0}
 }
 func (m *Blockchain) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Blockchain.Unmarshal(m, b)
@@ -224,7 +224,7 @@ func (m *Block) Reset()         { *m = Block{} }
 func (m *Block) String() string { return proto.CompactTextString(m) }
 func (*Block) ProtoMessage()    {}
 func (*Block) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_627fc73cef27b948, []int{1}
+	return fileDescriptor_blockchainMessage_cf27ae40601cccce, []int{1}
 }
 func (m *Block) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Block.Unmarshal(m, b)
@@ -399,7 +399,7 @@ func (m *Feature) Reset()         { *m = Feature{} }
 func (m *Feature) String() string { return proto.CompactTextString(m) }
 func (*Feature) ProtoMessage()    {}
 func (*Feature) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_627fc73cef27b948, []int{2}
+	return fileDescriptor_blockchainMessage_cf27ae40601cccce, []int{2}
 }
 func (m *Feature) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Feature.Unmarshal(m, b)
@@ -465,7 +465,7 @@ func (m *ChainEndpointRequest) Reset()         { *m = ChainEndpointRequest{} }
 func (m *ChainEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ChainEndpointRequest) ProtoMessage()    {}
 func (*ChainEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_627fc73cef27b948, []int{3}
+	return fileDescriptor_blockchainMessage_cf27ae40601cccce, []int{3}
 }
 func (m *ChainEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ChainEndpointRequest.Unmarshal(m, b)
@@ -506,7 +506,7 @@ func (m *BlockHashEndpointRequest) Reset()         { *m = BlockHashEndpointReque
 func (m *BlockHashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*BlockHashEndpointRequest) ProtoMessage()    {}
 func (*BlockHashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_627fc73cef27b948, []int{4}
+	return fileDescriptor_blockchainMessage_cf27ae40601cccce, []int{4}
 }
 func (m *BlockHashEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BlockHashEndpointRequest.Unmarshal(m, b)
@@ -568,7 +568,7 @@ func (m *BlockHeightEndpointRequest) Reset()         { *m = BlockHeightEndpointR
 func (m *BlockHeightEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*BlockHeightEndpointRequest) ProtoMessage()    {}
 func (*BlockHeightEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_627fc73cef27b948, []int{5}
+	return fileDescriptor_blockchainMessage_cf27ae40601cccce, []int{5}
 }
 func (m *BlockHeightEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BlockHeightEndpointRequest.Unmarshal(m, b)
@@ -628,7 +628,7 @@ func (m *FeatureEndpointRequest) Reset()         { *m = FeatureEndpointRequest{}
 func (m *FeatureEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*FeatureEndpointRequest) ProtoMessage()    {}
 func (*FeatureEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_627fc73cef27b948, []int{6}
+	return fileDescriptor_blockchainMessage_cf27ae40601cccce, []int{6}
 }
 func (m *FeatureEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeatureEndpointRequest.Unmarshal(m, b)
@@ -673,10 +673,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("blockchainMessage.proto", fileDescriptor_blockchainMessage_627fc73cef27b948)
+	proto.RegisterFile("blockchainMessage.proto", fileDescriptor_blockchainMessage_cf27ae40601cccce)
 }
 
-var fileDescriptor_blockchainMessage_627fc73cef27b948 = []byte{
+var fileDescriptor_blockchainMessage_cf27ae40601cccce = []byte{
 	// 801 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x54, 0xcd, 0x6e, 0xe4, 0x44,
 	0x10, 0xd6, 0xec, 0xc4, 0xc9, 0xba, 0x92, 0xcc, 0x66, 0xbc, 0x43, 0xb0, 0x16, 0xad, 0x94, 0x9d,

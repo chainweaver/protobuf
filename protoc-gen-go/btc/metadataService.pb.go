@@ -361,10 +361,10 @@ var _MetadataService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("metadataService.proto", fileDescriptor_metadataService_96485c30384d74bf)
+	proto.RegisterFile("metadataService.proto", fileDescriptor_metadataService_94c41c01bc5af9d0)
 }
 
-var fileDescriptor_metadataService_96485c30384d74bf = []byte{
+var fileDescriptor_metadataService_94c41c01bc5af9d0 = []byte{
 	// 497 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x94, 0x4f, 0x6b, 0xd4, 0x40,
 	0x18, 0xc6, 0x19, 0x0f, 0x1e, 0x06, 0x41, 0x88, 0xf8, 0xa7, 0xc3, 0x0a, 0xba, 0x45, 0xac, 0xab,

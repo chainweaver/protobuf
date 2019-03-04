@@ -57,7 +57,7 @@ func (m *CreateContractEndpointRequest) Reset()         { *m = CreateContractEnd
 func (m *CreateContractEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateContractEndpointRequest) ProtoMessage()    {}
 func (*CreateContractEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contractMessage_fd0906f38eff5141, []int{0}
+	return fileDescriptor_contractMessage_b6610dc4e6f41c4e, []int{0}
 }
 func (m *CreateContractEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateContractEndpointRequest.Unmarshal(m, b)
@@ -195,7 +195,7 @@ func (m *ContractAddressEndpointRequest) Reset()         { *m = ContractAddressE
 func (m *ContractAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ContractAddressEndpointRequest) ProtoMessage()    {}
 func (*ContractAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contractMessage_fd0906f38eff5141, []int{1}
+	return fileDescriptor_contractMessage_b6610dc4e6f41c4e, []int{1}
 }
 func (m *ContractAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ContractAddressEndpointRequest.Unmarshal(m, b)
@@ -277,7 +277,7 @@ func (m *CallContractMethodEndpointRequest) Reset()         { *m = CallContractM
 func (m *CallContractMethodEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CallContractMethodEndpointRequest) ProtoMessage()    {}
 func (*CallContractMethodEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contractMessage_fd0906f38eff5141, []int{2}
+	return fileDescriptor_contractMessage_b6610dc4e6f41c4e, []int{2}
 }
 func (m *CallContractMethodEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CallContractMethodEndpointRequest.Unmarshal(m, b)
@@ -427,7 +427,7 @@ func (m *Contracts) Reset()         { *m = Contracts{} }
 func (m *Contracts) String() string { return proto.CompactTextString(m) }
 func (*Contracts) ProtoMessage()    {}
 func (*Contracts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contractMessage_fd0906f38eff5141, []int{3}
+	return fileDescriptor_contractMessage_b6610dc4e6f41c4e, []int{3}
 }
 func (m *Contracts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Contracts.Unmarshal(m, b)
@@ -462,10 +462,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("contractMessage.proto", fileDescriptor_contractMessage_fd0906f38eff5141)
+	proto.RegisterFile("contractMessage.proto", fileDescriptor_contractMessage_b6610dc4e6f41c4e)
 }
 
-var fileDescriptor_contractMessage_fd0906f38eff5141 = []byte{
+var fileDescriptor_contractMessage_b6610dc4e6f41c4e = []byte{
 	// 522 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x94, 0x4d, 0x6f, 0xd3, 0x30,
 	0x18, 0xc7, 0x15, 0xd2, 0xb7, 0xb8, 0x2f, 0x2b, 0x06, 0x26, 0x6b, 0x08, 0x54, 0xca, 0x25, 0x97,

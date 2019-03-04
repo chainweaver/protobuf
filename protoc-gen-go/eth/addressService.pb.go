@@ -164,10 +164,10 @@ var _AddressService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("addressService.proto", fileDescriptor_addressService_a9925118fb460cef)
+	proto.RegisterFile("addressService.proto", fileDescriptor_addressService_e7fd5374b9d464d0)
 }
 
-var fileDescriptor_addressService_a9925118fb460cef = []byte{
+var fileDescriptor_addressService_e7fd5374b9d464d0 = []byte{
 	// 971 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x96, 0xcf, 0x8b, 0x5c, 0x45,
 	0x10, 0xc7, 0x31, 0xbb, 0x51, 0x78, 0x82, 0x86, 0x67, 0xd0, 0x64, 0x08, 0x52, 0x8e, 0x22, 0x1a,

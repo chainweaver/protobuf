@@ -29,7 +29,7 @@ func (m *ListWallets) Reset()         { *m = ListWallets{} }
 func (m *ListWallets) String() string { return proto.CompactTextString(m) }
 func (*ListWallets) ProtoMessage()    {}
 func (*ListWallets) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{0}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{0}
 }
 func (m *ListWallets) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListWallets.Unmarshal(m, b)
@@ -90,7 +90,7 @@ func (m *WalletAddressKeychain) Reset()         { *m = WalletAddressKeychain{} }
 func (m *WalletAddressKeychain) String() string { return proto.CompactTextString(m) }
 func (*WalletAddressKeychain) ProtoMessage()    {}
 func (*WalletAddressKeychain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{1}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{1}
 }
 func (m *WalletAddressKeychain) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WalletAddressKeychain.Unmarshal(m, b)
@@ -201,7 +201,7 @@ func (m *CreateWalletEndpointRequest) Reset()         { *m = CreateWalletEndpoin
 func (m *CreateWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateWalletEndpointRequest) ProtoMessage()    {}
 func (*CreateWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{2}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{2}
 }
 func (m *CreateWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateWalletEndpointRequest.Unmarshal(m, b)
@@ -266,7 +266,7 @@ func (m *CreateHDWalletEndpointRequest) Reset()         { *m = CreateHDWalletEnd
 func (m *CreateHDWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateHDWalletEndpointRequest) ProtoMessage()    {}
 func (*CreateHDWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{3}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{3}
 }
 func (m *CreateHDWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateHDWalletEndpointRequest.Unmarshal(m, b)
@@ -346,7 +346,7 @@ func (m *ListWalletsEndpointRequest) Reset()         { *m = ListWalletsEndpointR
 func (m *ListWalletsEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ListWalletsEndpointRequest) ProtoMessage()    {}
 func (*ListWalletsEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{4}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{4}
 }
 func (m *ListWalletsEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListWalletsEndpointRequest.Unmarshal(m, b)
@@ -385,7 +385,7 @@ func (m *WalletEndpointRequest) Reset()         { *m = WalletEndpointRequest{} }
 func (m *WalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*WalletEndpointRequest) ProtoMessage()    {}
 func (*WalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{5}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{5}
 }
 func (m *WalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WalletEndpointRequest.Unmarshal(m, b)
@@ -431,7 +431,7 @@ func (m *HDWalletEndpointRequest) Reset()         { *m = HDWalletEndpointRequest
 func (m *HDWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*HDWalletEndpointRequest) ProtoMessage()    {}
 func (*HDWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{6}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{6}
 }
 func (m *HDWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HDWalletEndpointRequest.Unmarshal(m, b)
@@ -479,7 +479,7 @@ func (m *AddAddressesToWalletEndpointRequest) Reset()         { *m = AddAddresse
 func (m *AddAddressesToWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddAddressesToWalletEndpointRequest) ProtoMessage()    {}
 func (*AddAddressesToWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{7}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{7}
 }
 func (m *AddAddressesToWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddAddressesToWalletEndpointRequest.Unmarshal(m, b)
@@ -536,7 +536,7 @@ func (m *WalletAddressesEndpointRequest) Reset()         { *m = WalletAddressesE
 func (m *WalletAddressesEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*WalletAddressesEndpointRequest) ProtoMessage()    {}
 func (*WalletAddressesEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{8}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{8}
 }
 func (m *WalletAddressesEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WalletAddressesEndpointRequest.Unmarshal(m, b)
@@ -600,7 +600,7 @@ func (m *HDWalletAddressesEndpointRequest) Reset()         { *m = HDWalletAddres
 func (m *HDWalletAddressesEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*HDWalletAddressesEndpointRequest) ProtoMessage()    {}
 func (*HDWalletAddressesEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{9}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{9}
 }
 func (m *HDWalletAddressesEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HDWalletAddressesEndpointRequest.Unmarshal(m, b)
@@ -663,7 +663,7 @@ func (m *RemoveAddressesFromWalletEndpointRequest) Reset() {
 func (m *RemoveAddressesFromWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*RemoveAddressesFromWalletEndpointRequest) ProtoMessage()    {}
 func (*RemoveAddressesFromWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{10}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{10}
 }
 func (m *RemoveAddressesFromWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoveAddressesFromWalletEndpointRequest.Unmarshal(m, b)
@@ -718,7 +718,7 @@ func (m *GenerateAddressInWalletEndpointRequest) Reset() {
 func (m *GenerateAddressInWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GenerateAddressInWalletEndpointRequest) ProtoMessage()    {}
 func (*GenerateAddressInWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{11}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{11}
 }
 func (m *GenerateAddressInWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateAddressInWalletEndpointRequest.Unmarshal(m, b)
@@ -768,7 +768,7 @@ func (m *DeriveAddressInWalletEndpointRequest) Reset()         { *m = DeriveAddr
 func (m *DeriveAddressInWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeriveAddressInWalletEndpointRequest) ProtoMessage()    {}
 func (*DeriveAddressInWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{12}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{12}
 }
 func (m *DeriveAddressInWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeriveAddressInWalletEndpointRequest.Unmarshal(m, b)
@@ -828,7 +828,7 @@ func (m *DeleteWalletEndpointRequest) Reset()         { *m = DeleteWalletEndpoin
 func (m *DeleteWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteWalletEndpointRequest) ProtoMessage()    {}
 func (*DeleteWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{13}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{13}
 }
 func (m *DeleteWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteWalletEndpointRequest.Unmarshal(m, b)
@@ -874,7 +874,7 @@ func (m *DeleteHDWalletEndpointRequest) Reset()         { *m = DeleteHDWalletEnd
 func (m *DeleteHDWalletEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteHDWalletEndpointRequest) ProtoMessage()    {}
 func (*DeleteHDWalletEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_walletMessage_0f145c5d57a0d5ad, []int{14}
+	return fileDescriptor_walletMessage_9eeffbfedaf2991c, []int{14}
 }
 func (m *DeleteHDWalletEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteHDWalletEndpointRequest.Unmarshal(m, b)
@@ -926,9 +926,9 @@ func init() {
 	proto.RegisterType((*DeleteHDWalletEndpointRequest)(nil), "chainweaver.protobuf.btc.DeleteHDWalletEndpointRequest")
 }
 
-func init() { proto.RegisterFile("walletMessage.proto", fileDescriptor_walletMessage_0f145c5d57a0d5ad) }
+func init() { proto.RegisterFile("walletMessage.proto", fileDescriptor_walletMessage_9eeffbfedaf2991c) }
 
-var fileDescriptor_walletMessage_0f145c5d57a0d5ad = []byte{
+var fileDescriptor_walletMessage_9eeffbfedaf2991c = []byte{
 	// 693 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x55, 0x4b, 0x6f, 0xd3, 0x4e,
 	0x10, 0x97, 0xf3, 0x6c, 0x26, 0xff, 0x7f, 0x5b, 0x36, 0x3c, 0xac, 0x96, 0x42, 0x6a, 0x1e, 0x0a,
