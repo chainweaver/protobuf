@@ -159,7 +159,7 @@ generatePostmanCollection() {
     echo "[{\"listen\":\"test\",\"script\":{\"exec\":[\"$(cat $file.tmp.json)\"],\"type\":\"text/javascript\"}}]" > $file.json
     rm -f $file.tmp.json
 
-    jq --argfile testScript "$file.json" "map_values((..|select(.name?==\"$itemName\")|.event)|=\$testScript)" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+    jq --argfile testScript "$file.json" "map_values((..|select((.name?==\"$itemName\")and(.request!=null)and(.response!=null))|.event)|=\$testScript)" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
     if [ $? -gt 0 ]; then
       rm -f $file.json
       return 1
