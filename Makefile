@@ -20,3 +20,6 @@ render-openapi-document:
 
 test:
 	docker run -e BASE_URL -e TOKEN -v ${PWD}:/go/src/github.com/chainweaver/protobuf -t quay.io/chainweaver/postman-tester:1.0.0
+
+clean:
+	git checkout postman/btc/collection.json postman/eth/collection.json openapi protoc-gen-go
