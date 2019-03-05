@@ -3,9 +3,10 @@ let res = pm.response.json();
 switch (testCaseNo) {
   case "test-blocks-0001":
     tests["Status code is 200"] = responseCode.code === 200;
-    eval(globals.commonTests)("ethBlock");
+    eval(globals.commonTests)("ethBlock"); // check schema
     tests["hash is expected"] = res.hash === "3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846";
     tests["height is expected"] = res.height === 6878409;
+    // tests["depth is expected"] = res.depth === 430439;
     tests["chain is expected"] = res.chain === "ETH.main";
     tests["total is expected"] = res.total === 127034291144331419487;
     tests["fees is expected"] = res.fees === 72801198627982225;
@@ -587,15 +588,14 @@ switch (testCaseNo) {
       "8f8ab2e7f2c496ea8897493c010ebff390332f5107021dbad4198a902a131bf3"
     ]);
     tests["next_txids is expected"] = res.next_txids ===  "https://api.blockcypher.com/v1/eth/main/blocks/3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846?txstart=20&limit=20";
-    tests["next_internal_txids is not exist"] = "next_internal_txids" in res === false;
-    tests["uncles is not exist"] = "uncles" in res === false;
     tests["response object property count is 21"] = Object.keys(res).length === 21;
     break;
   case "test-blocks-0002":
     tests["Status code is 200"] = responseCode.code === 200;
-    eval(globals.commonTests)("ethBlock");
+    eval(globals.commonTests)("ethBlock"); // check schema
     tests["hash is expected"] = res.hash === "3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846";
     tests["height is expected"] = res.height === 6878409;
+    // tests["depth is expected"] = res.depth === 430439;
     tests["chain is expected"] = res.chain === "ETH.main";
     tests["total is expected"] = res.total === 127034291144331419487;
     tests["fees is expected"] = res.fees === 72801198627982225;
@@ -1271,16 +1271,14 @@ switch (testCaseNo) {
       "00dbd544fb30c4407098f4be052257a0184312e7c9aa083cf2cbd16582416b9c",
       "8f8ab2e7f2c496ea8897493c010ebff390332f5107021dbad4198a902a131bf3"
     ]);
-    tests["next_txids is not exist"] = "next_txids" in res === false;
-    tests["next_internal_txids is not exist"] = "next_internal_txids" in res === false;
-    tests["uncles is not exist"] = "uncles" in res === false;
     tests["response object property count is 20"] = Object.keys(res).length === 20;
     break;
   case "test-blocks-0003":
     tests["Status code is 200"] = responseCode.code === 200;
-    eval(globals.commonTests)("ethBlock");
+    eval(globals.commonTests)("ethBlock"); // check schema
     tests["hash is expected"] = res.hash === "3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846";
     tests["height is expected"] = res.height === 6878409;
+    // tests["depth is expected"] = res.depth === 430439;
     tests["chain is expected"] = res.chain === "ETH.main";
     tests["total is expected"] = res.total === 127034291144331419487;
     tests["fees is expected"] = res.fees === 72801198627982225;
@@ -1956,9 +1954,6 @@ switch (testCaseNo) {
       "00dbd544fb30c4407098f4be052257a0184312e7c9aa083cf2cbd16582416b9c",
       "8f8ab2e7f2c496ea8897493c010ebff390332f5107021dbad4198a902a131bf3"
     ]);
-    tests["next_txids is not exist"] = "next_txids" in res === false;
-    tests["next_internal_txids is not exist"] = "next_internal_txids" in res === false;
-    tests["uncles is not exist"] = "uncles" in res === false;
     tests["response object property count is 20"] = Object.keys(res).length === 20;
     break;
   case "test-blocks-0004":
@@ -1969,5 +1964,5 @@ switch (testCaseNo) {
     break;
   default:
     tests["Status code is 200"] = responseCode.code === 200;
-    eval(globals.commonTests)("ethBlock");
+    eval(globals.commonTests)("ethBlock"); // check schema
 }
