@@ -1,5 +1,6 @@
-test_case_no,txstart,limit,block_hash,block_height
-test-blocks-0001,,,3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846,6878409
-test-blocks-0002,,500,3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846,6878409
-test-blocks-0003,23cc865d34aa367ac795e6fc1d16e440f97b616b00c3c2398bfff5d67c53c931,501,3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846,6878409
-test-blocks-0004,,,not-exist-block-hash,not-exist-block-height
+test_case_no,description,txstart,limit,block_hash,block_height
+test-blocks-0001,"Normal data and default limit",,,3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846,6878409
+test-blocks-0002,"Boundary value of limit",,500,3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846,6878409
+test-blocks-0003,"Boundary value of limit",,501,3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846,6878409
+test-blocks-0004,"Confirm txstart",15,30,3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846,6878409
+test-blocks-0005,"Not exist block",,,not-exist-block-hash,not-exist-block-height
