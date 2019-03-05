@@ -20,6 +20,18 @@ In this project you can develop by preparing the following environment.
 make build
 ```
 
+### Render Protocol Buffers Document
+
+```
+make render-protobuf-document
+```
+
+### Render OpenAPI Document
+
+```
+make render-openapi-document
+```
+
 ### Test REST API with postman
 
 ```
@@ -27,6 +39,18 @@ export BASE_URL=URL
 export TOKEN=YOUR_TOKEN
 make test
 ```
+
+## Document
+
+**Protocol Buffers**
+
+* [Bitcoin](https://chainweaver.io/protobuf/v0/btc.html)
+* [Ethereum](https://chainweaver.io/protobuf/v0/eth.html)
+
+**OpenAPI**
+
+* [Bitcoin](https://chainweaver.io/openapi/v0/btc.html)
+* [Ethereum](https://chainweaver.io/openapi/v0/eth.html)
 
 ## Reference
 
