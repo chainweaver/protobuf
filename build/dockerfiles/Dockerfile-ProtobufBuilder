@@ -1,13 +1,13 @@
 FROM golang:1.11.5-alpine3.8 AS Build
 
+ENV GO111MODULE=on
 ENV GOLANG_PROTOBUF_VERSION v1.2.0
 ENV GRPC_GATEWAY_VERSION v1.7.0
+ENV GOGO_PROTOBUF_VERSION v1.2.1
+ENV GOGO_GOOGLEAPIS v1.1.0
 
 RUN apk add --update \
   && apk --no-cache add git
-
-# Install dep
-RUN go get -u github.com/golang/dep/cmd/dep
 
 # Install protobuf for golang
 RUN mkdir -p $GOPATH/src/github.com/golang
@@ -23,11 +23,24 @@ WORKDIR $GOPATH/src/github.com/grpc-ecosystem
 RUN git clone https://github.com/grpc-ecosystem/grpc-gateway.git
 WORKDIR $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway
 RUN git checkout -b $GRPC_GATEWAY_VERSION refs/tags/$GRPC_GATEWAY_VERSION
-RUN dep ensure
 WORKDIR $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 RUN go install
 WORKDIR $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 RUN go install
+
+# Install gogo protobuf
+WORKDIR $GOPATH/src/github.com/gogo
+RUN git clone https://github.com/gogo/protobuf.git
+WORKDIR $GOPATH/src/github.com/gogo/protobuf
+RUN git checkout -b $GOGO_PROTOBUF_VERSION refs/tags/$GOGO_PROTOBUF_VERSION
+WORKDIR $GOPATH/src/github.com/gogo/protobuf/protoc-gen-gogo
+RUN go install
+
+# Download gogo googleapis
+WORKDIR $GOPATH/src/github.com/gogo
+RUN git clone https://github.com/gogo/googleapis.git
+WORKDIR $GOPATH/src/github.com/gogo/googleapis
+RUN git checkout -b $GOGO_GOOGLEAPIS refs/tags/$GOGO_GOOGLEAPIS
 
 FROM alpine:3.9
 
@@ -101,7 +114,7 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && apk del .build-deps-yarn
 ### end
 
-RUN apk --no-cache add protobuf protobuf-dev py-pip bash git
+RUN apk --no-cache add protobuf protobuf-dev py-pip bash git perl
 
 # Install jq
 COPY build/dockerfiles/bin/jq-1.6 /usr/local/bin/jq
@@ -120,11 +133,16 @@ WORKDIR /openapi-to-postman
 RUN git checkout feature-param
 RUN yarn install
 
-COPY --from=build /go/bin/protoc-gen-go /usr/bin/
-COPY --from=build /go/bin/protoc-gen-grpc-gateway /usr/bin/
-COPY --from=build /go/bin/protoc-gen-swagger /usr/bin/
-COPY --from=build /go/src/github.com/golang/protobuf /src/github.com/golang/protobuf
-COPY --from=build /go/src/github.com/grpc-ecosystem/grpc-gateway /src/github.com/grpc-ecosystem/grpc-gateway
+ENV GOPATH /go
 
-WORKDIR /go/src/github.com/chainweaver/protobuf
+COPY --from=build $GOPATH/bin/protoc-gen-go /usr/bin/
+COPY --from=build $GOPATH/bin/protoc-gen-grpc-gateway /usr/bin/
+COPY --from=build $GOPATH/bin/protoc-gen-swagger /usr/bin/
+COPY --from=build $GOPATH/bin/protoc-gen-gogo /usr/bin/
+COPY --from=build $GOPATH/src/github.com/golang/protobuf $GOPATH/src/github.com/golang/protobuf
+COPY --from=build $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway
+COPY --from=build $GOPATH/src/github.com/gogo/protobuf $GOPATH/src/github.com/gogo/protobuf
+COPY --from=build $GOPATH/src/github.com/gogo/googleapis $GOPATH/src/github.com/gogo/googleapis
+
+WORKDIR $GOPATH/src/github.com/chainweaver/protobuf
 CMD [ "/bin/bash", "scripts/build.sh" ]

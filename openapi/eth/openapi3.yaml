@@ -5,7 +5,7 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: master
+  version: feature-blockchain
 security:
 - ApiKeyAuthInHeader: []
 - ApiKeyAuthInQuery: []
@@ -243,7 +243,7 @@ paths:
           format: int32
       - name: limit
         description: Filters response to only include a maximum of limit transactions
-          hashes in the block. Maximum value allowed is 500.
+          hashes in the block. Defaults to 20, maximum value allowed is 500.
         in: query
         required: false
         schema:
@@ -308,7 +308,7 @@ paths:
           format: int32
       - name: limit
         description: Filters response to only include a maximum of limit transactions
-          hashes in the block. Maximum value allowed is 500.
+          hashes in the block. Defaults to 20, maximum value allowed is 500.
         in: query
         required: false
         schema:
@@ -706,7 +706,7 @@ paths:
       tags:
       - WebHooksService
 servers:
-- url: https://api.chainweaver.io/master
+- url: https://api.chainweaver.io/feature-blockchain
 components:
   securitySchemes:
     ApiKeyAuthInHeader:

@@ -11,7 +11,7 @@ compileProto() {
   coin=$1
 
   protoFiles=""
-  for file in `\find ./proto/$coin -maxdepth 1 -type f`; do
+  for file in `\find ./proto/$coin -maxdepth 1 -type f -name "*.proto"`; do
     protoFiles+="$file "
   done
 
@@ -37,7 +37,7 @@ mergeOpenApiJson() {
   for ((i=1; i < $fileCount; i++)); do
     jqParam+="*.[$i]"
   done
-  jq -s `echo $jqParam` `find ./openapi/$coin/work -name "*Service*.json" | sort` > ./openapi/$coin/work/tmp.json
+  jq -s "$jqParam" `find ./openapi/$coin/work -name "*Service*.json" | sort` > ./openapi/$coin/work/tmp.json
   if [ $? -gt 0 ]; then
     return 1
   fi
@@ -51,6 +51,15 @@ mergeOpenApiJson() {
   if [ $? -gt 0 ]; then
     return 1
   fi
+}
+
+replacePostmanPattern() {
+  coin=$1
+  beforePattern=$2
+  afterPattern=$3
+  updateUri="map_values((..|select(.pattern?==\"$beforePattern\")|.pattern)|=\"$afterPattern\")"
+  jq "$updateUri" ./postman/$coin/variable.json > ./postman/$coin/tmpVariable.json
+  mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
 }
 
 generatePostmanCollection() {
@@ -88,61 +97,53 @@ generatePostmanCollection() {
 
   # The postman's json schema validator uses tv4, and this only supports json-schema draft v4, so "date-time" can not be used.
   # ref) https://geraintluff.github.io/tv4/
-  rfc3339Regex='^([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])[Tt]([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\\.[0-9]+)?(([Zz])|([\\+|\\-]([01][0-9]|2[0-3]):[0-5][0-9]))$'
-  updateDateTime1='map_values((..|select(.pattern?=="date-time")|.pattern)|="'
-  updateDateTime2='")'
-  updateDateTime="$updateDateTime1$rfc3339Regex$updateDateTime2"
-  jq $updateDateTime ./postman/$coin/variable.json > ./postman/$coin/tmpVariable.json
-  mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
+  replacePostmanPattern $coin "date-time" '^([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])[Tt]([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\\.[0-9]+)?(([Zz])|([\\+|\\-]([01][0-9]|2[0-3]):[0-5][0-9]))$'
+  replacePostmanPattern $coin "uri" '^(http[s]?:\/\/){1}([0-9A-Za-z-.@:%_+~#=]+)+((.[a-zA-Z]{2,3})+)(\/(.)*)?'
 
-  uriRegex='^(http[s]?:\/\/){1}([0-9A-Za-z-.@:%_+~#=]+)+((.[a-zA-Z]{2,3})+)(\/(.)*)?'
-  updateUri1='map_values((..|select(.pattern?=="uri")|.pattern)|="'
-  updateUri2='")'
-  updateUri="$updateUri1$uriRegex$updateUri2"
-  jq $updateUri ./postman/$coin/variable.json > ./postman/$coin/tmpVariable.json
-  mv ./postman/$coin/tmpVariable.json ./postman/$coin/variable.json
-
+  # Merge variable
   jq -s '.[0] * .[1]' ./postman/$coin/collection.json ./postman/$coin/variable.json > ./postman/$coin/tmpCollection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
   rm -f ./postman/$coin/variable.json
+  mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
 
+  # Update baseUrl
   baseUrl=$(jq -r '.servers[0].url' ./openapi/$coin/openapi3.json)
-  updateVariableBaseUrl=.variable[.variable\|length]={\"key\":\"baseUrl\",\"type\":\"string\",\"value\":\"$baseUrl\"}
-  jq $updateVariableBaseUrl ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
+  jq ".variable[.variable|length]={\"key\":\"baseUrl\",\"type\":\"string\",\"value\":\"$baseUrl\"}" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
+  mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
 
+  # Update network
   network=main
-  updateVariableNetwork=.variable[.variable\|length]={\"key\":\"network\",\"type\":\"string\",\"value\":\"$network\"}
-  jq $updateVariableNetwork ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  jq ".variable[.variable|length]={\"key\":\"network\",\"type\":\"string\",\"value\":\"$network\"}" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
   if [ $? -gt 0 ]; then
     return 1
   fi
   mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
 
   # Global Prerequest
-  jq '.event[0]|=.+{"listen":"prerequest","script":{"type":"text/javascript","exec":[]}}' ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+  # Generate event json
+  globalPrerequestFile="postman/$coin/testScript/globalPrerequest.js"
+  cp $globalPrerequestFile $globalPrerequestFile.tmp.json
+  perl -p -i -e 's/\n/\\n/g' $globalPrerequestFile.tmp.json
+  perl -p -i -e 's/\"/\\"/g' $globalPrerequestFile.tmp.json
+  echo "{\"listen\":\"prerequest\",\"script\":{\"exec\":[\"$(cat $globalPrerequestFile.tmp.json)\"],\"type\":\"text/javascript\"}}" > $globalPrerequestFile.json
+  rm -f $globalPrerequestFile.tmp.json
+
+  jq --argfile testScript "$globalPrerequestFile.json" ".event[0]|=\$testScript" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
   if [ $? -gt 0 ]; then
+    rm -f $globalPrerequestFile.json
     return 1
   fi
-  globalPrerequest=$(sed 's/"/\\"/g' ./postman/$coin/testScript/globalPrerequest.js)
-  updateGlobalPrerequest1='.event[0].script.exec[0]|=.+"'
-  updateGlobalPrerequest2='"'
-  updateGlobalPrerequest=$updateGlobalPrerequest1$globalPrerequest$updateGlobalPrerequest2
-  jq "$updateGlobalPrerequest" ./postman/$coin/tmpCollection.json > ./postman/$coin/collection.json
-  if [ $? -gt 0 ]; then
-    return 1
-  fi
+
+  rm -f $globalPrerequestFile.json
+  mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
 
   # Item Event
-  updateEventFragment1='map_values((..|select(.name?=="'
-  updateEventFragment2='")|.event)|=[{"listen":"test","script":{"exec":["'
-  updateEventFragment3='"],"type":"text/javascript"}}])'
-
-  for file in `\find ./postman/$coin/testScript/ -maxdepth 1 -type f`; do
+  for file in `\find ./postman/$coin/testScript/ -maxdepth 1 -type f -name "*.js"`; do
     filename=$(basename $file .js)
     splitFilename=${filename//_/ };
     itemName=""
@@ -150,10 +151,21 @@ generatePostmanCollection() {
       itemName="$itemName${str^} "
     done
     itemName=${itemName% }
-    testScript=$(sed 's/"/\\"/g' $file)
 
-    updateEvent=$updateEventFragment1$itemName$updateEventFragment2$testScript$updateEventFragment3
-    jq "$updateEvent" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+    # Generate postman event json
+    cp $file $file.tmp.json
+    perl -p -i -e 's/\n/\\n/g' $file.tmp.json
+    perl -p -i -e 's/\"/\\"/g' $file.tmp.json
+    echo "[{\"listen\":\"test\",\"script\":{\"exec\":[\"$(cat $file.tmp.json)\"],\"type\":\"text/javascript\"}}]" > $file.json
+    rm -f $file.tmp.json
+
+    jq --argfile testScript "$file.json" "map_values((..|select((.name?==\"$itemName\")and(.request!=null)and(.response!=null))|.event)|=\$testScript)" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+    if [ $? -gt 0 ]; then
+      rm -f $file.json
+      return 1
+    fi
+
+    rm -f $file.json
     mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
   done
 
@@ -261,7 +273,7 @@ run() {
 echo "Build start!"
 
 # Postman ID is fixed
-git checkout postman
+git checkout postman/btc/collection.json
 postmanId=$(jq -r '.info._postman_id' ./postman/btc/collection.json)
 if [ $? -gt 0 ]; then
   echo "Build error"
