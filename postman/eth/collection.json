@@ -2138,10 +2138,10 @@
     {
       "listen": "prerequest",
       "script": {
-        "type": "text/javascript",
         "exec": [
-          "postman.setGlobalVariable(\"commonTests\", (schemeName) => {\n    tests[\"Content-Type header is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";\n\n    let res = pm.response.json();\n    const schema = pm.variables.get(schemeName);\n    tests[\"Schema is valid\"] = tv4.validate(res, schema);\n});"
-        ]
+          "postman.setGlobalVariable(\"commonTests\", (schemeName) => {\n    tests[\"Content-Type header is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";\n\n    let res = pm.response.json();\n    const schema = pm.variables.get(schemeName);\n    tests[\"Schema is valid\"] = tv4.validate(res, schema);\n});\n"
+        ],
+        "type": "text/javascript"
       }
     }
   ],
@@ -3423,7 +3423,7 @@
     {
       "key": "baseUrl",
       "type": "string",
-      "value": "https://api.chainweaver.io/master"
+      "value": "https://api.chainweaver.io/feature-blockchain"
     },
     {
       "key": "network",
