@@ -3,6 +3,10 @@
 
 # Interface Definition of Chainweaver API
 
+## Build Flow
+
+![Build Flow](./doc/build-flow.svg "Build Flow")
+
 ## For developer
 
 In this project you can develop by preparing the following environment.
