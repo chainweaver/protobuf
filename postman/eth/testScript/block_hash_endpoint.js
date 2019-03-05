@@ -1965,6 +1965,7 @@ switch (testCaseNo) {
     tests["Status code is 404"] = responseCode.code === 404;
     eval(globals.commonTests)("error");
     tests["Error message is expected"] = res.error === "Block not-exist-block-hash not found.";
+    tests["response object property count is 1"] = Object.keys(res).length === 1;
     break;
   default:
     tests["Status code is 200"] = responseCode.code === 200;
