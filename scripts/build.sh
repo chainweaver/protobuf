@@ -138,10 +138,6 @@ generatePostmanCollection() {
   fi
 
   # Item Event
-  updateEventFragment1='map_values((..|select(.name?=="'
-  updateEventFragment2='")|.event)|=[{"listen":"test","script":{"exec":["'
-  updateEventFragment3='"],"type":"text/javascript"}}])'
-
   for file in `\find ./postman/$coin/testScript/ -maxdepth 1 -type f -name "*.js"`; do
     filename=$(basename $file .js)
     splitFilename=${filename//_/ };
@@ -150,10 +146,21 @@ generatePostmanCollection() {
       itemName="$itemName${str^} "
     done
     itemName=${itemName% }
-    testScript=$(sed 's/"/\\"/g' $file)
 
-    updateEvent=$updateEventFragment1$itemName$updateEventFragment2$testScript$updateEventFragment3
-    jq "$updateEvent" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+    # Generate postman event json
+    cp $file $file.tmp.json
+    perl -p -i -e 's/\n/\\n/g' $file.tmp.json
+    perl -p -i -e 's/\"/\\"/g' $file.tmp.json
+    echo "[{\"listen\":\"test\",\"script\":{\"exec\":[\"$(cat $file.tmp.json)\"],\"type\":\"text/javascript\"}}]" > $file.json
+    rm -f $file.tmp.json
+
+    jq --argfile testScript "$file.json" "map_values((..|select(.name?==\"$itemName\")|.event)|=\$testScript)" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+    if [ $? -gt 0 ]; then
+      rm -f $file.json
+      return 1
+    fi
+
+    rm -f $file.json
     mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
   done
 
