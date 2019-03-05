@@ -11,7 +11,7 @@ compileProto() {
   coin=$1
 
   protoFiles=""
-  for file in `\find ./proto/$coin -maxdepth 1 -type f`; do
+  for file in `\find ./proto/$coin -maxdepth 1 -type f -name "*.proto"`; do
     protoFiles+="$file "
   done
 
@@ -142,7 +142,7 @@ generatePostmanCollection() {
   updateEventFragment2='")|.event)|=[{"listen":"test","script":{"exec":["'
   updateEventFragment3='"],"type":"text/javascript"}}])'
 
-  for file in `\find ./postman/$coin/testScript/ -maxdepth 1 -type f`; do
+  for file in `\find ./postman/$coin/testScript/ -maxdepth 1 -type f -name "*.js"`; do
     filename=$(basename $file .js)
     splitFilename=${filename//_/ };
     itemName=""
@@ -261,7 +261,7 @@ run() {
 echo "Build start!"
 
 # Postman ID is fixed
-git checkout postman
+git checkout postman/btc/collection.json
 postmanId=$(jq -r '.info._postman_id' ./postman/btc/collection.json)
 if [ $? -gt 0 ]; then
   echo "Build error"
