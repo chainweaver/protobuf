@@ -589,6 +589,7 @@ switch (testCaseNo) {
     tests["next_txids is expected"] = res.next_txids ===  "https://api.blockcypher.com/v1/eth/main/blocks/3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846?txstart=20&limit=20";
     tests["next_internal_txids is not exist"] = "next_internal_txids" in res === false;
     tests["uncles is not exist"] = "uncles" in res === false;
+    tests["response object property count is 21"] = Object.keys(res).length === 21;
     break;
   case "test-blocks-0002":
     tests["Status code is 200"] = responseCode.code === 200;
@@ -1273,6 +1274,7 @@ switch (testCaseNo) {
     tests["next_txids is not exist"] = "next_txids" in res === false;
     tests["next_internal_txids is not exist"] = "next_internal_txids" in res === false;
     tests["uncles is not exist"] = "uncles" in res === false;
+    tests["response object property count is 20"] = Object.keys(res).length === 20;
     break;
   case "test-blocks-0003":
     tests["Status code is 200"] = responseCode.code === 200;
@@ -1957,6 +1959,7 @@ switch (testCaseNo) {
     tests["next_txids is not exist"] = "next_txids" in res === false;
     tests["next_internal_txids is not exist"] = "next_internal_txids" in res === false;
     tests["uncles is not exist"] = "uncles" in res === false;
+    tests["response object property count is 20"] = Object.keys(res).length === 20;
     break;
   case "test-blocks-0004":
     tests["Status code is 404"] = responseCode.code === 404;
