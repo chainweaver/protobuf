@@ -31,7 +31,7 @@ func (m *ChainEndpointRequest) Reset()         { *m = ChainEndpointRequest{} }
 func (m *ChainEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*ChainEndpointRequest) ProtoMessage()    {}
 func (*ChainEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_f3d3b727d161ef35, []int{0}
+	return fileDescriptor_blockchainMessage_8e14b140e0e0ed2c, []int{0}
 }
 func (m *ChainEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ChainEndpointRequest.Unmarshal(m, b)
@@ -65,7 +65,7 @@ type BlockHashEndpointRequest struct {
 	BlockHash string `protobuf:"bytes,2,opt,name=block_hash,json=blockHash,proto3" json:"block_hash,omitempty"`
 	// Filters response to only include transaction hashes after txstart in the block.
 	Txstart int32 `protobuf:"varint,3,opt,name=txstart,proto3" json:"txstart,omitempty"`
-	// Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.
+	// Filters response to only include a maximum of limit transactions hashes in the block. Defaults to 20, maximum value allowed is 500.
 	Limit                int32    `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -76,7 +76,7 @@ func (m *BlockHashEndpointRequest) Reset()         { *m = BlockHashEndpointReque
 func (m *BlockHashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*BlockHashEndpointRequest) ProtoMessage()    {}
 func (*BlockHashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_f3d3b727d161ef35, []int{1}
+	return fileDescriptor_blockchainMessage_8e14b140e0e0ed2c, []int{1}
 }
 func (m *BlockHashEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BlockHashEndpointRequest.Unmarshal(m, b)
@@ -131,7 +131,7 @@ type BlockHeightEndpointRequest struct {
 	BlockHeight string `protobuf:"bytes,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
 	// Filters response to only include transaction hashes after txstart in the block.
 	Txstart int32 `protobuf:"varint,3,opt,name=txstart,proto3" json:"txstart,omitempty"`
-	// Filters response to only include a maximum of limit transactions hashes in the block. Maximum value allowed is 500.
+	// Filters response to only include a maximum of limit transactions hashes in the block. Defaults to 20, maximum value allowed is 500.
 	Limit                int32    `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -142,7 +142,7 @@ func (m *BlockHeightEndpointRequest) Reset()         { *m = BlockHeightEndpointR
 func (m *BlockHeightEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*BlockHeightEndpointRequest) ProtoMessage()    {}
 func (*BlockHeightEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_blockchainMessage_f3d3b727d161ef35, []int{2}
+	return fileDescriptor_blockchainMessage_8e14b140e0e0ed2c, []int{2}
 }
 func (m *BlockHeightEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BlockHeightEndpointRequest.Unmarshal(m, b)
@@ -197,10 +197,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("blockchainMessage.proto", fileDescriptor_blockchainMessage_f3d3b727d161ef35)
+	proto.RegisterFile("blockchainMessage.proto", fileDescriptor_blockchainMessage_8e14b140e0e0ed2c)
 }
 
-var fileDescriptor_blockchainMessage_f3d3b727d161ef35 = []byte{
+var fileDescriptor_blockchainMessage_8e14b140e0e0ed2c = []byte{
 	// 327 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x92, 0xb1, 0x4e, 0xc3, 0x30,
 	0x14, 0x45, 0x65, 0x68, 0xa9, 0x6a, 0x10, 0x43, 0xa8, 0x54, 0x2b, 0x12, 0x52, 0xe9, 0xd4, 0x81,

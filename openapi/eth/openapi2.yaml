@@ -231,7 +231,7 @@ paths:
         format: int32
       - name: limit
         description: Filters response to only include a maximum of limit transactions
-          hashes in the block. Maximum value allowed is 500.
+          hashes in the block. Defaults to 20, maximum value allowed is 500.
         in: query
         required: false
         type: integer
@@ -288,7 +288,7 @@ paths:
         format: int32
       - name: limit
         description: Filters response to only include a maximum of limit transactions
-          hashes in the block. Maximum value allowed is 500.
+          hashes in the block. Defaults to 20, maximum value allowed is 500.
         in: query
         required: false
         type: integer
