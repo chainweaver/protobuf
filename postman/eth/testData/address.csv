@@ -1,4 +1,12 @@
-test_case_no,address
-test-address-0001,b7695173B4aED4F392361ECa3aB19104bA1C0B13
-test-address-0002,"0xb7695173B4aED4F392361ECa3aB19104bA1C0B13"
-test-address-0003,not-exist-address
+test_case_no,description,before,after,limit,confirmations,address
+test-address-0001,"Normal data",,,,,"b7695173B4aED4F392361ECa3aB19104bA1C0B13"
+test-address-0002,"Default limit",,,,,"0x0000000000000000000000000000000000000000"
+test-address-0003,"Boundary value of limit",,,2000,,"0x0000000000000000000000000000000000000000"
+test-address-0004,"Boundary value of limit",,,2001,,"0x0000000000000000000000000000000000000000"
+test-address-0005,"Boundary value of before and after",6878409,,,,"b7695173B4aED4F392361ECa3aB19104bA1C0B13"
+test-address-0006,"Boundary value of before and after",6878410,,,,"b7695173B4aED4F392361ECa3aB19104bA1C0B13"
+test-address-0007,"Boundary value of before and after",,6878409,,,"b7695173B4aED4F392361ECa3aB19104bA1C0B13"
+test-address-0008,"Boundary value of before and after",,6878410,,,"b7695173B4aED4F392361ECa3aB19104bA1C0B13"
+test-address-0009,"Boundary value of confirmations",,,,1,"b7695173B4aED4F392361ECa3aB19104bA1C0B13"
+test-address-0010,"Boundary value of confirmations(9999 is replaced by the latest block height + 100 in prerequest)",,,,9999,"b7695173B4aED4F392361ECa3aB19104bA1C0B13"
+test-address-0011,"Not exist address",,,,,not-exist-address
