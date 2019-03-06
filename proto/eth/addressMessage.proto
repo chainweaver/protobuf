@@ -13,9 +13,9 @@ message AddressBalanceEndpointRequest {
 message AddressEndpointRequest {
   NetworkAllowingAlias network = 1;
   string address = 2;
-  // Filters response to only include transactions below before height in the blockchain.
+  // Filters response to only include transactions below before height in the blockchain. ( < before )
   int32 before = 3;
-  // 	Filters response to only include transactions above after height in the blockchain.
+  // 	Filters response to only include transactions above after height in the blockchain. ( after <= )
   int32 after	= 4;
   // limit sets the minimum number of returned TXRefs; there can be less if there are less than limit TXRefs associated with this address, but there can be more in the rare case of more TXRefs in the block at the bottom of your call. This ensures paging by block height never misses TXRefs. Defaults to 200, maximum is 2000.
   int32 limit = 5;
