@@ -5,7 +5,7 @@
 
 ## Build Flow
 
-![Build Flow](./doc/build-flow.svg?20190306 "Build Flow")
+![Build Flow](./doc/build-flow.svg "Build Flow")
 
 ## For developer
 
