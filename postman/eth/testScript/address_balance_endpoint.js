@@ -35,16 +35,22 @@ switch (testCaseNo) {
     eval(globals.assert)("response object property count", 9, Object.keys(res).length);
     break;
   case "test-address-0005":
+    // skip
     break;
   case "test-address-0006":
+    // skip
     break;
   case "test-address-0007":
+    // skip
     break;
   case "test-address-0008":
+    // skip
     break;
   case "test-address-0009":
+    // skip
     break;
   case "test-address-0010":
+    // skip
     break;
   case "test-address-0011":
     eval(globals.assert)("http status code", 404, responseCode.code);

@@ -44,6 +44,7 @@ switch (testCaseNo) {
     eval(globals.commonTests)("ethAddress");
     eval(globals.assert)("address", "b7695173b4aed4f392361eca3ab19104ba1c0b13", res.address);
     eval(globals.assert)("response object property count", 10, Object.keys(res).length);
+    postman.setNextRequest(null);
     break;
   case "test-address-0006":
     eval(globals.assert)("http status code", 200, responseCode.code);
@@ -51,6 +52,7 @@ switch (testCaseNo) {
     eval(globals.assert)("address", "b7695173b4aed4f392361eca3ab19104ba1c0b13", res.address);
     eval(globals.assert)("txrefs count", 1, res.txrefs.length);
     eval(globals.assert)("response object property count", 11, Object.keys(res).length);
+    postman.setNextRequest(null);
     break;
   case "test-address-0007":
     eval(globals.assert)("http status code", 200, responseCode.code);
@@ -58,12 +60,14 @@ switch (testCaseNo) {
     eval(globals.assert)("address", "b7695173b4aed4f392361eca3ab19104ba1c0b13", res.address);
     eval(globals.assert)("txrefs count", 1, res.txrefs.length);
     eval(globals.assert)("response object property count", 11, Object.keys(res).length);
+    postman.setNextRequest(null);
     break;
   case "test-address-0008":
     eval(globals.assert)("http status code", 200, responseCode.code);
     eval(globals.commonTests)("ethAddress");
     eval(globals.assert)("address", "b7695173b4aed4f392361eca3ab19104ba1c0b13", res.address);
     eval(globals.assert)("response object property count", 10, Object.keys(res).length);
+    postman.setNextRequest(null);
     break;
   case "test-address-0009":
     eval(globals.assert)("http status code", 200, responseCode.code);
@@ -71,12 +75,14 @@ switch (testCaseNo) {
     eval(globals.assert)("address", "b7695173b4aed4f392361eca3ab19104ba1c0b13", res.address);
     eval(globals.assert)("txrefs count", 1, res.txrefs.length);
     eval(globals.assert)("response object property count", 11, Object.keys(res).length);
+    postman.setNextRequest(null);
     break;
   case "test-address-0010":
     eval(globals.assert)("http status code", 200, responseCode.code);
     eval(globals.commonTests)("ethAddress");
     eval(globals.assert)("address", "b7695173b4aed4f392361eca3ab19104ba1c0b13", res.address);
     eval(globals.assert)("response object property count", 10, Object.keys(res).length);
+    postman.setNextRequest(null);
     break;
   case "test-address-0011":
     tests["Status code is 404"] = responseCode.code === 404;
