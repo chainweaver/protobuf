@@ -30,7 +30,7 @@ func (m *AddressBalanceEndpointRequest) Reset()         { *m = AddressBalanceEnd
 func (m *AddressBalanceEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddressBalanceEndpointRequest) ProtoMessage()    {}
 func (*AddressBalanceEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_018389a67bda473e, []int{0}
+	return fileDescriptor_addressMessage_0957b9b35880ec0c, []int{0}
 }
 func (m *AddressBalanceEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressBalanceEndpointRequest.Unmarshal(m, b)
@@ -67,9 +67,9 @@ func (m *AddressBalanceEndpointRequest) GetAddress() string {
 type AddressEndpointRequest struct {
 	Network NetworkAllowingAlias `protobuf:"varint,1,opt,name=network,proto3,enum=chainweaver.protobuf.eth.NetworkAllowingAlias" json:"network,omitempty"`
 	Address string               `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
-	// Filters response to only include transactions below before height in the blockchain.
+	// Filters response to only include transactions below before height in the blockchain. ( < before )
 	Before int32 `protobuf:"varint,3,opt,name=before,proto3" json:"before,omitempty"`
-	// 	Filters response to only include transactions above after height in the blockchain.
+	// 	Filters response to only include transactions above after height in the blockchain. ( after <= )
 	After int32 `protobuf:"varint,4,opt,name=after,proto3" json:"after,omitempty"`
 	// limit sets the minimum number of returned TXRefs; there can be less if there are less than limit TXRefs associated with this address, but there can be more in the rare case of more TXRefs in the block at the bottom of your call. This ensures paging by block height never misses TXRefs. Defaults to 200, maximum is 2000.
 	Limit int32 `protobuf:"varint,5,opt,name=limit,proto3" json:"limit,omitempty"`
@@ -84,7 +84,7 @@ func (m *AddressEndpointRequest) Reset()         { *m = AddressEndpointRequest{}
 func (m *AddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*AddressEndpointRequest) ProtoMessage()    {}
 func (*AddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_018389a67bda473e, []int{1}
+	return fileDescriptor_addressMessage_0957b9b35880ec0c, []int{1}
 }
 func (m *AddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressEndpointRequest.Unmarshal(m, b)
@@ -158,7 +158,7 @@ func (m *GenerateAddressEndpointRequest) Reset()         { *m = GenerateAddressE
 func (m *GenerateAddressEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GenerateAddressEndpointRequest) ProtoMessage()    {}
 func (*GenerateAddressEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_addressMessage_018389a67bda473e, []int{2}
+	return fileDescriptor_addressMessage_0957b9b35880ec0c, []int{2}
 }
 func (m *GenerateAddressEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateAddressEndpointRequest.Unmarshal(m, b)
@@ -199,10 +199,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("addressMessage.proto", fileDescriptor_addressMessage_018389a67bda473e)
+	proto.RegisterFile("addressMessage.proto", fileDescriptor_addressMessage_0957b9b35880ec0c)
 }
 
-var fileDescriptor_addressMessage_018389a67bda473e = []byte{
+var fileDescriptor_addressMessage_0957b9b35880ec0c = []byte{
 	// 292 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x8f, 0xc1, 0x4a, 0x03, 0x31,
 	0x10, 0x86, 0x89, 0xba, 0x2d, 0x06, 0xf4, 0xb0, 0x96, 0x12, 0x04, 0xa5, 0x14, 0x0f, 0xbd, 0x34,

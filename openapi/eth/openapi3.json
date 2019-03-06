@@ -3,7 +3,7 @@
     "info": {
         "title": "Chainweaver API for Ethereum",
         "description": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",
-        "version": "master"
+        "version": "feature-address"
     },
     "security": [
         {
@@ -114,7 +114,7 @@
                     },
                     {
                         "name": "before",
-                        "description": "Filters response to only include transactions below before height in the blockchain.",
+                        "description": "Filters response to only include transactions below before height in the blockchain. ( < before ).",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -124,7 +124,7 @@
                     },
                     {
                         "name": "after",
-                        "description": "Filters response to only include transactions above after height in the blockchain.",
+                        "description": "Filters response to only include transactions above after height in the blockchain. ( after <= ).",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -297,7 +297,7 @@
                     },
                     {
                         "name": "txstart",
-                        "description": "Filters response to only include transaction hashes after txstart in the block.",
+                        "description": "Filters response to only include transaction hashes after txstart height in the block.",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -375,7 +375,7 @@
                     },
                     {
                         "name": "txstart",
-                        "description": "Filters response to only include transaction hashes after txstart in the block.",
+                        "description": "Filters response to only include transaction hashes after txstart height in the block.",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -1016,7 +1016,7 @@
     },
     "servers": [
         {
-            "url": "https://api.chainweaver.io/master"
+            "url": "https://api.chainweaver.io/feature-address"
         }
     ],
     "components": {
