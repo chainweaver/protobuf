@@ -5,7 +5,7 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: master
+  version: feature-address
 security:
 - ApiKeyAuthInHeader: []
 - ApiKeyAuthInQuery: []
@@ -86,7 +86,7 @@ paths:
           type: string
       - name: before
         description: Filters response to only include transactions below before height
-          in the blockchain.
+          in the blockchain. ( < before ).
         in: query
         required: false
         schema:
@@ -94,7 +94,7 @@ paths:
           format: int32
       - name: after
         description: Filters response to only include transactions above after height
-          in the blockchain.
+          in the blockchain. ( after <= ).
         in: query
         required: false
         schema:
@@ -235,7 +235,7 @@ paths:
           type: string
       - name: txstart
         description: Filters response to only include transaction hashes after txstart
-          in the block.
+          height in the block.
         in: query
         required: false
         schema:
@@ -300,7 +300,7 @@ paths:
           type: string
       - name: txstart
         description: Filters response to only include transaction hashes after txstart
-          in the block.
+          height in the block.
         in: query
         required: false
         schema:
@@ -706,7 +706,7 @@ paths:
       tags:
       - WebHooksService
 servers:
-- url: https://api.chainweaver.io/master
+- url: https://api.chainweaver.io/feature-address
 components:
   securitySchemes:
     ApiKeyAuthInHeader:

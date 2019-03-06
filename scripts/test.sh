@@ -23,6 +23,8 @@ update() {
 
 update baseUrl $BASE_URL
 update token $TOKEN
+
+newman run postman/eth/collection.json -e postman/eth/environment.json --folder "addrs"
 newman run postman/eth/collection.json -e postman/eth/environment.json -d postman/eth/testData/address.csv --folder "{address}"
 newman run postman/eth/collection.json -e postman/eth/environment.json -d postman/eth/testData/blocks.csv --folder "blocks"
 

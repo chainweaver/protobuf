@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 onSignalInterrupt() {
   echo "Interrupted!"
@@ -142,7 +142,34 @@ generatePostmanCollection() {
   rm -f $globalPrerequestFile.json
   mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
 
-  # Item Event
+  # Item Event (pre request)
+  for file in `\find ./postman/$coin/preRequest/ -maxdepth 1 -type f -name "*.js"`; do
+    filename=$(basename $file .js)
+    splitFilename=${filename//_/ };
+    itemName=""
+    for str in ${splitFilename[@]}; do
+      itemName="$itemName${str^} "
+    done
+    itemName=${itemName% }
+
+    # Generate postman event json
+    cp $file $file.tmp.json
+    perl -p -i -e 's/\n/\\n/g' $file.tmp.json
+    perl -p -i -e 's/\"/\\"/g' $file.tmp.json
+    echo "[{\"listen\":\"prerequest\",\"script\":{\"exec\":[\"$(cat $file.tmp.json)\"],\"type\":\"text/javascript\"}}]" > $file.json
+    rm -f $file.tmp.json
+
+    jq --argfile testScript "$file.json" "map_values((..|select((.name?==\"$itemName\")and(.request!=null)and(.response!=null))|.event)|=.+\$testScript)" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+    if [ $? -gt 0 ]; then
+      rm -f $file.json
+      return 1
+    fi
+
+    rm -f $file.json
+    mv ./postman/$coin/tmpCollection.json ./postman/$coin/collection.json
+  done
+
+  # Item Event (test script)
   for file in `\find ./postman/$coin/testScript/ -maxdepth 1 -type f -name "*.js"`; do
     filename=$(basename $file .js)
     splitFilename=${filename//_/ };
@@ -159,7 +186,7 @@ generatePostmanCollection() {
     echo "[{\"listen\":\"test\",\"script\":{\"exec\":[\"$(cat $file.tmp.json)\"],\"type\":\"text/javascript\"}}]" > $file.json
     rm -f $file.tmp.json
 
-    jq --argfile testScript "$file.json" "map_values((..|select((.name?==\"$itemName\")and(.request!=null)and(.response!=null))|.event)|=\$testScript)" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
+    jq --argfile testScript "$file.json" "map_values((..|select((.name?==\"$itemName\")and(.request!=null)and(.response!=null))|.event)|=.+\$testScript)" ./postman/$coin/collection.json > ./postman/$coin/tmpCollection.json
     if [ $? -gt 0 ]; then
       rm -f $file.json
       return 1

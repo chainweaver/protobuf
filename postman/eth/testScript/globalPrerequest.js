@@ -3,5 +3,17 @@ postman.setGlobalVariable("commonTests", (schemeName) => {
 
     let res = pm.response.json();
     const schema = pm.variables.get(schemeName);
-    tests["Schema is valid"] = tv4.validate(res, schema);
+    if (tv4.validate(res, schema)) {
+        tests["Schema is valid"] = true;
+    } else {
+        tests["Schema is valid error"] = false;
+    }
+});
+
+postman.setGlobalVariable("assert", (target, expect, value) => {
+    if (expect === value) {
+        tests[target + " is expected"] = true;
+    } else {
+        tests[target + " expected value was " + expect + ", but it was " + value] = false;
+    }
 });
