@@ -3,6 +3,7 @@ syntax = "proto3";
 package chainweaver.protobuf.eth;
 option go_package = "github.com/chainweaver/protobuf/protoc-gen-go/eth";
 
+import "protoc-gen-swagger/options/annotations.proto";
 import "commonMessage.proto";
 
 message TXs {
@@ -28,54 +29,64 @@ message CreateTransactionEndpointRequest {
   repeated string addresses = 4;
   // The total number of wei exchanged in this transaction.
   uint64 total = 5;
+  // The total number of wei exchanged in this transaction. This is a hex string.
+  string total_hex = 6 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used.
-  uint64 fees = 6;
+  uint64 fees = 7;
+  // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used. This is a hex string.
+  string fees_hex = 8 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The size of the transaction in bytes.
-  uint64 size = 7;
+  uint64 size = 9;
   // The amount of gas used by this transaction.
-  uint64 gas_used = 8;
+  uint64 gas_used = 10;
+  // The amount of gas used by this transaction. This is a hex string.
+  string gas_used_hex = 11 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The price of gas—in wei—in this transaction.
-  uint64 gas_price = 9;
+  uint64 gas_price = 12;
+  // The price of gas—in wei—in this transaction. This is a hex string.
+  string gas_price_hex = 13 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Address of the peer that sent BlockCypher’s servers this transaction. May be empty.
-  string relayed_by = 10;
+  string relayed_by = 14;
   // Time this transaction was received by BlockCypher’s servers.
-  string received = 11;
+  string received = 15;
   // Version number of this transaction.
-  int32 ver = 12;
+  int32 ver = 16;
   // true if this is an attempted double spend; false otherwise.
-  bool double_spend = 13;
+  bool double_spend = 17;
   // Total number of inputs in the transaction.
-  int32 vin_sz = 14;
+  int32 vin_sz = 18;
   // Total number of outputs in the transaction.
-  int32 vout_sz = 15;
+  int32 vout_sz = 19;
   // Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
-  int32 confirmations = 16;
+  int32 confirmations = 20;
   // An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API.
-  repeated InputType inputs = 17;
+  repeated InputType inputs = 21;
   // An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API.
-  repeated OutputType outputs = 18;
+  repeated OutputType outputs = 22;
   // Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions.
-  repeated string	internal_txids = 19;
+  repeated string	internal_txids = 23;
   // Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash).
-  string parent_tx = 20;
+  string parent_tx = 24;
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
-  string confirmed = 21;
+  string confirmed = 25;
   // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts.
-  int32 gas_limit = 22;
+  int32 gas_limit = 26;
+  // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts. This is a hex string.
+  string gas_limit_hex = 27 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed.
-  bool contract_creation = 23;
+  bool contract_creation = 28;
   // Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
-  int32 receive_count = 24;
+  int32 receive_count = 29;
   // Optional Hash of the block that contains this transaction; only present for confirmed transactions.
-  string block_hash = 25;
+  string block_hash = 30;
   // Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions.
-  int32 block_index = 26;
+  int32 block_index = 31;
   // Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
-  string double_of = 27;
+  string double_of = 32;
   // Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”).
-  string execution_error = 28;
+  string execution_error = 33;
   // Token
-  string token = 29;
+  string token = 34;
 }
 
 message SendTransactionEndpointRequest {

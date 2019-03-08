@@ -40,14 +40,20 @@ message Blockchain {
   uint64 unconfirmed_count = 8;
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks.
   uint64 high_gas_price = 9;
+  // A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks. This is a hex string.
+  string high_gas_price_hex = 10 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks.
-  uint64 medium_gas_price = 10;
+  uint64 medium_gas_price = 11;
+  // A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks. This is a hex string.
+  string medium_gas_price_hex = 12 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks.
-  uint64 low_gas_price = 11;
+  uint64 low_gas_price = 13;
+  // A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks. This is a hex string.
+  string low_gas_price_hex = 14 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
-  uint64 last_fork_height = 13;
+  uint64 last_fork_height = 15;
   // Optional The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
-  string last_fork_hash = 14 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^(|[a-z0-9]{64})$"}];
+  string last_fork_hash = 16 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^(|[a-z0-9]{64})$"}];
 }
 
 message Block {
@@ -67,42 +73,46 @@ message Block {
   string chain = 4;
   // The total number of wei transacted in this block.
   uint64 total = 5;
+  // The total number of wei transacted in this block. This is a hex string.
+  string total_hex = 6 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The total number of fees—in wei—collected by miners in this block.
-  uint64 fees = 6;
+  uint64 fees = 7;
+  // The total number of fees—in wei—collected by miners in this block. This is a hex string.
+  string fees_hex = 8 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Raw size of block (including header and all transactions) in bytes.
-  uint64 size = 7;
+  uint64 size = 9;
   // Block version.
-  uint64 ver = 8;
+  uint64 ver = 10;
   // Recorded time at which block was built.
-  string time = 9 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "date-time"}];
+  string time = 11 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "date-time"}];
   // The time BlockCypher’s servers receive the block.
-  string received_time = 10 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "date-time"}];
+  string received_time = 12 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "date-time"}];
   // The Ethereum address of the miner that received the coinbase and fee reward.
-  string coinbase_addr = 11 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{40})$"}];
+  string coinbase_addr = 13 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{40})$"}];
   // Address of the peer that sent BlockCypher’s servers this block.
-  string relayed_by = 12 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^(|[a-z0-9]{40})$"}];
+  string relayed_by = 14 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^(|[a-z0-9]{40})$"}];
   // The number used by a miner to generate this block.
-  uint64 nonce = 13;
+  uint64 nonce = 15;
   // Number of transactions in this block.
-  uint64 n_tx = 14;
+  uint64 n_tx = 16;
   // The hash of the previous block in the blockchain.
-  string prev_block = 15 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{64})$"}];
+  string prev_block = 17 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{64})$"}];
   // The BlockCypher URL to query for more information on the previous block.
-  string prev_block_url = 16 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
+  string prev_block_url = 18 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
   // The base BlockCypher URL to receive transaction details. To get more details about specific transactions, you must concatenate this URL with the desired transaction hash(es).
-  string tx_url = 17 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
+  string tx_url = 19 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
   // The Merkle root of this block.
-  string mrkl_root = 18 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{64})$"}];
+  string mrkl_root = 20 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{64})$"}];
   // An array of transaction hashes in this block (initiated by externally controlled accounts). By default, only 20 are included.
-  repeated string txids = 19;
+  repeated string txids = 21;
   // An array of internal transaction hashes (initiated by internal contracts) in this block. By default, only 20 are included.
-  repeated string internal_txids = 20;
+  repeated string internal_txids = 22;
   // Optional If there are more transactions that couldn’t fit in the txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).
-  string next_txids = 21 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
+  string next_txids = 23 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
   // Optional If there are more internal transactions that couldn’t fit in the internal_txids array, this is the BlockCypher URL to query the next set of transactions (within a Block object).
-  string next_internal_txids = 22 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
+  string next_internal_txids = 24 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
   // List of uncle blocks by hash included by the miner of this block. You can read more about uncles here.
-  repeated string uncles = 23;
+  repeated string uncles = 25;
 }
 
 message TXRef {
@@ -122,10 +132,12 @@ message TXRef {
   uint64 confirmations = 7;
   // Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions.
   uint64 ref_balance = 8;
+  // Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions. This is a hex string.
+  string ref_balance_hex = 9 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
-  string confirmed = 9;
+  string confirmed = 10;
   // Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
-  string double_of = 10;
+  string double_of = 11;
 }
 
 message TXSkeleton {
@@ -159,52 +171,62 @@ message TX {
   repeated string addresses = 3;
   // The total number of wei exchanged in this transaction.
   uint64 total = 4;
+  // The total number of wei exchanged in this transaction. This is a hex string.
+  string total_hex = 5 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used.
-  uint64 fees = 5;
+  uint64 fees = 6;
+  // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used. This is a hex string.
+  string fees_hex = 7 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The size of the transaction in bytes.
-  uint64 size = 6;
+  uint64 size = 8;
   // The amount of gas used by this transaction.
-  uint64 gas_used = 7;
+  uint64 gas_used = 9;
+  // The amount of gas used by this transaction. This is a hex string.
+  string gas_used_hex = 10 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The price of gas—in wei—in this transaction.
-  uint64 gas_price = 8;
+  uint64 gas_price = 11;
+  // The price of gas—in wei—in this transaction. This is a hex string.
+  string gas_price_hex = 12 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Address of the peer that sent BlockCypher’s servers this transaction. May be empty.
-  string relayed_by = 9;
+  string relayed_by = 13;
   // Time this transaction was received by BlockCypher’s servers.
-  string received = 10;
+  string received = 14;
   // Version number of this transaction.
-  uint64 ver = 11;
+  uint64 ver = 15;
   // true if this is an attempted double spend; false otherwise.
-  bool double_spend = 12;
+  bool double_spend = 16;
   // Total number of inputs in the transaction.
-  uint64 vin_sz = 13;
+  uint64 vin_sz = 17;
   // Total number of outputs in the transaction.
-  uint64 vout_sz = 14;
+  uint64 vout_sz = 18;
   // Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
-  uint64 confirmations = 15;
+  uint64 confirmations = 19;
   // An array object containing a single input with a sequence number (used as a nonce for account balances) and an Ethereum account address. Only contains one input in the array; we still use an array to maintain parity with the Bitcoin API.
-  repeated InputType inputs = 16;
+  repeated InputType inputs = 20;
   // An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API.
-  repeated OutputType outputs = 17;
+  repeated OutputType outputs = 21;
   // Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions.
-  repeated string	internal_txids = 18;
+  repeated string	internal_txids = 22;
   // Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash).
-  string parent_tx = 19;
+  string parent_tx = 23;
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
-  string confirmed = 20;
+  string confirmed = 24;
   // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts.
-  uint64 gas_limit = 21;
+  uint64 gas_limit = 25;
+  // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts. This is a hex string.
+  string gas_limit_hex = 26 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed.
-  bool contract_creation = 22;
+  bool contract_creation = 27;
   // Optional Number of peers that have sent this transaction to BlockCypher; only present for unconfirmed transactions.
-  uint64 receive_count = 23;
+  uint64 receive_count = 28;
   // Optional Hash of the block that contains this transaction; only present for confirmed transactions.
-  string block_hash = 24;
+  string block_hash = 29;
   // Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions.
-  uint64 block_index = 25;
+  uint64 block_index = 30;
   // Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
-  string double_of = 26;
+  string double_of = 31;
   // Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”).
-  string execution_error = 27;
+  string execution_error = 32;
 }
 
 message Address {
@@ -218,28 +240,38 @@ message Address {
   string address = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{40})$"}];
   // Total amount of confirmed wei received by this address.
   uint64 total_received = 2;
+  // Total amount of confirmed wei received by this address. This is a hex string.
+  string total_received_hex = 3 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Total amount of confirmed wei sent by this address.
-  uint64 total_sent = 3;
+  uint64 total_sent = 4;
+  // Total amount of confirmed wei sent by this address. This is a hex string.
+  string total_sent_hex = 5 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0).
-  uint64 balance = 4;
+  uint64 balance = 6;
+  // Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0). This is a hex string.
+  string balance_hex = 7 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation.
-  uint64 unconfirmed_balance = 5;
+  uint64 unconfirmed_balance = 8;
+  // Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation. This is a hex string.
+  string unconfirmed_balance_hex = 9 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Total balance of wei, including confirmed and unconfirmed transactions, for this address.
-  uint64 final_balance = 6;
+  uint64 final_balance = 10;
+  // Total balance of wei, including confirmed and unconfirmed transactions, for this address. This is a hex string.
+  string final_balance_hex = 11 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted.
-  uint64 n_tx = 7;
+  uint64 n_tx = 12;
   // Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted.
-  uint64 unconfirmed_n_tx = 8;
+  uint64 unconfirmed_n_tx = 13;
   // Final number of transactions, including confirmed and unconfirmed transactions, for this address.
-  uint64 final_n_tx = 9;
+  uint64 final_n_tx = 14;
   // Optional To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction’s hash.
-  string tx_url = 10 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
+  string tx_url = 15 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
   // Optional Array of transaction summaries for this address. Usually only returned from the standard Address Endpoint.
-  repeated TXRef txrefs = 11;
+  repeated TXRef txrefs = 16;
   // Optional All unconfirmed transaction summaries for this address. Usually only returned from the standard Address Endpoint.
-  repeated TXRef unconfirmed_txrefs = 12;
+  repeated TXRef unconfirmed_txrefs = 17;
   // Optional If true, then the Address object contains more transactions than shown. Useful for determining whether to poll the API for more transaction information.
-  bool hasMore = 13;
+  bool hasMore = 18;
 }
 
 message AddressKeychain {
@@ -268,22 +300,26 @@ message Contract {
   string private = 4;
   // Maximum amount of gas to use in contract creation or method execution.
   uint64 gas_limit = 5;
+  // Maximum amount of gas to use in contract creation or method execution. This is a hex string.
+  string gas_limit_hex = 6 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Amount (in wei) to transfer; can be used when creating a contract or calling a method.
-  uint64 value = 6;
+  uint64 value = 7;
+  // Amount (in wei) to transfer; can be used when creating a contract or calling a method. This is a hex string.
+  string value_hex = 8 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Name of contract as published.
-  string name = 7;
+  string name = 9;
   // Hex-encoded binary compilation of this contract.
-  string bin = 8;
+  string bin = 10;
   // JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher.
-  string abi = 9;
+  string abi = 11;
   // Hex-encoded address of this contract.
-  string address = 10;
+  string address = 12;
   // Timestamp when this contract was confirmed in the Ethereum blockchain.
-  string created = 11;
+  string created = 13;
   // Hex-encoded transaction hash that created this contract.
-  string creation_tx_hash = 12;
+  string creation_tx_hash = 14;
   // If this is a response from a calling a contract method, this array of results may appear if the method returns any.
-  repeated string results = 13;
+  repeated string results = 15;
 }
 
 message Event {
