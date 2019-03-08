@@ -17,7 +17,7 @@ message CreateContractEndpointRequest {
   // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
   string private = 5;
   // Maximum amount of gas to use in contract creation or method execution.
-  int32 gas_limit = 6;
+  uint64 gas_limit = 6;
   // Maximum amount of gas to use in contract creation or method execution. This is a hex string.
   string gas_limit_hex = 7 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Amount (in wei) to transfer; can be used when creating a contract or calling a method.
@@ -61,7 +61,7 @@ message CallContractMethodEndpointRequest {
   // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
   string private = 7;
   // Maximum amount of gas to use in contract creation or method execution.
-  int32 gas_limit = 8;
+  uint64 gas_limit = 8;
   // Maximum amount of gas to use in contract creation or method execution. This is a hex string.
   string gas_limit_hex = 9 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Amount (in wei) to transfer; can be used when creating a contract or calling a method.
