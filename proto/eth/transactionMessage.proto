@@ -92,7 +92,7 @@ message CreateTransactionEndpointRequest {
 message SendTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   // A temporary TX, usually returned fully filled.
-  TX	tx = 2;
+  TX tx = 2;
   // Array of hex-encoded data for you to sign, containing one element for you to sign. Still an array to maintain parity with the Bitcoin API.
   repeated string tosign = 3;
   // Array of signatures corresponding to all the data in tosign, typically provided by you. Only one signature is required.
