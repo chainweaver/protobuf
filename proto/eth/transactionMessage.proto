@@ -64,7 +64,7 @@ message CreateTransactionEndpointRequest {
   // An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API.
   repeated OutputType outputs = 22;
   // Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions.
-  repeated string	internal_txids = 23;
+  repeated string internal_txids = 23;
   // Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash).
   string parent_tx = 24;
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.

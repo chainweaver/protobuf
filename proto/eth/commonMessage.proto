@@ -23,15 +23,15 @@ message Blockchain {
   };
 
   // The name of the blockchain represented, in the form of $COIN.$CHAIN.
-  string name	= 1;
+  string name = 1;
   // The current height of the blockchain; i.e., the number of blocks in the blockchain.
   uint64 height = 2;
   // The hash of the latest confirmed block in the blockchain; in Ethereum, the hashing function is Keccak/SHA3.
-  string hash	= 3 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{64})$"}];
+  string hash = 3 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{64})$"}];
   // The time of the latest update to the blockchain; typically when the latest block was added.
-  string time	= 4 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "date-time"}];
+  string time = 4 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "date-time"}];
   // The BlockCypher URL to query for more information on the latest confirmed block; returns a Block.
-  string latest_url	= 5 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
+  string latest_url = 5 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "uri"}];
   // The hash of the second-to-latest confirmed block in the blockchain.
   string previous_hash = 6 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{64})$"}];
   // The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a Block.
@@ -206,7 +206,7 @@ message TX {
   // An array object containing a single output with value (in wei), script, and an Ethereum account address. Only contains one output in the array; we still use an array to maintain parity with the Bitcoin API.
   repeated OutputType outputs = 21;
   // Optional If this transaction executed a contract which propagated its own subsequent transactions, then this array will be present, containing the hashes of those subsequent internal transactions.
-  repeated string	internal_txids = 22;
+  repeated string internal_txids = 22;
   // Optional If this transaction was initiated by a contract, this field will be present, conveying the hash of the parent transaction that executed the contract resulting in this transaction (the inverse of an internal_txids hash).
   string parent_tx = 23;
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
@@ -295,7 +295,7 @@ message Contract {
   // Parameters for either contract creation or method execution.
   repeated string params = 2;
   // Named contract(s) to publish; necessary to specify when first creating a contract.
-  repeated	string publish = 3;
+  repeated string publish = 3;
   // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
   string private = 4;
   // Maximum amount of gas to use in contract creation or method execution.
@@ -328,7 +328,7 @@ message Event {
   // Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx.
   string event = 2;
   // optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction.
-  string	hash = 3;
+  string hash = 3;
   // optional Only transactions associated with the given address will be sent.
   string address = 4;
   // optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6.

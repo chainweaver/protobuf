@@ -13,7 +13,7 @@ message CreateContractEndpointRequest {
   // Parameters for either contract creation or method execution.
   repeated string params = 3;
   // Named contract(s) to publish; necessary to specify when first creating a contract.
-  repeated	string publish = 4;
+  repeated string publish = 4;
   // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
   string private = 5;
   // Maximum amount of gas to use in contract creation or method execution.
@@ -57,7 +57,7 @@ message CallContractMethodEndpointRequest {
   // Parameters for either contract creation or method execution.
   repeated string params = 5;
   // Named contract(s) to publish; necessary to specify when first creating a contract.
-  repeated	string publish = 6;
+  repeated string publish = 6;
   // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
   string private = 7;
   // Maximum amount of gas to use in contract creation or method execution.
