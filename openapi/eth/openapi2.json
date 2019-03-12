@@ -2,7 +2,7 @@
   "info": {
     "title": "Chainweaver API for Ethereum",
     "description": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",
-    "version": "0.2.0"
+    "version": "feature/hex"
   },
   "host": "api.chainweaver.io",
   "schemes": [
@@ -864,25 +864,50 @@
           "format": "int64",
           "description": "Total amount of confirmed wei received by this address."
         },
+        "total_received_hex": {
+          "type": "string",
+          "description": "Total amount of confirmed wei received by this address. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "total_sent": {
           "type": "integer",
           "format": "int64",
           "description": "Total amount of confirmed wei sent by this address."
+        },
+        "total_sent_hex": {
+          "type": "string",
+          "description": "Total amount of confirmed wei sent by this address. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "balance": {
           "type": "integer",
           "format": "int64",
           "description": "Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0)."
         },
+        "balance_hex": {
+          "type": "string",
+          "description": "Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0). This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "unconfirmed_balance": {
           "type": "integer",
           "format": "int64",
           "description": "Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation."
         },
+        "unconfirmed_balance_hex": {
+          "type": "string",
+          "description": "Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "final_balance": {
           "type": "integer",
           "format": "int64",
           "description": "Total balance of wei, including confirmed and unconfirmed transactions, for this address."
+        },
+        "final_balance_hex": {
+          "type": "string",
+          "description": "Total balance of wei, including confirmed and unconfirmed transactions, for this address. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "n_tx": {
           "type": "integer",
@@ -1024,6 +1049,11 @@
           "format": "int64",
           "description": "Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions."
         },
+        "ref_balance_hex": {
+          "type": "string",
+          "description": "Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "confirmed": {
           "type": "string",
           "description": "Optional Time at which transaction was included in a block; only present for confirmed transactions."
@@ -1061,10 +1091,20 @@
           "format": "int64",
           "description": "The total number of wei transacted in this block."
         },
+        "total_hex": {
+          "type": "string",
+          "description": "The total number of wei transacted in this block. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "fees": {
           "type": "integer",
           "format": "int64",
           "description": "The total number of fees—in wei—collected by miners in this block."
+        },
+        "fees_hex": {
+          "type": "string",
+          "description": "The total number of fees—in wei—collected by miners in this block. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "size": {
           "type": "integer",
@@ -1227,15 +1267,30 @@
           "format": "int64",
           "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks."
         },
+        "high_gas_price_hex": {
+          "type": "string",
+          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "medium_gas_price": {
           "type": "integer",
           "format": "int64",
           "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks."
         },
+        "medium_gas_price_hex": {
+          "type": "string",
+          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "low_gas_price": {
           "type": "integer",
           "format": "int64",
           "description": "A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks."
+        },
+        "low_gas_price_hex": {
+          "type": "string",
+          "description": "A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "last_fork_height": {
           "type": "integer",
@@ -1298,8 +1353,13 @@
         },
         "gas_limit": {
           "type": "integer",
-          "format": "int32",
+          "format": "int64",
           "description": "Maximum amount of gas to use in contract creation or method execution."
+        },
+        "gas_limit_hex": {
+          "type": "string",
+          "description": "Maximum amount of gas to use in contract creation or method execution. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "value": {
           "type": "integer",
@@ -1373,10 +1433,20 @@
           "format": "int64",
           "description": "Maximum amount of gas to use in contract creation or method execution."
         },
+        "gas_limit_hex": {
+          "type": "string",
+          "description": "Maximum amount of gas to use in contract creation or method execution. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "value": {
           "type": "integer",
           "format": "int64",
           "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
+        },
+        "value_hex": {
+          "type": "string",
+          "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "name": {
           "type": "string",
@@ -1452,13 +1522,23 @@
         },
         "gas_limit": {
           "type": "integer",
-          "format": "int32",
+          "format": "int64",
           "description": "Maximum amount of gas to use in contract creation or method execution."
+        },
+        "gas_limit_hex": {
+          "type": "string",
+          "description": "Maximum amount of gas to use in contract creation or method execution. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "value": {
           "type": "integer",
           "format": "int32",
           "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method."
+        },
+        "value_hex": {
+          "type": "string",
+          "description": "Amount (in wei) to transfer; can be used when creating a contract or calling a method. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "name": {
           "type": "string",
@@ -1524,10 +1604,20 @@
           "format": "int64",
           "description": "The total number of wei exchanged in this transaction."
         },
+        "total_hex": {
+          "type": "string",
+          "description": "The total number of wei exchanged in this transaction. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "fees": {
           "type": "integer",
           "format": "int64",
           "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used."
+        },
+        "fees_hex": {
+          "type": "string",
+          "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "size": {
           "type": "integer",
@@ -1539,10 +1629,20 @@
           "format": "int64",
           "description": "The amount of gas used by this transaction."
         },
+        "gas_used_hex": {
+          "type": "string",
+          "description": "The amount of gas used by this transaction. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "gas_price": {
           "type": "integer",
           "format": "int64",
           "description": "The price of gas—in wei—in this transaction."
+        },
+        "gas_price_hex": {
+          "type": "string",
+          "description": "The price of gas—in wei—in this transaction. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "relayed_by": {
           "type": "string",
@@ -1608,8 +1708,13 @@
         },
         "gas_limit": {
           "type": "integer",
-          "format": "int32",
+          "format": "int64",
           "description": "Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts."
+        },
+        "gas_limit_hex": {
+          "type": "string",
+          "description": "Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "contract_creation": {
           "type": "boolean",
@@ -1766,10 +1871,20 @@
           "format": "int64",
           "description": "The total number of wei exchanged in this transaction."
         },
+        "total_hex": {
+          "type": "string",
+          "description": "The total number of wei exchanged in this transaction. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "fees": {
           "type": "integer",
           "format": "int64",
           "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used."
+        },
+        "fees_hex": {
+          "type": "string",
+          "description": "The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "size": {
           "type": "integer",
@@ -1781,10 +1896,20 @@
           "format": "int64",
           "description": "The amount of gas used by this transaction."
         },
+        "gas_used_hex": {
+          "type": "string",
+          "description": "The amount of gas used by this transaction. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
         "gas_price": {
           "type": "integer",
           "format": "int64",
           "description": "The price of gas—in wei—in this transaction."
+        },
+        "gas_price_hex": {
+          "type": "string",
+          "description": "The price of gas—in wei—in this transaction. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "relayed_by": {
           "type": "string",
@@ -1852,6 +1977,11 @@
           "type": "integer",
           "format": "int64",
           "description": "Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts."
+        },
+        "gas_limit_hex": {
+          "type": "string",
+          "description": "Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts. This is a hex string.",
+          "pattern": "^0x[0-9a-fA-F]+$"
         },
         "contract_creation": {
           "type": "boolean",
@@ -2028,5 +2158,5 @@
       }
     }
   },
-  "basePath": "/v0"
+  "basePath": "/feature/hex"
 }
