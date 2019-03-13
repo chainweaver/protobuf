@@ -30,7 +30,7 @@ func (m *TXs) Reset()         { *m = TXs{} }
 func (m *TXs) String() string { return proto.CompactTextString(m) }
 func (*TXs) ProtoMessage()    {}
 func (*TXs) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transactionMessage_53a8bc69adae87b5, []int{0}
+	return fileDescriptor_transactionMessage_650e795c0288c2bd, []int{0}
 }
 func (m *TXs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TXs.Unmarshal(m, b)
@@ -69,7 +69,7 @@ func (m *TransactionHashEndpointRequest) Reset()         { *m = TransactionHashE
 func (m *TransactionHashEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*TransactionHashEndpointRequest) ProtoMessage()    {}
 func (*TransactionHashEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transactionMessage_53a8bc69adae87b5, []int{1}
+	return fileDescriptor_transactionMessage_650e795c0288c2bd, []int{1}
 }
 func (m *TransactionHashEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionHashEndpointRequest.Unmarshal(m, b)
@@ -116,7 +116,7 @@ func (m *UnconfirmedTransactionsEndpointRequest) Reset() {
 func (m *UnconfirmedTransactionsEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*UnconfirmedTransactionsEndpointRequest) ProtoMessage()    {}
 func (*UnconfirmedTransactionsEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transactionMessage_53a8bc69adae87b5, []int{2}
+	return fileDescriptor_transactionMessage_650e795c0288c2bd, []int{2}
 }
 func (m *UnconfirmedTransactionsEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UnconfirmedTransactionsEndpointRequest.Unmarshal(m, b)
@@ -220,7 +220,7 @@ func (m *CreateTransactionEndpointRequest) Reset()         { *m = CreateTransact
 func (m *CreateTransactionEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateTransactionEndpointRequest) ProtoMessage()    {}
 func (*CreateTransactionEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transactionMessage_53a8bc69adae87b5, []int{3}
+	return fileDescriptor_transactionMessage_650e795c0288c2bd, []int{3}
 }
 func (m *CreateTransactionEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateTransactionEndpointRequest.Unmarshal(m, b)
@@ -499,7 +499,7 @@ func (m *SendTransactionEndpointRequest) Reset()         { *m = SendTransactionE
 func (m *SendTransactionEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*SendTransactionEndpointRequest) ProtoMessage()    {}
 func (*SendTransactionEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transactionMessage_53a8bc69adae87b5, []int{4}
+	return fileDescriptor_transactionMessage_650e795c0288c2bd, []int{4}
 }
 func (m *SendTransactionEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SendTransactionEndpointRequest.Unmarshal(m, b)
@@ -574,7 +574,7 @@ func (m *DecodeRawTransactionEndpointRequest) Reset()         { *m = DecodeRawTr
 func (m *DecodeRawTransactionEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DecodeRawTransactionEndpointRequest) ProtoMessage()    {}
 func (*DecodeRawTransactionEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transactionMessage_53a8bc69adae87b5, []int{5}
+	return fileDescriptor_transactionMessage_650e795c0288c2bd, []int{5}
 }
 func (m *DecodeRawTransactionEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DecodeRawTransactionEndpointRequest.Unmarshal(m, b)
@@ -628,7 +628,7 @@ func (m *PushRawTransactionEndpointRequest) Reset()         { *m = PushRawTransa
 func (m *PushRawTransactionEndpointRequest) String() string { return proto.CompactTextString(m) }
 func (*PushRawTransactionEndpointRequest) ProtoMessage()    {}
 func (*PushRawTransactionEndpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transactionMessage_53a8bc69adae87b5, []int{6}
+	return fileDescriptor_transactionMessage_650e795c0288c2bd, []int{6}
 }
 func (m *PushRawTransactionEndpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PushRawTransactionEndpointRequest.Unmarshal(m, b)
@@ -680,10 +680,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("transactionMessage.proto", fileDescriptor_transactionMessage_53a8bc69adae87b5)
+	proto.RegisterFile("transactionMessage.proto", fileDescriptor_transactionMessage_650e795c0288c2bd)
 }
 
-var fileDescriptor_transactionMessage_53a8bc69adae87b5 = []byte{
+var fileDescriptor_transactionMessage_650e795c0288c2bd = []byte{
 	// 944 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x56, 0xdd, 0x6f, 0xdb, 0xb6,
 	0x17, 0x85, 0xe2, 0xc4, 0x1f, 0x37, 0x1f, 0x4d, 0x99, 0x36, 0x65, 0xd3, 0x34, 0x75, 0x9c, 0xfc,
