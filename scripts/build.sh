@@ -249,6 +249,14 @@ run() {
   if [ $? -gt 0 ]; then
     return 1
   fi
+  jq '(.. | select(.format? == "byte")).type="integer"' ./openapi/$coin/openapi2.json  > ./openapi/$coin/work/openapi2.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+  jq 'del((.. | select(.type? == "integer" or .type? == "boolean" or .type? == "string")).format)' ./openapi/$coin/work/openapi2.json  > ./openapi/$coin/openapi2.json
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
 
   # Add error definition
   jq -s '.[0] * .[1]' ./openapi/$coin/openapi2.json ./scripts/openapi/errorDefinition.json > ./openapi/$coin/work/openapi2.json
