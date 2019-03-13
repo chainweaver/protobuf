@@ -268,7 +268,7 @@
                               "value": "application/json"
                             }
                           ],
-                          "body": "{\n \"address\": \"<string>\",\n \"wallet\": {\n  \"token\": \"<string>\",\n  \"name\": \"<string>\",\n  \"addresses\": [\n   \"<string>\",\n   \"<string>\"\n  ]\n },\n \"hd_wallet\": {\n  \"token\": \"<string>\",\n  \"name\": \"<string>\",\n  \"chains\": [\n   {\n    \"chain_addresses\": [\n     {\n      \"address\": \"<string>\",\n      \"path\": \"<string>\",\n      \"public\": \"<string>\"\n     },\n     {\n      \"address\": \"<string>\",\n      \"path\": \"<string>\",\n      \"public\": \"<string>\"\n     }\n    ]\n   },\n   {\n    \"chain_addresses\": [\n     {\n      \"address\": \"<string>\",\n      \"path\": \"<string>\",\n      \"public\": \"<string>\"\n     },\n     {\n      \"address\": \"<string>\",\n      \"path\": \"<string>\",\n      \"public\": \"<string>\"\n     }\n    ]\n   }\n  ],\n  \"extended_public_key\": \"<string>\",\n  \"subchain_indexes\": [\n   \"<integer>\",\n   \"<integer>\"\n  ]\n },\n \"total_received\": \"<integer>\",\n \"total_sent\": \"<integer>\",\n \"balance\": \"<integer>\",\n \"unconfirmed_balance\": \"<integer>\",\n \"final_balance\": \"<integer>\",\n \"n_tx\": \"<integer>\",\n \"unconfirmed_n_tx\": \"<integer>\",\n \"final_n_tx\": \"<integer>\",\n \"tx_url\": \"<string>\",\n \"txs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"hash\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"total\": \"<integer>\",\n   \"fees\": \"<integer>\",\n   \"size\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"relayed_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"ver\": \"<integer>\",\n   \"lock_time\": \"<integer>\",\n   \"vin_sz\": \"<integer>\",\n   \"vout_sz\": \"<integer>\",\n   \"confirmations\": \"<integer>\",\n   \"inputs\": [\n    {\n     \"prev_hash\": \"<string>\",\n     \"output_index\": \"<integer>\",\n     \"output_value\": \"<integer>\",\n     \"script_type\": \"<string>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"sequence\": \"<integer>\",\n     \"age\": \"<integer>\",\n     \"wallet_name\": \"<string>\",\n     \"wallet_token\": \"<string>\"\n    },\n    {\n     \"prev_hash\": \"<string>\",\n     \"output_index\": \"<integer>\",\n     \"output_value\": \"<integer>\",\n     \"script_type\": \"<string>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"sequence\": \"<integer>\",\n     \"age\": \"<integer>\",\n     \"wallet_name\": \"<string>\",\n     \"wallet_token\": \"<string>\"\n    }\n   ],\n   \"outputs\": [\n    {\n     \"value\": \"<integer>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"script_type\": \"<string>\",\n     \"spent_by\": \"<string>\",\n     \"data_hex\": \"<string>\",\n     \"data_string\": \"<string>\"\n    },\n    {\n     \"value\": \"<integer>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"script_type\": \"<string>\",\n     \"spent_by\": \"<string>\",\n     \"data_hex\": \"<string>\",\n     \"data_string\": \"<string>\"\n    }\n   ],\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"change_address\": \"<string>\",\n   \"block_hash\": \"<string>\",\n   \"block_index\": \"<integer>\",\n   \"double_of\": \"<string>\",\n   \"data_protocol\": \"<string>\",\n   \"hex\": \"<string>\",\n   \"next_inputs\": \"<string>\",\n   \"next_outputs\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"hash\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"total\": \"<integer>\",\n   \"fees\": \"<integer>\",\n   \"size\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"relayed_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"ver\": \"<integer>\",\n   \"lock_time\": \"<integer>\",\n   \"vin_sz\": \"<integer>\",\n   \"vout_sz\": \"<integer>\",\n   \"confirmations\": \"<integer>\",\n   \"inputs\": [\n    {\n     \"prev_hash\": \"<string>\",\n     \"output_index\": \"<integer>\",\n     \"output_value\": \"<integer>\",\n     \"script_type\": \"<string>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"sequence\": \"<integer>\",\n     \"age\": \"<integer>\",\n     \"wallet_name\": \"<string>\",\n     \"wallet_token\": \"<string>\"\n    },\n    {\n     \"prev_hash\": \"<string>\",\n     \"output_index\": \"<integer>\",\n     \"output_value\": \"<integer>\",\n     \"script_type\": \"<string>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"sequence\": \"<integer>\",\n     \"age\": \"<integer>\",\n     \"wallet_name\": \"<string>\",\n     \"wallet_token\": \"<string>\"\n    }\n   ],\n   \"outputs\": [\n    {\n     \"value\": \"<integer>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"script_type\": \"<string>\",\n     \"spent_by\": \"<string>\",\n     \"data_hex\": \"<string>\",\n     \"data_string\": \"<string>\"\n    },\n    {\n     \"value\": \"<integer>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"script_type\": \"<string>\",\n     \"spent_by\": \"<string>\",\n     \"data_hex\": \"<string>\",\n     \"data_string\": \"<string>\"\n    }\n   ],\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"change_address\": \"<string>\",\n   \"block_hash\": \"<string>\",\n   \"block_index\": \"<integer>\",\n   \"double_of\": \"<string>\",\n   \"data_protocol\": \"<string>\",\n   \"hex\": \"<string>\",\n   \"next_inputs\": \"<string>\",\n   \"next_outputs\": \"<string>\"\n  }\n ],\n \"txrefs\": [\n  {\n   \"address\": \"<string>\",\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<integer>\",\n   \"value\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"spent\": \"<boolean>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"ref_balance\": \"<integer>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"address\": \"<string>\",\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<integer>\",\n   \"value\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"spent\": \"<boolean>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"ref_balance\": \"<integer>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"address\": \"<string>\",\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<integer>\",\n   \"value\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"spent\": \"<boolean>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"ref_balance\": \"<integer>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"address\": \"<string>\",\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<integer>\",\n   \"value\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"spent\": \"<boolean>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"ref_balance\": \"<integer>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"double_of\": \"<string>\"\n  }\n ]\n}",
+                          "body": "{\n \"address\": \"<string>\",\n \"wallet\": {\n  \"token\": \"<string>\",\n  \"name\": \"<string>\",\n  \"addresses\": [\n   \"<string>\",\n   \"<string>\"\n  ]\n },\n \"hd_wallet\": {\n  \"token\": \"<string>\",\n  \"name\": \"<string>\",\n  \"chains\": [\n   {\n    \"chain_addresses\": [\n     {\n      \"address\": \"<string>\",\n      \"path\": \"<string>\",\n      \"public\": \"<string>\"\n     },\n     {\n      \"address\": \"<string>\",\n      \"path\": \"<string>\",\n      \"public\": \"<string>\"\n     }\n    ],\n    \"index\": \"<string>\"\n   },\n   {\n    \"chain_addresses\": [\n     {\n      \"address\": \"<string>\",\n      \"path\": \"<string>\",\n      \"public\": \"<string>\"\n     },\n     {\n      \"address\": \"<string>\",\n      \"path\": \"<string>\",\n      \"public\": \"<string>\"\n     }\n    ],\n    \"index\": \"<string>\"\n   }\n  ],\n  \"hd\": \"<boolean>\",\n  \"extended_public_key\": \"<string>\",\n  \"subchain_indexes\": [\n   \"<integer>\",\n   \"<integer>\"\n  ]\n },\n \"total_received\": \"<integer>\",\n \"total_sent\": \"<integer>\",\n \"balance\": \"<integer>\",\n \"unconfirmed_balance\": \"<integer>\",\n \"final_balance\": \"<integer>\",\n \"n_tx\": \"<integer>\",\n \"unconfirmed_n_tx\": \"<integer>\",\n \"final_n_tx\": \"<integer>\",\n \"tx_url\": \"<string>\",\n \"txs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"hash\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"total\": \"<integer>\",\n   \"fees\": \"<integer>\",\n   \"size\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"relayed_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"ver\": \"<integer>\",\n   \"lock_time\": \"<integer>\",\n   \"double_spend\": \"<boolean>\",\n   \"vin_sz\": \"<integer>\",\n   \"vout_sz\": \"<integer>\",\n   \"confirmations\": \"<integer>\",\n   \"inputs\": [\n    {\n     \"prev_hash\": \"<string>\",\n     \"output_index\": \"<integer>\",\n     \"output_value\": \"<integer>\",\n     \"script_type\": \"<string>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"sequence\": \"<integer>\",\n     \"age\": \"<integer>\",\n     \"wallet_name\": \"<string>\",\n     \"wallet_token\": \"<string>\"\n    },\n    {\n     \"prev_hash\": \"<string>\",\n     \"output_index\": \"<integer>\",\n     \"output_value\": \"<integer>\",\n     \"script_type\": \"<string>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"sequence\": \"<integer>\",\n     \"age\": \"<integer>\",\n     \"wallet_name\": \"<string>\",\n     \"wallet_token\": \"<string>\"\n    }\n   ],\n   \"outputs\": [\n    {\n     \"value\": \"<integer>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"script_type\": \"<string>\",\n     \"spent_by\": \"<string>\",\n     \"data_hex\": \"<string>\",\n     \"data_string\": \"<string>\"\n    },\n    {\n     \"value\": \"<integer>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"script_type\": \"<string>\",\n     \"spent_by\": \"<string>\",\n     \"data_hex\": \"<string>\",\n     \"data_string\": \"<string>\"\n    }\n   ],\n   \"opt_in_rbf\": \"<boolean>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"change_address\": \"<string>\",\n   \"block_hash\": \"<string>\",\n   \"block_index\": \"<integer>\",\n   \"double_of\": \"<string>\",\n   \"data_protocol\": \"<string>\",\n   \"hex\": \"<string>\",\n   \"next_inputs\": \"<string>\",\n   \"next_outputs\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"hash\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"total\": \"<integer>\",\n   \"fees\": \"<integer>\",\n   \"size\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"relayed_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"ver\": \"<integer>\",\n   \"lock_time\": \"<integer>\",\n   \"double_spend\": \"<boolean>\",\n   \"vin_sz\": \"<integer>\",\n   \"vout_sz\": \"<integer>\",\n   \"confirmations\": \"<integer>\",\n   \"inputs\": [\n    {\n     \"prev_hash\": \"<string>\",\n     \"output_index\": \"<integer>\",\n     \"output_value\": \"<integer>\",\n     \"script_type\": \"<string>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"sequence\": \"<integer>\",\n     \"age\": \"<integer>\",\n     \"wallet_name\": \"<string>\",\n     \"wallet_token\": \"<string>\"\n    },\n    {\n     \"prev_hash\": \"<string>\",\n     \"output_index\": \"<integer>\",\n     \"output_value\": \"<integer>\",\n     \"script_type\": \"<string>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"sequence\": \"<integer>\",\n     \"age\": \"<integer>\",\n     \"wallet_name\": \"<string>\",\n     \"wallet_token\": \"<string>\"\n    }\n   ],\n   \"outputs\": [\n    {\n     \"value\": \"<integer>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"script_type\": \"<string>\",\n     \"spent_by\": \"<string>\",\n     \"data_hex\": \"<string>\",\n     \"data_string\": \"<string>\"\n    },\n    {\n     \"value\": \"<integer>\",\n     \"script\": \"<string>\",\n     \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n     ],\n     \"script_type\": \"<string>\",\n     \"spent_by\": \"<string>\",\n     \"data_hex\": \"<string>\",\n     \"data_string\": \"<string>\"\n    }\n   ],\n   \"opt_in_rbf\": \"<boolean>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"change_address\": \"<string>\",\n   \"block_hash\": \"<string>\",\n   \"block_index\": \"<integer>\",\n   \"double_of\": \"<string>\",\n   \"data_protocol\": \"<string>\",\n   \"hex\": \"<string>\",\n   \"next_inputs\": \"<string>\",\n   \"next_outputs\": \"<string>\"\n  }\n ],\n \"txrefs\": [\n  {\n   \"address\": \"<string>\",\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<integer>\",\n   \"value\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"spent\": \"<boolean>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"ref_balance\": \"<integer>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"address\": \"<string>\",\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<integer>\",\n   \"value\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"spent\": \"<boolean>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"ref_balance\": \"<integer>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"address\": \"<string>\",\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<integer>\",\n   \"value\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"spent\": \"<boolean>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"ref_balance\": \"<integer>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"address\": \"<string>\",\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<integer>\",\n   \"value\": \"<integer>\",\n   \"preference\": \"<string>\",\n   \"spent\": \"<boolean>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"ref_balance\": \"<integer>\",\n   \"confidence\": \"<float>\",\n   \"confirmed\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"received\": \"<string>\",\n   \"receive_count\": \"<integer>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"hasMore\": \"<boolean>\"\n}",
                           "cookie": [],
                           "_postman_previewlanguage": "json"
                         }
@@ -788,7 +788,7 @@
                             },
                             "body": {
                               "mode": "raw",
-                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"address\": \"<string>\"\n}"
+                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"address\": \"<string>\",\n    \"private\": \"<boolean>\"\n}"
                             }
                           },
                           "response": [
@@ -823,7 +823,7 @@
                                 "method": "PUT",
                                 "body": {
                                   "mode": "raw",
-                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"address\": \"<string>\"\n}"
+                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"address\": \"<string>\",\n    \"private\": \"<boolean>\"\n}"
                                 }
                               },
                               "status": "OK",
@@ -931,7 +931,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"forwards\": [\n  {\n   \"id\": \"<string>\",\n   \"token\": \"<string>\",\n   \"destination\": \"<string>\",\n   \"input_address\": \"<string>\",\n   \"process_fees_address\": \"<string>\",\n   \"process_fees_satoshis\": \"<integer>\",\n   \"process_fees_percent\": \"<float>\",\n   \"callback_url\": \"<string>\",\n   \"mining_fees_satoshis\": \"<integer>\",\n   \"txs\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"id\": \"<string>\",\n   \"token\": \"<string>\",\n   \"destination\": \"<string>\",\n   \"input_address\": \"<string>\",\n   \"process_fees_address\": \"<string>\",\n   \"process_fees_satoshis\": \"<integer>\",\n   \"process_fees_percent\": \"<float>\",\n   \"callback_url\": \"<string>\",\n   \"mining_fees_satoshis\": \"<integer>\",\n   \"txs\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ]\n}",
+                      "body": "{\n \"forwards\": [\n  {\n   \"id\": \"<string>\",\n   \"token\": \"<string>\",\n   \"destination\": \"<string>\",\n   \"input_address\": \"<string>\",\n   \"process_fees_address\": \"<string>\",\n   \"process_fees_satoshis\": \"<integer>\",\n   \"process_fees_percent\": \"<float>\",\n   \"callback_url\": \"<string>\",\n   \"enable_confirmations\": \"<boolean>\",\n   \"mining_fees_satoshis\": \"<integer>\",\n   \"txs\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  },\n  {\n   \"id\": \"<string>\",\n   \"token\": \"<string>\",\n   \"destination\": \"<string>\",\n   \"input_address\": \"<string>\",\n   \"process_fees_address\": \"<string>\",\n   \"process_fees_satoshis\": \"<integer>\",\n   \"process_fees_percent\": \"<float>\",\n   \"callback_url\": \"<string>\",\n   \"enable_confirmations\": \"<boolean>\",\n   \"mining_fees_satoshis\": \"<integer>\",\n   \"txs\": [\n    \"<string>\",\n    \"<string>\"\n   ]\n  }\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -982,7 +982,7 @@
                     },
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"network\": \"MAINNET\",\n    \"id\": \"<string>\",\n    \"token\": \"<string>\",\n    \"destination\": \"<string>\",\n    \"input_address\": \"<string>\",\n    \"process_fees_address\": \"<string>\",\n    \"process_fees_satoshis\": \"<integer>\",\n    \"process_fees_percent\": \"<float>\",\n    \"callback_url\": \"<string>\",\n    \"mining_fees_satoshis\": \"<integer>\",\n    \"txs\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+                      "raw": "{\n    \"network\": \"MAINNET\",\n    \"id\": \"<string>\",\n    \"token\": \"<string>\",\n    \"destination\": \"<string>\",\n    \"input_address\": \"<string>\",\n    \"process_fees_address\": \"<string>\",\n    \"process_fees_satoshis\": \"<integer>\",\n    \"process_fees_percent\": \"<float>\",\n    \"callback_url\": \"<string>\",\n    \"enable_confirmations\": \"<boolean>\",\n    \"mining_fees_satoshis\": \"<integer>\",\n    \"txs\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
                     }
                   },
                   "response": [
@@ -1015,7 +1015,7 @@
                         "method": "POST",
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n    \"network\": \"MAINNET\",\n    \"id\": \"<string>\",\n    \"token\": \"<string>\",\n    \"destination\": \"<string>\",\n    \"input_address\": \"<string>\",\n    \"process_fees_address\": \"<string>\",\n    \"process_fees_satoshis\": \"<integer>\",\n    \"process_fees_percent\": \"<float>\",\n    \"callback_url\": \"<string>\",\n    \"mining_fees_satoshis\": \"<integer>\",\n    \"txs\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+                          "raw": "{\n    \"network\": \"MAINNET\",\n    \"id\": \"<string>\",\n    \"token\": \"<string>\",\n    \"destination\": \"<string>\",\n    \"input_address\": \"<string>\",\n    \"process_fees_address\": \"<string>\",\n    \"process_fees_satoshis\": \"<integer>\",\n    \"process_fees_percent\": \"<float>\",\n    \"callback_url\": \"<string>\",\n    \"enable_confirmations\": \"<boolean>\",\n    \"mining_fees_satoshis\": \"<integer>\",\n    \"txs\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
                         }
                       },
                       "status": "OK",
@@ -1214,7 +1214,7 @@
                                   "value": "application/json"
                                 }
                               ],
-                              "body": "{\n \"token\": \"<string>\",\n \"analytics_engine\": \"<string>\",\n \"created_at\": \"<string>\",\n \"completed_at\": \"<string>\",\n \"ticket\": \"<string>\",\n \"result_path\": \"<string>\",\n \"args\": {\n  \"address\": \"<string>\",\n  \"value_threshold\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"start\": \"<string>\",\n  \"end\": \"<string>\",\n  \"degree\": \"<integer>\",\n  \"source\": \"<string>\"\n }\n}",
+                              "body": "{\n \"token\": \"<string>\",\n \"analytics_engine\": \"<string>\",\n \"created_at\": \"<string>\",\n \"completed_at\": \"<string>\",\n \"finished\": \"<boolean>\",\n \"started\": \"<boolean>\",\n \"ticket\": \"<string>\",\n \"result_path\": \"<string>\",\n \"args\": {\n  \"address\": \"<string>\",\n  \"value_threshold\": \"<integer>\",\n  \"limit\": \"<integer>\",\n  \"start\": \"<string>\",\n  \"end\": \"<string>\",\n  \"degree\": \"<integer>\",\n  \"source\": \"<string>\"\n }\n}",
                               "cookie": [],
                               "_postman_previewlanguage": "json"
                             }
@@ -1313,7 +1313,7 @@
                                   "value": "application/json"
                                 }
                               ],
-                              "body": "{\n \"page\": \"<integer>\",\n \"next_page\": \"<string>\",\n \"results\": [\n  {\n   \"DstAddr\": \"<string>\",\n   \"SrcAddr\": \"<string>\",\n   \"TxHash\": \"<string>\",\n   \"Value\": \"<integer>\"\n  },\n  {\n   \"DstAddr\": \"<string>\",\n   \"SrcAddr\": \"<string>\",\n   \"TxHash\": \"<string>\",\n   \"Value\": \"<integer>\"\n  }\n ]\n}",
+                              "body": "{\n \"page\": \"<integer>\",\n \"more\": \"<boolean>\",\n \"next_page\": \"<string>\",\n \"results\": [\n  {\n   \"DstAddr\": \"<string>\",\n   \"SrcAddr\": \"<string>\",\n   \"TxHash\": \"<string>\",\n   \"Value\": \"<integer>\"\n  },\n  {\n   \"DstAddr\": \"<string>\",\n   \"SrcAddr\": \"<string>\",\n   \"TxHash\": \"<string>\",\n   \"Value\": \"<integer>\"\n  }\n ]\n}",
                               "cookie": [],
                               "_postman_previewlanguage": "json"
                             }
@@ -1625,7 +1625,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"ver\": \"<integer>\",\n \"assetid\": \"<string>\",\n \"hash\": \"<string>\",\n \"confirmed\": \"<string>\",\n \"received\": \"<string>\",\n \"oap_meta\": \"<string>\",\n \"inputs\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"outputs\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "body": "{\n \"ver\": \"<integer>\",\n \"assetid\": \"<string>\",\n \"hash\": \"<string>\",\n \"confirmed\": \"<string>\",\n \"received\": \"<string>\",\n \"oap_meta\": \"<string>\",\n \"double_spend\": \"<boolean>\",\n \"inputs\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"outputs\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -2474,7 +2474,7 @@
                             },
                             "body": {
                               "mode": "raw",
-                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"block_hash\": \"<string>\"\n}"
+                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"block_hash\": \"<string>\",\n    \"private\": \"<boolean>\"\n}"
                             }
                           },
                           "response": [
@@ -2509,7 +2509,7 @@
                                 "method": "PUT",
                                 "body": {
                                   "mode": "raw",
-                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"block_hash\": \"<string>\"\n}"
+                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"block_hash\": \"<string>\",\n    \"private\": \"<boolean>\"\n}"
                                 }
                               },
                               "status": "OK",
@@ -2719,7 +2719,7 @@
                       "value": "application/json"
                     }
                   ],
-                  "body": "{\n \"network\": \"MAINNET\",\n \"name\": \"<string>\",\n \"state\": \"<string>\",\n \"last_transition_hash\": \"<string>\"\n}",
+                  "body": "{\n \"network\": \"MAINNET\",\n \"name\": \"<string>\",\n \"state\": \"<string>\",\n \"last_transition_height\": \"<string>\",\n \"last_transition_hash\": \"<string>\"\n}",
                   "cookie": [],
                   "_postman_previewlanguage": "json"
                 }
@@ -3274,7 +3274,7 @@
                             },
                             "body": {
                               "mode": "raw",
-                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"txhash\": \"<string>\"\n}"
+                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"txhash\": \"<string>\",\n    \"private\": \"<boolean>\"\n}"
                             }
                           },
                           "response": [
@@ -3309,7 +3309,7 @@
                                 "method": "PUT",
                                 "body": {
                                   "mode": "raw",
-                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"txhash\": \"<string>\"\n}"
+                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"key_pairs\": \"<object>\",\n    \"txhash\": \"<string>\",\n    \"private\": \"<boolean>\"\n}"
                                 }
                               },
                               "status": "OK",
@@ -3467,7 +3467,7 @@
                     },
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"network\": \"MAINNET\",\n    \"from_pubkey\": \"<string>\",\n    \"from_private\": \"<string>\",\n    \"from_wif\": \"<string>\",\n    \"to_address\": \"<string>\",\n    \"token\": \"<string>\",\n    \"change_address\": \"<string>\",\n    \"tosign\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"signatures\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"inputs\": [\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        },\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        },\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        }\n    ],\n    \"fees\": \"<integer>\",\n    \"hash\": \"<string>\"\n}"
+                      "raw": "{\n    \"network\": \"MAINNET\",\n    \"from_pubkey\": \"<string>\",\n    \"from_private\": \"<string>\",\n    \"from_wif\": \"<string>\",\n    \"to_address\": \"<string>\",\n    \"value_satoshis\": \"<string>\",\n    \"token\": \"<string>\",\n    \"change_address\": \"<string>\",\n    \"wait_guarantee\": \"<boolean>\",\n    \"tosign\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"signatures\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"inputs\": [\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        },\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        },\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        }\n    ],\n    \"fees\": \"<integer>\",\n    \"hash\": \"<string>\"\n}"
                     }
                   },
                   "response": [
@@ -3501,7 +3501,7 @@
                         "method": "POST",
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n    \"network\": \"MAINNET\",\n    \"from_pubkey\": \"<string>\",\n    \"from_private\": \"<string>\",\n    \"from_wif\": \"<string>\",\n    \"to_address\": \"<string>\",\n    \"token\": \"<string>\",\n    \"change_address\": \"<string>\",\n    \"tosign\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"signatures\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"inputs\": [\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        },\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        },\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        }\n    ],\n    \"fees\": \"<integer>\",\n    \"hash\": \"<string>\"\n}"
+                          "raw": "{\n    \"network\": \"MAINNET\",\n    \"from_pubkey\": \"<string>\",\n    \"from_private\": \"<string>\",\n    \"from_wif\": \"<string>\",\n    \"to_address\": \"<string>\",\n    \"value_satoshis\": \"<string>\",\n    \"token\": \"<string>\",\n    \"change_address\": \"<string>\",\n    \"wait_guarantee\": \"<boolean>\",\n    \"tosign\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"signatures\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"inputs\": [\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        },\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        },\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        }\n    ],\n    \"fees\": \"<integer>\",\n    \"hash\": \"<string>\"\n}"
                         }
                       },
                       "status": "OK",
@@ -3512,7 +3512,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"from_pubkey\": \"<string>\",\n \"from_private\": \"<string>\",\n \"from_wif\": \"<string>\",\n \"to_address\": \"<string>\",\n \"token\": \"<string>\",\n \"change_address\": \"<string>\",\n \"tosign\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"signatures\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"inputs\": [\n  {\n   \"prev_hash\": \"<string>\",\n   \"output_index\": \"<integer>\",\n   \"output_value\": \"<integer>\",\n   \"script_type\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"sequence\": \"<integer>\",\n   \"age\": \"<integer>\",\n   \"wallet_name\": \"<string>\",\n   \"wallet_token\": \"<string>\"\n  },\n  {\n   \"prev_hash\": \"<string>\",\n   \"output_index\": \"<integer>\",\n   \"output_value\": \"<integer>\",\n   \"script_type\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"sequence\": \"<integer>\",\n   \"age\": \"<integer>\",\n   \"wallet_name\": \"<string>\",\n   \"wallet_token\": \"<string>\"\n  }\n ],\n \"outputs\": [\n  {\n   \"value\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"script_type\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"data_hex\": \"<string>\",\n   \"data_string\": \"<string>\"\n  },\n  {\n   \"value\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"script_type\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"data_hex\": \"<string>\",\n   \"data_string\": \"<string>\"\n  }\n ],\n \"fees\": \"<integer>\",\n \"hash\": \"<string>\"\n}",
+                      "body": "{\n \"from_pubkey\": \"<string>\",\n \"from_private\": \"<string>\",\n \"from_wif\": \"<string>\",\n \"to_address\": \"<string>\",\n \"value_satoshis\": \"<string>\",\n \"token\": \"<string>\",\n \"change_address\": \"<string>\",\n \"wait_guarantee\": \"<boolean>\",\n \"tosign\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"signatures\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"inputs\": [\n  {\n   \"prev_hash\": \"<string>\",\n   \"output_index\": \"<integer>\",\n   \"output_value\": \"<integer>\",\n   \"script_type\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"sequence\": \"<integer>\",\n   \"age\": \"<integer>\",\n   \"wallet_name\": \"<string>\",\n   \"wallet_token\": \"<string>\"\n  },\n  {\n   \"prev_hash\": \"<string>\",\n   \"output_index\": \"<integer>\",\n   \"output_value\": \"<integer>\",\n   \"script_type\": \"<string>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"sequence\": \"<integer>\",\n   \"age\": \"<integer>\",\n   \"wallet_name\": \"<string>\",\n   \"wallet_token\": \"<string>\"\n  }\n ],\n \"outputs\": [\n  {\n   \"value\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"script_type\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"data_hex\": \"<string>\",\n   \"data_string\": \"<string>\"\n  },\n  {\n   \"value\": \"<integer>\",\n   \"script\": \"<string>\",\n   \"addresses\": [\n    \"<string>\",\n    \"<string>\"\n   ],\n   \"script_type\": \"<string>\",\n   \"spent_by\": \"<string>\",\n   \"data_hex\": \"<string>\",\n   \"data_string\": \"<string>\"\n  }\n ],\n \"fees\": \"<integer>\",\n \"hash\": \"<string>\"\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     }
@@ -3758,7 +3758,7 @@
                     },
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"network\": \"MAINNET\",\n    \"block_height\": \"<integer>\",\n    \"hash\": \"<string>\",\n    \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"total\": \"<integer>\",\n    \"fees\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"preference\": \"<string>\",\n    \"relayed_by\": \"<string>\",\n    \"received\": \"<string>\",\n    \"ver\": \"<integer>\",\n    \"lock_time\": \"<integer>\",\n    \"vin_sz\": \"<integer>\",\n    \"vout_sz\": \"<integer>\",\n    \"confirmations\": \"<integer>\",\n    \"inputs\": [\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        },\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        },\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        }\n    ],\n    \"confidence\": \"<float>\",\n    \"confirmed\": \"<string>\",\n    \"receive_count\": \"<integer>\",\n    \"change_address\": \"<string>\",\n    \"block_hash\": \"<string>\",\n    \"block_index\": \"<integer>\",\n    \"double_of\": \"<string>\",\n    \"data_protocol\": \"<string>\",\n    \"hex\": \"<string>\",\n    \"next_inputs\": \"<string>\",\n    \"next_outputs\": \"<string>\"\n}"
+                      "raw": "{\n    \"network\": \"MAINNET\",\n    \"block_height\": \"<integer>\",\n    \"hash\": \"<string>\",\n    \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"total\": \"<integer>\",\n    \"fees\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"preference\": \"<string>\",\n    \"relayed_by\": \"<string>\",\n    \"received\": \"<string>\",\n    \"ver\": \"<integer>\",\n    \"lock_time\": \"<integer>\",\n    \"double_spend\": \"<boolean>\",\n    \"vin_sz\": \"<integer>\",\n    \"vout_sz\": \"<integer>\",\n    \"confirmations\": \"<integer>\",\n    \"inputs\": [\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        },\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        },\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        }\n    ],\n    \"opt_in_rbf\": \"<boolean>\",\n    \"confidence\": \"<float>\",\n    \"confirmed\": \"<string>\",\n    \"receive_count\": \"<integer>\",\n    \"change_address\": \"<string>\",\n    \"block_hash\": \"<string>\",\n    \"block_index\": \"<integer>\",\n    \"double_of\": \"<string>\",\n    \"data_protocol\": \"<string>\",\n    \"hex\": \"<string>\",\n    \"next_inputs\": \"<string>\",\n    \"next_outputs\": \"<string>\",\n    \"includeToSignTx\": \"<boolean>\"\n}"
                     }
                   },
                   "response": [
@@ -3792,7 +3792,7 @@
                         "method": "POST",
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n    \"network\": \"MAINNET\",\n    \"block_height\": \"<integer>\",\n    \"hash\": \"<string>\",\n    \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"total\": \"<integer>\",\n    \"fees\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"preference\": \"<string>\",\n    \"relayed_by\": \"<string>\",\n    \"received\": \"<string>\",\n    \"ver\": \"<integer>\",\n    \"lock_time\": \"<integer>\",\n    \"vin_sz\": \"<integer>\",\n    \"vout_sz\": \"<integer>\",\n    \"confirmations\": \"<integer>\",\n    \"inputs\": [\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        },\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        },\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        }\n    ],\n    \"confidence\": \"<float>\",\n    \"confirmed\": \"<string>\",\n    \"receive_count\": \"<integer>\",\n    \"change_address\": \"<string>\",\n    \"block_hash\": \"<string>\",\n    \"block_index\": \"<integer>\",\n    \"double_of\": \"<string>\",\n    \"data_protocol\": \"<string>\",\n    \"hex\": \"<string>\",\n    \"next_inputs\": \"<string>\",\n    \"next_outputs\": \"<string>\"\n}"
+                          "raw": "{\n    \"network\": \"MAINNET\",\n    \"block_height\": \"<integer>\",\n    \"hash\": \"<string>\",\n    \"addresses\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"total\": \"<integer>\",\n    \"fees\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"preference\": \"<string>\",\n    \"relayed_by\": \"<string>\",\n    \"received\": \"<string>\",\n    \"ver\": \"<integer>\",\n    \"lock_time\": \"<integer>\",\n    \"double_spend\": \"<boolean>\",\n    \"vin_sz\": \"<integer>\",\n    \"vout_sz\": \"<integer>\",\n    \"confirmations\": \"<integer>\",\n    \"inputs\": [\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        },\n        {\n            \"prev_hash\": \"<string>\",\n            \"output_index\": \"<integer>\",\n            \"output_value\": \"<integer>\",\n            \"script_type\": \"<string>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"sequence\": \"<integer>\",\n            \"age\": \"<integer>\",\n            \"wallet_name\": \"<string>\",\n            \"wallet_token\": \"<string>\"\n        }\n    ],\n    \"outputs\": [\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        },\n        {\n            \"value\": \"<integer>\",\n            \"script\": \"<string>\",\n            \"addresses\": [\n                \"<string>\",\n                \"<string>\"\n            ],\n            \"script_type\": \"<string>\",\n            \"spent_by\": \"<string>\",\n            \"data_hex\": \"<string>\",\n            \"data_string\": \"<string>\"\n        }\n    ],\n    \"opt_in_rbf\": \"<boolean>\",\n    \"confidence\": \"<float>\",\n    \"confirmed\": \"<string>\",\n    \"receive_count\": \"<integer>\",\n    \"change_address\": \"<string>\",\n    \"block_hash\": \"<string>\",\n    \"block_index\": \"<integer>\",\n    \"double_of\": \"<string>\",\n    \"data_protocol\": \"<string>\",\n    \"hex\": \"<string>\",\n    \"next_inputs\": \"<string>\",\n    \"next_outputs\": \"<string>\",\n    \"includeToSignTx\": \"<boolean>\"\n}"
                         }
                       },
                       "status": "OK",
@@ -4229,7 +4229,7 @@
                         },
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n    \"network\": \"MAINNET\",\n    \"token\": \"<string>\",\n    \"name\": \"<string>\",\n    \"chains\": [\n        {\n            \"chain_addresses\": [\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                },\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                }\n            ],\n            \"index\": \"<string>\"\n        },\n        {\n            \"chain_addresses\": [\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                },\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                }\n            ],\n            \"index\": \"<string>\"\n        }\n    ],\n    \"extended_public_key\": \"<string>\",\n    \"subchain_indexes\": [\n        \"<integer>\",\n        \"<integer>\"\n    ]\n}"
+                          "raw": "{\n    \"network\": \"MAINNET\",\n    \"token\": \"<string>\",\n    \"name\": \"<string>\",\n    \"chains\": [\n        {\n            \"chain_addresses\": [\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                },\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                }\n            ],\n            \"index\": \"<string>\"\n        },\n        {\n            \"chain_addresses\": [\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                },\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                }\n            ],\n            \"index\": \"<string>\"\n        }\n    ],\n    \"hd\": \"<boolean>\",\n    \"extended_public_key\": \"<string>\",\n    \"subchain_indexes\": [\n        \"<integer>\",\n        \"<integer>\"\n    ]\n}"
                         }
                       },
                       "response": [
@@ -4263,7 +4263,7 @@
                             "method": "POST",
                             "body": {
                               "mode": "raw",
-                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"token\": \"<string>\",\n    \"name\": \"<string>\",\n    \"chains\": [\n        {\n            \"chain_addresses\": [\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                },\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                }\n            ],\n            \"index\": \"<string>\"\n        },\n        {\n            \"chain_addresses\": [\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                },\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                }\n            ],\n            \"index\": \"<string>\"\n        }\n    ],\n    \"extended_public_key\": \"<string>\",\n    \"subchain_indexes\": [\n        \"<integer>\",\n        \"<integer>\"\n    ]\n}"
+                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"token\": \"<string>\",\n    \"name\": \"<string>\",\n    \"chains\": [\n        {\n            \"chain_addresses\": [\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                },\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                }\n            ],\n            \"index\": \"<string>\"\n        },\n        {\n            \"chain_addresses\": [\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                },\n                {\n                    \"address\": \"<string>\",\n                    \"path\": \"<string>\",\n                    \"public\": \"<string>\"\n                }\n            ],\n            \"index\": \"<string>\"\n        }\n    ],\n    \"hd\": \"<boolean>\",\n    \"extended_public_key\": \"<string>\",\n    \"subchain_indexes\": [\n        \"<integer>\",\n        \"<integer>\"\n    ]\n}"
                             }
                           },
                           "status": "OK",
@@ -4631,7 +4631,7 @@
                                 },
                                 "body": {
                                   "mode": "raw",
-                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"name\": \"<string>\",\n    \"count\": \"<integer>\"\n}"
+                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"name\": \"<string>\",\n    \"count\": \"<integer>\",\n    \"subchain_index\": \"<string>\"\n}"
                                 }
                               },
                               "response": [
@@ -4668,7 +4668,7 @@
                                     "method": "POST",
                                     "body": {
                                       "mode": "raw",
-                                      "raw": "{\n    \"network\": \"MAINNET\",\n    \"name\": \"<string>\",\n    \"count\": \"<integer>\"\n}"
+                                      "raw": "{\n    \"network\": \"MAINNET\",\n    \"name\": \"<string>\",\n    \"count\": \"<integer>\",\n    \"subchain_index\": \"<string>\"\n}"
                                     }
                                   },
                                   "status": "OK",
@@ -5134,7 +5134,7 @@
                             },
                             "body": {
                               "mode": "raw",
-                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"name\": \"<string>\"\n}"
+                              "raw": "{\n    \"network\": \"MAINNET\",\n    \"name\": \"<string>\",\n    \"omitWalletAddresses\": \"<boolean>\"\n}"
                             }
                           },
                           "response": [
@@ -5169,7 +5169,7 @@
                                 "method": "POST",
                                 "body": {
                                   "mode": "raw",
-                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"name\": \"<string>\"\n}"
+                                  "raw": "{\n    \"network\": \"MAINNET\",\n    \"name\": \"<string>\",\n    \"omitWalletAddresses\": \"<boolean>\"\n}"
                                 }
                               },
                               "status": "OK",
@@ -5707,42 +5707,34 @@
           },
           "total_received": {
             "type": "integer",
-            "format": "int32",
             "description": "Total amount of confirmed satoshis received by this address."
           },
           "total_sent": {
             "type": "integer",
-            "format": "int32",
             "description": "Total amount of confirmed satoshis sent by this address."
           },
           "balance": {
             "type": "integer",
-            "format": "int32",
             "description": "Balance of confirmed satoshis on this address. This is the difference between outputs and inputs on this address, but only for transactions that have been included into a block (i.e., for transactions whose confirmations > 0)."
           },
           "unconfirmed_balance": {
             "type": "integer",
-            "format": "int32",
             "description": "Balance of unconfirmed satoshis on this address. Can be negative (if unconfirmed transactions are just spending outputs). Only unconfirmed transactions (haven’t made it into a block) are included."
           },
           "final_balance": {
             "type": "integer",
-            "format": "int32",
             "description": "Total balance of satoshis, including confirmed and unconfirmed transactions, for this address."
           },
           "n_tx": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted."
           },
           "unconfirmed_n_tx": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted."
           },
           "final_n_tx": {
             "type": "integer",
-            "format": "int32",
             "description": "Final number of transactions, including confirmed and unconfirmed transactions, for this address."
           },
           "tx_url": {
@@ -5772,7 +5764,6 @@
           },
           "hasMore": {
             "type": "boolean",
-            "format": "boolean",
             "description": "Optional If true, then the Address object contains more transactions than shown. Useful for determining whether to poll the API for more transaction information."
           }
         }
@@ -5905,7 +5896,6 @@
           },
           "index": {
             "type": "string",
-            "format": "int64",
             "description": "optional Index of the subchain, returned if the wallet has subchains."
           }
         }
@@ -5934,7 +5924,6 @@
           },
           "hd": {
             "type": "boolean",
-            "format": "boolean",
             "description": "true for HD wallets, not present for normal wallets."
           },
           "extended_public_key": {
@@ -5944,8 +5933,7 @@
           "subchain_indexes": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int32"
+              "type": "integer"
             },
             "description": "optional returned for HD wallets created with subchains."
           }
@@ -5974,7 +5962,6 @@
         "properties": {
           "block_height": {
             "type": "integer",
-            "format": "int32",
             "description": "Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1."
           },
           "hash": {
@@ -5990,17 +5977,14 @@
           },
           "total": {
             "type": "integer",
-            "format": "int32",
             "description": "The total number of satoshis exchanged in this transaction."
           },
           "fees": {
             "type": "integer",
-            "format": "int32",
             "description": "The total number of fees—in satoshis—collected by miners in this transaction."
           },
           "size": {
             "type": "integer",
-            "format": "int32",
             "description": "The size of the transaction in bytes."
           },
           "preference": {
@@ -6017,32 +6001,26 @@
           },
           "ver": {
             "type": "integer",
-            "format": "int32",
             "description": "Version number, typically 1 for Bitcoin transactions."
           },
           "lock_time": {
             "type": "integer",
-            "format": "int32",
             "description": "Time when transaction can be valid. Can be interpreted in two ways: if less than 500 million, refers to block height. If more, refers to Unix epoch time."
           },
           "double_spend": {
             "type": "boolean",
-            "format": "boolean",
             "description": "true if this is an attempted double spend; false otherwise."
           },
           "vin_sz": {
             "type": "integer",
-            "format": "int32",
             "description": "Total number of inputs in the transaction."
           },
           "vout_sz": {
             "type": "integer",
-            "format": "int32",
             "description": "Total number of outputs in the transaction."
           },
           "confirmations": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
           },
           "inputs": {
@@ -6061,7 +6039,6 @@
           },
           "opt_in_rbf": {
             "type": "boolean",
-            "format": "boolean",
             "description": "Optional Returns true if this transaction has opted in to Replace-By-Fee (RBF), either true or not present. You can read more about Opt-In RBF here."
           },
           "confidence": {
@@ -6075,7 +6052,6 @@
           },
           "receive_count": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions."
           },
           "change_address": {
@@ -6088,7 +6064,6 @@
           },
           "block_index": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions."
           },
           "double_of": {
@@ -6126,12 +6101,10 @@
           },
           "output_index": {
             "type": "integer",
-            "format": "int32",
             "description": "The index of the output being spent within the previous transaction. Not present for coinbase transactions."
           },
           "output_value": {
             "type": "integer",
-            "format": "int32",
             "description": "The value of the output being spent within the previous transaction. Not present for coinbase transactions."
           },
           "script_type": {
@@ -6151,12 +6124,10 @@
           },
           "sequence": {
             "type": "integer",
-            "format": "int32",
             "description": "Legacy 4-byte sequence number, not usually relevant unless dealing with locktime encumbrances."
           },
           "age": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Number of confirmations of the previous transaction for which this input was an output. Currently, only returned in unconfirmed transactions."
           },
           "wallet_name": {
@@ -6178,7 +6149,6 @@
         "properties": {
           "value": {
             "type": "integer",
-            "format": "int32",
             "description": "Value in this transaction output, in satoshis."
           },
           "script": {
@@ -6223,7 +6193,6 @@
           },
           "block_height": {
             "type": "integer",
-            "format": "int32",
             "description": "Height of the block that contains this transaction input/output. If it’s unconfirmed, this will equal -1."
           },
           "tx_hash": {
@@ -6232,17 +6201,14 @@
           },
           "tx_input_n": {
             "type": "integer",
-            "format": "int32",
             "description": "Index of this input in the enclosing transaction. It’s a negative number for an output."
           },
           "tx_output_n": {
             "type": "integer",
-            "format": "int32",
             "description": "Index of this output in the enclosing transaction. It’s a negative number for an input."
           },
           "value": {
             "type": "integer",
-            "format": "int32",
             "description": "The value transfered by this input/output in satoshis exchanged in the enclosing transaction."
           },
           "preference": {
@@ -6251,17 +6217,14 @@
           },
           "spent": {
             "type": "boolean",
-            "format": "boolean",
             "description": "true if this is an output and was spent. If it’s an input, or an unspent output, it will be false."
           },
           "double_spend": {
             "type": "boolean",
-            "format": "boolean",
             "description": "true if this is an attempted double spend; false otherwise."
           },
           "confirmations": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
           },
           "script": {
@@ -6270,7 +6233,6 @@
           },
           "ref_balance": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions."
           },
           "confidence": {
@@ -6292,7 +6254,6 @@
           },
           "receive_count": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions."
           },
           "double_of": {
@@ -6354,7 +6315,6 @@
           },
           "process_fees_satoshis": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
           },
           "process_fees_percent": {
@@ -6368,12 +6328,10 @@
           },
           "enable_confirmations": {
             "type": "boolean",
-            "format": "boolean",
             "description": "Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook."
           },
           "mining_fees_satoshis": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000."
           },
           "txs": {
@@ -6432,7 +6390,6 @@
           },
           "process_fees_satoshis": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Fixed processing fee amount to be sent to the fee address. A fixed satoshi amount or a percentage is required if a process_fees_address has been specified."
           },
           "process_fees_percent": {
@@ -6446,12 +6403,10 @@
           },
           "enable_confirmations": {
             "type": "boolean",
-            "format": "boolean",
             "description": "Optional Whether to also call the callback_url with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook."
           },
           "mining_fees_satoshis": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Mining fee amount to include in the forwarding transaction, in satoshis. If not set, defaults to 10,000."
           },
           "txs": {
@@ -6489,12 +6444,10 @@
           },
           "value_threshold": {
             "type": "integer",
-            "format": "int32",
             "description": "Minimal/threshold value (in satoshis) to query."
           },
           "limit": {
             "type": "integer",
-            "format": "int32",
             "description": "Limit of results to return."
           },
           "start": {
@@ -6507,7 +6460,6 @@
           },
           "degree": {
             "type": "integer",
-            "format": "int32",
             "description": "Degree of connectiveness to query."
           },
           "source": {
@@ -6541,12 +6493,10 @@
           },
           "finished": {
             "type": "boolean",
-            "format": "boolean",
             "description": "true if this job is finished processing, false otherwise."
           },
           "started": {
             "type": "boolean",
-            "format": "boolean",
             "description": "true if this job has begun processing, false otherwise."
           },
           "ticket": {
@@ -6575,12 +6525,10 @@
           },
           "value_threshold": {
             "type": "integer",
-            "format": "int32",
             "description": "Minimal/threshold value (in satoshis) to query."
           },
           "limit": {
             "type": "integer",
-            "format": "int32",
             "description": "Limit of results to return."
           },
           "start": {
@@ -6593,7 +6541,6 @@
           },
           "degree": {
             "type": "integer",
-            "format": "int32",
             "description": "Degree of connectiveness to query."
           },
           "source": {
@@ -6619,8 +6566,7 @@
             "type": "string"
           },
           "Value": {
-            "type": "integer",
-            "format": "int32"
+            "type": "integer"
           }
         }
       },
@@ -6633,12 +6579,10 @@
         "properties": {
           "page": {
             "type": "integer",
-            "format": "int32",
             "description": "Current page of results."
           },
           "more": {
             "type": "boolean",
-            "format": "boolean",
             "description": "true if there are more results in a separate page; false otherwise."
           },
           "next_page": {
@@ -6686,7 +6630,6 @@
           },
           "amount": {
             "type": "integer",
-            "format": "int32",
             "description": "The amount of assets being issued or transfered."
           },
           "metadata": {
@@ -6704,7 +6647,6 @@
         "properties": {
           "ver": {
             "type": "integer",
-            "format": "int32",
             "description": "Version of Open Assets Protocol transaction. Typically 1."
           },
           "assetid": {
@@ -6729,7 +6671,6 @@
           },
           "double_spend": {
             "type": "boolean",
-            "format": "boolean",
             "description": "true if this is an attempted double spend; false otherwise."
           },
           "inputs": {
@@ -6771,7 +6712,6 @@
           },
           "amount": {
             "type": "integer",
-            "format": "int32",
             "description": "The amount of assets being issued or transfered."
           },
           "metadata": {
@@ -6808,12 +6748,10 @@
           },
           "height": {
             "type": "integer",
-            "format": "int32",
             "description": "The height of the block in the blockchain; i.e., there are height earlier blocks in its blockchain."
           },
           "depth": {
             "type": "integer",
-            "format": "int32",
             "description": "The depth of the block in the blockchain; i.e., there are depth later blocks in its blockchain."
           },
           "network": {
@@ -6822,22 +6760,18 @@
           },
           "total": {
             "type": "integer",
-            "format": "int32",
             "description": "The total number of satoshis transacted in this block."
           },
           "fees": {
             "type": "integer",
-            "format": "int32",
             "description": "The total number of fees—in satoshis—collected by miners in this block."
           },
           "size": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Raw size of block (including header and all transactions) in bytes. Not returned for bitcoin blocks earlier than height 389104."
           },
           "ver": {
             "type": "integer",
-            "format": "int32",
             "description": "Block version."
           },
           "time": {
@@ -6854,17 +6788,14 @@
           },
           "bits": {
             "type": "integer",
-            "format": "int32",
             "description": "The block-encoded difficulty target."
           },
           "nonce": {
             "type": "integer",
-            "format": "int32",
             "description": "The number used by a miner to generate this block."
           },
           "n_tx": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of transactions in this block."
           },
           "prev_block": {
@@ -6909,7 +6840,6 @@
           },
           "height": {
             "type": "integer",
-            "format": "int32",
             "description": "The current height of the blockchain; i.e., the number of blocks in the blockchain."
           },
           "hash": {
@@ -6934,32 +6864,26 @@
           },
           "peer_count": {
             "type": "integer",
-            "format": "int32",
             "description": "N/A, will be deprecated soon."
           },
           "high_fee_per_kb": {
             "type": "integer",
-            "format": "int32",
             "description": "A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed within 1 to 2 blocks."
           },
           "medium_fee_per_kb": {
             "type": "integer",
-            "format": "int32",
             "description": "A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed within 3 to 6 blocks."
           },
           "low_fee_per_kb": {
             "type": "integer",
-            "format": "int32",
             "description": "A rolling average of the fee (in satoshis) paid per kilobyte for transactions to be confirmed in 7 or more blocks."
           },
           "unconfirmed_count": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of unconfirmed transactions in memory pool (likely to be included in next block)."
           },
           "last_fork_height": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains."
           },
           "last_fork_hash": {
@@ -6985,8 +6909,7 @@
             "type": "string"
           },
           "last_transition_height": {
-            "type": "string",
-            "format": "int64"
+            "type": "string"
           },
           "last_transition_hash": {
             "type": "string"
@@ -7002,12 +6925,10 @@
         "properties": {
           "age_millis": {
             "type": "integer",
-            "format": "int32",
             "description": "The age of the transaction in milliseconds, based on the earliest time BlockCypher saw it relayed in the network."
           },
           "receive_count": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of peers that have sent this transaction to BlockCypher; only positive for unconfirmed transactions. -1 for confirmed transactions."
           },
           "confidence": {
@@ -7061,7 +6982,6 @@
           },
           "private": {
             "type": "boolean",
-            "format": "boolean",
             "description": "If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata."
           }
         }
@@ -7087,7 +7007,6 @@
           },
           "private": {
             "type": "boolean",
-            "format": "boolean",
             "description": "If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata."
           }
         }
@@ -7113,7 +7032,6 @@
           },
           "private": {
             "type": "boolean",
-            "format": "boolean",
             "description": "If private is true, it will set/update privately stored metadata under your token. Otherwise, sets public metadata. If not set, it defaults to false, setting public metadata."
           }
         }
@@ -7143,7 +7061,6 @@
           },
           "value_satoshis": {
             "type": "string",
-            "format": "int64",
             "description": "Value you’re sending/you’ve sent in satoshis."
           },
           "token": {
@@ -7156,7 +7073,6 @@
           },
           "wait_guarantee": {
             "type": "boolean",
-            "format": "boolean",
             "description": "Optional If not set, defaults to true, which means the API will wait for Block to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast."
           },
           "tosign": {
@@ -7189,7 +7105,6 @@
           },
           "fees": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Block’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. Block pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter."
           },
           "hash": {
@@ -7226,7 +7141,6 @@
           },
           "value_satoshis": {
             "type": "string",
-            "format": "int64",
             "description": "Value you’re sending/you’ve sent in satoshis."
           },
           "token": {
@@ -7239,7 +7153,6 @@
           },
           "wait_guarantee": {
             "type": "boolean",
-            "format": "boolean",
             "description": "Optional If not set, defaults to true, which means the API will wait for Block to guarantee the transaction, using our Confidence Factor. The guarantee usually takes around 8 seconds. If manually set to false, the Microtransaction endpoint will return as soon as the transaction is broadcast."
           },
           "tosign": {
@@ -7272,7 +7185,6 @@
           },
           "fees": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Block’s optimally calculated fees for this MicroTX to guarantee swift 99% confirmation, only returned when using from_pubkey. Block pays these fees for the first 8,000 microtransactions, but like regular transactions, it is deducted from the source address thereafter."
           },
           "hash": {
@@ -7310,7 +7222,6 @@
           },
           "block_height": {
             "type": "integer",
-            "format": "int32",
             "description": "Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1."
           },
           "hash": {
@@ -7326,17 +7237,14 @@
           },
           "total": {
             "type": "integer",
-            "format": "int32",
             "description": "The total number of satoshis exchanged in this transaction."
           },
           "fees": {
             "type": "integer",
-            "format": "int32",
             "description": "The total number of fees—in satoshis—collected by miners in this transaction."
           },
           "size": {
             "type": "integer",
-            "format": "int32",
             "description": "The size of the transaction in bytes."
           },
           "preference": {
@@ -7353,32 +7261,26 @@
           },
           "ver": {
             "type": "integer",
-            "format": "int32",
             "description": "Version number, typically 1 for Bitcoin transactions."
           },
           "lock_time": {
             "type": "integer",
-            "format": "int32",
             "description": "Time when transaction can be valid. Can be interpreted in two ways: if less than 500 million, refers to block height. If more, refers to Unix epoch time."
           },
           "double_spend": {
             "type": "boolean",
-            "format": "boolean",
             "description": "true if this is an attempted double spend; false otherwise."
           },
           "vin_sz": {
             "type": "integer",
-            "format": "int32",
             "description": "Total number of inputs in the transaction."
           },
           "vout_sz": {
             "type": "integer",
-            "format": "int32",
             "description": "Total number of outputs in the transaction."
           },
           "confirmations": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations."
           },
           "inputs": {
@@ -7397,7 +7299,6 @@
           },
           "opt_in_rbf": {
             "type": "boolean",
-            "format": "boolean",
             "description": "Optional Returns true if this transaction has opted in to Replace-By-Fee (RBF), either true or not present. You can read more about Opt-In RBF here."
           },
           "confidence": {
@@ -7411,7 +7312,6 @@
           },
           "receive_count": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Number of peers that have sent this transaction to Block; only present for unconfirmed transactions."
           },
           "change_address": {
@@ -7424,7 +7324,6 @@
           },
           "block_index": {
             "type": "integer",
-            "format": "int32",
             "description": "Optional Canonical, zero-indexed location of this transaction in a block; only present for confirmed transactions."
           },
           "double_of": {
@@ -7448,8 +7347,7 @@
             "description": "Optional If there are more transaction outputs that couldn’t fit into the TXOutput array, this is the Block URL to query the next set of TXOutputs(within a TX object)."
           },
           "includeToSignTx": {
-            "type": "boolean",
-            "format": "boolean"
+            "type": "boolean"
           }
         }
       },
@@ -7630,7 +7528,6 @@
           },
           "aggregated_origin_radius": {
             "type": "integer",
-            "format": "int32",
             "description": "The radius (in meters) of the smallest circle containing the first peer from which we detect this transaction, the average of the first five peers, and the average of the first ten peers. In a general sense, this represents an approximate confidence interval in our calculated aggregated_origin; the smaller the radius, the more confidence in our aggregated_origin assessment."
           },
           "first_received": {
@@ -7728,7 +7625,6 @@
           },
           "omitWalletAddresses": {
             "type": "boolean",
-            "format": "boolean",
             "description": "If omitWalletAddresses is true, the response will omit address information (useful to speed up the API call for larger wallets)."
           }
         }
@@ -7756,8 +7652,7 @@
             }
           },
           "hd": {
-            "type": "boolean",
-            "format": "boolean"
+            "type": "boolean"
           },
           "extended_public_key": {
             "type": "string"
@@ -7765,8 +7660,7 @@
           "subchain_indexes": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int32"
+              "type": "integer"
             }
           }
         }
@@ -7810,12 +7704,10 @@
           },
           "count": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of addresses to derive. If not set, default is one address."
           },
           "subchain_index": {
             "type": "string",
-            "format": "int64",
             "description": "Derives address(es) on this specific subchain. If not set, address will be generated on the first chain in the HD wallet."
           }
         }
@@ -7945,7 +7837,6 @@
           },
           "confirmations": {
             "type": "integer",
-            "format": "int32",
             "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
           },
           "confidence": {
@@ -7963,7 +7854,6 @@
           },
           "callback_errors": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
           }
         }
@@ -8001,7 +7891,6 @@
           },
           "confirmations": {
             "type": "integer",
-            "format": "int32",
             "description": "optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6."
           },
           "confidence": {
@@ -8019,7 +7908,6 @@
           },
           "callback_errors": {
             "type": "integer",
-            "format": "int32",
             "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
           }
         }

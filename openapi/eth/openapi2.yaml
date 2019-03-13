@@ -96,14 +96,12 @@ paths:
         in: query
         required: false
         type: integer
-        format: int32
       - name: after
         description: Filters response to only include transactions above after height
           in the blockchain. ( after <= ).
         in: query
         required: false
         type: integer
-        format: int32
       - name: limit
         description: limit sets the minimum number of returned TXRefs; there can be
           less if there are less than limit TXRefs associated with this address, but
@@ -113,14 +111,12 @@ paths:
         in: query
         required: false
         type: integer
-        format: int32
       - name: confirmations
         description: If set, only returns the balance and TXRefs that have at least
           this number of confirmations.
         in: query
         required: false
         type: integer
-        format: int32
       tags:
       - Address API
   /eth/{network}/addrs/{address}/balance:
@@ -228,14 +224,12 @@ paths:
         in: query
         required: false
         type: integer
-        format: int32
       - name: limit
         description: Filters response to only include a maximum of limit transactions
           hashes in the block. Defaults to 20, maximum value allowed is 500.
         in: query
         required: false
         type: integer
-        format: int32
       tags:
       - Blockchain API
   /eth/{network}/blocks/{block_height}:
@@ -285,14 +279,12 @@ paths:
         in: query
         required: false
         type: integer
-        format: int32
       - name: limit
         description: Filters response to only include a maximum of limit transactions
           hashes in the block. Defaults to 20, maximum value allowed is 500.
         in: query
         required: false
         type: integer
-        format: int32
       tags:
       - Blockchain API
   /eth/{network}/contracts:
@@ -635,10 +627,9 @@ definitions:
       address:
         type: string
         description: The requested address.
-        pattern: ^([a-z0-9]{40})$
+        pattern: ^0x([a-z0-9]{40})$
       total_received:
         type: integer
-        format: int64
         description: Total amount of confirmed wei received by this address.
       total_received_hex:
         type: string
@@ -647,7 +638,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       total_sent:
         type: integer
-        format: int64
         description: Total amount of confirmed wei sent by this address.
       total_sent_hex:
         type: string
@@ -656,7 +646,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       balance:
         type: integer
-        format: int64
         description: Balance of confirmed wei on this address. (i.e., for transactions
           whose confirmations > 0).
       balance_hex:
@@ -666,7 +655,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       unconfirmed_balance:
         type: integer
-        format: int64
         description: Balance of unconfirmed wei on this address. Can be negative (if
           unconfirmed transactions are just spending part of an address balance).
           Only unconfirmed transactions (haven’t made it into a block) are included
@@ -680,7 +668,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       final_balance:
         type: integer
-        format: int64
         description: Total balance of wei, including confirmed and unconfirmed transactions,
           for this address.
       final_balance_hex:
@@ -690,17 +677,14 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       n_tx:
         type: integer
-        format: int64
         description: Number of confirmed transactions on this address. Only transactions
           that have made it into a block (confirmations > 0) are counted.
       unconfirmed_n_tx:
         type: integer
-        format: int64
         description: Number of unconfirmed transactions for this address. Only unconfirmed
           transactions (confirmations == 0) are counted.
       final_n_tx:
         type: integer
-        format: int64
         description: Final number of transactions, including confirmed and unconfirmed
           transactions, for this address.
       tx_url:
@@ -722,7 +706,6 @@ definitions:
           Usually only returned from the standard Address Endpoint.
       hasMore:
         type: boolean
-        format: boolean
         description: Optional If true, then the Address object contains more transactions
           than shown. Useful for determining whether to poll the API for more transaction
           information.
@@ -742,7 +725,7 @@ definitions:
       address:
         type: string
         description: Standard address representation.
-        pattern: ^([a-z0-9]{40})$
+        pattern: ^0x([a-z0-9]{40})$
       public:
         type: string
         description: Hex-encoded Public key.
@@ -775,7 +758,6 @@ definitions:
     properties:
       block_height:
         type: integer
-        format: int32
         description: Height of the block that contains this transaction input/output.
           If it’s unconfirmed, this will equal -1.
       tx_hash:
@@ -783,31 +765,30 @@ definitions:
         description: The hash of the transaction containing this input/output.
       tx_input_n:
         type: integer
-        format: int64
         description: Index of this input in the enclosing transaction. 0 if it’s an
           input, -1 if it’s an output.
       tx_output_n:
         type: string
-        format: int64
         description: Index of this output in the enclosing transaction. -1 if it’s
           an input, 0 if it’s an output.
       value:
         type: integer
-        format: int64
         description: The value transfered by this input/output in wei exchanged in
           the enclosing transaction.
+      value_hex:
+        type: string
+        description: The value transfered by this input/output in wei exchanged in
+          the enclosing transaction. This is a hex string.
+        pattern: ^0x[0-9a-fA-F]+$
       double_spend:
         type: boolean
-        format: boolean
         description: true if this is an attempted double spend; false otherwise.
       confirmations:
         type: integer
-        format: int64
         description: Number of subsequent blocks, including the block the transaction
           is in. Unconfirmed transactions have 0 confirmations.
       ref_balance:
         type: integer
-        format: int64
         description: Optional The past balance of the parent address the moment this
           transaction was confirmed. Not present for unconfirmed transactions.
       ref_balance_hex:
@@ -833,12 +814,10 @@ definitions:
         pattern: ^([a-z0-9]{64})$
       height:
         type: integer
-        format: int64
         description: The height of the block in the blockchain; i.e., there are height
           earlier blocks in its blockchain.
       depth:
         type: integer
-        format: int64
         description: The depth of the block in the blockchain; i.e., there are depth
           later blocks in its blockchain.
       chain:
@@ -846,7 +825,6 @@ definitions:
         title: The name of the blockchain represented, in the form of $COIN.$CHAIN
       total:
         type: integer
-        format: int64
         description: The total number of wei transacted in this block.
       total_hex:
         type: string
@@ -855,7 +833,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       fees:
         type: integer
-        format: int64
         description: The total number of fees—in wei—collected by miners in this block.
       fees_hex:
         type: string
@@ -864,12 +841,10 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       size:
         type: integer
-        format: int64
         description: Raw size of block (including header and all transactions) in
           bytes.
       ver:
         type: integer
-        format: int64
         description: Block version.
       time:
         type: string
@@ -883,18 +858,16 @@ definitions:
         type: string
         description: The Ethereum address of the miner that received the coinbase
           and fee reward.
-        pattern: ^([a-z0-9]{40})$
+        pattern: ^0x([a-z0-9]{40})$
       relayed_by:
         type: string
         description: Address of the peer that sent BlockCypher’s servers this block.
         pattern: ^(|[a-z0-9]{40})$
       nonce:
         type: integer
-        format: int64
         description: The number used by a miner to generate this block.
       n_tx:
         type: integer
-        format: int64
         description: Number of transactions in this block.
       prev_block:
         type: string
@@ -973,7 +946,6 @@ definitions:
         description: The name of the blockchain represented, in the form of $COIN.$CHAIN.
       height:
         type: integer
-        format: int64
         description: The current height of the blockchain; i.e., the number of blocks
           in the blockchain.
       hash:
@@ -1002,12 +974,10 @@ definitions:
         pattern: uri
       unconfirmed_count:
         type: integer
-        format: int64
         description: Number of unconfirmed transactions in memory pool (likely to
           be included in next block).
       high_gas_price:
         type: integer
-        format: int64
         description: A rolling average of the gas price (in wei) for transactions
           to be confirmed within 1 to 2 blocks.
       high_gas_price_hex:
@@ -1017,7 +987,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       medium_gas_price:
         type: integer
-        format: int64
         description: A rolling average of the gas price (in wei) for transactions
           to be confirmed within 3 to 6 blocks.
       medium_gas_price_hex:
@@ -1027,7 +996,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       low_gas_price:
         type: integer
-        format: int64
         description: A rolling average of the gas price (in wei) for transactions
           to be confirmed in 7 or more blocks.
       low_gas_price_hex:
@@ -1037,7 +1005,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       last_fork_height:
         type: integer
-        format: int64
         description: Optional The current height of the latest fork to the blockchain;
           when no competing blockchain fork present, not returned with endpoints that
           return Blockchains.
@@ -1089,7 +1056,6 @@ definitions:
           used to publish a contract or execute a method.
       gas_limit:
         type: integer
-        format: int64
         description: Maximum amount of gas to use in contract creation or method execution.
       gas_limit_hex:
         type: string
@@ -1098,7 +1064,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       value:
         type: integer
-        format: int32
         description: Amount (in wei) to transfer; can be used when creating a contract
           or calling a method.
       name:
@@ -1153,7 +1118,6 @@ definitions:
           used to publish a contract or execute a method.
       gas_limit:
         type: integer
-        format: int64
         description: Maximum amount of gas to use in contract creation or method execution.
       gas_limit_hex:
         type: string
@@ -1162,7 +1126,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       value:
         type: integer
-        format: int64
         description: Amount (in wei) to transfer; can be used when creating a contract
           or calling a method.
       value_hex:
@@ -1228,7 +1191,6 @@ definitions:
           used to publish a contract or execute a method.
       gas_limit:
         type: integer
-        format: int64
         description: Maximum amount of gas to use in contract creation or method execution.
       gas_limit_hex:
         type: string
@@ -1237,7 +1199,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       value:
         type: integer
-        format: int32
         description: Amount (in wei) to transfer; can be used when creating a contract
           or calling a method.
       value_hex:
@@ -1280,7 +1241,6 @@ definitions:
         $ref: '#/definitions/ethNetworkAllowingAlias'
       block_height:
         type: integer
-        format: int32
         description: Height of the block that contains this transaction. If this is
           an unconfirmed transaction, it will equal -1.
       hash:
@@ -1293,7 +1253,6 @@ definitions:
         description: Array of Ethereum addresses involved in the transaction.
       total:
         type: integer
-        format: int64
         description: The total number of wei exchanged in this transaction.
       total_hex:
         type: string
@@ -1302,7 +1261,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       fees:
         type: integer
-        format: int64
         description: The total number of fees—in wei—collected by miners in this transaction.
           Equal to gas_price * gas_used.
       fees_hex:
@@ -1312,11 +1270,9 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       size:
         type: integer
-        format: int64
         description: The size of the transaction in bytes.
       gas_used:
         type: integer
-        format: int64
         description: The amount of gas used by this transaction.
       gas_used_hex:
         type: string
@@ -1324,7 +1280,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       gas_price:
         type: integer
-        format: int64
         description: The price of gas—in wei—in this transaction.
       gas_price_hex:
         type: string
@@ -1339,23 +1294,18 @@ definitions:
         description: Time this transaction was received by BlockCypher’s servers.
       ver:
         type: integer
-        format: int32
         description: Version number of this transaction.
       double_spend:
         type: boolean
-        format: boolean
         description: true if this is an attempted double spend; false otherwise.
       vin_sz:
         type: integer
-        format: int32
         description: Total number of inputs in the transaction.
       vout_sz:
         type: integer
-        format: int32
         description: Total number of outputs in the transaction.
       confirmations:
         type: integer
-        format: int32
         description: Number of subsequent blocks, including the block the transaction
           is in. Unconfirmed transactions have 0 confirmations.
       inputs:
@@ -1392,7 +1342,6 @@ definitions:
           present for confirmed transactions.
       gas_limit:
         type: integer
-        format: int64
         description: Optional If creating a transaction, can optionally set a higher
           default gas limit (useful if your recepient is a contract). If not set,
           default is 21000 gas for external accounts and 80000 for contract accounts.
@@ -1405,13 +1354,11 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       contract_creation:
         type: boolean
-        format: boolean
         description: Optional If true, this transaction was used to create a contract
           and contract account. Note that the contract address (in the outputs field)
           will be blank until the transaction is confirmed.
       receive_count:
         type: integer
-        format: int32
         description: Optional Number of peers that have sent this transaction to BlockCypher;
           only present for unconfirmed transactions.
       block_hash:
@@ -1420,7 +1367,6 @@ definitions:
           present for confirmed transactions.
       block_index:
         type: integer
-        format: int32
         description: Optional Canonical, zero-indexed location of this transaction
           in a block; only present for confirmed transactions.
       double_of:
@@ -1448,7 +1394,6 @@ definitions:
     properties:
       sequence:
         type: string
-        format: int64
       addresses:
         type: array
         items:
@@ -1457,8 +1402,10 @@ definitions:
     type: object
     properties:
       value:
+        type: integer
+      value_hex:
         type: string
-        format: int64
+        pattern: ^0x[0-9a-fA-F]+$
       script:
         type: string
       addresses:
@@ -1509,7 +1456,6 @@ definitions:
     properties:
       block_height:
         type: integer
-        format: int32
         description: Height of the block that contains this transaction. If this is
           an unconfirmed transaction, it will equal -1.
       hash:
@@ -1522,7 +1468,6 @@ definitions:
         description: Array of Ethereum addresses involved in the transaction.
       total:
         type: integer
-        format: int64
         description: The total number of wei exchanged in this transaction.
       total_hex:
         type: string
@@ -1531,7 +1476,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       fees:
         type: integer
-        format: int64
         description: The total number of fees—in wei—collected by miners in this transaction.
           Equal to gas_price * gas_used.
       fees_hex:
@@ -1541,11 +1485,9 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       size:
         type: integer
-        format: int64
         description: The size of the transaction in bytes.
       gas_used:
         type: integer
-        format: int64
         description: The amount of gas used by this transaction.
       gas_used_hex:
         type: string
@@ -1553,7 +1495,6 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       gas_price:
         type: integer
-        format: int64
         description: The price of gas—in wei—in this transaction.
       gas_price_hex:
         type: string
@@ -1568,23 +1509,18 @@ definitions:
         description: Time this transaction was received by BlockCypher’s servers.
       ver:
         type: integer
-        format: int64
         description: Version number of this transaction.
       double_spend:
         type: boolean
-        format: boolean
         description: true if this is an attempted double spend; false otherwise.
       vin_sz:
         type: integer
-        format: int64
         description: Total number of inputs in the transaction.
       vout_sz:
         type: integer
-        format: int64
         description: Total number of outputs in the transaction.
       confirmations:
         type: integer
-        format: int64
         description: Number of subsequent blocks, including the block the transaction
           is in. Unconfirmed transactions have 0 confirmations.
       inputs:
@@ -1621,7 +1557,6 @@ definitions:
           present for confirmed transactions.
       gas_limit:
         type: integer
-        format: int64
         description: Optional If creating a transaction, can optionally set a higher
           default gas limit (useful if your recepient is a contract). If not set,
           default is 21000 gas for external accounts and 80000 for contract accounts.
@@ -1634,13 +1569,11 @@ definitions:
         pattern: ^0x[0-9a-fA-F]+$
       contract_creation:
         type: boolean
-        format: boolean
         description: Optional If true, this transaction was used to create a contract
           and contract account. Note that the contract address (in the outputs field)
           will be blank until the transaction is confirmed.
       receive_count:
         type: integer
-        format: int64
         description: Optional Number of peers that have sent this transaction to BlockCypher;
           only present for unconfirmed transactions.
       block_hash:
@@ -1649,7 +1582,6 @@ definitions:
           present for confirmed transactions.
       block_index:
         type: integer
-        format: int64
         description: Optional Canonical, zero-indexed location of this transaction
           in a block; only present for confirmed transactions.
       double_of:
@@ -1714,7 +1646,6 @@ definitions:
           will be sent.
       confirmations:
         type: integer
-        format: int32
         description: optional Used in concert with the tx-confirmation event type
           to set the number of confirmations desired for which to receive an update.
           You’ll receive an updated TX for every confirmation up to this amount. The
@@ -1725,7 +1656,6 @@ definitions:
           for WebSockets usage.
       callback_errors:
         type: integer
-        format: int32
         description: Number of errors when attempting to POST to callback URL; not
           applicable for WebSockets usage.
       token:
@@ -1751,7 +1681,6 @@ definitions:
           will be sent.
       confirmations:
         type: integer
-        format: int64
         description: optional Used in concert with the tx-confirmation event type
           to set the number of confirmations desired for which to receive an update.
           You’ll receive an updated TX for every confirmation up to this amount. The
@@ -1762,7 +1691,6 @@ definitions:
           for WebSockets usage.
       callback_errors:
         type: integer
-        format: int64
         description: Number of errors when attempting to POST to callback URL; not
           applicable for WebSockets usage.
       filter:
