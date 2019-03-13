@@ -3,6 +3,7 @@ syntax = "proto3";
 package chainweaver.protobuf.eth;
 option go_package = "github.com/chainweaver/protobuf/protoc-gen-go/eth";
 
+import "protoc-gen-swagger/options/annotations.proto";
 import "commonMessage.proto";
 
 message CreateContractEndpointRequest {
@@ -12,29 +13,33 @@ message CreateContractEndpointRequest {
   // Parameters for either contract creation or method execution.
   repeated string params = 3;
   // Named contract(s) to publish; necessary to specify when first creating a contract.
-  repeated	string publish = 4;
+  repeated string publish = 4;
   // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
   string private = 5;
   // Maximum amount of gas to use in contract creation or method execution.
-  int32 gas_limit = 6;
+  bytes gas_limit = 6;
+  // Maximum amount of gas to use in contract creation or method execution. This is a hex string.
+  string gas_limit_hex = 7 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Amount (in wei) to transfer; can be used when creating a contract or calling a method.
-  int32 value = 7;
+  bytes value = 8;
+  // Amount (in wei) to transfer; can be used when creating a contract or calling a method. This is a hex string.
+  string value_hex = 9 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Name of contract as published.
-  string name = 8;
+  string name = 10;
   // Hex-encoded binary compilation of this contract.
-  string bin = 9;
+  string bin = 11;
   // JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher.
-  string abi = 10;
+  string abi = 12;
   // Hex-encoded address of this contract.
-  string address = 11;
+  string address = 13;
   // Timestamp when this contract was confirmed in the Ethereum blockchain.
-  string created = 12;
+  string created = 14;
   // Hex-encoded transaction hash that created this contract.
-  string creation_tx_hash = 13;
+  string creation_tx_hash = 15;
   // If this is a response from a calling a contract method, this array of results may appear if the method returns any.
-  repeated string results = 14;
+  repeated string results = 16;
   // Token
-  string token = 15;
+  string token = 17;
 }
 
 message ContractAddressEndpointRequest {
@@ -52,29 +57,31 @@ message CallContractMethodEndpointRequest {
   // Parameters for either contract creation or method execution.
   repeated string params = 5;
   // Named contract(s) to publish; necessary to specify when first creating a contract.
-  repeated	string publish = 6;
+  repeated string publish = 6;
   // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
   string private = 7;
   // Maximum amount of gas to use in contract creation or method execution.
-  int32 gas_limit = 8;
+  bytes gas_limit = 8;
+  // Maximum amount of gas to use in contract creation or method execution. This is a hex string.
+  string gas_limit_hex = 9 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Amount (in wei) to transfer; can be used when creating a contract or calling a method.
-  int32 value = 9;
+  int32 value = 10;
   // Name of contract as published.
-  string name = 10;
+  string name = 12;
   // Hex-encoded binary compilation of this contract.
-  string bin = 11;
+  string bin = 13;
   // JSON-encoded ABI. Only returned with contracts initially compiled by BlockCypher.
-  string abi = 12;
+  string abi = 14;
   // Hex-encoded address of this contract.
-  string address = 13;
+  string address = 15;
   // Timestamp when this contract was confirmed in the Ethereum blockchain.
-  string created = 14;
+  string created = 16;
   // Hex-encoded transaction hash that created this contract.
-  string creation_tx_hash = 15;
+  string creation_tx_hash = 17;
   // If this is a response from a calling a contract method, this array of results may appear if the method returns any.
-  repeated string results = 16;
+  repeated string results = 18;
   // Token
-  string token = 17;
+  string token = 19;
 }
 
 message Contracts {

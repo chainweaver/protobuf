@@ -7,6 +7,16 @@
 
 ![Build Flow](./doc/build-flow.svg "Build Flow")
 
+## Data Flow
+
+The data flow chart between REST API and Ethereum's JSON RPC is shown below.
+
+### Some things to note:
+
+The fields that set wei are properly handled by Custom Mashaler so that they do not overflow when responding to the REST API. The flow chart is annotated with the example of how `balance`  as a typical field of wei is converted.
+
+![Data Flow](./doc/data-flow.svg "Data Flow")
+
 ## For developer
 
 In this project you can develop by preparing the following environment.

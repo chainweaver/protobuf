@@ -13,12 +13,12 @@ service BlockchainService {
     option (google.api.http) = {
       get: "/eth/{network}"
     };
-		option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
-			summary: "Chain Endpoint";
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+      summary: "Chain Endpoint";
       description: "General information about the Ethereum blockchain is available by GET-ing the base resource. The returned object contains a litany of information, including its height, the time/hash of the latest block, and more. For Ethereum, the object includes information on gas_price, denoted in wei. Unlike Bitcoin, fees are determined by the computational execution cost of the transaction via gas; in order to prevent runaway contract execution, each operation in Ethereum’s Virtual Machine requires a fixed/known amount of gas. While the amount of gas is fixed for a given EVM operation, the price of gas fluctuates based on market demand on the Ethereum blockchain (similar to Bitcoin fees). For more detail, check this very helpful Stack Exchange explanation.";
-			tags: "Blockchain API";
-			responses: {
-				key: "200";
+      tags: "Blockchain API";
+      responses: {
+        key: "200";
         value: {
           description: "Success OK";
           schema: {
@@ -27,19 +27,19 @@ service BlockchainService {
             }
           }
         }
-			}
-		};
+      }
+    };
   }
   rpc BlockHashEndpoint (BlockHashEndpointRequest) returns (Block) {
     option (google.api.http) = {
       get: "/eth/{network}/blocks/{block_hash}"
     };
-		option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
-			summary: "Block Hash Endpoint";
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+      summary: "Block Hash Endpoint";
       description: "If you want more data on a particular block, you can use the Block Hash endpoint. The returned object contains information about the block, including its height, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object.";
-			tags: "Blockchain API";
-			responses: {
-				key: "200";
+      tags: "Blockchain API";
+      responses: {
+        key: "200";
         value: {
           description: "Success OK";
           schema: {
@@ -48,9 +48,9 @@ service BlockchainService {
             }
           }
         }
-			}
-			responses: {
-				key: "404";
+      }
+      responses: {
+        key: "404";
         value: {
           description: "Not Found";
           schema: {
@@ -59,19 +59,19 @@ service BlockchainService {
             }
           }
         }
-			}
+      }
     };
   }
   rpc BlockHeightEndpoint (BlockHeightEndpointRequest) returns (Block) {
     option (google.api.http) = {
       get: "/eth/{network}/blocks/{block_height}"
     };
-		option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
-			summary: "Block Height Endpoint";
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+      summary: "Block Height Endpoint";
       description: "You can also query for information on a block using its height, using the same resource but with a different variable type. As above, the returned object contains information about the block, including its hash, the total amount of wei transacted within it, the number of transactions in it, transaction hashes listed in the canonical order in which they appear in the block, and more. For more detail on the data returned, check the Block object. <aside class=\"notice\">With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the possibility of soft forks/orphans and the nature of the consensus model with blockchains. If you’re querying blocks with depth above 10 (i.e., there are more than 10 blocks ahead of your target) the height should be a safe identifier.</aside>";
-			tags: "Blockchain API";
-			responses: {
-				key: "200";
+      tags: "Blockchain API";
+      responses: {
+        key: "200";
         value: {
           description: "Success OK";
           schema: {
@@ -80,9 +80,9 @@ service BlockchainService {
             }
           }
         }
-			}
-			responses: {
-				key: "404";
+      }
+      responses: {
+        key: "404";
         value: {
           description: "Not Found";
           schema: {
@@ -91,7 +91,7 @@ service BlockchainService {
             }
           }
         }
-			}
+      }
     };
   }
 }

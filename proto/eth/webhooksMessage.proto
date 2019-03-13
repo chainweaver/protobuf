@@ -12,7 +12,7 @@ message CreateWebHookEndpointRequest {
   // Type of event; can be unconfirmed-tx, new-block, confirmed-tx, tx-confirmation, double-spend-tx.
   string event = 3;
   // optional Only objects with a matching hash will be sent. The hash can either be for a block or a transaction.
-  string	hash = 4;
+  string hash = 4;
   // optional Only transactions associated with the given address will be sent.
   string address = 5;
   // optional Used in concert with the tx-confirmation event type to set the number of confirmations desired for which to receive an update. You’ll receive an updated TX for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6.
