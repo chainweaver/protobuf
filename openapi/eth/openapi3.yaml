@@ -801,10 +801,15 @@ components:
       required:
       - address
       - total_received
+      - total_received_hex
       - total_sent
+      - total_sent_hex
       - balance
+      - balance_hex
       - unconfirmed_balance
+      - unconfirmed_balance_hex
       - final_balance
+      - final_balance_hex
       - n_tx
       - unconfirmed_n_tx
       - final_n_tx
@@ -1014,7 +1019,9 @@ components:
       - depth
       - chain
       - total
+      - total_hex
       - fees
+      - fees_hex
       - size
       - ver
       - time
@@ -1114,8 +1121,11 @@ components:
       - previous_url
       - unconfirmed_count
       - high_gas_price
+      - high_gas_price_hex
       - medium_gas_price
+      - medium_gas_price_hex
       - low_gas_price
+      - low_gas_price_hex
     ethCallContractMethodEndpointRequest:
       type: object
       properties:

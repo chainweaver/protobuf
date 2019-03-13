@@ -76,7 +76,7 @@
                       "value": "application/json"
                     }
                   ],
-                  "body": "{\n \"name\": \"<string>\",\n \"height\": \"<integer>\",\n \"hash\": \"<string>\",\n \"time\": \"<string>\",\n \"latest_url\": \"<string>\",\n \"previous_hash\": \"<string>\",\n \"previous_url\": \"<string>\",\n \"unconfirmed_count\": \"<integer>\",\n \"high_gas_price\": \"<integer>\",\n \"medium_gas_price\": \"<integer>\",\n \"low_gas_price\": \"<integer>\",\n \"high_gas_price_hex\": \"<string>\",\n \"medium_gas_price_hex\": \"<string>\",\n \"low_gas_price_hex\": \"<string>\",\n \"last_fork_height\": \"<integer>\",\n \"last_fork_hash\": \"<string>\"\n}",
+                  "body": "{\n \"name\": \"<string>\",\n \"height\": \"<integer>\",\n \"hash\": \"<string>\",\n \"time\": \"<string>\",\n \"latest_url\": \"<string>\",\n \"previous_hash\": \"<string>\",\n \"previous_url\": \"<string>\",\n \"unconfirmed_count\": \"<integer>\",\n \"high_gas_price\": \"<integer>\",\n \"high_gas_price_hex\": \"<string>\",\n \"medium_gas_price\": \"<integer>\",\n \"medium_gas_price_hex\": \"<string>\",\n \"low_gas_price\": \"<integer>\",\n \"low_gas_price_hex\": \"<string>\",\n \"last_fork_height\": \"<integer>\",\n \"last_fork_hash\": \"<string>\"\n}",
                   "cookie": [],
                   "_postman_previewlanguage": "json"
                 }
@@ -370,7 +370,7 @@
                               "value": "application/json"
                             }
                           ],
-                          "body": "{\n \"address\": \"<string>\",\n \"total_received\": \"<integer>\",\n \"total_sent\": \"<integer>\",\n \"balance\": \"<integer>\",\n \"unconfirmed_balance\": \"<integer>\",\n \"final_balance\": \"<integer>\",\n \"n_tx\": \"<integer>\",\n \"unconfirmed_n_tx\": \"<integer>\",\n \"final_n_tx\": \"<integer>\",\n \"total_received_hex\": \"<string>\",\n \"total_sent_hex\": \"<string>\",\n \"balance_hex\": \"<string>\",\n \"unconfirmed_balance_hex\": \"<string>\",\n \"final_balance_hex\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"hasMore\": \"<boolean>\"\n}",
+                          "body": "{\n \"address\": \"<string>\",\n \"total_received\": \"<integer>\",\n \"total_received_hex\": \"<string>\",\n \"total_sent\": \"<integer>\",\n \"total_sent_hex\": \"<string>\",\n \"balance\": \"<integer>\",\n \"balance_hex\": \"<string>\",\n \"unconfirmed_balance\": \"<integer>\",\n \"unconfirmed_balance_hex\": \"<string>\",\n \"final_balance\": \"<integer>\",\n \"final_balance_hex\": \"<string>\",\n \"n_tx\": \"<integer>\",\n \"unconfirmed_n_tx\": \"<integer>\",\n \"final_n_tx\": \"<integer>\",\n \"tx_url\": \"<string>\",\n \"txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"hasMore\": \"<boolean>\"\n}",
                           "cookie": [],
                           "_postman_previewlanguage": "json"
                         }
@@ -481,7 +481,7 @@
                               "value": "application/json"
                             }
                           ],
-                          "body": "{\n \"address\": \"<string>\",\n \"total_received\": \"<integer>\",\n \"total_sent\": \"<integer>\",\n \"balance\": \"<integer>\",\n \"unconfirmed_balance\": \"<integer>\",\n \"final_balance\": \"<integer>\",\n \"n_tx\": \"<integer>\",\n \"unconfirmed_n_tx\": \"<integer>\",\n \"final_n_tx\": \"<integer>\",\n \"total_received_hex\": \"<string>\",\n \"total_sent_hex\": \"<string>\",\n \"balance_hex\": \"<string>\",\n \"unconfirmed_balance_hex\": \"<string>\",\n \"final_balance_hex\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"hasMore\": \"<boolean>\"\n}",
+                          "body": "{\n \"address\": \"<string>\",\n \"total_received\": \"<integer>\",\n \"total_received_hex\": \"<string>\",\n \"total_sent\": \"<integer>\",\n \"total_sent_hex\": \"<string>\",\n \"balance\": \"<integer>\",\n \"balance_hex\": \"<string>\",\n \"unconfirmed_balance\": \"<integer>\",\n \"unconfirmed_balance_hex\": \"<string>\",\n \"final_balance\": \"<integer>\",\n \"final_balance_hex\": \"<string>\",\n \"n_tx\": \"<integer>\",\n \"unconfirmed_n_tx\": \"<integer>\",\n \"final_n_tx\": \"<integer>\",\n \"tx_url\": \"<string>\",\n \"txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"unconfirmed_txrefs\": [\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  },\n  {\n   \"block_height\": \"<integer>\",\n   \"tx_hash\": \"<string>\",\n   \"tx_input_n\": \"<integer>\",\n   \"tx_output_n\": \"<string>\",\n   \"value\": \"<integer>\",\n   \"value_hex\": \"<string>\",\n   \"double_spend\": \"<boolean>\",\n   \"confirmations\": \"<integer>\",\n   \"ref_balance\": \"<integer>\",\n   \"ref_balance_hex\": \"<string>\",\n   \"confirmed\": \"<string>\",\n   \"double_of\": \"<string>\"\n  }\n ],\n \"hasMore\": \"<boolean>\"\n}",
                           "cookie": [],
                           "_postman_previewlanguage": "json"
                         }
@@ -608,7 +608,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"hash\": \"<string>\",\n \"height\": \"<integer>\",\n \"depth\": \"<integer>\",\n \"chain\": \"<string>\",\n \"total\": \"<integer>\",\n \"fees\": \"<integer>\",\n \"size\": \"<integer>\",\n \"ver\": \"<integer>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"nonce\": \"<integer>\",\n \"n_tx\": \"<integer>\",\n \"prev_block\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"total_hex\": \"<string>\",\n \"fees_hex\": \"<string>\",\n \"prev_block_url\": \"<string>\",\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "body": "{\n \"hash\": \"<string>\",\n \"height\": \"<integer>\",\n \"depth\": \"<integer>\",\n \"chain\": \"<string>\",\n \"total\": \"<integer>\",\n \"total_hex\": \"<string>\",\n \"fees\": \"<integer>\",\n \"fees_hex\": \"<string>\",\n \"size\": \"<integer>\",\n \"ver\": \"<integer>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"nonce\": \"<integer>\",\n \"n_tx\": \"<integer>\",\n \"prev_block\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"prev_block_url\": \"<string>\",\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     },
@@ -770,7 +770,7 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{\n \"hash\": \"<string>\",\n \"height\": \"<integer>\",\n \"depth\": \"<integer>\",\n \"chain\": \"<string>\",\n \"total\": \"<integer>\",\n \"fees\": \"<integer>\",\n \"size\": \"<integer>\",\n \"ver\": \"<integer>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"nonce\": \"<integer>\",\n \"n_tx\": \"<integer>\",\n \"prev_block\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"total_hex\": \"<string>\",\n \"fees_hex\": \"<string>\",\n \"prev_block_url\": \"<string>\",\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
+                      "body": "{\n \"hash\": \"<string>\",\n \"height\": \"<integer>\",\n \"depth\": \"<integer>\",\n \"chain\": \"<string>\",\n \"total\": \"<integer>\",\n \"total_hex\": \"<string>\",\n \"fees\": \"<integer>\",\n \"fees_hex\": \"<string>\",\n \"size\": \"<integer>\",\n \"ver\": \"<integer>\",\n \"time\": \"<string>\",\n \"received_time\": \"<string>\",\n \"coinbase_addr\": \"<string>\",\n \"relayed_by\": \"<string>\",\n \"nonce\": \"<integer>\",\n \"n_tx\": \"<integer>\",\n \"prev_block\": \"<string>\",\n \"tx_url\": \"<string>\",\n \"mrkl_root\": \"<string>\",\n \"txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"internal_txids\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"prev_block_url\": \"<string>\",\n \"next_txids\": \"<string>\",\n \"next_internal_txids\": \"<string>\",\n \"uncles\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}",
                       "cookie": [],
                       "_postman_previewlanguage": "json"
                     },
@@ -2204,10 +2204,15 @@
         "required": [
           "address",
           "total_received",
+          "total_received_hex",
           "total_sent",
+          "total_sent_hex",
           "balance",
+          "balance_hex",
           "unconfirmed_balance",
+          "unconfirmed_balance_hex",
           "final_balance",
+          "final_balance_hex",
           "n_tx",
           "unconfirmed_n_tx",
           "final_n_tx"
@@ -2466,7 +2471,9 @@
           "depth",
           "chain",
           "total",
+          "total_hex",
           "fees",
+          "fees_hex",
           "size",
           "ver",
           "time",
@@ -2573,8 +2580,11 @@
           "previous_url",
           "unconfirmed_count",
           "high_gas_price",
+          "high_gas_price_hex",
           "medium_gas_price",
-          "low_gas_price"
+          "medium_gas_price_hex",
+          "low_gas_price",
+          "low_gas_price_hex"
         ]
       },
       "type": "object"
