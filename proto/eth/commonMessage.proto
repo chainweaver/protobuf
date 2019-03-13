@@ -39,15 +39,15 @@ message Blockchain {
   // Number of unconfirmed transactions in memory pool (likely to be included in next block).
   uint64 unconfirmed_count = 8;
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks.
-  uint64 high_gas_price = 9;
+  bytes high_gas_price = 9;
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks. This is a hex string.
   string high_gas_price_hex = 10 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks.
-  uint64 medium_gas_price = 11;
+  bytes medium_gas_price = 11;
   // A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks. This is a hex string.
   string medium_gas_price_hex = 12 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks.
-  uint64 low_gas_price = 13;
+  bytes low_gas_price = 13;
   // A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks. This is a hex string.
   string low_gas_price_hex = 14 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Optional The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
@@ -72,11 +72,11 @@ message Block {
   // The name of the blockchain represented, in the form of $COIN.$CHAIN
   string chain = 4;
   // The total number of wei transacted in this block.
-  uint64 total = 5;
+  bytes total = 5;
   // The total number of wei transacted in this block. This is a hex string.
   string total_hex = 6 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The total number of fees—in wei—collected by miners in this block.
-  uint64 fees = 7;
+  bytes fees = 7;
   // The total number of fees—in wei—collected by miners in this block. This is a hex string.
   string fees_hex = 8 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Raw size of block (including header and all transactions) in bytes.
@@ -125,19 +125,21 @@ message TXRef {
   // Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output.
   int64 tx_output_n = 4;
   // The value transfered by this input/output in wei exchanged in the enclosing transaction.
-  uint64 value = 5;
+  bytes value = 5;
+  // The value transfered by this input/output in wei exchanged in the enclosing transaction. This is a hex string.
+  string value_hex = 6 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // true if this is an attempted double spend; false otherwise.
-  bool double_spend = 6;
+  bool double_spend = 7;
   // Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
-  uint64 confirmations = 7;
+  uint64 confirmations = 8;
   // Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions.
-  uint64 ref_balance = 8;
+  bytes ref_balance = 9;
   // Optional The past balance of the parent address the moment this transaction was confirmed. Not present for unconfirmed transactions. This is a hex string.
-  string ref_balance_hex = 9 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
+  string ref_balance_hex = 10 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
-  string confirmed = 10;
+  string confirmed = 11;
   // Optional If this transaction is a double-spend (i.e. double_spend == true) then this is the hash of the transaction it’s double-spending.
-  string double_of = 11;
+  string double_of = 12;
 }
 
 message TXSkeleton {
@@ -157,9 +159,10 @@ message InputType {
 }
 
 message OutputType {
-  int64 value = 1;
-  string script = 2;
-  repeated string addresses = 3;
+  bytes value = 1;
+  string value_hex = 2 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
+  string script = 3;
+  repeated string addresses = 4;
 }
 
 message TX {
@@ -170,21 +173,21 @@ message TX {
   // Array of Ethereum addresses involved in the transaction.
   repeated string addresses = 3;
   // The total number of wei exchanged in this transaction.
-  uint64 total = 4;
+  bytes total = 4;
   // The total number of wei exchanged in this transaction. This is a hex string.
   string total_hex = 5 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used.
-  uint64 fees = 6;
+  bytes fees = 6;
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used. This is a hex string.
   string fees_hex = 7 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The size of the transaction in bytes.
   uint64 size = 8;
   // The amount of gas used by this transaction.
-  uint64 gas_used = 9;
+  bytes gas_used = 9;
   // The amount of gas used by this transaction. This is a hex string.
   string gas_used_hex = 10 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The price of gas—in wei—in this transaction.
-  uint64 gas_price = 11;
+  bytes gas_price = 11;
   // The price of gas—in wei—in this transaction. This is a hex string.
   string gas_price_hex = 12 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Address of the peer that sent BlockCypher’s servers this transaction. May be empty.
@@ -212,7 +215,7 @@ message TX {
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
   string confirmed = 24;
   // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts.
-  uint64 gas_limit = 25;
+  bytes gas_limit = 25;
   // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts. This is a hex string.
   string gas_limit_hex = 26 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed.
@@ -239,23 +242,23 @@ message Address {
   // The requested address.
   string address = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{40})$"}];
   // Total amount of confirmed wei received by this address.
-  uint64 total_received = 2;
+  bytes total_received = 2;
   // Total amount of confirmed wei received by this address. This is a hex string.
   string total_received_hex = 3 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Total amount of confirmed wei sent by this address.
-  uint64 total_sent = 4;
+  bytes total_sent = 4;
   // Total amount of confirmed wei sent by this address. This is a hex string.
   string total_sent_hex = 5 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0).
-  uint64 balance = 6;
+  bytes balance = 6;
   // Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0). This is a hex string.
   string balance_hex = 7 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation.
-  uint64 unconfirmed_balance = 8;
+  bytes unconfirmed_balance = 8;
   // Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven’t made it into a block) are included in this calculation. This is a hex string.
   string unconfirmed_balance_hex = 9 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Total balance of wei, including confirmed and unconfirmed transactions, for this address.
-  uint64 final_balance = 10;
+  bytes final_balance = 10;
   // Total balance of wei, including confirmed and unconfirmed transactions, for this address. This is a hex string.
   string final_balance_hex = 11 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted.
@@ -299,11 +302,11 @@ message Contract {
   // Private key associated with a funded Ethereum external account used to publish a contract or execute a method.
   string private = 4;
   // Maximum amount of gas to use in contract creation or method execution.
-  uint64 gas_limit = 5;
+  bytes gas_limit = 5;
   // Maximum amount of gas to use in contract creation or method execution. This is a hex string.
   string gas_limit_hex = 6 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Amount (in wei) to transfer; can be used when creating a contract or calling a method.
-  uint64 value = 7;
+  bytes value = 7;
   // Amount (in wei) to transfer; can be used when creating a contract or calling a method. This is a hex string.
   string value_hex = 8 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Name of contract as published.

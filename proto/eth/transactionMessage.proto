@@ -28,21 +28,21 @@ message CreateTransactionEndpointRequest {
   // Array of Ethereum addresses involved in the transaction.
   repeated string addresses = 4;
   // The total number of wei exchanged in this transaction.
-  uint64 total = 5;
+  bytes total = 5;
   // The total number of wei exchanged in this transaction. This is a hex string.
   string total_hex = 6 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used.
-  uint64 fees = 7;
+  bytes fees = 7;
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used. This is a hex string.
   string fees_hex = 8 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The size of the transaction in bytes.
   uint64 size = 9;
   // The amount of gas used by this transaction.
-  uint64 gas_used = 10;
+  bytes gas_used = 10;
   // The amount of gas used by this transaction. This is a hex string.
   string gas_used_hex = 11 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The price of gas—in wei—in this transaction.
-  uint64 gas_price = 12;
+  bytes gas_price = 12;
   // The price of gas—in wei—in this transaction. This is a hex string.
   string gas_price_hex = 13 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Address of the peer that sent BlockCypher’s servers this transaction. May be empty.
@@ -70,7 +70,7 @@ message CreateTransactionEndpointRequest {
   // Optional Time at which transaction was included in a block; only present for confirmed transactions.
   string confirmed = 25;
   // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts.
-  uint64 gas_limit = 26;
+  bytes gas_limit = 26;
   // Optional If creating a transaction, can optionally set a higher default gas limit (useful if your recepient is a contract). If not set, default is 21000 gas for external accounts and 80000 for contract accounts. This is a hex string.
   string gas_limit_hex = 27 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // Optional If true, this transaction was used to create a contract and contract account. Note that the contract address (in the outputs field) will be blank until the transaction is confirmed.
