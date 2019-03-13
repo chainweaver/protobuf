@@ -88,7 +88,7 @@ message Block {
   // The time BlockCypher’s servers receive the block.
   string received_time = 12 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "date-time"}];
   // The Ethereum address of the miner that received the coinbase and fee reward.
-  string coinbase_addr = 13 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{40})$"}];
+  string coinbase_addr = 13 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x([a-z0-9]{40})$"}];
   // Address of the peer that sent BlockCypher’s servers this block.
   string relayed_by = 14 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^(|[a-z0-9]{40})$"}];
   // The number used by a miner to generate this block.
@@ -240,7 +240,7 @@ message Address {
   };
 
   // The requested address.
-  string address = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{40})$"}];
+  string address = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x([a-z0-9]{40})$"}];
   // Total amount of confirmed wei received by this address.
   bytes total_received = 2;
   // Total amount of confirmed wei received by this address. This is a hex string.
@@ -285,7 +285,7 @@ message AddressKeychain {
   };
 
   // Standard address representation.
-  string address = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{40})$"}];
+  string address = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x([a-z0-9]{40})$"}];
   // Hex-encoded Public key.
   string public = 2 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^([a-z0-9]{130})$"}];
   // Hex-encoded Private key.
