@@ -18,7 +18,7 @@ message NullValue {}
 message Blockchain {
   option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
     json_schema: {
-      required: ["name", "height", "hash", "time", "latest_url", "previous_hash", "previous_url", "unconfirmed_count", "high_gas_price", "medium_gas_price", "low_gas_price"]
+      required: ["name", "height", "hash", "time", "latest_url", "previous_hash", "previous_url", "unconfirmed_count", "high_gas_price", "high_gas_price_hex", "medium_gas_price", "medium_gas_price_hex", "low_gas_price", "low_gas_price_hex"]
     }
   };
 
@@ -59,7 +59,7 @@ message Blockchain {
 message Block {
   option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
     json_schema: {
-      required: ["hash", "height", "depth", "chain", "total", "fees", "size", "ver", "time", "received_time", "coinbase_addr", "relayed_by", "nonce", "n_tx", "prev_block", "tx_url", "mrkl_root", "txids", "internal_txids"]
+      required: ["hash", "height", "depth", "chain", "total", "total_hex", "fees", "fees_hex", "size", "ver", "time", "received_time", "coinbase_addr", "relayed_by", "nonce", "n_tx", "prev_block", "tx_url", "mrkl_root", "txids", "internal_txids"]
     }
   };
 
@@ -235,7 +235,7 @@ message TX {
 message Address {
   option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
     json_schema: {
-      required: ["address", "total_received", "total_sent", "balance", "unconfirmed_balance", "final_balance", "n_tx", "unconfirmed_n_tx", "final_n_tx"]
+      required: ["address", "total_received", "total_received_hex", "total_sent", "total_sent_hex", "balance", "balance_hex", "unconfirmed_balance", "unconfirmed_balance_hex", "final_balance", "final_balance_hex", "n_tx", "unconfirmed_n_tx", "final_n_tx"]
     }
   };
 
