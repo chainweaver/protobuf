@@ -44,7 +44,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"math"
 	"math/big"
 	"reflect"
@@ -52,6 +51,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"log"
 
 	"github.com/golang/protobuf/proto"
 
@@ -860,7 +860,6 @@ func (u *Unmarshaler) unmarshalValue(target reflect.Value, inputValue json.RawMe
 			if ivStr == "null" {
 				target.Field(0).Set(reflect.ValueOf(&stpb.Value_NullValue{}))
 			} else if v, err := strconv.ParseFloat(ivStr, 0); err == nil {
-				log.Println("NumberValue")
 				target.Field(0).Set(reflect.ValueOf(&stpb.Value_NumberValue{v}))
 			} else if v, err := unquote(ivStr); err == nil {
 				target.Field(0).Set(reflect.ValueOf(&stpb.Value_StringValue{v}))
@@ -1087,6 +1086,7 @@ func (u *Unmarshaler) unmarshalValue(target reflect.Value, inputValue json.RawMe
 }
 
 func isBigIntField(name string) bool {
+	log.Println(name)
 	if _, ok := bigIntFieldNames[name]; ok {
 		return true
 	}
