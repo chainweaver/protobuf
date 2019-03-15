@@ -53,6 +53,26 @@ mergeOpenApiJson() {
   fi
 }
 
+generateBigIntFieldNamesGo() {
+  coin=$1
+
+  count=0
+  fields=
+  for key in $(jq '.definitions | to_entries[] | .value.properties' ./openapi/$coin/openapi2.json | jq -s add | jq -r 'to_entries[] | select(.value.format?=="byte") | .key'); do
+      fields="$fields\n$(echo "\tfns[\"$key\"] = true")"
+      count=$((count + 1))
+  done
+
+  cp ./build/bigIntFieldNames.go.tmpl jsonpb/bigIntFieldNames.go
+  if [ $count -gt 0 ]; then
+    perl -p -i -e "s/__count__/$count/g" jsonpb/bigIntFieldNames.go
+    perl -p -i -e "s/__fields__/$fields/g" jsonpb/bigIntFieldNames.go
+  else
+    perl -p -i -e "s/__count__/1/g" jsonpb/bigIntFieldNames.go
+    perl -p -i -e "s/__fields__/fns[\"xxxxxxxx\"] = true/g" jsonpb/bigIntFieldNames.go
+  fi
+}
+
 replacePostmanPattern() {
   coin=$1
   beforePattern=$2
@@ -227,6 +247,17 @@ run() {
     return 1
   fi
   echo "Create openapi/$coin/openapi2.json"
+
+  if [ $coin = "eth" ]; then
+    echo "----------------------------"
+    echo " Generate bigIntFieldNames.go (only eth)"
+    echo "----------------------------"
+    generateBigIntFieldNamesGo $coin
+    if [ $? -gt 0 ]; then
+      return 1
+    fi
+    echo "Create jsonpb/bigIntFieldNames.go"
+  fi
 
   echo "------------------"
   echo " Update OpenAPIv2 "
