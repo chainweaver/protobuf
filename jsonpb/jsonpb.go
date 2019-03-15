@@ -51,7 +51,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"log"
 
 	"github.com/golang/protobuf/proto"
 
@@ -1086,7 +1085,6 @@ func (u *Unmarshaler) unmarshalValue(target reflect.Value, inputValue json.RawMe
 }
 
 func isBigIntField(name string) bool {
-	log.Println(name)
 	if _, ok := bigIntFieldNames[name]; ok {
 		return true
 	}

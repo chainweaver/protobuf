@@ -36,13 +36,14 @@ import (
 	"encoding/json"
 	"io"
 	"math"
+	"math/big"
 	"reflect"
 	"strings"
 	"testing"
 
 	"github.com/golang/protobuf/proto"
 
-	pb "github.com/golang/protobuf/jsonpb/jsonpb_test_proto"
+	pb "github.com/chainweaver/protobuf/jsonpb/jsonpb_test_proto"
 	proto3pb "github.com/golang/protobuf/proto/proto3_proto"
 	"github.com/golang/protobuf/ptypes"
 	anypb "github.com/golang/protobuf/ptypes/any"
@@ -60,25 +61,26 @@ var (
 	}
 
 	simpleObject = &pb.Simple{
-		OInt32:     proto.Int32(-32),
-		OInt32Str:  proto.Int32(-32),
-		OInt64:     proto.Int64(-6400000000),
-		OInt64Str:  proto.Int64(-6400000000),
-		OUint32:    proto.Uint32(32),
-		OUint32Str: proto.Uint32(32),
-		OUint64:    proto.Uint64(6400000000),
-		OUint64Str: proto.Uint64(6400000000),
-		OSint32:    proto.Int32(-13),
-		OSint32Str: proto.Int32(-13),
-		OSint64:    proto.Int64(-2600000000),
-		OSint64Str: proto.Int64(-2600000000),
-		OFloat:     proto.Float32(3.14),
-		OFloatStr:  proto.Float32(3.14),
-		ODouble:    proto.Float64(6.02214179e23),
-		ODoubleStr: proto.Float64(6.02214179e23),
-		OBool:      proto.Bool(true),
-		OString:    proto.String("hello \"there\""),
-		OBytes:     []byte("beep boop"),
+		OInt32:       proto.Int32(-32),
+		OInt32Str:    proto.Int32(-32),
+		OInt64:       proto.Int64(-6400000000),
+		OInt64Str:    proto.Int64(-6400000000),
+		OUint32:      proto.Uint32(32),
+		OUint32Str:   proto.Uint32(32),
+		OUint64:      proto.Uint64(6400000000),
+		OUint64Str:   proto.Uint64(6400000000),
+		OSint32:      proto.Int32(-13),
+		OSint32Str:   proto.Int32(-13),
+		OSint64:      proto.Int64(-2600000000),
+		OSint64Str:   proto.Int64(-2600000000),
+		OFloat:       proto.Float32(3.14),
+		OFloatStr:    proto.Float32(3.14),
+		ODouble:      proto.Float64(6.02214179e23),
+		ODoubleStr:   proto.Float64(6.02214179e23),
+		OBool:        proto.Bool(true),
+		OString:      proto.String("hello \"there\""),
+		OBytes:       []byte("beep boop"),
+		OBigIntBytes: bigIntTest.Bytes(),
 	}
 
 	simpleObjectInputJSON = `{` +
@@ -100,7 +102,8 @@ var (
 		`"oDouble":6.02214179e+23,` +
 		`"oDoubleStr":"6.02214179e+23",` +
 		`"oString":"hello \"there\"",` +
-		`"oBytes":"YmVlcCBib29w"` +
+		`"oBytes":"YmVlcCBib29w",` +
+		`"oBigIntBytes":123456789012345678901234567890` +
 		`}`
 
 	simpleObjectOutputJSON = `{` +
@@ -122,7 +125,8 @@ var (
 		`"oDouble":6.02214179e+23,` +
 		`"oDoubleStr":6.02214179e+23,` +
 		`"oString":"hello \"there\"",` +
-		`"oBytes":"YmVlcCBib29w"` +
+		`"oBytes":"YmVlcCBib29w",` +
+		`"oBigIntBytes":123456789012345678901234567890` +
 		`}`
 
 	simpleObjectInputPrettyJSON = `{
@@ -144,7 +148,8 @@ var (
   "oDouble": 6.02214179e+23,
   "oDoubleStr": "6.02214179e+23",
   "oString": "hello \"there\"",
-  "oBytes": "YmVlcCBib29w"
+  "oBytes": "YmVlcCBib29w",
+  "oBigIntBytes": 123456789012345678901234567890
 }`
 
 	simpleObjectOutputPrettyJSON = `{
@@ -166,7 +171,8 @@ var (
   "oDouble": 6.02214179e+23,
   "oDoubleStr": 6.02214179e+23,
   "oString": "hello \"there\"",
-  "oBytes": "YmVlcCBib29w"
+  "oBytes": "YmVlcCBib29w",
+  "oBigIntBytes": 123456789012345678901234567890
 }`
 
 	repeatsObject = &pb.Repeats{
@@ -394,6 +400,8 @@ var (
 		`"dPinf":"Infinity",` +
 		`"dNinf":"-Infinity"` +
 		`}`
+
+	bigIntTest = NewBigIntTest()
 )
 
 func init() {
@@ -403,6 +411,14 @@ func init() {
 	if err := proto.SetExtension(realNumber, pb.E_Complex_RealExtension, complexNumber); err != nil {
 		panic(err)
 	}
+	bigIntFieldNames = make(map[string]bool, 2)
+	bigIntFieldNames["bigIntBytes"] = true
+	bigIntFieldNames["o_big_int_bytes"] = true
+}
+
+func NewBigIntTest() *big.Int {
+	bigInt, _ := new(big.Int).SetString("123456789012345678901234567890", 10)
+	return bigInt
 }
 
 var marshalingTests = []struct {
@@ -843,6 +859,8 @@ var unmarshalingTests = []struct {
 
 	{"required", Unmarshaler{}, `{"str":"hello"}`, &pb.MsgWithRequired{Str: proto.String("hello")}},
 	{"required bytes", Unmarshaler{}, `{"byts": []}`, &pb.MsgWithRequiredBytes{Byts: []byte{}}},
+
+	{"convert number to big.Int bytes", Unmarshaler{}, `{"bigIntBytes":123456789012345678901234567890}`, &pb.KnownTypes{BigIntBytes: &wpb.BytesValue{Value: bigIntTest.Bytes()}}},
 }
 
 func TestUnmarshaling(t *testing.T) {

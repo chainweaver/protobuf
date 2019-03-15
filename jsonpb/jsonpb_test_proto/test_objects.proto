@@ -60,6 +60,7 @@ message Simple {
   optional double o_double_str = 17;
   optional string o_string = 18;
   optional bytes o_bytes = 19;
+  optional bytes o_big_int_bytes = 20;
 }
 
 // Test message for holding special non-finites primitives.
@@ -153,6 +154,7 @@ message KnownTypes {
   optional google.protobuf.BoolValue bool = 9;
   optional google.protobuf.StringValue str = 10;
   optional google.protobuf.BytesValue bytes = 11;
+  optional google.protobuf.BytesValue bigIntBytes = 17;
 }
 
 // Test messages for marshaling/unmarshaling required fields.
