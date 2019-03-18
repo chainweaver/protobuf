@@ -5,7 +5,7 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: feature/custom-jsonpb-marshaler
+  version: master
 security:
 - ApiKeyAuthInHeader: []
 - ApiKeyAuthInQuery: []
@@ -1883,7 +1883,7 @@ paths:
       tags:
       - WebHooksService
 servers:
-- url: https://api.chainweaver.io/feature/custom-jsonpb-marshaler
+- url: https://api.chainweaver.io/master
 components:
   securitySchemes:
     ApiKeyAuthInHeader:

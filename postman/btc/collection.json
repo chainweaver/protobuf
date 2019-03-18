@@ -7945,7 +7945,7 @@
     {
       "key": "baseUrl",
       "type": "string",
-      "value": "https://api.chainweaver.io/feature/custom-jsonpb-marshaler"
+      "value": "https://api.chainweaver.io/master"
     },
     {
       "key": "network",
