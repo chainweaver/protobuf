@@ -7945,7 +7945,7 @@
     {
       "key": "baseUrl",
       "type": "string",
-      "value": "https://api.chainweaver.io/v0"
+      "value": "https://api.chainweaver.io/feature/custom-jsonpb-marshaler"
     },
     {
       "key": "network",
@@ -7956,15 +7956,7 @@
   "info": {
     "_postman_id": "",
     "name": "Chainweaver API for Bitcoin",
-    "version": {
-      "raw": "0.3.0",
-      "major": 0,
-      "minor": 3,
-      "patch": 0,
-      "prerelease": [],
-      "build": [],
-      "string": "0.3.0"
-    },
+    "version": {},
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",
