@@ -539,6 +539,10 @@ var marshalingTests = []struct {
 
 	{"required", marshaler, &pb.MsgWithRequired{Str: proto.String("hello")}, `{"str":"hello"}`},
 	{"required bytes", marshaler, &pb.MsgWithRequiredBytes{Byts: []byte{}}, `{"byts":""}`},
+
+	{"required bytes", marshaler, &pb.MsgWithRequiredBytes{Byts: []byte{}}, `{"byts":""}`},
+
+	{"convert big.Int bytes to number", marshaler, &pb.Simple{OBigIntBytes: bigIntTest.Bytes()}, `{"oBigIntBytes":123456789012345678901234567890}`},
 }
 
 func TestMarshaling(t *testing.T) {
@@ -860,7 +864,7 @@ var unmarshalingTests = []struct {
 	{"required", Unmarshaler{}, `{"str":"hello"}`, &pb.MsgWithRequired{Str: proto.String("hello")}},
 	{"required bytes", Unmarshaler{}, `{"byts": []}`, &pb.MsgWithRequiredBytes{Byts: []byte{}}},
 
-	{"convert number to big.Int bytes", Unmarshaler{}, `{"bigIntBytes":123456789012345678901234567890}`, &pb.KnownTypes{BigIntBytes: &wpb.BytesValue{Value: bigIntTest.Bytes()}}},
+	{"convert number to big.Int bytes", Unmarshaler{}, `{"oBigIntBytes":123456789012345678901234567890}`, &pb.Simple{OBigIntBytes: bigIntTest.Bytes()}}, //    &pb.KnownTypes{BigIntBytes: &wpb.BytesValue{Value: bigIntTest.Bytes()}}},
 }
 
 func TestUnmarshaling(t *testing.T) {

@@ -6,7 +6,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/chainweaver/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/duration"
 	"github.com/golang/protobuf/ptypes/empty"
@@ -106,7 +105,7 @@ func TestJSONPbMarshal(t *testing.T) {
 		}
 
 		var got examplepb.ABitOfEverything
-		if err := jsonpb.UnmarshalString(string(buf), &got); err != nil {
+		if err := UnmarshalString(string(buf), &got); err != nil {
 			t.Errorf("jsonpb.UnmarshalString(%q, &got) failed with %v; want success; spec=%v", string(buf), err, spec)
 		}
 		if want := msg; !reflect.DeepEqual(got, want) {
@@ -397,7 +396,7 @@ func TestJSONPbEncoder(t *testing.T) {
 		}
 
 		var got examplepb.ABitOfEverything
-		if err := jsonpb.UnmarshalString(buf.String(), &got); err != nil {
+		if err := UnmarshalString(buf.String(), &got); err != nil {
 			t.Errorf("jsonpb.UnmarshalString(%q, &got) failed with %v; want success; spec=%v", buf.String(), err, spec)
 		}
 		if want := msg; !reflect.DeepEqual(got, want) {
