@@ -7945,7 +7945,7 @@
     {
       "key": "baseUrl",
       "type": "string",
-      "value": "https://api.chainweaver.io/master"
+      "value": "https://api.chainweaver.io/feature/license"
     },
     {
       "key": "network",
