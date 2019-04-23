@@ -380,7 +380,7 @@
                           "listen": "prerequest",
                           "script": {
                             "exec": [
-                              "let testCaseNo = pm.variables.get(\"test_case_no\");\nlet baseUrl = pm.variables.get(\"baseUrl\");\nlet network = pm.variables.get(\"network\");\nlet token = pm.variables.get(\"token\");\nswitch (testCaseNo) {\n  case \"test-address-0010\":\n    pm.sendRequest({\n      url: baseUrl+\"/eth/\"+network+\"/?token\"+token,\n      method: 'GET',\n    }, (err, res) => {\n      pm.variables.set(\"confirmations\", res.json().height + 100);\n    });\n    break;\n}"
+                              "let testCaseNo = pm.variables.get(\"test_case_no\");\nlet baseUrl = pm.variables.get(\"baseUrl\");\nlet network = pm.variables.get(\"network\");\nlet token = pm.variables.get(\"token\");\nswitch (testCaseNo) {\n  case \"test-address-0010\":\n    pm.sendRequest({\n      url: baseUrl+\"/eth/\"+network+\"/?token=\"+token,\n      method: 'GET',\n    }, (err, res) => {\n      pm.variables.set(\"confirmations\", res.json().height + 100);\n    });\n    break;\n}\n\nfor (const [key, value] of Object.entries(data)) {\n  if (value === null) {\n    pm.request.url.removeQueryParams(key)\n  }\n}"
                             ],
                             "type": "text/javascript"
                           }
@@ -659,6 +659,15 @@
                   ],
                   "event": [
                     {
+                      "listen": "prerequest",
+                      "script": {
+                        "exec": [
+                          "for (const [key, value] of Object.entries(data)) {\n  if (value === null) {\n    pm.request.url.removeQueryParams(key)\n  }\n}"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    },
+                    {
                       "listen": "test",
                       "script": {
                         "exec": [
@@ -820,6 +829,15 @@
                     }
                   ],
                   "event": [
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "exec": [
+                          "for (const [key, value] of Object.entries(data)) {\n  if (value === null) {\n    pm.request.url.removeQueryParams(key)\n  }\n}"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    },
                     {
                       "listen": "test",
                       "script": {
@@ -3464,7 +3482,7 @@
     {
       "key": "baseUrl",
       "type": "string",
-      "value": "https://api.chainweaver.io/master"
+      "value": "https://api.chainweaver.io/fix/post-query-parameter"
     },
     {
       "key": "network",
