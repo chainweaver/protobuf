@@ -15,7 +15,7 @@ message MicroTX {
   // The target address to which you’re sending coins.
   string to_address = 4;
   // Value you’re sending/you’ve sent in satoshis.
-  int64 value_satoshis = 5;
+  uint32 value_satoshis = 5;
   // Your Block API token
   string token = 6;
   // Optional Address Block will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address.
@@ -47,7 +47,7 @@ message MicrotransactionEndpointRequest {
   // The target address to which you’re sending coins.
   string to_address = 5;
   // Value you’re sending/you’ve sent in satoshis.
-  int64 value_satoshis = 6;
+  uint32 value_satoshis = 6;
   // Your Block API token
   string token = 7;
   // Optional Address Block will use to send back your change. If not set, defaults to the address from which the coins were originally sent. While not required, we recommend that you set a change address.

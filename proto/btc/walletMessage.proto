@@ -110,7 +110,7 @@ message DeriveAddressInWalletEndpointRequest {
   // Number of addresses to derive. If not set, default is one address.
   int32 count = 3;
   // Derives address(es) on this specific subchain. If not set, address will be generated on the first chain in the HD wallet.
-  int64 subchain_index = 4;
+  uint32 subchain_index = 4;
 }
 
 message DeleteWalletEndpointRequest {

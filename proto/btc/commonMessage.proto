@@ -146,7 +146,7 @@ message HDChain {
   // Array of HDAddresses associated with this subchain.
   repeated HDAddress chain_addresses = 1;
   // optional Index of the subchain, returned if the wallet has subchains.
-  int64 index = 2;
+  uint32 index = 2;
 }
 
 message Address {

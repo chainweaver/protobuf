@@ -83,7 +83,7 @@ message Feature {
   NetworkAllowingAlias network = 1;
   string name = 2;
   string state = 3;
-  int64 last_transition_height = 4;
+  uint32 last_transition_height = 4;
   string last_transition_hash = 5;
 }
 

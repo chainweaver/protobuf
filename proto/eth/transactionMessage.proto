@@ -36,7 +36,7 @@ message CreateTransactionEndpointRequest {
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used. This is a hex string.
   string fees_hex = 8 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The size of the transaction in bytes.
-  uint64 size = 9;
+  uint32 size = 9;
   // The amount of gas used by this transaction.
   bytes gas_used = 10;
   // The amount of gas used by this transaction. This is a hex string.
