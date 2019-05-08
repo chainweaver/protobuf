@@ -36,7 +36,7 @@ message CreateTransactionEndpointRequest {
   // The total number of fees—in wei—collected by miners in this transaction. Equal to gas_price * gas_used. This is a hex string.
   string fees_hex = 8 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {pattern: "^0x[0-9a-fA-F]+$"}];
   // The size of the transaction in bytes.
-  uint64 size = 9;
+  uint32 size = 9;
   // The amount of gas used by this transaction.
   bytes gas_used = 10;
   // The amount of gas used by this transaction. This is a hex string.
@@ -85,8 +85,6 @@ message CreateTransactionEndpointRequest {
   string double_of = 32;
   // Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”).
   string execution_error = 33;
-  // Token
-  string token = 34;
 }
 
 message SendTransactionEndpointRequest {
@@ -99,18 +97,14 @@ message SendTransactionEndpointRequest {
   repeated string signatures = 4;
   // Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code.
   repeated string errors = 5;
-  // Token
-  string token = 6;
 }
 
 message DecodeRawTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   string tx = 2;
-  string token = 3;
 }
 
 message PushRawTransactionEndpointRequest {
   NetworkAllowingAlias network = 1;
   string tx = 2;
-  string token = 3;
 }

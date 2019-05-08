@@ -21,13 +21,10 @@ message CreateWebHookEndpointRequest {
   string url = 7;
   // Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage.
   int32 callback_errors = 8;
-  // Token
-  string token = 9;
 }
 
 message ListWebHooksEndpointRequest {
   NetworkAllowingAlias network = 1;
-  string token = 2;
 }
 
 message Events {
@@ -37,11 +34,9 @@ message Events {
 message WebHookIDEndpointRequest {
   NetworkAllowingAlias network = 1;
   string webhookid = 2;
-  string token = 3;
 }
 
 message DeleteWebHookEndpointRequest {
   NetworkAllowingAlias network = 1;
   string webhookid = 2;
-  string token = 3;
 }

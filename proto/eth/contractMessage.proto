@@ -38,14 +38,11 @@ message CreateContractEndpointRequest {
   string creation_tx_hash = 15;
   // If this is a response from a calling a contract method, this array of results may appear if the method returns any.
   repeated string results = 16;
-  // Token
-  string token = 17;
 }
 
 message ContractAddressEndpointRequest {
   NetworkAllowingAlias network = 1;
   string query_address = 2;
-  string token = 3;
 }
 
 message CallContractMethodEndpointRequest {
@@ -80,8 +77,6 @@ message CallContractMethodEndpointRequest {
   string creation_tx_hash = 17;
   // If this is a response from a calling a contract method, this array of results may appear if the method returns any.
   repeated string results = 18;
-  // Token
-  string token = 19;
 }
 
 message Contracts {

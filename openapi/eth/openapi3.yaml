@@ -5,7 +5,7 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: master
+  version: fix/protoFields
 security:
 - ApiKeyAuthInHeader: []
 - ApiKeyAuthInQuery: []
@@ -363,11 +363,6 @@ paths:
         required: true
         schema:
           type: string
-      - name: token
-        in: query
-        required: false
-        schema:
-          type: string
       tags:
       - ContractService
   /eth/{network}/contracts/{query_address}/{method}:
@@ -597,11 +592,6 @@ paths:
           - main
           - ROPSTEN
           - ropsten
-      - name: token
-        in: query
-        required: false
-        schema:
-          type: string
       tags:
       - WebHooksService
     post:
@@ -658,11 +648,6 @@ paths:
         required: true
         schema:
           type: string
-      - name: token
-        in: query
-        required: false
-        schema:
-          type: string
       tags:
       - WebHooksService
     delete:
@@ -690,15 +675,10 @@ paths:
         required: true
         schema:
           type: string
-      - name: token
-        in: query
-        required: false
-        schema:
-          type: string
       tags:
       - WebHooksService
 servers:
-- url: https://api.chainweaver.io/master
+- url: https://api.chainweaver.io/fix/protoFields
 components:
   securitySchemes:
     ApiKeyAuthInHeader:
@@ -837,8 +817,6 @@ components:
       properties:
         network:
           $ref: '#/components/schemas/ethNetworkAllowingAlias'
-        token:
-          type: string
     ethNetworkAllowingAlias:
       type: string
       enum:
@@ -862,7 +840,7 @@ components:
           description: Index of this input in the enclosing transaction. 0 if it’s
             an input, -1 if it’s an output.
         tx_output_n:
-          type: string
+          type: integer
           description: Index of this output in the enclosing transaction. -1 if it’s
             an input, 0 if it’s an output.
         value:
@@ -1193,9 +1171,6 @@ components:
             type: string
           description: If this is a response from a calling a contract method, this
             array of results may appear if the method returns any.
-        token:
-          type: string
-          title: Token
     ethContract:
       type: object
       properties:
@@ -1337,9 +1312,6 @@ components:
             type: string
           description: If this is a response from a calling a contract method, this
             array of results may appear if the method returns any.
-        token:
-          type: string
-          title: Token
     ethCreateTransactionEndpointRequest:
       type: object
       properties:
@@ -1484,9 +1456,6 @@ components:
           type: string
           description: Optional If this transaction has an execution error, then this
             field will be included (e.g. “out of gas”).
-        token:
-          type: string
-          title: Token
     ethDecodeRawTransactionEndpointRequest:
       type: object
       properties:
@@ -1494,13 +1463,11 @@ components:
           $ref: '#/components/schemas/ethNetworkAllowingAlias'
         tx:
           type: string
-        token:
-          type: string
     ethInputType:
       type: object
       properties:
         sequence:
-          type: string
+          type: integer
         addresses:
           type: array
           items:
@@ -1525,8 +1492,6 @@ components:
         network:
           $ref: '#/components/schemas/ethNetworkAllowingAlias'
         tx:
-          type: string
-        token:
           type: string
     ethSendTransactionEndpointRequest:
       type: object
@@ -1554,9 +1519,6 @@ components:
           description: Optional Array of errors in the form “error”:“description-of-error”.
             This is only returned if there was an error in any stage of transaction
             generation, and is usually accompanied by a HTTP 400 code.
-        token:
-          type: string
-          title: Token
     ethTX:
       type: object
       properties:
@@ -1764,9 +1726,6 @@ components:
           type: integer
           description: Number of errors when attempting to POST to callback URL; not
             applicable for WebSockets usage.
-        token:
-          type: string
-          title: Token
     ethEvent:
       type: object
       properties:
