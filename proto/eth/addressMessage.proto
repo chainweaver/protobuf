@@ -25,5 +25,4 @@ message AddressEndpointRequest {
 
 message GenerateAddressEndpointRequest {
   NetworkAllowingAlias network = 1;
-  string token = 2;
 }
