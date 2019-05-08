@@ -2,7 +2,7 @@
   "info": {
     "title": "Chainweaver API for Ethereum",
     "description": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",
-    "version": "master"
+    "version": "fix/protoFields"
   },
   "host": "api.chainweaver.io",
   "schemes": [
@@ -406,12 +406,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "tags": [
@@ -710,12 +704,6 @@
               "ROPSTEN",
               "ropsten"
             ]
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "tags": [
@@ -788,12 +776,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "tags": [
@@ -827,12 +809,6 @@
             "name": "webhookid",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "required": false,
             "type": "string"
           }
         ],
@@ -979,9 +955,6 @@
       "properties": {
         "network": {
           "$ref": "#/definitions/ethNetworkAllowingAlias"
-        },
-        "token": {
-          "type": "string"
         }
       }
     },
@@ -1011,7 +984,7 @@
           "description": "Index of this input in the enclosing transaction. 0 if it’s an input, -1 if it’s an output."
         },
         "tx_output_n": {
-          "type": "string",
+          "type": "integer",
           "description": "Index of this output in the enclosing transaction. -1 if it’s an input, 0 if it’s an output."
         },
         "value": {
@@ -1371,10 +1344,6 @@
             "type": "string"
           },
           "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
-        },
-        "token": {
-          "type": "string",
-          "title": "Token"
         }
       }
     },
@@ -1541,10 +1510,6 @@
             "type": "string"
           },
           "description": "If this is a response from a calling a contract method, this array of results may appear if the method returns any."
-        },
-        "token": {
-          "type": "string",
-          "title": "Token"
         }
       }
     },
@@ -1698,10 +1663,6 @@
         "execution_error": {
           "type": "string",
           "description": "Optional If this transaction has an execution error, then this field will be included (e.g. “out of gas”)."
-        },
-        "token": {
-          "type": "string",
-          "title": "Token"
         }
       }
     },
@@ -1713,9 +1674,6 @@
         },
         "tx": {
           "type": "string"
-        },
-        "token": {
-          "type": "string"
         }
       }
     },
@@ -1723,7 +1681,7 @@
       "type": "object",
       "properties": {
         "sequence": {
-          "type": "string"
+          "type": "integer"
         },
         "addresses": {
           "type": "array",
@@ -1762,9 +1720,6 @@
         },
         "tx": {
           "type": "string"
-        },
-        "token": {
-          "type": "string"
         }
       }
     },
@@ -1798,10 +1753,6 @@
             "type": "string"
           },
           "description": "Optional Array of errors in the form “error”:“description-of-error”. This is only returned if there was an error in any stage of transaction generation, and is usually accompanied by a HTTP 400 code."
-        },
-        "token": {
-          "type": "string",
-          "title": "Token"
         }
       }
     },
@@ -2029,10 +1980,6 @@
         "callback_errors": {
           "type": "integer",
           "description": "Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage."
-        },
-        "token": {
-          "type": "string",
-          "title": "Token"
         }
       }
     },
@@ -2097,5 +2044,5 @@
       }
     }
   },
-  "basePath": "/master"
+  "basePath": "/fix/protoFields"
 }

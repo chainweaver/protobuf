@@ -2,7 +2,7 @@
   "info": {
     "title": "Chainweaver API for Bitcoin",
     "description": "Welcome to Chainweaver's API documentation!\\n All API calls are versioned and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently in beta, and we hope not to introduce any breaking changes, but until it’s out of beta we can’t make that guarantee until it’s stable.",
-    "version": "master"
+    "version": "fix/protoFields"
   },
   "host": "api.chainweaver.io",
   "schemes": [
@@ -2548,7 +2548,7 @@
           "description": "Array of HDAddresses associated with this subchain."
         },
         "index": {
-          "type": "string",
+          "type": "integer",
           "description": "optional Index of the subchain, returned if the wallet has subchains."
         }
       }
@@ -3467,7 +3467,7 @@
           "type": "string"
         },
         "last_transition_height": {
-          "type": "string"
+          "type": "integer"
         },
         "last_transition_hash": {
           "type": "string"
@@ -3594,7 +3594,7 @@
           "description": "The target address to which you’re sending coins."
         },
         "value_satoshis": {
-          "type": "string",
+          "type": "integer",
           "description": "Value you’re sending/you’ve sent in satoshis."
         },
         "token": {
@@ -3670,7 +3670,7 @@
           "description": "The target address to which you’re sending coins."
         },
         "value_satoshis": {
-          "type": "string",
+          "type": "integer",
           "description": "Value you’re sending/you’ve sent in satoshis."
         },
         "token": {
@@ -4177,7 +4177,7 @@
           "description": "Number of addresses to derive. If not set, default is one address."
         },
         "subchain_index": {
-          "type": "string",
+          "type": "integer",
           "description": "Derives address(es) on this specific subchain. If not set, address will be generated on the first chain in the HD wallet."
         }
       }
@@ -4383,5 +4383,5 @@
       }
     }
   },
-  "basePath": "/master"
+  "basePath": "/fix/protoFields"
 }

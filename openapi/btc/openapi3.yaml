@@ -5,7 +5,7 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: master
+  version: fix/protoFields
 security:
 - ApiKeyAuthInHeader: []
 - ApiKeyAuthInQuery: []
@@ -1883,7 +1883,7 @@ paths:
       tags:
       - WebHooksService
 servers:
-- url: https://api.chainweaver.io/master
+- url: https://api.chainweaver.io/fix/protoFields
 components:
   securitySchemes:
     ApiKeyAuthInHeader:
@@ -2056,7 +2056,7 @@ components:
             $ref: '#/components/schemas/btcHDAddress'
           description: Array of HDAddresses associated with this subchain.
         index:
-          type: string
+          type: integer
           description: optional Index of the subchain, returned if the wallet has
             subchains.
     btcHDWallet:
@@ -2859,7 +2859,7 @@ components:
         state:
           type: string
         last_transition_height:
-          type: string
+          type: integer
         last_transition_hash:
           type: string
     btcTXConfidence:
@@ -2957,7 +2957,7 @@ components:
           type: string
           description: The target address to which you’re sending coins.
         value_satoshis:
-          type: string
+          type: integer
           description: Value you’re sending/you’ve sent in satoshis.
         token:
           type: string
@@ -3028,7 +3028,7 @@ components:
           type: string
           description: The target address to which you’re sending coins.
         value_satoshis:
-          type: string
+          type: integer
           description: Value you’re sending/you’ve sent in satoshis.
         token:
           type: string
@@ -3447,7 +3447,7 @@ components:
           type: integer
           description: Number of addresses to derive. If not set, default is one address.
         subchain_index:
-          type: string
+          type: integer
           description: Derives address(es) on this specific subchain. If not set,
             address will be generated on the first chain in the HD wallet.
     btcGenerateAddressInWalletEndpointRequest:
