@@ -3421,7 +3421,7 @@
     {
       "key": "baseUrl",
       "type": "string",
-      "value": "https://api.chainweaver.io/fix/nonce"
+      "value": "https://api.chainweaver.io/master"
     },
     {
       "key": "network",
