@@ -5,7 +5,7 @@ var (
 )
 
 func NewBigIntFieldNames() map[string]bool {
-	fns := make(map[string]bool, 15)
+	fns := make(map[string]bool, 16)
 
 	fns["total_received"] = true
 	fns["total_sent"] = true
@@ -16,6 +16,7 @@ func NewBigIntFieldNames() map[string]bool {
 	fns["ref_balance"] = true
 	fns["total"] = true
 	fns["fees"] = true
+	fns["nonce"] = true
 	fns["high_gas_price"] = true
 	fns["medium_gas_price"] = true
 	fns["low_gas_price"] = true
