@@ -20,8 +20,13 @@ switch (testCaseNo) {
     eval(globals.assert)("nonce", 13469257443296811985, res.nonce);
     eval(globals.assert)("n_tx", 115, res.n_tx);
     eval(globals.assert)("prev_block", "626c9e740c5bcd1787617886af7965262ce1dacbede236c46191a0f8f3b8bb05", res.prev_block);
-    eval(globals.assert)("prev_block_url", "https://api.blockcypher.com/v1/eth/main/blocks/626c9e740c5bcd1787617886af7965262ce1dacbede236c46191a0f8f3b8bb05", res.prev_block_url);
-    eval(globals.assert)("tx_url", "https://api.blockcypher.com/v1/eth/main/txs/", res.tx_url);
+    if (eval(globals.isBlockcypher)()) {
+      eval(globals.assert)("prev_block_url", "https://api.blockcypher.com/v1/eth/main/blocks/626c9e740c5bcd1787617886af7965262ce1dacbede236c46191a0f8f3b8bb05", res.prev_block_url);
+      eval(globals.assert)("tx_url", "https://api.blockcypher.com/v1/eth/main/txs/", res.tx_url);
+    } else {
+      eval(globals.assert)("prev_block_url", "https://api.chainweaver.io/v1/eth/main/blocks/626c9e740c5bcd1787617886af7965262ce1dacbede236c46191a0f8f3b8bb05", res.prev_block_url);
+      eval(globals.assert)("tx_url", "https://api.chainweaver.io/v1/eth/main/txs/", res.tx_url);
+    }
     eval(globals.assert)("mrkl_root", "01b35494e8f45ceff38d2f4cb0c585903368285b8babd5ecbd3863b3ea1b0f9d", res.mrkl_root);
     eval(globals.assert)("txids", JSON.stringify([
       "d51665eb776dced9c312ea66510e6bdf2f1c95376e8aea5a65016119355a5e83",
@@ -607,8 +612,13 @@ switch (testCaseNo) {
     eval(globals.assert)("http status code", 200, responseCode.code);
     eval(globals.commonTests)("ethBlock"); // check schema
     eval(globals.assert)("txids count", 30, res.txids.length); // TODO Bug it seems to be a bug in blockcypher
-    eval(globals.assert)("prev_block_url count", "https://api.blockcypher.com/v1/eth/main/blocks/626c9e740c5bcd1787617886af7965262ce1dacbede236c46191a0f8f3b8bb05", res.prev_block_url);
-    eval(globals.assert)("next_txids count", "https://api.blockcypher.com/v1/eth/main/blocks/3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846?txstart=45&limit=30", res.next_txids);
+    if (eval(globals.isBlockcypher)()) {
+      eval(globals.assert)("prev_block_url", "https://api.blockcypher.com/v1/eth/main/blocks/626c9e740c5bcd1787617886af7965262ce1dacbede236c46191a0f8f3b8bb05", res.prev_block_url);
+      eval(globals.assert)("next_txids", "https://api.blockcypher.com/v1/eth/main/blocks/3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846?txstart=45&limit=30", res.next_txids);
+    } else {
+      eval(globals.assert)("prev_block_url", "https://api.chainweaver.io/v1/eth/main/blocks/626c9e740c5bcd1787617886af7965262ce1dacbede236c46191a0f8f3b8bb05", res.prev_block_url);
+      eval(globals.assert)("next_txids", "https://api.chainweaver.io/v1/eth/main/blocks/3c2a575d0929e4b44fe727d3668dc46bf7a2d7541e5f4368d95680ab750c9846?txstart=45&limit=30", res.next_txids);
+    }
     eval(globals.assert)("response object property count", 21, Object.keys(res).length);
     break;
   case "test-blocks-0005":

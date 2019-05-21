@@ -15,7 +15,11 @@ switch (testCaseNo) {
     eval(globals.assert)("unconfirmed_n_tx", 0, res.unconfirmed_n_tx);
     eval(globals.assert)("final_n_tx", 1, res.final_n_tx);
     eval(globals.assert)("txrefs count", 1, res.txrefs.length);
-    eval(globals.assert)("tx_url", "https://api.blockcypher.com/v1/eth/main/txs/", res.tx_url);
+    if (eval(globals.isBlockcypher)()) {
+      eval(globals.assert)("tx_url", "https://api.blockcypher.com/v1/eth/main/txs/", res.tx_url);
+    } else {
+      eval(globals.assert)("tx_url", "https://api.chainweaver.io/v1/eth/main/txs/", res.tx_url);
+    }
     eval(globals.assert)("response object property count", 11, Object.keys(res).length);
     break;
   case "test-address-0002":
