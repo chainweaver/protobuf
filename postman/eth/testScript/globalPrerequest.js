@@ -18,6 +18,14 @@ postman.setGlobalVariable("assert", (target, expect, value) => {
   }
 });
 
+postman.setGlobalVariable("isBlockcypher", () => {
+  let baseUrl = pm.variables.get("baseUrl");
+  if (baseUrl.indexOf('api.blockcypher.com') > -1) {
+    return true;
+  }
+  return false;
+});
+
 let baseUrl = pm.variables.get("baseUrl");
 if (baseUrl.indexOf('api.blockcypher.com') > -1) {
   // When testing with blockcypher
