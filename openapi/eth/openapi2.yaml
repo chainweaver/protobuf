@@ -4,7 +4,7 @@ info:
     and the current BlockCypher API is v1. The BlockCypher Ethereum API is currently
     in beta, and we hope not to introduce any breaking changes, but until it’s out
     of beta we can’t make that guarantee until it’s stable.
-  version: fix/testScript
+  version: master
 host: api.chainweaver.io
 schemes:
 - https
@@ -1684,4 +1684,4 @@ definitions:
       error:
         type: string
         description: Error message
-basePath: /fix/testScript
+basePath: /master
